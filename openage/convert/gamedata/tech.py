@@ -12,7 +12,7 @@ class Effect(Exportable):
     name_struct_file   = "tech"
     struct_description = "applied effect for a research technology."
 
-    data_format = (
+    data_format = [
         (READ, "type_id",   EnumLookupMember(
             raw_type = "int8_t",
             type_name = "effect_apply_type",
@@ -83,7 +83,7 @@ class Effect(Exportable):
         (READ, "unit_class_id",  "int16_t"),  # == b
         (READ, "attribute_id", "int16_t"),    # == c
         (READ, "amount",    "float"),         # == d
-    )
+    ]
 
 
 class Tech(Exportable):  # also called techage in some other tools
@@ -91,14 +91,14 @@ class Tech(Exportable):  # also called techage in some other tools
     name_struct_file   = "tech"
     struct_description = "a technology definition."
 
-    data_format = (
+    data_format = [
         (READ, "name", "char[31]"),                  # always CHUN4 (change unit 4-arg)
         (READ, "effect_count", "uint16_t"),
         (READ, "effects", SubdataMember(
             ref_type=Effect,
             length="effect_count",
         )),
-    )
+    ]
 
 
 # TODO: add common tech class
@@ -109,7 +109,7 @@ class AgeTechTree(Exportable):
     name_struct_file   = "tech"
     struct_description = "items available when this age was reached."
 
-    data_format = (
+    data_format = [
         (READ_UNKNOWN, None, "int32_t"),
         (READ, "id", "int32_t"),
         # 0=generic
@@ -128,7 +128,7 @@ class AgeTechTree(Exportable):
         (READ_UNKNOWN, None, "int32_t"),                  # always 1
         (READ, "second_age_id", "int32_t"),
         (READ, "zeroes", ZeroMember("int16_t", length=49)),
-    )
+    ]
 
 
 class BuildingConnection(Exportable):
@@ -136,7 +136,7 @@ class BuildingConnection(Exportable):
     name_struct_file   = "tech"
     struct_description = "new available buildings/units/researches when this building was created."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, "id", "int32_t"),                   # unit id of the current building
         # 0=generic
         # 1=TODO
@@ -170,7 +170,7 @@ class BuildingConnection(Exportable):
         (READ_UNKNOWN, None, "int8_t[11]"),
         (READ_EXPORT, "line_mode", "int32_t"),          # 5: >=1 connections, 6: no connections
         (READ, "enabled_by_research_id", "int32_t"),      # current building is unlocked by this research id, -1=no unlock needed
-    )
+    ]
 
 
 class UnitConnection(Exportable):
@@ -178,7 +178,7 @@ class UnitConnection(Exportable):
     name_struct_file   = "tech"
     struct_description = "unit updates to apply when activating the technology."
 
-    data_format = (
+    data_format = [
         (READ, "id", "int32_t"),
         # 0=generic
         # 1=TODO
@@ -203,7 +203,7 @@ class UnitConnection(Exportable):
         (READ, "required_research", "int32_t"),  # min amount of researches to be discovered for this unit to be available
         (READ, "line_mode", "int32_t"),          # 0=independent/new in its line, 3=depends on a previous research in its line
         (READ, "enabling_research", "int32_t"),
-    )
+    ]
 
 
 class ResearchConnection(Exportable):
@@ -211,7 +211,7 @@ class ResearchConnection(Exportable):
     name_struct_file   = "tech"
     struct_description = "research updates to apply when activating the technology."
 
-    data_format = (
+    data_format = [
         (READ, "id", "int32_t"),
         # 0=generic
         # 1=TODO
@@ -236,4 +236,4 @@ class ResearchConnection(Exportable):
         (READ, "vertical_line", "int32_t"),
         (READ, "location_in_age", "int32_t"),  # 0=hidden, 1=first, 2=second
         (READ, "line_mode", "int32_t"),        # 0=first age, else other ages.
-    )
+    ]

@@ -12,7 +12,7 @@ class GraphicDelta(Exportable):
     name_struct_file   = "graphic"
     struct_description = "delta definitions for ingame graphics files."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, "graphic_id",  "int16_t"),
         (READ_UNKNOWN, None,  "int16_t"),
         (READ_UNKNOWN, None,  "int16_t"),
@@ -21,7 +21,7 @@ class GraphicDelta(Exportable):
         (READ_EXPORT, "direction_y", "int16_t"),
         (READ_UNKNOWN, None,  "int16_t"),
         (READ_UNKNOWN, None,  "int16_t"),
-    )
+    ]
 
 
 class SoundProp(Exportable):
@@ -29,10 +29,10 @@ class SoundProp(Exportable):
     name_struct_file   = "graphic"
     struct_description = "sound id and delay definition for graphics sounds."
 
-    data_format = (
+    data_format = [
         (READ, "sound_delay", "int16_t"),
         (READ, "sound_id",    "int16_t"),
-    )
+    ]
 
 
 class GraphicAttackSound(Exportable):
@@ -53,7 +53,7 @@ class Graphic(Exportable):
     name_struct_file   = name_struct
     struct_description = "metadata for ingame graphics files."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, "name0", "char[21]"),             # internal name: e.g. ARRG2NNE = archery range feudal Age north european
         (READ_EXPORT, "name1", "char[13]"),
         (READ_EXPORT, "slp_id", "int32_t"),             # id of the graphics file in the drs
@@ -101,4 +101,4 @@ class Graphic(Exportable):
             ref_type=GraphicAttackSound,
             length=lambda o: "angle_count" if o.attack_sound_used != 0 else 0,
         )),
-    )
+    ]

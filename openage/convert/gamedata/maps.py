@@ -12,7 +12,7 @@ class MapHeader(Exportable):
     name_struct        = "map_header"
     struct_description = "random map information header"
 
-    data_format = (
+    data_format = [
         (READ, "script_number", "int32_t"),
         (READ, "border_south_west", "int32_t"),
         (READ, "border_north_west", "int32_t"),
@@ -31,7 +31,7 @@ class MapHeader(Exportable):
         (READ, "map_unit_ptr", "int32_t"),
         (READ_UNKNOWN, None, "uint32_t"),
         (READ_UNKNOWN, None, "int32_t"),
-    )
+    ]
 
 
 class BaseZone(Exportable):
@@ -39,7 +39,7 @@ class BaseZone(Exportable):
     name_struct        = "map"
     struct_description = "random map information data"
 
-    data_format = (
+    data_format = [
         (READ_UNKNOWN, None, "int32_t"),
         (READ, "base_terrain", "int32_t"),
         (READ, "spacing_between_players", "int32_t"),
@@ -51,7 +51,7 @@ class BaseZone(Exportable):
         (READ, "start_area_radius", "int32_t"),
         (READ_UNKNOWN, None, "int32_t"),
         (READ_UNKNOWN, None, "int32_t"),
-    )
+    ]
 
 
 class MapTerrain(Exportable):
@@ -59,14 +59,14 @@ class MapTerrain(Exportable):
     name_struct        = "map_terrain"
     struct_description = "random map terrain information data"
 
-    data_format = (
+    data_format = [
         (READ, "proportion", "int32_t"),
         (READ, "terrain", "int32_t"),
         (READ, "number_of_clumps", "int32_t"),
         (READ, "spacing_to_other_terrains", "int32_t"),
         (READ, "placement_zone", "int32_t"),
         (READ_UNKNOWN, None, "int32_t"),
-    )
+    ]
 
 
 class MapUnit(Exportable):
@@ -74,7 +74,7 @@ class MapUnit(Exportable):
     name_struct        = "map_unit"
     struct_description = "random map unit information data"
 
-    data_format = (
+    data_format = [
         (READ, "unit", "int32_t"),
         (READ, "host_terrain", "int32_t"),
         (READ_UNKNOWN, None, "int8_t[4]"),
@@ -86,7 +86,7 @@ class MapUnit(Exportable):
         (READ, "set_place_for_all_players", "int32_t"),
         (READ, "min_distance_to_players", "int32_t"),
         (READ, "max_distance_to_players", "int32_t"),
-    )
+    ]
 
 
 class MapUnknown(Exportable):
@@ -94,9 +94,9 @@ class MapUnknown(Exportable):
     name_struct        = "map_unknown"
     struct_description = "random map infos about magic unknown things"
 
-    data_format = (
+    data_format = [
         (READ_UNKNOWN, None, "int32_t[6]"),
-    )
+    ]
 
 
 class Map(Exportable):
@@ -104,7 +104,7 @@ class Map(Exportable):
     name_struct        = "map"
     struct_description = "random map information data"
 
-    data_format = (
+    data_format = [
         (READ, "border_south_west", "int32_t"),
         (READ, "border_north_west", "int32_t"),
         (READ, "border_north_east", "int32_t"),
@@ -142,4 +142,4 @@ class Map(Exportable):
             ref_type=MapUnknown,
             length="map_unknown_count",
         )),
-    )
+    ]

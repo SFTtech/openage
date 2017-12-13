@@ -43,7 +43,7 @@ class EmpiresDat(Exportable):
     name_struct        = "empiresdat"
     struct_description = "empires2_x1_p1.dat structure"
 
-    data_format = (
+    data_format = [
         (READ, "versionstr", "char[8]"),
 
         # terrain header data
@@ -201,7 +201,7 @@ class EmpiresDat(Exportable):
             ref_type=tech.ResearchConnection,
             length="research_connection_count"
         )),
-    )
+    ]
 
     @classmethod
     def get_hash(cls):
@@ -226,12 +226,12 @@ class EmpiresDatWrapper(Exportable):
     struct_description = "wrapper for empires2_x1_p1.dat structure"
 
     # TODO: we could reference to other gamedata structures
-    data_format = (
+    data_format = [
         (READ_EXPORT, "empiresdat", SubdataMember(
             ref_type=EmpiresDat,
             length=1,
         )),
-    )
+    ]
 
 
 def load_gamespec(fileobj, game_versions, cachefile_name=None, load_cache=False):

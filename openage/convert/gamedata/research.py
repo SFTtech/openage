@@ -12,11 +12,11 @@ class ResearchResourceCost(Exportable):
     name_struct_file   = "research"
     struct_description = "amount definition for a single type resource for researches."
 
-    data_format = (
+    data_format = [
         (READ, "resource_id", "int16_t"),  # see unit/resource_cost, TODO: type xref
         (READ, "amount", "int16_t"),
         (READ, "enabled", "int8_t"),
-    )
+    ]
 
 
 class Research(Exportable):
@@ -24,7 +24,7 @@ class Research(Exportable):
     name_struct_file   = "research"
     struct_description = "one researchable technology."
 
-    data_format = (
+    data_format = [
         (READ, "required_techs", "int16_t[6]"),         # research ids of techs that are required for activating the possible research
         (READ, "research_resource_costs", SubdataMember(
             ref_type=ResearchResourceCost,
@@ -46,4 +46,4 @@ class Research(Exportable):
         (READ_UNKNOWN, None, "int32_t"),                # -1
         (READ, "name_length", "uint16_t"),
         (READ, "name", "char[name_length]"),
-    )
+    ]

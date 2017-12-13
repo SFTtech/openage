@@ -13,7 +13,7 @@ class Civ(Exportable):
     name_struct_file = name_struct
     struct_description = "describes a civilisation."
 
-    data_format = (
+    data_format = [
         (READ, "enabled", "int8_t"),
         (READ_EXPORT, "name", "char[20]"),
         (READ, "resources_count", "uint16_t"),
@@ -35,4 +35,4 @@ class Civ(Exportable):
             length             = "unit_count",
             offset_to          = ("unit_offsets", lambda o: o > 0),
         )),
-    )
+    ]

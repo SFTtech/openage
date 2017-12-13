@@ -36,7 +36,7 @@ class Exportable:
     struct_description = None
 
     # struct format specification
-    data_format = tuple()
+    data_format = list()
 
     # detected game versions
     game_versions = list()

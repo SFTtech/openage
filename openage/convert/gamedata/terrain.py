@@ -13,11 +13,11 @@ class FrameData(Exportable):
     name_struct        = "frame_data"
     struct_description = "specification of terrain frames."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, "frame_count", "int16_t"),
         (READ_EXPORT, "angle_count", "int16_t"),
         (READ_EXPORT, "shape_id", "int16_t"),  # frame index
-    )
+    ]
 
 
 class TerrainPassGraphic(Exportable):
@@ -25,13 +25,13 @@ class TerrainPassGraphic(Exportable):
     name_struct        = "terrain_pass_graphic"
     struct_description = None
 
-    data_format = (
+    data_format = [
         # when this restriction in unit a was selected, can the unit be placed on this terrain id? 0=no, -1=yes
         (READ, "slp_id_exit_tile", "int32_t"),
         (READ, "slp_id_enter_tile", "int32_t"),
         (READ, "slp_id_walk_tile", "int32_t"),
         (READ, "walk_sprite_rate", "float"),
-    )
+    ]
 
 
 class TerrainRestriction(Exportable):
@@ -43,7 +43,7 @@ class TerrainRestriction(Exportable):
     name_struct        = "terrain_restriction"
     struct_description = "løl TODO"
 
-    data_format = (
+    data_format = [
         # index of each array == terrain id
         # when this restriction was selected, can the terrain be accessed?
         # unit interaction_type activates this as damage multiplier
@@ -56,7 +56,7 @@ class TerrainRestriction(Exportable):
             ref_type=TerrainPassGraphic,
             length="terrain_count",
         )),
-    )
+    ]
 
 
 class TerrainAnimation(Exportable):
@@ -64,7 +64,7 @@ class TerrainAnimation(Exportable):
     name_struct_file   = "terrain"
     struct_description = "describes animation properties of a terrain type"
 
-    data_format = (
+    data_format = [
         (READ, "is_animated",                "int8_t"),
         (READ, "animation_frame_count",      "int16_t"),        # number of frames to animate
         (READ, "pause_frame_count",          "int16_t"),        # pause n * (frame rate) after last frame draw
@@ -75,7 +75,7 @@ class TerrainAnimation(Exportable):
         (READ, "animate_last",               "float"),         # last time animation frame was changed
         (READ, "frame_changed",              "int8_t"),        # has the drawframe changed since terrain was drawn
         (READ, "drawn",                      "int8_t"),
-    )
+    ]
 
 
 class Terrain(Exportable):
@@ -83,7 +83,7 @@ class Terrain(Exportable):
     name_struct_file   = "terrain"
     struct_description = "describes a terrain type, like water, ice, etc."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, "enabled",             "int8_t"),
         (READ_UNKNOWN, None,                 "int8_t"),
         (READ_EXPORT, "name0",               "char[13]"),
@@ -122,7 +122,7 @@ class Terrain(Exportable):
         (READ, "terrain_placement_flag",      "int8_t[30]"),  # when placing two terrain units on the same spot, selects which prevails(=1)
         (READ, "terrain_units_used_count",   "int16_t"),      # how many entries of the above lists shall we use to place units implicitly when this terrain is placed
         (READ_UNKNOWN, None,                 "uint16_t"),
-    )
+    ]
 
 
 class TerrainBorder(Exportable):
@@ -130,7 +130,7 @@ class TerrainBorder(Exportable):
     name_struct_file   = "terrain"
     struct_description = "one inter-terraintile border specification."
 
-    data_format = (
+    data_format = [
         (READ, "enabled", "int8_t"),
         (READ_UNKNOWN, None, "int8_t"),
         (READ, "name0", "char[13]"),
@@ -150,7 +150,7 @@ class TerrainBorder(Exportable):
         (READ, "draw_tile", "int16_t"),         # always 0
         (READ, "underlay_terrain", "int16_t"),
         (READ, "border_style", "int16_t"),
-    )
+    ]
 
 
 class TileSize(Exportable):
@@ -158,8 +158,8 @@ class TileSize(Exportable):
     name_struct_file   = "terrain"
     struct_description = "size definition of one terrain tile."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, "width", "int16_t"),
         (READ_EXPORT, "height", "int16_t"),
         (READ_EXPORT, "delta_z", "int16_t"),
-    )
+    ]

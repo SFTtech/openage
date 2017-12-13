@@ -12,13 +12,13 @@ class SoundItem(Exportable):
     name_struct_file   = "sound"
     struct_description = "one possible file for a sound."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, "filename",     "char[13]"),
         (READ_EXPORT, "resource_id",  "int32_t"),
         (READ_EXPORT, "probablilty",  "int16_t"),
         (READ_EXPORT, "civilisation", "int16_t"),
         (READ,        "player_id",    "int16_t"),
-    )
+    ]
 
 
 class Sound(Exportable):
@@ -26,7 +26,7 @@ class Sound(Exportable):
     name_struct_file   = "sound"
     struct_description = "describes a sound, consisting of several sound items."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, "id", "int16_t"),
         (READ, "play_at_update_count", "int16_t"),
         (READ_EXPORT, "item_count", "uint16_t"),
@@ -36,4 +36,4 @@ class Sound(Exportable):
             ref_to="id",
             length="item_count",
         )),
-    )
+    ]

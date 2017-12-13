@@ -16,7 +16,7 @@ class UnitCommand(Exportable):
     name_struct_file   = "unit"
     struct_description = "a command a single unit may receive by script or human."
 
-    data_format = (
+    data_format = [
         (READ, "command_used", "int16_t"),                  # Type (0 = Generic, 1 = Tribe)
         (READ_EXPORT, "id", "int16_t"),                     # Identity
         (READ_UNKNOWN, None, "int8_t"),                     # IsDefault
@@ -113,7 +113,7 @@ class UnitCommand(Exportable):
         (READ_EXPORT, "carry_sprite_id", "int16_t"),   # display resources in hands
         (READ_EXPORT, "work_sound_id1", "int16_t"),    # sound to play when execution starts
         (READ_EXPORT, "work_sound_id2", "int16_t"),    # sound to play on resource drop
-    )
+    ]
 
 
 class UnitHeader(Exportable):
@@ -121,14 +121,14 @@ class UnitHeader(Exportable):
     name_struct_file   = "unit"
     struct_description = "stores a bunch of unit commands."
 
-    data_format = (
+    data_format = [
         (READ, "exists", ContinueReadMember("uint8_t")),
         (READ, "unit_command_count", "uint16_t"),
         (READ_EXPORT, "unit_commands", SubdataMember(
             ref_type=UnitCommand,
             length="unit_command_count",
         )),
-    )
+    ]
 
 
 class ResourceStorage(Exportable):
@@ -136,7 +136,7 @@ class ResourceStorage(Exportable):
     name_struct_file   = "unit"
     struct_description = "determines the resource storage capacity for one unit mode."
 
-    data_format = (
+    data_format = [
         (READ, "type", "int16_t"),
         (READ, "amount", "float"),
         (READ, "used_mode", EnumLookupMember(
@@ -149,7 +149,7 @@ class ResourceStorage(Exportable):
                 4: "RESET_ON_DEATH_WHEN_COMPLETED",
             },
         )),
-    )
+    ]
 
 
 class DamageGraphic(Exportable):
@@ -157,7 +157,7 @@ class DamageGraphic(Exportable):
     name_struct_file   = "unit"
     struct_description = "stores one possible unit image that is displayed at a given damage percentage."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, "graphic_id", "int16_t"),
         (READ_EXPORT, "damage_percent", "int8_t"),
         (READ, "apply_mode_old", "int8_t"),    # gets overwritten in aoe memory by the real apply_mode:
@@ -170,7 +170,7 @@ class DamageGraphic(Exportable):
                 2: "REPLACE",  # replace original graphics (e.g. damaged walls)
             },
         )),
-    )
+    ]
 
 
 class HitType(Exportable):
@@ -178,7 +178,7 @@ class HitType(Exportable):
     name_struct_file   = "unit"
     struct_description = "stores attack amount for a damage type."
 
-    data_format = (
+    data_format = [
         (READ, "type_id", EnumLookupMember(
             raw_type    = "int16_t",
             type_name   = "hit_class",
@@ -213,7 +213,7 @@ class HitType(Exportable):
             },
         )),
         (READ, "amount", "int16_t"),
-    )
+    ]
 
 
 class ResourceCost(Exportable):
@@ -221,7 +221,7 @@ class ResourceCost(Exportable):
     name_struct_file   = "unit"
     struct_description = "stores cost for one resource for creating the unit."
 
-    data_format = (
+    data_format = [
         (READ, "type_id", EnumLookupMember(
             raw_type = "int16_t",
             type_name = "resource_types",
@@ -428,7 +428,7 @@ class ResourceCost(Exportable):
         )),
         (READ, "amount", "int16_t"),
         (READ, "enabled", "int16_t"),
-    )
+    ]
 
 
 class BuildingAnnex(Exportable):
@@ -437,11 +437,11 @@ class BuildingAnnex(Exportable):
     name_struct_file   = "unit"
     struct_description = "a possible building annex."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, "unit_id",    "int16_t"),
         (READ_EXPORT, "misplaced0", "float"),
         (READ_EXPORT, "misplaced1", "float"),
-    )
+    ]
 
 
 class UnitObject(Exportable):
@@ -453,7 +453,7 @@ class UnitObject(Exportable):
     name_struct_file   = "unit"
     struct_description = "base properties for all units."
 
-    data_format = (
+    data_format = [
         (READ, "name_length", "uint16_t"),
         (READ_EXPORT, "id0", "int16_t"),
         (READ_EXPORT, "language_dll_name", "uint16_t"),
@@ -750,7 +750,7 @@ class UnitObject(Exportable):
         (READ_EXPORT, "name", "char[name_length]"),
         (READ_EXPORT, "id1", "int16_t"),
         (READ_EXPORT, "id2", "int16_t"),
-    )
+    ]
 
 
 class AnimatedUnit(UnitObject):
@@ -763,10 +763,10 @@ class AnimatedUnit(UnitObject):
     name_struct_file   = "unit"
     struct_description = "adds speed property to units."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, None, IncludeMembers(cls=UnitObject)),
         (READ_EXPORT, "speed", "float"),
-    )
+    ]
 
 
 class DoppelgangerUnit(AnimatedUnit):
@@ -778,9 +778,9 @@ class DoppelgangerUnit(AnimatedUnit):
     name_struct_file   = "unit"
     struct_description = "weird doppelganger unit thats actually the same as an animated unit."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, None, IncludeMembers(cls=AnimatedUnit)),
-    )
+    ]
 
 
 class MovingUnit(DoppelgangerUnit):
@@ -793,7 +793,7 @@ class MovingUnit(DoppelgangerUnit):
     name_struct_file   = "unit"
     struct_description = "adds walking graphics, rotations and tracking properties to units."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, None, IncludeMembers(cls=DoppelgangerUnit)),
         (READ_EXPORT, "walking_graphics0", "int16_t"),
         (READ_EXPORT, "walking_graphics1", "int16_t"),
@@ -804,7 +804,7 @@ class MovingUnit(DoppelgangerUnit):
         (READ, "trail_spacing", "float"),               # ground trace spacing: 0: no tracking, 0.5: trade cart, 0.12: some projectiles, 0.4: other projectiles
         (READ, "move_algorithm", "int8_t"),
         (READ, "rotation_angles", "float[5]"),
-    )
+    ]
 
 
 class ActionUnit(MovingUnit):
@@ -817,7 +817,7 @@ class ActionUnit(MovingUnit):
     name_struct_file   = "unit"
     struct_description = "adds search radius and work properties, as well as movement sounds."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, None, IncludeMembers(cls=MovingUnit)),
         # callback unit action id when found.
         # monument and sheep: 107 = enemy convert.
@@ -833,7 +833,7 @@ class ActionUnit(MovingUnit):
         (READ_EXPORT, "command_sound_id", "int16_t"),     # sound played when a command is instanciated
         (READ_EXPORT, "stop_sound_id", "int16_t"),        # sound when the command is done (e.g. unit stops at target position)
         (READ, "run_pattern", "int8_t"),                  # how animals run around randomly
-    )
+    ]
 
 
 class ProjectileUnit(ActionUnit):
@@ -846,7 +846,7 @@ class ProjectileUnit(ActionUnit):
     name_struct_file   = "unit"
     struct_description = "adds attack and armor properties to units."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, None, IncludeMembers(cls=ActionUnit)),
         (READ, "default_armor", "int16_t"),
         (READ, "attack_count", "uint16_t"),
@@ -892,7 +892,7 @@ class ProjectileUnit(ActionUnit):
         (READ, "attack_displayed", "int16_t"),
         (READ, "range_displayed", "float"),
         (READ, "reload_time_displayed", "float"),
-    )
+    ]
 
 
 class MissileUnit(ProjectileUnit):
@@ -905,7 +905,7 @@ class MissileUnit(ProjectileUnit):
     name_struct_file   = "unit"
     struct_description = "adds missile specific unit properties."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, None, IncludeMembers(cls=ProjectileUnit)),
         (READ, "stretch_mode", "int8_t"),         # 0 = default; 1 = projectile falls vertically to the bottom of the map; 3 = teleporting projectiles
         (READ, "smart_mode", "int8_t"),           # "better aiming". tech attribute 19 changes this: 0 = shoot at current pos; 1 = shoot at predicted pos
@@ -913,7 +913,7 @@ class MissileUnit(ProjectileUnit):
         (READ, "penetration_mode", "int8_t"),     # 1 = pass through hit object; 0 = stop projectile on hit; (only for graphics, not pass-through damage)
         (READ_UNKNOWN, None, "int8_t"),
         (READ_EXPORT, "projectile_arc", "float"),
-    )
+    ]
 
 
 class LivingUnit(ProjectileUnit):
@@ -925,7 +925,7 @@ class LivingUnit(ProjectileUnit):
     name_struct_file   = "unit"
     struct_description = "adds creation location and garrison unit properties."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, None, IncludeMembers(cls=ProjectileUnit)),
         (READ_EXPORT, "resource_cost", SubdataMember(ref_type=ResourceCost, length=3)),
         (READ_EXPORT, "creation_time", "int16_t"),         # in seconds
@@ -987,7 +987,7 @@ class LivingUnit(ProjectileUnit):
                                                   #            deals 2X damage on 1st hit
 
         (READ, "pierce_armor_displayed", "int16_t"),  # unit stats display of pierce armor
-    )
+    ]
 
 
 class BuildingUnit(LivingUnit):
@@ -999,7 +999,7 @@ class BuildingUnit(LivingUnit):
     name_struct_file   = "unit"
     struct_description = "construction graphics and garrison building properties for units."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, None, IncludeMembers(cls=LivingUnit)),
         (READ_EXPORT, "construction_graphic_id", "int16_t"),
         (READ, "snow_graphic_id", "int16_t"),
@@ -1033,7 +1033,7 @@ class BuildingUnit(LivingUnit):
         (READ_UNKNOWN, None, "float"),      # (unknown garrison value)
         (READ, "salvage_unit_id", "int16_t"),       # id of the unit used for salvages
         (READ, "salvage_attributes", "int8_t[6]"),  # list of attributes for salvages
-    )
+    ]
 
 
 class TreeUnit(UnitObject):
@@ -1045,9 +1045,9 @@ class TreeUnit(UnitObject):
     name_struct_file   = "unit"
     struct_description = "just a tree unit."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, None, IncludeMembers(cls=UnitObject)),
-    )
+    ]
 
 
 # unit type id => human readable name
