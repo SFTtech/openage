@@ -12,13 +12,12 @@ class SoundItem(Exportable):
     name_struct_file   = "sound"
     struct_description = "one possible file for a sound."
 
-    data_format = [
-        (READ_EXPORT, "filename",     "char[13]"),
-        (READ_EXPORT, "resource_id",  "int32_t"),
-        (READ_EXPORT, "probablilty",  "int16_t"),
-        (READ_EXPORT, "civilisation", "int16_t"),
-        (READ,        "player_id",    "int16_t"),
-    ]
+    data_format = []
+    data_format.append((READ_EXPORT, "filename",     "char[13]"))
+    data_format.append((READ_EXPORT, "resource_id",  "int32_t"))
+    data_format.append((READ_EXPORT, "probablilty",  "int16_t"))
+    data_format.append((READ_EXPORT, "civilisation", "int16_t"))
+    data_format.append((READ,        "player_id",    "int16_t"))
 
 
 class Sound(Exportable):
@@ -26,14 +25,13 @@ class Sound(Exportable):
     name_struct_file   = "sound"
     struct_description = "describes a sound, consisting of several sound items."
 
-    data_format = [
-        (READ_EXPORT, "id", "int16_t"),
-        (READ, "play_at_update_count", "int16_t"),
-        (READ_EXPORT, "item_count", "uint16_t"),
-        (READ, "cache_time", "int32_t"),  # always 300000
-        (READ_EXPORT, "sound_items", SubdataMember(
+    data_format = []
+    data_format.append((READ_EXPORT, "id", "int16_t"))
+    data_format.append((READ, "play_at_update_count", "int16_t"))
+    data_format.append((READ_EXPORT, "item_count", "uint16_t"))
+    data_format.append((READ, "cache_time", "int32_t"))                   # always 300000
+    data_format.append((READ_EXPORT, "sound_items", SubdataMember(
             ref_type=SoundItem,
             ref_to="id",
             length="item_count",
-        )),
-    ]
+        )))

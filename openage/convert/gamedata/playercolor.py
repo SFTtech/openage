@@ -11,14 +11,13 @@ class PlayerColor(Exportable):
     name_struct_file   = name_struct
     struct_description = "describes player color settings."
 
-    data_format = [
-        (READ_EXPORT, "id", "int32_t"),
-        (READ_EXPORT, "palette", "int32_t"),        # palette index offset, where the 8 player colors start
-        (READ_EXPORT, "color", "int32_t"),          # palette index
-        (READ_UNKNOWN, None, "int32_t"),
-        (READ_UNKNOWN, None, "int32_t"),
-        (READ_EXPORT, "minimap_color", "int32_t"),  # palette index
-        (READ_UNKNOWN, None, "int32_t"),
-        (READ_UNKNOWN, None, "int32_t"),
-        (READ_EXPORT, "statistics_text_color", "int32_t"),
-    ]
+    data_format = []
+    data_format.append((READ_EXPORT, "id", "int32_t"))
+    data_format.append((READ_EXPORT, "palette", "int32_t"))        # palette index offset, where the 8 player colors start
+    data_format.append((READ_EXPORT, "color", "int32_t"))          # palette index
+    data_format.append((READ_UNKNOWN, None, "int32_t"))
+    data_format.append((READ_UNKNOWN, None, "int32_t"))
+    data_format.append((READ_EXPORT, "minimap_color", "int32_t"))  # palette index
+    data_format.append((READ_UNKNOWN, None, "int32_t"))
+    data_format.append((READ_UNKNOWN, None, "int32_t"))
+    data_format.append((READ_EXPORT, "statistics_text_color", "int32_t"))

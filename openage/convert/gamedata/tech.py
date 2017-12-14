@@ -12,8 +12,8 @@ class Effect(Exportable):
     name_struct_file   = "tech"
     struct_description = "applied effect for a research technology."
 
-    data_format = [
-        (READ, "type_id",   EnumLookupMember(
+    data_format = []
+    data_format.append((READ, "type_id", EnumLookupMember(
             raw_type = "int8_t",
             type_name = "effect_apply_type",
             lookup_dict = {
@@ -78,12 +78,11 @@ class Effect(Exportable):
                 # 108: garrison healing rate
                 # 109: regeneration rate
             },
-        )),
-        (READ, "unit",      "int16_t"),       # == a
-        (READ, "unit_class_id",  "int16_t"),  # == b
-        (READ, "attribute_id", "int16_t"),    # == c
-        (READ, "amount",    "float"),         # == d
-    ]
+        )))
+    data_format.append((READ, "unit",          "int16_t"))       # == a
+    data_format.append((READ, "unit_class_id", "int16_t"))       # == b
+    data_format.append((READ, "attribute_id",  "int16_t"))       # == c
+    data_format.append((READ, "amount",        "float"))         # == d
 
 
 class Tech(Exportable):  # also called techage in some other tools
@@ -91,14 +90,13 @@ class Tech(Exportable):  # also called techage in some other tools
     name_struct_file   = "tech"
     struct_description = "a technology definition."
 
-    data_format = [
-        (READ, "name", "char[31]"),                  # always CHUN4 (change unit 4-arg)
-        (READ, "effect_count", "uint16_t"),
-        (READ, "effects", SubdataMember(
+    data_format = []
+    data_format.append((READ, "name", "char[31]"))                  # always CHUN4 (change unit 4-arg)
+    data_format.append((READ, "effect_count", "uint16_t"))
+    data_format.append((READ, "effects", SubdataMember(
             ref_type=Effect,
             length="effect_count",
-        )),
-    ]
+        )))
 
 
 # TODO: add common tech class
@@ -109,26 +107,25 @@ class AgeTechTree(Exportable):
     name_struct_file   = "tech"
     struct_description = "items available when this age was reached."
 
-    data_format = [
-        (READ_UNKNOWN, None, "int32_t"),
-        (READ, "id", "int32_t"),
-        # 0=generic
-        # 1=TODO
-        # 2=default
-        # 3=marks as not available
-        # 4=upgrading, constructing, creating
-        # 5=research completed, building built
-        (READ, "status", "int8_t"),
-        (READ, "building_count", "int8_t"),
-        (READ, "buildings", "int32_t[building_count]"),
-        (READ, "unit_count", "int8_t"),
-        (READ, "units", "int32_t[unit_count]"),
-        (READ, "research_count", "int8_t"),
-        (READ, "researches", "int32_t[research_count]"),
-        (READ_UNKNOWN, None, "int32_t"),                  # always 1
-        (READ, "second_age_id", "int32_t"),
-        (READ, "zeroes", ZeroMember("int16_t", length=49)),
-    ]
+    data_format = []
+    data_format.append((READ_UNKNOWN, None, "int32_t"))
+    data_format.append((READ, "id", "int32_t"))
+    # 0=generic
+    # 1=TODO
+    # 2=default
+    # 3=marks as not available
+    # 4=upgrading, constructing, creating
+    # 5=research completed, building built
+    data_format.append((READ, "status", "int8_t"))
+    data_format.append((READ, "building_count", "int8_t"))
+    data_format.append((READ, "buildings", "int32_t[building_count]"))
+    data_format.append((READ, "unit_count", "int8_t"))
+    data_format.append((READ, "units", "int32_t[unit_count]"))
+    data_format.append((READ, "research_count", "int8_t"))
+    data_format.append((READ, "researches", "int32_t[research_count]"))
+    data_format.append((READ_UNKNOWN, None, "int32_t"))                      # always 1
+    data_format.append((READ, "second_age_id", "int32_t"))
+    data_format.append((READ, "zeroes", ZeroMember("int16_t", length=49)))
 
 
 class BuildingConnection(Exportable):
@@ -136,26 +133,26 @@ class BuildingConnection(Exportable):
     name_struct_file   = "tech"
     struct_description = "new available buildings/units/researches when this building was created."
 
-    data_format = [
-        (READ_EXPORT, "id", "int32_t"),                   # unit id of the current building
-        # 0=generic
-        # 1=TODO
-        # 2=default
-        # 3=marks as not available
-        # 4=upgrading, constructing, creating
-        # 5=research completed, building built
-        (READ, "status", "int8_t"),                       # maybe always 2 because we got 2 of them hardcoded below (unit_or_research, mode)
-        (READ_EXPORT, "building_count", "int8_t"),
-        (READ, "buildings", "int32_t[building_count]"),   # new buildings available when this building was created
-        (READ_EXPORT, "unit_count", "int8_t"),
-        (READ, "units", "int32_t[unit_count]"),           # new units
-        (READ_EXPORT, "research_count", "int8_t"),
-        (READ, "researches", "int32_t[research_count]"),  # new researches
-        (READ_EXPORT, "age", "int32_t"),                  # minimum age, in which this building is available
-        (READ, "unit_or_research0", "int32_t"),           # this building depends on research_id or unit_id, which is set in mode0
-        (READ, "unit_or_research1", "int32_t"),           # dito, set in mode1
-        (READ_UNKNOWN, None, "int32_t[8]"),
-        (READ, "mode0", EnumLookupMember(                 # mode for unit_or_research0
+    data_format = []
+    data_format.append((READ_EXPORT, "id", "int32_t"))                   # unit id of the current building
+    # 0=generic
+    # 1=TODO
+    # 2=default
+    # 3=marks as not available
+    # 4=upgrading, constructing, creating
+    # 5=research completed, building built
+    data_format.append((READ, "status", "int8_t"))                       # maybe always 2 because we got 2 of them hardcoded below (unit_or_research, mode)
+    data_format.append((READ_EXPORT, "building_count", "int8_t"))
+    data_format.append((READ, "buildings", "int32_t[building_count]"))   # new buildings available when this building was created
+    data_format.append((READ_EXPORT, "unit_count", "int8_t"))
+    data_format.append((READ, "units", "int32_t[unit_count]"))           # new units
+    data_format.append((READ_EXPORT, "research_count", "int8_t"))
+    data_format.append((READ, "researches", "int32_t[research_count]"))  # new researches
+    data_format.append((READ_EXPORT, "age", "int32_t"))                  # minimum age, in which this building is available
+    data_format.append((READ, "unit_or_research0", "int32_t"))           # this building depends on research_id or unit_id, which is set in mode0
+    data_format.append((READ, "unit_or_research1", "int32_t"))           # dito, set in mode1
+    data_format.append((READ_UNKNOWN, None, "int32_t[8]"))
+    data_format.append((READ, "mode0", EnumLookupMember(                 # mode for unit_or_research0
             raw_type = "int32_t",
             type_name = "building_connection_mode",
             lookup_dict = {
@@ -164,13 +161,12 @@ class BuildingConnection(Exportable):
                 2: "UNIT",
                 3: "RESEARCH",
             }
-        )),
-        (READ, "mode1", "int32_t"),  # TODO, xref possible values to the enum above (reuse them)
-        (READ_UNKNOWN, None, "int32_t[8]"),
-        (READ_UNKNOWN, None, "int8_t[11]"),
-        (READ_EXPORT, "line_mode", "int32_t"),          # 5: >=1 connections, 6: no connections
-        (READ, "enabled_by_research_id", "int32_t"),      # current building is unlocked by this research id, -1=no unlock needed
-    ]
+        )))
+    data_format.append((READ, "mode1", "int32_t"))                       # TODO, xref possible values to the enum above (reuse them)
+    data_format.append((READ_UNKNOWN, None, "int32_t[8]"))
+    data_format.append((READ_UNKNOWN, None, "int8_t[11]"))
+    data_format.append((READ_EXPORT, "line_mode", "int32_t"))            # 5: >=1 connections, 6: no connections
+    data_format.append((READ, "enabled_by_research_id", "int32_t"))      # current building is unlocked by this research id, -1=no unlock needed
 
 
 class UnitConnection(Exportable):
@@ -178,32 +174,31 @@ class UnitConnection(Exportable):
     name_struct_file   = "tech"
     struct_description = "unit updates to apply when activating the technology."
 
-    data_format = [
-        (READ, "id", "int32_t"),
-        # 0=generic
-        # 1=TODO
-        # 2=default
-        # 3=marks as not available
-        # 4=upgrading, constructing, creating
-        # 5=research completed, building built
-        (READ, "status", "int8_t"),                 # always 2: default
-        (READ, "upper_building", "int32_t"),        # building, where this unit is created
-        (READ, "required_researches", "int32_t"),
-        (READ, "age", "int32_t"),
-        (READ, "unit_or_research0", "int32_t"),
-        (READ, "unit_or_research1", "int32_t"),
-        (READ_UNKNOWN, None, "int32_t[8]"),
-        (READ, "mode0", "int32_t"),
-        (READ, "mode1", "int32_t"),
-        (READ_UNKNOWN, None, "int32_t[7]"),
-        (READ, "vertical_lines", "int32_t"),
-        (READ, "unit_count", "int8_t"),
-        (READ, "units", "int32_t[unit_count]"),
-        (READ, "location_in_age", "int32_t"),    # 0=hidden, 1=first, 2=second
-        (READ, "required_research", "int32_t"),  # min amount of researches to be discovered for this unit to be available
-        (READ, "line_mode", "int32_t"),          # 0=independent/new in its line, 3=depends on a previous research in its line
-        (READ, "enabling_research", "int32_t"),
-    ]
+    data_format = []
+    data_format.append((READ, "id", "int32_t"))
+    # 0=generic
+    # 1=TODO
+    # 2=default
+    # 3=marks as not available
+    # 4=upgrading, constructing, creating
+    # 5=research completed, building built
+    data_format.append((READ, "status", "int8_t"))                 # always 2: default
+    data_format.append((READ, "upper_building", "int32_t"))        # building, where this unit is created
+    data_format.append((READ, "required_researches", "int32_t"))
+    data_format.append((READ, "age", "int32_t"))
+    data_format.append((READ, "unit_or_research0", "int32_t"))
+    data_format.append((READ, "unit_or_research1", "int32_t"))
+    data_format.append((READ_UNKNOWN, None, "int32_t[8]"))
+    data_format.append((READ, "mode0", "int32_t"))
+    data_format.append((READ, "mode1", "int32_t"))
+    data_format.append((READ_UNKNOWN, None, "int32_t[7]"))
+    data_format.append((READ, "vertical_lines", "int32_t"))
+    data_format.append((READ, "unit_count", "int8_t"))
+    data_format.append((READ, "units", "int32_t[unit_count]"))
+    data_format.append((READ, "location_in_age", "int32_t"))    # 0=hidden, 1=first, 2=second
+    data_format.append((READ, "required_research", "int32_t"))  # min amount of researches to be discovered for this unit to be available
+    data_format.append((READ, "line_mode", "int32_t"))          # 0=independent/new in its line, 3=depends on a previous research in its line
+    data_format.append((READ, "enabling_research", "int32_t"))
 
 
 class ResearchConnection(Exportable):
@@ -211,29 +206,28 @@ class ResearchConnection(Exportable):
     name_struct_file   = "tech"
     struct_description = "research updates to apply when activating the technology."
 
-    data_format = [
-        (READ, "id", "int32_t"),
-        # 0=generic
-        # 1=TODO
-        # 2=default
-        # 3=marks as not available
-        # 4=upgrading, constructing, creating
-        # 5=research completed, building built
-        (READ, "status", "int8_t"),
-        (READ, "upper_building", "int32_t"),
-        (READ, "building_count", "int8_t"),
-        (READ, "buildings", "int32_t[building_count]"),
-        (READ, "unit_count", "int8_t"),
-        (READ, "units", "int32_t[unit_count]"),
-        (READ, "research_count", "int8_t"),
-        (READ, "researches", "int32_t[research_count]"),
-        (READ, "required_research", "int32_t"),
-        (READ, "age", "int32_t"),
-        (READ, "upper_research", "int32_t"),
-        (READ_UNKNOWN, None, "int32_t[9]"),
-        (READ, "line_mode", "int32_t"),
-        (READ_UNKNOWN, None, "int32_t[8]"),
-        (READ, "vertical_line", "int32_t"),
-        (READ, "location_in_age", "int32_t"),  # 0=hidden, 1=first, 2=second
-        (READ, "line_mode", "int32_t"),        # 0=first age, else other ages.
-    ]
+    data_format = []
+    data_format.append((READ, "id", "int32_t"))
+    # 0=generic
+    # 1=TODO
+    # 2=default
+    # 3=marks as not available
+    # 4=upgrading, constructing, creating
+    # 5=research completed, building built
+    data_format.append((READ, "status", "int8_t"))
+    data_format.append((READ, "upper_building", "int32_t"))
+    data_format.append((READ, "building_count", "int8_t"))
+    data_format.append((READ, "buildings", "int32_t[building_count]"))
+    data_format.append((READ, "unit_count", "int8_t"))
+    data_format.append((READ, "units", "int32_t[unit_count]"))
+    data_format.append((READ, "research_count", "int8_t"))
+    data_format.append((READ, "researches", "int32_t[research_count]"))
+    data_format.append((READ, "required_research", "int32_t"))
+    data_format.append((READ, "age", "int32_t"))
+    data_format.append((READ, "upper_research", "int32_t"))
+    data_format.append((READ_UNKNOWN, None, "int32_t[9]"))
+    data_format.append((READ, "line_mode", "int32_t"))
+    data_format.append((READ_UNKNOWN, None, "int32_t[8]"))
+    data_format.append((READ, "vertical_line", "int32_t"))
+    data_format.append((READ, "location_in_age", "int32_t"))    # 0=hidden, 1=first, 2=second
+    data_format.append((READ, "line_mode", "int32_t"))          # 0=first age, else other ages.
