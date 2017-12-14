@@ -23,64 +23,76 @@ class GameVersion(enum.Enum):
     concerned (i.e. assets changed).
     """
     age_1 = (
+        7.2,
         "Age of Empires 1",
         Support.nope,
         {'empires.exe', 'data/empires.dat'},
     )
     age_ror = (
+        7.24,
         "Age of Empires 1: The Rise of Rome",
         Support.nope,
         {'empiresx.exe', 'data2/empires2.dat'},
     )
     age2_aok = (
+        11.5,
         "Age of Empires 2: The Age of Kings",
         Support.nope,
         {'empires2.exe', 'data/empires2.dat'},
     )
     age2_tc = (
+        11.76,
         "Age of Empires 2: The Conquerors",
         Support.nope,
         {'age2_x1/age2_x1.exe', 'data/empires2_x1.dat'},
     )
     age2_tc_10c = (
+        12.0,
         "Age of Empires 2: The Conquerors, Patch 1.0c",
         Support.yes,
         {'age2_x1/age2_x1.exe', 'data/empires2_x1_p1.dat'},
     )
     swgb_10 = (
+        12.1,
         "Star Wars: Galactic Battlegrounds",
         Support.nope,
         {'GAME/Battlegrounds.exe', 'game/data/genie.dat'},
     )
     swgb_cc = (
+        12.2,
         "Star Wars: Galactic Battlegrounds: Clone Campaigns",
         Support.nope,
         {'GAME/battlegrounds_x1.exe', 'game/data/genie_x1.dat'},
     )
     swgb_exfronts = (
+        12.3,
         "Star Wars: Galactic Battlegrounds: Expanding Fronts",
         Support.nope,
         {'GAME/battlegrounds_x2.exe', 'game/data/genie_x2.dat'},
     )
     age2_tc_fe = (
+        12.0,
         "Age of Empires 2: Forgotten Empires",
         Support.yes,
         {'age2_x1/age2_x2.exe',
          'games/forgotten empires/data/empires2_x1_p1.dat'},
     )
     age2_hd_3x = (
+        12.0,
         "Age of Empires 2: HD Edition (Version 3.0+)",
         Support.yes,
-        {'AoK HD.exe', 'data/empires2_x1_p1.dat'}
+        {'AoK HD.exe', 'data/empires2_x1_p1.dat'},
     )
     # HD edition version 4.0
     age2_hd_fe = (
+        12.0,
         "Age of Empires 2: HD + Forgotten Empires (Version 4.0+)",
         Support.yes,
         {'AoK HD.exe', 'resources/_common/dat/empires2_x1_p1.dat'},
     )
     # HD Edition v4.7+ with African Kingdoms. Maybe 4.6 as well.
     age2_hd_ak = (
+        12.0,
         "Age of Empires 2: HD + African Kingdoms (Version 4.7+)",
         Support.yes,
         {'AoK HD.exe', 'resources/_common/dat/empires2_x2_p1.dat',
@@ -88,13 +100,15 @@ class GameVersion(enum.Enum):
     )
     # HD Edition v5.1+ with Rise of the Rajas
     age2_hd_rajas = (
+        12.0,
         "Age of Empires 2: HD + Rise of the Rajas (Version 5.x)",
         Support.breaks,
         {'AoK HD.exe', 'resources/_common/dat/empires2_x2_p1.dat',
          'resources/_packages/rise-of-the-rajas/config.json'},
     )
 
-    def __init__(self, description, support, required_files=None):
+    def __init__(self, engine_version, description, support, required_files=None):
+        self.engine_version = engine_version
         self.description = description
         self.support = support
         self.required_files = required_files or frozenset()
