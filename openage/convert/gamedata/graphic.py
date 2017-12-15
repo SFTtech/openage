@@ -14,13 +14,12 @@ class GraphicDelta(Exportable):
 
     data_format = []
     data_format.append((READ_EXPORT, "graphic_id",  "int16_t"))
-    data_format.append((READ_UNKNOWN, None,  "int16_t"))
-    data_format.append((READ_UNKNOWN, None,  "int16_t"))
-    data_format.append((READ_UNKNOWN, None,  "int16_t"))
-    data_format.append((READ_EXPORT, "direction_x", "int16_t"))
-    data_format.append((READ_EXPORT, "direction_y", "int16_t"))
-    data_format.append((READ_UNKNOWN, None,  "int16_t"))
-    data_format.append((READ_UNKNOWN, None,  "int16_t"))
+    data_format.append((READ, "padding_1",  "int16_t"))
+    data_format.append((READ, "sprite_ptr",  "int32_t"))
+    data_format.append((READ_EXPORT, "offset_x", "int16_t"))
+    data_format.append((READ_EXPORT, "offset_y", "int16_t"))
+    data_format.append((READ, "display_angle",  "int16_t"))
+    data_format.append((READ, "padding_2",  "int16_t"))
 
 
 class SoundProp(Exportable):
@@ -52,11 +51,11 @@ class Graphic(Exportable):
     struct_description = "metadata for ingame graphics files."
 
     data_format = []
-    data_format.append((READ_EXPORT, "name0", "char[21]"))             # internal name: e.g. ARRG2NNE = archery range feudal Age north european
-    data_format.append((READ_EXPORT, "name1", "char[13]"))
+    data_format.append((READ_EXPORT, "name", "char[21]"))             # internal name: e.g. ARRG2NNE = archery range feudal Age north european
+    data_format.append((READ_EXPORT, "filename", "char[13]"))
     data_format.append((READ_EXPORT, "slp_id", "int32_t"))             # id of the graphics file in the drs
-    data_format.append((READ_UNKNOWN, None, "int8_t"))
-    data_format.append((READ_UNKNOWN, None, "int8_t"))                 # somehow correlated to the forced player color
+    data_format.append((READ, "is_loaded", "int8_t"))                  # unused
+    data_format.append((READ, "old_color_flag", "int8_t"))             # unused
     data_format.append((READ_EXPORT, "layer", EnumLookupMember(        # originally 40 layers, higher -> drawn on top
             raw_type    = "int8_t",                     # -> same layer -> order according to map position.
             type_name   = "graphics_layer",
@@ -75,7 +74,7 @@ class Graphic(Exportable):
         )))
     data_format.append((READ_EXPORT, "player_color", "int8_t"))        # force given player color
     data_format.append((READ_EXPORT, "adapt_color", "int8_t"))         # playercolor can be changed on sight (like sheep)
-    data_format.append((READ_EXPORT, "replay", "uint8_t"))             # loop animation
+    data_format.append((READ_EXPORT, "transparent_selection", "uint8_t"))             # loop animation
     data_format.append((READ, "coordinates", "int16_t[4]"))
     data_format.append((READ_EXPORT, "delta_count", "uint16_t"))
     data_format.append((READ_EXPORT, "sound_id", "int16_t"))
@@ -83,12 +82,12 @@ class Graphic(Exportable):
     data_format.append((READ_EXPORT, "frame_count", "uint16_t"))       # number of frames per angle
     data_format.append((READ_EXPORT, "angle_count", "uint16_t"))       # number of heading angles stored, some of the frames must be mirrored
     data_format.append((READ, "speed_adjust", "float"))                # multiplies the speed of the unit this graphic is applied to
-    data_format.append((READ_EXPORT, "frame_rate", "float"))           # playtime for one frame in seconds
+    data_format.append((READ_EXPORT, "frame_count", "float"))          # number of frames per angle animation
     data_format.append((READ_EXPORT, "replay_delay", "float"))         # seconds to wait before current_frame=0 again
     data_format.append((READ_EXPORT, "sequence_type", "int8_t"))
     data_format.append((READ_EXPORT, "id", "int16_t"))
     data_format.append((READ_EXPORT, "mirroring_mode", "int8_t"))
-    data_format.append((READ_UNKNOWN, None, "int8_t"))                 # maybe something for the sprite editor of aoe:hd?
+    data_format.append((READ, "editor_flag", "int8_t"))        # sprite editor thing for AoK
     data_format.append((READ_EXPORT, "graphic_deltas", SubdataMember(
             ref_type=GraphicDelta,
             length="delta_count",

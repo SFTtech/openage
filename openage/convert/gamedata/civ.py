@@ -14,7 +14,7 @@ class Civ(Exportable):
     struct_description = "describes a civilisation."
 
     data_format = []
-    data_format.append((READ, "enabled", "int8_t"))
+    data_format.append((READ, "player_type", "int8_t"))                   # always 1
     data_format.append((READ_EXPORT, "name", "char[20]"))
     data_format.append((READ, "resources_count", "uint16_t"))
     data_format.append((READ_EXPORT, "tech_tree_id",  "int16_t"))         # links to tech id (to apply its effects)
