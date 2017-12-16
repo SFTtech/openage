@@ -122,7 +122,7 @@ void UnitTexture::initialise(GameSpec &spec) {
 		if (spec.get_graphic_data(d.graphic_id)) {
 			auto ut = std::make_unique<UnitTexture>(spec, d.graphic_id, false);
 			if (ut->is_valid()) {
-				this->deltas.push_back({std::move(ut), coord::camgame_delta{d.direction_x, d.direction_y}});
+				this->deltas.push_back({std::move(ut), coord::camgame_delta{d.offset_x, d.offset_y}});
 			}
 		}
 	}

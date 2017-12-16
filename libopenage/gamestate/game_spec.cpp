@@ -101,7 +101,7 @@ Texture *GameSpec::get_texture(index_t graphic_id) const {
 		return nullptr;
 	}
 
-	log::log(MSG(dbg) << "   slp id/name: " << slp_id << " " << g->name0);
+	log::log(MSG(dbg) << "   slp id/name: " << slp_id << " " << g->name);
 	std::string tex_fname = util::sformat("converted/graphics/%d.slp.png", slp_id);
 
 	return this->get_texture(tex_fname, true);

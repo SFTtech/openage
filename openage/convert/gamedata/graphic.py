@@ -82,7 +82,7 @@ class Graphic(Exportable):
     data_format.append((READ_EXPORT, "frame_count", "uint16_t"))       # number of frames per angle
     data_format.append((READ_EXPORT, "angle_count", "uint16_t"))       # number of heading angles stored, some of the frames must be mirrored
     data_format.append((READ, "speed_adjust", "float"))                # multiplies the speed of the unit this graphic is applied to
-    data_format.append((READ_EXPORT, "frame_count", "float"))          # number of frames per angle animation
+    data_format.append((READ_EXPORT, "frame_rate", "float"))           # frame rate in seconds
     data_format.append((READ_EXPORT, "replay_delay", "float"))         # seconds to wait before current_frame=0 again
     data_format.append((READ_EXPORT, "sequence_type", "int8_t"))
     data_format.append((READ_EXPORT, "id", "int16_t"))

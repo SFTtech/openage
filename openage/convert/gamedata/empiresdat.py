@@ -139,8 +139,8 @@ class EmpiresDat(Exportable):
     # random map config
     data_format.append((READ, "random_map_count", "uint32_t"))
     data_format.append((READ, "random_map_ptr", "uint32_t"))
-    data_format.append((READ, "map_headers", SubdataMember(
-            ref_type=maps.MapHeader,
+    data_format.append((READ, "map_infos", SubdataMember(
+            ref_type=maps.MapInfo,
             length="random_map_count",
         )))
     data_format.append((READ, "maps", SubdataMember(
