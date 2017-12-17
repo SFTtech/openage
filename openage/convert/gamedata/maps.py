@@ -1,10 +1,10 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
 from ..dataformat.exportable import Exportable
 from ..dataformat.members import SubdataMember
-from ..dataformat.member_access import READ, READ_UNKNOWN
+from ..dataformat.member_access import READ
 
 
 class MapInfo(Exportable):
@@ -22,7 +22,7 @@ class MapInfo(Exportable):
     data_format.append((READ, "water_shape", "int32_t"))
     data_format.append((READ, "base_terrain", "int32_t"))
     data_format.append((READ, "land_coverage", "int32_t"))
-    data_format.append((READ_UNKNOWN, "unused_id", "int32_t"))
+    data_format.append((READ, "unused_id", "int32_t"))
     data_format.append((READ, "base_zone_count", "uint32_t"))
     data_format.append((READ, "base_zone_ptr", "int32_t"))
     data_format.append((READ, "map_terrain_count", "uint32_t"))
@@ -119,7 +119,7 @@ class Map(Exportable):
     data_format.append((READ, "water_shape", "int32_t"))
     data_format.append((READ, "base_terrain", "int32_t"))
     data_format.append((READ, "land_coverage", "int32_t"))
-    data_format.append((READ_UNKNOWN, "unused_id", "int32_t"))
+    data_format.append((READ, "unused_id", "int32_t"))
 
     data_format.append((READ, "base_zone_count", "uint32_t"))
     data_format.append((READ, "base_zone_ptr", "int32_t"))

@@ -293,7 +293,7 @@ void GameSpec::load_building(const gamedata::building_unit &building, unit_meta_
 void GameSpec::load_living(const gamedata::living_unit &unit, unit_meta_list &list) const {
 
 	// check graphics
-	if (this->valid_graphic_id(unit.graphic_dying0) &&
+	if (this->valid_graphic_id(unit.dying_graphic) &&
 		this->valid_graphic_id(unit.graphic_standing0) &&
 		this->valid_graphic_id(unit.walking_graphics0)) {
 		auto meta_type = std::make_shared<UnitTypeMeta>("Living", unit.id0, [this, &unit](const Player &owner) {

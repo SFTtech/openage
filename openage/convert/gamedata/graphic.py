@@ -1,10 +1,10 @@
-# Copyright 2013-2015 the openage authors. See copying.md for legal info.
+# Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
 from ..dataformat.exportable import Exportable
 from ..dataformat.members import SubdataMember, EnumLookupMember
-from ..dataformat.member_access import READ, READ_EXPORT, READ_UNKNOWN
+from ..dataformat.member_access import READ, READ_EXPORT
 
 
 class GraphicDelta(Exportable):

@@ -5,7 +5,7 @@
 from ..game_versions import GameVersion
 from ..dataformat.exportable import Exportable
 from ..dataformat.members import ArrayMember, SubdataMember, IncludeMembers
-from ..dataformat.member_access import READ, READ_EXPORT, READ_UNKNOWN
+from ..dataformat.member_access import READ, READ_EXPORT
 
 
 class FrameData(Exportable):
@@ -63,10 +63,10 @@ class TerrainAnimation(Exportable):
 
     data_format = []
     data_format.append((READ, "is_animated",                "int8_t"))
-    data_format.append((READ, "animation_frame_count",      "int16_t"))        # number of frames to animate
-    data_format.append((READ, "pause_frame_count",          "int16_t"))        # pause n * (frame rate) after last frame draw
+    data_format.append((READ, "animation_frame_count",      "int16_t"))       # number of frames to animate
+    data_format.append((READ, "pause_frame_count",          "int16_t"))       # pause n * (frame rate) after last frame draw
     data_format.append((READ, "interval",                   "float"))         # time between frames
-    data_format.append((READ, "pause_after_loop",           "float"))         # pause time after last frame
+    data_format.append((READ, "pause_between_loops",           "float"))      # pause time between frames
     data_format.append((READ, "frame",                      "int16_t"))       # current frame (including animation and pause frames)
     data_format.append((READ, "draw_frame",                 "int16_t"))       # current frame id to draw
     data_format.append((READ, "animate_last",               "float"))         # last time animation frame was changed
@@ -81,11 +81,11 @@ class Terrain(Exportable):
 
     data_format = []
     data_format.append((READ_EXPORT, "enabled",             "int8_t"))
-    data_format.append((READ_UNKNOWN, None,                 "int8_t"))
+    data_format.append((READ,        "random",              "int8_t"))
     data_format.append((READ_EXPORT, "name0",               "char[13]"))
     data_format.append((READ_EXPORT, "name1",               "char[13]"))
     data_format.append((READ_EXPORT, "slp_id",              "int32_t"))
-    data_format.append((READ_UNKNOWN, None,                 "int32_t"))
+    data_format.append((READ,        "shape_ptr",           "int32_t"))
     data_format.append((READ_EXPORT, "sound_id",            "int32_t"))
     data_format.append((READ_EXPORT, "blend_priority",      "int32_t"))     # see doc/media/blendomatic.md for blending stuff
     data_format.append((READ_EXPORT, "blend_mode",          "int32_t"))
@@ -105,8 +105,8 @@ class Terrain(Exportable):
     )))
 
     data_format.append((READ, "terrain_replacement_id",     "int16_t"))     # draw this ground instead (e.g. forrest draws forrest ground)
-    data_format.append((READ_EXPORT, "terrain_dimension0",  "int16_t"))
-    data_format.append((READ_EXPORT, "terrain_dimension1",  "int16_t"))
+    data_format.append((READ_EXPORT, "terrain_to_draw0",  "int16_t"))
+    data_format.append((READ_EXPORT, "terrain_to_draw1",  "int16_t"))
 
         # probably references to the TerrainBorders, there are 42 terrains in game
     data_format.append((READ, "borders", ArrayMember(
@@ -115,9 +115,9 @@ class Terrain(Exportable):
     )))
     data_format.append((READ, "terrain_unit_id",            "int16_t[30]"))  # place these unit id on the terrain, with prefs from fields below
     data_format.append((READ, "terrain_unit_density",       "int16_t[30]"))  # how many of the above units to place
-    data_format.append((READ, "terrain_placement_flag",     "int8_t[30]"))  # when placing two terrain units on the same spot, selects which prevails(=1)
+    data_format.append((READ, "terrain_placement_flag",     "int8_t[30]"))   # when placing two terrain units on the same spot, selects which prevails(=1)
     data_format.append((READ, "terrain_units_used_count",   "int16_t"))      # how many entries of the above lists shall we use to place units implicitly when this terrain is placed
-    data_format.append((READ_UNKNOWN, None,                 "uint16_t"))
+    data_format.append((READ, "phantom",                    "int16_t"))
 
 
 class TerrainBorder(Exportable):
@@ -127,11 +127,11 @@ class TerrainBorder(Exportable):
 
     data_format = []
     data_format.append((READ, "enabled", "int8_t"))
-    data_format.append((READ_UNKNOWN, None, "int8_t"))
+    data_format.append((READ, "random", "int8_t"))
     data_format.append((READ, "name0", "char[13]"))
     data_format.append((READ, "name1", "char[13]"))
     data_format.append((READ, "slp_id", "int32_t"))
-    data_format.append((READ_UNKNOWN, None, "int32_t"))
+    data_format.append((READ, "shape_ptr", "int32_t"))
     data_format.append((READ, "sound_id", "int32_t"))
     data_format.append((READ, "color", "uint8_t[3]"))
 

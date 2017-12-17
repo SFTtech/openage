@@ -3,7 +3,7 @@
 # TODO pylint: disable=C,R,too-many-lines
 
 from ..dataformat.exportable import Exportable
-from ..dataformat.member_access import READ, READ_EXPORT, READ_UNKNOWN
+from ..dataformat.member_access import READ, READ_EXPORT
 from ..dataformat.members import EnumLookupMember, ContinueReadMember, IncludeMembers, SubdataMember
 
 
@@ -15,11 +15,11 @@ class UnitCommand(Exportable):
     name_struct        = "unit_command"
     name_struct_file   = "unit"
     struct_description = "a command a single unit may receive by script or human."
-    
+
     data_format = []
     data_format.append((READ, "command_used", "int16_t"))                  # Type (0 = Generic, 1 = Tribe)
     data_format.append((READ_EXPORT, "id", "int16_t"))                     # Identity
-    data_format.append((READ_UNKNOWN, None, "int8_t"))                     # IsDefault
+    data_format.append((READ, "is_default", "int8_t"))
     data_format.append((READ_EXPORT, "type", EnumLookupMember(
         raw_type    = "int16_t",
         type_name   = "command_ability",
@@ -77,18 +77,18 @@ class UnitCommand(Exportable):
     data_format.append((READ_EXPORT, "class_id", "int16_t"))
     data_format.append((READ_EXPORT, "unit_id", "int16_t"))
     data_format.append((READ_EXPORT, "terrain_id", "int16_t"))
-    data_format.append((READ_EXPORT, "attribute_id1", "int16_t"))          # carry resource
-    data_format.append((READ_EXPORT, "attribute_id2", "int16_t"))          # resource that multiplies the amount you can gather
-    data_format.append((READ_EXPORT, "attribute_id3", "int16_t"))          # drop resource
-    data_format.append((READ_EXPORT, "attribute_id4", "int16_t"))
+    data_format.append((READ_EXPORT, "resource_in", "int16_t"))            # carry resource
+    data_format.append((READ_EXPORT, "resource_multiplier", "int16_t"))    # resource that multiplies the amount you can gather
+    data_format.append((READ_EXPORT, "resource_out", "int16_t"))           # drop resource
+    data_format.append((READ_EXPORT, "unused_resource", "int16_t"))
     data_format.append((READ_EXPORT, "work_value1", "float"))              # quantity
     data_format.append((READ_EXPORT, "work_value2", "float"))              # execution radius?
     data_format.append((READ_EXPORT, "work_range", "float"))
     data_format.append((READ, "search_mode", "int8_t"))
     data_format.append((READ, "search_time", "float"))
-    data_format.append((READ, "combat_level", "int8_t"))                   # type defined in `selection_type`
-    data_format.append((READ, "combat_mode", "int8_t"))
-    data_format.append((READ, "work_mode1", "int16_t"))
+    data_format.append((READ, "enable_targeting", "int8_t"))
+    data_format.append((READ, "combat_level_flag", "int8_t"))
+    data_format.append((READ, "gather_type", "int16_t"))
     data_format.append((READ, "work_mode2", "int16_t"))
     data_format.append((READ_EXPORT, "owner_type", EnumLookupMember(
         # what can be selected as a target for the unit command?
@@ -105,14 +105,14 @@ class UnitCommand(Exportable):
             7: "ANY_7",
         },
     )))
-    data_format.append((READ, "holding_mode", "int8_t"))              # TODO: what does it do? right click?
+    data_format.append((READ, "carry_check", "int8_t"))                          # TODO: what does it do? right click?
     data_format.append((READ, "state_build", "int8_t"))
-    data_format.append((READ_EXPORT, "move_sprite_id", "int16_t"))    # walking with tool but no resource
-    data_format.append((READ_EXPORT, "work_sprite_id1", "int16_t"))   # proceeding resource gathering or attack
-    data_format.append((READ_EXPORT, "work_sprite_id2", "int16_t"))   # actual execution or transformation graphic
-    data_format.append((READ_EXPORT, "carry_sprite_id", "int16_t"))   # display resources in hands
-    data_format.append((READ_EXPORT, "work_sound_id1", "int16_t"))    # sound to play when execution starts
-    data_format.append((READ_EXPORT, "work_sound_id2", "int16_t"))    # sound to play on resource drop
+    data_format.append((READ_EXPORT, "move_sprite_id", "int16_t"))               # walking with tool but no resource
+    data_format.append((READ_EXPORT, "proceed_sprite_id", "int16_t"))            # proceeding resource gathering or attack
+    data_format.append((READ_EXPORT, "work_sprite_id", "int16_t"))               # actual execution or transformation graphic
+    data_format.append((READ_EXPORT, "carry_sprite_id", "int16_t"))              # display resources in hands
+    data_format.append((READ_EXPORT, "resource_gather_sound_id", "int16_t"))     # sound to play when execution starts
+    data_format.append((READ_EXPORT, "resource_deposit_sound_id", "int16_t"))    # sound to play on resource drop
 
 
 class UnitHeader(Exportable):
@@ -133,7 +133,7 @@ class ResourceStorage(Exportable):
     name_struct        = "resource_storage"
     name_struct_file   = "unit"
     struct_description = "determines the resource storage capacity for one unit mode."
-    
+
     data_format = []
     data_format.append((READ, "type", "int16_t"))
     data_format.append((READ, "amount", "float"))
@@ -157,7 +157,7 @@ class DamageGraphic(Exportable):
     data_format = []
     data_format.append((READ_EXPORT, "graphic_id", "int16_t"))
     data_format.append((READ_EXPORT, "damage_percent", "int8_t"))
-    data_format.append((READ, "apply_mode_old", "int8_t"))    # gets overwritten in aoe memory by the real apply_mode:
+    data_format.append((READ, "old_apply_mode", "int8_t"))    # gets overwritten in aoe memory by the real apply_mode:
     data_format.append((READ_EXPORT, "apply_mode", EnumLookupMember(
         raw_type    = "int8_t",
         type_name   = "damage_draw_type",
@@ -516,8 +516,8 @@ class UnitObject(Exportable):
         )))
     data_format.append((READ_EXPORT, "graphic_standing0", "int16_t"))
     data_format.append((READ_EXPORT, "graphic_standing1", "int16_t"))
-    data_format.append((READ_EXPORT, "graphic_dying0", "int16_t"))
-    data_format.append((READ_EXPORT, "graphic_dying1", "int16_t"))
+    data_format.append((READ_EXPORT, "dying_graphic", "int16_t"))
+    data_format.append((READ_EXPORT, "undead_graphic", "int16_t"))
     data_format.append((READ, "death_mode", "int8_t"))                  # 1 = become `dead_unit_id` (reviving does not make it usable again)
     data_format.append((READ_EXPORT, "hit_points", "int16_t"))          # unit health. -1=insta-die
     data_format.append((READ, "line_of_sight", "float"))
@@ -525,15 +525,16 @@ class UnitObject(Exportable):
     data_format.append((READ_EXPORT, "radius_x", "float"))              # size of the unit
     data_format.append((READ_EXPORT, "radius_y", "float"))
     data_format.append((READ_EXPORT, "radius_z", "float"))
-    data_format.append((READ_EXPORT, "sound_creation0", "int16_t"))
-    data_format.append((READ_EXPORT, "sound_creation1", "int16_t"))
+    data_format.append((READ_EXPORT, "train_sound", "int16_t"))
+    data_format.append((READ_EXPORT, "damage_sound", "int16_t"))
     data_format.append((READ_EXPORT, "dead_unit_id", "int16_t"))        # unit id to become on death
     data_format.append((READ, "placement_mode", "int8_t"))              # 0=placable on top of others in scenario editor, 5=can't
-    data_format.append((READ, "air_mode", "int8_t"))                    # 1=no footprints
+    data_format.append((READ, "can_be_nuilt_on", "int8_t"))             # 1=no footprints
     data_format.append((READ, "icon_id", "int16_t"))                    # frame id of the icon slp (57029) to place on the creation button
     data_format.append((READ, "hidden_in_editor", "int8_t"))
-    data_format.append((READ, "portrait_icon_id", "int16_t"))
-    data_format.append((READ, "enabled", "int16_t"))                    # 0=unlocked by research, 1=insta-available
+    data_format.append((READ, "old_portrait_icon_id", "int16_t"))
+    data_format.append((READ, "enabled", "int8_t"))                     # 0=unlocked by research, 1=insta-available
+    data_format.append((READ, "disabled", "int8_t"))
     data_format.append((READ, "placement_side_terrain0", "int16_t"))    # terrain id that's needed somewhere on the foundation (e.g. dock water)
     data_format.append((READ, "placement_side_terrain1", "int16_t"))    # second slot for ^
     data_format.append((READ, "placement_terrain0", "int16_t"))         # terrain needed for placement (e.g. dock: water)
@@ -586,7 +587,7 @@ class UnitObject(Exportable):
                 0x15: "WATER_SHALLOW",
             },
         )))
-    data_format.append((READ_EXPORT, "movement_type", "int8_t"))    # flying, etc. TODO: lookup dict
+    data_format.append((READ_EXPORT, "fly_mode", "int8_t"))                      # determines whether the unit can fly
     data_format.append((READ_EXPORT, "resource_capacity", "int16_t"))
     data_format.append((READ_EXPORT, "resource_decay", "float"))                 # when animals rot, their resources decay
     data_format.append((READ_EXPORT, "blast_defense_level", EnumLookupMember(
@@ -665,21 +666,31 @@ class UnitObject(Exportable):
         )))
     data_format.append((READ, "attack_reaction", "float"))
     data_format.append((READ_EXPORT, "minimap_color", "int8_t"))        # palette color id for the minimap
-    data_format.append((READ_EXPORT, "language_dll_help", "uint16_t"))  # help text for this unit, stored in the translation dll.
-    data_format.append((READ, "hot_keys", "int16_t[4]"))                # language dll dependent (kezb lazouts!)
-    data_format.append((READ_UNKNOWN, None, "int8_t"))
-    data_format.append((READ_UNKNOWN, None, "int8_t"))
-    data_format.append((READ, "unselectable", "uint8_t"))
-    data_format.append((READ_UNKNOWN, None, "int8_t"))
-    data_format.append((READ_UNKNOWN, None, "int8_t"))
-    data_format.append((READ_UNKNOWN, None, "int8_t"))
+    data_format.append((READ_EXPORT, "language_dll_help", "int32_t"))   # help text for this unit, stored in the translation dll.
+    data_format.append((READ_EXPORT, "language_dll_hotkey_text", "int32_t"))
+    data_format.append((READ, "hot_keys", "int32_t"))                   # language dll dependent (kezb lazouts!)
+    data_format.append((READ, "reclyclable", "int8_t"))
+    data_format.append((READ, "enable_auto_gather", "int8_t"))
+    data_format.append((READ, "doppelgaenger_on_death", "int8_t"))
+    data_format.append((READ, "resource_gather_drop", "int8_t"))
 
     # bit 0 == 1 && val != 7: mask shown behind buildings,
     # bit 0 == 0 && val != {6, 10}: no mask displayed,
     # val == {-1, 7}: in open area mask is partially displayed
     # val == {6, 10}: building, causes mask to appear on units behind it
-    data_format.append((READ, "selection_mask", "int8_t"))
-    data_format.append((READ, "selection_shape_type", "int8_t"))
+    data_format.append((READ, "occlusion_mask", "int8_t"))
+    data_format.append((READ, "obstruction_type", EnumLookupMember(
+            # selects the available ui command buttons for the unit
+            raw_type    = "int8_t",
+            type_name   = "obstruction_types",
+            lookup_dict = {
+                0: "PASSABLE",              # farm, gate, dead bodies, town center
+                2: "BUILDING",
+                3: "BERSERK",
+                5: "UNIT",
+                10: "MOUNTAIN",             # 10 mountain(matches selction_mask)
+            },
+        )))
     data_format.append((READ_EXPORT, "selection_shape", "int8_t"))            # 0=square, 1<=round
 
     # bitfield of unit attributes:
@@ -691,9 +702,9 @@ class UnitObject(Exportable):
     # bit 5: biological unit,
     # bit 6: self-shielding unit,
     # bit 7: invisible unit
-    data_format.append((READ, "attribute", "uint8_t"))
+    data_format.append((READ, "trait", "uint8_t"))
     data_format.append((READ, "civilisation", "int8_t"))
-    data_format.append((READ, "attribute_piece", "int16_t"))   # leftover from attribute+civ variable
+    data_format.append((READ, "attribute_piece", "int16_t"))   # leftover from trait+civ variable
     data_format.append((READ_EXPORT, "selection_effect", EnumLookupMember(
             # things that happen when the unit was selected
             raw_type = "int8_t",
@@ -712,9 +723,9 @@ class UnitObject(Exportable):
             },
         )))
     data_format.append((READ, "editor_selection_color", "uint8_t"))  # 0: default, -16: fish trap, farm, 52: deadfarm, OLD-*, 116: flare, whale, dolphin -123: fish
-    data_format.append((READ_EXPORT, "selection_shape_x", "float"))
-    data_format.append((READ_EXPORT, "selection_shape_y", "float"))
-    data_format.append((READ_EXPORT, "selection_shape_z", "float"))
+    data_format.append((READ_EXPORT, "outline_size_x", "float"))
+    data_format.append((READ_EXPORT, "outline_size_y", "float"))
+    data_format.append((READ_EXPORT, "outline_size_z", "float"))
     data_format.append((READ_EXPORT, "resource_storage", SubdataMember(
             ref_type=ResourceStorage,
             length=3,
@@ -726,7 +737,7 @@ class UnitObject(Exportable):
         )))
     data_format.append((READ_EXPORT, "sound_selection", "int16_t"))
     data_format.append((READ_EXPORT, "sound_dying", "int16_t"))
-    data_format.append((READ_EXPORT, "attack_mode", EnumLookupMember(  # maybe obsolete, as it's copied when converting the unit
+    data_format.append((READ_EXPORT, "old_attack_mode", EnumLookupMember(  # obsolete, as it's copied when converting the unit
             raw_type = "int8_t",     # things that happen when the unit was selected
             type_name = "attack_modes",
             lookup_dict = {
@@ -739,10 +750,24 @@ class UnitObject(Exportable):
         )))
 
 
-    data_format.append((READ_UNKNOWN, None, "int8_t"))         # maybe: 1: yup, you may eat/gather it.
+    data_format.append((READ, "conver_terrain", "int8_t"))
     data_format.append((READ_EXPORT, "name", "char[name_length]"))
     data_format.append((READ_EXPORT, "id1", "int16_t"))
     data_format.append((READ_EXPORT, "id2", "int16_t"))
+
+
+class TreeUnit(UnitObject):
+    """
+    type_id == 90
+    """
+
+    name_struct        = "tree_unit"
+    name_struct_file   = "unit"
+    struct_description = "just a tree unit."
+
+    data_format = [
+        (READ_EXPORT, None, IncludeMembers(cls=UnitObject)),
+    ]
 
 
 class AnimatedUnit(UnitObject):
@@ -789,12 +814,16 @@ class MovingUnit(DoppelgangerUnit):
     data_format.append((READ_EXPORT, "walking_graphics0", "int16_t"))
     data_format.append((READ_EXPORT, "walking_graphics1", "int16_t"))
     data_format.append((READ, "turn_speed", "float"))
-    data_format.append((READ, "size_class", "int8_t"))
+    data_format.append((READ, "old_size_class", "int8_t"))
     data_format.append((READ, "trail_unit_id", "int16_t"))             # unit id for the ground traces
     data_format.append((READ, "trail_opsions", "uint8_t"))             # ground traces: -1: no tracking present, 2: projectiles with tracking unit
     data_format.append((READ, "trail_spacing", "float"))               # ground trace spacing: 0: no tracking, 0.5: trade cart, 0.12: some projectiles, 0.4: other projectiles
-    data_format.append((READ, "move_algorithm", "int8_t"))
-    data_format.append((READ, "rotation_angles", "float[5]"))
+    data_format.append((READ, "old_move_algorithm", "int8_t"))
+    data_format.append((READ, "turn_radius", "float"))
+    data_format.append((READ, "turn_radius_speed", "float"))
+    data_format.append((READ, "max_yaw_per_sec_moving", "float"))
+    data_format.append((READ, "stationary_yaw_revolution_time", "float"))
+    data_format.append((READ, "max_yaw_per_sec_stationary", "float"))
 
 
 class ActionUnit(MovingUnit):
@@ -859,8 +888,8 @@ class ProjectileUnit(ActionUnit):
     data_format.append((READ, "attack_speed", "float"))                    # = "reload time"
     data_format.append((READ_EXPORT, "missile_unit_id", "int16_t"))        # which projectile to use?
     data_format.append((READ, "base_hit_chance", "int16_t"))               # probablity of attack hit in percent
-    data_format.append((READ, "break_off_combat", "int8_t"))               # = tower mode?
-    data_format.append((READ, "fire_missile_at_frame", "int16_t"))         # the frame number at which the missile is fired, = delay
+    data_format.append((READ, "break_off_combat", "int8_t"))               # = tower mode?; not used anywhere
+    data_format.append((READ, "frame_delay", "int16_t"))                   # the frame number at which the missile is fired, = delay
     data_format.append((READ, "weapon_offset", "float[3]"))                # graphics displacement in x, y and z
     data_format.append((READ_EXPORT, "blast_level_offence", EnumLookupMember(
             # blasts damage units that have higher or same blast_defense_level
@@ -895,11 +924,11 @@ class MissileUnit(ProjectileUnit):
 
     data_format = []
     data_format.append((READ_EXPORT, None, IncludeMembers(cls=ProjectileUnit)))
-    data_format.append((READ, "stretch_mode", "int8_t"))         # 0 = default; 1 = projectile falls vertically to the bottom of the map; 3 = teleporting projectiles
+    data_format.append((READ, "projectile_type", "int8_t"))      # 0 = default; 1 = projectile falls vertically to the bottom of the map; 3 = teleporting projectiles
     data_format.append((READ, "smart_mode", "int8_t"))           # "better aiming". tech attribute 19 changes this: 0 = shoot at current pos; 1 = shoot at predicted pos
     data_format.append((READ, "drop_animation_mode", "int8_t"))  # 1 = disappear on hit
     data_format.append((READ, "penetration_mode", "int8_t"))     # 1 = pass through hit object; 0 = stop projectile on hit; (only for graphics, not pass-through damage)
-    data_format.append((READ_UNKNOWN, None, "int8_t"))
+    data_format.append((READ, "area_of_effect_special", "int8_t"))
     data_format.append((READ_EXPORT, "projectile_arc", "float"))
 
 
@@ -937,8 +966,8 @@ class LivingUnit(ProjectileUnit):
     # | 31 | 32 | 33 | 34 | 35 |
     # +------------------------+
     data_format.append((READ, "creation_button_id", "int8_t"))
-    data_format.append((READ_UNKNOWN, None, "float"))
-    data_format.append((READ_UNKNOWN, None, "float"))
+    data_format.append((READ, "rear_attack_modifier", "float"))
+    data_format.append((READ, "flank_attack_modifier", "float"))
     data_format.append((READ_EXPORT, "creatable_type", EnumLookupMember(
             raw_type    = "int8_t",
             type_name   = "creatable_types",
@@ -990,17 +1019,17 @@ class BuildingUnit(LivingUnit):
     data_format.append((READ_EXPORT, "construction_graphic_id", "int16_t"))
     data_format.append((READ, "snow_graphic_id", "int16_t"))
     data_format.append((READ, "adjacent_mode", "int8_t"))            # 1=adjacent units may change the graphics
-    data_format.append((READ, "icon_disabler", "int16_t"))
+    data_format.append((READ, "graphics_angle", "int16_t"))
     data_format.append((READ, "disappears_when_built", "int8_t"))
     data_format.append((READ_EXPORT, "stack_unit_id", "int16_t"))    # second building to place directly on top
     data_format.append((READ_EXPORT, "foundation_terrain_id", "int16_t"))  # change underlying terrain to this id when building completed
-    data_format.append((READ, "overlay_id", "int16_t"))              # deprecated terrain-like structures knowns as "Overlays" from alpha AOE used for roads
+    data_format.append((READ, "old_overlay_id", "int16_t"))          # deprecated terrain-like structures knowns as "Overlays" from alpha AOE used for roads
     data_format.append((READ, "research_id", "int16_t"))             # research_id to be enabled when building creation
-    data_format.append((READ, "annex_mode", "int8_t"))
+    data_format.append((READ, "can_burn", "int8_t"))
     data_format.append((READ_EXPORT, "building_annex", SubdataMember(ref_type=BuildingAnnex, length=4)))
     data_format.append((READ, "head_unit_id", "int16_t"))            # building at which an annex building is attached to
     data_format.append((READ, "transform_unit_id", "int16_t"))       # destination unit id when unit shall transform (e.g. unpack)
-    data_format.append((READ_UNKNOWN, None, "int16_t"))              # unit_id for something unknown
+    data_format.append((READ, "transform_sound_id", "int16_t"))
     data_format.append((READ, "construction_sound_id", "int16_t"))
     data_format.append((READ_EXPORT, "garrison_type", EnumLookupMember(
             raw_type    = "int8_t",
@@ -1016,23 +1045,9 @@ class BuildingUnit(LivingUnit):
             },
         )))
     data_format.append((READ, "garrison_heal_rate", "float"))
-    data_format.append((READ_UNKNOWN, None, "float"))              # (unknown garrison value)
+    data_format.append((READ, "garrison_repair_rate", "float"))              # (unknown garrison value)
     data_format.append((READ, "salvage_unit_id", "int16_t"))       # id of the unit used for salvages
-    data_format.append((READ, "salvage_attributes", "int8_t[6]"))  # list of attributes for salvages
-
-
-class TreeUnit(UnitObject):
-    """
-    type_id == 90
-    """
-
-    name_struct        = "tree_unit"
-    name_struct_file   = "unit"
-    struct_description = "just a tree unit."
-
-    data_format = [
-        (READ_EXPORT, None, IncludeMembers(cls=UnitObject)),
-    ]
+    data_format.append((READ, "salvage_attributes", "int8_t[6]"))  # list of attributes for salvages (looting table)
 
 
 # unit type id => human readable name

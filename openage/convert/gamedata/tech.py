@@ -1,10 +1,10 @@
-# Copyright 2013-2015 the openage authors. See copying.md for legal info.
+# Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
 from ..dataformat.exportable import Exportable
-from ..dataformat.members import SubdataMember, EnumLookupMember, ZeroMember
-from ..dataformat.member_access import READ, READ_EXPORT, READ_UNKNOWN
+from ..dataformat.members import SubdataMember, EnumLookupMember
+from ..dataformat.member_access import READ, READ_EXPORT
 
 
 class Effect(Exportable):
@@ -101,6 +101,22 @@ class Tech(Exportable):  # also called techage in some other tools
 
 # TODO: add common tech class
 
+class Mode(Exportable):
+    name_struct        = "age_tech_tree"
+    name_struct_file   = "tech"
+    struct_description = "items available when this age was reached."
+
+    data_format = []
+    data_format.append((READ, "mode", EnumLookupMember(                 # mode for unit_or_research0
+            raw_type = "int32_t",
+            type_name = "building_connection_mode",
+            lookup_dict = {
+                0: "NOTHING",
+                1: "BUILDING",
+                2: "UNIT",
+                3: "RESEARCH",
+            }
+        )))
 
 class AgeTechTree(Exportable):
     name_struct        = "age_tech_tree"
@@ -108,7 +124,7 @@ class AgeTechTree(Exportable):
     struct_description = "items available when this age was reached."
 
     data_format = []
-    data_format.append((READ_UNKNOWN, None, "int32_t"))
+    data_format.append((READ, "total_unit_tech_groups", "int32_t"))
     data_format.append((READ, "id", "int32_t"))
     # 0=generic
     # 1=TODO
@@ -123,9 +139,18 @@ class AgeTechTree(Exportable):
     data_format.append((READ, "units", "int32_t[unit_count]"))
     data_format.append((READ, "research_count", "int8_t"))
     data_format.append((READ, "researches", "int32_t[research_count]"))
-    data_format.append((READ_UNKNOWN, None, "int32_t"))                      # always 1
-    data_format.append((READ, "second_age_id", "int32_t"))
-    data_format.append((READ, "zeroes", ZeroMember("int16_t", length=49)))
+
+    data_format.append((READ, "slots_used", "int32_t"))
+    data_format.append((READ, "unit_researches", "int32_t[10]"))
+    data_format.append((READ, "modes", SubdataMember(
+            ref_type=Mode,
+            length=10,  # number of tile types * 12
+    )))
+
+    data_format.append((READ, "building_level_count", "int8_t"))
+    data_format.append((READ, "buildings_per_zone", "int8_t[10]"))
+    data_format.append((READ, "group_length_per_zone", "int8_t[10]"))
+    data_format.append((READ, "max_age_length", "int8_t"))
 
 
 class BuildingConnection(Exportable):
@@ -148,23 +173,17 @@ class BuildingConnection(Exportable):
     data_format.append((READ, "units", "int32_t[unit_count]"))           # new units
     data_format.append((READ_EXPORT, "research_count", "int8_t"))
     data_format.append((READ, "researches", "int32_t[research_count]"))  # new researches
-    data_format.append((READ_EXPORT, "age", "int32_t"))                  # minimum age, in which this building is available
-    data_format.append((READ, "unit_or_research0", "int32_t"))           # this building depends on research_id or unit_id, which is set in mode0
-    data_format.append((READ, "unit_or_research1", "int32_t"))           # dito, set in mode1
-    data_format.append((READ_UNKNOWN, None, "int32_t[8]"))
-    data_format.append((READ, "mode0", EnumLookupMember(                 # mode for unit_or_research0
-            raw_type = "int32_t",
-            type_name = "building_connection_mode",
-            lookup_dict = {
-                0: "NOTHING",
-                1: "BUILDING",
-                2: "UNIT",
-                3: "RESEARCH",
-            }
-        )))
-    data_format.append((READ, "mode1", "int32_t"))                       # TODO, xref possible values to the enum above (reuse them)
-    data_format.append((READ_UNKNOWN, None, "int32_t[8]"))
-    data_format.append((READ_UNKNOWN, None, "int8_t[11]"))
+
+    data_format.append((READ_EXPORT, "slots_used", "int32_t"))
+    data_format.append((READ, "unit_researches", "int32_t[10]"))
+    data_format.append((READ, "modes", SubdataMember(
+            ref_type=Mode,
+            length=10,  # number of tile types * 12
+    )))
+
+    data_format.append((READ, "location_in_age", "int8_t"))              # minimum age, in which this building is available
+    data_format.append((READ, "unit_techs_total", "int8_t[5]"))          # total techs for each age (5 ages, post-imp probably counts as one)
+    data_format.append((READ, "unit_techs_first", "int8_t[5]"))
     data_format.append((READ_EXPORT, "line_mode", "int32_t"))            # 5: >=1 connections, 6: no connections
     data_format.append((READ, "enabled_by_research_id", "int32_t"))      # current building is unlocked by this research id, -1=no unlock needed
 
@@ -184,14 +203,14 @@ class UnitConnection(Exportable):
     # 5=research completed, building built
     data_format.append((READ, "status", "int8_t"))                 # always 2: default
     data_format.append((READ, "upper_building", "int32_t"))        # building, where this unit is created
-    data_format.append((READ, "required_researches", "int32_t"))
-    data_format.append((READ, "age", "int32_t"))
-    data_format.append((READ, "unit_or_research0", "int32_t"))
-    data_format.append((READ, "unit_or_research1", "int32_t"))
-    data_format.append((READ_UNKNOWN, None, "int32_t[8]"))
-    data_format.append((READ, "mode0", "int32_t"))
-    data_format.append((READ, "mode1", "int32_t"))
-    data_format.append((READ_UNKNOWN, None, "int32_t[7]"))
+
+    data_format.append((READ_EXPORT, "slots_used", "int32_t"))
+    data_format.append((READ, "unit_researches", "int32_t[10]"))
+    data_format.append((READ, "modes", SubdataMember(
+            ref_type=Mode,
+            length=10,  # number of tile types * 12
+    )))
+
     data_format.append((READ, "vertical_lines", "int32_t"))
     data_format.append((READ, "unit_count", "int8_t"))
     data_format.append((READ, "units", "int32_t[unit_count]"))
@@ -222,12 +241,14 @@ class ResearchConnection(Exportable):
     data_format.append((READ, "units", "int32_t[unit_count]"))
     data_format.append((READ, "research_count", "int8_t"))
     data_format.append((READ, "researches", "int32_t[research_count]"))
-    data_format.append((READ, "required_research", "int32_t"))
-    data_format.append((READ, "age", "int32_t"))
-    data_format.append((READ, "upper_research", "int32_t"))
-    data_format.append((READ_UNKNOWN, None, "int32_t[9]"))
-    data_format.append((READ, "line_mode", "int32_t"))
-    data_format.append((READ_UNKNOWN, None, "int32_t[8]"))
+
+    data_format.append((READ_EXPORT, "slots_used", "int32_t"))
+    data_format.append((READ, "unit_researches", "int32_t[10]"))
+    data_format.append((READ, "modes", SubdataMember(
+            ref_type=Mode,
+            length=10,  # number of tile types * 12
+    )))
+
     data_format.append((READ, "vertical_line", "int32_t"))
     data_format.append((READ, "location_in_age", "int32_t"))    # 0=hidden, 1=first, 2=second
     data_format.append((READ, "line_mode", "int32_t"))          # 0=first age, else other ages.

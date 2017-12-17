@@ -49,8 +49,8 @@ class EmpiresDat(Exportable):
     # terrain header data
     data_format.append((READ, "terrain_restriction_count", "uint16_t"))
     data_format.append((READ, "terrain_count", "uint16_t"))   # number of "used" terrains
-    data_format.append((READ, "terrain_restriction_offset0", "int32_t[terrain_restriction_count]"))
-    data_format.append((READ, "terrain_restriction_offset1", "int32_t[terrain_restriction_count]"))
+    data_format.append((READ, "float_ptr_terrain_tables", "int32_t[terrain_restriction_count]"))
+    data_format.append((READ, "terrain_pass_graphics_ptrs", "int32_t[terrain_restriction_count]"))
     data_format.append((READ, "terrain_restrictions", SubdataMember(
             ref_type=terrain.TerrainRestriction,
             length="terrain_restriction_count",
@@ -73,16 +73,16 @@ class EmpiresDat(Exportable):
 
     # graphic data
     data_format.append((READ, "graphic_count", "uint16_t"))
-    data_format.append((READ, "graphic_offsets", "uint32_t[graphic_count]"))
+    data_format.append((READ, "graphic_ptrs", "uint32_t[graphic_count]"))
     data_format.append((READ_EXPORT, "graphics", SubdataMember(
             ref_type  = graphic.Graphic,
             length    = "graphic_count",
-            offset_to = ("graphic_offsets", lambda o: o > 0),
+            offset_to = ("graphic_ptrs", lambda o: o > 0),
         )))
 
     # terrain data
+    data_format.append((READ, "virt_function_ptr", "int32_t"))
     data_format.append((READ, "map_pointer", "int32_t"))
-    data_format.append((READ_UNKNOWN, None, "int32_t"))
     data_format.append((READ, "map_width", "int32_t"))
     data_format.append((READ, "map_height", "int32_t"))
     data_format.append((READ, "world_width", "int32_t"))
@@ -91,7 +91,7 @@ class EmpiresDat(Exportable):
             ref_type=terrain.TileSize,
             length=19,      # number of tile types
         )))
-    data_format.append((READ_UNKNOWN, None, "int16_t"))
+    data_format.append((READ, "padding1", "int16_t"))
     data_format.append((READ_EXPORT,  "terrains", SubdataMember(
             ref_type=terrain.Terrain,
             # 42 terrains are stored (100 in African Kingdoms), but less are used.
@@ -105,7 +105,7 @@ class EmpiresDat(Exportable):
             length=16,
         )))
 
-    data_format.append((READ_UNKNOWN, None, "uint32_t"))
+    data_format.append((READ,         "map_row_offset", "int32_t"))
     data_format.append((READ,         "map_min_x", "float"))
     data_format.append((READ,         "map_min_y", "float"))
     data_format.append((READ,         "map_max_x", "float"))
@@ -127,8 +127,8 @@ class EmpiresDat(Exportable):
     data_format.append((READ,         "block_end_row", "int16_t"))
     data_format.append((READ,         "block_begin_column", "int16_t"))
     data_format.append((READ,         "block_end_column", "int16_t"))
-    data_format.append((READ_UNKNOWN, None, "uint32_t"))
-    data_format.append((READ_UNKNOWN, None, "uint32_t"))
+    data_format.append((READ,         "search_map_ptr", "int32_t"))
+    data_format.append((READ,         "search_map_rows_ptr", "int32_t"))
     data_format.append((READ,         "any_frame_change", "int8_t"))
     data_format.append((READ,         "map_visible_flag", "int8_t"))
     data_format.append((READ,         "fog_flag", "int8_t"))
@@ -176,8 +176,14 @@ class EmpiresDat(Exportable):
             length="research_count"
         )))
 
-    # unknown shiat again
-    data_format.append((READ_UNKNOWN, None, "uint32_t[7]"))
+    # something else
+    data_format.append((READ, "time_slice", "int32_t"))
+    data_format.append((READ, "unit_kill_rate", "int32_t"))
+    data_format.append((READ, "unit_kill_total", "int32_t"))
+    data_format.append((READ, "unit_hitpoint_rate", "int32_t"))
+    data_format.append((READ, "unit_hitpoint_total", "int32_t"))
+    data_format.append((READ, "razing_kill_rate", "int32_t"))
+    data_format.append((READ, "razing_kill_total", "int32_t"))
 
     # technology tree data
     data_format.append((READ_EXPORT, "age_entry_count", "uint8_t"))

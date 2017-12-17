@@ -1,10 +1,10 @@
-# Copyright 2013-2015 the openage authors. See copying.md for legal info.
+# Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
 from ..dataformat.exportable import Exportable
 from ..dataformat.members import SubdataMember
-from ..dataformat.member_access import READ, READ_UNKNOWN
+from ..dataformat.member_access import READ
 
 
 class ResearchResourceCost(Exportable):
@@ -42,6 +42,6 @@ class Research(Exportable):
     data_format.append((READ, "button_id", "int8_t"))                  # button id as defined in the unit.py button matrix
     data_format.append((READ, "language_dll_help", "int32_t"))         # 100000 + the language file id for the name/description
     data_format.append((READ, "language_dll_techtree", "int32_t"))     # 149000 + lang_dll_description
-    data_format.append((READ_UNKNOWN, None, "int32_t"))                # -1
+    data_format.append((READ, "hotkey", "int32_t"))                    # -1 for every tech
     data_format.append((READ, "name_length", "uint16_t"))
     data_format.append((READ, "name", "char[name_length]"))

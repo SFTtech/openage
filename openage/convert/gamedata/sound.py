@@ -17,7 +17,7 @@ class SoundItem(Exportable):
     data_format.append((READ_EXPORT, "resource_id",  "int32_t"))
     data_format.append((READ_EXPORT, "probablilty",  "int16_t"))
     data_format.append((READ_EXPORT, "civilisation", "int16_t"))
-    data_format.append((READ,        "player_id",    "int16_t"))
+    data_format.append((READ,        "icon_set",    "int16_t"))
 
 
 class Sound(Exportable):
@@ -27,11 +27,11 @@ class Sound(Exportable):
 
     data_format = []
     data_format.append((READ_EXPORT, "id", "int16_t"))
-    data_format.append((READ, "play_at_update_count", "int16_t"))
-    data_format.append((READ_EXPORT, "item_count", "uint16_t"))
+    data_format.append((READ, "play_delay", "int16_t"))
+    data_format.append((READ_EXPORT, "file_count", "uint16_t"))
     data_format.append((READ, "cache_time", "int32_t"))                   # always 300000
     data_format.append((READ_EXPORT, "sound_items", SubdataMember(
             ref_type=SoundItem,
             ref_to="id",
-            length="item_count",
+            length="file_count",
         )))
