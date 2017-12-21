@@ -81,8 +81,6 @@ if(NOT WIN32)
 endif()
 if(MSVC)
 	find_library(OGG_LIB ogg)
-else()
-	find_library(DL_LIB dl)
 endif()
 if(NOT APPLE AND NOT MSVC)
 	find_library(RT_LIB rt)
@@ -175,7 +173,7 @@ include_directories(
 # link the executable to those libraries
 target_link_libraries(libopenage
 	PUBLIC
-		${DL_LIB}
+	        ${CMAKE_DL_LIBS}
 		${FONTCONFIG_LIB}
 		${FREETYPE_LIBRARIES}
 		${EPOXY_LIBRARIES}
