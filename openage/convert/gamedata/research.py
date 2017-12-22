@@ -2,6 +2,7 @@
 
 # TODO pylint: disable=C,R
 
+from ..game_versions import GameVersion
 from ..dataformat.exportable import Exportable
 from ..dataformat.members import SubdataMember
 from ..dataformat.member_access import READ
@@ -45,3 +46,10 @@ class Research(Exportable):
     data_format.append((READ, "hotkey", "int32_t"))                    # -1 for every tech
     data_format.append((READ, "name_length", "uint16_t"))
     data_format.append((READ, "name", "char[name_length]"))
+
+    # TODO: Enable conversion for SWGB
+    #===========================================================================
+    # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
+    #     data_format.append((READ, "name2_length", "uint16_t"))
+    #     data_format.append((READ, "name2", "char[name2_length]"))
+    #===========================================================================

@@ -13,7 +13,16 @@ class SoundItem(Exportable):
     struct_description = "one possible file for a sound."
 
     data_format = []
-    data_format.append((READ_EXPORT, "filename",     "char[13]"))
+
+    # TODO: Enable conversion for SWGB; replace "filename"
+    #===========================================================================
+    # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
+    #     data_format.append((READ_EXPORT, "filename", "char[27]"))
+    # else:
+    #     data_format.append((READ_EXPORT, "filename", "char[13]"))
+    #===========================================================================
+    data_format.append((READ_EXPORT, "filename", "char[13]"))
+
     data_format.append((READ_EXPORT, "resource_id",  "int32_t"))
     data_format.append((READ_EXPORT, "probablilty",  "int16_t"))
     data_format.append((READ_EXPORT, "civilisation", "int16_t"))

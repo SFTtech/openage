@@ -19,6 +19,14 @@ class Civ(Exportable):
     data_format.append((READ, "resources_count", "uint16_t"))
     data_format.append((READ_EXPORT, "tech_tree_id",  "int16_t"))         # links to tech id (to apply its effects)
     data_format.append((READ_EXPORT, "team_bonus_id", "int16_t"))         # links to tech id as well
+
+    # TODO: Enable conversion for SWGB
+    #===========================================================================
+    # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
+    #     data_format.append((READ, "name2", "char[20]"))
+    #     data_format.append((READ, "unique_unit_techs", "int16_t[4]"))
+    #===========================================================================
+
     data_format.append((READ, "resources", "float[resources_count]"))
     data_format.append((READ, "icon_set", "int8_t"))                      # building icon set, trade cart graphics, changes no other graphics
     data_format.append((READ_EXPORT, "unit_count", "uint16_t"))

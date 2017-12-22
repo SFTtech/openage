@@ -35,11 +35,11 @@ class Exportable:
     # comment for the created struct
     struct_description = None
 
-    # struct format specification
-    data_format = list()
-
     # detected game versions
     game_versions = list()
+
+    # struct format specification
+    data_format = list()
 
     def __init__(self, **args):
         # store passed arguments as members

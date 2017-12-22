@@ -148,6 +148,17 @@ class AgeTechTree(Exportable):
     )))
 
     data_format.append((READ, "building_level_count", "int8_t"))
+
+    # TODO: Enable conversion for SWGB; replace "buildings_per_zone", "group_length_per_zone"
+    #===========================================================================
+    # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
+    #     data_format.append((READ, "buildings_per_zone", "int8_t[20]"))
+    #     data_format.append((READ, "group_length_per_zone", "int8_t[20]"))
+    # else:
+    #     data_format.append((READ, "buildings_per_zone", "int8_t[10]"))
+    #     data_format.append((READ, "group_length_per_zone", "int8_t[10]"))
+    #===========================================================================
+
     data_format.append((READ, "buildings_per_zone", "int8_t[10]"))
     data_format.append((READ, "group_length_per_zone", "int8_t[10]"))
     data_format.append((READ, "max_age_length", "int8_t"))

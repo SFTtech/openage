@@ -29,7 +29,15 @@ class TerrainPassGraphic(Exportable):
     data_format.append((READ, "slp_id_exit_tile", "int32_t"))
     data_format.append((READ, "slp_id_enter_tile", "int32_t"))
     data_format.append((READ, "slp_id_walk_tile", "int32_t"))
-    data_format.append((READ, "walk_sprite_rate", "float"))
+
+    # TODO: Enable conversion for SWGB; replace "replication_amount"
+    #===========================================================================
+    # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
+    #     data_format.append((READ, "walk_sprite_rate", "float"))
+    # else:
+    #     data_format.append((READ, "replication_amount", "int32_t"))
+    #===========================================================================
+    data_format.append((READ, "replication_amount", "int32_t"))
 
 
 class TerrainRestriction(Exportable):
@@ -82,8 +90,19 @@ class Terrain(Exportable):
     data_format = []
     data_format.append((READ_EXPORT, "enabled",             "int8_t"))
     data_format.append((READ,        "random",              "int8_t"))
+
+    # TODO: Enable conversion for SWGB; replace "name0", "name1"
+    #===========================================================================
+    # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
+    #     data_format.append((READ_EXPORT, "name0",           "char[17]"))
+    #     data_format.append((READ_EXPORT, "name1",           "char[17]"))
+    # else:
+    #     data_format.append((READ_EXPORT, "name0",           "char[13]"))
+    #     data_format.append((READ_EXPORT, "name1",           "char[13]"))
+    #===========================================================================
     data_format.append((READ_EXPORT, "name0",               "char[13]"))
     data_format.append((READ_EXPORT, "name1",               "char[13]"))
+
     data_format.append((READ_EXPORT, "slp_id",              "int32_t"))
     data_format.append((READ,        "shape_ptr",           "int32_t"))
     data_format.append((READ_EXPORT, "sound_id",            "int32_t"))
@@ -117,7 +136,12 @@ class Terrain(Exportable):
     data_format.append((READ, "terrain_unit_density",       "int16_t[30]"))  # how many of the above units to place
     data_format.append((READ, "terrain_placement_flag",     "int8_t[30]"))   # when placing two terrain units on the same spot, selects which prevails(=1)
     data_format.append((READ, "terrain_units_used_count",   "int16_t"))      # how many entries of the above lists shall we use to place units implicitly when this terrain is placed
-    data_format.append((READ, "phantom",                    "int16_t"))
+
+    # TODO: Enable conversion for SWGB
+    #===========================================================================
+    # if (GameVersion.swgb_10 or GameVersion.swgb_cc) not in game_versions:
+    #===========================================================================
+    data_format.append((READ, "phantom",                 "int16_t"))
 
 
 class TerrainBorder(Exportable):

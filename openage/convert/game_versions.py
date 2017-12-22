@@ -56,16 +56,16 @@ class GameVersion(enum.Enum):
         12.1,
         "Star Wars: Galactic Battlegrounds",
         Support.nope,
-        {'GAME/Battlegrounds.exe', 'game/data/genie.dat'},
+        {'Game/Battlegrounds.exe', 'Game/Data/GENIE.DAT'},
     )
     swgb_cc = (
         12.2,
         "Star Wars: Galactic Battlegrounds: Clone Campaigns",
         Support.nope,
-        {'GAME/battlegrounds_x1.exe', 'game/data/genie_x1.dat'},
+        {'Game/battlegrounds_x1.exe', 'Game/Data/genie_x1.dat'},
     )
     swgb_exfronts = (
-        12.3,
+        12.2,
         "Star Wars: Galactic Battlegrounds: Expanding Fronts",
         Support.nope,
         {'GAME/battlegrounds_x2.exe', 'game/data/genie_x2.dat'},

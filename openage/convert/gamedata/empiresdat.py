@@ -42,9 +42,19 @@ class EmpiresDat(Exportable):
     name_struct_file   = "gamedata"
     name_struct        = "empiresdat"
     struct_description = "empires2_x1_p1.dat structure"
-
+    
     data_format = []
     data_format.append((READ, "versionstr", "char[8]"))
+
+    # TODO: Enable conversion for SWGB
+    #===========================================================================
+    # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
+    #     data_format.append((READ, "civ_count_swgb", "uint16_t"))
+    #     data_format.append((READ_UNKNOWN, None, "int32_t"))
+    #     data_format.append((READ_UNKNOWN, None, "int32_t"))
+    #     data_format.append((READ_UNKNOWN, None, "int32_t"))
+    #     data_format.append((READ_UNKNOWN, None, "int32_t"))
+    #===========================================================================
 
     # terrain header data
     data_format.append((READ, "terrain_restriction_count", "uint16_t"))
@@ -92,6 +102,27 @@ class EmpiresDat(Exportable):
             length=19,      # number of tile types
         )))
     data_format.append((READ, "padding1", "int16_t"))
+
+    # TODO: Enable conversion for SWGB; replace "terrains"
+    #===========================================================================
+    # # 42 terrains are stored (100 in African Kingdoms), but less are used.
+    # # TODO: maybe this number is defined somewhere.
+    # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
+    #     data_format.append((READ_EXPORT,  "terrains", SubdataMember(
+    #             ref_type=terrain.Terrain,
+    #             length=55,
+    #             )))
+    # elif GameVersion.age2_hd_ak in game_versions:
+    #     data_format.append((READ_EXPORT,  "terrains", SubdataMember(
+    #             ref_type=terrain.Terrain,
+    #             length=100,
+    #             )))
+    # else:
+    #     data_format.append((READ_EXPORT,  "terrains", SubdataMember(
+    #             ref_type=terrain.Terrain,
+    #             length=42,
+    #             )))
+    #===========================================================================
     data_format.append((READ_EXPORT,  "terrains", SubdataMember(
             ref_type=terrain.Terrain,
             # 42 terrains are stored (100 in African Kingdoms), but less are used.
@@ -100,6 +131,7 @@ class EmpiresDat(Exportable):
                     100 if GameVersion.age2_hd_ak in self.game_versions
                     else 42),
         )))
+
     data_format.append((READ,         "terrain_border", SubdataMember(
             ref_type=terrain.TerrainBorder,
             length=16,
@@ -133,6 +165,13 @@ class EmpiresDat(Exportable):
     data_format.append((READ,         "map_visible_flag", "int8_t"))
     data_format.append((READ,         "fog_flag", "int8_t"))
 
+    # TODO: Enable conversion for SWGB; replace "terrain_blob0"
+    #===========================================================================
+    # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
+    #     data_format.append((READ_UNKNOWN, "terrain_blob0", "uint8_t[25]"))
+    # else:
+    #     data_format.append((READ_UNKNOWN, "terrain_blob0", "uint8_t[21]"))
+    #===========================================================================
     data_format.append((READ_UNKNOWN, "terrain_blob0", "uint8_t[21]"))
     data_format.append((READ_UNKNOWN, "terrain_blob1", "uint32_t[157]"))
 
@@ -155,6 +194,16 @@ class EmpiresDat(Exportable):
             length="tech_count",
         )))
 
+    # TODO: Enable conversion for SWGB
+    #===========================================================================
+    # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
+    #     data_format.append((READ, "unit_line_count", "uint16_t"))
+    #     data_format.append((READ, "unit_lines", SubdataMember(
+    #             ref_type=unit.UnitLine,
+    #             length="unit_line_count",
+    #         )))
+    #===========================================================================
+
     # unit header data
     data_format.append((READ_EXPORT, "unit_count", "uint32_t"))
     data_format.append((READ_EXPORT, "unit_headers", SubdataMember(
@@ -169,12 +218,24 @@ class EmpiresDat(Exportable):
             length="civ_count"
         )))
 
+    # TODO: Enable conversion for SWGB
+    #===========================================================================
+    # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
+    #     data_format.append((READ_UNKNOWN, None, "int8_t"))
+    #===========================================================================
+
     # research data
     data_format.append((READ_EXPORT, "research_count", "uint16_t"))
     data_format.append((READ_EXPORT, "researches", SubdataMember(
             ref_type=research.Research,
             length="research_count"
         )))
+
+    # TODO: Enable conversion for SWGB
+    #===========================================================================
+    # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
+    #     data_format.append((READ_UNKNOWN, None, "int8_t"))
+    #===========================================================================
 
     # something else
     data_format.append((READ, "time_slice", "int32_t"))
@@ -188,13 +249,22 @@ class EmpiresDat(Exportable):
     # technology tree data
     data_format.append((READ_EXPORT, "age_entry_count", "uint8_t"))
     data_format.append((READ_EXPORT, "building_connection_count", "uint8_t"))
+
+    # TODO: Enable conversion for SWGB; replace "unit_connection_count"
+    #===========================================================================
+    # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
+    #     data_format.append((READ_EXPORT, "unit_connection_count", "uint16_t"))
+    # else:
+    #     data_format.append((READ_EXPORT, "unit_connection_count", "uint8_t"))
+    #===========================================================================
     data_format.append((READ_EXPORT, "unit_connection_count", "uint8_t"))
+
     data_format.append((READ_EXPORT, "research_connection_count", "uint8_t"))
+    data_format.append((READ, "total_unit_tech_groups", "int32_t"))
     data_format.append((READ_EXPORT, "age_tech_tree", SubdataMember(
             ref_type=tech.AgeTechTree,
             length="age_entry_count"
         )))
-    data_format.append((READ_UNKNOWN, None, "uint32_t"))
     data_format.append((READ_EXPORT, "building_connection", SubdataMember(
             ref_type=tech.BuildingConnection,
             length="building_connection_count"
@@ -229,7 +299,7 @@ class EmpiresDatWrapper(Exportable):
     name_struct_file   = "gamedata"
     name_struct        = "gamedata"
     struct_description = "wrapper for empires2_x1_p1.dat structure"
-
+    
     # TODO: we could reference to other gamedata structures
     data_format = [
         (READ_EXPORT, "empiresdat", SubdataMember(

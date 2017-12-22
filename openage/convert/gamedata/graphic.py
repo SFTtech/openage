@@ -51,8 +51,25 @@ class Graphic(Exportable):
     struct_description = "metadata for ingame graphics files."
 
     data_format = []
-    data_format.append((READ_EXPORT, "name", "char[21]"))             # internal name: e.g. ARRG2NNE = archery range feudal Age north european
+
+    # TODO: Enable conversion for SWGB; replace "name"
+    #===========================================================================
+    # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
+    #     data_format.append((READ_EXPORT, "name", "char[25]"))
+    # else:
+    #     data_format.append((READ_EXPORT, "name", "char[21]"))
+    #===========================================================================
+    data_format.append((READ_EXPORT, "name", "char[21]"))          # internal name: e.g. ARRG2NNE = archery range feudal Age north european
+
+    # TODO: Enable conversion for SWGB; replace "name"
+    #===========================================================================
+    # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
+    #     data_format.append((READ_EXPORT, "filename", "char[25]"))
+    # else:
+    #     data_format.append((READ_EXPORT, "filename", "char[13]"))
+    #===========================================================================
     data_format.append((READ_EXPORT, "filename", "char[13]"))
+
     data_format.append((READ_EXPORT, "slp_id", "int32_t"))             # id of the graphics file in the drs
     data_format.append((READ, "is_loaded", "int8_t"))                  # unused
     data_format.append((READ, "old_color_flag", "int8_t"))             # unused

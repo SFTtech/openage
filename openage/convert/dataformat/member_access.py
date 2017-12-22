@@ -20,7 +20,7 @@ class MemberAccess(Enum):
 #      for legacy reasons, to avoid breaking other modules that import
 #      them this way.
 
-READ = MemberAccess.READ
-READ_EXPORT = MemberAccess.READ_EXPORT
+READ = MemberAccess.READ                        # Reads the data
+READ_EXPORT = MemberAccess.READ_EXPORT          # Reads the data and exports it to a file
 NOREAD_EXPORT = MemberAccess.NOREAD_EXPORT
-READ_UNKNOWN = MemberAccess.READ_UNKNOWN
+READ_UNKNOWN = MemberAccess.READ_UNKNOWN        # For unknown chunks of data

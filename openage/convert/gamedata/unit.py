@@ -129,6 +129,18 @@ class UnitHeader(Exportable):
     )))
 
 
+class UnitLine(Exportable):
+    name_struct        = "unit_header"
+    name_struct_file   = "unit"
+    struct_description = "stores a bunch of unit commands."
+
+    data_format = []
+    data_format.append((READ, "name_length", "uint16_t"))
+    data_format.append((READ, "name", "char[name_length]"))
+    data_format.append((READ, "unit_ids_counter", "uint16_t"))
+    data_format.append((READ, "unit_ids", "int16_t[unit_ids_counter]"))
+
+
 class ResourceStorage(Exportable):
     name_struct        = "resource_storage"
     name_struct_file   = "unit"
@@ -688,10 +700,9 @@ class UnitObject(Exportable):
                 2: "BUILDING",
                 3: "BERSERK",
                 5: "UNIT",
-                10: "MOUNTAIN",             # 10 mountain(matches selction_mask)
+                10: "MOUNTAIN",             # mountain (matches occlusion_mask)
             },
         )))
-    data_format.append((READ_EXPORT, "selection_shape", "int8_t"))            # 0=square, 1<=round
 
     # bitfield of unit attributes:
     # bit 0: allow garrison,
@@ -750,8 +761,18 @@ class UnitObject(Exportable):
         )))
 
 
-    data_format.append((READ, "conver_terrain", "int8_t"))
+    data_format.append((READ, "convert_terrain", "int8_t"))
     data_format.append((READ_EXPORT, "name", "char[name_length]"))
+
+    # TODO: Enable conversion for SWGB
+    #===========================================================================
+    # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
+    #     data_format.append((READ, "name2_length", "uint16_t"))
+    #     data_format.append((READ, "name2", "char[name2_length]"))
+    #     data_format.append((READ, "unit_line", "int16_t"))
+    #     data_format.append((READ, "min_tech_level", "int8_t"))
+    #===========================================================================
+
     data_format.append((READ_EXPORT, "id1", "int16_t"))
     data_format.append((READ_EXPORT, "id2", "int16_t"))
 
@@ -841,17 +862,17 @@ class ActionUnit(MovingUnit):
     # callback unit action id when found.
     # monument and sheep: 107 = enemy convert.
     # all auto-convertible units: 0, most other units: -1
-    data_format.append((READ, "default_task_id", "int16_t"))             # e.g. when sheep are discovered
+    data_format.append((READ, "default_task_id", "int16_t"))            # e.g. when sheep are discovered
     data_format.append((READ, "search_radius", "float"))
     data_format.append((READ_EXPORT, "work_rate", "float"))
-    data_format.append((READ_EXPORT, "drop_site0", "int16_t"))           # unit id where gathered resources shall be delivered to
-    data_format.append((READ_EXPORT, "drop_site1", "int16_t"))           # alternative unit id
-    data_format.append((READ_EXPORT, "task_by_group", "int8_t"))         # if a task is not found in the current unit, other units with the same group id are tried.
-                                                          # 1: male villager; 2: female villager; 3+: free slots
-                                                          # basically this creates a "swap group id" where you can place different-graphic units together.
-    data_format.append((READ_EXPORT, "command_sound_id", "int16_t"))     # sound played when a command is instanciated
-    data_format.append((READ_EXPORT, "stop_sound_id", "int16_t"))        # sound when the command is done (e.g. unit stops at target position)
-    data_format.append((READ, "run_pattern", "int8_t"))                  # how animals run around randomly
+    data_format.append((READ_EXPORT, "drop_site0", "int16_t"))          # unit id where gathered resources shall be delivered to
+    data_format.append((READ_EXPORT, "drop_site1", "int16_t"))          # alternative unit id
+    data_format.append((READ_EXPORT, "task_by_group", "int8_t"))        # if a task is not found in the current unit, other units with the same group id are tried.
+                                                                        # 1: male villager; 2: female villager; 3+: free slots
+                                                                        # basically this creates a "swap group id" where you can place different-graphic units together.
+    data_format.append((READ_EXPORT, "command_sound_id", "int16_t"))    # sound played when a command is instanciated
+    data_format.append((READ_EXPORT, "stop_sound_id", "int16_t"))       # sound when the command is done (e.g. unit stops at target position)
+    data_format.append((READ, "run_pattern", "int8_t"))                 # how animals run around randomly
 
 
 class ProjectileUnit(ActionUnit):
