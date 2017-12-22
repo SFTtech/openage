@@ -68,24 +68,29 @@ def tests_cpp():
     """
 
     yield "openage::coord::tests::coord"
+    yield "openage::curve::tests::container"
+    yield "openage::curve::tests::curve_types"
+    yield "openage::curve::tests::events2"
+    yield "openage::curve::tests::serialization"
     yield "openage::datastructure::tests::constexpr_map"
     yield "openage::datastructure::tests::pairing_heap"
+    yield "openage::input::tests::parse_event_string", "keybinds parsing"
+    yield "openage::input::tests::parse_event_string", "keybinds parsing"
     yield "openage::job::tests::test_job_manager"
     yield "openage::path::tests::path_node", "pathfinding"
-    yield "openage::pyinterface::tests::pyobject"
     yield "openage::pyinterface::tests::err_py_to_cpp"
+    yield "openage::pyinterface::tests::pyobject"
     yield "openage::renderer::tests::font"
     yield "openage::renderer::tests::font_manager"
     yield "openage::rng::tests::run"
+    yield "openage::util::tests::array_conversion"
     yield "openage::util::tests::constinit_vector"
     yield "openage::util::tests::enum_"
     yield "openage::util::tests::init"
     yield "openage::util::tests::matrix"
     yield "openage::util::tests::quaternion"
-    yield "openage::util::tests::vector"
     yield "openage::util::tests::siphash"
-    yield "openage::util::tests::array_conversion"
-    yield "openage::input::tests::parse_event_string", "keybinds parsing"
+    yield "openage::util::tests::vector"
 
 
 def demos_cpp():
@@ -105,6 +110,8 @@ def demos_cpp():
            "translates a Python exception to C++")
     yield ("openage::pyinterface::tests::pyobject_demo",
            "a tiny interactive interpreter using PyObjectRef")
+    yield ("openage::curvepong::demo",
+           "a pong game implemented in curves")
 
 
 def benchmark_cpp():
