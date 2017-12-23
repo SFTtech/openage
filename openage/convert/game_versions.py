@@ -64,12 +64,6 @@ class GameVersion(enum.Enum):
         Support.nope,
         {'Game/battlegrounds_x1.exe', 'Game/Data/genie_x1.dat'},
     )
-    swgb_exfronts = (
-        12.2,
-        "Star Wars: Galactic Battlegrounds: Expanding Fronts",
-        Support.nope,
-        {'GAME/battlegrounds_x2.exe', 'game/data/genie_x2.dat'},
-    )
     age2_tc_fe = (
         12.0,
         "Age of Empires 2: Forgotten Empires",

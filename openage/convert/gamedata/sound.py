@@ -15,7 +15,7 @@ class SoundItem(Exportable):
     data_format = []
 
     # TODO: Enable conversion for SWGB; replace "filename"
-    #===========================================================================
+    # ===========================================================================
     # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
     #     data_format.append((READ_EXPORT, "filename", "char[27]"))
     # else:
@@ -25,8 +25,15 @@ class SoundItem(Exportable):
 
     data_format.append((READ_EXPORT, "resource_id",  "int32_t"))
     data_format.append((READ_EXPORT, "probablilty",  "int16_t"))
+
+    # TODO: Enable conversion for AOE1; replace "civilisation", "icon_set"
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.append((READ_EXPORT, "civilisation", "int16_t"))
+    #     data_format.append((READ,        "icon_set",     "int16_t"))
+    # ===========================================================================
     data_format.append((READ_EXPORT, "civilisation", "int16_t"))
-    data_format.append((READ,        "icon_set",    "int16_t"))
+    data_format.append((READ,        "icon_set",     "int16_t"))
 
 
 class Sound(Exportable):

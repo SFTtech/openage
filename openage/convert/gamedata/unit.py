@@ -72,8 +72,8 @@ class UnitCommand(Exportable):
             151: "FEITORIA",
             768: "UNKNOWN_768",
             1024: "UNKNOWN_1024",
-            },
-        )))
+        },
+    )))
     data_format.append((READ_EXPORT, "class_id", "int16_t"))
     data_format.append((READ_EXPORT, "unit_id", "int16_t"))
     data_format.append((READ_EXPORT, "terrain_id", "int16_t"))
@@ -129,6 +129,7 @@ class UnitHeader(Exportable):
     )))
 
 
+# Only used in SWGB
 class UnitLine(Exportable):
     name_struct        = "unit_header"
     name_struct_file   = "unit"
@@ -157,8 +158,8 @@ class ResourceStorage(Exportable):
             1: "KEEP_AFTER_DEATH",
             2: "RESET_ON_DEATH_INSTANT",
             4: "RESET_ON_DEATH_WHEN_COMPLETED",
-            },
-        )))
+        },
+    )))
 
 
 class DamageGraphic(Exportable):
@@ -177,8 +178,8 @@ class DamageGraphic(Exportable):
             0: "TOP",      # adds graphics on top (e.g. flames)
             1: "RANDOM",   # adds graphics on top randomly
             2: "REPLACE",  # replace original graphics (e.g. damaged walls)
-            },
-        )))
+        },
+    )))
 
 
 class HitType(Exportable):
@@ -218,7 +219,7 @@ class HitType(Exportable):
             28: "CAVALRY_ARCHER",
             29: "EAGLE_WARRIOR",
             30: "UNKNOWN_30",
-            },
+        },
     )))
     data_format.append((READ, "amount", "int16_t"))
 
@@ -431,7 +432,7 @@ class ResourceCost(Exportable):
             195: "CONSTRUCTION_RATE_MULTIPLIER",    # except for wonders
             196: "HUN_WONDER_BONUS",
             197: "SPIES_DISCOUNT",                  # or atheism_active?
-            }
+        }
     )))
     data_format.append((READ, "amount", "int16_t"))
     data_format.append((READ, "enabled", "int16_t"))
@@ -538,7 +539,14 @@ class UnitObject(Exportable):
     data_format.append((READ_EXPORT, "radius_y", "float"))
     data_format.append((READ_EXPORT, "radius_z", "float"))
     data_format.append((READ_EXPORT, "train_sound", "int16_t"))
+
+    # TODO: Enable conversion for AOE1; replace "damage_sound"
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.append((READ_EXPORT, "damage_sound", "int16_t"))
+    # ===========================================================================
     data_format.append((READ_EXPORT, "damage_sound", "int16_t"))
+
     data_format.append((READ_EXPORT, "dead_unit_id", "int16_t"))        # unit id to become on death
     data_format.append((READ, "placement_mode", "int8_t"))              # 0=placable on top of others in scenario editor, 5=can't
     data_format.append((READ, "can_be_nuilt_on", "int8_t"))             # 1=no footprints
@@ -546,7 +554,14 @@ class UnitObject(Exportable):
     data_format.append((READ, "hidden_in_editor", "int8_t"))
     data_format.append((READ, "old_portrait_icon_id", "int16_t"))
     data_format.append((READ, "enabled", "int8_t"))                     # 0=unlocked by research, 1=insta-available
+
+    # TODO: Enable conversion for AOE1; replace "disabled"
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.append((READ, "disabled", "int8_t"))
+    # ===========================================================================
     data_format.append((READ, "disabled", "int8_t"))
+
     data_format.append((READ, "placement_side_terrain0", "int16_t"))    # terrain id that's needed somewhere on the foundation (e.g. dock water)
     data_format.append((READ, "placement_side_terrain1", "int16_t"))    # second slot for ^
     data_format.append((READ, "placement_terrain0", "int16_t"))         # terrain needed for placement (e.g. dock: water)
@@ -686,6 +701,43 @@ class UnitObject(Exportable):
     data_format.append((READ, "doppelgaenger_on_death", "int8_t"))
     data_format.append((READ, "resource_gather_drop", "int8_t"))
 
+    # TODO: Enable conversion for AOE1, AOK; replace 6 values below
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     # bit 0 == 1 && val != 7: mask shown behind buildings,
+    #     # bit 0 == 0 && val != {6, 10}: no mask displayed,
+    #     # val == {-1, 7}: in open area mask is partially displayed
+    #     # val == {6, 10}: building, causes mask to appear on units behind it
+    #     data_format.append((READ, "occlusion_mask", "int8_t"))
+    #     data_format.append((READ, "obstruction_type", EnumLookupMember(
+    #             # selects the available ui command buttons for the unit
+    #             raw_type    = "int8_t",
+    #             type_name   = "obstruction_types",
+    #             lookup_dict = {
+    #                 0: "PASSABLE",              # farm, gate, dead bodies, town center
+    #                 2: "BUILDING",
+    #                 3: "BERSERK",
+    #                 5: "UNIT",
+    #                 10: "MOUNTAIN",             # mountain (matches occlusion_mask)
+    #             },
+    #         )))
+    #     data_format.append((READ_EXPORT, "selection_shape", "int8_t"))            # 0=square, 1<=round
+    #
+    #     if GameVersion-age2_aok not in game_versions:
+    #         # bitfield of unit attributes:
+    #         # bit 0: allow garrison,
+    #         # bit 1: don't join formation,
+    #         # bit 2: stealth unit,
+    #         # bit 3: detector unit,
+    #         # bit 4: mechanical unit,
+    #         # bit 5: biological unit,
+    #         # bit 6: self-shielding unit,
+    #         # bit 7: invisible unit
+    #         data_format.append((READ, "trait", "uint8_t"))
+    #         data_format.append((READ, "civilisation", "int8_t"))
+    #         data_format.append((READ, "attribute_piece", "int16_t"))    # leftover from trait+civ variable
+    # ===========================================================================
+
     # bit 0 == 1 && val != 7: mask shown behind buildings,
     # bit 0 == 0 && val != {6, 10}: no mask displayed,
     # val == {-1, 7}: in open area mask is partially displayed
@@ -703,6 +755,9 @@ class UnitObject(Exportable):
                 10: "MOUNTAIN",             # mountain (matches occlusion_mask)
             },
         )))
+    # There shouldn't be a value here according to genieutils
+    # What is this?
+    data_format.append((READ_EXPORT, "selection_shape", "int8_t"))            # 0=square, 1<=round
 
     # bitfield of unit attributes:
     # bit 0: allow garrison,
@@ -716,6 +771,8 @@ class UnitObject(Exportable):
     data_format.append((READ, "trait", "uint8_t"))
     data_format.append((READ, "civilisation", "int8_t"))
     data_format.append((READ, "attribute_piece", "int16_t"))   # leftover from trait+civ variable
+    # ===========================================================================
+
     data_format.append((READ_EXPORT, "selection_effect", EnumLookupMember(
             # things that happen when the unit was selected
             raw_type = "int8_t",
@@ -757,23 +814,28 @@ class UnitObject(Exportable):
                 2: "RUN",        # run when attacked
                 3: "UNKNOWN3",
                 4: "ATTACK",
-            },
-        )))
-
+        },
+    )))
 
     data_format.append((READ, "convert_terrain", "int8_t"))
     data_format.append((READ_EXPORT, "name", "char[name_length]"))
 
     # TODO: Enable conversion for SWGB
-    #===========================================================================
+    # ===========================================================================
     # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
     #     data_format.append((READ, "name2_length", "uint16_t"))
     #     data_format.append((READ, "name2", "char[name2_length]"))
     #     data_format.append((READ, "unit_line", "int16_t"))
     #     data_format.append((READ, "min_tech_level", "int8_t"))
-    #===========================================================================
+    # ===========================================================================
 
     data_format.append((READ_EXPORT, "id1", "int16_t"))
+
+    # TODO: Enable conversion for AOE1; replace "id2"
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.append((READ_EXPORT, "id2", "int16_t"))
+    # ===========================================================================
     data_format.append((READ_EXPORT, "id2", "int16_t"))
 
 
@@ -840,6 +902,16 @@ class MovingUnit(DoppelgangerUnit):
     data_format.append((READ, "trail_opsions", "uint8_t"))             # ground traces: -1: no tracking present, 2: projectiles with tracking unit
     data_format.append((READ, "trail_spacing", "float"))               # ground trace spacing: 0: no tracking, 0.5: trade cart, 0.12: some projectiles, 0.4: other projectiles
     data_format.append((READ, "old_move_algorithm", "int8_t"))
+
+    # TODO: Enable conversion for AOE1; replace 5 values below
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.append((READ, "turn_radius", "float"))
+    #     data_format.append((READ, "turn_radius_speed", "float"))
+    #     data_format.append((READ, "max_yaw_per_sec_moving", "float"))
+    #     data_format.append((READ, "stationary_yaw_revolution_time", "float"))
+    #     data_format.append((READ, "max_yaw_per_sec_stationary", "float"))
+    # ===========================================================================
     data_format.append((READ, "turn_radius", "float"))
     data_format.append((READ, "turn_radius_speed", "float"))
     data_format.append((READ, "max_yaw_per_sec_moving", "float"))
@@ -874,6 +946,16 @@ class ActionUnit(MovingUnit):
     data_format.append((READ_EXPORT, "stop_sound_id", "int16_t"))       # sound when the command is done (e.g. unit stops at target position)
     data_format.append((READ, "run_pattern", "int8_t"))                 # how animals run around randomly
 
+    # TODO: Enable conversion for AOE1
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) in game_versions:
+    #     data_format.append((READ_EXPORT, "unit_count", "uint16_t"))
+    #     data_format.append((READ_EXPORT, "unit_commands", SubdataMember(
+    #             ref_type=UnitCommand,
+    #             length="unit_count",
+    #     )))
+    # ===========================================================================
+
 
 class ProjectileUnit(ActionUnit):
     """
@@ -887,7 +969,16 @@ class ProjectileUnit(ActionUnit):
 
     data_format = []
     data_format.append((READ_EXPORT, None, IncludeMembers(cls=ActionUnit)))
+
+    # TODO: Enable conversion for AOE1; replace "default_armor"
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror or GameVersion.age2_aok) in game_versions:
+    #     data_format.append((READ, "default_armor", "uint8_t"))
+    # else:
+    #     data_format.append((READ, "default_armor", "int16_t"))
+    # ===========================================================================
     data_format.append((READ, "default_armor", "int16_t"))
+
     data_format.append((READ, "attack_count", "uint16_t"))
     data_format.append((READ, "attacks", SubdataMember(ref_type=HitType, length="attack_count")))
     data_format.append((READ, "armor_count", "uint16_t"))
@@ -925,7 +1016,14 @@ class ProjectileUnit(ActionUnit):
             },
         )))
     data_format.append((READ, "weapon_range_min", "float"))                # minimum range that this projectile requests for display
+
+    # TODO: Enable conversion for AOE1; replace "accuracy_dispersion"
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.append((READ, "accuracy_dispersion", "float"))
+    # ===========================================================================
     data_format.append((READ, "accuracy_dispersion", "float"))
+
     data_format.append((READ_EXPORT, "fight_sprite_id", "int16_t"))
     data_format.append((READ, "melee_armor_displayed", "int16_t"))
     data_format.append((READ, "attack_displayed", "int16_t"))
@@ -964,7 +1062,10 @@ class LivingUnit(ProjectileUnit):
 
     data_format = []
     data_format.append((READ_EXPORT, None, IncludeMembers(cls=ProjectileUnit)))
-    data_format.append((READ_EXPORT, "resource_cost", SubdataMember(ref_type=ResourceCost, length=3)))
+    data_format.append((READ_EXPORT, "resource_cost", SubdataMember(
+            ref_type=ResourceCost,
+            length=3,
+        )))
     data_format.append((READ_EXPORT, "creation_time", "int16_t"))         # in seconds
     data_format.append((READ_EXPORT, "creation_location_id", "int16_t"))  # e.g. 118 = villager
 
@@ -987,6 +1088,46 @@ class LivingUnit(ProjectileUnit):
     # | 31 | 32 | 33 | 34 | 35 |
     # +------------------------+
     data_format.append((READ, "creation_button_id", "int8_t"))
+
+    # TODO: Enable conversion for AOE1; replace 13 values below
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.append((READ, "rear_attack_modifier", "float"))
+    #     data_format.append((READ, "flank_attack_modifier", "float"))
+    #     data_format.append((READ_EXPORT, "creatable_type", EnumLookupMember(
+    #             raw_type    = "int8_t",
+    #             type_name   = "creatable_types",
+    #             lookup_dict = {
+    #                 0: "NONHUMAN",  # building, animal, ship
+    #                 1: "VILLAGER",  # villager, king
+    #                 2: "MELEE",     # soldier, siege, predator, trader
+    #                 3: "MOUNTED",   # camel rider
+    #                 4: "RELIC",
+    #                 5: "RANGED_PROJECTILE",  # archer
+    #                 6: "RANGED_MAGIC",       # monk
+    #                 21: "TRANSPORT_SHIP",
+    #             },
+    #         )))
+    #     data_format.append((READ, "hero_mode", "int8_t"))                           # if building: "others" tab in editor, if living unit: "heroes" tab, regenerate health + monk immunity
+    #     data_format.append((READ_EXPORT, "garrison_graphic", "int32_t"))            # graphic to display when units are garrisoned
+    #     data_format.append((READ, "attack_projectile_count", "float"))              # projectile count when nothing garrisoned, including both normal and duplicated projectiles
+    #     data_format.append((READ, "attack_projectile_max_count", "int8_t"))         # total projectiles when fully garrisoned
+    #     data_format.append((READ, "attack_projectile_spawning_area_width", "float"))
+    #     data_format.append((READ, "attack_projectile_spawning_area_length", "float"))
+    #     data_format.append((READ, "attack_projectile_spawning_area_randomness", "float"))  # placement randomness, 0=from single spot, 1=random, 1<less random
+    #     data_format.append((READ, "attack_projectile_secondary_unit_id", "int32_t"))   # uses its own attack values
+    #     data_format.append((READ, "special_graphic_id", "int32_t")) # used just before unit reaches its target enemy, configuration:
+    #     data_format.append((READ, "special_activation", "int8_t"))  # determines adjacent unit graphics, if 1: building can adapt graphics by adjacent buildings
+    #                                                                 # 0: default: only works when facing the hit angle.
+    #                                                                 # 1: block: activates special graphic when receiving damage and not pursuing the attacker.
+    #                                                                 # while idle, blocking decreases damage taken by 1/3.
+    #                                                                 # also: a wall changes the graphics (when not-an-end piece) because of this.
+    #                                                                 # 2: counter charge: activates special graphic when idle and enemy is near.
+    #                                                                 # while idle, attacks back once on first received hit.
+    #                                                                 # enemy must be unit type 70 and have less than 0.2 max range.
+    #                                                                 # 3: charge: activates special graphic when closer than two tiles to the target.
+    #                                                                 # deals 2X damage on 1st hit
+    # ===========================================================================
     data_format.append((READ, "rear_attack_modifier", "float"))
     data_format.append((READ, "flank_attack_modifier", "float"))
     data_format.append((READ_EXPORT, "creatable_type", EnumLookupMember(
@@ -1022,6 +1163,7 @@ class LivingUnit(ProjectileUnit):
                                                                 # enemy must be unit type 70 and have less than 0.2 max range.
                                                                 # 3: charge: activates special graphic when closer than two tiles to the target.
                                                                 # deals 2X damage on 1st hit
+    # ===========================================================================
 
     data_format.append((READ, "pierce_armor_displayed", "int16_t"))  # unit stats display of pierce armor
 
@@ -1038,7 +1180,14 @@ class BuildingUnit(LivingUnit):
     data_format = []
     data_format.append((READ_EXPORT, None, IncludeMembers(cls=LivingUnit)))
     data_format.append((READ_EXPORT, "construction_graphic_id", "int16_t"))
+
+    # TODO: Enable conversion for AOE1; replace "snow_graphic_id"
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror or age2_aok) not in game_versions:
+    #     data_format.append((READ, "snow_graphic_id", "int16_t"))
+    # ===========================================================================
     data_format.append((READ, "snow_graphic_id", "int16_t"))
+
     data_format.append((READ, "adjacent_mode", "int8_t"))            # 1=adjacent units may change the graphics
     data_format.append((READ, "graphics_angle", "int16_t"))
     data_format.append((READ, "disappears_when_built", "int8_t"))
@@ -1046,12 +1195,52 @@ class BuildingUnit(LivingUnit):
     data_format.append((READ_EXPORT, "foundation_terrain_id", "int16_t"))  # change underlying terrain to this id when building completed
     data_format.append((READ, "old_overlay_id", "int16_t"))          # deprecated terrain-like structures knowns as "Overlays" from alpha AOE used for roads
     data_format.append((READ, "research_id", "int16_t"))             # research_id to be enabled when building creation
+
+    # TODO: Enable conversion for AOE1; replace 5 values below
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.append((READ, "can_burn", "int8_t"))
+    #     data_format.append((READ_EXPORT, "building_annex", SubdataMember(
+    #             ref_type=BuildingAnnex,
+    #             length=4
+    #         )))
+    #     data_format.append((READ, "head_unit_id", "int16_t"))            # building at which an annex building is attached to
+    #     data_format.append((READ, "transform_unit_id", "int16_t"))       # destination unit id when unit shall transform (e.g. unpack)
+    #     data_format.append((READ, "transform_sound_id", "int16_t"))
+    # ===========================================================================
     data_format.append((READ, "can_burn", "int8_t"))
-    data_format.append((READ_EXPORT, "building_annex", SubdataMember(ref_type=BuildingAnnex, length=4)))
+    data_format.append((READ_EXPORT, "building_annex", SubdataMember(
+            ref_type=BuildingAnnex,
+            length=4
+        )))
     data_format.append((READ, "head_unit_id", "int16_t"))            # building at which an annex building is attached to
     data_format.append((READ, "transform_unit_id", "int16_t"))       # destination unit id when unit shall transform (e.g. unpack)
     data_format.append((READ, "transform_sound_id", "int16_t"))
+    #===========================================================================
+
     data_format.append((READ, "construction_sound_id", "int16_t"))
+
+    # TODO: Enable conversion for AOE1; replace 5 values below
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.append((READ_EXPORT, "garrison_type", EnumLookupMember(
+    #             raw_type    = "int8_t",
+    #             type_name   = "garrison_types",
+    #             lookup_dict = {  # TODO: create bitfield
+    #                 0x00: "NONE",
+    #                 0x01: "VILLAGER",
+    #                 0x02: "INFANTRY",
+    #                 0x04: "CAVALRY",
+    #                 0x08: "MONK",
+    #                 0x0b: "NOCAVALRY",
+    #                 0x0f: "ALL",
+    #             },
+    #         )))
+    #     data_format.append((READ, "garrison_heal_rate", "float"))
+    #     data_format.append((READ, "garrison_repair_rate", "float"))              # (unknown garrison value)
+    #     data_format.append((READ, "salvage_unit_id", "int16_t"))       # id of the unit used for salvages
+    #     data_format.append((READ, "salvage_attributes", "int8_t[6]"))  # list of attributes for salvages (looting table)
+    # ===========================================================================
     data_format.append((READ_EXPORT, "garrison_type", EnumLookupMember(
             raw_type    = "int8_t",
             type_name   = "garrison_types",
@@ -1069,6 +1258,7 @@ class BuildingUnit(LivingUnit):
     data_format.append((READ, "garrison_repair_rate", "float"))              # (unknown garrison value)
     data_format.append((READ, "salvage_unit_id", "int16_t"))       # id of the unit used for salvages
     data_format.append((READ, "salvage_attributes", "int8_t[6]"))  # list of attributes for salvages (looting table)
+    # ===========================================================================
 
 
 # unit type id => human readable name

@@ -53,21 +53,21 @@ class Graphic(Exportable):
     data_format = []
 
     # TODO: Enable conversion for SWGB; replace "name"
-    #===========================================================================
+    # ===========================================================================
     # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
     #     data_format.append((READ_EXPORT, "name", "char[25]"))
     # else:
     #     data_format.append((READ_EXPORT, "name", "char[21]"))
-    #===========================================================================
+    # ===========================================================================
     data_format.append((READ_EXPORT, "name", "char[21]"))          # internal name: e.g. ARRG2NNE = archery range feudal Age north european
 
     # TODO: Enable conversion for SWGB; replace "name"
-    #===========================================================================
+    # ===========================================================================
     # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
     #     data_format.append((READ_EXPORT, "filename", "char[25]"))
     # else:
     #     data_format.append((READ_EXPORT, "filename", "char[13]"))
-    #===========================================================================
+    # ===========================================================================
     data_format.append((READ_EXPORT, "filename", "char[13]"))
 
     data_format.append((READ_EXPORT, "slp_id", "int32_t"))             # id of the graphics file in the drs
@@ -104,13 +104,20 @@ class Graphic(Exportable):
     data_format.append((READ_EXPORT, "sequence_type", "int8_t"))
     data_format.append((READ_EXPORT, "id", "int16_t"))
     data_format.append((READ_EXPORT, "mirroring_mode", "int8_t"))
-    data_format.append((READ, "editor_flag", "int8_t"))        # sprite editor thing for AoK
+
+    # TODO: Enable conversion for AOE1; replace "editor_flag"
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.append((READ, "editor_flag", "int8_t"))
+    # ===========================================================================
+    data_format.append((READ, "editor_flag", "int8_t"))                # sprite editor thing for AoK
+
     data_format.append((READ_EXPORT, "graphic_deltas", SubdataMember(
             ref_type=GraphicDelta,
             length="delta_count",
         )))
 
-        # if attack_sound_used:
+    # if attack_sound_used:
     data_format.append((READ, "graphic_attack_sounds", SubdataMember(
             ref_type=GraphicAttackSound,
             length=lambda o: "angle_count" if o.attack_sound_used != 0 else 0,

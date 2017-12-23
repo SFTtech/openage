@@ -118,6 +118,7 @@ class Mode(Exportable):
             }
         )))
 
+
 class AgeTechTree(Exportable):
     name_struct        = "age_tech_tree"
     name_struct_file   = "tech"
@@ -133,12 +134,31 @@ class AgeTechTree(Exportable):
     # 4=upgrading, constructing, creating
     # 5=research completed, building built
     data_format.append((READ, "status", "int8_t"))
+
+    # TODO: Enable conversion for AOE1; replace 6 values below
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.append((READ, "building_count", "int8_t"))
+    #     data_format.append((READ, "buildings", "int32_t[building_count]"))
+    #     data_format.append((READ, "unit_count", "int8_t"))
+    #     data_format.append((READ, "units", "int32_t[unit_count]"))
+    #     data_format.append((READ, "research_count", "int8_t"))
+    #     data_format.append((READ, "researches", "int32_t[research_count]"))
+    # else:
+    #     data_format.append((READ, "building_count", "int8_t"))
+    #     data_format.append((READ, "buildings", "int32_t[40]"))
+    #     data_format.append((READ, "unit_count", "int8_t"))
+    #     data_format.append((READ, "units", "int32_t[40]"))
+    #     data_format.append((READ, "research_count", "int8_t"))
+    #     data_format.append((READ, "researches", "int32_t[40]"))
+    # ===========================================================================
     data_format.append((READ, "building_count", "int8_t"))
     data_format.append((READ, "buildings", "int32_t[building_count]"))
     data_format.append((READ, "unit_count", "int8_t"))
     data_format.append((READ, "units", "int32_t[unit_count]"))
     data_format.append((READ, "research_count", "int8_t"))
     data_format.append((READ, "researches", "int32_t[research_count]"))
+    # ===========================================================================
 
     data_format.append((READ, "slots_used", "int32_t"))
     data_format.append((READ, "unit_researches", "int32_t[10]"))
@@ -150,14 +170,14 @@ class AgeTechTree(Exportable):
     data_format.append((READ, "building_level_count", "int8_t"))
 
     # TODO: Enable conversion for SWGB; replace "buildings_per_zone", "group_length_per_zone"
-    #===========================================================================
+    # ===========================================================================
     # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
     #     data_format.append((READ, "buildings_per_zone", "int8_t[20]"))
     #     data_format.append((READ, "group_length_per_zone", "int8_t[20]"))
     # else:
     #     data_format.append((READ, "buildings_per_zone", "int8_t[10]"))
     #     data_format.append((READ, "group_length_per_zone", "int8_t[10]"))
-    #===========================================================================
+    # ===========================================================================
 
     data_format.append((READ, "buildings_per_zone", "int8_t[10]"))
     data_format.append((READ, "group_length_per_zone", "int8_t[10]"))
@@ -178,12 +198,31 @@ class BuildingConnection(Exportable):
     # 4=upgrading, constructing, creating
     # 5=research completed, building built
     data_format.append((READ, "status", "int8_t"))                       # maybe always 2 because we got 2 of them hardcoded below (unit_or_research, mode)
+
+    # TODO: Enable conversion for AOE1; replace 6 values below
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.append((READ_EXPORT, "building_count", "int8_t"))
+    #     data_format.append((READ, "buildings", "int32_t[building_count]"))   # new buildings available when this building was created
+    #     data_format.append((READ_EXPORT, "unit_count", "int8_t"))
+    #     data_format.append((READ, "units", "int32_t[unit_count]"))           # new units
+    #     data_format.append((READ_EXPORT, "research_count", "int8_t"))
+    #     data_format.append((READ, "researches", "int32_t[research_count]"))  # new researches
+    # else:
+    #     data_format.append((READ_EXPORT, "building_count", "int8_t"))
+    #     data_format.append((READ, "buildings", "int32_t[40]"))
+    #     data_format.append((READ_EXPORT, "unit_count", "int8_t"))
+    #     data_format.append((READ, "units", "int32_t[40]"))
+    #     data_format.append((READ_EXPORT, "research_count", "int8_t"))
+    #     data_format.append((READ, "researches", "int32_t[40]"))
+    # ===========================================================================
     data_format.append((READ_EXPORT, "building_count", "int8_t"))
     data_format.append((READ, "buildings", "int32_t[building_count]"))   # new buildings available when this building was created
     data_format.append((READ_EXPORT, "unit_count", "int8_t"))
     data_format.append((READ, "units", "int32_t[unit_count]"))           # new units
     data_format.append((READ_EXPORT, "research_count", "int8_t"))
     data_format.append((READ, "researches", "int32_t[research_count]"))  # new researches
+    # ===========================================================================
 
     data_format.append((READ_EXPORT, "slots_used", "int32_t"))
     data_format.append((READ, "unit_researches", "int32_t[10]"))
@@ -223,8 +262,19 @@ class UnitConnection(Exportable):
     )))
 
     data_format.append((READ, "vertical_lines", "int32_t"))
+
+    # TODO: Enable conversion for AOE1; replace "unit_count", "units"
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.append((READ, "unit_count", "int8_t"))
+    #     data_format.append((READ, "units", "int32_t[unit_count]"))
+    # else:
+    #     data_format.append((READ, "unit_count", "int8_t"))
+    #     data_format.append((READ, "units", "int32_t[40]"))
+    # ===========================================================================
     data_format.append((READ, "unit_count", "int8_t"))
     data_format.append((READ, "units", "int32_t[unit_count]"))
+
     data_format.append((READ, "location_in_age", "int32_t"))    # 0=hidden, 1=first, 2=second
     data_format.append((READ, "required_research", "int32_t"))  # min amount of researches to be discovered for this unit to be available
     data_format.append((READ, "line_mode", "int32_t"))          # 0=independent/new in its line, 3=depends on a previous research in its line
@@ -246,12 +296,31 @@ class ResearchConnection(Exportable):
     # 5=research completed, building built
     data_format.append((READ, "status", "int8_t"))
     data_format.append((READ, "upper_building", "int32_t"))
+
+    # TODO: Enable conversion for AOE1; replace 6 values below
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.append((READ, "building_count", "int8_t"))
+    #     data_format.append((READ, "buildings", "int32_t[building_count]"))
+    #     data_format.append((READ, "unit_count", "int8_t"))
+    #     data_format.append((READ, "units", "int32_t[unit_count]"))
+    #     data_format.append((READ, "research_count", "int8_t"))
+    #     data_format.append((READ, "researches", "int32_t[research_count]"))
+    # else:
+    #     data_format.append((READ, "building_count", "int8_t"))
+    #     data_format.append((READ, "buildings", "int32_t[40]"))
+    #     data_format.append((READ, "unit_count", "int8_t"))
+    #     data_format.append((READ, "units", "int32_t[40]"))
+    #     data_format.append((READ, "research_count", "int8_t"))
+    #     data_format.append((READ, "researches", "int32_t[40]"))
+    # ===========================================================================
     data_format.append((READ, "building_count", "int8_t"))
     data_format.append((READ, "buildings", "int32_t[building_count]"))
     data_format.append((READ, "unit_count", "int8_t"))
     data_format.append((READ, "units", "int32_t[unit_count]"))
     data_format.append((READ, "research_count", "int8_t"))
     data_format.append((READ, "researches", "int32_t[research_count]"))
+    # ===========================================================================
 
     data_format.append((READ_EXPORT, "slots_used", "int32_t"))
     data_format.append((READ, "unit_researches", "int32_t[10]"))

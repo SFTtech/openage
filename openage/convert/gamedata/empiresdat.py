@@ -42,25 +42,32 @@ class EmpiresDat(Exportable):
     name_struct_file   = "gamedata"
     name_struct        = "empiresdat"
     struct_description = "empires2_x1_p1.dat structure"
-    
+
     data_format = []
     data_format.append((READ, "versionstr", "char[8]"))
 
     # TODO: Enable conversion for SWGB
-    #===========================================================================
+    # ===========================================================================
     # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
     #     data_format.append((READ, "civ_count_swgb", "uint16_t"))
     #     data_format.append((READ_UNKNOWN, None, "int32_t"))
     #     data_format.append((READ_UNKNOWN, None, "int32_t"))
     #     data_format.append((READ_UNKNOWN, None, "int32_t"))
     #     data_format.append((READ_UNKNOWN, None, "int32_t"))
-    #===========================================================================
+    # ===========================================================================
 
     # terrain header data
     data_format.append((READ, "terrain_restriction_count", "uint16_t"))
     data_format.append((READ, "terrain_count", "uint16_t"))   # number of "used" terrains
     data_format.append((READ, "float_ptr_terrain_tables", "int32_t[terrain_restriction_count]"))
+
+    # TODO: Enable conversion for AOE1; replace "terrain_pass_graphics_ptrs"
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.append((READ, "terrain_pass_graphics_ptrs", "int32_t[terrain_restriction_count]"))
+    # ===========================================================================
     data_format.append((READ, "terrain_pass_graphics_ptrs", "int32_t[terrain_restriction_count]"))
+
     data_format.append((READ, "terrain_restrictions", SubdataMember(
             ref_type=terrain.TerrainRestriction,
             length="terrain_restriction_count",
@@ -104,7 +111,7 @@ class EmpiresDat(Exportable):
     data_format.append((READ, "padding1", "int16_t"))
 
     # TODO: Enable conversion for SWGB; replace "terrains"
-    #===========================================================================
+    # ===========================================================================
     # # 42 terrains are stored (100 in African Kingdoms), but less are used.
     # # TODO: maybe this number is defined somewhere.
     # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
@@ -117,12 +124,17 @@ class EmpiresDat(Exportable):
     #             ref_type=terrain.Terrain,
     #             length=100,
     #             )))
+    # elif (GameVersion.aoe_1 or GameVersion.aoe_ror) in game_versions:
+    #     data_format.append((READ_EXPORT,  "terrains", SubdataMember(
+    #             ref_type=terrain.Terrain,
+    #             length=42,
+    #             )))
     # else:
     #     data_format.append((READ_EXPORT,  "terrains", SubdataMember(
     #             ref_type=terrain.Terrain,
     #             length=42,
     #             )))
-    #===========================================================================
+    # ===========================================================================
     data_format.append((READ_EXPORT,  "terrains", SubdataMember(
             ref_type=terrain.Terrain,
             # 42 terrains are stored (100 in African Kingdoms), but less are used.
@@ -166,12 +178,12 @@ class EmpiresDat(Exportable):
     data_format.append((READ,         "fog_flag", "int8_t"))
 
     # TODO: Enable conversion for SWGB; replace "terrain_blob0"
-    #===========================================================================
+    # ===========================================================================
     # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
     #     data_format.append((READ_UNKNOWN, "terrain_blob0", "uint8_t[25]"))
     # else:
     #     data_format.append((READ_UNKNOWN, "terrain_blob0", "uint8_t[21]"))
-    #===========================================================================
+    # ===========================================================================
     data_format.append((READ_UNKNOWN, "terrain_blob0", "uint8_t[21]"))
     data_format.append((READ_UNKNOWN, "terrain_blob1", "uint32_t[157]"))
 
@@ -195,16 +207,25 @@ class EmpiresDat(Exportable):
         )))
 
     # TODO: Enable conversion for SWGB
-    #===========================================================================
+    # ===========================================================================
     # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
     #     data_format.append((READ, "unit_line_count", "uint16_t"))
     #     data_format.append((READ, "unit_lines", SubdataMember(
     #             ref_type=unit.UnitLine,
     #             length="unit_line_count",
     #         )))
-    #===========================================================================
+    # ===========================================================================
 
     # unit header data
+    # TODO: Enable conversion for AOE1; replace "unit_count", "unit_headers"
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.append((READ_EXPORT, "unit_count", "uint32_t"))
+    #     data_format.append((READ_EXPORT, "unit_headers", SubdataMember(
+    #             ref_type=unit.UnitHeader,
+    #             length="unit_count",
+    #         )))
+    # ===========================================================================
     data_format.append((READ_EXPORT, "unit_count", "uint32_t"))
     data_format.append((READ_EXPORT, "unit_headers", SubdataMember(
             ref_type=unit.UnitHeader,
@@ -219,10 +240,10 @@ class EmpiresDat(Exportable):
         )))
 
     # TODO: Enable conversion for SWGB
-    #===========================================================================
+    # ===========================================================================
     # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
     #     data_format.append((READ_UNKNOWN, None, "int8_t"))
-    #===========================================================================
+    # ===========================================================================
 
     # research data
     data_format.append((READ_EXPORT, "research_count", "uint16_t"))
@@ -232,12 +253,22 @@ class EmpiresDat(Exportable):
         )))
 
     # TODO: Enable conversion for SWGB
-    #===========================================================================
+    # ===========================================================================
     # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
     #     data_format.append((READ_UNKNOWN, None, "int8_t"))
-    #===========================================================================
+    # ===========================================================================
 
-    # something else
+    # TODO: Enable conversion for AOE1; replace the 7 values below
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.append((READ, "time_slice", "int32_t"))
+    #     data_format.append((READ, "unit_kill_rate", "int32_t"))
+    #     data_format.append((READ, "unit_kill_total", "int32_t"))
+    #     data_format.append((READ, "unit_hitpoint_rate", "int32_t"))
+    #     data_format.append((READ, "unit_hitpoint_total", "int32_t"))
+    #     data_format.append((READ, "razing_kill_rate", "int32_t"))
+    #     data_format.append((READ, "razing_kill_total", "int32_t"))
+    # ===========================================================================
     data_format.append((READ, "time_slice", "int32_t"))
     data_format.append((READ, "unit_kill_rate", "int32_t"))
     data_format.append((READ, "unit_kill_total", "int32_t"))
@@ -245,26 +276,27 @@ class EmpiresDat(Exportable):
     data_format.append((READ, "unit_hitpoint_total", "int32_t"))
     data_format.append((READ, "razing_kill_rate", "int32_t"))
     data_format.append((READ, "razing_kill_total", "int32_t"))
+    # ===========================================================================
 
     # technology tree data
     data_format.append((READ_EXPORT, "age_entry_count", "uint8_t"))
     data_format.append((READ_EXPORT, "building_connection_count", "uint8_t"))
 
     # TODO: Enable conversion for SWGB; replace "unit_connection_count"
-    #===========================================================================
+    # ===========================================================================
     # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
     #     data_format.append((READ_EXPORT, "unit_connection_count", "uint16_t"))
     # else:
     #     data_format.append((READ_EXPORT, "unit_connection_count", "uint8_t"))
-    #===========================================================================
+    # ===========================================================================
     data_format.append((READ_EXPORT, "unit_connection_count", "uint8_t"))
 
     data_format.append((READ_EXPORT, "research_connection_count", "uint8_t"))
-    data_format.append((READ, "total_unit_tech_groups", "int32_t"))
     data_format.append((READ_EXPORT, "age_tech_tree", SubdataMember(
             ref_type=tech.AgeTechTree,
             length="age_entry_count"
         )))
+    data_format.append((READ_UNKNOWN, None, "int32_t"))
     data_format.append((READ_EXPORT, "building_connection", SubdataMember(
             ref_type=tech.BuildingConnection,
             length="building_connection_count"
@@ -299,7 +331,7 @@ class EmpiresDatWrapper(Exportable):
     name_struct_file   = "gamedata"
     name_struct        = "gamedata"
     struct_description = "wrapper for empires2_x1_p1.dat structure"
-    
+
     # TODO: we could reference to other gamedata structures
     data_format = [
         (READ_EXPORT, "empiresdat", SubdataMember(

@@ -31,12 +31,12 @@ class TerrainPassGraphic(Exportable):
     data_format.append((READ, "slp_id_walk_tile", "int32_t"))
 
     # TODO: Enable conversion for SWGB; replace "replication_amount"
-    #===========================================================================
+    # ===========================================================================
     # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
     #     data_format.append((READ, "walk_sprite_rate", "float"))
     # else:
     #     data_format.append((READ, "replication_amount", "int32_t"))
-    #===========================================================================
+    # ===========================================================================
     data_format.append((READ, "replication_amount", "int32_t"))
 
 
@@ -58,6 +58,15 @@ class TerrainRestriction(Exportable):
     # build-ability: [<= 0.05 can't build here, > 0.05 can build]
     # damage: [0: damage multiplier is 1, > 0: multiplier = value]
     data_format.append((READ, "accessible_dmgmultiplier", "float[terrain_count]"))
+
+    # TODO: Enable conversion for AOE1; replace "pass_graphics"
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.append((READ, "pass_graphics", SubdataMember(
+    #             ref_type=TerrainPassGraphic,
+    #             length="terrain_count",
+    #     )))
+    # ===========================================================================
     data_format.append((READ, "pass_graphics", SubdataMember(
             ref_type=TerrainPassGraphic,
             length="terrain_count",
@@ -92,22 +101,30 @@ class Terrain(Exportable):
     data_format.append((READ,        "random",              "int8_t"))
 
     # TODO: Enable conversion for SWGB; replace "name0", "name1"
-    #===========================================================================
+    # ===========================================================================
     # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
     #     data_format.append((READ_EXPORT, "name0",           "char[17]"))
     #     data_format.append((READ_EXPORT, "name1",           "char[17]"))
     # else:
     #     data_format.append((READ_EXPORT, "name0",           "char[13]"))
     #     data_format.append((READ_EXPORT, "name1",           "char[13]"))
-    #===========================================================================
+    # ===========================================================================
     data_format.append((READ_EXPORT, "name0",               "char[13]"))
     data_format.append((READ_EXPORT, "name1",               "char[13]"))
 
     data_format.append((READ_EXPORT, "slp_id",              "int32_t"))
     data_format.append((READ,        "shape_ptr",           "int32_t"))
     data_format.append((READ_EXPORT, "sound_id",            "int32_t"))
+
+    # TODO: Enable conversion for AOE1; replace "blend_priority", "blend_mode"
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.append((READ_EXPORT, "blend_priority",      "int32_t"))     # see doc/media/blendomatic.md for blending stuff
+    #     data_format.append((READ_EXPORT, "blend_mode",          "int32_t"))
+    # ===========================================================================
     data_format.append((READ_EXPORT, "blend_priority",      "int32_t"))     # see doc/media/blendomatic.md for blending stuff
     data_format.append((READ_EXPORT, "blend_mode",          "int32_t"))
+
     data_format.append((READ_EXPORT, "map_color_hi",        "uint8_t"))     # color of this terrain tile, mainly used in the minimap.
     data_format.append((READ_EXPORT, "map_color_med",       "uint8_t"))
     data_format.append((READ_EXPORT, "map_color_low",       "uint8_t"))
@@ -127,7 +144,7 @@ class Terrain(Exportable):
     data_format.append((READ_EXPORT, "terrain_to_draw0",  "int16_t"))
     data_format.append((READ_EXPORT, "terrain_to_draw1",  "int16_t"))
 
-        # probably references to the TerrainBorders, there are 42 terrains in game
+    # probably references to the TerrainBorders, there are 42 terrains in game
     data_format.append((READ, "borders", ArrayMember(
             "int16_t",
             (lambda o: 100 if GameVersion.age2_hd_ak in o.game_versions else 42)
@@ -138,9 +155,9 @@ class Terrain(Exportable):
     data_format.append((READ, "terrain_units_used_count",   "int16_t"))      # how many entries of the above lists shall we use to place units implicitly when this terrain is placed
 
     # TODO: Enable conversion for SWGB
-    #===========================================================================
+    # ===========================================================================
     # if (GameVersion.swgb_10 or GameVersion.swgb_cc) not in game_versions:
-    #===========================================================================
+    # ===========================================================================
     data_format.append((READ, "phantom",                 "int16_t"))
 
 

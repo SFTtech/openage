@@ -2,7 +2,6 @@
 
 # TODO pylint: disable=C,R
 
-from ..game_versions import GameVersion
 from ..dataformat.exportable import Exportable
 from ..dataformat.members import SubdataMember
 from ..dataformat.member_access import READ
@@ -31,8 +30,16 @@ class Research(Exportable):
             length=3,
         )))
     data_format.append((READ, "required_tech_count", "int16_t"))       # a subset of the above required techs may be sufficient, this defines the minimum amount
+
+    # TODO: Enable conversion for AOE1; replace "civilisation_id", "full_tech_mode"
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.append((READ, "civilisation_id", "int16_t"))           # id of the civ that gets this technology
+    #     data_format.append((READ, "full_tech_mode", "int16_t"))            # 1: research is available when the full tech tree is activated on game start, 0: not
+    # ===========================================================================
     data_format.append((READ, "civilisation_id", "int16_t"))           # id of the civ that gets this technology
     data_format.append((READ, "full_tech_mode", "int16_t"))            # 1: research is available when the full tech tree is activated on game start, 0: not
+
     data_format.append((READ, "research_location_id", "int16_t"))      # unit id, where the tech will appear to be researched
     data_format.append((READ, "language_dll_name", "uint16_t"))
     data_format.append((READ, "language_dll_description", "uint16_t"))
@@ -48,8 +55,8 @@ class Research(Exportable):
     data_format.append((READ, "name", "char[name_length]"))
 
     # TODO: Enable conversion for SWGB
-    #===========================================================================
+    # ===========================================================================
     # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
     #     data_format.append((READ, "name2_length", "uint16_t"))
     #     data_format.append((READ, "name2", "char[name2_length]"))
-    #===========================================================================
+    # ===========================================================================
