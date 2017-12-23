@@ -43,23 +43,26 @@ class EmpiresDat(Exportable):
     name_struct        = "empiresdat"
     struct_description = "empires2_x1_p1.dat structure"
 
-    data_format = []
-    data_format.append((READ, "versionstr", "char[8]"))
+    data_format = [(READ, "versionstr", "char[8]")]
 
     # TODO: Enable conversion for SWGB
     # ===========================================================================
     # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
-    #     data_format.append((READ, "civ_count_swgb", "uint16_t"))
-    #     data_format.append((READ_UNKNOWN, None, "int32_t"))
-    #     data_format.append((READ_UNKNOWN, None, "int32_t"))
-    #     data_format.append((READ_UNKNOWN, None, "int32_t"))
-    #     data_format.append((READ_UNKNOWN, None, "int32_t"))
+    #     data_format.extend([
+    #         (READ, "civ_count_swgb", "uint16_t"),
+    #         (READ_UNKNOWN, None, "int32_t"),
+    #         (READ_UNKNOWN, None, "int32_t"),
+    #         (READ_UNKNOWN, None, "int32_t"),
+    #         (READ_UNKNOWN, None, "int32_t"),
+    #     ])
     # ===========================================================================
 
     # terrain header data
-    data_format.append((READ, "terrain_restriction_count", "uint16_t"))
-    data_format.append((READ, "terrain_count", "uint16_t"))   # number of "used" terrains
-    data_format.append((READ, "float_ptr_terrain_tables", "int32_t[terrain_restriction_count]"))
+    data_format.extend([
+        (READ, "terrain_restriction_count", "uint16_t"),
+        (READ, "terrain_count", "uint16_t"),   # number of "used" terrains
+        (READ, "float_ptr_terrain_tables", "int32_t[terrain_restriction_count]"),
+    ])
 
     # TODO: Enable conversion for AOE1; replace "terrain_pass_graphics_ptrs"
     # ===========================================================================
@@ -68,47 +71,49 @@ class EmpiresDat(Exportable):
     # ===========================================================================
     data_format.append((READ, "terrain_pass_graphics_ptrs", "int32_t[terrain_restriction_count]"))
 
-    data_format.append((READ, "terrain_restrictions", SubdataMember(
+    data_format.extend([
+        (READ, "terrain_restrictions", SubdataMember(
             ref_type=terrain.TerrainRestriction,
             length="terrain_restriction_count",
             passed_args={"terrain_count"},
-        )))
+        )),
 
-    # player color data
-    data_format.append((READ, "player_color_count", "uint16_t"))
-    data_format.append((READ, "player_colors", SubdataMember(
+        # player color data
+        (READ, "player_color_count", "uint16_t"),
+        (READ, "player_colors", SubdataMember(
             ref_type=playercolor.PlayerColor,
             length="player_color_count",
-        )))
+        )),
 
-    # sound data
-    data_format.append((READ_EXPORT, "sound_count", "uint16_t"))
-    data_format.append((READ_EXPORT, "sounds", SubdataMember(
+        # sound data
+        (READ_EXPORT, "sound_count", "uint16_t"),
+        (READ_EXPORT, "sounds", SubdataMember(
             ref_type=sound.Sound,
             length="sound_count",
-        )))
+        )),
 
-    # graphic data
-    data_format.append((READ, "graphic_count", "uint16_t"))
-    data_format.append((READ, "graphic_ptrs", "uint32_t[graphic_count]"))
-    data_format.append((READ_EXPORT, "graphics", SubdataMember(
+        # graphic data
+        (READ, "graphic_count", "uint16_t"),
+        (READ, "graphic_ptrs", "uint32_t[graphic_count]"),
+        (READ_EXPORT, "graphics", SubdataMember(
             ref_type  = graphic.Graphic,
             length    = "graphic_count",
             offset_to = ("graphic_ptrs", lambda o: o > 0),
-        )))
+        )),
 
-    # terrain data
-    data_format.append((READ, "virt_function_ptr", "int32_t"))
-    data_format.append((READ, "map_pointer", "int32_t"))
-    data_format.append((READ, "map_width", "int32_t"))
-    data_format.append((READ, "map_height", "int32_t"))
-    data_format.append((READ, "world_width", "int32_t"))
-    data_format.append((READ, "world_height", "int32_t"))
-    data_format.append((READ_EXPORT,  "tile_sizes", SubdataMember(
+        # terrain data
+        (READ, "virt_function_ptr", "int32_t"),
+        (READ, "map_pointer", "int32_t"),
+        (READ, "map_width", "int32_t"),
+        (READ, "map_height", "int32_t"),
+        (READ, "world_width", "int32_t"),
+        (READ, "world_height", "int32_t"),
+        (READ_EXPORT,  "tile_sizes", SubdataMember(
             ref_type=terrain.TileSize,
             length=19,      # number of tile types
-        )))
-    data_format.append((READ, "padding1", "int16_t"))
+        )),
+        (READ, "padding1", "int16_t"),
+    ])
 
     # TODO: Enable conversion for SWGB; replace "terrains"
     # ===========================================================================
@@ -135,7 +140,8 @@ class EmpiresDat(Exportable):
     #             length=42,
     #             )))
     # ===========================================================================
-    data_format.append((READ_EXPORT,  "terrains", SubdataMember(
+    data_format.append(
+        (READ_EXPORT,  "terrains", SubdataMember(
             ref_type=terrain.Terrain,
             # 42 terrains are stored (100 in African Kingdoms), but less are used.
             # TODO: maybe this number is defined somewhere.
@@ -144,38 +150,40 @@ class EmpiresDat(Exportable):
                     else 42),
         )))
 
-    data_format.append((READ,         "terrain_border", SubdataMember(
+    data_format.extend([
+        (READ,         "terrain_border", SubdataMember(
             ref_type=terrain.TerrainBorder,
             length=16,
-        )))
+        )),
 
-    data_format.append((READ,         "map_row_offset", "int32_t"))
-    data_format.append((READ,         "map_min_x", "float"))
-    data_format.append((READ,         "map_min_y", "float"))
-    data_format.append((READ,         "map_max_x", "float"))
-    data_format.append((READ,         "map_max_y", "float"))
-    data_format.append((READ,         "map_max_xplus1", "float"))
-    data_format.append((READ,         "map_min_yplus1", "float"))
+        (READ,         "map_row_offset", "int32_t"),
+        (READ,         "map_min_x", "float"),
+        (READ,         "map_min_y", "float"),
+        (READ,         "map_max_x", "float"),
+        (READ,         "map_max_y", "float"),
+        (READ,         "map_max_xplus1", "float"),
+        (READ,         "map_min_yplus1", "float"),
 
-    data_format.append((READ,         "terrain_count_additional", "uint16_t"))
-    data_format.append((READ,         "borders_used", "uint16_t"))
-    data_format.append((READ,         "max_terrain", "int16_t"))
-    data_format.append((READ_EXPORT,  "tile_width", "int16_t"))
-    data_format.append((READ_EXPORT,  "tile_height", "int16_t"))
-    data_format.append((READ_EXPORT,  "tile_half_height", "int16_t"))
-    data_format.append((READ_EXPORT,  "tile_half_width", "int16_t"))
-    data_format.append((READ_EXPORT,  "elev_height", "int16_t"))
-    data_format.append((READ,         "current_row", "int16_t"))
-    data_format.append((READ,         "current_column", "int16_t"))
-    data_format.append((READ,         "block_beginn_row", "int16_t"))
-    data_format.append((READ,         "block_end_row", "int16_t"))
-    data_format.append((READ,         "block_begin_column", "int16_t"))
-    data_format.append((READ,         "block_end_column", "int16_t"))
-    data_format.append((READ,         "search_map_ptr", "int32_t"))
-    data_format.append((READ,         "search_map_rows_ptr", "int32_t"))
-    data_format.append((READ,         "any_frame_change", "int8_t"))
-    data_format.append((READ,         "map_visible_flag", "int8_t"))
-    data_format.append((READ,         "fog_flag", "int8_t"))
+        (READ,         "terrain_count_additional", "uint16_t"),
+        (READ,         "borders_used", "uint16_t"),
+        (READ,         "max_terrain", "int16_t"),
+        (READ_EXPORT,  "tile_width", "int16_t"),
+        (READ_EXPORT,  "tile_height", "int16_t"),
+        (READ_EXPORT,  "tile_half_height", "int16_t"),
+        (READ_EXPORT,  "tile_half_width", "int16_t"),
+        (READ_EXPORT,  "elev_height", "int16_t"),
+        (READ,         "current_row", "int16_t"),
+        (READ,         "current_column", "int16_t"),
+        (READ,         "block_beginn_row", "int16_t"),
+        (READ,         "block_end_row", "int16_t"),
+        (READ,         "block_begin_column", "int16_t"),
+        (READ,         "block_end_column", "int16_t"),
+        (READ,         "search_map_ptr", "int32_t"),
+        (READ,         "search_map_rows_ptr", "int32_t"),
+        (READ,         "any_frame_change", "int8_t"),
+        (READ,         "map_visible_flag", "int8_t"),
+        (READ,         "fog_flag", "int8_t"),
+    ])
 
     # TODO: Enable conversion for SWGB; replace "terrain_blob0"
     # ===========================================================================
@@ -185,59 +193,69 @@ class EmpiresDat(Exportable):
     #     data_format.append((READ_UNKNOWN, "terrain_blob0", "uint8_t[21]"))
     # ===========================================================================
     data_format.append((READ_UNKNOWN, "terrain_blob0", "uint8_t[21]"))
-    data_format.append((READ_UNKNOWN, "terrain_blob1", "uint32_t[157]"))
 
-    # random map config
-    data_format.append((READ, "random_map_count", "uint32_t"))
-    data_format.append((READ, "random_map_ptr", "uint32_t"))
-    data_format.append((READ, "map_infos", SubdataMember(
+    data_format.extend([
+        (READ_UNKNOWN, "terrain_blob1", "uint32_t[157]"),
+
+        # random map config
+        (READ, "random_map_count", "uint32_t"),
+        (READ, "random_map_ptr", "uint32_t"),
+        (READ, "map_infos", SubdataMember(
             ref_type=maps.MapInfo,
             length="random_map_count",
-        )))
-    data_format.append((READ, "maps", SubdataMember(
+        )),
+        (READ, "maps", SubdataMember(
             ref_type=maps.Map,
             length="random_map_count",
-        )))
+        )),
 
-    # technology data
-    data_format.append((READ_EXPORT, "tech_count", "uint32_t"))
-    data_format.append((READ_EXPORT, "techs", SubdataMember(
+        # technology data
+        (READ_EXPORT, "tech_count", "uint32_t"),
+        (READ_EXPORT, "techs", SubdataMember(
             ref_type=tech.Tech,
             length="tech_count",
-        )))
+        )),
+    ])
 
     # TODO: Enable conversion for SWGB
     # ===========================================================================
     # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
-    #     data_format.append((READ, "unit_line_count", "uint16_t"))
-    #     data_format.append((READ, "unit_lines", SubdataMember(
+    #     data_format.extend([
+    #         (READ, "unit_line_count", "uint16_t"),
+    #         (READ, "unit_lines", SubdataMember(
     #             ref_type=unit.UnitLine,
     #             length="unit_line_count",
-    #         )))
+    #         )),
+    #     ])
     # ===========================================================================
 
     # unit header data
     # TODO: Enable conversion for AOE1; replace "unit_count", "unit_headers"
     # ===========================================================================
     # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
-    #     data_format.append((READ_EXPORT, "unit_count", "uint32_t"))
-    #     data_format.append((READ_EXPORT, "unit_headers", SubdataMember(
-    #             ref_type=unit.UnitHeader,
-    #             length="unit_count",
-    #         )))
+    #     data_format.extend([(READ_EXPORT, "unit_count", "uint32_t"),
+    #                         (READ_EXPORT, "unit_headers", SubdataMember(
+    #                             ref_type=unit.UnitHeader,
+    #                             length="unit_count",
+    #                         )),
+    #     ])
     # ===========================================================================
-    data_format.append((READ_EXPORT, "unit_count", "uint32_t"))
-    data_format.append((READ_EXPORT, "unit_headers", SubdataMember(
+    data_format.extend([
+        (READ_EXPORT, "unit_count", "uint32_t"),
+        (READ_EXPORT, "unit_headers", SubdataMember(
             ref_type=unit.UnitHeader,
             length="unit_count",
-        )))
+        )),
+    ])
 
     # civilisation data
-    data_format.append((READ_EXPORT, "civ_count", "uint16_t"))
-    data_format.append((READ_EXPORT, "civs", SubdataMember(
+    data_format.extend([
+        (READ_EXPORT, "civ_count", "uint16_t"),
+        (READ_EXPORT, "civs", SubdataMember(
             ref_type=civ.Civ,
             length="civ_count"
-        )))
+        )),
+    ])
 
     # TODO: Enable conversion for SWGB
     # ===========================================================================
@@ -246,11 +264,13 @@ class EmpiresDat(Exportable):
     # ===========================================================================
 
     # research data
-    data_format.append((READ_EXPORT, "research_count", "uint16_t"))
-    data_format.append((READ_EXPORT, "researches", SubdataMember(
+    data_format.extend([
+        (READ_EXPORT, "research_count", "uint16_t"),
+        (READ_EXPORT, "researches", SubdataMember(
             ref_type=research.Research,
             length="research_count"
-        )))
+        )),
+    ])
 
     # TODO: Enable conversion for SWGB
     # ===========================================================================
@@ -261,26 +281,32 @@ class EmpiresDat(Exportable):
     # TODO: Enable conversion for AOE1; replace the 7 values below
     # ===========================================================================
     # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
-    #     data_format.append((READ, "time_slice", "int32_t"))
-    #     data_format.append((READ, "unit_kill_rate", "int32_t"))
-    #     data_format.append((READ, "unit_kill_total", "int32_t"))
-    #     data_format.append((READ, "unit_hitpoint_rate", "int32_t"))
-    #     data_format.append((READ, "unit_hitpoint_total", "int32_t"))
-    #     data_format.append((READ, "razing_kill_rate", "int32_t"))
-    #     data_format.append((READ, "razing_kill_total", "int32_t"))
+    #     data_format.extend([
+    #         (READ, "time_slice", "int32_t"),
+    #         (READ, "unit_kill_rate", "int32_t"),
+    #         (READ, "unit_kill_total", "int32_t"),
+    #         (READ, "unit_hitpoint_rate", "int32_t"),
+    #         (READ, "unit_hitpoint_total", "int32_t"),
+    #         (READ, "razing_kill_rate", "int32_t"),
+    #         (READ, "razing_kill_total", "int32_t"),
+    #     ])
     # ===========================================================================
-    data_format.append((READ, "time_slice", "int32_t"))
-    data_format.append((READ, "unit_kill_rate", "int32_t"))
-    data_format.append((READ, "unit_kill_total", "int32_t"))
-    data_format.append((READ, "unit_hitpoint_rate", "int32_t"))
-    data_format.append((READ, "unit_hitpoint_total", "int32_t"))
-    data_format.append((READ, "razing_kill_rate", "int32_t"))
-    data_format.append((READ, "razing_kill_total", "int32_t"))
+    data_format.extend([
+        (READ, "time_slice", "int32_t"),
+        (READ, "unit_kill_rate", "int32_t"),
+        (READ, "unit_kill_total", "int32_t"),
+        (READ, "unit_hitpoint_rate", "int32_t"),
+        (READ, "unit_hitpoint_total", "int32_t"),
+        (READ, "razing_kill_rate", "int32_t"),
+        (READ, "razing_kill_total", "int32_t"),
+    ])
     # ===========================================================================
 
     # technology tree data
-    data_format.append((READ_EXPORT, "age_entry_count", "uint8_t"))
-    data_format.append((READ_EXPORT, "building_connection_count", "uint8_t"))
+    data_format.extend([
+        (READ_EXPORT, "age_entry_count", "uint8_t"),
+        (READ_EXPORT, "building_connection_count", "uint8_t"),
+    ])
 
     # TODO: Enable conversion for SWGB; replace "unit_connection_count"
     # ===========================================================================
@@ -291,24 +317,27 @@ class EmpiresDat(Exportable):
     # ===========================================================================
     data_format.append((READ_EXPORT, "unit_connection_count", "uint8_t"))
 
-    data_format.append((READ_EXPORT, "research_connection_count", "uint8_t"))
-    data_format.append((READ_EXPORT, "age_tech_tree", SubdataMember(
+    data_format.extend([
+        (READ_EXPORT, "research_connection_count", "uint8_t"),
+        (READ_EXPORT, "age_tech_tree", SubdataMember(
             ref_type=tech.AgeTechTree,
             length="age_entry_count"
-        )))
-    data_format.append((READ_UNKNOWN, None, "int32_t"))
-    data_format.append((READ_EXPORT, "building_connection", SubdataMember(
+        )),
+        # What is this? There shouldn't be something here
+        (READ_UNKNOWN, None, "int32_t"),
+        (READ_EXPORT, "building_connection", SubdataMember(
             ref_type=tech.BuildingConnection,
             length="building_connection_count"
-        )))
-    data_format.append((READ_EXPORT, "unit_connection", SubdataMember(
+        )),
+        (READ_EXPORT, "unit_connection", SubdataMember(
             ref_type=tech.UnitConnection,
             length="unit_connection_count"
-        )))
-    data_format.append((READ_EXPORT, "research_connection", SubdataMember(
+        )),
+        (READ_EXPORT, "research_connection", SubdataMember(
             ref_type=tech.ResearchConnection,
             length="research_connection_count"
-        )))
+        )),
+    ])
 
     @classmethod
     def get_hash(cls):

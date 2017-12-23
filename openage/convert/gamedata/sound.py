@@ -20,20 +20,26 @@ class SoundItem(Exportable):
     #     data_format.append((READ_EXPORT, "filename", "char[27]"))
     # else:
     #     data_format.append((READ_EXPORT, "filename", "char[13]"))
-    #===========================================================================
+    # ===========================================================================
     data_format.append((READ_EXPORT, "filename", "char[13]"))
 
-    data_format.append((READ_EXPORT, "resource_id",  "int32_t"))
-    data_format.append((READ_EXPORT, "probablilty",  "int16_t"))
+    data_format.extend([
+        (READ_EXPORT, "resource_id",  "int32_t"),
+        (READ_EXPORT, "probablilty",  "int16_t"),
+    ])
 
     # TODO: Enable conversion for AOE1; replace "civilisation", "icon_set"
     # ===========================================================================
     # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
-    #     data_format.append((READ_EXPORT, "civilisation", "int16_t"))
-    #     data_format.append((READ,        "icon_set",     "int16_t"))
+    #     data_format.extend([
+    #         (READ_EXPORT, "civilisation", "int16_t"),
+    #         (READ,        "icon_set",     "int16_t"),
+    #     ])
     # ===========================================================================
-    data_format.append((READ_EXPORT, "civilisation", "int16_t"))
-    data_format.append((READ,        "icon_set",     "int16_t"))
+    data_format.extend([
+        (READ_EXPORT, "civilisation", "int16_t"),
+        (READ,        "icon_set",     "int16_t"),
+    ])
 
 
 class Sound(Exportable):
@@ -41,13 +47,14 @@ class Sound(Exportable):
     name_struct_file   = "sound"
     struct_description = "describes a sound, consisting of several sound items."
 
-    data_format = []
-    data_format.append((READ_EXPORT, "id", "int16_t"))
-    data_format.append((READ, "play_delay", "int16_t"))
-    data_format.append((READ_EXPORT, "file_count", "uint16_t"))
-    data_format.append((READ, "cache_time", "int32_t"))                   # always 300000
-    data_format.append((READ_EXPORT, "sound_items", SubdataMember(
+    data_format = [
+        (READ_EXPORT, "id", "int16_t"),
+        (READ, "play_delay", "int16_t"),
+        (READ_EXPORT, "file_count", "uint16_t"),
+        (READ, "cache_time", "int32_t"),                   # always 300000
+        (READ_EXPORT, "sound_items", SubdataMember(
             ref_type=SoundItem,
             ref_to="id",
             length="file_count",
-        )))
+        )),
+    ]
