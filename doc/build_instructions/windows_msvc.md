@@ -10,13 +10,14 @@
  - [Python 3](https://www.python.org/downloads/windows/)
    - With the "pip" option enabled. We use `pip` to install other dependencies.
    - With the "Precompile standard library" option enabled.
+   - With the "Download debug binaries (...)" option enabled.
    - If in doubt, run the installer again and choose "Modify".
  - [CMake](https://cmake.org/download/)
 
 ### Python Modules
  Open a command prompt at `<Python 3 installation directory>/Scripts`
 
-    pip install numpy pillow pygments cython
+    pip install cython numpy pillow pygments pyreadline
 
 ### vcpkg packages
  Set up [vcpkg](https://github.com/Microsoft/vcpkg#quick-start). Open a command prompt at `<vcpkg directory>`
