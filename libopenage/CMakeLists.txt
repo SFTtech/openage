@@ -137,6 +137,9 @@ option(
 # TODO: if nyan was fetched once, fetch it forever(tm)
 if(NOT nyan_FOUND OR FORCE_DOWNLOAD_NYAN)
 	if(DOWNLOAD_NYAN OR FORCE_DOWNLOAD_NYAN)
+
+		message(STATUS "Processing nyan as submodule project...")
+
 		fetch_project(
 			NAME nyan
 			GIT_REPOSITORY https://github.com/SFTtech/nyan
@@ -151,20 +154,16 @@ if(NOT nyan_FOUND OR FORCE_DOWNLOAD_NYAN)
 		# register the targets
 		add_subdirectory(${nyan_SOURCE_DIR} ${nyan_BINARY_DIR})
 
-		message(STATUS "nyan processed successfully")
+		message(STATUS "nyan processed successfully!")
 
 	else()
 		message(FATAL_ERROR "
   Could not find the cmake package configuration file \"nyanConfig.cmake\".
   To find it, you have several options:
-
   * If your distribution provides it, install \"nyan\" through the package manager.
-
-  * If you want openage to automatically download \"nyan\", append -DDOWNLOAD_NYAN=YES to the cmake or configure invocation.
-
-  * If did not build nyan manually yet, follow the build instructions:
+  * If you want openage to automatically download \"nyan\", append `-DDOWNLOAD_NYAN=YES` to the cmake invocation or use `./configure --download-nyan`.
+  * If you want to build nyan manually, follow the build instructions:
       [[  doc/building.md#nyan-installation  ]]
-
   * If you already built nyan but it still can't be found (cmake package repo fails):
     * Try to set \"nyan_DIR\" to the nyan build directory (it contains nyanConfig.cmake)
       either through:  \"./configure $youroptions -- -Dnyan_DIR=/home/dev/nyan/build\"
