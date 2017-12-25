@@ -253,7 +253,10 @@ def invoke_cmake(args, bindir, defines, options):
         invocation.extend(['-G', 'Ninja'])
 
     if args.ccache:
-        invocation.extend(['-DENABLE_CCACHE=ON'])
+        invocation.append('-DENABLE_CCACHE=ON')
+
+    if args.download_nyan:
+        invocation.append("-DDOWNLOAD_NYAN=YES")
 
     cxx_options = dict()
     cxx_options["CXX_OPTIMIZATION_LEVEL"] = args.optimize
@@ -388,6 +391,8 @@ def parse_args():
                      help="use ninja instead of GNU make")
     cli.add_argument("--ccache", action="store_true",
                      help="activate using the ccache compiler cache")
+    cli.add_argument("--download-nyan", action="store_true",
+                     help="enable automatic download of the nyan project")
 
     # arguments after -- are used as raw cmake args
     cli.add_argument('raw_cmake_args', nargs=argparse.REMAINDER, default=[],
