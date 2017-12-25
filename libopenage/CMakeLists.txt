@@ -125,7 +125,7 @@ set(nyan_clone_version origin/master)
 option(
 	DOWNLOAD_NYAN
 	"whether to clone the nyan project in case it is not found"
-	ON
+	OFF
 )
 
 option(
