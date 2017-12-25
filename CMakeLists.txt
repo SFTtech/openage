@@ -50,6 +50,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(PYTHON_MIN_VERSION 3.4)
 set(CYTHON_MIN_VERSION 0.25)
 
+# CMake policies
+foreach(pol CMP0071  # enable automoc for generated files
+       )
+	if (POLICY ${pol})
+		cmake_policy(SET ${pol} NEW)
+	endif()
+endforeach()
+
+
 # Ensure CMAKE_BUILD_TYPE is set correctly.
 if(NOT CMAKE_BUILD_TYPE)
 	set(CMAKE_BUILD_TYPE "Debug")
