@@ -42,6 +42,10 @@ else()
 	project(openage CXX)
 endif()
 
+# C++ standard
+set(openage_cxx_standard 14)
+
+
 # Ensure CMAKE_BUILD_TYPE is set correctly.
 if(NOT CMAKE_BUILD_TYPE)
 	set(CMAKE_BUILD_TYPE "Debug")
@@ -113,9 +117,11 @@ include(GNUInstallDirs)
 include(CheckInSourceBuild)
 include(HandleCXXOptions)
 include(CheckCompilerFeatures)
+include(CMakeParseArguments)
 include(HandlePythonOptions)
 include(CheckRuntimeDependencies)
 include(DetectProjectVersion)
+include(DependencyFetch)
 
 # include build configuration modules
 include(CTest)

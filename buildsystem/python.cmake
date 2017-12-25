@@ -112,7 +112,10 @@ function(add_cython_modules)
 				set_target_properties("${TARGETNAME}" PROPERTIES
 					PREFIX ""
 					SUFFIX "${PYEXT_SUFFIX}"
+					CXX_STANDARD ${openage_cxx_standard}
+					CXX_STANDARD_REQUIRED ON
 				)
+
 				if(MSVC)
 					target_link_libraries("${TARGETNAME}" ${PYEXT_LIBRARY})
 				endif()

@@ -61,6 +61,8 @@ set_target_properties(libopenage PROPERTIES
 	VERSION 0
 	AUTOMOC ON
 	AUTOGEN_TARGET_DEPENDS "codegen"
+	CXX_STANDARD ${openage_cxx_standard}
+	CXX_STANDARD_REQUIRED ON
 )
 
 # library dependency specification
@@ -109,15 +111,56 @@ if(WANT_BACKTRACE)
 	find_package(GCCBacktrace)
 endif()
 
+#######################################
 # nyan integration
+
+# first, try to locate nyan directly
+# this discovers the system package or the user-registry package
 find_package(nyan CONFIG)
 
-if(NOT nyan_FOUND)
-	message(FATAL_ERROR "
+# if this didn't work, we can download nyan like a git submodule.
+# this is the treeish to be checked out.
+set(nyan_clone_version origin/master)
+
+option(
+	DOWNLOAD_NYAN
+	"whether to clone the nyan project in case it is not found"
+	ON
+)
+
+option(
+	FORCE_DOWNLOAD_NYAN
+	"Force the download and usage of the nyan project"
+	OFF
+)
+
+# TODO: if nyan was fetched once, fetch it forever(tm)
+if(NOT nyan_FOUND OR FORCE_DOWNLOAD_NYAN)
+	if(DOWNLOAD_NYAN OR FORCE_DOWNLOAD_NYAN)
+		fetch_project(
+			NAME nyan
+			GIT_REPOSITORY https://github.com/SFTtech/nyan
+			GIT_TAG ${nyan_clone_version}
+		)
+
+		# don't register nyan to the userpackage-repo!
+		set(REGISTER_USERPACKAGE OFF)
+		# don't generate the `doc` target again (name conflict!)
+		set(DOXYGEN_ENABLE OFF)
+
+		# register the targets
+		add_subdirectory(${nyan_SOURCE_DIR} ${nyan_BINARY_DIR})
+
+		message(STATUS "nyan processed successfully")
+
+	else()
+		message(FATAL_ERROR "
   Could not find the cmake package configuration file \"nyanConfig.cmake\".
   To find it, you have several options:
 
   * If your distribution provides it, install \"nyan\" through the package manager.
+
+  * If you want openage to automatically download \"nyan\", append -DDOWNLOAD_NYAN=YES to the cmake or configure invocation.
 
   * If did not build nyan manually yet, follow the build instructions:
       [[  doc/building.md#nyan-installation  ]]
@@ -130,7 +173,9 @@ if(NOT nyan_FOUND)
   In case of other problems, please try to figure them out (and tell us what you did).
   Contact information is in README.md.
 ")
+	endif()
 endif()
+
 
 if(GCCBacktrace_FOUND)
 	include_directories(${GCCBacktrace_INCLUDE_DIRS})
@@ -197,7 +242,7 @@ include_directories(
 # link the executable to those libraries
 target_link_libraries(libopenage
 	PUBLIC
-	        ${CMAKE_DL_LIBS}
+		${CMAKE_DL_LIBS}
 		${FONTCONFIG_LIB}
 		${FREETYPE_LIBRARIES}
 		${EPOXY_LIBRARIES}
@@ -213,6 +258,7 @@ target_link_libraries(libopenage
 		${OGG_LIB}
 		${EXECINFO_LIB}
 		nyan::nyan
+
 	# TODO: change to PUBLIC (or, alternatively, remove all keywords
 	# of this type) when qt cmake scripts change declarations of the
 	# IMPORTED libraries to GLOBAL.
