@@ -43,8 +43,8 @@ else()
 endif()
 
 # C++ standard
-set(openage_cxx_standard 14)
-
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Ensure CMAKE_BUILD_TYPE is set correctly.
 if(NOT CMAKE_BUILD_TYPE)

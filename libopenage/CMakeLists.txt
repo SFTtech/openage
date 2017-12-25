@@ -61,8 +61,6 @@ set_target_properties(libopenage PROPERTIES
 	VERSION 0
 	AUTOMOC ON
 	AUTOGEN_TARGET_DEPENDS "codegen"
-	CXX_STANDARD ${openage_cxx_standard}
-	CXX_STANDARD_REQUIRED ON
 )
 
 # library dependency specification
