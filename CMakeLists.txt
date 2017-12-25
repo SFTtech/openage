@@ -42,9 +42,13 @@ else()
 	project(openage CXX)
 endif()
 
-# C++ standard
+# C++ standard requirement
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Python and Cython requirements
+set(PYTHON_MIN_VERSION 3.4)
+set(CYTHON_MIN_VERSION 0.25)
 
 # Ensure CMAKE_BUILD_TYPE is set correctly.
 if(NOT CMAKE_BUILD_TYPE)
