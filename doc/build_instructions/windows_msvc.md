@@ -53,7 +53,8 @@
 
 ## Running openage (in devmode)
  While this is straightforward on other platforms, there is still stuff to do to run openage on Windows:
-  - Install the [DejaVu Book Font](https://dejavu-fonts.github.io/Download.html).
+  - Install the [DejaVu Book Font](https://dejavu-fonts.github.io/Download.html). Download and extract the latest `dejavu-fonts-ttf` tarball/zip file.
+    - Install `ttf/DejaVuSerif*.ttf` font files. This can be done by double-clicking or copying those to `%WINDIR%/Fonts`.
     - Set the `FONTCONFIG_PATH` environment variable to `<vcpkg directory>\installed\<relevant config>\tools\fontconfig\fonts\conf.d`.
     - Copy `fontconfig/57-dejavu-serif.conf` to the same.
   - [Optional] Set the `AGE2DIR` environment variable to the AoE 2 installation directory.
