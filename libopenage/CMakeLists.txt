@@ -132,14 +132,23 @@ option(
 	OFF
 )
 
-# TODO: if nyan was fetched once, fetch it forever(tm)
-if(NOT nyan_FOUND OR FORCE_DOWNLOAD_NYAN)
-	if(DOWNLOAD_NYAN OR FORCE_DOWNLOAD_NYAN)
+option(
+	DISABLE_SUBPROJECT_UPDATES
+	"Disable the automatic update of subprojects over the internet"
+	OFF
+)
+
+# if nyan was not found, consider downloading it as subproject
+# only use the subproject mode if it was requested
+# or if it was used before.
+if(NOT nyan_FOUND OR FORCE_DOWNLOAD_NYAN OR NYAN_WAS_DOWNLOADED)
+	if(DOWNLOAD_NYAN OR FORCE_DOWNLOAD_NYAN OR NYAN_WAS_DOWNLOADED)
 
 		message(STATUS "Processing nyan as submodule project...")
 
 		fetch_project(
 			NAME nyan
+			DISABLE_UPDATES ${DISABLE_SUBPROJECT_UPDATES}
 			GIT_REPOSITORY https://github.com/SFTtech/nyan
 			GIT_TAG ${nyan_clone_version}
 		)
@@ -153,6 +162,8 @@ if(NOT nyan_FOUND OR FORCE_DOWNLOAD_NYAN)
 		add_subdirectory(${nyan_SOURCE_DIR} ${nyan_BINARY_DIR})
 
 		message(STATUS "nyan processed successfully!")
+		set(NYAN_WAS_DOWNLOADED TRUE CACHE INTERNAL
+		    "nyan subproject was used")
 
 	else()
 		message(FATAL_ERROR "

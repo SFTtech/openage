@@ -19,7 +19,7 @@
 # )
 #
 function(fetch_project)
-	cmake_parse_arguments(PROJ "" "NAME" "" ${ARGN})
+	cmake_parse_arguments(PROJ "" "NAME;DISABLE_UPDATES" "" ${ARGN})
 
 	if(PROJ_NAME STREQUAL "")
 		message(FATAL_ERROR "no project name given")
