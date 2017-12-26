@@ -118,6 +118,17 @@ if(ENABLE_CCACHE)
 endif()
 
 
+# clang tidy static analysis
+option(
+	ENABLE_CLANG_TIDY
+	"activate clang tidy messages"
+	OFF
+)
+if(ENABLE_CLANG_TIDY)
+	set(CMAKE_CXX_CLANG_TIDY "clang-tidy;-checks=-*,readability-*")
+endif()
+
+
 # option processing is now done.
 
 

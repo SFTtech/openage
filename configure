@@ -255,6 +255,9 @@ def invoke_cmake(args, bindir, defines, options):
     if args.ccache:
         invocation.append('-DENABLE_CCACHE=ON')
 
+    if args.clang_tidy:
+        invocation.append('-DENABLE_CLANG_TIDY=ON')
+
     if args.download_nyan:
         invocation.append("-DDOWNLOAD_NYAN=YES")
 
@@ -391,6 +394,8 @@ def parse_args():
                      help="use ninja instead of GNU make")
     cli.add_argument("--ccache", action="store_true",
                      help="activate using the ccache compiler cache")
+    cli.add_argument("--clang-tidy", action="store_true",
+                     help="emit clang-tidy analysis messages")
     cli.add_argument("--download-nyan", action="store_true",
                      help="enable automatic download of the nyan project")
 
