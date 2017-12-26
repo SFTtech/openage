@@ -6,8 +6,10 @@
 # Usage: fetch_project(NAME ${projectname} ${locationspecification...})
 #
 # sets in caller scope:
-#   ${projectname}_SOURCE_DIR
-#   ${projectname}_BINARY_DIR
+#   ${projectname}_SOURCE_DIR     -- subproject source directory
+#   ${projectname}_BINARY_DIR     -- subproject binary directory
+#   ${projectname}_SUBPROJ_DIR    -- everything of the subproject
+#                                 -- (including src and bin directory)
 #
 # You need to specify the location with options of
 # ExternalProject_Add, for example:
@@ -73,4 +75,5 @@ function(fetch_project)
 
 	set(${PROJ_NAME}_SOURCE_DIR "${PROJ_SRC_DIR}" PARENT_SCOPE)
 	set(${PROJ_NAME}_BINARY_DIR "${PROJ_BIN_DIR}" PARENT_SCOPE)
+	set(${PROJ_NAME}_SUBPROJ_DIR "${PROJ_DIR}" PARENT_SCOPE)
 endfunction()

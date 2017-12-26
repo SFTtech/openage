@@ -138,11 +138,20 @@ option(
 	OFF
 )
 
+# check if nyan was used as subproject before (and still exists)
+if(DEFINED NYAN_SUBPROJ_LOCATION AND IS_DIRECTORY "${NYAN_SUBPROJ_LOCATION}")
+	set(USED_NYAN_SUBPROJ TRUE)
+else()
+	set(USED_NYAN_SUBPROJ FALSE)
+	set(NYAN_SUBPROJ_LOCATION "" CACHE INTERNAL
+		"nyan subproject not used")
+endif()
+
 # if nyan was not found, consider downloading it as subproject
 # only use the subproject mode if it was requested
 # or if it was used before.
-if(NOT nyan_FOUND OR FORCE_DOWNLOAD_NYAN OR NYAN_WAS_DOWNLOADED)
-	if(DOWNLOAD_NYAN OR FORCE_DOWNLOAD_NYAN OR NYAN_WAS_DOWNLOADED)
+if(NOT nyan_FOUND OR FORCE_DOWNLOAD_NYAN OR USED_NYAN_SUBPROJ)
+	if(DOWNLOAD_NYAN OR FORCE_DOWNLOAD_NYAN OR USED_NYAN_SUBPROJ)
 
 		message(STATUS "Processing nyan as submodule project...")
 
@@ -162,8 +171,8 @@ if(NOT nyan_FOUND OR FORCE_DOWNLOAD_NYAN OR NYAN_WAS_DOWNLOADED)
 		add_subdirectory(${nyan_SOURCE_DIR} ${nyan_BINARY_DIR})
 
 		message(STATUS "nyan processed successfully!")
-		set(NYAN_WAS_DOWNLOADED TRUE CACHE INTERNAL
-		    "nyan subproject was used")
+		set(NYAN_SUBPROJ_LOCATION "${nyan_SUBPROJ_DIR}" CACHE INTERNAL
+		    "nyan subproject location")
 
 	else()
 		message(FATAL_ERROR "
