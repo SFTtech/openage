@@ -1,7 +1,7 @@
 # Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
-cmake_minimum_required(VERSION 3.1.0)
-# required for CMAKE_CXX_STANDARD
+cmake_minimum_required(VERSION 3.8.0)
+# required for CMAKE_CXX_STANDARD for C++17
 
 # main build configuration file
 
@@ -28,22 +28,11 @@ Or ask for help:
   * IRC:    #sfttech on freenode.net
 ")
 
-# cmake < 3.4.0 has problems with projects that use C++ but not C,
-# especially in the FindThreads module (when header files are checked).
-if(CMAKE_VERSION VERSION_LESS "3.4.0")
-	message(WARNING "using cmake ${CMAKE_VERSION} < 3.4.0, falling back and setting CC=CXX.")
-	project(openage C CXX)
 
-	# simple hack to set CC=CXX because
-	# older cmake requires CC for some header tests
-	set(CMAKE_C_COMPILER "${CMAKE_CXX_COMPILER}")
-	set(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS}")
-else()
-	project(openage CXX)
-endif()
+project(openage CXX)
 
 # C++ standard requirement
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Python and Cython requirements
