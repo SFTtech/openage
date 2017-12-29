@@ -26,7 +26,7 @@ Dependencies are needed for:
 
 Dependency list:
 
-    C     gcc >=4.9 or clang >=3.4 (clang >=3.5 for Mac OS X)
+    C     gcc >=7 or clang >=4
     CRA   python >=3.4
     C     cython >=0.25
     C     cmake >=3.1.0

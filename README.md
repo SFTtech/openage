@@ -24,7 +24,7 @@ The foundation of **openage**:
 
 Technology     | Component
 ---------------|----------
-**C++14**      | Engine core
+**C++17**      | Engine core
 **Python3**    | Scripting, media conversion, in-game console, code generation
 **Qt5**        | Graphical user interface
 **Cython**     | Glue code
