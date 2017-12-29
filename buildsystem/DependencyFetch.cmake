@@ -3,7 +3,17 @@
 # Fetch project with given name from the Internet.
 # Basically wraps ExternalProject and does a nested cmake invocation.
 #
-# Usage: fetch_project(NAME ${projectname} ${locationspecification...})
+# Usage:
+#   fetch_project(
+#       NAME ${projectname}
+#       [DISABLE_UPDATES]
+#       ${locationspecification...}
+#   )
+#
+# Arguments:
+#   NAME                    -- custom name of the project
+#   DISABLE_UPDATES         -- when set, don't do automatic git updates
+#   locationspecification   -- passed to ExternalProject_Add
 #
 # sets in caller scope:
 #   ${projectname}_SOURCE_DIR     -- subproject source directory
@@ -21,7 +31,7 @@
 # )
 #
 function(fetch_project)
-	cmake_parse_arguments(PROJ "" "NAME;DISABLE_UPDATES" "" ${ARGN})
+	cmake_parse_arguments(PROJ "DISABLE_UPDATES" "NAME" "" ${ARGN})
 
 	if(PROJ_NAME STREQUAL "")
 		message(FATAL_ERROR "no project name given")
