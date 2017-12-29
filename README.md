@@ -32,6 +32,7 @@ Technology     | Component
 **OpenGL2.1**  | Rendering, shaders
 **SDL2**       | Cross-platform Audio/Input/Window handling
 **Opus**       | Audio codec
+[**nyan**](https://github.com/SFTtech/nyan) | Content Configuration and Modding
 **Humans**     | Mixing together all of the above
 
 Our goals *include*:
