@@ -138,44 +138,35 @@ option(
 	OFF
 )
 
-# check if nyan was used as subproject before (and still exists)
-if(DEFINED NYAN_SUBPROJ_LOCATION AND IS_DIRECTORY "${NYAN_SUBPROJ_LOCATION}")
-	set(USED_NYAN_SUBPROJ TRUE)
-else()
-	set(USED_NYAN_SUBPROJ FALSE)
-	set(NYAN_SUBPROJ_LOCATION "" CACHE INTERNAL
-		"nyan subproject not used")
-endif()
-
 # if nyan was not found, consider downloading it as subproject
 # only use the subproject mode if it was requested
 # or if it was used before.
-if(NOT nyan_FOUND OR FORCE_DOWNLOAD_NYAN OR USED_NYAN_SUBPROJ)
-	if(DOWNLOAD_NYAN OR FORCE_DOWNLOAD_NYAN OR USED_NYAN_SUBPROJ)
+if((NOT nyan_FOUND AND DOWNLOAD_NYAN) OR FORCE_DOWNLOAD_NYAN)
+	message(STATUS "Downloading nyan as submodule project...")
 
-		message(STATUS "Processing nyan as submodule project...")
+	if(DISABLE_SUBPROJECT_UPDATES)
+		set(DISABLE_NYAN_UPDATES "DISABLE_UPDATES")
+	endif()
 
-		fetch_project(
-			NAME nyan
-			DISABLE_UPDATES ${DISABLE_SUBPROJECT_UPDATES}
-			GIT_REPOSITORY https://github.com/SFTtech/nyan
-			GIT_TAG ${nyan_clone_version}
-		)
+	fetch_project(
+		NAME nyan
+		${DISABLE_NYAN_UPDATES}
+		GIT_REPOSITORY https://github.com/SFTtech/nyan
+		GIT_TAG ${nyan_clone_version}
+	)
 
-		# don't register nyan to the userpackage-repo!
-		set(REGISTER_USERPACKAGE OFF)
-		# don't generate the `doc` target again (name conflict!)
-		set(DOXYGEN_ENABLE OFF)
+	# don't register nyan to the userpackage-repo!
+	set(REGISTER_USERPACKAGE OFF)
+	# don't generate the `doc` target again (name conflict!)
+	set(DOXYGEN_ENABLE OFF)
 
-		# register the targets
-		add_subdirectory(${nyan_SOURCE_DIR} ${nyan_BINARY_DIR})
+	# register the targets
+	add_subdirectory(${nyan_SOURCE_DIR} ${nyan_BINARY_DIR})
 
-		message(STATUS "nyan processed successfully!")
-		set(NYAN_SUBPROJ_LOCATION "${nyan_SUBPROJ_DIR}" CACHE INTERNAL
-		    "nyan subproject location")
+	message(STATUS "nyan processed successfully!")
 
-	else()
-		message(FATAL_ERROR "
+elseif(NOT nyan_FOUND)
+	message(FATAL_ERROR "
   Could not find the cmake package configuration file \"nyanConfig.cmake\".
   To find it, you have several options:
   * If your distribution provides it, install \"nyan\" through the package manager.
@@ -190,7 +181,6 @@ if(NOT nyan_FOUND OR FORCE_DOWNLOAD_NYAN OR USED_NYAN_SUBPROJ)
   In case of other problems, please try to figure them out (and tell us what you did).
   Contact information is in README.md.
 ")
-	endif()
 endif()
 
 
