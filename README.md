@@ -32,6 +32,7 @@ Technology     | Component
 **OpenGL2.1**  | Rendering, shaders
 **SDL2**       | Cross-platform Audio/Input/Window handling
 **Opus**       | Audio codec
+[**nyan**](https://github.com/SFTtech/nyan) | Content Configuration and Modding
 **Humans**     | Mixing together all of the above
 
 Our goals *include*:
@@ -46,7 +47,7 @@ Our goals *include*:
 * AI scripting in Python, you can use [machine learning](http://scikit-learn.org/stable/)
 * Re-creating [free game assets](https://github.com/SFTtech/openage-data)
 * An easily-moddable content format: [**nyan** yet another notation](https://github.com/SFTtech/nyan)
-* An integrated Python console and API, comparable to [blender](http://blender.org/)
+* An integrated Python console and API, comparable to [blender](https://www.blender.org/)
 * Awesome infrastructure such as our own [Kevin CI service](https://github.com/SFTtech/kevin)
 
 But beware, for sanity reasons:
@@ -109,13 +110,13 @@ All documentation is also in this repo:
 - Have a look at the [doc directory](/doc/). This folder tends to outdate when code changes.
 
 
-OS X Version
+macOS Version
 ------------
 
-Running openage on OS X worked in the past,
+Running openage on macOS worked in the past,
 and might or might not work right now.
 
-Setting up continuous integration for this platform has some complications. Running a hackintosh VM seems to be not so legal, while buying dedicated hardware for it seems to be not so cheap. If you know of a legal and cost-free way of doing so or want to sponsor a semi-recent Mac Mini, please open a ticket in our issue tracker. Until then, PRs untested on OS X will make their way into the master branch and occasional breakage will occur.
+Setting up continuous integration for this platform has some complications. Running a hackintosh VM seems to be not so legal, while buying dedicated hardware for it seems to be not so cheap. If you know of a legal and cost-free way of doing so or want to sponsor a semi-recent Mac Mini, please open a ticket in our issue tracker. Until then, PRs untested on macOS will make their way into the master branch and occasional breakage will occur.
 
 
 Windows Version
@@ -148,10 +149,10 @@ Guidelines:
 
 To prevent accidental violation of one of those guidelines, you should *never*
 
-* [learn git](http://git-scm.com/book/en/Git-Basics)
+* [learn git](https://git-scm.com/book/)
 * [fork the repo](https://help.github.com/articles/fork-a-repo)
-* [learn python](http://docs.python.org/3/tutorial/appetite.html)
-* [learn c++14](http://www.cplusplus.com/doc/tutorial/)
+* [learn python](https://docs.python.org/3/tutorial/appetite.html)
+* [learn c++](http://www.cplusplus.com/doc/tutorial/)
 * read the code and documentation
 * [contribute](/doc/contributing.md) anything to the code
 * [contact us](#contact)
