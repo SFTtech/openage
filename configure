@@ -253,7 +253,13 @@ def invoke_cmake(args, bindir, defines, options):
         invocation.extend(['-G', 'Ninja'])
 
     if args.ccache:
-        invocation.extend(['-DENABLE_CCACHE=ON'])
+        invocation.append('-DENABLE_CCACHE=ON')
+
+    if args.clang_tidy:
+        invocation.append('-DENABLE_CLANG_TIDY=ON')
+
+    if args.download_nyan:
+        invocation.append("-DDOWNLOAD_NYAN=YES")
 
     cxx_options = dict()
     cxx_options["CXX_OPTIMIZATION_LEVEL"] = args.optimize
@@ -272,6 +278,9 @@ def invoke_cmake(args, bindir, defines, options):
             key.upper().replace('-', '_'), val))
 
     for raw_cmake_arg in args.raw_cmake_args:
+        if raw_cmake_arg == "--":
+            continue
+
         invocation.append(raw_cmake_arg)
 
     invocation.append('--')
@@ -296,6 +305,7 @@ def invoke_cmake(args, bindir, defines, options):
         if args.dry_run:
             exit(0)
         else:
+            print("(now running cmake:)\n")
             exit(subprocess.call(invocation))
     except FileNotFoundError:
         print("cmake was not found")
@@ -380,12 +390,18 @@ def parse_args():
                      help="just print the cmake invocation without callint it")
     cli.add_argument("--cmake-binary", default="cmake",
                      help="path to the cmake binary")
-    cli.add_argument("--raw-cmake-args", nargs=argparse.REMAINDER, default=[],
-                     help="all following args are passed directly to cmake")
     cli.add_argument("--ninja", action="store_true",
                      help="use ninja instead of GNU make")
     cli.add_argument("--ccache", action="store_true",
                      help="activate using the ccache compiler cache")
+    cli.add_argument("--clang-tidy", action="store_true",
+                     help="emit clang-tidy analysis messages")
+    cli.add_argument("--download-nyan", action="store_true",
+                     help="enable automatic download of the nyan project")
+
+    # arguments after -- are used as raw cmake args
+    cli.add_argument('raw_cmake_args', nargs=argparse.REMAINDER, default=[],
+                     help="all args after ' -- ' are passed directly to cmake")
 
     args = cli.parse_args()
 
