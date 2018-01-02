@@ -29,6 +29,11 @@ Environment
  - Chemistry industry: Coffeine, Peniciline, ...?
 
 
+### Forests
+
+ - A single villager can hide (per some tile area) in the forest for sneak attacks. Maybe can only visible to a certain type of unit. But invisible to other villagers (until they pop out and start building stuff)
+
+
 Map extensions
 --------------
 
