@@ -6,7 +6,7 @@ description:        |
 
 grade:              stable
 confinement:        devmode
-icon:               snap/gui/icon.png
+icon:               snap/gui/banner.png
 type:               app
 
 
