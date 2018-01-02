@@ -25,7 +25,9 @@ HAVE_REQUIRED_CXX17_SUPPORT
 if(NOT HAVE_REQUIRED_CXX17_SUPPORT)
 	message("
 
-The compiler doesn't support required C++17 features.
+The compiler doesn't support required C++17 features:
+  * Nested namespace definition (N4230)
+  * Structured Bindings (P0217R3)
 Please upgrade your compiler to build openage.
 
 ")
