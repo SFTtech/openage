@@ -1,0 +1,77 @@
+name:               openage
+version:            '0.0.1'
+summary:            openage
+description:        |
+  openage
+
+grade:              stable
+confinement:        devmode
+icon:               snap/gui/icon.png
+type:               app
+
+
+apps:
+  openage:
+    command:        desktop-launch ${SNAP}/share/applications/openage
+    plugs:
+      # TODO: Check if we need all those dependencies.
+      - home
+      - unity7
+      - x11
+      - wayland
+      - gsettings
+      - network-bind
+      - network-control
+
+# Launch Synaptic to get the description of the following deb packages.
+parts:
+  openage:
+    source: .
+    plugin: cmake
+    prepare: |
+      pip3 install cython
+    after:          [desktop-qt5]
+    build-packages:
+      # A list of Ubuntu packages to be installed on the host to aid in building the part. These packages will not go into the final snap.
+      - build-essential
+      - freeglut3-dev # OpenGL
+      - qt5-default
+      - qtbase5-dev
+      - qtbase5-dev-tools
+      - libqt5opengl5
+      - libqt5opengl5-dev
+      - libgl1
+      - libqt5core5a
+      - libqt5gui5
+      - libqt5widgets5
+      - libstdc++6
+      - libqt5dbus5
+
+      - cmake
+      - libfreetype6-dev
+      - python3-dev
+      - python3-pip
+      - libepoxy-dev
+      - libsdl2-dev
+      - libsdl2-image-dev
+      - libopusfile-dev
+      - libfontconfig1-dev
+      - libharfbuzz-dev
+      - libpng-dev
+      - opus-tools
+      - python3-pil
+      - python3-numpy
+      - python3-pygments
+      - qtdeclarative5-dev
+      - qml-module-qtquick-controls
+  desktop-qt5:
+    stage-packages:
+      - libxkbcommon0
+      - ttf-ubuntu-font-family
+      - dmz-cursor-theme
+      - light-themes
+      - shared-mime-info
+      - libqt5gui5
+      - libgdk-pixbuf2.0-0
+      - libqt5svg5 # for loading icon themes which are svg
+      - locales-all

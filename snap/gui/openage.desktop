@@ -1,0 +1,13 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=openage
+Comment=Free engine clone of Age of Empires II
+Exec=openage %U
+Terminal=true
+Type=Application
+# Icon=openage
+Icon=${SNAP}/meta/gui/banner.png
+Terminal=true
+StartupNotify=true
+Keywords=todo;
+Categories=Game;StrategyGame;Amusement
