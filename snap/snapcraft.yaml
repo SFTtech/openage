@@ -6,9 +6,8 @@ description:        |
 
 grade:              stable
 confinement:        devmode
-icon:               snap/gui/banner.png
+icon:               snap/../assets/logo/crown.svg
 type:               app
-
 
 apps:
   openage:
@@ -29,8 +28,11 @@ parts:
     source: .
     plugin: cmake
     prepare: |
+      # Install cython
       pip3 install cython
-      version=3.10
+
+      # Install newer cmake, ubuntu 16.04 ships cmake 3.5
+      version=3.8
       build=0
       mkdir ~/temp
       cd ~/temp
@@ -41,6 +43,7 @@ parts:
       make -j4
       sudo make install
       cmake --version
+
     after:          [desktop-qt5]
     build-packages:
       # A list of Ubuntu packages to be installed on the host to aid in building the part. These packages will not go into the final snap.
@@ -58,7 +61,6 @@ parts:
       - libstdc++6
       - libqt5dbus5
 
-      # - cmake
       - libfreetype6-dev
       - python3-dev
       - python3-pip
