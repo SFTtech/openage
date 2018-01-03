@@ -12,4 +12,5 @@ add_sources(libopenage
   texture.cpp
   uniform_input.h
   vertex_array.cpp
+  window.cpp
 )

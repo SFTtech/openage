@@ -23,4 +23,13 @@ void GlRenderTarget::bind_write() const {
 	}
 }
 
+void GlRenderTarget::bind_read() const {
+	if (this->type == gl_render_target_t::textures) {
+		this->framebuffer->bind_read();
+	}
+	else {
+		glBindFramebuffer(GL_READ_FRAMEBUFFER, 0);
+	}
+}
+
 }}} // openage::renderer::opengl

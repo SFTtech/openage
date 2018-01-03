@@ -37,6 +37,9 @@ public:
 	/// Bind this render target to be drawn into.
 	void bind_write() const;
 
+	/// Bind this render target to be read from.
+	void bind_read() const;
+
 private:
 	gl_render_target_t type;
 

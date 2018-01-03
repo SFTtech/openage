@@ -10,10 +10,12 @@
 #include "../log/log.h"
 #include "../error/error.h"
 #include "resources/shader_source.h"
-#include "opengl/renderer.h"
-#include "vulkan/windowvk.h"
-#include "vulkan/renderer.h"
-#include "window.h"
+#include "resources/texture_data.h"
+#include "resources/mesh_data.h"
+#include "texture.h"
+#include "shader_program.h"
+#include "geometry.h"
+#include "opengl/window.h"
 
 
 namespace openage {
@@ -25,14 +27,13 @@ void draw_texture_at(std::string tex, int x, int y) {
 }
 
 void renderer_demo_0(util::Path path) {
-		Window window { "openage renderer test" };
-		window.make_context_current();
+	opengl::GlWindow window("openage renderer test", { 800, 600 } );
 
-		auto renderer = std::make_unique<opengl::GlRenderer>(window.get_context());
+	auto renderer = window.make_renderer();
 
-		auto vshader_src = resources::ShaderSource(
-				resources::shader_lang_t::glsl,
-				resources::shader_stage_t::vertex,
+	auto vshader_src = resources::ShaderSource(
+		resources::shader_lang_t::glsl,
+		resources::shader_stage_t::vertex,
 		R"s(
 #version 330
 
@@ -216,11 +217,10 @@ void main() {
 			}
 			id--; //real id is id-1
 			log::log(INFO << "Object number " << id << " clicked.");
+			renderer->display_into_data().store(path / "/assets/screen.png");
 		} );
 
-	window.add_resize_callback([&] {
-			auto new_size = window.get_size();
-
+	window.add_resize_callback([&] (coord::window new_size) {
 			// Calculate projection matrix
 			float aspectRatio = float(new_size.x)/float(new_size.y);
 			float xScale = 1.0/aspectRatio;
@@ -230,9 +230,6 @@ void main() {
 							0, 1, 0, 0,
 							0, 0, 1, 0,
 							0, 0, 0, 1;
-
-			// handle in renderer..
-			glViewport(0, 0, new_size.x, new_size.y);
 
 			// resize fbo
 			color_texture = renderer->add_texture(resources::TextureInfo(new_size.x, new_size.y, resources::pixel_format::rgba8));

@@ -54,6 +54,24 @@ RenderTarget const* GlRenderer::get_display_target() {
 	return &this->display;
 }
 
+resources::TextureData GlRenderer::display_into_data() {
+	GLint params[4];
+	glGetIntegerv(GL_VIEWPORT, params);
+
+	GLint width = params[2];
+	GLint height = params[3];
+
+	resources::TextureInfo tex_info(width, height, resources::pixel_format::rgba8, 4);
+	std::vector<uint8_t> data(tex_info.get_data_size());
+
+	static_cast<GlRenderTarget const*>(this->get_display_target())->bind_read();
+	glPixelStorei(GL_PACK_ALIGNMENT, 4);
+	glReadnPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, tex_info.get_data_size(), data.data());
+
+	resources::TextureData img(std::move(tex_info), std::move(data));
+	return img.flip_y();
+}
+
 void GlRenderer::render(RenderPass const& pass) {
 	auto gl_target = dynamic_cast<const GlRenderTarget*>(pass.target);
 	gl_target->bind_write();

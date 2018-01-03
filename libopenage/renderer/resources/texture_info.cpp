@@ -45,7 +45,13 @@ size_t TextureInfo::get_row_alignment() const {
 size_t TextureInfo::get_row_size() const {
 	size_t px_size = pixel_size(this->format);
 	size_t row_size = this->w * px_size;
-	row_size += row_size % this->row_alignment; // there might be padding at row ends to match the alignment
+
+	if (row_size % this->row_alignment != 0) {
+		// Unaligned rows, have to add padding.
+		size_t padding = this->row_alignment - (row_size % this->row_alignment);
+		row_size += padding;
+	}
+
 	return row_size;
 }
 

@@ -32,6 +32,8 @@ public:
 	std::unique_ptr<RenderTarget> create_texture_target(std::vector<Texture*>) override;
 	RenderTarget const* get_display_target() override;
 
+	resources::TextureData display_into_data() override;
+
 	void render(RenderPass const&) override;
 
 private:

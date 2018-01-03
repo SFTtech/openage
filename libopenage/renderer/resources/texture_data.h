@@ -30,7 +30,11 @@ public:
 	/// Construct by moving the information and raw texture data from somewhere else.
 	TextureData(TextureInfo &&info, std::vector<uint8_t> &&data);
 
-	/// Returns the information describing this texture data.
+	/// Flips the texture along the Y-axis and returns the flipped data with the same info.
+	/// Sometimes necessary when converting between storage modes.
+	TextureData flip_y();
+
+	/// Returns the information describing this texture dataead
 	const TextureInfo& get_info() const;
 
 	/// Returns a pointer to the raw texture data.

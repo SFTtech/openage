@@ -112,6 +112,23 @@ TextureData::TextureData(TextureInfo &&info, std::vector<uint8_t> &&data)
 	: info(std::move(info))
 	, data(std::move(data)) {}
 
+TextureData TextureData::flip_y() {
+	size_t row_size = this->info.get_row_size();
+	size_t height = this->info.get_size().second;
+
+	std::vector<uint8_t> new_data(this->data.size());
+
+	for (size_t y = 0; y < height; ++y) {
+		std::copy(this->data.data() + row_size * y, this->data.data() + row_size * (y+1), new_data.end() - row_size * (y+1));
+	}
+
+	this->data = new_data;
+
+	TextureInfo new_info(this->info);
+
+	return TextureData(std::move(new_info), std::move(new_data));
+}
+
 const TextureInfo& TextureData::get_info() const {
 	return this->info;
 }
@@ -123,48 +140,26 @@ const uint8_t *TextureData::get_data() const {
 void TextureData::store(const util::Path& file) const {
 	log::log(MSG(info) << "Saving texture data to " << file);
 
-	// TODO support row_alignment in copying below
-	throw "unimplemented";
 	if (this->info.get_format() != pixel_format::rgba8) {
 		throw "unimplemented";
 	}
 
-	// color masks.
-	int32_t rmask, gmask, bmask, amask;
-	rmask = 0x000000FF;
-	gmask = 0x0000FF00;
-	bmask = 0x00FF0000;
-	amask = 0xFF000000;
-
 	auto size = this->info.get_size();
 
-	// create output surface which will be stored later.
-	SDL_Surface *screen = SDL_CreateRGBSurface(
-		SDL_SWSURFACE,
-		size.first, size.second,
-		32, rmask, gmask, bmask, amask
+	SDL_Surface *surf = SDL_CreateRGBSurfaceWithFormatFrom(
+		// const_cast is okay, because the surface doesn't modify data
+		const_cast<void*>(static_cast<void const*>(this->data.data())),
+		size.first,
+		size.second,
+		32,
+		this->info.get_row_size(),
+		SDL_PIXELFORMAT_RGBA32
 	);
 
-	uint32_t *surf_data = reinterpret_cast<uint32_t*>(screen->pixels);
-	const uint32_t *data = reinterpret_cast<const uint32_t*>(this->data.data());
-
-	// now copy the raw data to the sdl surface.
-	// we need to invert all pixel rows, but leave column order the same.
-	for (ssize_t row = 0; row < screen->h; row++) {
-		ssize_t irow = screen->h - 1 - row;
-		for (ssize_t col = 0; col < screen->w; col++) {
-			uint32_t pixel = data[irow * screen->w + col];
-
-			// TODO: store the alpha channels in the file,
-			// is buggy at the moment..
-			surf_data[row * screen->w + col] = pixel | 0xFF000000;
-		}
-	}
-
-	// call sdl_image for saving the screenshot to png
-	std::string path = file.resolve_native_path();
-	IMG_SavePNG(screen, path.c_str());
-	SDL_FreeSurface(screen);
+	// Call sdl_image for saving the screenshot to PNG
+	std::string path = file.resolve_native_path_w();
+	IMG_SavePNG(surf, path.c_str());
+	SDL_FreeSurface(surf);
 }
 
 }}}

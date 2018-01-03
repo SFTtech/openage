@@ -75,8 +75,7 @@ static vlk_capabilities find_capabilities() {
 }
 
 VlkWindow::VlkWindow(const char* title)
-	: openage::renderer::Window(title)
-	, capabilities(find_capabilities())
+	: capabilities(find_capabilities())
 {
 	// Find which extensions the SDL window requires.
 	auto extension_names = vk_do_ritual(SDL_Vulkan_GetInstanceExtensions, this->window);

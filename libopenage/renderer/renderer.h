@@ -20,7 +20,8 @@ class ShaderProgram;
 class Geometry;
 class Texture;
 
-/// The abstract base for uniform input. Not terribly interesting.
+/// The abstract base for uniform input. Besides the uniform values, it stores information about
+/// which shader program the input was created for.
 class UniformInput {
 protected:
 	UniformInput() = default;
@@ -29,7 +30,7 @@ public:
 	virtual ~UniformInput() = default;
 };
 
-/// The abstract base for a render target. Not terribly interesting.
+/// The abstract base for a render target.
 class RenderTarget {
 protected:
 	RenderTarget() = default;
@@ -46,7 +47,8 @@ public:
 /// of uniforms that many objects have in common, and then only upload the uniforms that vary between them in
 /// each draw call. This works because uniform values in any given shader are preserved across a render pass.
 struct Renderable {
-	/// Uniform values to be set in the appropriate shader.
+	/// Uniform values to be set in the appropriate shader. Contains a reference to the correct shader, and this
+	/// is the shader that will be used for drawing if geometry is present.
 	UniformInput const *unif_in;
 	/// The geometry. It can be a simple primitive or a complex mesh.
 	/// Can be nullptr to only set uniforms but do not perform draw call.
@@ -61,7 +63,7 @@ struct Renderable {
 struct RenderPass {
 	/// The renderables to parse and possibly execute.
 	std::vector<Renderable> renderables;
-	/// The render targe to write into.
+	/// The render target to write into.
 	RenderTarget const *target;
 };
 
@@ -91,14 +93,17 @@ public:
 	virtual std::unique_ptr<Geometry> add_bufferless_quad() = 0;
 
 	/// Constructs a render target from the given textures. All subsequent drawing operations pointed at this
-	/// target will write to these textures. The textures are attached to the render target according to their
-	/// internal format, for example RGB will be attached as a color component and DEPTH will be attached as a
-	/// depth component. (TODO depth, not implemented yet)
+	/// target will write to these textures. Textures are attached to the target in the order that they are
+	/// present in within the vector. Depth textures are attached as depth components. Textures of every other
+	/// type are attached as color components.
 	virtual std::unique_ptr<RenderTarget> create_texture_target(std::vector<Texture*>) = 0;
 
 	/// Returns the built-in display target that represents the window. Passes pointed at this target will have
 	/// their output visible on the screen.
 	virtual RenderTarget const* get_display_target() = 0;
+
+	/// Stores the display framebuffer into a CPU-accessible data object. Essentially, this takes a screenshot.
+	virtual resources::TextureData display_into_data() = 0;
 
 	/// Executes a render pass.
 	virtual void render(RenderPass const&) = 0;

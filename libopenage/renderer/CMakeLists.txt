@@ -4,6 +4,7 @@ add_sources(libopenage
   #game_renderer.cpp
   geometry.cpp
   renderer.h
+  sdl_global.cpp
   shader_program.h
   #terrain_renderer.cpp
   tests.cpp
@@ -19,5 +20,5 @@ pxdgen(
 add_subdirectory(font/)
 add_subdirectory(opengl/)
 add_subdirectory(resources/)
-add_subdirectory(vulkan/)
+#add_subdirectory(vulkan/)
 #add_subdirectory(shaders/)

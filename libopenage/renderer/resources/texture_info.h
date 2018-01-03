@@ -43,6 +43,7 @@ public:
 	TextureInfo(size_t width, size_t height, pixel_format, size_t row_alignment = 1, std::vector<gamedata::subtexture>&& = std::vector<gamedata::subtexture>());
 
 	TextureInfo() = default;
+	TextureInfo(TextureInfo const&) = default;
 	~TextureInfo() = default;
 
 	/// Returns the dimensions of the whole texture bitmap
