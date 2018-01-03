@@ -26,10 +26,15 @@ apps:
 parts:
   openage:
     source: .
+
+    configflags:
+      - -DDOWNLOAD_NYAN=YES
+
     plugin: cmake
     prepare: |
       # Install cython
-      pip3 install cython
+      pip install --upgrade pip
+      pip install cython
 
       # Install newer cmake, ubuntu 16.04 ships cmake 3.5
       version=3.8
@@ -77,8 +82,11 @@ parts:
       - python3-pygments
       - qtdeclarative5-dev
       - qml-module-qtquick-controls
+      - flex
+      - doxygen
   desktop-qt5:
     stage-packages:
+      # TODO choose the right ones. 
       - libxkbcommon0
       - ttf-ubuntu-font-family
       - dmz-cursor-theme
