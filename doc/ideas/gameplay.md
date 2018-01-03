@@ -74,10 +74,22 @@ or destroy the spawners (or something...).
 
 ### Conquer the castle
 
-Similar to "Murder the King", but with a building.
+Similar to "Regicide", but with a building.
 Players have some time to fortify their castle.
 A player loses if the castle falls.
 
+### Barbarian Invasion
+
+An asymmetric game mode where 1 or 2 technologically advanced players compete against 3 - 6 "barbarians". The barbarians start in Dark Age with a few extra villagers, but have to build up their economy from the ground up. The "civilized" players start in Castle Age with a large amount of villagers, a decent economy and some defensive buildings. For barbarian players, the goal is to destroy a wonder in the civilized players' cities before a time limit is reached. The civilized players have to build defenses and try to protect against the hordes that are pressing at their gates.
+
+### Phantom Mode
+
+A mode similar to *Trouble in Terrorist Town* and *Secret Hitler*. The game starts with all 8 players being neutral or allied. Their goal is to find 2 "phantoms" and eliminate them. The 2 phantoms are allied from the start and know about each other, while every other player is clueless whether other players are friendly or phantoms. Phantom players have to manipulate the others into distrusting their friends. Gameplay could be spiced up with feature like purchasing units which don't have player colours from a town in the middle of the map, sabotage units and limiting the allied line of sight gained from researching cartography.
+
+### Pure Battle Mode
+
+No buildings, just units. The game generates a map and players can choose a starting position. Then they have a few minutes and a set amount of resources to select an army composition and some techs. After the first phase is over they place their units on the battlefield and have to use what they assembled to destroy their opponent. Utilizing height advantages, microing and tactical positioning contrast the strategic decisions of creating the army. The player who destroys his opponent, inflicts the most resource damage to others or holds strategic positions
+wins the battle.
 
 Unit handling
 -------------
@@ -137,6 +149,7 @@ Multiplayer
 
  - Some kind of "official" account on servers for everybody
  - Automatic skill groups to create balanced matches
+ - Scale wonder cost to max pop and number of players (make wonders great again) 
  - We can show the world that competitive games can be free open source!
 
 ### Team interaction
@@ -144,6 +157,7 @@ Multiplayer
  - Better team interaction
  - Work/resource sharing
  - Unit sharing (transport boats)
+ - Give resources of resigning players to allies
  - Color markings
  - Create signs
  - Paint on map
