@@ -9,6 +9,9 @@
 
 #include <eigen3/Eigen/Dense>
 
+// Terrain texture in ao2hd format, square with subtextures
+// 
+
 namespace openage {
 namespace renderer {
 

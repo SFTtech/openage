@@ -13,9 +13,10 @@ static constexpr auto pix_size = datastructure::create_const_map<pixel_format, s
 	std::make_pair(pixel_format::r16ui, 2),
 	std::make_pair(pixel_format::r32ui, 4),
 	std::make_pair(pixel_format::rgb8, 3),
-	std::make_pair(pixel_format::depth24, 3),
+	std::make_pair(pixel_format::bgr8, 3),
 	std::make_pair(pixel_format::rgba8, 4),
-	std::make_pair(pixel_format::rgba8ui, 4)
+	std::make_pair(pixel_format::rgba8ui, 4),
+	std::make_pair(pixel_format::depth24, 3)
 );
 
 size_t pixel_size(pixel_format fmt) {

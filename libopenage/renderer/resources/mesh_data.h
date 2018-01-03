@@ -92,17 +92,10 @@ private:
 	std::experimental::optional<index_t> index_type;
 };
 
-/// An empty struct used to initialize mesh data to a quad.
-struct init_quad_t {};
-
 class MeshData {
 public:
 	/// Tries to load the mesh data from the specified file.
 	explicit MeshData(const util::Path&);
-
-	/// Initializes the mesh data to a quad.
-	// TODO the empty struct is ugly
-	explicit MeshData(init_quad_t);
 
 	/// Initializes the mesh data to a custom unindexed vertex vector described by the given info.
 	MeshData(std::vector<uint8_t> &&verts, VertexInputInfo);
@@ -118,6 +111,9 @@ public:
 
 	/// Returns information describing the vertices in this mesh.
 	VertexInputInfo get_info() const;
+
+	/// Initializes the mesh data with a simple quadrilateral.
+	static MeshData make_quad();
 
 private:
 	/// The raw vertex data. The size is an integer multiple of the size of a single vertex.

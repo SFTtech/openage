@@ -67,7 +67,7 @@ Window::Window(const char *title)
 	// TODO Qt might support Vulkan natively in the future
 	// We need HIGHDPI for eventual support of GUI scaling.
 	// TODO HIGHDPI fails (requires newer SDL2?)
-	int32_t window_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED | SDL_WINDOW_VULKAN;
+	int32_t window_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED; //| SDL_WINDOW_VULKAN;
 	this->window = SDL_CreateWindow(
 		title,
 		SDL_WINDOWPOS_CENTERED,

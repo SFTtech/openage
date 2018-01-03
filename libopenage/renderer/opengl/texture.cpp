@@ -8,6 +8,7 @@
 
 #include "../../error/error.h"
 #include "../../datastructure/constexpr_map.h"
+#include "../../log/log.h"
 
 #include "../resources/texture_data.h"
 #include "render_target.h"
@@ -23,9 +24,10 @@ static constexpr auto gl_format = datastructure::create_const_map<resources::pix
 	std::make_pair(resources::pixel_format::r16ui, std::make_tuple(GL_R16UI, GL_RED_INTEGER, GL_UNSIGNED_INT)),
 	std::make_pair(resources::pixel_format::r32ui, std::make_tuple(GL_R32UI, GL_RED_INTEGER, GL_UNSIGNED_INT)),
 	std::make_pair(resources::pixel_format::rgb8, std::make_tuple(GL_RGB8, GL_RGB, GL_UNSIGNED_BYTE)),
-	std::make_pair(resources::pixel_format::depth24, std::make_tuple(GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE)),
+	std::make_pair(resources::pixel_format::bgr8, std::make_tuple(GL_RGB8, GL_BGR, GL_UNSIGNED_BYTE)),
 	std::make_pair(resources::pixel_format::rgba8, std::make_tuple(GL_RGBA8, GL_RGBA, GL_UNSIGNED_BYTE)),
-	std::make_pair(resources::pixel_format::rgba8ui, std::make_tuple(GL_RGBA8UI, GL_RGBA_INTEGER, GL_UNSIGNED_BYTE))
+	std::make_pair(resources::pixel_format::rgba8ui, std::make_tuple(GL_RGBA8UI, GL_RGBA_INTEGER, GL_UNSIGNED_BYTE)),
+	std::make_pair(resources::pixel_format::depth24, std::make_tuple(GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE))
 );
 
 GlTexture::GlTexture(const resources::TextureData& data)
@@ -54,6 +56,8 @@ GlTexture::GlTexture(const resources::TextureData& data)
 	// TODO these are outdated, use sampler settings
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	log::log(MSG(dbg) << "Created OpenGL texture from data");
 }
 
 GlTexture::GlTexture(const resources::TextureInfo &info)
@@ -79,6 +83,8 @@ GlTexture::GlTexture(const resources::TextureInfo &info)
 	// TODO these are outdated, use sampler settings
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	log::log(MSG(dbg) << "Created OpenGL texture from parameters");
 }
 
 resources::TextureData GlTexture::into_data() {

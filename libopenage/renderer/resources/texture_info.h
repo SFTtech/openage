@@ -18,13 +18,15 @@ enum class pixel_format {
 	r16ui,
 	/// 32 bits per pixel, unsigned integer, single channel
 	r32ui,
-	/// 24 bits per pixel, float
+	/// 24 bits per pixel, float, RGB order
 	rgb8,
+	/// 24 bits per pixel, float, BGR order
+	bgr8,
 	/// 24 bits per pixel, depth texture
 	depth24,
-	/// 32 bits per pixel, float, alpha channel
+	/// 32 bits per pixel, float, alpha channel, RGBA order
 	rgba8,
-	/// 32 bits per pixel, unsigned integer, alpha channel
+	/// 32 bits per pixel, unsigned integer, alpha channel, RGBA order
 	rgba8ui,
 };
 

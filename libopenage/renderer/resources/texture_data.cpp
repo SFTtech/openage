@@ -14,6 +14,40 @@ namespace openage {
 namespace renderer {
 namespace resources {
 
+/// Tries to guess the alignment of image rows based on image parameters. Kinda
+/// black magic and might not actually work.
+/// @param width in pixels of the image
+/// @param fmt of pixels in the image
+/// @param row_size the actual size in bytes of an image row, including padding
+static size_t guess_row_alignment(size_t width, pixel_format fmt, size_t row_size) {
+	// Use the highest possible alignment for even-width images.
+	if (width % 8 == 0) {
+		return 8;
+	} else if (width % 4 == 0) {
+		return 4;
+	} else if (width % 2 == 0) {
+		return 2;
+	}
+
+	// The size of meaningful data in each row.
+	size_t pix_bytes = width * pixel_size(fmt);
+	// The size of padding.
+	size_t padding = row_size - pix_bytes;
+
+	if (padding == 0) {
+		return 1;
+	} else if (padding <= 1) {
+		return 2;
+	} else if (padding <= 3) {
+		return 4;
+	} else if (padding <= 7) {
+		return 8;
+	}
+
+	// Bail with a sane value.
+	return 4;
+}
+
 TextureData::TextureData(const util::Path &path, bool use_metafile) {
 	std::string native_path = path.resolve_native_path();
 	SDL_Surface *surface = IMG_Load(native_path.c_str());
@@ -26,28 +60,27 @@ TextureData::TextureData(const util::Path &path, bool use_metafile) {
 		log::log(MSG(dbg) << "Texture has been loaded from " << native_path);
 	}
 
-	auto fmt = *surface->format;
+	auto surf_fmt = *surface->format;
 
-	if (fmt.Rmask != 0xf000 || fmt.Gmask != 0x0f00 || fmt.Bmask != 0x00f0) {
-		throw Error(MSG(err) << "Texture " << native_path << " is not in RGB or RGBA format.");
-	}
-
-	pixel_format format;
-	if (fmt.Amask == 0) {
-		if (fmt.BytesPerPixel != 3) {
-			throw Error(MSG(err) << "Texture " << native_path << " is in an unsupported RGB format.");
-		}
-
-		format = pixel_format::rgb8;
-	}
-	else {
-		format = pixel_format::rgba8;
+	pixel_format pix_fmt;
+	switch (surf_fmt.format) {
+	case SDL_PIXELFORMAT_RGB24:
+			pix_fmt = pixel_format::rgb8;
+			break;
+	case SDL_PIXELFORMAT_BGR24:
+			pix_fmt = pixel_format::bgr8;
+			break;
+	case SDL_PIXELFORMAT_RGBA32:
+			pix_fmt = pixel_format::rgba8;
+			break;
+	default:
+			throw Error(MSG(err) << "Texture " << native_path << " uses an unsupported format.");
 	}
 
 	auto w = surface->w;
 	auto h = surface->h;
 
-	size_t data_size = surface->format->BytesPerPixel * surface->w * surface->h;
+	size_t data_size = surf_fmt.BytesPerPixel * surface->w * surface->h;
 
 	// copy pixel data from surface
 	this->data = std::vector<uint8_t>(data_size);
@@ -71,7 +104,8 @@ TextureData::TextureData(const util::Path &path, bool use_metafile) {
 		subtextures.push_back(s);
 	}
 
-	this->info = TextureInfo(w, h, format, 1, std::move(subtextures));
+	size_t align = guess_row_alignment(w, pix_fmt, surface->pitch);
+	this->info = TextureInfo(w, h, pix_fmt, align, std::move(subtextures));
 }
 
 TextureData::TextureData(TextureInfo &&info, std::vector<uint8_t> &&data)
@@ -84,7 +118,7 @@ const TextureInfo& TextureData::get_info() const {
 
 const uint8_t *TextureData::get_data() const {
 	return this->data.data();
-};
+}
 
 void TextureData::store(const util::Path& file) const {
 	log::log(MSG(info) << "Saving texture data to " << file);

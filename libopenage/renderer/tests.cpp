@@ -20,31 +20,30 @@ namespace openage {
 namespace renderer {
 namespace tests {
 
-void renderer_demo_0() {
-	Window window { "openage renderer test" };
-	window.make_context_current();
+void draw_texture_at(std::string tex, int x, int y) {
+		
+}
 
-	auto renderer = std::make_unique<opengl::GlRenderer>(window.get_context());
+void renderer_demo_0(util::Path path) {
+		Window window { "openage renderer test" };
+		window.make_context_current();
 
-	auto vshader_src = resources::ShaderSource(
-		resources::shader_lang_t::glsl,
-		resources::shader_stage_t::vertex,
+		auto renderer = std::make_unique<opengl::GlRenderer>(window.get_context());
+
+		auto vshader_src = resources::ShaderSource(
+				resources::shader_lang_t::glsl,
+				resources::shader_stage_t::vertex,
 		R"s(
 #version 330
 
 layout(location=0) in vec2 position;
+layout(location=1) in vec2 uv;
 uniform mat4 mvp;
+out vec2 v_uv;
 
 void main() {
-/*
-	gl_Position.x = 2.0 * float(gl_VertexID & 1) - 1.0;
-	gl_Position.y = 2.0 * float((gl_VertexID & 2) >> 1) - 1.0;
-	gl_Position.z = 0.0;
-	gl_Position.w = 1.0;
-
-	gl_Position = mvp * gl_Position;
-*/
-gl_Position = mvp * vec4(position, 0.0, 1.0);
+	gl_Position = mvp * vec4(position, 0.0, 1.0);
+  v_uv = vec2(uv.x, 1.0 - uv.y);
 }
 )s");
 
@@ -54,17 +53,19 @@ gl_Position = mvp * vec4(position, 0.0, 1.0);
 		R"s(
 #version 330
 
-uniform vec4 color;
+in vec2 v_uv;
+uniform sampler2D tex;
 uniform uint u_id;
 
 layout(location=0) out vec4 col;
 layout(location=1) out uint id;
 
 void main() {
-	if (color.a == 0.0) {
+	vec4 tex_val = texture(tex, v_uv);
+	if (tex_val.a == 0) {
 		discard;
 	}
-	col = color;
+	col = tex_val;
 	id = u_id + 1u;
 }
 )s");
@@ -75,25 +76,16 @@ void main() {
 		R"s(
 #version 330
 
-
 layout(location=0) in vec2 position;
 layout(location=1) in vec2 uv;
+uniform mat4 proj;
 out vec2 v_uv;
 
 void main() {
-/*
-	gl_Position.x = 2.0 * float(gl_VertexID & 1) - 1.0;
-	gl_Position.y = 2.0 * float((gl_VertexID & 2) >> 1) - 1.0;
-	gl_Position.z = 0.0;
-	gl_Position.w = 1.0;
-
-	v_uv = gl_Position.xy * 0.5 + 0.5;
-*/
-gl_Position = vec4(position, 0.0, 1.0);
-v_uv = uv;
+	gl_Position = proj * vec4(position, 0.0, 1.0);
+	v_uv = uv;
 }
 )s");
-
 
 	auto fshader_display_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
@@ -114,6 +106,7 @@ void main() {
 	auto shader = renderer->add_shader( { vshader_src, fshader_src } );
 	auto shader_display = renderer->add_shader( { vshader_display_src, fshader_display_src } );
 
+
 	auto transform1 = Eigen::Affine3f::Identity();
 	transform1.prescale(Eigen::Vector3f(0.4f, 0.2f, 1.0f));
 	transform1.prerotate(Eigen::AngleAxisf(30.0f * 3.14159f / 180.0f, Eigen::Vector3f::UnitX()));
@@ -121,7 +114,7 @@ void main() {
 
 	auto unif_in1 = shader->new_uniform_input(
 		"mvp", transform1.matrix(),
-		"color", Eigen::Vector4f(1.0f, 0.0f, 0.0f, 1.0f),
+		//"color", Eigen::Vector4f(1.0f, 0.0f, 0.0f, 1.0f),
 		"u_id", 1u
 	);
 
@@ -133,10 +126,13 @@ void main() {
 
 	transform2.pretranslate(Eigen::Vector3f(0.3f, 0.1f, 0.3f));
 
+	auto tex = resources::TextureData(path / "/assets/gaben.png");
+	auto gltex = renderer->add_texture(tex);
 	auto unif_in2 = shader->new_uniform_input(
 		"mvp", transform2.matrix(),
-		"color", Eigen::Vector4f(0.0f, 1.0f, 0.0f, 1.0f),
-		"u_id", 2u
+		//"color", Eigen::Vector4f(0.0f, 1.0f, 0.0f, 1.0f),
+		"u_id", 2u,
+		"tex", gltex.get()
 	);
 
 	transform3.prerotate(Eigen::AngleAxisf(90.0f * 3.14159f / 180.0f, Eigen::Vector3f::UnitZ()));
@@ -144,11 +140,11 @@ void main() {
 
 	auto unif_in3 = shader->new_uniform_input(
 		"mvp", transform3.matrix(),
-		"color", Eigen::Vector4f(0.0f, 0.0f, 1.0f, 1.0f),
+		//"color", Eigen::Vector4f(0.0f, 0.0f, 1.0f, 1.0f),
 		"u_id", 3u
 	);
 
-	auto quad = renderer->add_mesh_geometry( resources::MeshData { resources::init_quad_t {} } );
+	auto quad = renderer->add_mesh_geometry(resources::MeshData::make_quad());
 	Renderable obj1 {
 		unif_in1.get(),
 		quad.get(),
@@ -225,7 +221,16 @@ void main() {
 	window.add_resize_callback([&] {
 			auto new_size = window.get_size();
 
-			texture_data_valid = false;
+			// Calculate projection matrix
+			float aspectRatio = float(new_size.x)/float(new_size.y);
+			float xScale = 1.0/aspectRatio;
+
+			Eigen::Matrix4f pmat;
+			pmat << xScale, 0, 0, 0,
+							0, 1, 0, 0,
+							0, 0, 1, 0,
+							0, 0, 0, 1;
+
 			// handle in renderer..
 			glViewport(0, 0, new_size.x, new_size.y);
 
@@ -234,8 +239,9 @@ void main() {
 			id_texture = renderer->add_texture(resources::TextureInfo(new_size.x, new_size.y, resources::pixel_format::r32ui));
 			depth_texture = renderer->add_texture(resources::TextureInfo(new_size.x, new_size.y, resources::pixel_format::depth24));
 			fbo = renderer->create_texture_target( { color_texture.get(), id_texture.get(), depth_texture.get() } );
+			texture_data_valid = false;
 
-			shader_display->update_uniform_input(color_texture_uniform.get(), "color_texture", color_texture.get());
+			shader_display->update_uniform_input(color_texture_uniform.get(), "color_texture", color_texture.get(), "proj", pmat);
 			pass.target = fbo.get();
 		} );
 
@@ -247,10 +253,10 @@ void main() {
 	}
 }
 
-void renderer_demo(int demo_id) {
+void renderer_demo(int demo_id, util::Path path) {
 	switch (demo_id) {
 	case 0:
-		renderer_demo_0();
+		renderer_demo_0(path);
 		break;
 
 	default:

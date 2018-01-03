@@ -2,12 +2,15 @@
 
 #pragma once
 
+// pxd: from libopenage.util.path cimport Path
+#include "../util/path.h"
+
 
 namespace openage {
 namespace renderer {
 namespace tests {
 
-// pxd: void renderer_demo(int demo_id) except +
-void renderer_demo(int demo_id);
+// pxd: void renderer_demo(int demo_id, Path path) except +
+void renderer_demo(int demo_id, util::Path path);
 
 }}} // openage::renderer::tests
