@@ -1,4 +1,4 @@
-# Copyright 2013-2016 the openage authors. See copying.md for legal info.
+# Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -13,14 +13,32 @@ class Civ(Exportable):
     name_struct_file = name_struct
     struct_description = "describes a civilisation."
 
-    data_format = (
-        (READ, "enabled", "int8_t"),
+    data_format = [
+        (READ, "player_type", "int8_t"),                   # always 1
         (READ_EXPORT, "name", "char[20]"),
         (READ, "resources_count", "uint16_t"),
-        (READ_EXPORT, "tech_tree_id",  "int16_t"),             # links to tech id (to apply its effects)
-        (READ_EXPORT, "team_bonus_id", "int16_t"),             # links to tech id as well
+        (READ_EXPORT, "tech_tree_id",  "int16_t"),         # links to tech id (to apply its effects)
+    ]
+
+    # TODO: Enable conversion for AOE1; replace "team_bonus_id"
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.append((READ_EXPORT, "team_bonus_id", "int16_t"))
+    # ===========================================================================
+    data_format.append((READ_EXPORT, "team_bonus_id", "int16_t"))         # links to tech id as well
+
+    # TODO: Enable conversion for SWGB
+    # ===========================================================================
+    # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
+    #     data_format.extend([
+    #         (READ, "name2", "char[20]"),
+    #         (READ, "unique_unit_techs", "int16_t[4]"),
+    #     ])
+    # ===========================================================================
+
+    data_format.extend([
         (READ, "resources", "float[resources_count]"),
-        (READ, "icon_set", "int8_t"),                          # building icon set, trade cart graphics, changes no other graphics
+        (READ, "icon_set", "int8_t"),                      # building icon set, trade cart graphics, changes no other graphics
         (READ_EXPORT, "unit_count", "uint16_t"),
         (READ, "unit_offsets", "int32_t[unit_count]"),
 
@@ -35,4 +53,4 @@ class Civ(Exportable):
             length             = "unit_count",
             offset_to          = ("unit_offsets", lambda o: o > 0),
         )),
-    )
+    ])

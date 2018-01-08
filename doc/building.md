@@ -26,7 +26,7 @@ Dependencies are needed for:
 
 Dependency list:
 
-    C     gcc >=4.9 or clang >=3.4 (clang >=3.5 for Mac OS X)
+    C     gcc >=7 or clang >=4
     CRA   python >=3.4
     C     cython >=0.25
     C     cmake >=3.1.0
@@ -39,6 +39,7 @@ Dependency list:
     CR    freetype2
     CR    fontconfig
     CR    harfbuzz >= 1.0.0
+    CR    nyan  (https://github.com/SFTtech/nyan)
     CR    sdl2
     CR    sdl2_image
     CR    opusfile
@@ -73,7 +74,35 @@ described below for some of the most common ones:
 - [Microsoft Windows 10](build_instructions/windows_msvc.md)
 
 
+### nyan installation
+
+`openage` depends on [`nyan`](https://github.com/SFTtech/nyan), which is the
+engine configuration language.
+
+
+* For development, `nyan` can be built and used **without installation** (->
+no "`make install`"). Just clone the repo somewhere and [follow the `nyan`
+build instructions](https://github.com/SFTtech/nyan/blob/master/doc/building.md)).
+
+* Alternatively, `openage` can download `nyan` automatically. This is
+  activated with `./configure --download-nyan ...` or `cmake
+  -DDOWNLOAD_NYAN=YES ...`.
+
+**Only install** `nyan` when packaging it. You don't need to clobber your
+filesystem.
+
+`cmake` looks for `nyan` in the user package registry
+(`~/.cmake/packages/nyan/`) and the system package registry
+(`/usr/lib/cmake/nyan/`) for `nyanConfig.cmake`.
+
+If `nyan` cannot be found but you know where it is, you can hint the
+location of the `nyanConfig.cmake` with
+`-Dnyan_DIR=/directory/where/nyanConfig/is/in/`.
+
+
 ## Build procedure
+
+Make sure you have all the dependencies installed.
 
 ### Development
 
@@ -117,7 +146,7 @@ and will provide you with updates!
 - My `SDL2_Image`/`PythonInterp`/whatever is installed somewhere, but `cmake` can't find it!
   - Run `ccmake` or `cmake-gui` in the build directory to see and change config variables.
   - You can manually tell `cmake` where to look. Try something along the lines of
-    `./configure --raw-cmake-args -DSDL2IMAGE_INCLUDE_DIRS=/whereever/sdl2_image/include/`
+    `./configure -- -DSDL2IMAGE_INCLUDE_DIRS=/whereever/sdl2_image/include/`
 
 - I get compiler errors about missing header files
   - Make sure to install the developer version (including header files) of the library in question.

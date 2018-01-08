@@ -1,0 +1,31 @@
+# Copyright 2017-2017 the openage authors. See copying.md for legal info.
+
+# @AUTOGEN_WARNING@
+
+# Template file because the cmake ExternalProject can not download projects
+# in the configure phase.
+# -> in the configure phase, run cmake again to download the project.
+#
+# this is the file used to tell the nested cmake run what to do.
+
+cmake_minimum_required(VERSION 3.6)
+
+project(@PROJ_NAME@-external LANGUAGES)
+
+include(ExternalProject)
+ExternalProject_Add(@PROJ_NAME@-fetch
+	PREFIX              "@PROJ_DIR@"
+	SOURCE_DIR          "@PROJ_SRC_DIR@"
+	BINARY_DIR          "@PROJ_BIN_DIR@"
+	STAMP_DIR           "@PROJ_STAMP_DIR@"
+	CONFIGURE_COMMAND   ""
+	BUILD_COMMAND       ""
+	INSTALL_COMMAND     ""
+	TEST_COMMAND        ""
+	UPDATE_DISCONNECTED "@PROJ_DISABLE_UPDATES@"
+	@PROJ_UNPARSED_ARGUMENTS@
+)
+
+# silence target-reached status messages
+set_property(GLOBAL PROPERTY RULE_MESSAGES OFF)
+set_property(GLOBAL PROPERTY TARGET_MESSAGES OFF)

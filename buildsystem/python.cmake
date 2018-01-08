@@ -113,6 +113,7 @@ function(add_cython_modules)
 					PREFIX ""
 					SUFFIX "${PYEXT_SUFFIX}"
 				)
+
 				if(MSVC)
 					target_link_libraries("${TARGETNAME}" ${PYEXT_LIBRARY})
 				endif()

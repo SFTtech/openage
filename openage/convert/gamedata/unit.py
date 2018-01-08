@@ -3,7 +3,7 @@
 # TODO pylint: disable=C,R,too-many-lines
 
 from ..dataformat.exportable import Exportable
-from ..dataformat.member_access import READ, READ_EXPORT, READ_UNKNOWN
+from ..dataformat.member_access import READ, READ_EXPORT
 from ..dataformat.members import EnumLookupMember, ContinueReadMember, IncludeMembers, SubdataMember
 
 
@@ -16,10 +16,10 @@ class UnitCommand(Exportable):
     name_struct_file   = "unit"
     struct_description = "a command a single unit may receive by script or human."
 
-    data_format = (
+    data_format = [
         (READ, "command_used", "int16_t"),                  # Type (0 = Generic, 1 = Tribe)
         (READ_EXPORT, "id", "int16_t"),                     # Identity
-        (READ_UNKNOWN, None, "int8_t"),                     # IsDefault
+        (READ, "is_default", "int8_t"),
         (READ_EXPORT, "type", EnumLookupMember(
             raw_type    = "int16_t",
             type_name   = "command_ability",
@@ -77,18 +77,18 @@ class UnitCommand(Exportable):
         (READ_EXPORT, "class_id", "int16_t"),
         (READ_EXPORT, "unit_id", "int16_t"),
         (READ_EXPORT, "terrain_id", "int16_t"),
-        (READ_EXPORT, "attribute_id1", "int16_t"),          # carry resource
-        (READ_EXPORT, "attribute_id2", "int16_t"),          # resource that multiplies the amount you can gather
-        (READ_EXPORT, "attribute_id3", "int16_t"),          # drop resource
-        (READ_EXPORT, "attribute_id4", "int16_t"),
+        (READ_EXPORT, "resource_in", "int16_t"),            # carry resource
+        (READ_EXPORT, "resource_multiplier", "int16_t"),    # resource that multiplies the amount you can gather
+        (READ_EXPORT, "resource_out", "int16_t"),           # drop resource
+        (READ_EXPORT, "unused_resource", "int16_t"),
         (READ_EXPORT, "work_value1", "float"),              # quantity
         (READ_EXPORT, "work_value2", "float"),              # execution radius?
         (READ_EXPORT, "work_range", "float"),
         (READ, "search_mode", "int8_t"),
         (READ, "search_time", "float"),
-        (READ, "combat_level", "int8_t"),                   # type defined in `selection_type`
-        (READ, "combat_mode", "int8_t"),
-        (READ, "work_mode1", "int16_t"),
+        (READ, "enable_targeting", "int8_t"),
+        (READ, "combat_level_flag", "int8_t"),
+        (READ, "gather_type", "int16_t"),
         (READ, "work_mode2", "int16_t"),
         (READ_EXPORT, "owner_type", EnumLookupMember(
             # what can be selected as a target for the unit command?
@@ -105,15 +105,15 @@ class UnitCommand(Exportable):
                 7: "ANY_7",
             },
         )),
-        (READ, "holding_mode", "int8_t"),              # TODO: what does it do? right click?
+        (READ, "carry_check", "int8_t"),                          # TODO: what does it do? right click?
         (READ, "state_build", "int8_t"),
-        (READ_EXPORT, "move_sprite_id", "int16_t"),    # walking with tool but no resource
-        (READ_EXPORT, "work_sprite_id1", "int16_t"),   # proceeding resource gathering or attack
-        (READ_EXPORT, "work_sprite_id2", "int16_t"),   # actual execution or transformation graphic
-        (READ_EXPORT, "carry_sprite_id", "int16_t"),   # display resources in hands
-        (READ_EXPORT, "work_sound_id1", "int16_t"),    # sound to play when execution starts
-        (READ_EXPORT, "work_sound_id2", "int16_t"),    # sound to play on resource drop
-    )
+        (READ_EXPORT, "move_sprite_id", "int16_t"),               # walking with tool but no resource
+        (READ_EXPORT, "proceed_sprite_id", "int16_t"),            # proceeding resource gathering or attack
+        (READ_EXPORT, "work_sprite_id", "int16_t"),               # actual execution or transformation graphic
+        (READ_EXPORT, "carry_sprite_id", "int16_t"),              # display resources in hands
+        (READ_EXPORT, "resource_gather_sound_id", "int16_t"),     # sound to play when execution starts
+        (READ_EXPORT, "resource_deposit_sound_id", "int16_t"),    # sound to play on resource drop
+    ]
 
 
 class UnitHeader(Exportable):
@@ -121,14 +121,28 @@ class UnitHeader(Exportable):
     name_struct_file   = "unit"
     struct_description = "stores a bunch of unit commands."
 
-    data_format = (
+    data_format = [
         (READ, "exists", ContinueReadMember("uint8_t")),
         (READ, "unit_command_count", "uint16_t"),
         (READ_EXPORT, "unit_commands", SubdataMember(
             ref_type=UnitCommand,
             length="unit_command_count",
         )),
-    )
+    ]
+
+
+# Only used in SWGB
+class UnitLine(Exportable):
+    name_struct        = "unit_header"
+    name_struct_file   = "unit"
+    struct_description = "stores a bunch of unit commands."
+
+    data_format = [
+        (READ, "name_length", "uint16_t"),
+        (READ, "name", "char[name_length]"),
+        (READ, "unit_ids_counter", "uint16_t"),
+        (READ, "unit_ids", "int16_t[unit_ids_counter]"),
+    ]
 
 
 class ResourceStorage(Exportable):
@@ -136,7 +150,7 @@ class ResourceStorage(Exportable):
     name_struct_file   = "unit"
     struct_description = "determines the resource storage capacity for one unit mode."
 
-    data_format = (
+    data_format = [
         (READ, "type", "int16_t"),
         (READ, "amount", "float"),
         (READ, "used_mode", EnumLookupMember(
@@ -149,7 +163,7 @@ class ResourceStorage(Exportable):
                 4: "RESET_ON_DEATH_WHEN_COMPLETED",
             },
         )),
-    )
+    ]
 
 
 class DamageGraphic(Exportable):
@@ -157,10 +171,10 @@ class DamageGraphic(Exportable):
     name_struct_file   = "unit"
     struct_description = "stores one possible unit image that is displayed at a given damage percentage."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, "graphic_id", "int16_t"),
         (READ_EXPORT, "damage_percent", "int8_t"),
-        (READ, "apply_mode_old", "int8_t"),    # gets overwritten in aoe memory by the real apply_mode:
+        (READ, "old_apply_mode", "int8_t"),    # gets overwritten in aoe memory by the real apply_mode:
         (READ_EXPORT, "apply_mode", EnumLookupMember(
             raw_type    = "int8_t",
             type_name   = "damage_draw_type",
@@ -170,7 +184,7 @@ class DamageGraphic(Exportable):
                 2: "REPLACE",  # replace original graphics (e.g. damaged walls)
             },
         )),
-    )
+    ]
 
 
 class HitType(Exportable):
@@ -178,7 +192,7 @@ class HitType(Exportable):
     name_struct_file   = "unit"
     struct_description = "stores attack amount for a damage type."
 
-    data_format = (
+    data_format = [
         (READ, "type_id", EnumLookupMember(
             raw_type    = "int16_t",
             type_name   = "hit_class",
@@ -213,7 +227,7 @@ class HitType(Exportable):
             },
         )),
         (READ, "amount", "int16_t"),
-    )
+    ]
 
 
 class ResourceCost(Exportable):
@@ -221,7 +235,7 @@ class ResourceCost(Exportable):
     name_struct_file   = "unit"
     struct_description = "stores cost for one resource for creating the unit."
 
-    data_format = (
+    data_format = [
         (READ, "type_id", EnumLookupMember(
             raw_type = "int16_t",
             type_name = "resource_types",
@@ -428,7 +442,7 @@ class ResourceCost(Exportable):
         )),
         (READ, "amount", "int16_t"),
         (READ, "enabled", "int16_t"),
-    )
+    ]
 
 
 class BuildingAnnex(Exportable):
@@ -437,11 +451,11 @@ class BuildingAnnex(Exportable):
     name_struct_file   = "unit"
     struct_description = "a possible building annex."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, "unit_id",    "int16_t"),
         (READ_EXPORT, "misplaced0", "float"),
         (READ_EXPORT, "misplaced1", "float"),
-    )
+    ]
 
 
 class UnitObject(Exportable):
@@ -453,7 +467,7 @@ class UnitObject(Exportable):
     name_struct_file   = "unit"
     struct_description = "base properties for all units."
 
-    data_format = (
+    data_format = [
         (READ, "name_length", "uint16_t"),
         (READ_EXPORT, "id0", "int16_t"),
         (READ_EXPORT, "language_dll_name", "uint16_t"),
@@ -523,8 +537,8 @@ class UnitObject(Exportable):
         )),
         (READ_EXPORT, "graphic_standing0", "int16_t"),
         (READ_EXPORT, "graphic_standing1", "int16_t"),
-        (READ_EXPORT, "graphic_dying0", "int16_t"),
-        (READ_EXPORT, "graphic_dying1", "int16_t"),
+        (READ_EXPORT, "dying_graphic", "int16_t"),
+        (READ_EXPORT, "undead_graphic", "int16_t"),
         (READ, "death_mode", "int8_t"),                  # 1 = become `dead_unit_id` (reviving does not make it usable again)
         (READ_EXPORT, "hit_points", "int16_t"),          # unit health. -1=insta-die
         (READ, "line_of_sight", "float"),
@@ -532,15 +546,34 @@ class UnitObject(Exportable):
         (READ_EXPORT, "radius_x", "float"),              # size of the unit
         (READ_EXPORT, "radius_y", "float"),
         (READ_EXPORT, "radius_z", "float"),
-        (READ_EXPORT, "sound_creation0", "int16_t"),
-        (READ_EXPORT, "sound_creation1", "int16_t"),
-        (READ_EXPORT, "dead_unit_id", "int16_t"),               # unit id to become on death
+        (READ_EXPORT, "train_sound", "int16_t"),
+    ]
+
+    # TODO: Enable conversion for AOE1; replace "damage_sound"
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.append((READ_EXPORT, "damage_sound", "int16_t"))
+    # ===========================================================================
+    data_format.append((READ_EXPORT, "damage_sound", "int16_t"))
+
+    data_format.extend([
+        (READ_EXPORT, "dead_unit_id", "int16_t"),        # unit id to become on death
         (READ, "placement_mode", "int8_t"),              # 0=placable on top of others in scenario editor, 5=can't
-        (READ, "air_mode", "int8_t"),                    # 1=no footprints
+        (READ, "can_be_built_on", "int8_t"),             # 1=no footprints
         (READ, "icon_id", "int16_t"),                    # frame id of the icon slp (57029) to place on the creation button
         (READ, "hidden_in_editor", "int8_t"),
-        (READ, "portrait_icon_id", "int16_t"),
-        (READ, "enabled", "int16_t"),                    # 0=unlocked by research, 1=insta-available
+        (READ, "old_portrait_icon_id", "int16_t"),
+        (READ, "enabled", "int8_t"),                     # 0=unlocked by research, 1=insta-available
+    ])
+
+    # TODO: Enable conversion for AOE1; replace "disabled"
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.append((READ, "disabled", "int8_t"))
+    # ===========================================================================
+    data_format.append((READ, "disabled", "int8_t"))
+
+    data_format.extend([
         (READ, "placement_side_terrain0", "int16_t"),    # terrain id that's needed somewhere on the foundation (e.g. dock water)
         (READ, "placement_side_terrain1", "int16_t"),    # second slot for ^
         (READ, "placement_terrain0", "int16_t"),         # terrain needed for placement (e.g. dock: water)
@@ -593,7 +626,7 @@ class UnitObject(Exportable):
                 0x15: "WATER_SHALLOW",
             },
         )),
-        (READ_EXPORT, "movement_type", "int8_t"),    # flying, etc. TODO: lookup dict
+        (READ_EXPORT, "fly_mode", "int8_t"),                      # determines whether the unit can fly
         (READ_EXPORT, "resource_capacity", "int16_t"),
         (READ_EXPORT, "resource_decay", "float"),                 # when animals rot, their resources decay
         (READ_EXPORT, "blast_defense_level", EnumLookupMember(
@@ -672,21 +705,78 @@ class UnitObject(Exportable):
         )),
         (READ, "attack_reaction", "float"),
         (READ_EXPORT, "minimap_color", "int8_t"),        # palette color id for the minimap
-        (READ_EXPORT, "language_dll_help", "uint16_t"),  # help text for this unit, stored in the translation dll.
-        (READ, "hot_keys", "int16_t[4]"),                # language dll dependent (kezb lazouts!)
-        (READ_UNKNOWN, None, "int8_t"),
-        (READ_UNKNOWN, None, "int8_t"),
-        (READ, "unselectable", "uint8_t"),
-        (READ_UNKNOWN, None, "int8_t"),
-        (READ_UNKNOWN, None, "int8_t"),
-        (READ_UNKNOWN, None, "int8_t"),
+        (READ_EXPORT, "language_dll_help", "int32_t"),   # help text for this unit, stored in the translation dll.
+        (READ_EXPORT, "language_dll_hotkey_text", "int32_t"),
+        (READ, "hot_keys", "int32_t"),                   # language dll dependent (kezb lazouts!)
+        (READ, "reclyclable", "int8_t"),
+        (READ, "enable_auto_gather", "int8_t"),
+        (READ, "doppelgaenger_on_death", "int8_t"),
+        (READ, "resource_gather_drop", "int8_t"),
+    ])
 
-        # bit 0 == 1 && val != 7: mask shown behind buildings,
-        # bit 0 == 0 && val != {6, 10}: no mask displayed,
-        # val == {-1, 7}: in open area mask is partially displayed
-        # val == {6, 10}: building, causes mask to appear on units behind it
-        (READ, "selection_mask", "int8_t"),
-        (READ, "selection_shape_type", "int8_t"),
+    # TODO: Enable conversion for AOE1, AOK; replace 6 values below
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     # bit 0 == 1 && val != 7: mask shown behind buildings,
+    #     # bit 0 == 0 && val != {6, 10}: no mask displayed,
+    #     # val == {-1, 7}: in open area mask is partially displayed
+    #     # val == {6, 10}: building, causes mask to appear on units behind it
+    #     data_format.extend([
+    #         (READ, "occlusion_mask", "int8_t"),
+    #         (READ, "obstruction_type", EnumLookupMember(
+    #             # selects the available ui command buttons for the unit
+    #             raw_type    = "int8_t",
+    #             type_name   = "obstruction_types",
+    #             lookup_dict = {
+    #                 0: "PASSABLE",              # farm, gate, dead bodies, town center
+    #                 2: "BUILDING",
+    #                 3: "BERSERK",
+    #                 5: "UNIT",
+    #                 10: "MOUNTAIN",             # mountain (matches occlusion_mask)
+    #             },
+    #         )),
+    #         # There shouldn't be a value here according to genieutils
+    #         # What is this?
+    #         (READ_EXPORT, "selection_shape", "int8_t"),            # 0=square, 1<=round
+    #     ])
+    #
+    #     if GameVersion-age2_aok not in game_versions:
+    #         # bitfield of unit attributes:
+    #         # bit 0: allow garrison,
+    #         # bit 1: don't join formation,
+    #         # bit 2: stealth unit,
+    #         # bit 3: detector unit,
+    #         # bit 4: mechanical unit,
+    #         # bit 5: biological unit,
+    #         # bit 6: self-shielding unit,
+    #         # bit 7: invisible unit
+    #         data_format.extend([
+    #             (READ, "trait", "uint8_t"),
+    #             (READ, "civilisation", "int8_t"),
+    #             (READ, "attribute_piece", "int16_t"),    # leftover from trait+civ variable
+    #         ])
+    # ===========================================================================
+
+    # bit 0 == 1 && val != 7: mask shown behind buildings,
+    # bit 0 == 0 && val != {6, 10}: no mask displayed,
+    # val == {-1, 7}: in open area mask is partially displayed
+    # val == {6, 10}: building, causes mask to appear on units behind it
+    data_format.extend([
+        (READ, "occlusion_mask", "int8_t"),
+        (READ, "obstruction_type", EnumLookupMember(
+            # selects the available ui command buttons for the unit
+            raw_type    = "int8_t",
+            type_name   = "obstruction_types",
+            lookup_dict = {
+                0: "PASSABLE",              # farm, gate, dead bodies, town center
+                2: "BUILDING",
+                3: "BERSERK",
+                5: "UNIT",
+                10: "MOUNTAIN",             # mountain (matches occlusion_mask)
+            },
+        )),
+        # There shouldn't be a value here according to genieutils
+        # What is this?
         (READ_EXPORT, "selection_shape", "int8_t"),            # 0=square, 1<=round
 
         # bitfield of unit attributes:
@@ -698,9 +788,13 @@ class UnitObject(Exportable):
         # bit 5: biological unit,
         # bit 6: self-shielding unit,
         # bit 7: invisible unit
-        (READ, "attribute", "uint8_t"),
+        (READ, "trait", "uint8_t"),
         (READ, "civilisation", "int8_t"),
-        (READ, "attribute_piece", "int16_t"),   # leftover from attribute+civ variable
+        (READ, "attribute_piece", "int16_t"),   # leftover from trait+civ variable
+    ])
+    # ===========================================================================
+
+    data_format.extend([
         (READ_EXPORT, "selection_effect", EnumLookupMember(
             # things that happen when the unit was selected
             raw_type = "int8_t",
@@ -733,7 +827,7 @@ class UnitObject(Exportable):
         )),
         (READ_EXPORT, "sound_selection", "int16_t"),
         (READ_EXPORT, "sound_dying", "int16_t"),
-        (READ_EXPORT, "attack_mode", EnumLookupMember(  # maybe obsolete, as it's copied when converting the unit
+        (READ_EXPORT, "old_attack_mode", EnumLookupMember(  # obsolete, as it's copied when converting the unit
             raw_type = "int8_t",     # things that happen when the unit was selected
             type_name = "attack_modes",
             lookup_dict = {
@@ -745,12 +839,42 @@ class UnitObject(Exportable):
             },
         )),
 
-
-        (READ_UNKNOWN, None, "int8_t"),         # maybe: 1: yup, you may eat/gather it.
+        (READ, "convert_terrain", "int8_t"),
         (READ_EXPORT, "name", "char[name_length]"),
-        (READ_EXPORT, "id1", "int16_t"),
-        (READ_EXPORT, "id2", "int16_t"),
-    )
+    ])
+
+    # TODO: Enable conversion for SWGB
+    # ===========================================================================
+    # if (GameVersion.swgb_10 or GameVersion.swgb_cc) in game_versions:
+    #     data_format.extend([(READ, "name2_length", "uint16_t"),
+    #                         (READ, "name2", "char[name2_length]"),
+    #                         (READ, "unit_line", "int16_t"),
+    #                         (READ, "min_tech_level", "int8_t"),
+    #     ])
+    # ===========================================================================
+
+    data_format.append((READ_EXPORT, "id1", "int16_t"))
+
+    # TODO: Enable conversion for AOE1; replace "id2"
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.append((READ_EXPORT, "id2", "int16_t"))
+    # ===========================================================================
+    data_format.append((READ_EXPORT, "id2", "int16_t"))
+
+
+class TreeUnit(UnitObject):
+    """
+    type_id == 90
+    """
+
+    name_struct        = "tree_unit"
+    name_struct_file   = "unit"
+    struct_description = "just a tree unit."
+
+    data_format = [
+        (READ_EXPORT, None, IncludeMembers(cls=UnitObject)),
+    ]
 
 
 class AnimatedUnit(UnitObject):
@@ -763,10 +887,10 @@ class AnimatedUnit(UnitObject):
     name_struct_file   = "unit"
     struct_description = "adds speed property to units."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, None, IncludeMembers(cls=UnitObject)),
         (READ_EXPORT, "speed", "float"),
-    )
+    ]
 
 
 class DoppelgangerUnit(AnimatedUnit):
@@ -778,9 +902,9 @@ class DoppelgangerUnit(AnimatedUnit):
     name_struct_file   = "unit"
     struct_description = "weird doppelganger unit thats actually the same as an animated unit."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, None, IncludeMembers(cls=AnimatedUnit)),
-    )
+    ]
 
 
 class MovingUnit(DoppelgangerUnit):
@@ -793,18 +917,36 @@ class MovingUnit(DoppelgangerUnit):
     name_struct_file   = "unit"
     struct_description = "adds walking graphics, rotations and tracking properties to units."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, None, IncludeMembers(cls=DoppelgangerUnit)),
         (READ_EXPORT, "walking_graphics0", "int16_t"),
         (READ_EXPORT, "walking_graphics1", "int16_t"),
         (READ, "turn_speed", "float"),
-        (READ, "size_class", "int8_t"),
+        (READ, "old_size_class", "int8_t"),
         (READ, "trail_unit_id", "int16_t"),             # unit id for the ground traces
         (READ, "trail_opsions", "uint8_t"),             # ground traces: -1: no tracking present, 2: projectiles with tracking unit
         (READ, "trail_spacing", "float"),               # ground trace spacing: 0: no tracking, 0.5: trade cart, 0.12: some projectiles, 0.4: other projectiles
-        (READ, "move_algorithm", "int8_t"),
-        (READ, "rotation_angles", "float[5]"),
-    )
+        (READ, "old_move_algorithm", "int8_t"),
+    ]
+
+    # TODO: Enable conversion for AOE1; replace 5 values below
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.extend([
+    #         (READ, "turn_radius", "float"),
+    #         (READ, "turn_radius_speed", "float"),
+    #         (READ, "max_yaw_per_sec_moving", "float"),
+    #         (READ, "stationary_yaw_revolution_time", "float"),
+    #         (READ, "max_yaw_per_sec_stationary", "float"),
+    #     ])
+    # ===========================================================================
+    data_format.extend([
+        (READ, "turn_radius", "float"),
+        (READ, "turn_radius_speed", "float"),
+        (READ, "max_yaw_per_sec_moving", "float"),
+        (READ, "stationary_yaw_revolution_time", "float"),
+        (READ, "max_yaw_per_sec_stationary", "float"),
+    ])
 
 
 class ActionUnit(MovingUnit):
@@ -817,23 +959,35 @@ class ActionUnit(MovingUnit):
     name_struct_file   = "unit"
     struct_description = "adds search radius and work properties, as well as movement sounds."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, None, IncludeMembers(cls=MovingUnit)),
         # callback unit action id when found.
         # monument and sheep: 107 = enemy convert.
         # all auto-convertible units: 0, most other units: -1
-        (READ, "default_task_id", "int16_t"),             # e.g. when sheep are discovered
+        (READ, "default_task_id", "int16_t"),            # e.g. when sheep are discovered
         (READ, "search_radius", "float"),
         (READ_EXPORT, "work_rate", "float"),
-        (READ_EXPORT, "drop_site0", "int16_t"),           # unit id where gathered resources shall be delivered to
-        (READ_EXPORT, "drop_site1", "int16_t"),           # alternative unit id
-        (READ_EXPORT, "task_by_group", "int8_t"),         # if a task is not found in the current unit, other units with the same group id are tried.
-                                                          # 1: male villager; 2: female villager; 3+: free slots
-                                                          # basically this creates a "swap group id" where you can place different-graphic units together.
-        (READ_EXPORT, "command_sound_id", "int16_t"),     # sound played when a command is instanciated
-        (READ_EXPORT, "stop_sound_id", "int16_t"),        # sound when the command is done (e.g. unit stops at target position)
-        (READ, "run_pattern", "int8_t"),                  # how animals run around randomly
-    )
+        (READ_EXPORT, "drop_site0", "int16_t"),          # unit id where gathered resources shall be delivered to
+        (READ_EXPORT, "drop_site1", "int16_t"),          # alternative unit id
+        (READ_EXPORT, "task_by_group", "int8_t"),        # if a task is not found in the current unit, other units with the same group id are tried.
+                                                         # 1: male villager; 2: female villager; 3+: free slots
+                                                         # basically this creates a "swap group id" where you can place different-graphic units together.
+        (READ_EXPORT, "command_sound_id", "int16_t"),    # sound played when a command is instanciated
+        (READ_EXPORT, "stop_sound_id", "int16_t"),       # sound when the command is done (e.g. unit stops at target position)
+        (READ, "run_pattern", "int8_t"),                 # how animals run around randomly
+    ]
+
+    # TODO: Enable conversion for AOE1
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) in game_versions:
+    #     data_format.extend([
+    #         (READ_EXPORT, "unit_count", "uint16_t"),
+    #         (READ_EXPORT, "unit_commands", SubdataMember(
+    #             ref_type=UnitCommand,
+    #             length="unit_count",
+    #         )),
+    #     ])
+    # ===========================================================================
 
 
 class ProjectileUnit(ActionUnit):
@@ -846,9 +1000,20 @@ class ProjectileUnit(ActionUnit):
     name_struct_file   = "unit"
     struct_description = "adds attack and armor properties to units."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, None, IncludeMembers(cls=ActionUnit)),
-        (READ, "default_armor", "int16_t"),
+    ]
+
+    # TODO: Enable conversion for AOE1; replace "default_armor"
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror or GameVersion.age2_aok) in game_versions:
+    #     data_format.append((READ, "default_armor", "uint8_t"))
+    # else:
+    #     data_format.append((READ, "default_armor", "int16_t"))
+    # ===========================================================================
+    data_format.append((READ, "default_armor", "int16_t"))
+
+    data_format.extend([
         (READ, "attack_count", "uint16_t"),
         (READ, "attacks", SubdataMember(ref_type=HitType, length="attack_count")),
         (READ, "armor_count", "uint16_t"),
@@ -870,8 +1035,8 @@ class ProjectileUnit(ActionUnit):
         (READ, "attack_speed", "float"),                    # = "reload time"
         (READ_EXPORT, "missile_unit_id", "int16_t"),        # which projectile to use?
         (READ, "base_hit_chance", "int16_t"),               # probablity of attack hit in percent
-        (READ, "break_off_combat", "int8_t"),               # = tower mode?
-        (READ, "fire_missile_at_frame", "int16_t"),         # the frame number at which the missile is fired, = delay
+        (READ, "break_off_combat", "int8_t"),               # = tower mode?; not used anywhere
+        (READ, "frame_delay", "int16_t"),                   # the frame number at which the missile is fired, = delay
         (READ, "weapon_offset", "float[3]"),                # graphics displacement in x, y and z
         (READ_EXPORT, "blast_level_offence", EnumLookupMember(
             # blasts damage units that have higher or same blast_defense_level
@@ -886,13 +1051,22 @@ class ProjectileUnit(ActionUnit):
             },
         )),
         (READ, "weapon_range_min", "float"),                # minimum range that this projectile requests for display
-        (READ, "accuracy_dispersion", "float"),
+    ])
+
+    # TODO: Enable conversion for AOE1; replace "accuracy_dispersion"
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.append((READ, "accuracy_dispersion", "float"))
+    # ===========================================================================
+    data_format.append((READ, "accuracy_dispersion", "float"))
+
+    data_format.extend([
         (READ_EXPORT, "fight_sprite_id", "int16_t"),
         (READ, "melee_armor_displayed", "int16_t"),
         (READ, "attack_displayed", "int16_t"),
         (READ, "range_displayed", "float"),
         (READ, "reload_time_displayed", "float"),
-    )
+    ])
 
 
 class MissileUnit(ProjectileUnit):
@@ -905,15 +1079,15 @@ class MissileUnit(ProjectileUnit):
     name_struct_file   = "unit"
     struct_description = "adds missile specific unit properties."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, None, IncludeMembers(cls=ProjectileUnit)),
-        (READ, "stretch_mode", "int8_t"),         # 0 = default; 1 = projectile falls vertically to the bottom of the map; 3 = teleporting projectiles
+        (READ, "projectile_type", "int8_t"),      # 0 = default; 1 = projectile falls vertically to the bottom of the map; 3 = teleporting projectiles
         (READ, "smart_mode", "int8_t"),           # "better aiming". tech attribute 19 changes this: 0 = shoot at current pos; 1 = shoot at predicted pos
         (READ, "drop_animation_mode", "int8_t"),  # 1 = disappear on hit
         (READ, "penetration_mode", "int8_t"),     # 1 = pass through hit object; 0 = stop projectile on hit; (only for graphics, not pass-through damage)
-        (READ_UNKNOWN, None, "int8_t"),
+        (READ, "area_of_effect_special", "int8_t"),
         (READ_EXPORT, "projectile_arc", "float"),
-    )
+    ]
 
 
 class LivingUnit(ProjectileUnit):
@@ -925,9 +1099,12 @@ class LivingUnit(ProjectileUnit):
     name_struct_file   = "unit"
     struct_description = "adds creation location and garrison unit properties."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, None, IncludeMembers(cls=ProjectileUnit)),
-        (READ_EXPORT, "resource_cost", SubdataMember(ref_type=ResourceCost, length=3)),
+        (READ_EXPORT, "resource_cost", SubdataMember(
+            ref_type=ResourceCost,
+            length=3,
+        )),
         (READ_EXPORT, "creation_time", "int16_t"),         # in seconds
         (READ_EXPORT, "creation_location_id", "int16_t"),  # e.g. 118 = villager
 
@@ -950,8 +1127,52 @@ class LivingUnit(ProjectileUnit):
         # | 31 | 32 | 33 | 34 | 35 |
         # +------------------------+
         (READ, "creation_button_id", "int8_t"),
-        (READ_UNKNOWN, None, "float"),
-        (READ_UNKNOWN, None, "float"),
+    ]
+
+    # TODO: Enable conversion for AOE1; replace 13 values below
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.extend([(
+    #         (READ, "rear_attack_modifier", "float"),
+    #         (READ, "flank_attack_modifier", "float"),
+    #         (READ_EXPORT, "creatable_type", EnumLookupMember(
+    #             raw_type    = "int8_t",
+    #             type_name   = "creatable_types",
+    #             lookup_dict = {
+    #                 0: "NONHUMAN",  # building, animal, ship
+    #                 1: "VILLAGER",  # villager, king
+    #                 2: "MELEE",     # soldier, siege, predator, trader
+    #                 3: "MOUNTED",   # camel rider
+    #                 4: "RELIC",
+    #                 5: "RANGED_PROJECTILE",  # archer
+    #                 6: "RANGED_MAGIC",       # monk
+    #                 21: "TRANSPORT_SHIP",
+    #             },
+    #         )),
+    #         (READ, "hero_mode", "int8_t"),                           # if building: "others" tab in editor, if living unit: "heroes" tab, regenerate health + monk immunity
+    #         (READ_EXPORT, "garrison_graphic", "int32_t"),            # graphic to display when units are garrisoned
+    #         (READ, "attack_projectile_count", "float"),              # projectile count when nothing garrisoned, including both normal and duplicated projectiles
+    #         (READ, "attack_projectile_max_count", "int8_t"),         # total projectiles when fully garrisoned
+    #         (READ, "attack_projectile_spawning_area_width", "float"),
+    #         (READ, "attack_projectile_spawning_area_length", "float"),
+    #         (READ, "attack_projectile_spawning_area_randomness", "float"),  # placement randomness, 0=from single spot, 1=random, 1<less random
+    #         (READ, "attack_projectile_secondary_unit_id", "int32_t"),       # uses its own attack values
+    #         (READ, "special_graphic_id", "int32_t"),  # used just before unit reaches its target enemy, configuration:
+    #         (READ, "special_activation", "int8_t"),  # determines adjacent unit graphics, if 1: building can adapt graphics by adjacent buildings
+    #                                                 # 0: default: only works when facing the hit angle.
+    #                                                 # 1: block: activates special graphic when receiving damage and not pursuing the attacker.
+    #                                                 # while idle, blocking decreases damage taken by 1/3.
+    #                                                 # also: a wall changes the graphics (when not-an-end piece) because of this.
+    #                                                 # 2: counter charge: activates special graphic when idle and enemy is near.
+    #                                                 # while idle, attacks back once on first received hit.
+    #                                                 # enemy must be unit type 70 and have less than 0.2 max range.
+    #                                                 # 3: charge: activates special graphic when closer than two tiles to the target.
+    #                                                 # deals 2X damage on 1st hit
+    #     ])
+    # ===========================================================================
+    data_format.extend([
+        (READ, "rear_attack_modifier", "float"),
+        (READ, "flank_attack_modifier", "float"),
         (READ_EXPORT, "creatable_type", EnumLookupMember(
             raw_type    = "int8_t",
             type_name   = "creatable_types",
@@ -966,28 +1187,29 @@ class LivingUnit(ProjectileUnit):
                 21: "TRANSPORT_SHIP",
             },
         )),
-        (READ, "hero_mode", "int8_t"),                       # if building: "others" tab in editor, if living unit: "heroes" tab, regenerate health + monk immunity
-        (READ_EXPORT, "garrison_graphic", "int32_t"),        # graphic to display when units are garrisoned
-        (READ, "attack_projectile_count", "float"),             # projectile count when nothing garrisoned, including both normal and duplicated projectiles
-        (READ, "attack_projectile_max_count", "int8_t"),        # total projectiles when fully garrisoned
+        (READ, "hero_mode", "int8_t"),                           # if building: "others" tab in editor, if living unit: "heroes" tab, regenerate health + monk immunity
+        (READ_EXPORT, "garrison_graphic", "int32_t"),            # graphic to display when units are garrisoned
+        (READ, "attack_projectile_count", "float"),              # projectile count when nothing garrisoned, including both normal and duplicated projectiles
+        (READ, "attack_projectile_max_count", "int8_t"),         # total projectiles when fully garrisoned
         (READ, "attack_projectile_spawning_area_width", "float"),
         (READ, "attack_projectile_spawning_area_length", "float"),
         (READ, "attack_projectile_spawning_area_randomness", "float"),  # placement randomness, 0=from single spot, 1=random, 1<less random
-        (READ, "attack_projectile_secondary_unit_id", "int32_t"),   # uses its own attack values
-        (READ, "special_graphic_id", "int32_t"),  # used just before unit reaches its target enemy, configuration:
-        (READ, "special_activation", "int8_t"),   # determines adjacent unit graphics, if 1: building can adapt graphics by adjacent buildings
-                                                  # 0: default: only works when facing the hit angle.
-                                                  # 1: block: activates special graphic when receiving damage and not pursuing the attacker.
-                                                  #           while idle, blocking decreases damage taken by 1/3.
-                                                  #           also: a wall changes the graphics (when not-an-end piece) because of this.
-                                                  # 2: counter charge: activates special graphic when idle and enemy is near.
-                                                  #                    while idle, attacks back once on first received hit.
-                                                  #                    enemy must be unit type 70 and have less than 0.2 max range.
-                                                  # 3: charge: activates special graphic when closer than two tiles to the target.
-                                                  #            deals 2X damage on 1st hit
+        (READ, "attack_projectile_secondary_unit_id", "int32_t"),       # uses its own attack values
+        (READ, "special_graphic_id", "int32_t"),    # used just before unit reaches its target enemy, configuration:
+        (READ, "special_activation", "int8_t"),     # determines adjacent unit graphics, if 1: building can adapt graphics by adjacent buildings
+                                                    # 0: default: only works when facing the hit angle.
+                                                    # 1: block: activates special graphic when receiving damage and not pursuing the attacker.
+                                                    # while idle, blocking decreases damage taken by 1/3.
+                                                    # also: a wall changes the graphics (when not-an-end piece) because of this.
+                                                    # 2: counter charge: activates special graphic when idle and enemy is near.
+                                                    # while idle, attacks back once on first received hit.
+                                                    # enemy must be unit type 70 and have less than 0.2 max range.
+                                                    # 3: charge: activates special graphic when closer than two tiles to the target.
+                                                    # deals 2X damage on 1st hit
+    ])
+    # ===========================================================================
 
-        (READ, "pierce_armor_displayed", "int16_t"),  # unit stats display of pierce armor
-    )
+    data_format.append((READ, "pierce_armor_displayed", "int16_t"))  # unit stats display of pierce armor
 
 
 class BuildingUnit(LivingUnit):
@@ -999,23 +1221,80 @@ class BuildingUnit(LivingUnit):
     name_struct_file   = "unit"
     struct_description = "construction graphics and garrison building properties for units."
 
-    data_format = (
+    data_format = [
         (READ_EXPORT, None, IncludeMembers(cls=LivingUnit)),
         (READ_EXPORT, "construction_graphic_id", "int16_t"),
-        (READ, "snow_graphic_id", "int16_t"),
+    ]
+
+    # TODO: Enable conversion for AOE1; replace "snow_graphic_id"
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror or age2_aok) not in game_versions:
+    #     data_format.append((READ, "snow_graphic_id", "int16_t"))
+    # ===========================================================================
+    data_format.append((READ, "snow_graphic_id", "int16_t"))
+
+    data_format.extend([
         (READ, "adjacent_mode", "int8_t"),            # 1=adjacent units may change the graphics
-        (READ, "icon_disabler", "int16_t"),
+        (READ, "graphics_angle", "int16_t"),
         (READ, "disappears_when_built", "int8_t"),
         (READ_EXPORT, "stack_unit_id", "int16_t"),    # second building to place directly on top
         (READ_EXPORT, "foundation_terrain_id", "int16_t"),  # change underlying terrain to this id when building completed
-        (READ, "overlay_id", "int16_t"),              # deprecated terrain-like structures knowns as "Overlays" from alpha AOE used for roads
+        (READ, "old_overlay_id", "int16_t"),          # deprecated terrain-like structures knowns as "Overlays" from alpha AOE used for roads
         (READ, "research_id", "int16_t"),             # research_id to be enabled when building creation
-        (READ, "annex_mode", "int8_t"),
-        (READ_EXPORT, "building_annex", SubdataMember(ref_type=BuildingAnnex, length=4)),
+    ])
+
+    # TODO: Enable conversion for AOE1; replace 5 values below
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.extend([
+    #         (READ, "can_burn", "int8_t"),
+    #         (READ_EXPORT, "building_annex", SubdataMember(
+    #             ref_type=BuildingAnnex,
+    #             length=4
+    #         )),
+    #         (READ, "head_unit_id", "int16_t"),            # building at which an annex building is attached to
+    #         (READ, "transform_unit_id", "int16_t"),       # destination unit id when unit shall transform (e.g. unpack)
+    #         (READ, "transform_sound_id", "int16_t"),
+    #     ])
+    # ===========================================================================
+    data_format.extend([
+        (READ, "can_burn", "int8_t"),
+        (READ_EXPORT, "building_annex", SubdataMember(
+            ref_type=BuildingAnnex,
+            length=4
+        )),
         (READ, "head_unit_id", "int16_t"),            # building at which an annex building is attached to
         (READ, "transform_unit_id", "int16_t"),       # destination unit id when unit shall transform (e.g. unpack)
-        (READ_UNKNOWN, None, "int16_t"),              # unit_id for something unknown
-        (READ, "construction_sound_id", "int16_t"),
+        (READ, "transform_sound_id", "int16_t"),
+    ])
+    # ===========================================================================
+
+    data_format.append((READ, "construction_sound_id", "int16_t"))
+
+    # TODO: Enable conversion for AOE1; replace 5 values below
+    # ===========================================================================
+    # if (GameVersion.aoe_1 or GameVersion.aoe_ror) not in game_versions:
+    #     data_format.extend([
+    #         (READ_EXPORT, "garrison_type", EnumLookupMember(
+    #             raw_type    = "int8_t",
+    #             type_name   = "garrison_types",
+    #             lookup_dict = {  # TODO: create bitfield
+    #                 0x00: "NONE",
+    #                 0x01: "VILLAGER",
+    #                 0x02: "INFANTRY",
+    #                 0x04: "CAVALRY",
+    #                 0x08: "MONK",
+    #                 0x0b: "NOCAVALRY",
+    #                 0x0f: "ALL",
+    #             },
+    #         )),
+    #         (READ, "garrison_heal_rate", "float"),
+    #         (READ, "garrison_repair_rate", "float"),
+    #         (READ, "salvage_unit_id", "int16_t"),       # id of the unit used for salvages
+    #         (READ, "salvage_attributes", "int8_t[6]"),  # list of attributes for salvages (looting table)
+    #     ])
+    # ===========================================================================
+    data_format.extend([
         (READ_EXPORT, "garrison_type", EnumLookupMember(
             raw_type    = "int8_t",
             type_name   = "garrison_types",
@@ -1030,24 +1309,11 @@ class BuildingUnit(LivingUnit):
             },
         )),
         (READ, "garrison_heal_rate", "float"),
-        (READ_UNKNOWN, None, "float"),      # (unknown garrison value)
+        (READ, "garrison_repair_rate", "float"),
         (READ, "salvage_unit_id", "int16_t"),       # id of the unit used for salvages
-        (READ, "salvage_attributes", "int8_t[6]"),  # list of attributes for salvages
-    )
-
-
-class TreeUnit(UnitObject):
-    """
-    type_id == 90
-    """
-
-    name_struct        = "tree_unit"
-    name_struct_file   = "unit"
-    struct_description = "just a tree unit."
-
-    data_format = (
-        (READ_EXPORT, None, IncludeMembers(cls=UnitObject)),
-    )
+        (READ, "salvage_attributes", "int8_t[6]"),  # list of attributes for salvages (looting table)
+    ])
+    # ===========================================================================
 
 
 # unit type id => human readable name

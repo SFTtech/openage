@@ -12,8 +12,9 @@ sanity_check:
 # Make sure both release and debug are tested. Arch job has more checks,
 # so it should run debug, while Debian can test build in release.
 configure:
-	./configure --mode=debug   (? if job != "debian" ?)
-	./configure --mode=release (? if job == "debian" ?)
+	- env: mode=debug              (? if job != "debian" ?)
+	- env: mode=release            (? if job == "debian" ?)
+	./configure --mode=${mode} --download-nyan
 
 build: configure
 	make -j$(nproc) build
