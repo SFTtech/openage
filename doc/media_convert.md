@@ -35,7 +35,8 @@ The game will ask for your AoE II installation folder; examples include:
 
     ~/.wine-age/drive_c/programs/ms-games/aoe2
     /var/run/media/windisk/Program Files (x86)/Steam/SteamApps/common/Age2HD
-    ~/Library/Application Support/Steam/steamapps/common
+    ~/.steam/steam/SteamApps/common/Age2HD
+    ~/Library/Application Support/Steam/steamapps/common/Age2HD
 
 You will find the converted files in `assets/converted`.
 

@@ -4,12 +4,6 @@
 
 #TODO: integrate PGO (profile-guided optimization) build
 
-function(require_cxx_version CXXNAME MINIMAL)
-	if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS ${MINIMAL})
-		message(FATAL_ERROR ">=${CXXNAME}-${MINIMAL} required (c++14, you know?), you have ${CMAKE_CXX_COMPILER_VERSION}")
-	endif()
-endfunction()
-
 macro(set_compiler_version_flags TYPE MINIMAL FLAGS INVERS EQTYPE)
 	if(${INVERS} CMAKE_CXX_COMPILER_VERSION VERSION_${EQTYPE} ${MINIMAL})
 		if(${TYPE} STREQUAL "CXX")
@@ -57,21 +51,16 @@ endmacro()
 
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
 if(NOT MSVC)
 	set(EXTRA_FLAGS "${EXTRA_FLAGS} -Wall -Wextra -pedantic")
 endif()
 
 # check for compiler versions
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-	require_cxx_version("gcc" 4.9)
 	set_compiler_greater_flags("CXX" 4.9 "-fdiagnostics-color=auto")
 	set_compiler_greater_flags("EXTRA" 5.0 "-Wsuggest-override")
 
 elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
-	require_cxx_version("clang" 3.4)
-
 	set_compiler_flags("EXTRA" "-Wno-gnu-statement-expression")
 
 	if(APPLE)

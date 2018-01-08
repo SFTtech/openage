@@ -1,12 +1,12 @@
 # Copyright 2013-2017 the openage authors. See copying.md for legal info.
 
-cmake_minimum_required(VERSION 3.1.0)
-# required for CMAKE_CXX_STANDARD
+cmake_minimum_required(VERSION 3.8.0)
+# required for CMAKE_CXX_STANDARD for C++17
 
 # main build configuration file
 
 # text art: figlet -f rounded "[SFT] openage" | sed -e 's/\\/\\\\/g'
-message("(running cmake...)
+message("
 
  ___  ______ _______ _______ ___
 |  _)/ _____|_______|_______|_  |
@@ -22,22 +22,31 @@ You have chosen, or been chosen, to attempt the daring task of building openage.
 If you have installed all the dependencies that are conveniently listed in
 [doc/building.md], this _might_ just work!
 
-If it doesn't, consider reporting the issue/asking for help in #sfttech on freenode.net.
+If it doesn't, consider reporting the issue: https://github.com/SFTtech/openage
+Or ask for help:
+  * Matrix: #sfttech:matrix.org
+  * IRC:    #sfttech on freenode.net
 ")
 
-# cmake < 3.4.0 has problems with projects that use C++ but not C,
-# especially in the FindThreads module (when header files are checked).
-if(CMAKE_VERSION VERSION_LESS "3.4.0")
-	message(WARNING "using cmake ${CMAKE_VERSION} < 3.4.0, falling back and setting CC=CXX.")
-	project(openage C CXX)
 
-	# simple hack to set CC=CXX because
-	# older cmake requires CC for some header tests
-	set(CMAKE_C_COMPILER "${CMAKE_CXX_COMPILER}")
-	set(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS}")
-else()
-	project(openage CXX)
-endif()
+project(openage CXX)
+
+# C++ standard requirement
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Python and Cython requirements
+set(PYTHON_MIN_VERSION 3.4)
+set(CYTHON_MIN_VERSION 0.25)
+
+# CMake policies
+foreach(pol CMP0071  # enable automoc for generated files
+       )
+	if (POLICY ${pol})
+		cmake_policy(SET ${pol} NEW)
+	endif()
+endforeach()
+
 
 # Ensure CMAKE_BUILD_TYPE is set correctly.
 if(NOT CMAKE_BUILD_TYPE)
@@ -98,6 +107,17 @@ if(ENABLE_CCACHE)
 endif()
 
 
+# clang tidy static analysis
+option(
+	ENABLE_CLANG_TIDY
+	"activate clang tidy messages"
+	OFF
+)
+if(ENABLE_CLANG_TIDY)
+	set(CMAKE_CXX_CLANG_TIDY "clang-tidy;-checks=-*,readability-*")
+endif()
+
+
 # option processing is now done.
 
 
@@ -110,9 +130,11 @@ include(GNUInstallDirs)
 include(CheckInSourceBuild)
 include(HandleCXXOptions)
 include(CheckCompilerFeatures)
+include(CMakeParseArguments)
 include(HandlePythonOptions)
 include(CheckRuntimeDependencies)
 include(DetectProjectVersion)
+include(DependencyFetch)
 
 # include build configuration modules
 include(CTest)

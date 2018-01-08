@@ -3,8 +3,8 @@
 # finds the python interpreter, install destination and extension flags.
 
 # the Python version number requirement is in modules/FindPython_test.cpp
-find_package(Python 3.4 REQUIRED)
-find_package(Cython 0.25 REQUIRED)
+find_package(Python ${PYTHON_MIN_VERSION} REQUIRED)
+find_package(Cython ${CYTHON_MIN_VERSION} REQUIRED)
 find_package(Numpy REQUIRED)
 
 py_get_config_var(EXT_SUFFIX PYEXT_SUFFIX)

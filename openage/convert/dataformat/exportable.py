@@ -1,4 +1,4 @@
-# Copyright 2014-2016 the openage authors. See copying.md for legal info.
+# Copyright 2014-2017 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -35,11 +35,11 @@ class Exportable:
     # comment for the created struct
     struct_description = None
 
-    # struct format specification
-    data_format = tuple()
-
     # detected game versions
     game_versions = list()
+
+    # struct format specification
+    data_format = list()
 
     def __init__(self, **args):
         # store passed arguments as members

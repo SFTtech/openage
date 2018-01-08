@@ -64,10 +64,10 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 	this->decay = unit_data.name.substr(unit_data.name.length() - 2) == "_D";
 
 	// find suitable sounds
-	int creation_sound = this->unit_data.sound_creation0;
+	int creation_sound = this->unit_data.train_sound;
 	int dying_sound = this->unit_data.sound_dying;
 	if (creation_sound == -1) {
-		creation_sound = this->unit_data.sound_creation1;
+		creation_sound = this->unit_data.damage_sound;
 	}
 	if (creation_sound == -1) {
 		creation_sound = this->unit_data.sound_selection;
@@ -101,7 +101,7 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 			<< " has invalid graphic data, try reconverting the data");
 	}
 	this->graphics[graphic_type::standing] = standing;
-	auto dying_tex = spec.get_unit_texture(this->unit_data.graphic_dying0);
+	auto dying_tex = spec.get_unit_texture(this->unit_data.dying_graphic);
 	if (dying_tex) {
 		this->graphics[graphic_type::dying] = dying_tex;
 	}
@@ -115,8 +115,8 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 	for (auto cmd : cmds) {
 
 		// same attack / work graphic
-		if (cmd->work_sprite_id2 == -1 && cmd->work_sprite_id1 > 0) {
-			auto task = spec.get_unit_texture(cmd->work_sprite_id1);
+		if (cmd->work_sprite_id == -1 && cmd->proceed_sprite_id > 0) {
+			auto task = spec.get_unit_texture(cmd->proceed_sprite_id);
 			if (task) {
 				this->graphics[graphic_type::work] = task;
 				this->graphics[graphic_type::attack] = task;
@@ -124,9 +124,9 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 		}
 
 		// seperate work and attack graphics
-		if (cmd->work_sprite_id2 > 0 && cmd->work_sprite_id1 > 0 ) {
-			auto attack = spec.get_unit_texture(cmd->work_sprite_id1);
-			auto work = spec.get_unit_texture(cmd->work_sprite_id2);
+		if (cmd->work_sprite_id > 0 && cmd->proceed_sprite_id > 0 ) {
+			auto attack = spec.get_unit_texture(cmd->proceed_sprite_id);
+			auto work = spec.get_unit_texture(cmd->work_sprite_id);
 			if (attack) {
 				this->graphics[graphic_type::attack] = attack;
 			}
@@ -486,7 +486,7 @@ BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, co
 	UnitType(owner),
 	unit_data{*ud},
 	texture{spec.get_unit_texture(ud->graphic_standing0)},
-	destroyed{spec.get_unit_texture(ud->graphic_dying0)},
+	destroyed{spec.get_unit_texture(ud->dying_graphic)},
 	projectile{this->unit_data.missile_unit_id},
 	foundation_terrain{ud->foundation_terrain_id},
 	enable_collisions{this->unit_data.id0 != 109} { // 109 = town center
@@ -495,10 +495,10 @@ BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, co
 	this->unit_class = this->unit_data.unit_class;
 
 	// find suitable sounds
-	int creation_sound = this->unit_data.sound_creation0;
+	int creation_sound = this->unit_data.train_sound;
 	int dying_sound = this->unit_data.sound_dying;
 	if (creation_sound == -1) {
-		creation_sound = this->unit_data.sound_creation1;
+		creation_sound = this->unit_data.damage_sound;
 	}
 	if (creation_sound == -1) {
 		creation_sound = this->unit_data.sound_selection;
@@ -519,7 +519,7 @@ BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, co
 	this->graphics[graphic_type::construct] = spec.get_unit_texture(ud->construction_graphic_id);
 	this->graphics[graphic_type::standing] = spec.get_unit_texture(ud->graphic_standing0);
 	this->graphics[graphic_type::attack] = spec.get_unit_texture(ud->graphic_standing0);
-	auto dying_tex = spec.get_unit_texture(ud->graphic_dying0);
+	auto dying_tex = spec.get_unit_texture(ud->dying_graphic);
 	if (dying_tex) {
 		this->graphics[graphic_type::dying] = dying_tex;
 	}
@@ -745,7 +745,7 @@ ProjectileProducer::ProjectileProducer(const Player &owner, const GameSpec &spec
 	unit_data{*pd},
 	tex{spec.get_unit_texture(this->unit_data.graphic_standing0)},
 	sh{spec.get_unit_texture(3379)}, // 3379 = general arrow shadow
-	destroyed{spec.get_unit_texture(this->unit_data.graphic_dying0)} {
+	destroyed{spec.get_unit_texture(this->unit_data.dying_graphic)} {
 
 	// copy the class type
 	this->unit_class = this->unit_data.unit_class;

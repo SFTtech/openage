@@ -606,7 +606,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
         self.ref_type_params    = ref_type_params
 
         # no xrefs supported yet.. just set to true as if they were resolved.
-        self.resolved          = True
+        self.resolved           = True
 
     def get_headers(self, output_target):
         if "struct" == output_target:
