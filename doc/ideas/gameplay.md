@@ -149,7 +149,7 @@ Multiplayer
 
  - Some kind of "official" account on servers for everybody
  - Automatic skill groups to create balanced matches
- - Scale wonder cost to max pop and number of players (make wonders great again) 
+ - Scale wonder cost to max pop and number of players (make wonders great again)
  - We can show the world that competitive games can be free open source!
 
 ### Team interaction
