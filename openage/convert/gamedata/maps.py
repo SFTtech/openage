@@ -1,57 +1,61 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2017 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
 from ..dataformat.exportable import Exportable
 from ..dataformat.members import SubdataMember
-from ..dataformat.member_access import READ, READ_UNKNOWN
+from ..dataformat.member_access import READ
 
 
-class MapHeader(Exportable):
+class MapInfo(Exportable):
     name_struct_file   = "randommap"
     name_struct        = "map_header"
     struct_description = "random map information header"
 
-    data_format = (
-        (READ, "script_number", "int32_t"),
+    data_format = [
+        (READ, "map_id", "int32_t"),
         (READ, "border_south_west", "int32_t"),
         (READ, "border_north_west", "int32_t"),
         (READ, "border_north_east", "int32_t"),
         (READ, "border_south_east", "int32_t"),
         (READ, "border_usage", "int32_t"),
         (READ, "water_shape", "int32_t"),
-        (READ, "non_base_terrain", "int32_t"),
-        (READ, "base_zone_coverage", "int32_t"),
-        (READ_UNKNOWN, None, "int32_t"),
+        (READ, "base_terrain", "int32_t"),
+        (READ, "land_coverage", "int32_t"),
+        (READ, "unused_id", "int32_t"),
         (READ, "base_zone_count", "uint32_t"),
         (READ, "base_zone_ptr", "int32_t"),
         (READ, "map_terrain_count", "uint32_t"),
         (READ, "map_terrain_ptr", "int32_t"),
         (READ, "map_unit_count", "uint32_t"),
         (READ, "map_unit_ptr", "int32_t"),
-        (READ_UNKNOWN, None, "uint32_t"),
-        (READ_UNKNOWN, None, "int32_t"),
-    )
+        (READ, "map_elevation_count", "uint32_t"),
+        (READ, "map_elevation_ptr", "int32_t"),
+    ]
 
 
-class BaseZone(Exportable):
+class MapLand(Exportable):
     name_struct_file   = "randommap"
     name_struct        = "map"
     struct_description = "random map information data"
 
-    data_format = (
-        (READ_UNKNOWN, None, "int32_t"),
-        (READ, "base_terrain", "int32_t"),
-        (READ, "spacing_between_players", "int32_t"),
-        (READ_UNKNOWN, None, "int32_t"),
-        (READ_UNKNOWN, None, "int8_t[4]"),
-        (READ_UNKNOWN, None, "int32_t"),
-        (READ_UNKNOWN, None, "int32_t"),
-        (READ_UNKNOWN, None, "int8_t[4]"),
+    data_format = [
+        (READ, "land_id", "int32_t"),
+        (READ, "terrain", "int32_t"),
+        (READ, "land_spacing", "int32_t"),
+        (READ, "base_size", "int32_t"),
+        (READ, "zone", "int8_t"),
+        (READ, "placement_type", "int8_t"),
+        (READ, "padding1", "int16_t"),
+        (READ, "base_x", "int32_t"),
+        (READ, "base_y", "int32_t"),
+        (READ, "land_proportion", "int8_t"),
+        (READ, "by_player_flag", "int8_t"),
+        (READ, "padding2", "int16_t"),
         (READ, "start_area_radius", "int32_t"),
-        (READ_UNKNOWN, None, "int32_t"),
-        (READ_UNKNOWN, None, "int32_t"),
-    )
+        (READ, "terrain_edge_fade", "int32_t"),
+        (READ, "clumpiness", "int32_t"),
+    ]
 
 
 class MapTerrain(Exportable):
@@ -59,14 +63,14 @@ class MapTerrain(Exportable):
     name_struct        = "map_terrain"
     struct_description = "random map terrain information data"
 
-    data_format = (
+    data_format = [
         (READ, "proportion", "int32_t"),
         (READ, "terrain", "int32_t"),
         (READ, "number_of_clumps", "int32_t"),
-        (READ, "spacing_to_other_terrains", "int32_t"),
+        (READ, "edge_spacing", "int32_t"),
         (READ, "placement_zone", "int32_t"),
-        (READ_UNKNOWN, None, "int32_t"),
-    )
+        (READ, "clumpiness", "int32_t"),
+    ]
 
 
 class MapUnit(Exportable):
@@ -74,10 +78,12 @@ class MapUnit(Exportable):
     name_struct        = "map_unit"
     struct_description = "random map unit information data"
 
-    data_format = (
+    data_format = [
         (READ, "unit", "int32_t"),
         (READ, "host_terrain", "int32_t"),
-        (READ_UNKNOWN, None, "int8_t[4]"),
+        (READ, "group_placing", "int8_t"),
+        (READ, "scale_flag", "int8_t"),
+        (READ, "padding1", "int16_t"),
         (READ, "objects_per_group", "int32_t"),
         (READ, "fluctuation", "int32_t"),
         (READ, "groups_per_player", "int32_t"),
@@ -86,17 +92,22 @@ class MapUnit(Exportable):
         (READ, "set_place_for_all_players", "int32_t"),
         (READ, "min_distance_to_players", "int32_t"),
         (READ, "max_distance_to_players", "int32_t"),
-    )
+    ]
 
 
-class MapUnknown(Exportable):
+class MapElevation(Exportable):
     name_struct_file   = "randommap"
-    name_struct        = "map_unknown"
-    struct_description = "random map infos about magic unknown things"
+    name_struct        = "map_elevation"
+    struct_description = "random map elevation data"
 
-    data_format = (
-        (READ_UNKNOWN, None, "int32_t[6]"),
-    )
+    data_format = [
+        (READ, "proportion", "int32_t"),
+        (READ, "terrain", "int32_t"),
+        (READ, "clump_count", "int32_t"),
+        (READ, "base_terrain", "int32_t"),
+        (READ, "base_elevation", "int32_t"),
+        (READ, "tile_spacing", "int32_t"),
+    ]
 
 
 class Map(Exportable):
@@ -104,21 +115,21 @@ class Map(Exportable):
     name_struct        = "map"
     struct_description = "random map information data"
 
-    data_format = (
+    data_format = [
         (READ, "border_south_west", "int32_t"),
         (READ, "border_north_west", "int32_t"),
         (READ, "border_north_east", "int32_t"),
         (READ, "border_south_east", "int32_t"),
         (READ, "border_usage", "int32_t"),
         (READ, "water_shape", "int32_t"),
-        (READ, "non_base_terrain", "int32_t"),
-        (READ, "base_zone_coverage", "int32_t"),
-        (READ_UNKNOWN, None, "int32_t"),
+        (READ, "base_terrain", "int32_t"),
+        (READ, "land_coverage", "int32_t"),
+        (READ, "unused_id", "int32_t"),
 
         (READ, "base_zone_count", "uint32_t"),
         (READ, "base_zone_ptr", "int32_t"),
         (READ, "base_zones", SubdataMember(
-            ref_type=BaseZone,
+            ref_type=MapLand,
             length="base_zone_count",
         )),
 
@@ -136,10 +147,10 @@ class Map(Exportable):
             length="map_unit_count",
         )),
 
-        (READ, "map_unknown_count", "uint32_t"),
-        (READ, "map_unknown_ptr", "int32_t"),
-        (READ, "map_unknowns", SubdataMember(
-            ref_type=MapUnknown,
-            length="map_unknown_count",
+        (READ, "map_elevation_count", "uint32_t"),
+        (READ, "map_elevation_ptr", "int32_t"),
+        (READ, "map_elevations", SubdataMember(
+            ref_type=MapElevation,
+            length="map_elevation_count",
         )),
-    )
+    ]

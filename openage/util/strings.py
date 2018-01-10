@@ -48,11 +48,7 @@ def binstr(num, bits=None, group=8):
     result = result.replace('0', '_')
 
     if group is not None:
-        pos = 0
-        grouped = []
-        while pos < len(result):
-            grouped.append(result[pos:pos + group])
-            pos += group
+        grouped = [result[i:i + group] for i in range(0, len(result), group)]
         result = ' '.join(grouped)
 
     return result
@@ -66,14 +62,17 @@ def colorize(string, colorcode):
     '\\x1b[31;1mfoo\\x1b[m'
     """
     if colorcode:
-        return '\x1b[' + colorcode + 'm' + str(string) + '\x1b[m'
+        colorized = '\x1b[{colorcode}m{string}\x1b[m'.format(
+            colorcode=colorcode, string=string)
+    else:
+        colorized = string
 
-    return str(string)
+    return colorized
 
 
 def lstrip_once(string, substr):
     """
-    Removes substr at the left of string, and raises ValueError on failure.
+    Removes substr at the start of string, and raises ValueError on failure.
 
     >>> lstrip_once("openage.test", "openage.")
     'test'
@@ -82,22 +81,23 @@ def lstrip_once(string, substr):
     ValueError: 'libopenage.test' doesn't start with 'openage.'
     """
     if not string.startswith(substr):
-        raise ValueError("%s doesn't start with %s" %
-                         (repr(string), repr(substr)))
+        raise ValueError("{string} doesn't start with {substr}".format(
+            string=repr(string), substr=repr(substr)))
 
     return string[len(substr):]
 
 
 def rstrip_once(string, substr):
     """
-    Removes substr at the right of string, and raises ValueError on failure.
+    Removes substr at the end of string, and raises ValueError on failure.
 
     >>> rstrip_once("test.cpp", ".cpp")
     'test'
     """
     if not string.endswith(substr):
-        raise ValueError("%s doesn't end with %s" %
-                         (repr(string), repr(substr)))
+        raise ValueError(
+            "{string} doesn't end with {substr}".format(string=repr(string),
+                                                        substr=repr(substr)))
 
     return string[:-len(substr)]
 
@@ -109,4 +109,6 @@ def format_progress(progress, total):
     >>> format_progress(5, 20)
     ' 5/20'
     """
-    return "%*d/%d" % (len(str(total)), progress, total)
+    return "{progress:>{width}}/{total}".format(progress=progress,
+                                                width=len(str(total)),
+                                                total=total)

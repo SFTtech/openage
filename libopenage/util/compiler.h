@@ -8,7 +8,7 @@
  *
  * May contain some platform-dependent code.
  */
- #include <ciso646>
+#include <ciso646>
 
 // pxd: from libcpp.string cimport string
 #include <string>
@@ -59,9 +59,10 @@
  * to add it in gdb but instead wanna add it into the code directly.
  */
 #ifdef _MSC_VER
-#define BREAKPOINT __debugbreak()
+	#define BREAKPOINT __debugbreak()
 #else
-#define BREAKPOINT asm("int $3;")
+	#include <signal.h>
+	#define BREAKPOINT raise(SIGTRAP)
 #endif
 
 

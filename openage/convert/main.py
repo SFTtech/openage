@@ -392,11 +392,20 @@ def source_dir_proposals(call_wine):
     try:
         info("using the wine registry to query an installation location...")
         # get wine registry key of the age installation
-        with NamedTemporaryFile(mode='r') as reg_file:
+        with NamedTemporaryFile(mode='rb') as reg_file:
             if not subprocess.call(('wine', 'regedit', '/E', reg_file.name,
                                     REGISTRY_KEY)):
+
+                reg_raw_data = reg_file.read()
+                try:
+                    reg_data = reg_raw_data.decode('utf-16')
+                except UnicodeDecodeError:
+                    # this is hopefully enough.
+                    # if it isn't, feel free to fight more encoding problems.
+                    reg_data = reg_raw_data.decode('utf-8', errors='replace')
+
                 # strip the REGEDIT4 header, so it becomes a valid INI
-                lines = reg_file.readlines()
+                lines = reg_data.splitlines()
                 del lines[0:2]
 
                 reg_parser = ConfigParser()
@@ -412,7 +421,7 @@ def source_dir_proposals(call_wine):
                                 reg_parser[reg_key]['"EXE Path"']))
 
     except OSError as error:
-        dbg("wine registry extraction failed: " + str(error))
+        dbg("wine registry extraction failed: %s" % error)
 
 
 def conversion_required(asset_dir, args):
@@ -472,7 +481,7 @@ def conversion_required(asset_dir, args):
             raise OSError("could not resolve a writable asset path "
                           "in {}".format(asset_dir))
 
-        info("Will save to '{}'".format(target_path))
+        info("Will save to '{}'".format(target_path.decode(errors="replace")))
 
         for component in changelog.COMPONENTS:
             if component not in changes:

@@ -2,7 +2,7 @@
 
  - Install [Homebrew](http://brew.sh). Other package managers and building from source might also work, but aren't supported as of now. If you figure out fixes for those other options, you're welcome to open pullrequests, as long as the Homebrew build doesn't break.
  - `brew update`
- - `brew install caskroom/cask/brew-cask`
+ - `brew tap caskroom/cask`
  - `brew tap caskroom/fonts`
  - `brew tap homebrew/versions`
  - `brew tap homebrew/python`
