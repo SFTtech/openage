@@ -108,6 +108,7 @@ _the openage authors_ are:
 | Julian Guillotel            | arialwhite                  | julian dawt gullotel à gmail dawt com             |
 | Arne Sellmann               | PythonicChemist             | arne dawt sellmann à gmx dawt de                  |
 | Rafael X. Morales Georgi    | chocoladisco                | chocoladisco á gmail dawt com                     |
+| Michael Lee                 | wanderrful                  | galois á gmail dawt com                     |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
