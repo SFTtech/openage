@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 # python modules
 # a list of imported modules may be obtained via
@@ -8,7 +8,7 @@
 set(REQUIRED_PYTHON_MODULES "PIL.Image" "PIL.ImageDraw" "numpy" "pygments")
 
 # command-line tools
-set(REQUIRED_UTILITIES "opusenc")
+# example: set(REQUIRED_UTILITIES "foobar")
 
 # Checks if the specified python module exists
 #
