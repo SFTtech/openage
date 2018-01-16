@@ -1,29 +1,34 @@
 # Procedure for Microsoft Windows users (Windows 10)
 
- Since Windows doesn't offer a native package manager, we use a mixture of manual and automated steps to get the dependencies for openage. *Please remember to replace the directories referenced below (written in <...>) with the appropriate values.*
+ Since Windows doesn't offer a native package manager, we use a mixture of manual and automated steps to get the dependencies for openage.
+ *Please remember to replace the directories referenced below (written in <...>) with the appropriate values.*
 
 ## Setting up the build environment
- You will need to download and install the following manually. Those who already have the latest stable versions of these softwares can skip this:
+ You will need to download and install the following manually.
+ Those who already have the latest stable versions of these softwares can skip this:
  - [Visual Studio 2017 Community edition](https://www.visualstudio.com/downloads/)
    - With the "Desktop development with C++" workload.
    - With the "Windows 10 SDK". Choose the latest version listed.
  - [Python 3](https://www.python.org/downloads/windows/)
    - With the "pip" option enabled. We use `pip` to install other dependencies.
    - With the "Precompile standard library" option enabled.
+   - With the "Download debug binaries (...)" option enabled.
    - If in doubt, run the installer again and choose "Modify".
  - [CMake](https://cmake.org/download/)
 
 ### Python Modules
  Open a command prompt at `<Python 3 installation directory>/Scripts`
 
-    pip install numpy pillow pygments cython
+    pip install cython numpy pillow pygments pyreadline
 
 ### vcpkg packages
  Set up [vcpkg](https://github.com/Microsoft/vcpkg#quick-start). Open a command prompt at `<vcpkg directory>`
 
     vcpkg install dirent libepoxy fontconfig freetype harfbuzz opus opusfile qt5 sdl2 sdl2-image libpng
 
- _Note:_ Building and installing `qt5` using vcpkg takes a lot of space-time. You might want to install [the prebuilt version](https://www.qt.io/download-open-source/) instead. This should be mentioned in `CMAKE_PREFIX_PATH` with the cmake command below.
+ _Note:_ Building and installing `qt5` using vcpkg takes a lot of space-time.
+ You might want to install [the prebuilt version](https://www.qt.io/download-open-source/) instead.
+ Include `-DCMAKE_PREFIX_PATH=<QT5 directory>` in the cmake configure command.
 
 ### The "other missing" dependencies
  **opus-tools (for `opusenc`)**
@@ -47,23 +52,22 @@
 
      mkdir build
      cd build
-     cmake -DCMAKE_TOOLCHAIN_FILE=<vcpkg directory>/scripts/buildsystems/vcpkg.cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
+     cmake -DCMAKE_TOOLCHAIN_FILE=<vcpkg directory>/scripts/buildsystems/vcpkg.cmake ..
      cmake --build . --config RelWithDebInfo -- /nologo /m /v:m
 
 ## Running openage (in devmode)
  While this is straightforward on other platforms, there is still stuff to do to run openage on Windows:
   - Install the [DejaVu Book Font](https://dejavu-fonts.github.io/Download.html).
+    - Download and extract the latest `dejavu-fonts-ttf` tarball/zip file.
+    - Copy `ttf/DejaVuSerif*.ttf` font files to `%WINDIR%/Fonts`.
     - Set the `FONTCONFIG_PATH` environment variable to `<vcpkg directory>\installed\<relevant config>\tools\fontconfig\fonts\conf.d`.
-    - Copy `fontconfig/57-dejavu-serif.conf` to the same.
+    - Copy `fontconfig/57-dejavu-serif.conf` to `%FONTCONFIG_PATH%`.
   - [Optional] Set the `AGE2DIR` environment variable to the AoE 2 installation directory.
-  - Copy the binaries from the `build` subdirectories to the required locations:
-
-        set ConfigToUse=RelWithDebInfo
-
-        copy libopenage\%ConfigToUse%\openage.dll ..\
-        copy libopenage\%ConfigToUse%\openage.pdb ..\
   - Append the following to the environment `PATH`:
+    - `<openage directory>\build\libopenage\<config built>` (for `openage.dll`)
+    - Path to `nyan.dll` (depends on the procedure chosen to get nyan)
     - `<vcpkg directory>\installed\<relevant config>\bin`
+    - `<QT5 directory>\bin` (if prebuilt QT5 was installed)
     - Path to `opusenc.exe`
 
  Now, execute `<openage directory>/run.exe` and enjoy!

@@ -67,7 +67,11 @@ elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
 		set_compiler_flags("CXX" "-stdlib=libc++")
 	endif()
 
-else() #"Intel", "MSVC", etc..
+elseif(MSVC)
+	# Don't worry. You're not alone. If you face an issue, just ask.
+	return() # The following flag specifications don't apply.
+
+else() # "Intel", etc..
 	message(WARNING "Using untested compiler, at least I hope it's free software. Continue on your own, warrior.")
 endif()
 
