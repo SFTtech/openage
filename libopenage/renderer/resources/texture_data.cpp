@@ -65,16 +65,20 @@ TextureData::TextureData(const util::Path &path, bool use_metafile) {
 	pixel_format pix_fmt;
 	switch (surf_fmt.format) {
 	case SDL_PIXELFORMAT_RGB24:
-			pix_fmt = pixel_format::rgb8;
-			break;
+		pix_fmt = pixel_format::rgb8;
+		break;
 	case SDL_PIXELFORMAT_BGR24:
-			pix_fmt = pixel_format::bgr8;
-			break;
-	case SDL_PIXELFORMAT_RGBA32:
-			pix_fmt = pixel_format::rgba8;
-			break;
+		pix_fmt = pixel_format::bgr8;
+		break;
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+	case SDL_PIXELFORMAT_RGBA8888:
+#else
+	case SDL_PIXELFORMAT_ABGR8888:
+#endif
+		pix_fmt = pixel_format::rgba8;
+		break;
 	default:
-			throw Error(MSG(err) << "Texture " << native_path << " uses an unsupported format.");
+		throw Error(MSG(err) << "Texture " << native_path << " uses an unsupported format.");
 	}
 
 	auto w = surface->w;
@@ -146,6 +150,31 @@ void TextureData::store(const util::Path& file) const {
 
 	auto size = this->info.get_size();
 
+// If an older SDL2 is used, we have to specify the format manually.
+#ifndef SDL_PIXELFORMAT_RGBA32
+	uint32_t rmask, gmask, bmask, amask;
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+	rmask = 0xff000000;
+	gmask = 0x00ff0000;
+	bmask = 0x0000ff00;
+	amask = 0x000000ff;
+#else // little endian, like x86
+	rmask = 0x000000ff;
+	gmask = 0x0000ff00;
+	bmask = 0x00ff0000;
+	amask = 0xff000000;
+#endif
+
+	SDL_Surface *surf = SDL_CreateRGBSurfaceFrom(
+		// const_cast is okay, because the surface doesn't modify data
+		const_cast<void*>(static_cast<void const*>(this->data.data())),
+		size.first,
+		size.second,
+		32,
+		this->info.get_row_size(),
+		rmask, gmask, bmask, amask
+	);
+#else
 	SDL_Surface *surf = SDL_CreateRGBSurfaceWithFormatFrom(
 		// const_cast is okay, because the surface doesn't modify data
 		const_cast<void*>(static_cast<void const*>(this->data.data())),
@@ -155,6 +184,7 @@ void TextureData::store(const util::Path& file) const {
 		this->info.get_row_size(),
 		SDL_PIXELFORMAT_RGBA32
 	);
+#endif
 
 	// Call sdl_image for saving the screenshot to PNG
 	std::string path = file.resolve_native_path_w();
