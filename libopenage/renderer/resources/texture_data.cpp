@@ -93,8 +93,9 @@ TextureData::TextureData(const util::Path &path, bool use_metafile) {
 
 	std::vector<gamedata::subtexture> subtextures;
 	if (use_metafile) {
-		util::Path meta = path.get_parent() / path.get_stem() / ".docx";
-
+		util::Path meta = path.get_parent() / path.get_stem();
+		std::string suffix = ".slp.docx";
+		meta = meta.with_suffix(suffix);
 		log::log(MSG(info) << "Loading meta file: " << meta);
 
 		// get subtexture information by meta file exported by script
