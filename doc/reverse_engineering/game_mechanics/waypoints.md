@@ -12,6 +12,8 @@ This works for normal movement as well as for patrolling and "Attack Move", with
 
 Although the flags on the ground start to disappear after 10 waypoints, there is no limit to how much waypoints can be added to the queue. This only applies to normal movement though. "Patrol" and "Attack"-Mode have a queue limit of 10 waypoints. If these modes are selected, the 10th `SHIFT + Right-Mouse-Button` automatically initiates movement.
 
+Waypoints are not as precise as normal movement commands because they only use the coordinates of the tile they are placed on as a reference point, instead of a floating point value.
+
 ## Weird AoE2 Quirks
 
 * Normal movement waypoints cannot be canceled, even if the unit is deselected.
