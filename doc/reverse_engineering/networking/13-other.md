@@ -17,25 +17,25 @@ end
 
 ### Description
 
-*:action_identifier*  
+*:action_identifier*<br/>
 Always has the value `0x0b`.
 
-*:player_number*  
+*:player_number*<br/>
 The player's number which can be changed in the lobby. Is only different from *:player_id* if playing in coop mode.
 
-*:player_id*  
+*:player_id*<br/>
 The ID of the player.
 
-*:disconnect*  
+*:disconnect*<br/>
 Determines whether the player gave up himself (`0x00`) or was disconnected (`0x01`).
 
 ### Examples
 
 `0b 02 03 00`
 
->`0b` &mdash; action_identifier  
->`02` &mdash; player_number  
->`03` &mdash; player_id  
+>`0b` &mdash; action_identifier<br/>
+>`02` &mdash; player_number<br/>
+>`03` &mdash; player_id<br/>
 >`00` &mdash; disconnect
 
 ## Save game
@@ -58,22 +58,22 @@ end
 
 ### Description
 
-*:action_identifier*  
+*:action_identifier*<br/>
 Always has the value `0x1b`.
 
-*:exit*  
+*:exit*<br/>
 Represents whether this action is a normal Save (`0x00`) or a Save & Exit (`0x01`).
 
-*:player_id*  
+*:player_id*<br/>
 The ID of the player saving the game.
 
-*:filename*  
+*:filename*<br/>
 The filename of the savegame in ASCII characters.
 
-*:memory*  
+*:memory*<br/>
 The space between filename and checksum is filled with uninitialized memory.
 
-*:checksum*  
+*:checksum*<br/>
 The last 4 bytes are a checksum.
 
 ### Examples
@@ -98,12 +98,12 @@ The last 4 bytes are a checksum.
 0100   3c d8 32 00 d0 ed 66 00 2c 00 00 00
 ```
 
->`1b` &mdash; action_identifier  
->`00` &mdash; exit  
->`01` &mdash; player_id  
-> `78 79 7a 2e 6d 73 78`  &mdash; filename  
-> memory  
-> `2c 00 00 00`  &mdash; checksum  
+>`1b` &mdash; action_identifier<br/>
+>`00` &mdash; exit<br/>
+>`01` &mdash; player_id<br/>
+> `78 79 7a 2e 6d 73 78` &mdash; filename<br/>
+> memory<br/>
+> `2c 00 00 00` &mdash; checksum<br/>
 
 ## Diplomacy, Cheats and Gamespeed
 
@@ -127,10 +127,10 @@ end
 
 ### Description
 
-*:action_identifier*  
+*:action_identifier*<br/>
 Always has the value `0x67`.
 
-*:action_type*  
+*:action_type*<br/>
 Represents the specific action that was taken (diplomatic, changing speed or cheating).
 
 Hex Value | Action
@@ -143,19 +143,19 @@ Hex Value | Action
 0x0a      | Research Treason (only Regicide)
 0x0b      | AI policy
 
-*:source_player_number*  
+*:source_player_number*<br/>
 The player number of the player who has executed the action. In Cheat Responses, the value is `0x01` when "aegis" was turned on and `0x00` when it is turned off.
 
-*:zero*  
+*:zero*<br/>
 The byte after *:source_player_number* is always zero.
 
-*:option*  
+*:option*<br/>
 Only used for diplomacy and cheats. Stays at `0x00` for game speed. The purpose of the option depends on the action. For diplomacy, this value represents the player number of the player who is targeted by the diplomatic action (which can be the same player number as *:source_player_number* when selecting "Allied Victory"). When changing the game speed, this value is always `0x00`. If the action is a cheat (`0x06`), then this field has the value of the `CheatID`, while for a cheat response the value is always `0x00`.
 
-*:zero2*  
+*:zero2*<br/>
 The 3 bytes after *:option* are always zero.
 
-*:option2*  
+*:option2*<br/>
 Only used for diplomacy and changing game speed. Stays at `0x00000000` for cheats.
 
 Hex Value  | Float  | Diplomatic Stance
@@ -170,7 +170,7 @@ Hex Value  | Float  | Game Speed
 0x3fc00000 | 1.5f   | Normal
 0x40000000 | 2.0f   | Fast
 
-*:diplomatic_stance*  
+*:diplomatic_stance*<br/>
 Only used for diplomacy. Changes depending on the diplomatic stance that was selected.
 
 Hex Value | Diplomatic Stance
@@ -179,7 +179,7 @@ Hex Value | Diplomatic Stance
 0x01      | Neutral
 0x03      | Enemy
 
-*:zero3*  
+*:zero3*<br/>
 The 3 bytes after *:diplomatic_stance* are always zero.
 
 ### Examples
@@ -188,42 +188,42 @@ Diplomacy.
 
 `67 00 01 00 02 00 00 00 00 00 80 3f 01 00 00 00`
 
->`67` &mdash; action_identifier  
->`00` &mdash; action_type  
->`01` &mdash; source_player_number  
->`00` &mdash; zero  
->`02` &mdash; option  
->`00 00 00` &mdash; zero2  
->`00 00 80 3f` &mdash; option2  
->`01` &mdash; diplomatic_stance  
+>`67` &mdash; action_identifier<br/>
+>`00` &mdash; action_type<br/>
+>`01` &mdash; source_player_number<br/>
+>`00` &mdash; zero<br/>
+>`02` &mdash; option<br/>
+>`00 00 00` &mdash; zero2<br/>
+>`00 00 80 3f` &mdash; option2<br/>
+>`01` &mdash; diplomatic_stance<br/>
 >`00 00 00` &mdash; zero3
 
 Changing the game speed.
 
 `67 01 01 00 00 00 00 00 00 00 c0 3f 00 00 00 00`
 
->`67` &mdash; action_identifier  
->`01` &mdash; action_type  
->`01` &mdash; source_player_number  
->`00` &mdash; zero  
->`00` &mdash; option  
->`00 00 00` &mdash; zero2  
->`00 00 c0 3f` &mdash; option2  
->`00` &mdash; diplomatic_stance  
+>`67` &mdash; action_identifier<br/>
+>`01` &mdash; action_type<br/>
+>`01` &mdash; source_player_number<br/>
+>`00` &mdash; zero<br/>
+>`00` &mdash; option<br/>
+>`00 00 00` &mdash; zero2<br/>
+>`00 00 c0 3f` &mdash; option2<br/>
+>`00` &mdash; diplomatic_stance<br/>
 >`00 00 00` &mdash; zero3
 
 Cheating.
 
 `67 06 01 00 68 00 00 00 00 00 00 00 00 00 00 00`
 
->`67` &mdash; action_identifier  
->`06` &mdash; action_type  
->`01` &mdash; source_player_number  
->`00` &mdash; zero  
->`68` &mdash; option  
->`00 00 00` &mdash; zero2  
->`00 00 00 00` &mdash; option2  
->`00` &mdash; diplomatic_stance  
+>`67` &mdash; action_identifier<br/>
+>`06` &mdash; action_type<br/>
+>`01` &mdash; source_player_number<br/>
+>`00` &mdash; zero<br/>
+>`68` &mdash; option<br/>
+>`00 00 00` &mdash; zero2<br/>
+>`00 00 00 00` &mdash; option2<br/>
+>`00` &mdash; diplomatic_stance<br/>
 >`00 00 00` &mdash; zero3
 
 ## Tribute
@@ -245,16 +245,16 @@ end
 
 ### Description
 
-*:action_identifier*  
+*:action_identifier*<br/>
 Always has the value `0x6c`.
 
-*:source_player_number*  
+*:source_player_number*<br/>
 The number of the player who sends the resources.
 
-*:target_player_number*  
+*:target_player_number*<br/>
 The number of the player who receives the resources.
 
-*:resource_type*  
+*:resource_type*<br/>
 The resource type that is send.
 
 Hex Value | Resource
@@ -263,21 +263,21 @@ Hex Value | Resource
 0x01      | Wood
 0x02      | Stone
 
-*:amount*  
+*:amount*<br/>
 The amount of resources being transferred.
 
-*:transaction_fee*  
+*:transaction_fee*<br/>
 The transaction fee.
 
 ### Examples
 
 `6c 03 01 03 00 00 c8 42 cd cc 4c 3e`
 
->`6c` &mdash; action_identifier  
->`03` &mdash; source_player_number  
->`01` &mdash; target_player_number  
->`03` &mdash; resource_type  
->`00 00 c8 42` &mdash; amount  
+>`6c` &mdash; action_identifier<br/>
+>`03` &mdash; source_player_number<br/>
+>`01` &mdash; target_player_number<br/>
+>`03` &mdash; resource_type<br/>
+>`00 00 c8 42` &mdash; amount<br/>
 >`cd cc 4c 3e` &mdash; transaction_fee
 
 ## Flare
@@ -306,58 +306,58 @@ end
 
 ### Description
 
-*:action_identifier*  
+*:action_identifier*<br/>
 Always has the value `0x0b`.
 
-*:zero*  
+*:zero*<br/>
 The 3 bytes after *:action_identifier* are always zero.
 
-*:const*  
+*:const*<br/>
 These 4 bytes are always `0xFFFFFFFF`.
 
-*:zero2*  
+*:zero2*<br/>
 The one byte after *:player_id* is always zero. Could also represent "Gaia" in *:receiving* or be a counter of some sorts that is never used.
 
-*:receiving*  
+*:receiving*<br/>
 Every byte in this array represents a player number (first byte: player 1, second byte: player 2, ...). If the value of byte X is `0x01`, player X will see the flare. If the value of byte X is `0x00`, player X won't see the flare.
 
-*:zero3*  
+*:zero3*<br/>
 The 3 bytes after *:receiving* are always zero.
 
-*:x_coord*  
+*:x_coord*<br/>
 The x-coordinate of the targeted position.
 
-*:y_coord*  
+*:y_coord*<br/>
 The y-coordinate of the targeted position.
 
-*:player_number*  
+*:player_number*<br/>
 The player's number which can be changed in the lobby. Is only different from *:player_id* if playing in coop mode.
 
-*:player_id*  
+*:player_id*<br/>
 The ID of the player.
 
-*:zero4*  
+*:zero4*<br/>
 The 3 bytes after *:player_id* are always zero.
 
 ### Examples
 
 `73 00 00 00 ff ff ff ff 00 01 01 01 00 00 00 00 00 00 00 00 00 00 c7 42 00 80 33 43 03 04 00 00`
 
->`73` &mdash; action_identifier  
->`00 00 00` &mdash; zero  
->`ff ff ff ff` &mdash; const  
->`00` &mdash; zero2  
->`01` &mdash; receiving_p1  
->`01` &mdash; receiving_p2  
->`01` &mdash; receiving_p3  
->`00` &mdash; receiving_p4  
->`00` &mdash; receiving_p5  
->`00` &mdash; receiving_p6  
->`00` &mdash; receiving_p7  
->`00` &mdash; receiving_p8  
->`00 00 00` &mdash; zero3  
->`00 00 c7 42` &mdash; x_coord  
->`00 80 33 43` &mdash; y_coord  
->`03` &mdash; player_number  
->`04` &mdash; player_id  
+>`73` &mdash; action_identifier<br/>
+>`00 00 00` &mdash; zero<br/>
+>`ff ff ff ff` &mdash; const<br/>
+>`00` &mdash; zero2<br/>
+>`01` &mdash; receiving_p1<br/>
+>`01` &mdash; receiving_p2<br/>
+>`01` &mdash; receiving_p3<br/>
+>`00` &mdash; receiving_p4<br/>
+>`00` &mdash; receiving_p5<br/>
+>`00` &mdash; receiving_p6<br/>
+>`00` &mdash; receiving_p7<br/>
+>`00` &mdash; receiving_p8<br/>
+>`00 00 00` &mdash; zero3<br/>
+>`00 00 c7 42` &mdash; x_coord<br/>
+>`00 80 33 43` &mdash; y_coord<br/>
+>`03` &mdash; player_number<br/>
+>`04` &mdash; player_id<br/>
 >`00` &mdash; disconnect

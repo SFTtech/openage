@@ -27,31 +27,31 @@ end
 
 ## Description
 
-*:action_identifier*  
+*:action_identifier*<br/>
 Always has the value `0x00`.
 
-*:player_id*  
+*:player_id*<br/>
 The ID of the player who executes the action (`0x01` - `0x08`).
 
-*:zero*  
+*:zero*<br/>
 The two bytes following *:player_id* are unused.
 
-*:target_id*  
+*:target_id*<br/>
 The ID of the targeted object.
 
-*:selection_count*  
+*:selection_count*<br/>
 The number of selected units. When the value of this field is `0xFF`, the action is executed for the units referenced in the previous command.
 
-*:zero2*  
+*:zero2*<br/>
 The three bytes following *:selection_count* are unused.
 
-*:x_coord*  
+*:x_coord*<br/>
 The x-coordinate of the targeted position.
 
-*:y_coord*  
+*:y_coord*<br/>
 The y-coordinate of the targeted position.
 
-*:selected_ids*  
+*:selected_ids*<br/>
 The IDs of the selected units.
 
 ## Examples
@@ -60,40 +60,40 @@ Gathering stone with villager.
 
 `00 02 00 00 92 17 00 00 01 00 00 00 00 80 33 43 00 80 16 43 4d 17 00 00`
 
->`00` &mdash; action_identifier  
->`02` &mdash; player_id  
->`00 00` &mdash; zero  
->`92 17 00 00` &mdash; target_id  
->`01` &mdash; selection_count  
->`00 00 00` &mdash; zero2  
->`00 80 33 43` &mdash; x_coord  
->`00 80 16 43` &mdash; y_coord  
->`4d 17 00 00` &mdash; selected_id  
+>`00` &mdash; action_identifier<br/>
+>`02` &mdash; player_id<br/>
+>`00 00` &mdash; zero<br/>
+>`92 17 00 00` &mdash; target_id<br/>
+>`01` &mdash; selection_count<br/>
+>`00 00 00` &mdash; zero2<br/>
+>`00 80 33 43` &mdash; x_coord<br/>
+>`00 80 16 43` &mdash; y_coord<br/>
+>`4d 17 00 00` &mdash; selected_id<br/>
 
 Attacking a building.
 
 `00 02 00 00 38 1a 00 00 02 00 00 00 00 00 40 42 00 00 0b 43 5e 1a 00 00 62 1a 00 00`
 
->`00` &mdash; action_identifier  
->`02` &mdash; player_id  
->`00 00` &mdash; zero  
->`38 1a 00 00` &mdash; target_id  
->`02` &mdash; selection_count  
->`00 00 00` &mdash; zero2  
->`00 00 40 42` &mdash; x_coord  
->`00 00 0b 43` &mdash; y_coord  
->`5e 1a 00 00` &mdash; selected_id  
+>`00` &mdash; action_identifier<br/>
+>`02` &mdash; player_id<br/>
+>`00 00` &mdash; zero<br/>
+>`38 1a 00 00` &mdash; target_id<br/>
+>`02` &mdash; selection_count<br/>
+>`00 00 00` &mdash; zero2<br/>
+>`00 00 40 42` &mdash; x_coord<br/>
+>`00 00 0b 43` &mdash; y_coord<br/>
+>`5e 1a 00 00` &mdash; selected_id<br/>
 >`62 1a 00 00` &mdash; selected_id
 
 Boarding a transport ship with the same units
 
 `00 02 00 00 57 1a 00 00 ff 00 00 00 7a 7c 47 43 52 da 38 43`
 
->`00` &mdash; action_identifier  
->`02` &mdash; player_id  
->`00 00` &mdash; zero  
->`57 1a 00 00` &mdash; target_id  
->`ff` &mdash; selection_count  
->`00 00 00` &mdash; zero2  
->`7a 7c 47 43` &mdash; x-coord  
+>`00` &mdash; action_identifier<br/>
+>`02` &mdash; player_id<br/>
+>`00 00` &mdash; zero<br/>
+>`57 1a 00 00` &mdash; target_id<br/>
+>`ff` &mdash; selection_count<br/>
+>`00 00 00` &mdash; zero2<br/>
+>`7a 7c 47 43` &mdash; x-coord<br/>
 >`52 da 38 43` &mdash; y-coord

@@ -18,13 +18,13 @@ end
 
 ### Description
 
-*:action_identifier*  
+*:action_identifier*<br/>
 Always has the value `0x7a`.
 
-*:player_number*  
+*:player_number*<br/>
 The ID of the player who sells the resources (`0x01` - `0x08`).
 
-*:resource_type*  
+*:resource_type*<br/>
 The resource type that is sold.
 
 Hex Value | Resource
@@ -33,21 +33,21 @@ Hex Value | Resource
 0x01      | Wood
 0x02      | Stone
 
-*:amount*  
+*:amount*<br/>
 The amount being sold in hundreds. Can be either `0x01` or `0x05`.
 
-*:market_id*  
+*:market_id*<br/>
 The ID of the market.
 
 ### Examples
 
 `7a 01 02 01 46 1a 00 00`
 
->`7b` &mdash; action_identifier  
->`01` &mdash; player_number  
->`02` &mdash; resource_type  
->`01` &mdash; amount    
->`46 1a 00 00` &mdash; market_id  
+>`7b` &mdash; action_identifier<br/>
+>`01` &mdash; player_number<br/>
+>`02` &mdash; resource_type<br/>
+>`01` &mdash; amount<br/>
+>`46 1a 00 00` &mdash; market_id
 
 ## Buy
 
@@ -67,13 +67,13 @@ end
 
 ### Description
 
-*:action_identifier*  
+*:action_identifier*<br/>
 Always has the value `0x7b`.
 
-*:player_number*  
+*:player_number*<br/>
 The ID of the player who buys the resources (`0x01` - `0x08`).
 
-*:resource_type*  
+*:resource_type*<br/>
 The resource type that is sold.
 
 Hex Value | Resource
@@ -82,18 +82,18 @@ Hex Value | Resource
 0x01      | Wood
 0x02      | Stone
 
-*:amount*  
+*:amount*<br/>
 The amount being bought in hundreds. Can be either `0x01` or `0x05`.
 
-*:market_id*  
+*:market_id*<br/>
 The ID of the market.
 
 ### Examples
 
 `7b 01 01 05 46 1a 00 00`
 
->`7b` &mdash; action_identifier  
->`01` &mdash; player_id  
->`01` &mdash; resource_type  
->`05` &mdash; amount    
+>`7b` &mdash; action_identifier<br/>
+>`01` &mdash; player_id<br/>
+>`01` &mdash; resource_type<br/>
+>`05` &mdash; amount<br/>
 >`46 1a 00 00` &mdash; market_id

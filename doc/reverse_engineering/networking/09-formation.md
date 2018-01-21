@@ -19,13 +19,13 @@ end
 
 ### Description
 
-*:action_identifier*  
+*:action_identifier*<br/>
 Always has the value `0x12`.
 
-*:selection_count*  
+*:selection_count*<br/>
 The number of selected units.
 
-*:stance*  
+*:stance*<br/>
 Represents which stance the units are going to take. AoC supports 4 stances.
 
 Hex Value | Stance
@@ -35,16 +35,16 @@ Hex Value | Stance
 0x02      | Stand Ground
 0x03      | Passive
 
-*:selected_ids*  
+*:selected_ids*<br/>
 The IDs of the selected units.
 
 ### Examples
 
 `12 01 02 4b 15 00 00`
 
->`12` &mdash; action_identifier  
->`01` &mdash; selection_count  
->`02` &mdash; stance  
+>`12` &mdash; action_identifier<br/>
+>`01` &mdash; selection_count<br/>
+>`02` &mdash; stance<br/>
 >`4b 15 00 00` &mdash; selected_id
 
 ## Guard action
@@ -67,31 +67,31 @@ end
 
 ### Description
 
-*:action_identifier*  
+*:action_identifier*<br/>
 Always has the value `0x13`.
 
-*:selection_count*  
+*:selection_count*<br/>
 The number of selected units that are put on guard.
 
-*:zero*  
+*:zero*<br/>
 The two bytes after *:selection_count* are always zero.
 
-*:guarded_id*  
+*:guarded_id*<br/>
 The ID of the unit that will be guarded.
 
-*:selected_ids*  
+*:selected_ids*<br/>
 The IDs of the guarding units.
 
 ### Examples
 
 `13 03 00 00 41 15 00 00 44 18 00 00 4b 15 00 00 42 18 00 00`
 
->`13` &mdash; action_identifier   
->`03` &mdash; selection_count  
->`00 00` &mdash; zero  
->`41 15 00 00` &mdash; guarded_id  
->`44 18 00 00` &mdash; selected_id  
->`4b 15 00 00` &mdash; selected_id  
+>`13` &mdash; action_identifier<br/>
+>`03` &mdash; selection_count<br/>
+>`00 00` &mdash; zero<br/>
+>`41 15 00 00` &mdash; guarded_id<br/>
+>`44 18 00 00` &mdash; selected_id<br/>
+>`4b 15 00 00` &mdash; selected_id<br/>
 >`42 18 00 00` &mdash; selected_id
 
 ## Follow action
@@ -114,30 +114,30 @@ end
 
 ### Description
 
-*:action_identifier*  
+*:action_identifier*<br/>
 Always has the value `0x14`.
 
-*:selection_count*  
+*:selection_count*<br/>
 Number of selected units.
 
-*:zero*
+*:zero*<br/>
 The two bytes after *:selection_count* are always zero.
 
-*:followed_id*  
+*:followed_id*<br/>
 The ID of the unit that will be followed.
 
-*:selection_ids*  
+*:selection_ids*<br/>
 The IDs of the units that are following the unit with *:followed_id*.
 
 ### Examples
 
 `14 02 00 00 40 18 00 00 44 18 00 00 42 18 00 00`
 
->`14` &mdash; action_identifier  
->`02` &mdash; selection_count  
->`00 00` &mdash; zero  
->`40 18 00 00` &mdash; followed_id  
->`44 18 00 00` &mdash; selected_id  
+>`14` &mdash; action_identifier<br/>
+>`02` &mdash; selection_count<br/>
+>`00 00` &mdash; zero<br/>
+>`40 18 00 00` &mdash; followed_id<br/>
+>`44 18 00 00` &mdash; selected_id<br/>
 >`42 18 00 00` &mdash; selected_id
 
 ## Patrol action
@@ -166,25 +166,25 @@ end
 
 ### Description
 
-*:action_identifier*  
+*:action_identifier*<br/>
 Always has the value `0x15`.
 
-*:selection_count*  
+*:selection_count*<br/>
 Number of selected units.
 
-*:patrol_waypoint_count*  
+*:patrol_waypoint_count*<br/>
 Number of waypoints set (with `SHIFT + Mouse-Button`).
 
-*:zero*  
+*:zero*<br/>
 The byte after *:patrol_waypoint_count* is always zero.
 
-*:x_coords*  
+*:x_coords*<br/>
 The x-coordinates of the patrol waypoints. Always has a length of 10 which is also the maximum number of patrol waypoints. For every waypoint that is not set, a placeholder value of `0x00000000` is used.
 
-*:y_coords*  
+*:y_coords*<br/>
 The y-coordinates of the patrol waypoints. Always has a length of 10 which is also the maximum number of patrol waypoints. For every waypoint that is not set, a placeholder value of `0x00000000` is used.
 
-*:selection_ids*  
+*:selection_ids*<br/>
 The IDs of the units that are patrolling.
 
 ### Examples
@@ -198,31 +198,31 @@ The IDs of the units that are patrolling.
 0050   00 00 00 00 43 18 00 00 40 18 00 00
 ```
 
->`15` &mdash; action_identifier  
->`02` &mdash; selection_count  
->`03` &mdash; patrol_waypoint_count  
->`00 00` &mdash; zero  
->`00 f8 2c 43` &mdash; x_coord1  
->`55 65 2c 43` &mdash; x_coord2  
->`00 88 2b 43` &mdash; x_coord3  
->`00 00 00 00` &mdash; x_coord4  
->`00 00 00 00` &mdash; x_coord5  
->`00 00 00 00` &mdash; x_coord6  
->`00 00 00 00` &mdash; x_coord7  
->`00 00 00 00` &mdash; x_coord8  
->`00 00 00 00` &mdash; x_coord9  
->`00 00 00 00` &mdash; x_coord10  
->`55 0d 46 43` &mdash; y_coord1  
->`00 70 48 43` &mdash; y_coord2  
->`00 48 45 43` &mdash; y_coord3  
->`00 00 00 00` &mdash; y_coord4  
->`00 00 00 00` &mdash; y_coord5  
->`00 00 00 00` &mdash; y_coord6  
->`00 00 00 00` &mdash; y_coord7  
->`00 00 00 00` &mdash; y_coord8  
->`00 00 00 00` &mdash; y_coord9  
->`00 00 00 00` &mdash; y_coord10  
->`43 18 00 00` &mdash; selected_id  
+>`15` &mdash; action_identifier<br/>
+>`02` &mdash; selection_count<br/>
+>`03` &mdash; patrol_waypoint_count<br/>
+>`00 00` &mdash; zero<br/>
+>`00 f8 2c 43` &mdash; x_coord1<br/>
+>`55 65 2c 43` &mdash; x_coord2<br/>
+>`00 88 2b 43` &mdash; x_coord3<br/>
+>`00 00 00 00` &mdash; x_coord4<br/>
+>`00 00 00 00` &mdash; x_coord5<br/>
+>`00 00 00 00` &mdash; x_coord6<br/>
+>`00 00 00 00` &mdash; x_coord7<br/>
+>`00 00 00 00` &mdash; x_coord8<br/>
+>`00 00 00 00` &mdash; x_coord9<br/>
+>`00 00 00 00` &mdash; x_coord10<br/>
+>`55 0d 46 43` &mdash; y_coord1<br/>
+>`00 70 48 43` &mdash; y_coord2<br/>
+>`00 48 45 43` &mdash; y_coord3<br/>
+>`00 00 00 00` &mdash; y_coord4<br/>
+>`00 00 00 00` &mdash; y_coord5<br/>
+>`00 00 00 00` &mdash; y_coord6<br/>
+>`00 00 00 00` &mdash; y_coord7<br/>
+>`00 00 00 00` &mdash; y_coord8<br/>
+>`00 00 00 00` &mdash; y_coord9<br/>
+>`00 00 00 00` &mdash; y_coord10<br/>
+>`43 18 00 00` &mdash; selected_id<br/>
 >`40 18 00 00` &mdash; selected_id
 
 ## Formation action
@@ -247,19 +247,19 @@ end
 
 ### Description
 
-*:action_identifier*  
+*:action_identifier*<br/>
 Always has the value `0x17`.
 
-*:selection_count*  
+*:selection_count*<br/>
 The number of selected units.
 
-*:player_number*  
+*:player_number*<br/>
 The number of the player for whom the formation is changed (`0x01` - `0x08`).
 
-*:zero*  
+*:zero*<br/>
 The byte after *:player_number* is always zero.
 
-*:formation_type*  
+*:formation_type*<br/>
 The formation type that is selected. AoC supports 4 formation types.
 
 Hex Value | Formation
@@ -269,21 +269,21 @@ Hex Value | Formation
 0x07      | Box
 0x08      | Split
 
-*:zero2*  
+*:zero2*<br/>
 The 3 bytes after *:formation_type* are always zero.
 
-*:selected_ids*  
+*:selected_ids*<br/>
 The IDs of the units whos formation type are changed.
 
 ### Examples
 
 `17 02 02 00 07 00 00 00 40 18 00 00 43 18 00 00`
 
->`17` &mdash; action_identifier  
->`02` &mdash; selection_count  
->`02` &mdash; player_number  
->`00` &mdash; zero  
->`07` &mdash; formation_type  
->`00 00 00` &mdash; zero2  
->`40 18 00 00` &mdash; selected_id  
+>`17` &mdash; action_identifier<br/>
+>`02` &mdash; selection_count<br/>
+>`02` &mdash; player_number<br/>
+>`00` &mdash; zero<br/>
+>`07` &mdash; formation_type<br/>
+>`00 00 00` &mdash; zero2<br/>
+>`40 18 00 00` &mdash; selected_id<br/>
 >`43 18 00 00` &mdash; selected_id

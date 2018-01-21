@@ -27,52 +27,52 @@ end
 
 ### Description
 
-*:header*
+*:header*<br/>
 The default header of AoC. The command byte is always `0x43`.
 
-*:player_id*  
+*:player_id*<br/>
 The ID of the player who sends the message.
 
-*:send_button*  
+*:send_button*<br/>
 Determines whether the messages was send by pressing `Enter` (`0x00`) or the "Send" button (`0xd9`) in the Chat Menu.
 
-*:intended_receivers*  
+*:intended_receivers*<br/>
 The intended receivers of the message. If the ASCII character at position X is "Y" (`0x59`), the message will be displayed to Player X. Vice versa, if the character at position X reads "N" (`0x4e`), Player X will not be able to see the message.
 
-*:separator*  
+*:separator*<br/>
 A separator value that is always `0x32`.
 
-*:zero*  
+*:zero*<br/>
 This byte is always zero.
 
-*:message_length*  
+*:message_length*<br/>
 The length of the message in bytes.
 
-*:zero2*  
+*:zero2*<br/>
 These 4 bytes are always zero.
 
-*:message_string*  
+*:message_string*<br/>
 The raw C-String of the message. Always contains a `0x00` byte at the end to signal the end of the String.
 
-*:misaligned_memory*  
+*:misaligned_memory*<br/>
 4 bytes (one word) of misaligned memory. It is possible that the Genie Engine operates directly on cached memory for optimization, which results in this behavior. The 4 bytes contain a part of an altered version of message, presumably after it was checked for cheat codes. Which part is read depends on the message length, starting with the byte after position 12. For example, at message length 0, the altered message bytes 13-16 are read. A message of length 9 will append the altered message bytes 22-25.
 
 # Example
 
 ```
-0000   02 00 4e 59 59 4e 4e 4e 4e 4e 32 00 09 00 00 00
-0010   00 61 62 63 64 65 66 67 68 69 00 00 18 dc 32
+0000 02 00 4e 59 59 4e 4e 4e 4e 4e 32 00 09 00 00 00
+0010 00 61 62 63 64 65 66 67 68 69 00 00 18 dc 32
 ```
 
->`02` &mdash;  player_id  
->`00` &mdash;  send_button  
->`4e 59 59 4e 4e 4e 4e 4e` &mdash;  intended_receivers  
->`32` &mdash;  separator  
->`00` &mdash;  zero  
->`09` &mdash;  message_length  
->`00 00 00 00` &mdash;  zero  
->`61 62 63 64 65 66 67 68 69 00` &mdash;  message_string  
->`00 18 dc 32` &mdash;  misaligned_memory
+>`02` &mdash; player_id<br/>
+>`00` &mdash; send_button<br/>
+>`4e 59 59 4e 4e 4e 4e 4e` &mdash; intended_receivers<br/>
+>`32` &mdash; separator<br/>
+>`00` &mdash; zero<br/>
+>`09` &mdash; message_length<br/>
+>`00 00 00 00` &mdash; zero<br/>
+>`61 62 63 64 65 66 67 68 69 00` &mdash; message_string<br/>
+>`00 18 dc 32` &mdash; misaligned_memory
 
 # Misaligned memory of the above message
 

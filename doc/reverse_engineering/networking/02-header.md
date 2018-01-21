@@ -19,33 +19,33 @@ end
 
 ## Description
 
-*:network_source_id*  
+*:network_source_id*<br/>
 The *:network_id* of the person who sent the packet. A *:network_id* is different for every game, but is not generated randomly for all players. When joining the lobby, every player gets assigned `last_network_id - 2` as his own *:network_id* where *last_network_id* is the ID of the person who joined before him.
 
-*:network_dest_id*  
+*:network_dest_id*<br/>
 The *:network_id* of the person who should receive the packet. Is only used for sync packets and remains unused for most commands.
 
-*:command*  
+*:command*<br/>
 The command which tells the network engine how the data bytes should be interpreted.
 
-*:option{1-3}*  
+*:option{1-3}*<br/>
 These are options with unknown effects.
 
-*:communication_turn*  
+*:communication_turn*<br/>
 The communication turn where the command is executed. Packets that contain a communication turn that has already passed are discarded.
 
-*:individual_counter*  
+*:individual_counter*<br/>
 The individual counter of the player who receives the packet. It increments by 1 with every 16BC41 sync command. For individual players, this counter starts with values that are 1200 units (two players) or 2000 units (three players, `0x7d0`) apart from each other. In the latter example player 1 starts with the value `0x7d0`, player 2 with `0xfa0` and player 3 with `0x1770`. If the differences between these values is not a multiple of 2000, this indicates a de-sync.
 
 ## Examples
 
 `82 b2 45 00 00 00 00 00 53 02 8f 0b 30 00 00 00 01 08 00 00`
 
->`82 b2 45 00` &mdash; network_source_id  
->`00 00 00 00` &mdash; network_dest_id  
->`53` &mdash; command  
->`02` &mdash; option1  
->`8f` &mdash; option2  
->`0b` &mdash; option3  
->`30 00 00 00` &mdash; communication_turn  
+>`82 b2 45 00` &mdash; network_source_id<br/>
+>`00 00 00 00` &mdash; network_dest_id<br/>
+>`53` &mdash; command<br/>
+>`02` &mdash; option1<br/>
+>`8f` &mdash; option2<br/>
+>`0b` &mdash; option3<br/>
+>`30 00 00 00` &mdash; communication_turn<br/>
 >`01 08 00 00` &mdash; individual_counter

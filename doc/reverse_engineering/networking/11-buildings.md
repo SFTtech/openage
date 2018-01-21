@@ -20,37 +20,37 @@ end
 
 ### Description
 
-*:action_identifier*  
+*:action_identifier*<br/>
 Always has the value `0x65`.
 
-*:zero*  
+*:zero*<br/>
 The 3 bytes after *:action_identifier* are always zero.
 
-*:building_id*  
+*:building_id*<br/>
 The ID of the building where the technology is researched.
 
-*:player_number*  
+*:player_number*<br/>
 The number of the player for whom the technology is researched (`0x01` - `0x08`).
 
-*:zero2*  
+*:zero2*<br/>
 The byte after *:player_number* is always zero.
 
-*:technology_id*  
+*:technology_id*<br/>
 The [ID of the technology](technology_ids.md) that is researched.
 
-*:const*  
+*:const*<br/>
 This value is always `0xFFFFFFFF`.
 
 ### Examples
 
 `65 00 00 00 63 1a 00 00 01 00 d9 00 ff ff ff ff`
 
->`65` &mdash; action_identifier  
->`00 00 00` &mdash; zero  
->`63 1a 00 00` &mdash; building_id  
->`01` &mdash; player_number  
->`00` &mdash; zero2  
->`d9 00` &mdash; technology_id  
+>`65` &mdash; action_identifier<br/>
+>`00 00 00` &mdash; zero<br/>
+>`63 1a 00 00` &mdash; building_id<br/>
+>`01` &mdash; player_number<br/>
+>`00` &mdash; zero2<br/>
+>`d9 00` &mdash; technology_id<br/>
 >`ff ff ff ff` &mdash; const
 
 ## Build action
@@ -79,54 +79,54 @@ end
 
 ### Description
 
-*:action_identifier*  
+*:action_identifier*<br/>
 Always has the value `0x66`.
 
-*:selection_count*  
+*:selection_count*<br/>
 The number of selected units.
 
-*:player_number*  
+*:player_number*<br/>
 The number of the player who the building belongs to (`0x01` - `0x08`).
 
-*:zero*  
+*:zero*<br/>
 The byte after *:player_number* is always zero.
 
-*:x_coord*  
+*:x_coord*<br/>
 The x-coordinate of the construction site.
 
-*:y_coord*  
+*:y_coord*<br/>
 The y-coordinate of the construction site.
 
-*:building_id*  
+*:building_id*<br/>
 The `UnitID` of the building.
 
-*:zero2*  
+*:zero2*<br/>
 The two bytes after *:building_id* are always zero.
 
-*:const*  
+*:const*<br/>
 This value is always `0xFFFFFFFF`.
 
-*:sprite_id*  
+*:sprite_id*<br/>
 Represents which sprite is used for the building (only used for houses, which have several variations per civ).
 
-*:selected_ids*  
+*:selected_ids*<br/>
 The IDs of the selected builders.
 
 ### Examples
 
 `66 02 01 00 00 00 10 43 00 00 88 42 46 00 00 00 ff ff ff ff 02 00 00 00 6e 17 00 00 6c 17 00 00`
 
->`65` &mdash; action_identifier  
->`02` &mdash; selection_count  
->`01` &mdash; player_number  
->`00` &mdash; zero  
->`00 00 10 43` &mdash; x_coord  
->`00 00 88 42` &mdash; y_coord  
->`46 00` &mdash; building_id  
->`00 00` &mdash; zero2  
->`ff ff ff ff` &mdash; const  
->`02 00 00 00` &mdash; sprite_id  
->`6e 17 00 00` &mdash; selected_id  
+>`65` &mdash; action_identifier<br/>
+>`02` &mdash; selection_count<br/>
+>`01` &mdash; player_number<br/>
+>`00` &mdash; zero<br/>
+>`00 00 10 43` &mdash; x_coord<br/>
+>`00 00 88 42` &mdash; y_coord<br/>
+>`46 00` &mdash; building_id<br/>
+>`00 00` &mdash; zero2<br/>
+>`ff ff ff ff` &mdash; const<br/>
+>`02 00 00 00` &mdash; sprite_id<br/>
+>`6e 17 00 00` &mdash; selected_id<br/>
 >`6c 17 00 00` &mdash; selected_id
 
 ## Build wall action
@@ -156,58 +156,58 @@ end
 
 ### Description
 
-*:action_identifier*  
+*:action_identifier*<br/>
 Always has the value `0x69`.
 
-*:selection_count*  
+*:selection_count*<br/>
 The number of selected units.
 
-*:player_number*  
+*:player_number*<br/>
 The number of the player who the wall belongs to (`0x01` - `0x08`).
 
-*:zero*  
+*:zero*<br/>
 The byte after *:player_number* is always zero.
 
-*:start_x_coord*  
+*:start_x_coord*<br/>
 The x-coordinate of the starting tile of the wall.
 
-*:start_y_coord*  
+*:start_y_coord*<br/>
 The y-coordinate of the starting tile of the wall.
 
-*:end_x_coord*  
+*:end_x_coord*<br/>
 The x-coordinate of the end tile of the wall.
 
-*:end_y_coord*  
+*:end_y_coord*<br/>
 The y-coordinate of the end tile of the wall.
 
-*:building_id*  
+*:building_id*<br/>
 The `UnitID` of the wall.
 
-*:zero2*  
+*:zero2*<br/>
 The two bytes after *:building_id* are always zero.
 
-*:const*  
+*:const*<br/>
 This value is always `0xFFFFFFFF`.
 
-*:selected_ids*  
+*:selected_ids*<br/>
 The IDs of the selected builders.
 
 ### Examples
 
 `69 02 01 a0 4a ac 47 00 48 00 00 00 ff ff ff ff 6c 17 00 00 6e 17 00 00`
 
->`69` &mdash; action_identifier  
->`02` &mdash; selection_count  
->`01` &mdash; player_number  
->`a0` &mdash; start_x_coord  
->`4a` &mdash; start_y_coord  
->`ac` &mdash; end_x_coord  
->`47` &mdash; end_y_coord  
->`00` &mdash; zero  
->`48 00` &mdash; building_id  
->`00 00` &mdash; zero2  
->`ff ff ff ff` &mdash; const  
->`6c 17 00 00` &mdash; selected_id  
+>`69` &mdash; action_identifier<br/>
+>`02` &mdash; selection_count<br/>
+>`01` &mdash; player_number<br/>
+>`a0` &mdash; start_x_coord<br/>
+>`4a` &mdash; start_y_coord<br/>
+>`ac` &mdash; end_x_coord<br/>
+>`47` &mdash; end_y_coord<br/>
+>`00` &mdash; zero<br/>
+>`48 00` &mdash; building_id<br/>
+>`00 00` &mdash; zero2<br/>
+>`ff ff ff ff` &mdash; const<br/>
+>`6c 17 00 00` &mdash; selected_id<br/>
 >`6e 17 00 00` &mdash; selected_id
 
 ## Repair
@@ -230,30 +230,30 @@ end
 
 ### Description
 
-*:action_identifier*  
+*:action_identifier*<br/>
 Always has the value `0x6e`.
 
-*:selection_count*  
+*:selection_count*<br/>
 The number of selected units.
 
-*:zero*  
+*:zero*<br/>
 The 2 bytes after *:selection_count* are always zero.
 
-*:repaired_id*  
+*:repaired_id*<br/>
 The ID of the building or siege that is repaired.
 
-*:selected_ids*  
+*:selected_ids*<br/>
 The IDs of the selected repairmen.
 
 ### Examples
 
 `6e 02 00 00 70 1a 00 00 a0 1a 00 00 9f 1a 00 00`
 
->`6e` &mdash; action_identifier  
->`02` &mdash; selection_count  
->`00 00` &mdash; zero  
->`70 1a 00 00` &mdash; repaired_id  
->`a0 1a 00 00` &mdash; selected_id  
+>`6e` &mdash; action_identifier<br/>
+>`02` &mdash; selection_count<br/>
+>`00 00` &mdash; zero<br/>
+>`70 1a 00 00` &mdash; repaired_id<br/>
+>`a0 1a 00 00` &mdash; selected_id<br/>
 >`9f 1a 00 00` &mdash; selected_id
 
 ## Toggle gate
@@ -272,21 +272,21 @@ end
 
 ### Description
 
-*:action_identifier*  
+*:action_identifier*<br/>
 Always has the value `0x72`.
 
-*:zero*  
+*:zero*<br/>
 The 3 bytes after *:action_identifier* are always zero.
 
-*:gate_id*  
+*:gate_id*<br/>
 The ID of the gate.
 
 ### Examples
 
 `72 00 00 00 bf 1a 00 00`
 
->`72` &mdash; action_identifier  
->`00 00 00` &mdash; zero  
+>`72` &mdash; action_identifier<br/>
+>`00 00 00` &mdash; zero<br/>
 >`bf 1a 00 00` &mdash; gate_id
 
 ## Townbell
@@ -307,29 +307,29 @@ end
 
 ### Description
 
-*:action_identifier*  
+*:action_identifier*<br/>
 Always has the value `0x7f`.
 
-*:zero*  
+*:zero*<br/>
 The 3 bytes after *:action_identifier* are always zero.
 
-*:building_id*  
+*:building_id*<br/>
 The ID of the town center where the bell is rung.
 
-*:active*  
+*:active*<br/>
 Represents whether the townbell is active (`0x01`) or not active (`0x00`).
 
-*:zero2*  
+*:zero2*<br/>
 The 3 bytes after *:active* are always zero.
 
 ### Examples
 
 `7f 00 00 00 68 17 00 00 01 00 00 00`
 
->`7f` &mdash; action_identifier  
->`00 00 00` &mdash; zero  
->`68 17 00 00` &mdash; building_id  
->`01` &mdash; active  
+>`7f` &mdash; action_identifier<br/>
+>`00 00 00` &mdash; zero<br/>
+>`68 17 00 00` &mdash; building_id<br/>
+>`01` &mdash; active<br/>
 >`00 00 00` &mdash; zero2
 
 ## Back to work
@@ -348,19 +348,19 @@ end
 
 ### Description
 
-*:action_identifier*  
+*:action_identifier*<br/>
 Always has the value `0x80`.
 
-*:zero*  
+*:zero*<br/>
 The 3 bytes after *:action_identifier* are always zero.
 
-*:building_id*  
+*:building_id*<br/>
 The ID of the building from which the villagers are released.
 
 ### Examples
 
 `80 00 00 00 68 17 00 00`
 
->`80` &mdash; action_identifier  
->`00 00 00` &mdash; zero  
+>`80` &mdash; action_identifier<br/>
+>`00 00 00` &mdash; zero<br/>
 >`68 17 00 00` &mdash; building_id
