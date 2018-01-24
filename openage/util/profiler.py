@@ -1,4 +1,4 @@
-# Copyright 2017-2017 the openage authors. See copying.md for legal info.
+# Copyright 2017-2018 the openage authors. See copying.md for legal info.
 
 """
 Profiling utilities
@@ -16,7 +16,7 @@ class Profiler:
         p = Profiler()
         with p:
             # call methods that need to be profiled here
-        p.report()
+        print(p.report())
 
     The 'with' statement can be replaced with calls to
     p.enable() and p.disable().
