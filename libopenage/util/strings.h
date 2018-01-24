@@ -1,4 +1,4 @@
-// Copyright 2013-2017 the openage authors. See copying.md for legal info.
+// Copyright 2013-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -47,20 +47,6 @@ std::ostream &operator <<(std::ostream &os, FloatFixed<decimals, w> f) {
 	return os;
 }
 
-
-template<unsigned divisor, unsigned decimals=3, unsigned w=0>
-struct FixedPoint {
-	int64_t value;
-};
-
-
-template<unsigned divisor, unsigned decimals, unsigned w>
-std::ostream &operator <<(std::ostream &os, FixedPoint<divisor, decimals, w> f) {
-	static_assert(divisor > 0, "Divisor for fixed-point numbers must be > 0");
-
-	os << FloatFixed<decimals, w>{((float) f.value) / (float) divisor};
-	return os;
-}
 
 /**
  * printf-style to-string formatting.
