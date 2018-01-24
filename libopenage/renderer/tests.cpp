@@ -23,11 +23,11 @@ namespace renderer {
 namespace tests {
 
 void draw_texture_at(std::string tex, int x, int y) {
-		
+
 }
 
 void renderer_demo_0(util::Path path) {
-	opengl::GlWindow window("openage renderer test", { 800, 600 } );
+	opengl::GlWindow window("openage renderer test", { 1024, 768 } );
 
 	auto renderer = window.make_renderer();
 
@@ -44,7 +44,8 @@ out vec2 v_uv;
 
 void main() {
 	gl_Position = mvp * vec4(position, 0.0, 1.0);
-  v_uv = vec2(uv.x, 1.0 - uv.y);
+	//gl_Position = vec4(0.0, 0.0, 0.0, 1.0);
+  v_uv = vec2(uv.x, uv.y);
 }
 )s");
 
@@ -108,44 +109,46 @@ void main() {
 	auto shader_display = renderer->add_shader( { vshader_display_src, fshader_display_src } );
 
 
-	auto transform1 = Eigen::Affine3f::Identity();
-	transform1.prescale(Eigen::Vector3f(0.4f, 0.2f, 1.0f));
-	transform1.prerotate(Eigen::AngleAxisf(30.0f * 3.14159f / 180.0f, Eigen::Vector3f::UnitX()));
-	transform1.pretranslate(Eigen::Vector3f(-0.4f, -0.6f, 0.0f));
 
+
+	auto transform1 = Eigen::Affine3f::Identity();
+	transform1.prescale(Eigen::Vector3f(0.8f, 0.8f, 0.0f));
+	transform1.prerotate(Eigen::AngleAxisf(180* 3.14159f / 180.0f, Eigen::Vector3f::UnitX()));
+	//transform1.prerotate(Eigen::AngleAxisf(120*(M_PI/180), Eigen::Vector3f::UnitX())*Eigen::AngleAxisf((M_PI/180),  Eigen::Vector3f::UnitY())*Eigen::AngleAxisf(45*(M_PI/180), Eigen::Vector3f::UnitZ()));
+	transform1.pretranslate(Eigen::Vector3f(-0.0f, 0.0f, 0.0f));
+
+	auto tex = resources::TextureData(path / "/assets/graphics/2.slp.png",false);
+	auto gltex = renderer->add_texture(tex);
 	auto unif_in1 = shader->new_uniform_input(
 		"mvp", transform1.matrix(),
-		//"color", Eigen::Vector4f(1.0f, 0.0f, 0.0f, 1.0f),
-		"u_id", 1u
-	);
-
-	auto transform2 = Eigen::Affine3f::Identity();
-	transform2.prescale(Eigen::Vector3f(0.3f, 0.1f, 1.0f));
-	transform2.prerotate(Eigen::AngleAxisf(50.0f * 3.14159f / 180.0f, Eigen::Vector3f::UnitZ()));
-
-	auto transform3 = transform2;
-
-	transform2.pretranslate(Eigen::Vector3f(0.3f, 0.1f, 0.3f));
-
-	auto tex = resources::TextureData(path / "/assets/gaben.png");
-	auto gltex = renderer->add_texture(tex);
-	auto unif_in2 = shader->new_uniform_input(
-		"mvp", transform2.matrix(),
 		//"color", Eigen::Vector4f(0.0f, 1.0f, 0.0f, 1.0f),
 		"u_id", 2u,
 		"tex", gltex.get()
 	);
 
-	transform3.prerotate(Eigen::AngleAxisf(90.0f * 3.14159f / 180.0f, Eigen::Vector3f::UnitZ()));
-	transform3.pretranslate(Eigen::Vector3f(0.3f, 0.1f, 0.5f));
-
-	auto unif_in3 = shader->new_uniform_input(
-		"mvp", transform3.matrix(),
-		//"color", Eigen::Vector4f(0.0f, 0.0f, 1.0f, 1.0f),
-		"u_id", 3u
-	);
-
+	resources::TextureInfo tex_info = tex.get_info();
+	size_t count = tex_info.get_subtexture_count();
+	log::log(INFO << "Number of sprites in spritesheet : "<<count);
+	std::tuple<float, float, float, float> sprite_coord = tex_info.get_subtexture_coordinates(0);
+	log::log(INFO << "Coordinate of Sprite 4 is : "<< std::get<0>(sprite_coord)<<"  "<<std::get<1>(sprite_coord)<<"  "<<std::get<2>(sprite_coord)<<"  "<<std::get<3>(sprite_coord));
+	float left = std::get<0>(sprite_coord);
+	float right = std::get<1>(sprite_coord);
+	float top = std::get<2>(sprite_coord);
+	float bottom = std::get<3>(sprite_coord);
+	std::array<float, 16> quad_data2 = { {
+			-1.0f, 1.0f, left, bottom,//bottom left
+			-1.0f, -1.0f, left, top,//top left
+			1.0f, 1.0f, right, bottom,//bottom right
+			1.0f, -1.0f, right, top//top right
+		} };
+	static constexpr const std::array<float, 16> quad_data = { {
+			-1.0f, 1.0f, 0.0f, 1.0f,
+			-1.0f, -1.0f, 0.0f, 0.0f,
+			1.0f, 1.0f, 1.0f, 1.0f,
+			1.0f, -1.0f, 1.0f, 0.0f
+		} };
 	auto quad = renderer->add_mesh_geometry(resources::MeshData::make_quad());
+	auto quad2 = renderer->add_mesh_geometry(resources::MeshData::make_quad(quad_data2));
 	Renderable obj1 {
 		unif_in1.get(),
 		quad.get(),
@@ -153,21 +156,9 @@ void main() {
 		true,
 	};
 
-	Renderable obj2{
-		unif_in2.get(),
-		quad.get(),
-		true,
-		true,
-	};
-
-	Renderable obj3 {
-		unif_in3.get(),
-		quad.get(),
-		true,
-		true,
-	};
 
 	auto size = window.get_size();
+	log::log(INFO << "Size of the Window "<<size.x<<"X"<<size.y);
 	auto color_texture = renderer->add_texture(resources::TextureInfo(size.x, size.y, resources::pixel_format::rgba8));
 	auto id_texture = renderer->add_texture(resources::TextureInfo(size.x, size.y, resources::pixel_format::r32ui));
 	auto depth_texture = renderer->add_texture(resources::TextureInfo(size.x, size.y, resources::pixel_format::depth24));
@@ -182,12 +173,12 @@ void main() {
 	};
 
 	RenderPass pass {
-		{ obj1, obj2, obj3 },
+		{ obj1 },
 		fbo.get()
 	};
 
 	RenderPass display_pass {
-		{ display_obj },
+		{ obj1},
 		renderer->get_display_target(),
 	};
 
@@ -243,12 +234,13 @@ void main() {
 		} );
 
 	while (!window.should_close()) {
-		renderer->render(pass);
+		//renderer->render(pass);
 		renderer->render(display_pass);
 		window.update();
 		window.get_context()->check_error();
 	}
 }
+
 
 void renderer_demo(int demo_id, util::Path path) {
 	switch (demo_id) {
