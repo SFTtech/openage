@@ -1,4 +1,4 @@
-# Copyright 2013-2017 the openage authors. See copying.md for legal info.
+# Copyright 2013-2018 the openage authors. See copying.md for legal info.
 #
 # cython: profile=False
 
@@ -480,6 +480,15 @@ cdef class SLPFrame:
 
                     for _ in range(pixel_count):
                         row_data.push_back(pixel(color_special_2, 0))
+
+                elif higher_nibble == 0x80:
+                    # dither command
+                    raise NotImplementedError("dither not implemented")
+
+                elif higher_nibble in (0x90, 0xA0):
+                    # 0x90: premultiplied alpha
+                    # 0xA0: original alpha
+                    raise NotImplementedError("extended alpha not implemented")
 
             else:
                 raise Exception(
