@@ -102,6 +102,16 @@ static constexpr const std::array<float, 16> quad_data = { {
 		1.0f, -1.0f, 1.0f, 0.0f
 	} };
 
+MeshData MeshData::make_quad(const std::array<float, 16> quad_data) {
+	auto const data_size = quad_data.size() * sizeof(decltype(quad_data)::value_type);
+	std::vector<uint8_t> verts(data_size);
+	std::memcpy(verts.data(), reinterpret_cast<const uint8_t*>(quad_data.data()), data_size);
+
+	VertexInputInfo info { { vertex_input_t::V2F32, vertex_input_t::V2F32 }, vertex_layout_t::AOS, vertex_primitive_t::TRIANGLE_STRIP };
+
+	return MeshData(std::move(verts), info);
+}
+
 MeshData MeshData::make_quad() {
 	auto const data_size = quad_data.size() * sizeof(decltype(quad_data)::value_type);
 	std::vector<uint8_t> verts(data_size);
