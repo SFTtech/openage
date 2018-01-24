@@ -11,6 +11,7 @@
  - `brew install python3 libepoxy freetype fontconfig harfbuzz cmake sdl2 sdl2_image opus libogg opusfile libpng`
  - `brew install numpy --with-python3`
  - `brew install pillow --with-python3`
+ - `brew install jinja2 --with-python3`
  - `brew install qt5`
  - Choose and Install a compatible compiler:
   - For clang 3.5: `brew install llvm35`

@@ -40,6 +40,7 @@ Dependency list:
     CR    fontconfig
     CR    harfbuzz >= 1.0.0
     CR    nyan  (https://github.com/SFTtech/nyan)
+    C     jinja2
     CR    sdl2
     CR    sdl2_image
     CR    opusfile

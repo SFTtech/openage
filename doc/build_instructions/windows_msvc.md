@@ -19,7 +19,7 @@
 ### Python Modules
  Open a command prompt at `<Python 3 installation directory>/Scripts`
 
-    pip install cython numpy pillow pygments pyreadline
+    pip install cython numpy pillow pygments pyreadline Jinja2
 
 ### vcpkg packages
  Set up [vcpkg](https://github.com/Microsoft/vcpkg#quick-start). Open a command prompt at `<vcpkg directory>`
