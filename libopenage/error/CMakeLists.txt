@@ -10,4 +10,5 @@ add_sources(libopenage
 pxdgen(
 	backtrace.h
 	error.h
+	handlers.h
 )
