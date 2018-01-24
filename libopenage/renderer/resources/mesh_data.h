@@ -113,6 +113,8 @@ public:
 	VertexInputInfo get_info() const;
 
 	/// Initializes the mesh data with a simple quadrilateral.
+	static MeshData make_quad(const std::array<float, 16> quad_data);
+
 	static MeshData make_quad();
 
 private:
