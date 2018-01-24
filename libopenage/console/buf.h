@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -38,11 +38,11 @@ constexpr chrflags_t CHR_FRAKTUR = (1 << 7);
 constexpr chrflags_t CHR_NEGATIVE = (1 << 8);
 constexpr chrflags_t CHR_INVISIBLE = (1 << 9);
 constexpr chrflags_t CHR_FRAMED = (1 << 10);
-constexpr chrflags_t CHR_ENCIRCLED = (1 << 11); //because framing stuff is so 20th century
-constexpr chrflags_t CHR_OVERLINED = (1 << 12); //whoever knows that this exists
-constexpr chrflags_t CHR_RIGHTLINED = (1 << 13); //whoever wants that
-constexpr chrflags_t CHR_LEFTLINED = (1 << 14); //whoever needs that
-constexpr chrflags_t CHR_STRESS_IDEOGRAM = (1 << 15); //whatever that is
+constexpr chrflags_t CHR_ENCIRCLED = (1 << 11);       // because framing stuff is so 20th century
+constexpr chrflags_t CHR_OVERLINED = (1 << 12);       // whoever knows that this exists
+constexpr chrflags_t CHR_RIGHTLINED = (1 << 13);      // whoever wants that
+constexpr chrflags_t CHR_LEFTLINED = (1 << 14);       // whoever needs that
+constexpr chrflags_t CHR_STRESS_IDEOGRAM = (1 << 15); // whatever that is
 
 /**
  * a single character in the buffer

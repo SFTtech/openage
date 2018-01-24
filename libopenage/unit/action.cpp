@@ -1,8 +1,9 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 #include <algorithm>
 #include <cmath>
 
+#include "../engine.h"
 #include "../pathfinding/a_star.h"
 #include "../pathfinding/heuristics.h"
 #include "../terrain/terrain.h"
@@ -64,7 +65,7 @@ bool IntervalTimer::finished() const {
 bool UnitAction::show_debug = false;
 
 coord::phys_t UnitAction::adjacent_range(Unit *u) {
-	return 3 * path::path_grid_size + (u->location->min_axis() / 2);
+	return path::path_grid_size * 3 + (u->location->min_axis() / 2L);
 }
 
 coord::phys_t UnitAction::get_attack_range(Unit *u) {
@@ -129,10 +130,10 @@ const graphic_set &UnitAction::current_graphics() const {
 	return this->entity->unit_type->graphics;
 }
 
-void UnitAction::draw_debug() {
+void UnitAction::draw_debug(const Engine &engine) {
 	// draw debug content if available
 	if (show_debug && this->debug_draw_action) {
-		this->debug_draw_action();
+		this->debug_draw_action(engine);
 	}
 }
 
@@ -239,7 +240,7 @@ TargetAction::TargetAction(Unit *u, graphic_type gt, UnitReference r)
 }
 
 void TargetAction::update(unsigned int time) {
-	auto target_ptr = update_distance();
+	auto target_ptr = this->update_distance();
 	if (!target_ptr) {
 		return; // target has become invalid
 	}
@@ -580,8 +581,8 @@ void MoveAction::initialise() {
 
 	// set an initial path
 	this->set_path();
-	this->debug_draw_action = [&]() {
-		this->path.draw_path();
+	this->debug_draw_action = [&](const Engine &engine) {
+		this->path.draw_path(engine.coord);
 	};
 }
 
@@ -624,7 +625,7 @@ void MoveAction::update(unsigned int time) {
 
 	// find distance to move in this update
 	auto &sp_attr = this->entity->get_attribute<attr_type::speed>();
-	coord::phys_t distance_to_move = sp_attr.unit_speed * time;
+	double distance_to_move = sp_attr.unit_speed.to_double() * time;
 
 	// current position and direction
 	coord::phys3 new_position = this->entity->location->pos.draw;
@@ -641,7 +642,7 @@ void MoveAction::update(unsigned int time) {
 		coord::phys3_delta move_dir = waypoint - new_position;
 
 		// normalise dir
-		coord::phys_t distance_to_waypoint = (coord::phys_t) std::hypot(move_dir.ne, move_dir.se);
+		double distance_to_waypoint = std::hypot(move_dir.ne, move_dir.se);
 
 		if (distance_to_waypoint <= distance_to_move) {
 			distance_to_move -= distance_to_waypoint;
@@ -654,11 +655,8 @@ void MoveAction::update(unsigned int time) {
 			this->path.waypoints.pop_back();
 		}
 		else {
-			// distance_to_waypoint is larger so need to divide
-			move_dir = (move_dir * distance_to_move) / distance_to_waypoint;
-
 			// change entity position and direction
-			new_position += move_dir;
+			new_position += move_dir * (distance_to_move / distance_to_waypoint);
 			new_direction = move_dir;
 			break;
 		}
@@ -1309,7 +1307,7 @@ ProjectileAction::ProjectileAction(Unit *e, coord::phys3 target)
 
 	// find speed to move
 	auto &sp_attr = this->entity->get_attribute<attr_type::speed>();
-	coord::phys_t projectile_speed = sp_attr.unit_speed;
+	double projectile_speed = sp_attr.unit_speed.to_double();
 
 	// arc of projectile
 	auto &pr_attr = this->entity->get_attribute<attr_type::projectile>();
@@ -1317,8 +1315,8 @@ ProjectileAction::ProjectileAction(Unit *e, coord::phys3 target)
 
 	// distance and time to target
 	coord::phys3_delta d = target - this->entity->location->pos.draw;
-	coord::phys_t distance_to_target = (coord::phys_t) std::hypot(d.ne, d.se);
-	int flight_time = distance_to_target / projectile_speed;
+	double distance_to_target = d.length();
+	double flight_time = distance_to_target / projectile_speed;
 
 
 	if (projectile_arc < 0) {
@@ -1333,11 +1331,11 @@ ProjectileAction::ProjectileAction(Unit *e, coord::phys3 target)
 
 	// inital launch direction
 	auto &d_attr = this->entity->get_attribute<attr_type::direction>();
-	d_attr.unit_dir = (projectile_speed * d) / distance_to_target;
+	d_attr.unit_dir = d * (projectile_speed / distance_to_target);
 
 	// account for initial height
 	coord::phys_t initial_height = this->entity->location->pos.draw.up;
-	d_attr.unit_dir.up = (grav * flight_time) / 2 - (initial_height / flight_time);
+	d_attr.unit_dir.up = coord::phys_t((grav * flight_time) / 2) - (initial_height * (1 / flight_time));
 }
 
 ProjectileAction::~ProjectileAction() {}

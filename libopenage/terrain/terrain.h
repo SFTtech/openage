@@ -1,4 +1,4 @@
-// Copyright 2013-2017 the openage authors. See copying.md for legal info.
+// Copyright 2013-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -10,9 +10,11 @@
 #include <vector>
 
 #include "../assetmanager.h"
-#include "../texture.h"
-#include "../coord/camgame.h"
 #include "../coord/chunk.h"
+#include "../coord/phys.h"
+#include "../coord/pixel.h"
+#include "../coord/tile.h"
+#include "../texture.h"
 #include "../util/misc.h"
 
 namespace openage {
@@ -118,7 +120,7 @@ struct neighbor_tile {
  */
 struct tile_data {
 	terrain_t terrain_id;
-	coord::tile pos;
+	coord::tile pos{0, 0};
 	int subtexture_id;
 	Texture *tex;
 	int priority;
@@ -177,8 +179,8 @@ public:
 
 	bool infinite; //!< chunks are automagically created as soon as they are referenced
 
-	coord::tile limit_positive, limit_negative; //!< for non-infinite terrains, this is the size limit.
-	//TODO: non-square shaped terrain bounds
+	// TODO: finite terrain limits
+	// TODO: non-square shaped terrain bounds
 
 	/**
 	 * returns a list of all referenced chunks
@@ -190,7 +192,7 @@ public:
 	 * @returns whether the data filled on the terrain was cut because of
 	 * the terrains size limit.
 	 */
-	bool fill(const int *data, coord::tile_delta size);
+	bool fill(const int *data, const coord::tile_delta &size);
 
 	/**
 	 * Attach a chunk to the terrain, to a given position.
@@ -199,42 +201,42 @@ public:
 	 * @param position The chunk position where the chunk will be placed
 	 * @param manually_created Was this chunk created manually? If true, it will not be free'd automatically
 	 */
-	void attach_chunk(TerrainChunk *new_chunk, coord::chunk position, bool manual=true);
+	void attach_chunk(TerrainChunk *new_chunk, const coord::chunk &position, bool manual=true);
 
 	/**
 	 * get a terrain chunk by a given chunk position.
 	 *
 	 * @return the chunk if exists, nullptr else
 	 */
-	TerrainChunk *get_chunk(coord::chunk position);
+	TerrainChunk *get_chunk(const coord::chunk &position);
 
 	/**
 	 * get a terrain chunk by a given tile position.
 	 *
 	 * @return the chunk it exists, nullptr else
 	 */
-	TerrainChunk *get_chunk(coord::tile position);
+	TerrainChunk *get_chunk(const coord::tile &position);
 
 	/**
 	 * get or create a terrain chunk for a given chunk position.
 	 *
 	 * @return the (maybe newly created) chunk
 	 */
-	TerrainChunk *get_create_chunk(coord::chunk position);
+	TerrainChunk *get_create_chunk(const coord::chunk &position);
 
 	/**
 	 * get or create a terrain chunk for a given tile position.
 	 *
 	 * @return the (maybe newly created) chunk
 	 */
-	TerrainChunk *get_create_chunk(coord::tile position);
+	TerrainChunk *get_create_chunk(const coord::tile &position);
 
 	/**
 	 * return tile data for the given position.
 	 *
 	 * the only reason the chunks exist, is because of this data.
 	 */
-	TileContent *get_data(coord::tile position);
+	TileContent *get_data(const coord::tile &position);
 
 	/**
 	 * an object which contains the given point, null otherwise
@@ -264,7 +266,7 @@ public:
 	 *
 	 * @param position: the position of the center chunk.
 	 */
-	struct chunk_neighbors get_chunk_neighbors(coord::chunk position);
+	struct chunk_neighbors get_chunk_neighbors(const coord::chunk &position);
 
 	/**
 	 * return the subtexture offset id for a given tile position.
@@ -274,17 +276,18 @@ public:
 	 * of the same terrain (like grass-grass) are matching (without blendomatic).
 	 * -> e.g. grass only map.
 	 */
-	unsigned get_subtexture_id(coord::tile pos, unsigned atlas_size);
+	unsigned get_subtexture_id(const coord::tile &pos, unsigned atlas_size);
 
 	/**
 	 * checks the creation state and premissions of a given tile position.
 	 */
-	tile_state check_tile(coord::tile position);
+	tile_state check_tile(const coord::tile &position);
 
 	/**
 	 * checks whether the given tile position is allowed to exist on this terrain.
 	 */
-	bool check_tile_position(coord::tile position);
+	// TODO: rename to is_tile_position_valid
+	bool check_tile_position(const coord::tile &position);
 
 	/**
 	 * validate whether the given terrain id is available.
@@ -340,8 +343,10 @@ public:
 	 *
 	 * @returns a drawing instruction struct that contains all information for rendering
 	 */
-	struct terrain_render_data create_draw_advice(coord::tile ab, coord::tile cd,
-	                                              coord::tile ef, coord::tile gh,
+	struct terrain_render_data create_draw_advice(const coord::tile &ab,
+	                                              const coord::tile &cd,
+	                                              const coord::tile &ef,
+	                                              const coord::tile &gh,
 	                                              bool blending_enabled);
 
 	/**

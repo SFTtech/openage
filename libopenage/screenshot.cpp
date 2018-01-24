@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 #include "screenshot.h"
 
@@ -11,7 +11,7 @@
 #include <png.h>
 #include <stdlib.h>
 
-#include "coord/window.h"
+#include "coord/pixel.h"
 #include "job/job_manager.h"
 #include "log/log.h"
 #include "util/strings.h"
@@ -48,7 +48,7 @@ std::string ScreenshotManager::gen_next_filename() {
 }
 
 
-void ScreenshotManager::save_screenshot(coord::window size) {
+void ScreenshotManager::save_screenshot(coord::viewport_delta size) {
 	coord::pixel_t width = size.x,
 	               height = size.y;
 
@@ -63,7 +63,7 @@ void ScreenshotManager::save_screenshot(coord::window size) {
 
 
 bool ScreenshotManager::encode_png(std::shared_ptr<uint8_t> pxdata,
-                                   coord::window size) {
+                                   coord::viewport_delta size) {
 	std::FILE *fout = NULL;
 	coord::pixel_t width = size.x,
 	               height = size.y;

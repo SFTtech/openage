@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -119,7 +119,7 @@ public:
 	bool ignored(const Event &e);
 
 	/**
-	 * manages the pressing of a key.
+	 * manages the pressing of an input event (key, mouse, ...).
 	 * first checks whether an action is bound to it.
 	 * if it is, look for an handler to execute that handler.
 	 * returns true if the event was responded to
@@ -242,12 +242,12 @@ private:
 	/**
 	 * mouse position in the window
 	 */
-	coord::window mouse_position;
+	coord::input mouse_position{0, 0};
 
 	/**
 	 * mouse position relative to the last frame position.
 	 */
-	coord::window_delta mouse_motion;
+	coord::input_delta mouse_motion{0, 0};
 
 	friend InputContext;
 };

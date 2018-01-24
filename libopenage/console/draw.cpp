@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 #include "draw.h"
 
@@ -20,12 +20,11 @@ namespace console {
 namespace draw {
 
 void to_opengl(Engine *engine, Console *console) {
-	coord::camhud topleft = {
+	coord::camhud topleft {
 		console->bottomleft.x,
 		// TODO This should probably just be console->topright.y
 		console->bottomleft.y + console->charsize.y * console->buf.dims.y
 	};
-	coord::camhud chartopleft;
 	coord::pixel_t ascender = static_cast<coord::pixel_t>(console->font.get_ascender());
 
 	renderer::TextRenderer *text_renderer = engine->get_text_renderer();
@@ -37,7 +36,7 @@ void to_opengl(Engine *engine, Console *console) {
 	bool slowblinking_visible = (monotime % 300000000 < 150000000);
 
 	for (coord::term_t x = 0; x < console->buf.dims.x; x++) {
-		chartopleft.x = topleft.x + console->charsize.x * x;
+		coord::camhud chartopleft{chartopleft.x = topleft.x + console->charsize.x * x, 0};
 
 		for (coord::term_t y = 0; y < console->buf.dims.y; y++) {
 			chartopleft.y = topleft.y - console->charsize.y * y;

@@ -1,11 +1,11 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <cstdint>
 #include <vector>
 
-#include "../coord/phys3.h"
+#include "../coord/phys.h"
 #include "../gamedata/graphic.gen.h"
 
 namespace openage {
@@ -21,7 +21,7 @@ class Sound;
  * These objects handle the drawing of regular textures to use a
  * unit's direction and include delta graphics.
  *
- * This type can also deals with playing position based game sounds.
+ * This type can also deal with playing position based game sounds.
  */
 class UnitTexture {
 public:
@@ -63,22 +63,22 @@ public:
 	/**
 	 * pixel size of this texture
 	 */
-	coord::window size() const;
+	coord::viewport size() const;
 
 	/**
 	 * a sample drawing for hud
 	 */
-	void sample(const coord::camhud &draw_pos, unsigned color=1) const;
+	void sample(const coord::CoordManager &coord, const coord::camhud &draw_pos, unsigned color=1) const;
 
 	/**
 	 * draw object with no direction
 	 */
-	void draw(const coord::camgame &draw_pos, unsigned int frame, unsigned color) const;
+	void draw(const coord::CoordManager &coord, const coord::camgame &draw_pos, unsigned int frame, unsigned color) const;
 
 	/**
 	 * draw object with direction
 	 */
-	void draw(const coord::camgame &draw_pos, coord::phys3_delta &dir, unsigned int frame, unsigned color) const;
+	void draw(const coord::CoordManager &coord, const coord::camgame &draw_pos, coord::phys3_delta &dir, unsigned int frame, unsigned color) const;
 
 	/**
 	 * initialise graphic data

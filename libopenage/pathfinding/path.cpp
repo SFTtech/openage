@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 #include <cmath>
 
@@ -19,8 +19,7 @@ Node::Node(const coord::phys3 &pos, node_pt prev)
 	:
 	position(pos),
 	tile_position(pos.to_tile3().to_tile()),
-	dir_ne{0.0f},
-	dir_se{0.0f},
+	direction{},
 	visited{false},
 	was_best{false},
 	factor{1.0f},
@@ -28,12 +27,13 @@ Node::Node(const coord::phys3 &pos, node_pt prev)
 	heap_node(nullptr) {
 
 	if (prev) {
-		cost_t dx = this->position.ne - prev->position.ne;
-		cost_t dy = this->position.se - prev->position.se;
-		cost_t hyp = std::sqrt(dx * dx + dy * dy);
-		this->dir_ne = dx / hyp;
-		this->dir_se = dy / hyp;
-		cost_t similarity = this->dir_ne * prev->dir_ne + this->dir_se * prev->dir_se;
+		this->direction = (this->position - prev->position).normalize();
+
+		// TODO: add dot product to coord
+		cost_t similarity = ((this->direction.ne.to_float() *
+		                      prev->direction.ne.to_float()) +
+		                     (this->direction.se.to_float() *
+		                      prev->direction.se.to_float()));
 		this->factor += (1 - similarity);
 	}
 }
@@ -59,9 +59,9 @@ bool Node::operator ==(const Node &other) const {
 
 
 cost_t Node::cost_to(const Node &other) const {
-	cost_t dx = this->position.ne - other.position.ne;
-	cost_t dy = this->position.se - other.position.se;
-	return std::sqrt(dx * dx + dy * dy) * other.factor * this->factor;
+	// ignore the up-position, thus convert to phys2
+	return ((this->position - other.position).to_phys2().length()
+	        * other.factor * this->factor);
 }
 
 
@@ -101,10 +101,11 @@ bool passable_line(node_pt start, node_pt end, std::function<bool(const coord::p
 	// interpolate between points and make passablity checks
 	// (dont check starting position)
 	for (int i = 1; i <= samples; ++i) {
+		// TODO: needs more fixed-point
 		double percent = (double) i / samples;
-		coord::phys_t ne = (1.0 - percent) * start->position.ne + percent * end->position.ne;
-		coord::phys_t se = (1.0 - percent) * start->position.se + percent * end->position.se;
-		coord::phys_t up = (1.0 - percent) * start->position.up + percent * end->position.up;
+		coord::phys_t ne = (1.0 - percent) * start->position.ne.to_double() + percent * end->position.ne.to_double();
+		coord::phys_t se = (1.0 - percent) * start->position.se.to_double() + percent * end->position.se.to_double();
+		coord::phys_t up = (1.0 - percent) * start->position.up.to_double() + percent * end->position.up.to_double();
 
 		if (!passable(coord::phys3{ne, se, up})) {
 			return false;
@@ -119,12 +120,12 @@ Path::Path(const std::vector<Node> &nodes)
 	waypoints{nodes} {}
 
 
-void Path::draw_path() {
+void Path::draw_path(const coord::CoordManager &mgr) {
 	glLineWidth(1);
 	glColor3f(0.3, 1.0, 0.3);
 	glBegin(GL_LINES); {
 		for (Node &n : waypoints) {
-			coord::camgame draw_pos = n.position.to_camgame();
+			coord::viewport draw_pos = n.position.to_viewport(mgr);
 			glVertex3f(draw_pos.x, draw_pos.y, 0);
 		}
 	}

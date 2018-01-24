@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -8,7 +8,7 @@
 #include <unordered_map>
 #include <vector>
 
-#include "../coord/phys3.h"
+#include "../coord/phys.h"
 #include "../gamestate/resource.h"
 
 namespace openage {

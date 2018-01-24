@@ -355,9 +355,10 @@ def convert_slp(filepath, dirname, names_map, converter_pool, args):
     texture = converter_pool.convert(indata, cutter)
 
     # the hotspots of terrain textures must be fixed
+    # it has to be in the west corner of a tile.
     if filepath.parent.name == 'terrain':
         for entry in texture.image_metadata:
-            entry["cx"] = TILE_HALFSIZE["x"]
+            entry["cx"] = 0
             entry["cy"] = TILE_HALFSIZE["y"]
 
     # replace .slp by .png and rename the file

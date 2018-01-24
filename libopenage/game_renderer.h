@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -28,7 +28,6 @@ class RenderOptions : public options::OptionNode {
 public:
 	RenderOptions();
 
-	options::Var<bool> draw_grid;
 	options::Var<bool> draw_debug;
 	options::Var<bool> terrain_blending;
 };
@@ -43,11 +42,6 @@ public:
 	~GameRenderer();
 
 	bool on_draw() override;
-
-	/**
-	 * debug function that draws a simple overlay grid
-	 */
-	void draw_debug_grid();
 
 	/**
 	 * the game this renderer is using

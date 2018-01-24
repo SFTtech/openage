@@ -1,4 +1,4 @@
-// Copyright 2013-2017 the openage authors. See copying.md for legal info.
+// Copyright 2013-2018 the openage authors. See copying.md for legal info.
 
 #include "terrain.h"
 
@@ -11,10 +11,9 @@
 #include "../error/error.h"
 #include "../engine.h"
 #include "../game_renderer.h"
-#include "../coord/camgame.h"
+#include "../coord/pixel.h"
 #include "../coord/chunk.h"
 #include "../coord/tile.h"
-#include "../coord/tile3.h"
 #include "../util/misc.h"
 #include "../util/strings.h"
 
@@ -62,7 +61,7 @@ std::vector<coord::chunk> Terrain::used_chunks() const {
 	return result;
 }
 
-bool Terrain::fill(const int *data, coord::tile_delta size) {
+bool Terrain::fill(const int *data, const coord::tile_delta &size) {
 	bool was_cut = false;
 
 	coord::tile pos = {0, 0};
@@ -81,7 +80,7 @@ bool Terrain::fill(const int *data, coord::tile_delta size) {
 }
 
 void Terrain::attach_chunk(TerrainChunk *new_chunk,
-                           coord::chunk position,
+                           const coord::chunk &position,
                            bool manually_created) {
 	new_chunk->set_terrain(this);
 	new_chunk->manually_created = manually_created;
@@ -107,7 +106,7 @@ void Terrain::attach_chunk(TerrainChunk *new_chunk,
 	}
 }
 
-TerrainChunk *Terrain::get_chunk(coord::chunk position) {
+TerrainChunk *Terrain::get_chunk(const coord::chunk &position) {
 	auto iter = this->chunks.find(position);
 
 	if (iter == this->chunks.end()) {
@@ -118,11 +117,11 @@ TerrainChunk *Terrain::get_chunk(coord::chunk position) {
 	}
 }
 
-TerrainChunk *Terrain::get_chunk(coord::tile position) {
+TerrainChunk *Terrain::get_chunk(const coord::tile &position) {
 	return this->get_chunk(position.to_chunk());
 }
 
-TerrainChunk *Terrain::get_create_chunk(coord::chunk position) {
+TerrainChunk *Terrain::get_create_chunk(const coord::chunk &position) {
 	TerrainChunk *res = this->get_chunk(position);
 	if (res == nullptr) {
 		res = new TerrainChunk();
@@ -131,26 +130,25 @@ TerrainChunk *Terrain::get_create_chunk(coord::chunk position) {
 	return res;
 }
 
-TerrainChunk *Terrain::get_create_chunk(coord::tile position) {
+TerrainChunk *Terrain::get_create_chunk(const coord::tile &position) {
 	return this->get_create_chunk(position.to_chunk());
 }
 
-TileContent *Terrain::get_data(coord::tile position) {
+TileContent *Terrain::get_data(const coord::tile &position) {
 	TerrainChunk *c = this->get_chunk(position.to_chunk());
 	if (c == nullptr) {
 		return nullptr;
 	} else {
-		return c->get_data(position.get_pos_on_chunk().to_tile());
+		return c->get_data(position.get_pos_on_chunk());
 	}
 }
 
 TerrainObject *Terrain::obj_at_point(const coord::phys3 &point) {
-	coord::tile t = point.to_tile3().to_tile();
+	coord::tile t = point.to_tile();
 	TileContent *tc = this->get_data(t);
 	if (!tc) {
 		return nullptr;
 	}
-
 
 	// prioritise selecting the smallest object
 	TerrainObject *smallest = nullptr;
@@ -201,7 +199,7 @@ Texture *Terrain::blending_mask(ssize_t mask_id) {
 	return this->meta->blending_masks[mask_id];
 }
 
-unsigned Terrain::get_subtexture_id(coord::tile pos, unsigned atlas_size) {
+unsigned Terrain::get_subtexture_id(const coord::tile &pos, unsigned atlas_size) {
 	unsigned result = 0;
 
 	result += util::mod<coord::tile_t>(pos.se, atlas_size);
@@ -211,16 +209,15 @@ unsigned Terrain::get_subtexture_id(coord::tile pos, unsigned atlas_size) {
 	return result;
 }
 
-struct chunk_neighbors Terrain::get_chunk_neighbors(coord::chunk position) {
+struct chunk_neighbors Terrain::get_chunk_neighbors(const coord::chunk &position) {
 	struct chunk_neighbors ret;
-	coord::chunk tmp_pos;
 
 	for (int i = 0; i < 8; i++) {
-		tmp_pos = position;
-		// TODO: use the overloaded operators..
-		tmp_pos.ne += neigh_offsets[i].ne;
-		tmp_pos.se += neigh_offsets[i].se;
-		ret.neighbor[i] = this->get_chunk(tmp_pos);
+		coord::chunk tmp {
+			position.ne + (coord::chunk_t) neigh_offsets[i].ne,
+			position.se + (coord::chunk_t) neigh_offsets[i].se
+		};
+		ret.neighbor[i] = this->get_chunk(tmp);
 	}
 
 	return ret;
@@ -254,7 +251,7 @@ int Terrain::get_blending_mode(terrain_t base_id, terrain_t neighbor_id) {
 	}
 }
 
-tile_state Terrain::check_tile(coord::tile position) {
+tile_state Terrain::check_tile(const coord::tile &position) {
 	if (this->check_tile_position(position) == false) {
 		return tile_state::invalid;
 	}
@@ -269,44 +266,32 @@ tile_state Terrain::check_tile(coord::tile position) {
 	}
 }
 
-bool Terrain::check_tile_position(coord::tile pos) {
+bool Terrain::check_tile_position(const coord::tile &/*pos*/) {
 	if (this->infinite == true) {
 		return true;
 	}
-
-	if (pos.ne < this->limit_negative.ne
-	    || pos.se < this->limit_negative.se
-	    || pos.ne > this->limit_positive.ne
-	    || pos.se > this->limit_positive.se) {
-		return false;
-	}
 	else {
-		return true;
+		throw Error(ERR << "non-infinite terrains are not supported yet");
 	}
-
 }
 
 void Terrain::draw(Engine *engine, RenderOptions *settings) {
 	// TODO: move this draw invokation to a render manager.
 	//       it can reorder the draw instructions and minimize texture switching.
 
+	// query the window coordinates from the engine first
+	coord::viewport wbl = coord::viewport{0, 0};
+	coord::viewport wbr = coord::viewport{engine->coord.viewport_size.x, 0};
+	coord::viewport wtl = coord::viewport{0, engine->coord.viewport_size.y};
+	coord::viewport wtr = coord::viewport{engine->coord.viewport_size.x, engine->coord.viewport_size.y};
+
 	// top left, bottom right tile coordinates
 	// that are currently visible in the window
-	coord::tile tl, tr, bl, br;
-	coord::window wtl, wtr, wbl, wbr;
-
-	// query the window coordinates from the engine first
-	wtl = coord::window{0, 0};
-	wtr = coord::window{engine->get_coord_data()->window_size.x, 0};
-	wbl = coord::window{0, engine->get_coord_data()->window_size.y};
-	wbr = coord::window{engine->get_coord_data()->window_size.x,
-	                    engine->get_coord_data()->window_size.y};
-
 	// then convert them to tile coordinates.
-	tl = wtl.to_camgame().to_phys3(0).to_phys2().to_tile();
-	tr = wtr.to_camgame().to_phys3(0).to_phys2().to_tile();
-	bl = wbl.to_camgame().to_phys3(0).to_phys2().to_tile();
-	br = wbr.to_camgame().to_phys3(0).to_phys2().to_tile();
+	coord::tile tl = wtl.to_tile(engine->coord);
+	coord::tile tr = wtr.to_tile(engine->coord);
+	coord::tile bl = wbl.to_tile(engine->coord);
+	coord::tile br = wbr.to_tile(engine->coord);
 
 	// main terrain calculation call: get the `terrain_render_data`
 	auto draw_data = this->create_draw_advice(tl, tr, br, bl, settings->terrain_blending.value);
@@ -330,21 +315,21 @@ void Terrain::draw(Engine *engine, RenderOptions *settings) {
 			int      subtexture_id = layer->subtexture_id;
 			Texture *mask_texture  = layer->mask_tex;
 
-			texture->draw(tile_pos, ALPHAMASKED, subtexture_id, mask_texture, mask_id);
+			texture->draw(engine->coord, *this, tile_pos, ALPHAMASKED, subtexture_id, mask_texture, mask_id);
 		}
 	}
 
 	// TODO: drawing buildings can't be the job of the terrain..
 	// draw the buildings
 	for (auto &object : draw_data.objects) {
-		object->draw();
+		object->draw(*engine);
 	}
 }
 
-struct terrain_render_data Terrain::create_draw_advice(coord::tile ab,
-                                                       coord::tile cd,
-                                                       coord::tile ef,
-                                                       coord::tile gh,
+struct terrain_render_data Terrain::create_draw_advice(const coord::tile &ab,
+                                                       const coord::tile &cd,
+                                                       const coord::tile &ef,
+                                                       const coord::tile &gh,
                                                        bool blending_enabled) {
 
 	/*
@@ -392,8 +377,8 @@ struct terrain_render_data Terrain::create_draw_advice(coord::tile ab,
 	tiles->reserve(tiles_count);
 
 	// sweep the whole rhombus area
-	for (coord::tile tilepos = gb; tilepos.ne <= (ssize_t) cf.ne; tilepos.ne++) {
-		for (tilepos.se = gb.se; tilepos.se <= (ssize_t) cf.se; tilepos.se++) {
+	for (coord::tile tilepos = gb; tilepos.ne <= cf.ne; tilepos.ne++) {
+		for (tilepos.se = gb.se; tilepos.se <= cf.se; tilepos.se++) {
 
 			// get the terrain tile drawing data
 			auto tile = this->create_tile_advice(tilepos, blending_enabled);

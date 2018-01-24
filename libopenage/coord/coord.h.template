@@ -1,4 +1,4 @@
-// Copyright 2016-2016 the openage authors. See copying.md for legal info.
+// Copyright 2016-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -27,6 +27,9 @@ namespace coord {
  */
 template<typename CoordType, typename Absolute, typename Relative>
 struct Coord{{ camelcase }}Absolute {
+
+	using elem_t = CoordType;
+
 	// The member variables to store the actual data.
 	{{ formatted_members("CoordType {0};", join_with="\n\t") }}
 
@@ -50,14 +53,6 @@ struct Coord{{ camelcase }}Absolute {
 		return *this;
 	}
 
-	/**
-	 * Manual to-relative-coordinate conversion function.
-	 * You shouldn't need to use this.
-	 */
-	constexpr Relative as_relative() const {
-		return Relative({{ formatted_members("this->{}") }});
-	}
-
 	constexpr Absolute operator +(const Relative &other) const {
 		return Absolute({{ formatted_members("this->{0} + other.{0}") }});
 	}
@@ -72,12 +67,12 @@ struct Coord{{ camelcase }}Absolute {
 
 	constexpr Absolute &operator +=(const Relative &other) {
 		*this = *this + other;
-		return *this;
+		return static_cast<Absolute &>(*this);
 	}
 
 	constexpr Absolute &operator -=(const Relative &other) {
 		*this = *this - other;
-		return *this;
+		return static_cast<Absolute &>(*this);
 	}
 
 	constexpr bool operator ==(const Absolute &other) const {
@@ -99,6 +94,8 @@ struct Coord{{ camelcase }}Absolute {
  */
 template<typename CoordType, typename Absolute, typename Relative>
 struct Coord{{ camelcase }}Relative {
+	using elem_t = CoordType;
+
 	// The member variables to store the actual data.
 	{{ formatted_members("CoordType {0};", join_with="\n\t") }}
 
@@ -118,14 +115,6 @@ struct Coord{{ camelcase }}Relative {
 		{{ formatted_members("this->{0} = other.{0};", join_with="\n\t\t") }}
 
 		return *this;
-	}
-
-	/**
-	 * Manual to-absolute-coordinate conversion function.
-	 * You shouldn't need to use this.
-	 */
-	constexpr Absolute as_absolute() const {
-		return Absolute({{ formatted_members("this->{}") }});
 	}
 
 	constexpr Relative operator +() const {
@@ -160,24 +149,24 @@ struct Coord{{ camelcase }}Relative {
 
 	constexpr Relative &operator +=(const Relative &other) {
 		*this += other;
-		return *this;
+		return static_cast<Relative &>(*this);
 	}
 
 	constexpr Relative &operator -=(const Relative &other) {
 		*this -= other;
-		return *this;
+		return static_cast<Relative &>(*this);
 	}
 
 	template<typename ScalarType>
 	constexpr Relative &operator *=(const ScalarType &scalar) {
 		*this *= scalar;
-		return *this;
+		return static_cast<Relative &>(*this);
 	}
 
 	template<typename ScalarType>
 	constexpr Relative &operator /=(const ScalarType &scalar) {
 		*this /= scalar;
-		return *this;
+		return static_cast<Relative &>(*this);
 	}
 
 	constexpr bool operator ==(const Relative &other) const {

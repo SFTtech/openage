@@ -1,17 +1,10 @@
 add_sources(libopenage
-	camgame.cpp
-	camhud.cpp
 	chunk.cpp
 	coord_test.cpp
-	phys2.cpp
-	phys3.cpp
+	coordmanager.cpp
+	declarations.cpp
+	phys.cpp
+	pixel.cpp
 	term.cpp
-	tests_old.cpp
 	tile.cpp
-	tile3.cpp
-	vec2.cpp
-	vec2f.cpp
-	vec3.cpp
-	vec3f.cpp
-	window.cpp
 )

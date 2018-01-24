@@ -1,4 +1,4 @@
-// Copyright 2013-2017 the openage authors. See copying.md for legal info.
+// Copyright 2013-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -7,19 +7,22 @@
 #include <memory>
 
 #include "gamedata/texture.gen.h"
-#include "coord/camgame.h"
-#include "coord/camhud.h"
+#include "coord/pixel.h"
 #include "coord/tile.h"
-#include "coord/tile3.h"
 #include "shader/program.h"
 #include "shader/shader.h"
 #include "util/path.h"
 
 
 namespace openage {
+class Terrain;
 
 namespace util {
 class Path;
+}
+
+namespace coord {
+class CoordManager;
 }
 
 namespace texture_shader {
@@ -83,10 +86,30 @@ public:
 	Texture(const util::Path &filename, bool use_metafile=false);
 	~Texture();
 
-	void draw(coord::camhud pos, unsigned int mode=0, bool mirrored=false, int subid=0, unsigned player=0) const;
-	void draw(coord::camgame pos, unsigned int mode=0, bool mirrored=false, int subid=0, unsigned player=0) const;
-	void draw(coord::tile pos, unsigned int mode, int subid, Texture *alpha_texture=nullptr, int alpha_subid=-1) const;
-	void draw(coord::pixel_t x, coord::pixel_t y, unsigned int mode, bool mirrored, int subid, unsigned player, Texture *alpha_texture, int alpha_subid) const;
+	/**
+	 * Draws the texture at hud coordinates.
+	 */
+	void draw(const coord::CoordManager &mgr, coord::camhud pos, unsigned int mode=0, bool mirrored=false, int subid=0, unsigned player=0) const;
+
+	/**
+	 * Draws the texture at game coordinates.
+	 */
+	void draw(const coord::CoordManager &mgr, coord::camgame pos, unsigned int mode=0, bool mirrored=false, int subid=0, unsigned player=0) const;
+
+	/**
+	 * Draws the texture at phys coordinates.
+	 */
+	void draw(const coord::CoordManager &mgr, coord::phys3 pos, unsigned int mode=0,  bool mirrored=false, int subid=0, unsigned player=0) const;
+
+	/**
+	 * Draws the texture at tile coordinates.
+	 */
+	void draw(const coord::CoordManager &mgr, const Terrain &terrain, coord::tile pos, unsigned int mode, int subid, Texture *alpha_texture, int alpha_subid) const;
+
+	/**
+	 * Draws the texture at window coordinates.
+	 */
+	void draw(coord::viewport pos, unsigned int mode, bool mirrored, int subid, unsigned player, Texture *alpha_texture, int alpha_subid) const;
 
 	/**
 	 * Reload the image file. Used for inotify refreshing.

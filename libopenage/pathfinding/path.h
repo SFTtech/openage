@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -7,14 +7,18 @@
 #include <unordered_map>
 #include <vector>
 
-#include "../coord/decl.h"
-#include "../coord/phys3.h"
+#include "../coord/phys.h"
 #include "../coord/tile.h"
 #include "../datastructure/pairing_heap.h"
 #include "../util/misc.h"
 
 
 namespace openage {
+
+namespace coord {
+class CoordManager;
+}
+
 namespace path {
 
 class Node;
@@ -52,24 +56,21 @@ using heap_t = datastructure::PairingHeap<node_pt, compare_node_cost>;
 
 /**
  * Size of phys-coord grid for path nodes.
- *
- * This equals a node grid size of (phys/tile) / 8.
  */
-constexpr int path_grid_size = coord::settings::phys_per_tile >> 3;
-constexpr int path_grid_size_squared = path_grid_size * path_grid_size;
+constexpr coord::phys_t path_grid_size{1.f/8};
 
 /**
  * Phys3 delta coordinates to select for path neighbors.
  */
 constexpr coord::phys3_delta const neigh_phys[] = {
-	{ 1 * path_grid_size, -1 * path_grid_size, 0},
-	{ 1 * path_grid_size,  0 * path_grid_size, 0},
-	{ 1 * path_grid_size,  1 * path_grid_size, 0},
-	{ 0 * path_grid_size,  1 * path_grid_size, 0},
-	{-1 * path_grid_size,  1 * path_grid_size, 0},
-	{-1 * path_grid_size,  0 * path_grid_size, 0},
-	{-1 * path_grid_size, -1 * path_grid_size, 0},
-	{ 0 * path_grid_size, -1 * path_grid_size, 0}
+	{path_grid_size *  1, path_grid_size * -1, 0},
+	{path_grid_size *  1, path_grid_size *  0, 0},
+	{path_grid_size *  1, path_grid_size *  1, 0},
+	{path_grid_size *  0, path_grid_size *  1, 0},
+	{path_grid_size * -1, path_grid_size *  1, 0},
+	{path_grid_size * -1, path_grid_size *  0, 0},
+	{path_grid_size * -1, path_grid_size * -1, 0},
+	{path_grid_size *  0, path_grid_size * -1, 0}
 };
 
 /**
@@ -117,7 +118,7 @@ public:
 	 */
 	coord::phys3 position;
 	coord::tile tile_position;
-	cost_t dir_ne, dir_se; // for path smoothing
+	coord::phys3_delta direction; // for path smoothing
 
 	/**
 	 * Future cost estimation value for this node.
@@ -181,7 +182,7 @@ public:
 	Path() = default;
 	Path(const std::vector<Node> &nodes);
 
-	void draw_path();
+	void draw_path(const coord::CoordManager &mgr);
 
 	/**
 	 * These are the waypoints to navigate in order.

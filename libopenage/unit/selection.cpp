@@ -1,11 +1,10 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #include "selection.h"
 
 #include <cmath>
 
 #include "../coord/tile.h"
-#include "../coord/tile3.h"
 #include "../engine.h"
 #include "../log/log.h"
 #include "../terrain/terrain.h"
@@ -29,8 +28,8 @@ bool UnitSelection::on_drawhud() {
 
 	// the drag selection box
 	if (drag_active) {
-		coord::camhud s = start.to_window().to_camhud();
-		coord::camhud e = end.to_window().to_camhud();
+		coord::viewport s = this->start.to_viewport(this->engine->coord);
+		coord::viewport e = this->end.to_viewport(this->engine->coord);
 		glLineWidth(1);
 		glColor3f(1.0, 1.0, 1.0);
 		glBegin(GL_LINE_LOOP); {
@@ -47,20 +46,26 @@ bool UnitSelection::on_drawhud() {
 	for (auto u : this->units) {
 		if (u.second.is_valid()) {
 			Unit *unit_ptr = u.second.get();
-			if (unit_ptr->location && unit_ptr->has_attribute(attr_type::hitpoints) && unit_ptr->has_attribute(attr_type::damaged)) {
+			if (unit_ptr->location &&
+			    unit_ptr->has_attribute(attr_type::hitpoints) &&
+			    unit_ptr->has_attribute(attr_type::damaged)) {
+
 				auto &hp = unit_ptr->get_attribute<attr_type::hitpoints>();
 				auto &dm = unit_ptr->get_attribute<attr_type::damaged>();
 				float percent = static_cast<float>(dm.hp) / static_cast<float>(hp.hp);
 				int mid = percent * 28.0f - 14.0f;
 
 				coord::phys3 &pos_phys3 = unit_ptr->location->pos.draw;
-				coord::camhud pos = pos_phys3.to_camgame().to_window().to_camhud();
+				auto pos = pos_phys3.to_viewport(this->engine->coord);
+				// green part
 				glColor3f(0.0, 1.0, 0.0);
 				glBegin(GL_LINES); {
 					glVertex3f(pos.x - 14, pos.y + 60, 0);
 					glVertex3f(pos.x + mid, pos.y + 60, 0);
 				}
 				glEnd();
+
+				// red part
 				glColor3f(1.0, 0.0, 0.0);
 				glBegin(GL_LINES); {
 					glVertex3f(pos.x + mid, pos.y + 60, 0);
@@ -90,6 +95,8 @@ void UnitSelection::drag_begin(coord::camgame pos) {
 	this->drag_active = true;
 }
 
+// called as the entry point for the selection
+// from ActionMode.
 void UnitSelection::drag_update(coord::camgame pos) {
 	if (!this->drag_active) {
 		this->drag_begin(pos);
@@ -217,7 +224,8 @@ bool UnitSelection::contains_military(const Player &player) {
 	return false;
 }
 
-void UnitSelection::select_point(const Player &player, Terrain *terrain, coord::camgame p, bool append) {
+void UnitSelection::select_point(const Player &player, Terrain *terrain,
+                                 coord::camgame point, bool append) {
 	if (!append) {
 		this->clear();
 	}
@@ -228,33 +236,31 @@ void UnitSelection::select_point(const Player &player, Terrain *terrain, coord::
 	}
 
 	// find any object at selected point
-	auto obj = terrain->obj_at_point(p.to_phys3());
+	auto obj = terrain->obj_at_point(point.to_phys3(this->engine->coord));
 	if (obj) {
 		this->toggle_unit(player, &obj->unit);
 	}
 }
 
-void UnitSelection::select_space(const Player &player, Terrain *terrain, coord::camgame p1, coord::camgame p2, bool append) {
+void UnitSelection::select_space(const Player &player, Terrain *terrain,
+                                 coord::camgame point0, coord::camgame point1, bool append) {
 	if (!append) {
 		this->clear();
 	}
 
-	coord::camgame min;
-	coord::camgame max;
-	min.x = std::min(p1.x, p2.x);
-	min.y = std::min(p1.y, p2.y);
-	max.x = std::max(p1.x, p2.x);
-	max.y = std::max(p1.y, p2.y);
+	coord::camgame min{std::min(point0.x, point1.x), std::min(point0.y, point1.y)};
+	coord::camgame max{std::max(point0.x, point1.x), std::max(point0.y, point1.y)};
 
 	// look at each tile in the range and find all units
-	for (coord::tile check_pos : tiles_in_range(p1, p2)) {
+	for (coord::tile check_pos : tiles_in_range(point0, point1, this->engine->coord)) {
 		TileContent *tc = terrain->get_data(check_pos);
 		if (tc) {
 			// find objects within selection box
 			for (auto unit_location : tc->obj) {
-				coord::camgame pos = unit_location->pos.draw.to_camgame();
-				if ((min.x < pos.x && pos.x < max.x) &&
-				     (min.y < pos.y && pos.y < max.y)) {
+				coord::camgame pos = unit_location->pos.draw.to_camgame(this->engine->coord);
+
+				if ((pos.x > min.x and pos.x < max.x) and
+				     (pos.y > min.y and pos.y < max.y)) {
 					this->add_unit(player, &unit_location->unit, append);
 				}
 			}
@@ -321,18 +327,19 @@ selection_type_t UnitSelection::get_unit_selection_type(const Player &player, Un
 	}
 }
 
-std::vector<coord::tile> tiles_in_range(coord::camgame p1, coord::camgame p2) {
+std::vector<coord::tile> tiles_in_range(coord::camgame p1, coord::camgame p2, const coord::CoordManager &coord) {
 	// the remaining corners
 	coord::camgame p3 = coord::camgame{p1.x, p2.y};
 	coord::camgame p4 = coord::camgame{p2.x, p1.y};
 	coord::camgame pts[4] {p1, p2, p3, p4};
 
 	// find the range of tiles covered
-	coord::tile t1 = pts[0].to_phys3().to_tile3().to_tile();
+	coord::tile t1 = pts[0].to_tile(coord);
 	coord::tile min = t1;
 	coord::tile max = t1;
+
 	for (unsigned i = 1; i < 4; ++i) {
-		coord::tile t = pts[i].to_phys3().to_tile3().to_tile();
+		coord::tile t = pts[i].to_tile(coord);
 		min.ne = std::min(min.ne, t.ne);
 		min.se = std::min(min.se, t.se);
 		max.ne = std::max(max.ne, t.ne);

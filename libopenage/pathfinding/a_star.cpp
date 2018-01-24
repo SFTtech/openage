@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 /** @file
  *
@@ -30,8 +30,9 @@ namespace path {
 Path to_point(coord::phys3 start,
               coord::phys3 end,
               std::function<bool(const coord::phys3 &)> passable) {
+
 	auto valid_end = [&](const coord::phys3 &point) -> bool {
-		return euclidean_squared_cost(point, end) < path_grid_size_squared;
+		return euclidean_squared_cost(point, end) < path_grid_size.to_float();
 	};
 	auto heuristic = [&](const coord::phys3 &point) -> cost_t {
 		return euclidean_cost(point, end);
@@ -48,7 +49,7 @@ Path to_object(openage::TerrainObject *to_move,
 		return end->from_edge(pos) < rad;
 	};
 	auto heuristic = [&](const coord::phys3 &pos) -> cost_t {
-		return end->from_edge(pos) - to_move->min_axis() / 2;
+		return (end->from_edge(pos) - to_move->min_axis() / 2L).to_float();
 	};
 	return a_star(start, valid_end, heuristic, to_move->passable);
 }
@@ -94,7 +95,7 @@ Path a_star(coord::phys3 start,
 		if (valid_end(best_candidate->position)) {
 			log::log(MSG(dbg) <<
 				"path cost is " <<
-				util::FloatFixed<3, 8>{closest_node->future_cost / coord::settings::phys_per_tile});
+				util::FloatFixed<3, 8>{closest_node->future_cost});
 
 			return best_candidate->generate_backtrace();
 		}
@@ -143,7 +144,7 @@ Path a_star(coord::phys3 start,
 
 	log::log(MSG(dbg) <<
 		"incomplete path cost is " <<
-		util::FloatFixed<3, 8>{closest_node->future_cost / coord::settings::phys_per_tile});
+		util::FloatFixed<3, 8>{closest_node->future_cost});
 
 	return closest_node->generate_backtrace();
 }

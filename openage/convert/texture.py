@@ -1,4 +1,4 @@
-# Copyright 2014-2017 the openage authors. See copying.md for legal info.
+# Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 """ Routines for texture generation etc """
 
@@ -121,9 +121,10 @@ class Texture(exportable.Exportable):
 
         elif isinstance(input_data, BlendingMode):
             frames = [
+                # the hotspot is in the west corner of a tile.
                 TextureImage(
                     tile.get_picture_data(),
-                    hotspot=(TILE_HALFSIZE["x"], TILE_HALFSIZE["y"])
+                    hotspot=(0, TILE_HALFSIZE["y"])
                 )
                 for tile in input_data.alphamasks
             ]

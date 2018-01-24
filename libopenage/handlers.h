@@ -1,10 +1,10 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <SDL2/SDL.h>
 
-#include "coord/window.h"
+#include "coord/pixel.h"
 
 
 namespace openage {
@@ -63,7 +63,7 @@ public:
 	/**
 	 * execute the resize handler.
 	 */
-	virtual bool on_resize(coord::window new_size) = 0;
+	virtual bool on_resize(coord::viewport_delta new_size) = 0;
 };
 
 }
