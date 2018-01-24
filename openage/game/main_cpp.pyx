@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 from cpython.ref cimport PyObject
 from libcpp.memory cimport make_unique
@@ -16,7 +16,7 @@ cdef extern from "Python.h":
 
 def run_game(args, root_path):
     """
-    Lauches the game after arguments were translated.
+    Launches the game after arguments were translated.
     """
 
     # argument translation
