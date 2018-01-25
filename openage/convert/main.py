@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 """ Entry point for all of the asset conversion. """
 
@@ -236,16 +236,24 @@ def wanna_use_wine():
     if not which("wine"):
         return False
 
-    print("  Should we call wine to determine an AOE installation? [Y/n]")
-    while True:
-        user_selection = input("> ")
-        if user_selection.lower() in {"yes", "y", ""}:
-            return True
-        elif user_selection.lower() in {"no", "n"}:
-            return False
+    answer = None
+    long_prompt = True
+    while answer is None:
+        if long_prompt:
+            print("  Should we call wine to determine an AOE installation? [Y/n]")
+            long_prompt = False
         else:
             # TODO: text-adventure here
             print("  Don't know what you want. Use wine? [Y/n]")
+
+        user_selection = input("> ")
+        if user_selection.lower() in {"yes", "y", ""}:
+            answer = True
+
+        elif user_selection.lower() in {"no", "n"}:
+            answer = False
+
+    return answer
 
 
 def set_custom_wineprefix():
@@ -308,9 +316,11 @@ def query_source_dir(proposals):
             sourcedir = user_selection
         sourcedir = expand_relative_path(sourcedir)
         if Path(sourcedir).is_dir():
-            return sourcedir
+            break
         else:
             warn("No valid existing directory: {}".format(sourcedir))
+
+    return sourcedir
 
 
 def acquire_conversion_source_dir(root=None):
@@ -646,3 +656,5 @@ def main(args, error):
     else:
         print("assets are up to date; no conversion is required.")
         print("override with --force.")
+
+    return 0
