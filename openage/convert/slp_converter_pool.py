@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 """
 Multiprocessing-based SLP-to-texture converter service.
@@ -117,8 +117,8 @@ class SLPConverterPool:
         if isinstance(result, BaseException):
             err("exception in worker process: %s" % result)
             raise result
-        else:
-            return result
+
+        return result
 
     def __enter__(self):
         return self
