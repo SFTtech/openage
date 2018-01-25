@@ -18,13 +18,25 @@
 #include "opengl/window.h"
 
 
+
+#include <glm/vec3.hpp> // glm::vec3
+#include <glm/vec4.hpp> // glm::vec4
+#include <glm/mat4x4.hpp> // glm::mat4
+#include <glm/gtc/matrix_transform.hpp> // glm::translate, glm::rotate, glm::scale, glm::perspective
+
 namespace openage {
 namespace renderer {
 namespace tests {
 
-void draw_texture_at(std::string tex, int x, int y) {
-
-}
+	glm::mat4 camera(float Translate, glm::vec2 const & Rotate)
+	{
+	glm::mat4 Projection = glm::perspective(glm::radians(45.0f), 4.0f / 3.0f, 0.1f, 100.f);
+	glm::mat4 View = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -Translate));
+	View = glm::rotate(View, Rotate.y, glm::vec3(-1.0f, 0.0f, 0.0f));
+	View = glm::rotate(View, Rotate.x, glm::vec3(0.0f, 1.0f, 0.0f));
+	glm::mat4 Model = glm::scale(glm::mat4(1.0f), glm::vec3(0.5f));
+	return Projection * View * Model;
+	}
 
 void renderer_demo_0(util::Path path) {
 	opengl::GlWindow window("openage renderer test", { 1024, 768 } );
@@ -44,7 +56,7 @@ out vec2 v_uv;
 
 void main() {
 	gl_Position = mvp * vec4(position, 0.0, 1.0);
-	//gl_Position = vec4(0.0, 0.0, 0.0, 1.0);
+
   v_uv = vec2(uv.x, uv.y);
 }
 )s");
@@ -110,14 +122,22 @@ void main() {
 
 
 
-
+	Eigen::AngleAxis<float> aax(60*(3.14159f / 180.0f), Eigen::Vector3f(1.0,0.0,0.0));
+	Eigen::AngleAxis<float> aay(45*(3.14159f / 180.0f), Eigen::Vector3f(0.0,1.0,0.0));
+	Eigen::AngleAxis<float> aaz(-45*(3.14159f / 180.0f), Eigen::Vector3f(0.0,0.0,1.0));
+	Eigen::AngleAxis<float> aaxy(45*(3.14159f / 180.0f), Eigen::Vector3f(0.707,0.706,0.0));
 	auto transform1 = Eigen::Affine3f::Identity();
-	transform1.prescale(Eigen::Vector3f(0.8f, 0.8f, 0.0f));
-	transform1.prerotate(Eigen::AngleAxisf(180* 3.14159f / 180.0f, Eigen::Vector3f::UnitX()));
-	//transform1.prerotate(Eigen::AngleAxisf(120*(M_PI/180), Eigen::Vector3f::UnitX())*Eigen::AngleAxisf((M_PI/180),  Eigen::Vector3f::UnitY())*Eigen::AngleAxisf(45*(M_PI/180), Eigen::Vector3f::UnitZ()));
-	transform1.pretranslate(Eigen::Vector3f(-0.0f, 0.0f, 0.0f));
+	transform1.prescale(Eigen::Vector3f(0.9f, 0.9f,0.0f));
+	transform1.prerotate(aaxy);
+	//transform1.pretranslate(Eigen::Vector3f(-0.0f, 0.8f, 0.0f));
 
-	auto tex = resources::TextureData(path / "/assets/graphics/2.slp.png",false);
+	glm::vec2 lala(45*(3.14159f / 180.0f),45*(3.14159f / 180.0f));
+
+	auto cam = camera(0.5,lala);
+
+	glm::mat4 myIdentityMatrix = glm::mat4(1.0f);
+
+	auto tex = resources::TextureData(path / "/assets/terrain/textures/g_ds2_00_color.png",false);
 	auto gltex = renderer->add_texture(tex);
 	auto unif_in1 = shader->new_uniform_input(
 		"mvp", transform1.matrix(),
@@ -141,12 +161,12 @@ void main() {
 			1.0f, 1.0f, right, bottom,//bottom right
 			1.0f, -1.0f, right, top//top right
 		} };
-	static constexpr const std::array<float, 16> quad_data = { {
+	/*static constexpr const std::array<float, 16> quad_data = { {
 			-1.0f, 1.0f, 0.0f, 1.0f,
 			-1.0f, -1.0f, 0.0f, 0.0f,
 			1.0f, 1.0f, 1.0f, 1.0f,
 			1.0f, -1.0f, 1.0f, 0.0f
-		} };
+		} };*/
 	auto quad = renderer->add_mesh_geometry(resources::MeshData::make_quad());
 	auto quad2 = renderer->add_mesh_geometry(resources::MeshData::make_quad(quad_data2));
 	Renderable obj1 {
@@ -178,7 +198,7 @@ void main() {
 	};
 
 	RenderPass display_pass {
-		{ obj1},
+		{ display_obj},
 		renderer->get_display_target(),
 	};
 
@@ -234,7 +254,7 @@ void main() {
 		} );
 
 	while (!window.should_close()) {
-		//renderer->render(pass);
+		renderer->render(pass);
 		renderer->render(display_pass);
 		window.update();
 		window.get_context()->check_error();
