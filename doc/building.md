@@ -64,6 +64,7 @@ built successfully. Those steps vary from platform to platform, and are
 described below for some of the most common ones:
 
 - [Ubuntu (>= 16.04)](build_instructions/ubuntu_16.04.md)
+- [Debian Unstable](build_instructions/debian.md)
 - [Fedora (>= 22)](build_instructions/fedora.md)
 - [openSUSE 13.2](build_instructions/opensuse_13.2.md)
 - [openSUSE Tumbleweed](build_instructions/opensuse_tumbleweed.md)
