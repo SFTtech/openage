@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 """
 Some utility function decorators
@@ -14,9 +14,11 @@ def run_once(func):
 
     def wrapper(*args, **kwargs):
         """ Returned function wrapper. """
-        if not wrapper.has_run:
-            wrapper.has_run = True
-            return func(*args, **kwargs)
+        if wrapper.has_run:
+            return None
+
+        wrapper.has_run = True
+        return func(*args, **kwargs)
 
     wrapper.has_run = False
     return wrapper

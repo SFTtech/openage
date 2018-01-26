@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 """
 Provides Union, a utility class for combining multiple FSLikeObjects to a
@@ -187,6 +187,7 @@ class Union(FSLikeObject):
         for path in self.candidate_paths(parts):
             if path.writable():
                 return path.mkdirs()
+        return None
 
     def rmdir(self, parts):
         found = False

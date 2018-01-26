@@ -1,4 +1,4 @@
-# Copyright 2014-2017 the openage authors. See copying.md for legal info.
+# Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 """
 Output format specification for data to write.
@@ -33,6 +33,13 @@ class DataDefinition(StructDefinition):
         """
         create a text snippet to represent the csv data
         """
+
+        # pylint: disable=too-many-locals
+
+        # TODO: This method is in SERIOUS need of some refactoring, e.g. extracting methods.
+        #       However, this will become obsolete with the upcoming sprite metadata files,
+        #       so we hope to get away with not touchin it. If you need to make modifications
+        #       here, you are going to fix this pile of crap first.
 
         member_types = self.members.values()
         csv_column_types = list()
