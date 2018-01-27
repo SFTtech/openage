@@ -162,6 +162,9 @@ outline_1           | `0x4E`     | 1     | `palette_index = player_index = playe
 outline_span_1      | `0x5E`     | next  | `palette_index = player_index = player * 16`, can be >=1 pixel
 outline_2           | `0x6E`     | 1     | `palette_index = 0`, if pixel obstructed, draw a pixel as black outline, else transparent. (special color = 2)
 outline_span_2      | `0x7E`     | next  | `palette_index = 0`, same as obstruct_black, >=1 pixel.
+dither              | `0x8E`     | ?     | ?
+premulti_alpha      | `0x9E`     | ?     | Premultiplied alpha?
+orig_alph           | `0xA0`     | ?     | Original alpha?
 
 
 * "Lesser block copy" (0x00) also takes the values `0x04, 0x08 & 0x0C`
