@@ -74,6 +74,12 @@ public:
 	void receive(const game_resource resource, double amount);
 
 	/**
+	 * Check if can add to stockpile
+	 */
+	bool can_receive(const ResourceBundle& amount) const;
+	bool can_receive(const game_resource resource, double amount) const;
+
+	/**
 	 * remove from stockpile if available
 	 */
 	bool deduct(const ResourceBundle& amount);
@@ -82,12 +88,18 @@ public:
 	/**
 	 * Check if the player has enough resources to deduct the given amount.
 	 */
-	bool can_deduct(const ResourceBundle& amount);
+	bool can_deduct(const ResourceBundle& amount) const;
+	bool can_deduct(const game_resource resource, double amount) const;
 
 	/**
 	 * current stockpile amount
 	 */
 	double amount(const game_resource resource) const;
+
+	/**
+	 * Check if the player can make a new unit of the given type
+	 */
+	bool can_make(const UnitType &type) const;
 
 	/**
 	 * total number of unit types available
@@ -122,9 +134,11 @@ public:
 
 	/**
 	 * Called when a unit is created and active.
-	 * (Active means not a construction site)
+	 *
+	 * If the unit was pending when create (constuction site, training) the method must be
+	 * called again when the unit activates (with the from_penging param set to true)
 	 */
-	void active_unit_added(Unit *unit);
+	void active_unit_added(Unit *unit, bool from_pending=false);
 
 	/**
 	 * Called when a unit is destroyed.
@@ -154,17 +168,35 @@ public:
 	int get_units_had(int type_id) const;
 
 	/**
+	 * Get the number of units the player has being made for each unit type id.
+	 */
+	int get_units_pending(int type_id) const;
+
+	/**
 	 * Get the current age.
 	 * The first age has the value 1.
 	 */
 	int get_age() const { return age; }
 
+	/**
+	 * The number of units considered part of the workforce.
+	 */
+	int get_workforce_count() const;
+
+
 private:
 
+	bool is_unit_pending(Unit *unit) const;
+
 	/**
-	 * resources this player currently has
+	 * The resources this player currently has
 	 */
 	ResourceBundle resources;
+
+	/**
+	 * The resources capacities this player currently has
+	 */
+	ResourceBundle resources_capacity;
 
 	/**
 	 * Called when the resources amounts change.
@@ -186,7 +218,7 @@ private:
 
 	/**
 	 * The number of units the player has for each unit type id.
-	 * Used for unit dependencies (eg. Town Center) and event triggers.
+	 * Used for and event triggers.
 	 */
 	std::unordered_map<int, int> units_have;
 
@@ -195,6 +227,12 @@ private:
 	 * Used for unit dependencies (eg. Farm).
 	 */
 	std::unordered_map<int, int> units_had;
+
+	/*
+	 * The number of units the player has being made for each unit type id.
+	 * Used for unit limits (eg. Town Center).
+	 */
+	std::unordered_map<int, int> units_pending;
 
 	/**
 	 * The current age.

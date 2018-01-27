@@ -3,6 +3,7 @@
 #include <initializer_list>
 
 #include "../gamedata/unit.gen.h"
+//#include "../gamestate/cost.h"
 #include "../terrain/terrain.h"
 #include "../terrain/terrain_object.h"
 #include "../terrain/terrain_outline.h"
@@ -46,6 +47,12 @@ std::unordered_set<terrain_t> allowed_terrains(const gamedata::ground_type &rest
 	}
 
 	return result;
+}
+
+ResourceBundle create_resource_cost(game_resource resource, int amount) {
+	ResourceBundle resources = ResourceBundle();
+	resources[resource] = amount;
+	return resources;
 }
 
 ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const gamedata::unit_object *ud)
@@ -143,7 +150,7 @@ ObjectProducer::ObjectProducer(const Player &owner, const GameSpec &spec, const 
 	}
 
 	// TODO get cost, temp fixed cost of 50 food
-	this->cost[game_resource::food] = 50;
+	this->cost.set(cost_type::constant, create_resource_cost(game_resource::food, 50));
 
 }
 
@@ -209,7 +216,7 @@ void ObjectProducer::initialise(Unit *unit, Player &player) {
 		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>(game_resource::food, 140));
 	}
 	else if (this->unit_data.unit_class == gamedata::unit_classes::SHEEP) {
-		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>(game_resource::food, 100));
+		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>(game_resource::food, 100, 0.1));
 	}
 	else if (this->unit_data.unit_class == gamedata::unit_classes::GOLD_MINE) {
 		unit->add_attribute(std::make_shared<Attribute<attr_type::resource>>(game_resource::gold, 800));
@@ -527,8 +534,7 @@ BuildingProducer::BuildingProducer(const Player &owner, const GameSpec &spec, co
 	this->terrain_outline = square_outline(this->foundation_size);
 
 	// TODO get cost, temp fixed cost of 100 wood
-	this->cost[game_resource::food] = 0;
-	this->cost[game_resource::wood] = 100;
+	this->cost.set(cost_type::constant, create_resource_cost(game_resource::wood, 100));
 }
 
 BuildingProducer::~BuildingProducer() {}
@@ -578,6 +584,11 @@ void BuildingProducer::initialise(Unit *unit, Player &player) {
 	}
 	else if (this->id() == 82) { // Castle
 		unit->add_attribute(std::make_shared<Attribute<attr_type::population>>(0, 20));
+	}
+
+	// limits
+	if (this->id() == 109 || this->id() == 276) { // Town center, Wonder
+		this->have_limit = 2; // TODO change to 1, 2 is for testing
 	}
 
 	bool has_destruct_graphic = this->destroyed != nullptr;

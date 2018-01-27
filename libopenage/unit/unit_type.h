@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "../coord/phys3.h"
+#include "../gamestate/cost.h"
 #include "attributes.h"
 
 namespace openage {
@@ -160,7 +161,19 @@ public:
 	/**
 	 * The cost of the unit.
 	 */
-	ResourceBundle cost;
+	ResourceCost cost;
+
+	/**
+	 * The max number of units of this type that a player can have at an instance.
+	 * Use negative values for special cases.
+	 */
+	int have_limit;
+
+	/**
+	 * The max number of units of this type that a player can create.
+	 * Use negative values for special cases.
+	 */
+	int had_limit;
 
 	/**
 	 * The set of graphics used for this type

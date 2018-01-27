@@ -73,7 +73,9 @@ enum class attr_type {
 	building,
 	dropsite,
 	resource,
+	resource_generator,
 	worker,
+	storage,
 	multitype,
 	garrison
 };
@@ -492,7 +494,6 @@ public:
 
 /**
  * Resource capacity of a trees, mines, animal, worker etc.
- * TODO add a way to define slower and faster resource gathering time needed
  */
 template<> class Attribute<attr_type::resource>: public UnsharedAttributeContainer {
 public:
@@ -500,18 +501,57 @@ public:
 		:
 		Attribute{game_resource::food, 0} {}
 
-	Attribute(game_resource type, double init_amount)
+	Attribute(game_resource type, double init_amount, double decay=0.0, double gather_rate=1.0)
 		:
 		UnsharedAttributeContainer{attr_type::resource},
 		resource_type{type},
-		amount{init_amount} {}
+		amount{init_amount},
+		decay{decay},
+		gather_rate{gather_rate} {}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::resource>>(*this);
 	}
 
 	game_resource resource_type;
+
 	double amount;
+
+	/**
+	 * The rate of decay
+	 */
+	double decay;
+
+	/**
+	 * The gather rate multiplier (1.0 is the identity)
+	 */
+	double gather_rate;
+
+};
+
+/**
+ * Resource generator eg. relic.
+ * While a unit is idle and contains this attribute, it will generate resources for its owner.
+ *
+ * A rate of zero means that the generation is continuously and not in intervals.
+ */
+template<> class Attribute<attr_type::resource_generator>: public SharedAttributeContainer {
+public:
+
+	Attribute(ResourceBundle resources, double rate=0)
+		:
+		SharedAttributeContainer{attr_type::resource_generator},
+		resources{resources},
+		rate{rate} {}
+
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::resource_generator>>(*this);
+	}
+
+	ResourceBundle resources;
+
+	double rate;
+
 };
 
 /**
@@ -537,6 +577,25 @@ public:
 	 * The ResourceBundle class is used but instead of amounts it stores gather rates.
 	 */
 	ResourceBundle gather_rate;
+};
+
+/**
+ * The worker's capacity and gather rates.
+ */
+template<> class Attribute<attr_type::storage>: public SharedAttributeContainer {
+public:
+	Attribute()
+		:
+		SharedAttributeContainer{attr_type::storage} {}
+
+	std::shared_ptr<AttributeContainer> copy() const override {
+		return std::make_shared<Attribute<attr_type::storage>>(*this);
+	}
+
+	/**
+	 * The capacity for each resource.
+	 */
+	ResourceBundle capacity;
 };
 
 class Unit;

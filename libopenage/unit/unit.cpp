@@ -148,7 +148,9 @@ void Unit::apply_cmd(std::shared_ptr<UnitAbility> ability, const Command &cmd) {
 	if (is_direct) {
 		this->stop_actions();
 	}
-	ability->invoke(*this, cmd, is_direct);
+	if (ability->can_invoke(*this, cmd)) {
+		ability->invoke(*this, cmd, is_direct);
+	}
 }
 
 void Unit::draw() {

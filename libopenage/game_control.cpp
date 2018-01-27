@@ -207,10 +207,16 @@ void ActionMode::on_game_control_set() {
 				auto player = this->game_control->get_current_player();
 				this->type_focus = player->get_type(building);
 
-				if (&input->get_top_context() != &this->building_context) {
-					input->remove_context(ctxt);
-					input->push_context(&this->building_context);
-					this->announce_buttons_type();
+				if (player->can_make(*this->type_focus)) {
+
+					if (&input->get_top_context() != &this->building_context) {
+						input->remove_context(ctxt);
+						input->push_context(&this->building_context);
+						this->announce_buttons_type();
+					}
+
+				} else {
+					// TODO show in game error message
 				}
 			}
 		});
@@ -393,22 +399,33 @@ Command ActionMode::get_action(const coord::phys3 &pos) const {
 
 bool ActionMode::place_selection(coord::phys3 point) {
 	if (this->type_focus) {
+		auto player = this->game_control->get_current_player();
 
-		// confirm building placement with left click
-		// first create foundation using the producer
-		Engine *engine = this->game_control->get_engine();
+		if (player->can_make(*this->type_focus)) {
 
-		UnitContainer *container = &engine->get_game()->placed_units;
-		UnitReference new_building = container->new_unit(*this->type_focus, *this->game_control->get_current_player(), point);
+			// confirm building placement with left click
+			// first create foundation using the producer
+			Engine *engine = this->game_control->get_engine();
 
-		// task all selected villagers to build
-		// TODO: editor placed objects are completed already
-		if (new_building.is_valid()) {
-			Command cmd(*this->game_control->get_current_player(), new_building.get());
-			cmd.set_ability(ability_type::build);
-			cmd.add_flag(command_flag::interrupt);
-			this->selection->all_invoke(cmd);
-			return true;
+			UnitContainer *container = &engine->get_game()->placed_units;
+			UnitReference new_building = container->new_unit(*this->type_focus, *player, point);
+
+			// task all selected villagers to build
+			// TODO: editor placed objects are completed already
+			if (new_building.is_valid()) {
+
+				player->deduct(this->type_focus->cost.get(*player)); // TODO change, move elsewheres
+
+				Command cmd(*player, new_building.get());
+				cmd.set_ability(ability_type::build);
+				cmd.add_flag(command_flag::interrupt);
+				this->selection->all_invoke(cmd);
+				return true;
+			}
+
+		} else {
+			// TODO show in game error message
+			return false;
 		}
 	}
 	return false;

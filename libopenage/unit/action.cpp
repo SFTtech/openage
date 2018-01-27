@@ -374,6 +374,14 @@ void DeadAction::update(unsigned int time) {
 		dm.hp = 0;
 	}
 
+	// decay resources
+	if (this->entity->has_attribute(attr_type::resource)) {
+		auto &resource = this->entity->get_attribute<attr_type::resource>();
+		if (resource.decay > 0) {
+			resource.amount -= resource.decay;
+		}
+	}
+
 	// inc frame but do not pass the end frame
 	// the end frame will remain if the object carries resources
 	if (this->frame < this->end_frame) {
@@ -425,7 +433,7 @@ void FoundationAction::on_completion() {
 
 	if (this->entity->has_attribute(attr_type::owner)) {
 		auto &owner = this->entity->get_attribute<attr_type::owner>().player;
-		owner.active_unit_added(this->entity);
+		owner.active_unit_added(this->entity, true);
 	}
 
 	// add destruction effect when available
@@ -484,6 +492,25 @@ void IdleAction::update(unsigned int time) {
 				break;
 			}
 		}
+	}
+
+	// generate resources
+	// TODO move elsewhere
+	if (this->entity->has_attribute(attr_type::resource_generator) &&
+	    this->entity->has_attribute(attr_type::owner)) {
+
+		auto &player = this->entity->get_attribute<attr_type::owner>().player;
+		auto &resource_generator = this->entity->get_attribute<attr_type::resource_generator>();
+
+		ResourceBundle resources = resource_generator.resources.clone();
+		if (resource_generator.rate == 0) {
+			resources *= time;
+		} else {
+			// TODO add in intervals and not continuously
+			resources *= time * resource_generator.rate;
+		}
+
+		player.receive(resources);
 	}
 
 	// unit carrying ressources take the carrying sprite when idle
@@ -950,12 +977,12 @@ RepairAction::RepairAction(Unit *e, UnitReference tar)
 
 		// cost formula: 0.5 * (target cost) / (target max hp)
 		auto &hp = target->get_attribute<attr_type::hitpoints>();
+		auto &owner = this->entity->get_attribute<attr_type::owner>();
 
 		// get the target unit's cost
-		this->cost += target->unit_type->cost;
+		this->cost += target->unit_type->cost.get(owner.player);
 		this->cost *= 0.5 / hp.hp;
 
-		auto &owner = this->entity->get_attribute<attr_type::owner>();
 		if (!owner.player.deduct(this->cost)) {
 			// no resources to start
 			this->complete = true;
@@ -1073,7 +1100,8 @@ void GatherAction::update_in_range(unsigned int time, Unit *targeted_resource) {
 			else {
 
 				// transfer using gather rate
-				double amount = worker.gather_rate[worker_resource.resource_type] * time;
+				double amount = worker.gather_rate[worker_resource.resource_type]
+				                * resource_attr.gather_rate * time;
 				worker_resource.amount += amount;
 				resource_attr.amount -= amount;
 			}

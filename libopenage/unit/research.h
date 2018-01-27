@@ -10,7 +10,7 @@ namespace openage {
 
 class Player;
 class Research;
-class ResourceBundle;
+class ResourceCost;
 
 enum class research_category : int {
 	/**
@@ -75,7 +75,7 @@ public:
 
 	virtual unsigned int get_research_time() const = 0;
 
-	virtual ResourceBundle get_research_cost() const = 0;
+	virtual ResourceCost get_research_cost() const = 0;
 
 	/**
 	 * Performs the modifications (eg. apply patch to the unit types)
