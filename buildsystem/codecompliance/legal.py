@@ -1,4 +1,4 @@
-# Copyright 2014-2017 the openage authors. See copying.md for legal info.
+# Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 """
 Checks the legal headers of all files.
@@ -53,7 +53,7 @@ def get_git_change_year(filename):
     """ Returns git-log's opinion on when the file was last changed. """
 
     invocation = [
-        'git', 'log', '-1', '--format=%ad', '--date=short', '--',
+        'git', 'log', '-1', '--format=%ad', '--date=short', '--no-merges', '--',
         filename
     ]
 
