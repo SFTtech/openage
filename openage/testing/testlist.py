@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 """ Lists of all possible tests; enter your tests here. """
 
@@ -46,6 +46,8 @@ def demos_py():
            "translates a C++ exception and its causes to python")
     yield ("openage.log.tests.demo",
            "demonstrates the translation of Python log messages")
+    yield ("openage.convert.opus.demo.convert",
+           "encodes an opus file from a wave file")
 
 
 def benchmark_py():

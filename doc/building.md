@@ -43,7 +43,8 @@ Dependency list:
     CR    sdl2
     CR    sdl2_image
     CR    opusfile
-      A   opus-tools
+    CRA   libopus
+    CRA   libogg
        S  pycodestyle (or pep8 (deprecated))
     C     pygments
        S  pylint

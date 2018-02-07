@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 """
 Receives cleaned-up srcdir and targetdir objects from .main, and drives the
 actual conversion process.
@@ -6,10 +6,10 @@ actual conversion process.
 
 import os
 import re
-from subprocess import Popen, PIPE
 from tempfile import gettempdir
 
 from ..log import info, dbg
+from .opus import opusenc
 from .game_versions import GameVersion
 from .blendomatic import Blendomatic
 from .changelog import (ASSET_VERSION, ASSET_VERSION_FILENAME,
@@ -383,12 +383,9 @@ def convert_wav(filepath, dirname, args):
     with filepath.open_r() as infile:
         indata = infile.read()
 
-    # TODO use libav or something to avoid this utility dependency
-    invocation = ('opusenc', '--quiet', '-', '-')
-    opusenc = Popen(invocation, stdin=PIPE, stdout=PIPE)
-    outdata = opusenc.communicate(input=indata)[0]
-    if opusenc.returncode != 0:
-        raise Exception("opusenc failed")
+    outdata = opusenc.encode(indata)
+    if isinstance(outdata, (str, int)):
+        raise Exception("opusenc failed: {}".format(outdata))
 
     # rename the directory
     out_parts = change_dir(filepath.parts, dirname)
