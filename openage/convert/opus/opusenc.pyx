@@ -201,7 +201,7 @@ cdef int write_opus_comment(ogg.ogg_stream_state *os, ogg.ogg_packet *op):
     Returns non-zero on failure.
     '''
     vendor = b'openage asset converter'
-    buf = b''.join((b'OpusTags', len(vendor).to_bytes(1, 'little'), vendor,
+    buf = b''.join((b'OpusTags', len(vendor).to_bytes(4, 'little'), vendor,
                     b'\x00\x00\x00\x00'))  # number of comments following
 
     op.packet = buf
