@@ -1,4 +1,4 @@
-# Copyright 2014-2017 the openage authors. See copying.md for legal info.
+# Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 """
 Checks PEP8 compliance, with some exceptions.
@@ -46,4 +46,4 @@ def find_issues(check_files, dirnames):
     report = checker.check_files(filenames)
 
     if report.messages:
-        yield ("style issue", "python code violates pep8")
+        yield ("style issue", "python code violates pep8", None)

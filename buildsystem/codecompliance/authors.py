@@ -1,4 +1,4 @@
-# Copyright 2014-2017 the openage authors. See copying.md for legal info.
+# Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 """
 Checks whether all authors are properly listed in copying.md.
@@ -93,4 +93,6 @@ def find_issues():
             "author inconsistency",
             ("{}\n"
              "\temail appears in git log, "
-             "but not in copying.md or .mailmap".format(email)))
+             "but not in copying.md or .mailmap".format(email)),
+            None
+        )

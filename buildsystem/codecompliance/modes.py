@@ -1,4 +1,4 @@
-# Copyright 2016-2016 the openage authors. See copying.md for legal info.
+# Copyright 2016-2018 the openage authors. See copying.md for legal info.
 
 """
 Checks the mode of all files and prevents executable source files.
@@ -61,5 +61,5 @@ def find_issues(check_files, paths):
         try:
             check_mode(filename)
         except ValueError as exc:
-            yield ("wrong file access bits", str(exc))
+            yield ("wrong file access bits", str(exc), None)
             continue

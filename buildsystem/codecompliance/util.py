@@ -1,4 +1,4 @@
-# Copyright 2014-2017 the openage authors. See copying.md for legal info.
+# Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 """
 Some utilities.
@@ -49,6 +49,19 @@ def readfile(filename):
     return FILECACHE[filename]
 
 
+def writefile(filename, new_content):
+    """
+    writes the file and update it in the cache.
+    """
+    if filename in BADUTF8FILES:
+        raise Exception("%s: cannot write due to utf8-errors." % filename)
+
+    with open(filename, 'w') as fileobj:
+        fileobj.write(new_content)
+
+    FILECACHE[filename] = new_content
+
+
 def findfiles(paths, exts=None):
     """
     yields all files in paths with names ending in an ext from exts.
@@ -72,17 +85,19 @@ def findfiles(paths, exts=None):
                 yield filename
 
 
-def issue_str(title, filename):
+def issue_str(title, filename, fix=None):
     """
     Creates a formated (title, text) desciption of an issue.
 
     TODO use this function and issue_str_line for all issues, so the format
     can be easily changed (exta text, colors, etc)
     """
-    return (title, filename)
+    return (title, filename, fix)
 
 
-def issue_str_line(title, filename, line, line_number, highlight):
+# gread hint, pylint. thank you so much.
+# pylint: disable=too-many-arguments
+def issue_str_line(title, filename, line, line_number, highlight, fix=None):
     """
     Creates a formated (title, text) desciption of an issue with information
     about the location in the file.
@@ -97,9 +112,14 @@ def issue_str_line(title, filename, line, line_number, highlight):
     start += 1
     line = line.replace("\n", "").replace("\t", " ")
 
-    return (title, (
-        filename + "\n"
-        "\tline: " + str(line_number) + "\n"   # line number
-        "\tat:   '" + line + "'\n"             # line content
-        "\t      " + (' ' * start) +           # mark position with ^
-        "\x1b[32;1m^" + ("~" * (end - start)) + "\x1b[m"))
+    return (
+        title,
+        (
+            filename + "\n"
+            "\tline: " + str(line_number) + "\n"   # line number
+            "\tat:   '" + line + "'\n"             # line content
+            "\t      " + (' ' * start) +           # mark position with ^
+            "\x1b[32;1m^" + ("~" * (end - start)) + "\x1b[m"
+        ),
+        fix
+    )

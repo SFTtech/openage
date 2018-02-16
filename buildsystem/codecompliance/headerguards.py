@@ -1,4 +1,4 @@
-# Copyright 2014-2016 the openage authors. See copying.md for legal info.
+# Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 """
 Verifies the guard macros of all C++ header files.
@@ -37,17 +37,12 @@ NO_GUARD_REQUIRED_RE = re.compile((
 ))
 
 
-def find_issues(dirname, guardprefix):
+def find_issues(dirname):
     """
     checks all headerguards in header files in the cpp folders.
     """
     for fname in findfiles((dirname,), ('.h',)):
         try:
-            expected_guard = fname[len(dirname) + 1:].upper()
-            expected_guard = expected_guard.replace('.', '_').replace('/', '_')
-
-            expected_guard = "{}{}_".format(guardprefix, expected_guard)
-
             data = readfile(fname)
 
             if NO_GUARD_REQUIRED_RE.match(data):
@@ -60,4 +55,4 @@ def find_issues(dirname, guardprefix):
                 raise HeaderIssue("No valid header guard found")
 
         except HeaderIssue as exc:
-            yield ("header guard issue in {}".format(fname), exc.args[0])
+            yield ("header guard issue in {}".format(fname), exc.args[0], None)
