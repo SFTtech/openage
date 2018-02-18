@@ -30,20 +30,6 @@
  If you want, you can still use [the prebuilt version](https://www.qt.io/download-open-source/) instead.
  If you do so, include `-DCMAKE_PREFIX_PATH=<QT5 directory>` in the cmake configure command.
 
-### The "other missing" dependencies
- **opus-tools (for `opusenc`)**
-
-  There are two options for getting opus-tools:
-
-  [Get the prebuilt binaries](https://archive.mozilla.org/pub/opus/win32/).
-
-  OR
-
-  Build it yourself.
-  You can get the source from [the Github page](https://github.com/xiph/opus-tools).
-  Refer their AppVeyor config for the steps to build.
-  You will need `opusenc.exe` from the build output directory available from the `PATH`.
-
 ## Building openage
  Note that openage doesn't support completely out-of-source-tree builds yet.
  We will, however, use a separate `build` directory to build the binaries.
@@ -68,11 +54,10 @@
     - Path to `nyan.dll` (depends on the procedure chosen to get nyan)
     - `<vcpkg directory>\installed\<relevant config>\bin`
     - `<QT5 directory>\bin` (if prebuilt QT5 was installed)
-    - Path to `opusenc.exe`
 
  Now, execute `<openage directory>/run.exe` and enjoy!
 
- ## Packaging
+## Packaging
  Open a command prompt at `<openage directory>\build` (or use the one from the building step):
 
     cpack -C RelWithDebInfo
