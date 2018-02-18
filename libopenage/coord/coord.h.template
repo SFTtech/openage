@@ -1,0 +1,197 @@
+// Copyright 2016-2018 the openage authors. See copying.md for legal info.
+
+#pragma once
+
+#include <ostream>
+
+namespace openage {
+namespace coord {
+
+/**
+ * Template class for all coordinate types that have the members ({{ formatted_members("{}") }}).
+ *
+ * There is a distinction between relative and absolute coordinate values
+ * to disallow semantically-nonsensical origin-sensitive operations:
+ *
+ * absolute value + relative value -> absolute value
+ * absolute value - absolute value -> relative value
+ * relative value + relative value -> relative value
+ * absolute value + absolute value -> undefined
+ * relative value * scalar -> relative value
+ * absolute value * scalar -> undefined
+ *
+ * This is the 'Absolute' version.
+ *
+ * 'Absolute' and 'Relative' are the absolute and relative types of the
+ * derived class (CRTP).
+ */
+template<typename CoordType, typename Absolute, typename Relative>
+struct Coord{{ camelcase }}Absolute {
+
+	using elem_t = CoordType;
+
+	// The member variables to store the actual data.
+	{{ formatted_members("CoordType {0};", join_with="\n\t") }}
+
+	/**
+	 * We don't want to have a default constructor,
+	 * because zero-initialization of absolute coordinates is
+	 * origin-sensitive and thus non-sensical.
+	 */
+	Coord{{ camelcase }}Absolute() = delete;
+
+	/**
+	 * From-individual-values constructor
+	 */
+	constexpr Coord{{ camelcase }}Absolute({{ formatted_members("const CoordType &{}") }}) : {{ formatted_members("{0}{{{0}}}") }} {}
+
+	// copy constructor + assignment operator
+	constexpr Coord{{ camelcase }}Absolute(const Coord{{ camelcase }}Absolute &other) : {{ formatted_members("{0}{{other.{0}}}") }} {}
+	constexpr Coord{{ camelcase }}Absolute &operator =(const Coord{{ camelcase }}Absolute &other) {
+		{{ formatted_members("this->{0} = other.{0};", join_with="\n\t\t") }}
+
+		return *this;
+	}
+
+	constexpr Absolute operator +(const Relative &other) const {
+		return Absolute({{ formatted_members("this->{0} + other.{0}") }});
+	}
+
+	constexpr Relative operator -(const Absolute &other) const {
+		return Relative({{ formatted_members("this->{0} - other.{0}") }});
+	}
+
+	constexpr Absolute operator -(const Relative &other) const {
+		return Absolute({{ formatted_members("this->{0} - other.{0}") }});
+	}
+
+	constexpr Absolute &operator +=(const Relative &other) {
+		*this = *this + other;
+		return static_cast<Absolute &>(*this);
+	}
+
+	constexpr Absolute &operator -=(const Relative &other) {
+		*this = *this - other;
+		return static_cast<Absolute &>(*this);
+	}
+
+	constexpr bool operator ==(const Absolute &other) const {
+		return {{ formatted_members("(this->{0} == other.{0})", join_with=" && ") }};
+	}
+
+	constexpr bool operator !=(const Absolute &other) const {
+		return !(*this == other);
+	}
+};
+
+
+/**
+ * Template class for all coordinate types that have the members x and y.
+ * This is the 'Relative' version.
+ *
+ * 'Absolute' and 'Relative' are the absolute and relative types of the
+ * derived class (CRTP).
+ */
+template<typename CoordType, typename Absolute, typename Relative>
+struct Coord{{ camelcase }}Relative {
+	using elem_t = CoordType;
+
+	// The member variables to store the actual data.
+	{{ formatted_members("CoordType {0};", join_with="\n\t") }}
+
+	/**
+	 * Default constructor: sets the values to their defaults.
+	 */
+	Coord{{ camelcase }}Relative() : {{ formatted_members("{}{{}}") }} {}
+
+	/**
+	 * From-individual-values constructor
+	 */
+	constexpr Coord{{ camelcase }}Relative({{ formatted_members("const CoordType &{}") }}) : {{ formatted_members("{0}{{{0}}}") }} {}
+
+	// copy constructor and assignment operator
+	constexpr Coord{{ camelcase }}Relative(const Relative &other) : {{ formatted_members("{0}{{other.{0}}}") }} {}
+	constexpr Coord{{ camelcase }}Relative &operator =(const Relative &other) {
+		{{ formatted_members("this->{0} = other.{0};", join_with="\n\t\t") }}
+
+		return *this;
+	}
+
+	constexpr Relative operator +() const {
+		return Relative({{ formatted_members("+this->{}") }});
+	}
+
+	constexpr Relative operator -() const {
+		return Relative({{ formatted_members("-this->{}") }});
+	}
+
+	constexpr Absolute operator +(const Absolute &other) const {
+		return Absolute({{ formatted_members("this->{0} + other.{0}") }});
+	}
+
+	constexpr Relative operator +(const Relative &other) const {
+		return Relative({{ formatted_members("this->{0} + other.{0}") }});
+	}
+
+	constexpr Relative operator -(const Relative &other) const {
+		return Relative({{ formatted_members("this->{0} - other.{0}") }});
+	}
+
+	template<typename ScalarType>
+	constexpr Relative operator *(const ScalarType &scalar) const {
+		return Relative({{ formatted_members("this->{0} * scalar") }});
+	}
+
+	template<typename ScalarType>
+	constexpr Relative operator /(const ScalarType &scalar) const {
+		return Relative({{ formatted_members("this->{} / scalar") }});
+	}
+
+	constexpr Relative &operator +=(const Relative &other) {
+		*this += other;
+		return static_cast<Relative &>(*this);
+	}
+
+	constexpr Relative &operator -=(const Relative &other) {
+		*this -= other;
+		return static_cast<Relative &>(*this);
+	}
+
+	template<typename ScalarType>
+	constexpr Relative &operator *=(const ScalarType &scalar) {
+		*this *= scalar;
+		return static_cast<Relative &>(*this);
+	}
+
+	template<typename ScalarType>
+	constexpr Relative &operator /=(const ScalarType &scalar) {
+		*this /= scalar;
+		return static_cast<Relative &>(*this);
+	}
+
+	constexpr bool operator ==(const Relative &other) const {
+		return {{ formatted_members("(this->{0} == other.{0})", join_with=" && ") }};
+	}
+
+	constexpr bool operator !=(const Relative &other) const {
+		return !(*this == other);
+	}
+};
+
+
+template<typename CoordType, typename Absolute, typename Relative>
+std::ostream &operator <<(std::ostream &os, Coord{{ camelcase }}Absolute<CoordType, Absolute, Relative> coord) {
+	os << "[{{ formatted_members('{0}: " << coord.{0} << "') }}]";
+	return os;
+}
+
+
+template<typename CoordType, typename Absolute, typename Relative>
+std::ostream &operator <<(std::ostream &os, Coord{{ camelcase }}Relative<CoordType, Absolute, Relative> coord) {
+	os << "({{ formatted_members('{0}: " << coord.{0} << "') }})";
+	return os;
+}
+
+
+} // namespace coord
+} // namespace openage

@@ -1,10 +1,10 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <unordered_set>
 
-#include "../coord/phys3.h"
+#include "../coord/phys.h"
 #include "ability.h"
 
 namespace openage {
@@ -134,7 +134,7 @@ private:
 
 	bool has_pos;
 	Unit *u;
-	coord::phys3 pos;
+	coord::phys3 pos = {0, 0, 0}; // TODO: make pos a c++17 optional
 	UnitType *unit_type;
 	Research *res;
 

@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -43,7 +43,7 @@ public:
 	void process_events();
 
 private:
-	virtual bool on_resize(coord::window new_size) override;
+	virtual bool on_resize(coord::viewport_delta new_size) override;
 	virtual bool on_input(SDL_Event *event) override;
 	virtual bool on_drawhud() override;
 

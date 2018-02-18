@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -6,7 +6,7 @@
 
 #include <QObject>
 
-#include "coord/camgame.h"
+#include "coord/pixel.h"
 #include "input/input_context.h"
 #include "rng/rng.h"
 #include "gamestate/game_main.h"
@@ -233,8 +233,12 @@ private:
 
 	// a selected type for placement
 	UnitType *type_focus;
-	coord::phys3 mousepos_phys3;
-	coord::tile mousepos_tile;
+
+	// TODO these shouldn't be here. remove them ASAP.
+	// they are used to carry over mouse information
+	// into some of the game control lambda functions
+	coord::phys3 mousepos_phys3{0, 0, 0};
+	coord::tile mousepos_tile{0, 0};
 	bool selecting;
 
 	ActionButtonsType buttons_type;
@@ -284,7 +288,7 @@ public:
 	void set_current_terrain_id(openage::terrain_t current_terrain_id);
 	void set_paint_terrain(bool paint_terrain);
 
-	bool on_single_click(int button, coord::window point);
+	bool on_single_click(int button, coord::viewport point);
 
 	void announce_categories();
 	void announce_category_content(const std::string &category_name);
@@ -293,8 +297,8 @@ private:
 	virtual void announce() override;
 	virtual void set_game_control(GameControl *game_control) override;
 
-	void paint_terrain_at(const coord::window &point);
-	void paint_entity_at(const coord::window &point, const bool del);
+	void paint_terrain_at(const coord::viewport &point);
+	void paint_entity_at(const coord::viewport &point, const bool del);
 
 	/**
 	 * currently selected terrain id

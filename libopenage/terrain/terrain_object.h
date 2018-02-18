@@ -1,4 +1,4 @@
-// Copyright 2013-2016 the openage authors. See copying.md for legal info.
+// Copyright 2013-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -7,10 +7,11 @@
 
 #include "../pathfinding/path.h"
 #include "../coord/tile.h"
-#include "../coord/phys3.h"
+#include "../coord/phys.h"
 
 namespace openage {
 
+class Engine;
 class Terrain;
 class TerrainChunk;
 class Texture;
@@ -33,9 +34,9 @@ enum class object_state {
  * the start tile
  */
 struct tile_range {
-	coord::tile start;
-	coord::tile end;	// start <= end
-	coord::phys3 draw;	// gets used as center point of radial objects
+	coord::tile start{0, 0};
+	coord::tile end{0, 0};         // start <= end
+	coord::phys3 draw{0, 0, 0};    // gets used as center point of radial objects
 };
 
 /**
@@ -50,21 +51,12 @@ std::vector<coord::tile> tile_list(const tile_range &rng);
  * size of the foundation, this will return the tile range covered by the base,
  * which includes start and end tiles, and phys3 center point (used for drawing)
  */
-tile_range building_center(coord::phys3 west, coord::tile_delta size);
+tile_range building_center(coord::phys3 west, coord::tile_delta size, const Terrain &terrain);
 
 /**
  * sets a building to a fully completed state
  */
 bool complete_building(Unit &);
-
-/**
- * half a tile
- */
-constexpr coord::phys3_delta phys_half_tile = coord::phys3_delta{
-	coord::settings::phys_per_tile / 2,
-	coord::settings::phys_per_tile / 2,
-	0
-};
 
 /**
  * Base class for map location types which include square tile aligned
@@ -93,7 +85,7 @@ public:
 	 */
 	tile_range pos;
 
-	/**
+	/*
 	 * unit which is inside this base
 	 * used to find the unit from user actions
 	 *
@@ -130,12 +122,12 @@ public:
 	/**
 	 * specifies content to be drawn
 	 */
-	std::function<void()> draw;
+	std::function<void(const Engine &e)> draw;
 
 	/**
 	 * draws outline of this terrain space in current position
 	 */
-	void draw_outline() const;
+	void draw_outline(const coord::CoordManager &coord) const;
 
 	/**
 	 * changes the placement state of this object keeping the existing
@@ -151,7 +143,7 @@ public:
 	 * @param init_state should be floating, placed or placed_no_collision
 	 * @returns true when the object was placed, false when it did not fit at pos.
 	 */
-	bool place(std::shared_ptr<Terrain> t, coord::phys3 &pos, object_state init_state);
+	bool place(const std::shared_ptr<Terrain> &t, coord::phys3 &pos, object_state init_state);
 
 	/**
 	 * moves the object -- returns false if object cannot be moved here
@@ -224,7 +216,7 @@ public:
 	 * returns the range of tiles covered if the object was in the given pos
 	 * @param pos the position to find a range for
 	 */
-	virtual tile_range get_range(const coord::phys3 &pos) const = 0;
+	virtual tile_range get_range(const coord::phys3 &pos, const Terrain &terrain) const = 0;
 
 	/**
 	 * how far is a point from the edge of this object
@@ -275,7 +267,7 @@ protected:
 	 * otherwise the place function should be used
 	 * this does not modify the units placement state
 	 */
-	void place_unchecked(std::shared_ptr<Terrain> t, coord::phys3 &position);
+	void place_unchecked(const std::shared_ptr<Terrain> &t, coord::phys3 &position);
 };
 
 /**
@@ -310,7 +302,7 @@ public:
 	 *         @   @
 	 *           @
 	 */
-	tile_range get_range(const coord::phys3 &pos) const override;
+	tile_range get_range(const coord::phys3 &pos, const Terrain &terrain) const override;
 
 	coord::phys_t from_edge(const coord::phys3 &point) const override;
 	coord::phys3 on_edge(const coord::phys3 &angle, coord::phys_t extra=0) const override;
@@ -343,7 +335,7 @@ public:
 	/**
 	 * finds the range covered if the object was in a position
 	 */
-	tile_range get_range(const coord::phys3 &pos) const override;
+	tile_range get_range(const coord::phys3 &pos, const Terrain &terrain) const override;
 
 	coord::phys_t from_edge(const coord::phys3 &point) const override;
 	coord::phys3 on_edge(const coord::phys3 &angle, coord::phys_t extra=0) const override;

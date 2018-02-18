@@ -1,54 +1,76 @@
-// Copyright 2013-2015 the openage authors. See copying.md for legal info.
+// Copyright 2016-2018 the openage authors. See copying.md for legal info.
 
-#define GEN_IMPL_TILE_CPP
 #include "tile.h"
 
-#include "tile3.h"
-#include "chunk.h"
-#include "phys2.h"
+#include "coordmanager.h"
+#include "../terrain/terrain.h"
 
 namespace openage {
 namespace coord {
 
-tile3 tile::to_tile3(tile_t up) const {
-	return tile3 {ne, se, up};
+
+tile3 tile::to_tile3(const Terrain & /*terrain*/, tile_t altitude) const {
+	// TODO: once terrain elevations have been implemented,
+	//       query the terrain elevation at {ne, se}.
+	tile_t elevation = 0;
+
+	return tile3{this->ne, this->se, elevation + altitude};
 }
 
-tile3_delta tile_delta::to_tile3(tile_t up) const {
-	return tile3_delta {ne, se, up};
+
+phys2 tile::to_phys2() const {
+	return phys2{phys3::elem_t::from_int(this->ne), phys3::elem_t::from_int(this->se)};
 }
 
-phys2 tile::to_phys2(phys2_delta frac) const {
-	phys2 result;
-	result.ne = (((phys_t) ne) << settings::phys_t_radix_pos) + frac.ne;
-	result.se = (((phys_t) se) << settings::phys_t_radix_pos) + frac.se;
-	return result;
+
+phys3 tile::to_phys3(const Terrain &terrain, tile_t altitude) const {
+	return this->to_tile3(terrain, altitude).to_phys3();
 }
+
+
+phys2 tile3::to_phys2() const {
+	return this->to_tile().to_phys2();
+}
+
+
+phys3 tile3::to_phys3() const {
+	return phys3{
+		phys3::elem_t::from_int(this->ne),
+		phys3::elem_t::from_int(this->se),
+		phys3::elem_t::from_int(this->up)
+	};
+}
+
+
+camgame tile::to_camgame(const CoordManager &mgr,
+                         const Terrain &terrain,
+                         tile_t altitude) const {
+
+	return this->to_phys3(terrain, altitude).to_camgame(mgr);
+}
+
+
+viewport tile::to_viewport(const CoordManager &mgr,
+                           const Terrain &terrain,
+                           tile_t altitude) const {
+	return this->to_camgame(mgr, terrain, altitude).to_viewport(mgr);
+}
+
 
 chunk tile::to_chunk() const {
-	chunk result;
-	result.ne = (ne >> settings::tiles_per_chunk_bits);
-	result.se = (se >> settings::tiles_per_chunk_bits);
-	return result;
+	return chunk{
+		static_cast<chunk::elem_t>(util::div(this->ne, tiles_per_chunk)),
+		static_cast<chunk::elem_t>(util::div(this->se, tiles_per_chunk))
+	};
 }
 
-tile tile_delta::to_tile() {
-	tile result;
-	result.ne = this->ne;
-	result.se = this->se;
-	return result;
-}
 
 tile_delta tile::get_pos_on_chunk() const {
-	tile_delta result;
-
-	// define a bitmask that keeps the last n bits
-	decltype(result.ne) bitmask = ((1 << settings::tiles_per_chunk_bits) - 1);
-
-	result.ne = (ne & bitmask);
-	result.se = (se & bitmask);
-	return result;
+	return tile_delta{
+		util::mod(this->ne, tiles_per_chunk),
+		util::mod(this->se, tiles_per_chunk)
+	};
 }
 
-} // namespace coord
-} // namespace openage
+
+}} // namespace openage::coord

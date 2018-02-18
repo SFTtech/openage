@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -447,11 +447,13 @@ public:
  */
 template<> class Attribute<attr_type::building>: public UnsharedAttributeContainer {
 public:
-	Attribute()
+	Attribute(int foundation_terrain, UnitType *pp, coord::phys3 gather_point)
 		:
 		UnsharedAttributeContainer{attr_type::building},
 		completed{.0f},
-		foundation_terrain{0} {}
+		foundation_terrain{foundation_terrain},
+		pp{pp},
+		gather_point{gather_point} {}
 
 	std::shared_ptr<AttributeContainer> copy() const override {
 		return std::make_shared<Attribute<attr_type::building>>(*this);

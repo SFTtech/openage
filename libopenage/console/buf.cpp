@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 #include "buf.h"
 
@@ -13,23 +13,27 @@ using namespace coord;
 
 Buf::Buf(term dims, term_t scrollback_lines, term_t min_width, buf_char default_char_fmt)
 	:
-	default_char_fmt{default_char_fmt} {
+	dims{dims},
+	cursorpos{0, 0},
+	saved_cursorpos{0, 0},
+	default_char_fmt{default_char_fmt}
+{
 	//init all member variables
 	this->min_width = min_width;
-	if (dims.x < this->min_width) {
-		dims.x = this->min_width;
+
+	if (this->dims.x < this->min_width) {
+		this->dims.x = this->min_width;
 	}
-	if (dims.y < 1) {
-		dims.y = 1;
+	if (this->dims.y < 1) {
+		this->dims.y = 1;
 	}
-	this->dims = dims;
 	this->scrollback_lines = scrollback_lines;
 
 	this->linedata_size = this->dims.y + this->scrollback_lines;
 	this->linedata = new buf_line[this->linedata_size];
 	this->linedata_end = this->linedata + this->linedata_size;
 
-	this->chrdata_size = dims.x * linedata_size;
+	this->chrdata_size = this->dims.x * linedata_size;
 	this->chrdata = new buf_char[this->chrdata_size];
 	this->chrdata_end = this->chrdata + this->chrdata_size;
 
@@ -97,11 +101,12 @@ public:
 
 	NewBuf(term dims, term_t scrollback_lines, buf_char default_char_fmt)
 		:
+		dims{dims},
 		linedata_ptr{nullptr},
 		chrdata_ptr{nullptr},
+		current_pos{0, 0},
 		default_char_fmt{default_char_fmt}
 	{
-		this->dims = dims;
 		this->scrollback_lines = scrollback_lines;
 
 		this->linedata_size = this->dims.y + this->scrollback_lines;
@@ -118,7 +123,6 @@ public:
 		this->scrollback_buf_size = 0;
 
 		this->current_line_is_screen_buf = false;
-		this->current_pos = {0, 0};
 	}
 
 	~NewBuf() {

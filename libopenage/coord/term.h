@@ -1,45 +1,28 @@
-// Copyright 2013-2016 the openage authors. See copying.md for legal info.
+// Copyright 2016-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include "decl.h"
-
-#define MEMBERS x, y
-#define SCALAR_TYPE term_t
-#define ABSOLUTE_TYPE term
-#define RELATIVE_TYPE term_delta
+#include "coord_xy.gen.h"
+#include "declarations.h"
 
 namespace openage {
-namespace console {
-class Console;
-} // namespace console
-
 namespace coord {
 
-struct term {
-	term_t x, y;
 
-	#include "ops/abs.h"
+/*
+ * Terminal-related coordinate systems.
+ * See doc/code/coordinate-systems.md for more information.
+ */
 
-	camhud to_camhud(console::Console *e) const;
+
+struct term_delta : CoordXYRelative<term_t, term, term_delta> {
+	using CoordXYRelative<term_t, term, term_delta>::CoordXYRelative;
 };
 
-struct term_delta {
-	term_t x, y;
-
-	#include "ops/rel.h"
+struct term : CoordXYAbsolute<term_t, term, term_delta> {
+	using CoordXYAbsolute<term_t, term, term_delta>::CoordXYAbsolute;
 };
 
-#include "ops/free.h"
-
-#ifdef GEN_IMPL_TERM_CPP
-#include "ops/impl.h"
-#endif //GEN_IMPL_TERM_CPP
 
 } // namespace coord
 } // namespace openage
-
-#undef MEMBERS
-#undef RELATIVE_TYPE
-#undef ABSOLUTE_TYPE
-#undef SCALAR_TYPE

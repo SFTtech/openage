@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -8,7 +8,7 @@
 #include <vector>
 #include <queue>
 
-#include "../coord/phys3.h"
+#include "../coord/phys.h"
 #include "../handlers.h"
 #include "../log/logsource.h"
 #include "../terrain/terrain_object.h"
@@ -69,7 +69,7 @@ public:
 
 	/**
 	 * constructs a new location for this unit replacing any
-	 * existing location
+	 * existing locatio
 	 *
 	 * uses same args as the location constructor
 	 * except the first which will filled automatically
@@ -131,17 +131,17 @@ public:
 	 *
 	 * this function should be used for most draw purposes
 	 */
-	void draw();
+	void draw(const Engine &engine);
 
 	/**
 	 * an generalized draw function which is useful for drawing annexes
 	 */
-	void draw(TerrainObject *loc, const graphic_set &graphics);
+	void draw(TerrainObject *loc, const graphic_set &graphics, const Engine &engine);
 
 	/**
 	 * draws with a specific graphic and frame
 	 */
-	void draw(coord::phys3 draw_pos, std::shared_ptr<UnitTexture> graphic, unsigned int frame);
+	void draw(coord::phys3 draw_pos, std::shared_ptr<UnitTexture> graphic, unsigned int frame, const Engine &engine);
 
 	/**
 	 * adds an available ability to this unit

@@ -9,6 +9,8 @@ add_sources(libopenage
 	externalsstream.cpp
 	file.cpp
 	fds.cpp
+	fixed_point.cpp
+	fixed_point_test.cpp
 	fps.cpp
 	hash.cpp
 	hash_test.cpp
@@ -24,6 +26,7 @@ add_sources(libopenage
 	profiler.cpp
 	quaternion.cpp
 	quaternion_test.cpp
+	repr.cpp
 	stringformatter.cpp
 	strings.cpp
 	subprocess.cpp

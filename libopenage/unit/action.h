@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -153,7 +153,7 @@ public:
 	 */
 	virtual const graphic_set &current_graphics() const;
 
-	void draw_debug();
+	void draw_debug(const Engine &engine);
 
 	/**
 	 * common functions for actions
@@ -206,7 +206,7 @@ protected:
 	/**
 	 * additional drawing for debug purposes
 	 */
-	std::function<void(void)> debug_draw_action;
+	std::function<void(const Engine &)> debug_draw_action;
 };
 
 /**
@@ -641,7 +641,7 @@ public:
 	std::string name() const override { return "projectile"; }
 
 private:
-	coord::phys_t grav;
+	double grav;
 	bool has_hit;
 };
 

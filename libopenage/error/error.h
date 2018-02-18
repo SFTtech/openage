@@ -1,4 +1,4 @@
-// Copyright 2013-2017 the openage authors. See copying.md for legal info.
+// Copyright 2013-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -152,7 +152,7 @@ inline std::string no_ensuring_message()
 }
 
 // ENSURE(condition, errormessage << variable << etcetc)
-#define ENSURE(...) do if (unlikely(not OPENAGE_ENS_FIRST(__VA_ARGS__))) throw ::openage::error::Error(MSG(err) OPENAGE_ENS_REST(__VA_ARGS__)); while (0)
+#define ENSURE(...) do { if (unlikely(not OPENAGE_ENS_FIRST(__VA_ARGS__))) { throw ::openage::error::Error(MSG(err) OPENAGE_ENS_REST(__VA_ARGS__)); } } while (0)
 
 /*
  *  expands to the first argument

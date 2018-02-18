@@ -1,4 +1,4 @@
-// Copyright 2013-2017 the openage authors. See copying.md for legal info.
+// Copyright 2013-2018 the openage authors. See copying.md for legal info.
 
 #include "engine.h"
 
@@ -36,13 +36,6 @@
 namespace openage {
 
 
-/*
- * temporary global coord struct as used by the coord subsystem
- * TODO: remove and deglobalize!
- */
-coord_data coord_global_tmp_TODO;
-
-
 Engine::Engine(const util::Path &root_dir,
                int32_t fps_limit,
                bool gl_debug,
@@ -61,7 +54,6 @@ Engine::Engine(const util::Path &root_dir,
 	audio_manager{&this->job_manager},
 	input_manager{&this->action_manager},
 	profiler{this},
-	coord{coord_global_tmp_TODO},
 	gui_link{} {
 
 
@@ -102,8 +94,8 @@ Engine::Engine(const util::Path &root_dir,
 		windowtitle,
 		SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED,
-		this->coord.window_size.x,
-		this->coord.window_size.y,
+		this->coord.viewport_size.x,
+		this->coord.viewport_size.y,
 		window_flags
 	);
 
@@ -205,7 +197,7 @@ Engine::Engine(const util::Path &root_dir,
 		this->drawing_huds.value = !this->drawing_huds.value;
 	});
 	global_input_context.bind(action.get("SCREENSHOT"), [this](const input::action_arg_t &) {
-		this->get_screenshot_manager().save_screenshot(this->get_coord_data()->window_size);
+		this->get_screenshot_manager().save_screenshot(this->coord.viewport_size);
 	});
 	global_input_context.bind(action.get("TOGGLE_DEBUG_OVERLAY"), [this](const input::action_arg_t &) {
 		this->drawing_debug_overlay.value = !this->drawing_debug_overlay.value;
@@ -238,7 +230,7 @@ Engine::~Engine() {
 	// deallocate the gui system
 	// this looses the opengl context in the qtsdl::GuiRenderer
 	// deallocation (of the QtOpenGLContext).
-	// so no gl* functions can be called any more.
+	// so no gl* functions will be called after the gl context is gone.
 	this->gui.reset(nullptr);
 
 	SDL_GL_DeleteContext(this->glcontext);
@@ -247,29 +239,30 @@ Engine::~Engine() {
 	SDL_Quit();
 }
 
+bool Engine::on_resize(coord::viewport_delta new_size) {
+	// TODO: move all this to the renderer!
 
-bool Engine::on_resize(coord::window new_size) {
 	log::log(MSG(dbg) << "engine window resize to "
 	         << new_size.x << "x" << new_size.y);
 
 	// update engine window size
-	this->coord.window_size = new_size;
+	this->coord.viewport_size = new_size;
 
 	// update camgame window position, set it to center.
-	this->coord.camgame_window = this->coord.window_size / 2;
+	this->coord.camgame_viewport = coord::viewport{0, 0} + (this->coord.viewport_size / 2);
 
-	// update camhud window position
-	this->coord.camhud_window = {0, (coord::pixel_t) this->coord.window_size.y};
+	// update camhud window position, set to lower left corner
+	this->coord.camhud_viewport = {0, coord::pixel_t{this->coord.viewport_size.y}};
 
 	// reset previous projection matrix
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
-	// update OpenGL viewport: the renderin area
-	glViewport(0, 0, this->coord.window_size.x, this->coord.window_size.y);
+	// update OpenGL viewport: the rendering area
+	glViewport(0, 0, this->coord.viewport_size.x, this->coord.viewport_size.y);
 
 	// set orthographic projection: left, right, bottom, top, near_val, far_val
-	glOrtho(0, this->coord.window_size.x, 0, this->coord.window_size.y, 9001, -1);
+	glOrtho(0, this->coord.viewport_size.x, 0, this->coord.viewport_size.y, 9001, -1);
 
 	// reset the modelview matrix
 	glMatrixMode(GL_MODELVIEW);
@@ -283,7 +276,7 @@ bool Engine::draw_debug_overlay() {
 
 	// Draw FPS counter in the lower right corner
 	this->render_text(
-		{this->coord.window_size.x - 100, 15}, 20,
+		{this->coord.viewport_size.x - 100, 15}, 20,
 		"%.1f fps", this->fps_counter.fps
 	);
 
@@ -341,7 +334,7 @@ void Engine::loop() {
 
 			case SDL_WINDOWEVENT: {
 				if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
-					coord::window new_size{event.window.data1, event.window.data2};
+					coord::viewport_delta new_size{event.window.data1, event.window.data2};
 
 					// call additional handlers for the resize event
 					for (auto &handler : on_resize_handler) {
@@ -379,19 +372,19 @@ void Engine::loop() {
 			using Edge = input::InputManager::Edge;
 
 			if (inp_focus and (input.is_down(SDLK_LEFT) or
-			    input.is_mouse_at_edge(Edge::LEFT, coord.window_size.x))) {
+			    input.is_mouse_at_edge(Edge::LEFT, coord.viewport_size.x))) {
 				mov_x = -cam_movement_speed_keyboard;
 			}
 			if (inp_focus and (input.is_down(SDLK_RIGHT) or
-			    input.is_mouse_at_edge(Edge::RIGHT, coord.window_size.x))) {
+			    input.is_mouse_at_edge(Edge::RIGHT, coord.viewport_size.x))) {
 				mov_x = cam_movement_speed_keyboard;
 			}
 			if (inp_focus and (input.is_down(SDLK_DOWN) or
-			    input.is_mouse_at_edge(Edge::DOWN, coord.window_size.y))) {
+			    input.is_mouse_at_edge(Edge::DOWN, coord.viewport_size.y))) {
 				mov_y = cam_movement_speed_keyboard;
 			}
 			if (inp_focus and (input.is_down(SDLK_UP) or
-			    input.is_mouse_at_edge(Edge::UP, coord.window_size.y))) {
+			    input.is_mouse_at_edge(Edge::UP, coord.viewport_size.y))) {
 				mov_y = -cam_movement_speed_keyboard;
 			}
 
@@ -419,43 +412,30 @@ void Engine::loop() {
 		glClearColor(0.0, 0.0, 0.0, 0.0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
-		glPushMatrix(); {
-			// set the framebuffer up for camgame rendering
-			glTranslatef(coord.camgame_window.x, coord.camgame_window.y, 0);
+		// invoke all game drawing handlers
+		for (auto &action : this->on_drawgame) {
+			if (false == action->on_draw()) {
+				break;
+			}
+		}
 
-			// invoke all game drawing handlers
-			for (auto &action : this->on_drawgame) {
-				if (false == action->on_draw()) {
+		util::gl_check_error();
+
+		// draw the fps overlay
+		if (this->drawing_debug_overlay.value) {
+			this->draw_debug_overlay();
+		}
+
+		// invoke all hud drawing callback methods
+		if (this->drawing_huds.value) {
+			for (auto &action : this->on_drawhud) {
+				if (false == action->on_drawhud()) {
 					break;
 				}
 			}
 		}
-		glPopMatrix();
 
-		util::gl_check_error();
-
-		glPushMatrix(); {
-			// the hud coordinate system is automatically established
-
-			// draw the fps overlay
-
-			if (this->drawing_debug_overlay.value) {
-				this->draw_debug_overlay();
-
-			}
-
-			if (this->drawing_huds.value) {
-				// invoke all hud drawing callback methods
-				for (auto &action : this->on_drawhud) {
-					if (false == action->on_drawhud()) {
-						break;
-					}
-				}
-			}
-
-			this->text_renderer->render();
-		}
-		glPopMatrix();
+		this->text_renderer->render();
 
 		util::gl_check_error();
 
@@ -550,7 +530,7 @@ time_nsec_t Engine::lastframe_duration_nsec() const {
 	return this->fps_counter.nsec_lastframe;
 }
 
-void Engine::render_text(coord::window position, size_t size, const char *format, ...) {
+void Engine::render_text(coord::viewport position, size_t size, const char *format, ...) {
 	auto it = this->fonts.find(size);
 	if (it == this->fonts.end()) {
 		throw Error(MSG(err) << "Unknown font size requested: " << size);
@@ -569,19 +549,14 @@ void Engine::render_text(coord::window position, size_t size, const char *format
 }
 
 void Engine::move_phys_camera(float x, float y, float amount) {
-	// move the cam
-	coord::vec2f cam_movement {x, y};
-
-	// this factor controls the scroll speed
-	cam_movement *= amount;
-
 	// calculate camera position delta from velocity and frame duration
-	coord::camgame_delta cam_delta;
-	cam_delta.x = cam_movement.x;
-	cam_delta.y = - cam_movement.y;
+	coord::camgame_delta cam_delta{
+		static_cast<coord::pixel_t>(+x * amount),
+		static_cast<coord::pixel_t>(-y * amount)
+	};
 
-	//update camera phys position
-	this->coord.camgame_phys += cam_delta.to_phys3();
+	// update camera phys position
+	this->coord.camgame_phys += cam_delta.to_phys3(this->coord, 0);
 }
 
 void Engine::start_game(std::unique_ptr<GameMain> &&game) {

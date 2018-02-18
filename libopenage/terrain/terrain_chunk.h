@@ -1,11 +1,11 @@
-// Copyright 2013-2016 the openage authors. See copying.md for legal info.
+// Copyright 2013-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <stddef.h>
 #include <vector>
 
-#include "../coord/camgame.h"
+#include "../coord/pixel.h"
 #include "../coord/tile.h"
 #include "../texture.h"
 #include "../util/file.h"
@@ -78,9 +78,14 @@ public:
 	void draw(coord::chunk chunk_pos);
 
 	/**
-	 * get tile data by coordinates.
+	 * get tile data by absolute coordinates.
 	 */
-	TileContent *get_data(coord::tile pos);
+	TileContent *get_data(coord::tile abspos);
+
+	/**
+	 * get tile data by coordinates that are releative to this chunk.
+	 */
+	TileContent *get_data(coord::tile_delta pos);
 
 	/**
 	 * get tile data by memory position.
@@ -92,12 +97,12 @@ public:
 	 *
 	 * also queries neighbors if the position is not on this chunk.
 	 */
-	TileContent *get_data_neigh(coord::tile pos);
+	TileContent *get_data_neigh(coord::tile_delta pos);
 
-	int neighbor_id_by_pos(coord::tile pos);
+	int neighbor_id_by_pos(coord::tile_delta pos);
 
-	size_t tile_position(coord::tile pos);
-	size_t tile_position_neigh(coord::tile pos);
+	size_t tile_position(coord::tile_delta pos);
+	size_t tile_position_neigh(coord::tile_delta pos);
 	size_t get_tile_count();
 
 	size_t tiles_in_row(unsigned int row);

@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -13,6 +13,13 @@ namespace util {
  *
  * Designed for use as a global object.
  * Note that your regular dynamic initialization order concerns apply.
+ *
+ * Example:
+ *
+ * // anonymous namespace as container for these global objects
+ * namespace {
+ * util::OnInit stuff_to_be_done_on_initialization([]() { do_stuff(1 * 2 + 3); });
+ * }
  */
 class OnInit {
 public:

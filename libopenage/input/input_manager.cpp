@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #include <algorithm>
 #include <array>
@@ -230,8 +230,8 @@ void InputManager::set_state(const Event &ev, bool is_down) {
 
 
 void InputManager::set_mouse(int x, int y) {
-	coord::window last_position = this->mouse_position;
-	this->mouse_position = coord::window {(coord::pixel_t) x, (coord::pixel_t) y};
+	auto last_position = this->mouse_position;
+	this->mouse_position = coord::input{coord::pixel_t{x}, coord::pixel_t{y}};
 	this->mouse_motion = this->mouse_position - last_position;
 }
 
@@ -257,7 +257,7 @@ void InputManager::set_relative(bool mode) {
 	}
 }
 
-bool InputManager::is_mouse_at_edge(Edge edge, int window_size ) {
+bool InputManager::is_mouse_at_edge(Edge edge, int window_size) {
 	int x, y;
 	SDL_GetMouseState(&x, &y);
 
@@ -399,6 +399,7 @@ std::vector<std::string> InputManager::active_binds(const std::unordered_map<act
 		// this is only possible if the action is registered,
 		// then this->input_manager != nullptr.
 		// TODO: try to purge the action manager access here.
+		// TODO: get_name takes O(n) time
 		std::string action_type_str = this->get_action_manager()->get_name(action.first);
 
 		result.push_back(keyboard_key + " : " + action_type_str);

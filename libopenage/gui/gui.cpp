@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 // include first to make opengl and libepoxy happy.
 #include "../shader/shader.h"
@@ -112,7 +112,7 @@ void GUI::process_events() {
 	this->application.processEvents();
 }
 
-bool GUI::on_resize(coord::window new_size) {
+bool GUI::on_resize(coord::viewport_delta new_size) {
 	this->renderer.resize(new_size.x, new_size.y);
 	return true;
 }

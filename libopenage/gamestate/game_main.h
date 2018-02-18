@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -12,6 +12,7 @@
 #include "player.h"
 #include "team.h"
 #include "../options.h"
+#include "../terrain/terrain.h"
 #include "../unit/unit_container.h"
 #include "../util/timing.h"
 

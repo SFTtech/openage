@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 /*
  * This file holds handlers for std::terminate and SIGSEGV.
@@ -34,11 +34,12 @@ namespace error {
 
 [[noreturn]] void terminate_handler() noexcept;
 void sigsegv_handler(int /* unused */);
-
+void exit_handler();
 
 // The global state has internal linkage only.
 namespace {
 
+bool exit_ok;
 
 std::terminate_handler old_terminate_handler;
 #ifdef __FreeBSD__
@@ -46,10 +47,11 @@ typedef sig_t sighandler_t;
 #endif
 sighandler_t old_sigsegv_handler;
 
-
 util::OnInit install_handlers([]() {
 	old_sigsegv_handler = signal(SIGSEGV, sigsegv_handler);
 	old_terminate_handler = std::set_terminate(terminate_handler);
+	exit_ok = true;
+	atexit(exit_handler);
 });
 
 
@@ -109,6 +111,26 @@ void sigsegv_handler(int /* unused */) {
 	// however, everything is broken anyways. can't hurt to try to print
 	// more useful info. fuck the police! wheeee!
 	std::terminate();
+}
+
+
+void exit_handler() {
+	// This handler is registered to run atexit().
+	// It is used to catch calls to exit() that occur somewhere inside
+	// the running game (while exit_ok == false).
+	// exit() should never be invoked directly while the game is running,
+	// but some libraries such as libepoxy might do it anyway.
+	// The actual proper way of exiting the running game is via throwing
+	// an exception or similar action.
+
+	if (exit_ok) { return; }
+
+	std::cout << "\x1b[31;1mexit() was called in an illegal place\x1b[m\n" << std::endl;
+}
+
+
+void set_exit_ok(bool value) {
+	exit_ok = value;
 }
 
 

@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 """
 Asset version change log
@@ -36,7 +36,8 @@ CHANGES = (
     {"interface"},
     {"interface"},
     {"metadata"},
-    {"metadata"}
+    {"metadata"},
+    {"graphics"},
 )
 
 # the current version number equals the number of changes

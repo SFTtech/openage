@@ -1,4 +1,4 @@
-// Copyright 2013-2017 the openage authors. See copying.md for legal info.
+// Copyright 2013-2018 the openage authors. See copying.md for legal info.
 
 #include "texture.h"
 
@@ -11,7 +11,7 @@
 #include "log/log.h"
 #include "error/error.h"
 #include "util/csv.h"
-
+#include "coord/phys.h"
 
 namespace openage {
 
@@ -169,6 +169,7 @@ void Texture::load_in_glthread() const {
 	}
 }
 
+
 void Texture::unload() {
 	glDeleteTextures(1, &this->buffer->id);
 	glDeleteBuffers(1, &this->buffer->vertbuf);
@@ -194,23 +195,38 @@ void Texture::fix_hotspots(unsigned x, unsigned y) {
 }
 
 
-void Texture::draw(coord::camhud pos, unsigned int mode, bool mirrored, int subid, unsigned player) const {
-	this->draw(pos.x, pos.y, mode, mirrored, subid, player, nullptr, -1);
+void Texture::draw(const coord::CoordManager &mgr, const coord::camhud pos,
+                   unsigned int mode, bool mirrored,
+                   int subid, unsigned player) const {
+	this->draw(pos.to_viewport(mgr), mode, mirrored, subid, player, nullptr, -1);
 }
 
 
-void Texture::draw(coord::camgame pos, unsigned int mode,  bool mirrored, int subid, unsigned player) const {
-	this->draw(pos.x, pos.y, mode, mirrored, subid, player, nullptr, -1);
+void Texture::draw(const coord::CoordManager &mgr, coord::camgame pos,
+                   unsigned int mode,  bool mirrored,
+                   int subid, unsigned player) const {
+	this->draw(pos.to_viewport(mgr), mode, mirrored, subid, player, nullptr, -1);
 }
 
 
-void Texture::draw(coord::tile pos, unsigned int mode, int subid, Texture *alpha_texture, int alpha_subid) const {
-	coord::camgame draw_pos = pos.to_tile3().to_phys3().to_camgame();
-	this->draw(draw_pos.x, draw_pos.y, mode, false, subid, 0, alpha_texture, alpha_subid);
+void Texture::draw(const coord::CoordManager &mgr, coord::phys3 pos,
+                   unsigned int mode,  bool mirrored,
+                   int subid, unsigned player) const {
+	this->draw(pos.to_viewport(mgr), mode, mirrored, subid, player, nullptr, -1);
 }
 
 
-void Texture::draw(coord::pixel_t x, coord::pixel_t y,
+void Texture::draw(const coord::CoordManager &mgr, const Terrain &terrain,
+                   coord::tile pos, unsigned int mode, int subid,
+                   Texture *alpha_texture, int alpha_subid) const {
+
+	// currently used for drawing terrain tiles.
+	this->draw(pos.to_viewport(mgr, terrain), mode, false,
+	           subid, 0, alpha_texture, alpha_subid);
+}
+
+
+void Texture::draw(coord::viewport pos,
                    unsigned int mode, bool mirrored,
                    int subid, unsigned player,
                    Texture *alpha_texture, int alpha_subid) const {
@@ -267,14 +283,14 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y,
 	int left, right, top, bottom;
 
 	// coordinates where the texture will be drawn on screen.
-	bottom  = y      - (tx->h - tx->cy);
+	bottom  = pos.y      - (tx->h - tx->cy);
 	top     = bottom + tx->h;
 
 	if (not mirrored) {
-		left  = x    - tx->cx;
+		left  = pos.x - tx->cx;
 		right = left + tx->w;
 	} else {
-		left  = x    + tx->cx;
+		left  = pos.x + tx->cx;
 		right = left - tx->w;
 	}
 
@@ -336,6 +352,7 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y,
 	// draw the vertex array
 	glDrawArrays(GL_QUADS, 0, 4);
 
+
 	// unbind the current buffer
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
@@ -358,6 +375,25 @@ void Texture::draw(coord::pixel_t x, coord::pixel_t y,
 
 	glActiveTexture(GL_TEXTURE0);
 	glDisable(GL_TEXTURE_2D);
+
+	////////////////////////////////////////
+	/*
+	int size = 2;
+	float r = 1.0f, g = 1.0f, b = 0.0f;
+	glPushMatrix();
+	glTranslatef(leftf, bottomf, 0);
+	glColor3f(r, g, b);
+	glBegin(GL_TRIANGLES);
+	glVertex3f(-size, -size, 0);
+	glVertex3f(-size, size, 0);
+	glVertex3f(size, size, 0);
+	glVertex3f(size, size, 0);
+	glVertex3f(-size, -size, 0);
+	glVertex3f(size, -size, 0);
+	glEnd();
+	glPopMatrix();
+	*/
+	////////////////////////////////////////
 }
 
 

@@ -1,4 +1,4 @@
-// Copyright 2013-2016 the openage authors. See copying.md for legal info.
+// Copyright 2013-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -7,7 +7,7 @@
 
 #include "buf.h"
 #include "../handlers.h"
-#include "../coord/camhud.h"
+#include "../coord/pixel.h"
 #include "../input/input_manager.h"
 #include "../util/color.h"
 #include "../renderer/font/font.h"
@@ -54,7 +54,7 @@ public:
 	bool on_drawhud() override;
 	bool on_tick() override;
 	bool on_input(SDL_Event *event) override;
-	bool on_resize(coord::window new_size) override;
+	bool on_resize(coord::viewport_delta new_size) override;
 
 protected:
 	Engine *engine;

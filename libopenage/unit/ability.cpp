@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 #include <memory>
 
@@ -90,7 +90,7 @@ void MoveAbility::invoke(Unit &to_modify, const Command &cmd, bool play_sound) {
 		auto target = cmd.unit();
 
 		// distance from the targets edge that is required to stop moving
-		coord::phys_t radius = path::path_grid_size + (to_modify.location->min_axis() / 2);
+		coord::phys_t radius = path::path_grid_size + (to_modify.location->min_axis() / 2L);
 
 		// add the range of the unit if cmd indicator is set
 		if (cmd.has_flag(command_flag::use_range) && to_modify.has_attribute(attr_type::attack)) {

@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -6,7 +6,7 @@
 #include <string>
 #include <epoxy/gl.h>
 
-#include "../coord/window.h"
+#include "../coord/pixel.h"
 #include "../shader/program.h"
 #include "color.h"
 #include "font/glyph_atlas.h"
@@ -50,7 +50,7 @@ public:
 	 * @param position: where the text should be displayed.
 	 * @param format: the text format
 	 */
-	void draw(coord::window position, const char *format, ...);
+	void draw(coord::viewport position, const char *format, ...);
 
 	/**
 	 * Draw text at the specified position.
@@ -58,7 +58,7 @@ public:
 	 * @param position: where the text should be displayed.
 	 * @param text: the text to be displayed.
 	 */
-	void draw(coord::window position, const std::string &text);
+	void draw(coord::viewport position, const std::string &text);
 
 	/**
 	 * Draw text at the specified position.

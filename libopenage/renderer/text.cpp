@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #include "text.h"
 
@@ -84,7 +84,7 @@ void TextRenderer::set_color(const Color &color) {
 	this->is_dirty = true;
 }
 
-void TextRenderer::draw(coord::window position, const char *format, ...) {
+void TextRenderer::draw(coord::viewport position, const char *format, ...) {
 	std::string text;
 	va_list vl;
 	va_start(vl, format);
@@ -94,7 +94,7 @@ void TextRenderer::draw(coord::window position, const char *format, ...) {
 	this->draw(position.x, position.y, text);
 }
 
-void TextRenderer::draw(coord::window position, const std::string &text) {
+void TextRenderer::draw(coord::viewport position, const std::string &text) {
 	this->draw(position.x, position.y, text);
 }
 

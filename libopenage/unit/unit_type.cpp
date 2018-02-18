@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #include "../gamestate/player.h"
 #include "../terrain/terrain_object.h"
@@ -75,7 +75,7 @@ TerrainObject *UnitType::place_beside(Unit *u, TerrainObject const *other) const
 			continue;
 		}
 
-		auto placed = this->place(u, terrain, temp_pos.to_phys2().to_phys3());
+		auto placed = this->place(u, terrain, temp_pos.to_phys3(*terrain));
 		if (placed) {
 			return placed;
 		}

@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #include <epoxy/gl.h>
 #include <SDL2/SDL.h>
@@ -6,7 +6,7 @@
 #include <sys/types.h>
 #include <sstream>
 
-#include "coord/vec2f.h"
+#include "console/console.h"
 #include "engine.h"
 #include "gamedata/color.gen.h"
 #include "gamestate/game_main.h"
@@ -29,7 +29,6 @@ namespace openage {
 RenderOptions::RenderOptions()
 	:
 	OptionNode{"RendererOptions"},
-	draw_grid{this, "draw_grid", false},
 	draw_debug{this, "draw_debug", false},
 	terrain_blending{this, "terrain_blending", true} {
 }
@@ -177,6 +176,8 @@ GameRenderer::GameRenderer(Engine *e)
 	global_input_context.bind(action.get("TOGGLE_UNIT_DEBUG"), [this](const input::action_arg_t &) {
 		this->settings.draw_debug.value = !this->settings.draw_debug.value;
 
+		log::log(MSG(dbg) << "Toggle debug grid");
+
 		// TODO remove this hack, use render settings instead
 		UnitAction::show_debug = !UnitAction::show_debug;
 	});
@@ -194,72 +195,21 @@ GameRenderer::~GameRenderer() {
 	delete texturefont_shader::program;
 }
 
+
 bool GameRenderer::on_draw() {
 	// draw terrain
 	GameMain *game = this->engine->get_game();
 
 	if (game) {
 		// draw gaben, our great and holy protector, bringer of the half-life 3.
-		gaben->draw(coord::camgame{0, 0});
+		gaben->draw(this->engine->coord, coord::camgame{0, 0});
 
 		// TODO move render code out of terrain
 		if (game->terrain) {
 			game->terrain->draw(this->engine, &this->settings);
 		}
-
-		if (this->settings.draw_grid.value) {
-			this->draw_debug_grid();
-		}
 	}
 	return true;
-}
-
-void GameRenderer::draw_debug_grid() {
-	coord::camgame camera = coord::tile{0, 0}.to_tile3().to_phys3().to_camgame();
-
-	int cam_offset_x = util::mod(camera.x, this->engine->get_coord_data()->tile_halfsize.x * 2);
-	int cam_offset_y = util::mod(camera.y, this->engine->get_coord_data()->tile_halfsize.y * 2);
-
-	int line_half_width = this->engine->get_coord_data()->window_size.x / 2;
-	int line_half_height = this->engine->get_coord_data()->window_size.y / 2;
-
-	// rounding so we get 2:1 proportion needed for the isometric perspective
-
-	if (line_half_width > line_half_height * 2) {
-
-		if (line_half_width & 1) {
-			line_half_width += 1; // round up if it's odd
-		}
-
-		line_half_height = line_half_width / 2;
-
-	} else {
-		line_half_width = line_half_height * 2;
-	}
-
-	// quantity of lines to draw to each side from the center
-	int k = line_half_width / (this->engine->get_coord_data()->tile_halfsize.x);
-
-	int tilesize_x = this->engine->get_coord_data()->tile_halfsize.x * 2;
-	int common_x   = cam_offset_x + this->engine->get_coord_data()->tile_halfsize.x;
-	int x0         = common_x     - line_half_width;
-	int x1         = common_x     + line_half_width;
-	int y0         = cam_offset_y - line_half_height;
-	int y1         = cam_offset_y + line_half_height;
-
-	glLineWidth(1);
-	glColor3f(0.0, 0.0, 0.0);
-	glBegin(GL_LINES); {
-
-		for (int i = -k; i < k; i++) {
-			glVertex3f(i * tilesize_x + x0, y1, 0);
-			glVertex3f(i * tilesize_x + x1, y0, 0);
-
-			glVertex3f(i * tilesize_x + x0, y0 - 1, 0);
-			glVertex3f(i * tilesize_x + x1, y1 - 1, 0);
-		}
-
-	} glEnd();
 }
 
 GameMain *GameRenderer::game() const {

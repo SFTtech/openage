@@ -1,11 +1,12 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
+#include <functional>
 #include <unordered_map>
 #include <vector>
 
-#include "../coord/window.h"
+#include "../coord/pixel.h"
 #include "event.h"
 
 namespace openage {
@@ -26,12 +27,8 @@ class InputManager;
 using action_t = unsigned int;
 
 
-/**
- * Mapping type from action name to action id.
- */
-using action_map_t = std::unordered_map<std::string, action_t>;
-
-
+// TODO this whole class seems rather obsolete...
+//      remove it and instead provide a proper class for action_t?
 /**
  * The action manager manages all the actions allow creation, access
  * information and equality.
@@ -40,98 +37,25 @@ class ActionManager {
 public:
 	ActionManager(InputManager *input_manager,
 	              cvar::CVarManager *cvar_manager);
-	bool create(const std::string type);
+
+public:
 	action_t get(const std::string &type);
 	std::string get_name(const action_t action);
 	bool is(const std::string &type, const action_t action);
 
-private :
-	const std::vector<std::string> default_action = {
-		"UNDEFINED",
-		"START_GAME",
-		"STOP_GAME",
-		"TOGGLE_HUD",
-		"SCREENSHOT",
-		"TOGGLE_DEBUG_OVERLAY",
-		"TOGGLE_DEBUG_GRID",
-		"QUICK_SAVE",
-		"QUICK_LOAD",
-		"TOGGLE_MODE",
-		"TOGGLE_MENU",
-		"TOGGLE_ITEM",
-		"TOGGLE_BLENDING",
-		"TOGGLE_PROFILER",
-		"TOGGLE_CONSTRUCT_MODE",
-		"TOGGLE_UNIT_DEBUG",
-		"TRAIN_OBJECT",
-		"ENABLE_BUILDING_PLACEMENT",
-		"DISABLE_SET_ABILITY",
-		"SET_ABILITY_MOVE",
-		"SET_ABILITY_GATHER",
-		"SET_ABILITY_GARRISON",
-		"TOGGLE_CONSOLE",
-		"SPAWN_VILLAGER",
-		"KILL_UNIT",
-		"BUILD_MENU",
-		"BUILD_MENU_MIL",
-		"CANCEL",
-		"BUILDING_HOUS",
-		"BUILDING_MILL",
-		"BUILDING_MINE",
-		"BUILDING_SMIL",
-		"BUILDING_DOCK",
-		"BUILDING_FARM",
-		"BUILDING_BLAC",
-		"BUILDING_MRKT",
-		"BUILDING_CRCH",
-		"BUILDING_UNIV",
-		"BUILDING_RTWC",
-		"BUILDING_WNDR",
-		"BUILDING_BRKS",
-		"BUILDING_ARRG",
-		"BUILDING_STBL",
-		"BUILDING_SIWS",
-		"BUILDING_WCTWX",
-		"BUILDING_WALL",
-		"BUILDING_WALL2",
-		"BUILDING_WCTW",
-		"BUILDING_WCTW4",
-		"BUILDING_GTCA2",
-		"BUILDING_CSTL",
-		"BUILDING_TOWN_CENTER",
-		"SWITCH_TO_PLAYER_1",
-		"SWITCH_TO_PLAYER_2",
-		"SWITCH_TO_PLAYER_3",
-		"SWITCH_TO_PLAYER_4",
-		"SWITCH_TO_PLAYER_5",
-		"SWITCH_TO_PLAYER_6",
-		"SWITCH_TO_PLAYER_7",
-		"SWITCH_TO_PLAYER_8",
-		"UP_ARROW",
-		"DOWN_ARROW",
-		"LEFT_ARROW",
-		"RIGHT_ARROW",
-		"SELECT",
-		"DESELECT",
-		"BEGIN_SELECTION",
-		"END_SELECTION",
-		"FORWARD",
-		"BACK",
-		"PAINT_TERRAIN",
-		"BUILDING_5",
-		"BUILDING_6",
-		"BUILDING_7",
-		"BUILDING_8",
-		"BUILD",
-		"KEEP_BUILDING",
-		"INCREASE_SELECTION",
-		"ORDER_SELECT"
-	};
+private:
+	bool create(const std::string& type);
 
-	action_map_t actions;
+	// mapping from action name to numbers
+	std::unordered_map<std::string, action_t> actions;
+	// for high-speed reverse lookups (action number -> name)
+	std::unordered_map<action_t, std::string> reverse_map;
 
-	InputManager *input_manager;
-	cvar::CVarManager *cvar_manager;
+	InputManager *const input_manager;
+	cvar::CVarManager *const cvar_manager;
+
+	// the id of the next action that is added via create().
+	action_t next_action_id = 0;
 };
 
 
@@ -150,8 +74,8 @@ struct action_arg_t {
 	const Event e;
 
 	// Mouse position
-	const coord::window mouse;
-	const coord::window_delta motion;
+	const coord::input mouse;
+	const coord::input_delta motion;
 
 	// hints for arg receiver
 	// these get set globally in input manager
