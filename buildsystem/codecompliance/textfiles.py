@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 """
 Checks some general whitespace rules and the encoding for text files.
@@ -36,17 +36,17 @@ def find_issues(dirnames, exts):
             continue
 
         if '\r\n' in data:
-            yield "Windows EOL format", filename
+            yield "Windows EOL format", filename, None
 
         if data.endswith('\n\n'):
-            yield "Trailing newline at file end", filename
+            yield "Trailing newline at file end", filename, None
 
         if data and not data.endswith('\n'):
-            yield "File does not end in '\\n'", filename
+            yield "File does not end in '\\n'", filename, None
 
         if has_ext(filename, ('.py', '.pyx', '.pxd')):
             if '\t' in data:
-                yield "File contains tabs", filename
+                yield "File contains tabs", filename, None
 
         if TRAIL_WHITESPACE_RE.search(data) or IMMEDIATE_TODO_RE.search(data):
             analyse_each_line = True

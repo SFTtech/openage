@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 """
 Checks the Python modules with pylint.
@@ -49,4 +49,4 @@ def find_issues(check_files, dirnames):
                 msg = ("false positives may result from not checking the "
                        "entire codebase")
 
-            yield "linting issue", msg
+            yield "linting issue", msg, None

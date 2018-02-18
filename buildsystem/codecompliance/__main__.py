@@ -1,4 +1,4 @@
-# Copyright 2014-2017 the openage authors. See copying.md for legal info.
+# Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 """
 Entry point for the code compliance checker.
@@ -8,8 +8,8 @@ import argparse
 import importlib
 import os
 import shutil
+import subprocess
 import sys
-from subprocess import Popen, PIPE
 
 
 def parse_args():
@@ -45,6 +45,9 @@ def parse_args():
     cli.add_argument("--test-git-change-years", action="store_true",
                      help=("when doing legal checks, test whether the "
                            "copyright year matches the git history."))
+
+    cli.add_argument("--fix", action="store_true",
+                     help=("try to automatically fix the found issues"))
 
     args = cli.parse_args()
     process_args(args, cli.error)
@@ -113,6 +116,24 @@ def process_args(args, error):
             error("pylint python module required for linting")
 
 
+def get_changed_files(gitref):
+    """
+    return a list of changed files
+    """
+    invocation = ['git', 'diff', '--name-only', '--diff-filter=ACMRTUXB',
+                  gitref]
+
+    try:
+        file_list = subprocess.check_output(invocation)
+
+    except subprocess.CalledProcessError as exc:
+        raise Exception(
+            "could not determine list of recently-changed files with git"
+        ) from exc
+
+    return set(file_list.decode('ascii').strip().split('\n'))
+
+
 def main(args):
     """
     Takes an argument namespace as returned by parse_args.
@@ -122,32 +143,56 @@ def main(args):
     Returns True if no issues were found.
     """
     if args.only_changed_files:
-        gitref = args.only_changed_files
-        invocation = ['git', 'diff', '--name-only', '--diff-filter=ACMRTUXB',
-                      gitref]
-
-        proc = Popen(invocation, stdout=PIPE)
-        file_list = proc.communicate()[0]
-
-        if proc.returncode != 0:
-            print("could not determine list of recently-changed files")
-            return False
-
-        check_files = set(file_list.decode('ascii').strip().split('\n'))
+        check_files = get_changed_files(args.only_changed_files)
     else:
         check_files = None
 
+    auto_fixes = list()
+    fixes_possible = False
+
     issues_count = 0
-    for title, text in find_all_issues(args, check_files):
+    for title, text, apply_fix in find_all_issues(args, check_files):
         issues_count += 1
         print("\x1b[33;1mWARNING\x1b[m {}: {}".format(title, text))
 
+        if apply_fix:
+            fixes_possible = True
+
+            if args.fix:
+                print("        This will be fixed automatically.")
+                auto_fixes.append(apply_fix)
+            else:
+                print("        This can be fixed automatically.")
+
+        # nicely seperate warnings
+        print()
+
+    if args.fix and auto_fixes:
+        print("\x1b[33;1mApplying %d "
+              "automatic fixes...\x1b[m" % len(auto_fixes))
+
+        for auto_fix in auto_fixes:
+            print(auto_fix())
+            issues_count -= 1
+
+        print()
+
     if issues_count > 0:
-        print("==> \x1b[33;1m{num} issue{plural}\x1b[m "
-              "{werewas} found."
+        plural = "s" if issues_count > 1 else ""
+
+        if args.fix and auto_fixes:
+            remainfound = "remain%s" % plural
+        else:
+            remainfound = ("were" if issues_count > 1 else "was") + "found"
+
+        print("==> \x1b[33;1m{num} issue{plural}\x1b[m {remainfound}."
               "".format(num=issues_count,
-                        plural="s" if issues_count > 1 else "",
-                        werewas="were" if issues_count > 1 else "was"))
+                        plural=plural,
+                        remainfound=remainfound))
+
+        if not args.fix and fixes_possible:
+            print("When invoked with --fix, I can try"
+                  "to automatically resolve some of the issues.\n")
 
     return issues_count == 0
 
@@ -165,7 +210,7 @@ def find_all_issues(args, check_files=None):
     """
     if args.headerguards:
         from .headerguards import find_issues
-        yield from find_issues('libopenage', 'OPENAGE_')
+        yield from find_issues('libopenage')
 
     if args.authors:
         from .authors import find_issues
