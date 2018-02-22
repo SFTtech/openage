@@ -14,6 +14,7 @@
    - With the "Precompile standard library" option enabled.
    - With the "Download debug binaries (...)" option enabled.
    - If in doubt, run the installer again and choose "Modify".
+   - You are going to need the 64-bit version of python if you are planning to build the 64-bit version of openage, and vice versa.
  - [CMake](https://cmake.org/download/)
 
 ### Python Modules
@@ -24,11 +25,13 @@
 ### vcpkg packages
  Set up [vcpkg](https://github.com/Microsoft/vcpkg#quick-start). Open a command prompt at `<vcpkg directory>`
 
-    vcpkg install dirent libepoxy fontconfig freetype harfbuzz libogg opus opusfile qt5-base qt5-declarative sdl2 sdl2-image libpng
+    vcpkg install dirent libepoxy fontconfig freetype harfbuzz libogg opus opusfile qt5-base qt5-declarative qt5-quickcontrols sdl2 sdl2-image libpng
 
  _Note:_ The `qt5` port in vcpkg has been split into multiple packages, build times are acceptable now.
  If you want, you can still use [the prebuilt version](https://www.qt.io/download-open-source/) instead.
  If you do so, include `-DCMAKE_PREFIX_PATH=<QT5 directory>` in the cmake configure command.
+
+ _Note:_ If you are planning to build the 64-bit version of openage, you are going to need 64-bit libraries. Add command line option `--triplet x64-windows` to the above command or add the environment variable `VCPKG_DEFAULT_TRIPLET=x64-windows` to build x64 libraries. [See here](https://github.com/Microsoft/vcpkg/issues/1254)
 
 ## Building openage
  Note that openage doesn't support completely out-of-source-tree builds yet.
@@ -41,14 +44,17 @@
      cmake -DCMAKE_TOOLCHAIN_FILE=<vcpkg directory>/scripts/buildsystems/vcpkg.cmake ..
      cmake --build . --config RelWithDebInfo -- /nologo /m /v:m
 
+_Note:_ If you want to build the x64 version, please add `-G "Visual Studio 15 2017 Win64"` (for VS2017) to the first cmake command.
+
 ## Running openage (in devmode)
  While this is straightforward on other platforms, there is still stuff to do to run openage on Windows:
   - Install the [DejaVu Book Font](https://dejavu-fonts.github.io/Download.html).
     - Download and extract the latest `dejavu-fonts-ttf` tarball/zip file.
     - Copy `ttf/DejaVuSerif*.ttf` font files to `%WINDIR%/Fonts`.
-    - Set the `FONTCONFIG_PATH` environment variable to `<vcpkg directory>\installed\<relevant config>\tools\fontconfig\fonts\conf.d`.
-    - Copy `fontconfig/57-dejavu-serif.conf` to `%FONTCONFIG_PATH%`.
+    - Set the `FONTCONFIG_PATH` environment variable to `<vcpkg directory>\installed\<relevant config>\tools\fontconfig\fonts\`.
+    - Copy `fontconfig/57-dejavu-serif.conf` to `%FONTCONFIG_PATH%/conf.d`.
   - [Optional] Set the `AGE2DIR` environment variable to the AoE 2 installation directory.
+  - Set `QML2_IMPORT_PATH` to `<vcpkg directory>\installed\<relevant config>\qml`
   - Append the following to the environment `PATH`:
     - `<openage directory>\build\libopenage\<config built>` (for `openage.dll`)
     - Path to `nyan.dll` (depends on the procedure chosen to get nyan)
