@@ -10,6 +10,8 @@
  * when unloading it.
  */
 
+#include "handlers.h"
+
 #include <exception>
 #include <iostream>
 #include <typeinfo>

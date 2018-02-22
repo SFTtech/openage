@@ -106,10 +106,10 @@ private:
 
 	using this_type = FixedPoint<int_type, fractional_bits>;
 	using unsigned_int_type = typename std::make_unsigned<int_type>::type;
-	using same_type_but_unsigned = FixedPoint<FixedPoint::unsigned_int_type, fractional_bits>;
+	using same_type_but_unsigned = FixedPoint<typename FixedPoint::unsigned_int_type, fractional_bits>;
 
 	// constexpr helper function for get_fractional_part()
-	static constexpr FixedPoint::unsigned_int_type fractional_part_bitmask() {
+	static constexpr typename FixedPoint::unsigned_int_type fractional_part_bitmask() {
 		// return ~(MAX_VAL << fractional_bits);
 		return static_cast<FixedPoint::unsigned_int_type>(
 			~(
@@ -251,7 +251,7 @@ public:
 	/**
 	 * Converter to retrieve the fractional (post-decimal) part of the number.
 	 */
-	constexpr FixedPoint::same_type_but_unsigned get_fractional_part() const {
+	constexpr typename FixedPoint::same_type_but_unsigned get_fractional_part() const {
 		// returns a new variable with only the bits from
 		// fractional_part_bitmask set.
 		return FixedPoint::same_type_but_unsigned::from_raw_value(
@@ -296,7 +296,7 @@ public:
 	// the inner_int_type template is required for enable_if.
 	template <typename inner_int_type=int_type>
 	constexpr
-	typename std::enable_if<std::is_signed<inner_int_type>::value, FixedPoint::this_type>::type
+	typename std::enable_if<std::is_signed<inner_int_type>::value, typename FixedPoint::this_type>::type
 	operator -() const {
 		static_assert(std::is_same<inner_int_type, int_type>::value, "inner_int_type must == int_type");
 		return FixedPoint::this_type::from_raw_value(-this->raw_value);
