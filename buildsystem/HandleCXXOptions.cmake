@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 # sets CXXFLAGS and compiler for the project
 
@@ -69,6 +69,10 @@ elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
 
 elseif(MSVC)
 	# Don't worry. You're not alone. If you face an issue, just ask.
+
+	# Enable multi processor compilation on MSVC
+	set_compiler_flags("CXX" "/MP")
+
 	return() # The following flag specifications don't apply.
 
 else() # "Intel", etc..

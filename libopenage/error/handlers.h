@@ -3,6 +3,7 @@
 #pragma once
 
 // pxd: from libcpp cimport bool as cppbool
+#include "../util/compiler.h"
 
 namespace openage {
 namespace error {
@@ -17,7 +18,7 @@ namespace error {
  *
  * pxd: void set_exit_ok(cppbool value) except +
  */
-void set_exit_ok(bool value);
+OAAPI void set_exit_ok(bool value);
 
 
 }} // openage::error
