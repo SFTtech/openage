@@ -107,7 +107,8 @@ _the openage authors_ are:
 | Piotr Szpetkowski           | piotr-szpetkowski           | piotr dawt szpetkowski à pyquest dawt space       |
 | Julian Guillotel            | arialwhite                  | julian dawt gullotel à gmail dawt com             |
 | Arne Sellmann               | PythonicChemist             | arne dawt sellmann à gmx dawt de                  |
-| Rafael X. Morales Georgi    | chocoladisco                | chocoladisco á gmail dawt com                     |
+| Rafael X. Morales Georgi    | chocoladisco                | chocoladisco à gmail dawt com                     |
+| Marcel Schneider            | schnema123                  | marcelschneider5 à outlook dawt de                |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
