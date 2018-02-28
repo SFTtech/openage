@@ -20,7 +20,7 @@ with
 `size`, the map size in tiles and
 `d` is calculated as follows:
 
-    d = max(0.1, sqrt(max(0, abs(x2-x1))^2 + max(0, abs(x2-x1))^2)
+    d = max(0.1, sqrt(max(0, abs(x2-x1)-5)^2 + max(0, abs(x2-x1)-5)^2)
 
 The coefficient `0.46` is calculated as 
 
