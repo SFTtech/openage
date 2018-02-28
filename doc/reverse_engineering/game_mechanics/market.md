@@ -26,7 +26,7 @@ The coefficient `0.46` is calculated as
 
     2 * 0.345 /(a + 0.5)
 
-where `0.345` is related to the Trade Cart speed and a varies if the player has a Spanish ally (normally, set to `1`)
+where `0.345` is related to the Trade Cart speed and varies if the player has a Spanish ally (normally set to `1`)
 
 ## Tribute
 
