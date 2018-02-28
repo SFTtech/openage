@@ -16,16 +16,16 @@ Generated amount of gold is not linear to the distance in tiles. Note that the g
 
     (gold value) = 0.46 * d * (d/size + 0.3)
 
-with 
+with
 `size`, the map size in tiles and
 `d` is calculated as follows:
 
     d = max(0.1, sqrt(max(0, abs(x2-x1)-5)^2 + max(0, abs(x2-x1)-5)^2)
 
-The coefficient `0.46` is calculated as 
+The coefficient `0.46` is calculated as
 
     2 * 0.345 /(a + 0.5)
-    
+
 where `0.345` is related to the Trade Cart speed and a varies if the player has a Spanish ally (normally, set to `1`)
 
 ## Tribute
