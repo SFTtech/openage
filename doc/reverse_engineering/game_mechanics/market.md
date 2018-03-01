@@ -24,12 +24,6 @@ with
 
 with `deltaX` and `deltaY` the distances between the Markets in either axis-aligned direction, measured from the center of each Market.
 
-The coefficient `0.46` is calculated as
-
-    2 * 0.345 /(a + 0.5)
-
-where `0.345` is related to the Trade Cart speed and varies if the player has a Spanish ally; normally `a` is set to `1`.
-
 ## Tribute
 
 Tribute can be sent to other players using the tribute menu in the upper right corner. The number of resources you are sending to a player is shown on top of the buttons of the receiving player. On top of that the tributing player has to pay a fee. The amount of resources left *after sending tribute* can be seen in the line with the players name in it:
