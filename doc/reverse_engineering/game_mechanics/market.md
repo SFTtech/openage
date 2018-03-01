@@ -70,7 +70,3 @@ If you happen to have more than one market, trade carts will choose the market w
 
 * You can trade with enemy markets.
 * Full trade carts cannot be loaded onto a transport ship. As soon as you give the order to board the ship, they change into an empty cart, dropping all of their gold.
-
---------
-
-[here](https://gist.github.com/Piruzzolo/a0a66c3b592b3cadff785649ae8d7410) the (partly) decompiled CalculateTradeGold function
