@@ -22,7 +22,7 @@ with
 
     d = max(0.1, sqrt(max(0, deltaX-5)^2 + max(0, deltaY-5)^2))
 
-with `deltaX` and `deltaY` the distances between the Markets in either axis-aligned direction, measured from the center of each Market. 
+with `deltaX` and `deltaY` the distances between the Markets in either axis-aligned direction, measured from the center of each Market.
 
 The coefficient `0.46` is calculated as
 
