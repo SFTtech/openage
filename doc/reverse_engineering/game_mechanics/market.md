@@ -17,16 +17,18 @@ Generated amount of gold is not linear to the distance in tiles. Note that the g
     (gold value) = 0.46 * d * (d/size + 0.3)
 
 with
-`size`, the map size in tiles and
+`size`, the map size in tiles along the edge of the map and
 `d` is calculated as follows:
 
-    d = max(0.1, sqrt(max(0, abs(x2-x1)-5)^2 + max(0, abs(x2-x1)-5)^2)
+    d = max(0.1, sqrt(max(0, deltaX-5)^2 + max(0, deltaY-5)^2))
+
+with `deltaX` and `deltaY` the distances between the Markets in either axis-aligned direction, measured from the center of each Market. 
 
 The coefficient `0.46` is calculated as
 
     2 * 0.345 /(a + 0.5)
 
-where `0.345` is related to the Trade Cart speed and varies if the player has a Spanish ally (normally set to `1`)
+where `0.345` is related to the Trade Cart speed and varies if the player has a Spanish ally; normally `a` is set to `1`.
 
 ## Tribute
 
@@ -74,3 +76,7 @@ If you happen to have more than one market, trade carts will choose the market w
 
 * You can trade with enemy markets.
 * Full trade carts cannot be loaded onto a transport ship. As soon as you give the order to board the ship, they change into an empty cart, dropping all of their gold.
+
+--------
+
+[here](https://gist.github.com/Piruzzolo/a0a66c3b592b3cadff785649ae8d7410) the (partly) decompiled CalculateTradeGold function
