@@ -29,7 +29,7 @@ with `deltaX` and `deltaY` the distances between the Markets in either axis-alig
 ## The Conquerors
 
     (gold value) = 2 * (d/size + 0.3) * d * A ) / B   + 0.5
-    
+
 `A` and `B` may depend on civilization attributes and on the speed of the trade vehicle (trade cog or cart), or its radius.
 
     d = max(0.1, sqrt(max(0.0, deltaX-5)^2 + max(0.0, deltaY-5)^2))
