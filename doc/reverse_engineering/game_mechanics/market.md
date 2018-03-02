@@ -1,6 +1,6 @@
 # Market
 
-Source: [here](http://ageofempires.wikia.com/wiki/Market_(Age_of_Empires_II)) for the first part - verified through reverse engeneering.
+Source: [here](http://ageofempires.wikia.com/wiki/Market_(Age_of_Empires_II)) for the first part - fixed through reverse engeneering.
 
 [here](https://www.youtube.com/watch?v=NvsM9B4ac2g) for the rest.
 
@@ -14,15 +14,25 @@ Generated amount of gold is not linear to the distance in tiles. Note that the g
 
 ### Math
 
-    (gold value) = 0.46 * d * (d/size + 0.3)
+## Age of Kings
+
+    (gold value) = (d/size + 0.3) * d * 0.46 + 0.5
 
 with
 `size`, the map size in tiles along the edge of the map and
 `d` is calculated as follows:
 
-    d = max(0.1, sqrt(max(0, deltaX-5)^2 + max(0, deltaY-5)^2))
+    d = max(0.0, sqrt(max(0.0, deltaX-4)^2 + max(0.0, deltaY-4)^2))
 
 with `deltaX` and `deltaY` the distances between the Markets in either axis-aligned direction, measured from the center of each Market.
+
+## The Conquerors
+
+    (gold value) = 2 * (d/size + 0.3) * d * A ) / B   + 0.5
+    
+`A` and `B` may depend on civilization attributes and on the speed of the trade vehicle (trade cog or cart), or its radius.
+
+    d = max(0.1, sqrt(max(0.0, deltaX-5)^2 + max(0.0, deltaY-5)^2))
 
 ## Tribute
 
