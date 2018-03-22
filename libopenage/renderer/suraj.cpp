@@ -31,74 +31,110 @@ void renderer_demo_0(util::Path path) {
 	opengl::GlWindow window("openage renderer test", { 1366, 768 } );
 
 	auto renderer = window.make_renderer();
-	
+
 	auto vshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::vertex,
-		path / "/assets/test_shaders/vshader_src.vert.glsl");
+		R"s(
+#version 330
+
+layout(location=0) in vec2 position;
+layout(location=1) in vec2 uv;
+uniform mat4 mvp;
+out vec2 v_uv;
+
+void main() {
+	gl_Position = mvp * vec4(position, 0.0, 1.0);
+
+  v_uv = vec2(uv.x, uv.y);
+}
+)s");
 
 	auto fshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::fragment,
-		path / "assets/test_shaders/fshader_src.frag.glsl");
+		R"s(
+#version 330
+
+in vec2 v_uv;
+uniform sampler2D tex;
+uniform uint u_id;
+
+layout(location=0) out vec4 col;
+layout(location=1) out uint id;
+
+void main() {
+	vec4 tex_val = texture(tex, v_uv);
+	if (tex_val.a == 0) {
+		discard;
+	}
+	col = tex_val;
+	id = u_id + 1u;
+}
+)s");
 
 	auto vshader_display_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::vertex,
-		path / "assets/test_shaders/vshader_display_src.vert.glsl");
+		R"s(
+#version 330
+
+layout(location=0) in vec2 position;
+layout(location=1) in vec2 uv;
+uniform mat4 proj;
+out vec2 v_uv;
+
+void main() {
+	gl_Position = proj * vec4(position, 0.0, 1.0);
+	v_uv = uv;
+}
+)s");
 
 	auto fshader_display_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::fragment,
-		path / "assets/test_shaders/fshader_display_src.frag.glsl");
+		R"s(
+#version 330
 
-	auto vshader_alpha = resources::ShaderSource(
-		resources::shader_lang_t::glsl,
-		resources::shader_stage_t::vertex,
-		path / "assets/test_shaders/alphamask.vert.glsl");
+uniform sampler2D color_texture;
 
-	auto fshader_alpha = resources::ShaderSource(
-		resources::shader_lang_t::glsl,
-		resources::shader_stage_t::fragment,
-		path / "assets/test_shaders/alphamask.frag.glsl");
+in vec2 v_uv;
+out vec4 col;
+
+void main() {
+	col = texture(color_texture, v_uv);
+}
+)s");
 	auto size = window.get_size();
 	auto shader = renderer->add_shader( { vshader_src, fshader_src } );
 	auto shader_display = renderer->add_shader( { vshader_display_src, fshader_display_src } );
-	auto alpha_shader = renderer->add_shader({vshader_alpha,fshader_alpha});
+
 	//start of experimental part
+
+
+
+
+	//end of experimental area
 	float aspect = (float)size.y/(float)size.x;
 
 	//start of experimental area
 	opengl::Sprite sprite;
+	auto test_obj = sprite.create(path, true,"/assets/terrain/textures/g_ds2_00_color_1.png",0, false, shader, renderer, aspect, 0.6, Eigen::Vector3f(0.0,0.0,0.0));
+	//auto test_obj2 = sprite.create(path,false, "/assets/converted/graphics/21.slp.png",0, true, shader, renderer, aspect, 0.3, Eigen::Vector3f(0.0,0.0,0.0));
+	//auto test_obj3 = sprite.create(path,false, "/assets/converted/graphics/739.slp.png",0, true, shader, renderer, aspect, 0.23, Eigen::Vector3f(0.5,0.0,0.0));
+	auto test_obj4 = sprite.create(path,true, "/assets/converted/graphics/209.slp.png",20, true, shader, renderer, aspect, 1, Eigen::Vector3f(0.0,0.0,0.0));
+	//auto test_obj5 = sprite.create(path,false, "/assets/converted/graphics/305.slp.png",0, false, shader, renderer, aspect, 0.5, Eigen::Vector3f(-0.4,0.0,0.0));
+	//auto test_obj6 = sprite.create(path,false, "/assets/converted/graphics/209.slp.png",0, true, shader, renderer, aspect, 0.1, Eigen::Vector3f(0.0,0.5,0.0));
+	//auto test_obj7 = sprite.create(path,false, "/assets/converted/graphics/209.slp.png",0, true, shader, renderer, aspect, 0.1, Eigen::Vector3f(0.0,0.5,0.0));
+	auto test_obj6 = sprite.create(path, true,"/assets/terrain/textures/g_ds2_00_color_1.png",0, false, shader, renderer, aspect, 0.6, Eigen::Vector3f(0.7,0.7,0.0));
 
-	//load the texture that we will be using
-	auto terrain_texture =  sprite.make_texture(path,"/assets/terrain/textures/g_m02_00_color.png",false,renderer);
-	auto paladin = sprite.make_texture(path,"/assets/converted/graphics/795.slp.png",true,renderer);
-	auto alpha_texture =  sprite.make_texture(path,"/assets/terrain/blends/watershore.png",false,renderer);
-	auto shore_texture =  sprite.make_texture(path,"/assets/terrain/textures/g_bch_00_color.png",false,renderer);
-	auto water_texture =  sprite.make_texture(path,"/assets/terrain/textures/g_wtr_00_color_1.png",false,renderer);
-	
-	//now to choose which subtexture as well as the transformation matrix. Both of these can
-	//be fed in the same function and updated everytime as this does not consume as many resources.
-	
-	auto paladin_1 = sprite.make_render_obj(paladin,false,15,shader,aspect,(float)size.y,0,0);
-	float left_terr = 0.125f*7;
-	float top_terr = 0.125f*1;		
-	auto alpha_test = sprite.make_terrain(water_texture,alpha_texture,alpha_shader,aspect,(float)size.y,0,512-64,left_terr,top_terr);
-	auto shore_1 = sprite.make_render_obj(shore_texture,true,0,shader,aspect,(float)size.y,0,0);
-	auto water_1 = sprite.make_render_obj(water_texture,true,0,shader,aspect,(float)size.y,0,0);
-	auto water_2 = sprite.make_render_obj(shore_texture,true,0,shader,aspect,(float)size.y,0,1024);
-	auto water_3 = sprite.make_render_obj(shore_texture,true,0,shader,aspect,(float)size.y,1024,0);
-	auto water_4 = sprite.make_render_obj(shore_texture,true,0,shader,aspect,(float)size.y,1024,1024);
-	std::vector<Renderable_test> mix_tex = {water_1,water_2,water_3,water_4};
-	//mix_tex.insert(water_1);
-	//mix_tex.insert(water_2);
-	//mix_tex.insert(water_3);
-	//mix_tex.insert(water_4);
-	
-	for(int i=-3;i<5;i++){
-		mix_tex.push_back(sprite.make_terrain(shore_texture,alpha_texture,alpha_shader,aspect,(float)size.y,i*128,512-64,left_terr,top_terr));
-	}
+
+
+	RenderPass_test display_pass_test {
+		{ test_obj,test_obj6,test_obj4},
+		renderer->get_display_target(),
+	};
+
 
 	log::log(INFO << "Size of the Window "<<size.x<<"X"<<size.y);
 	auto color_texture = renderer->add_texture(resources::TextureInfo(size.x, size.y, resources::pixel_format::rgba8));
@@ -106,38 +142,11 @@ void renderer_demo_0(util::Path path) {
 	auto depth_texture = renderer->add_texture(resources::TextureInfo(size.x, size.y, resources::pixel_format::depth24));
 	//one of the targets
 	auto fbo = renderer->create_texture_target( { color_texture.get(), id_texture.get(), depth_texture.get() } );
-	
+
 	auto color_texture_uniform = shader_display->new_uniform_input("color_texture", color_texture.get());
 
 	resources::TextureData id_texture_data = id_texture->into_data();
 	bool texture_data_valid = false;
-
-	auto quad = renderer->add_mesh_geometry(resources::MeshData::make_quad());
-
-	Renderable_test display_obj {
-		color_texture_uniform,
-		quad,
-		false,
-		false,
-	};
-
-	/*RenderPass_test pastu{
-		{terrain_1,terrain_2,terrain_3,terrain_4,terrain_5,terrain_6,terrain_7,terrain_8,terrain_9,paladin_1},//,test_obj5,test_obj6,test_obj7},
-		fbo.get(),
-	};*/
-	/*RenderPass_test alpha_pass{
-		{water_1,water_2,water_3,water_4,alpha_test},
-		fbo.get(),
-	};*/
-	RenderPass_test alpha_pass{
-		mix_tex,
-		fbo.get(),
-	};
-	RenderPass_test render_main{
-		{display_obj},
-		renderer->get_display_target(),
-	};
-
 
 	glDepthFunc(GL_LEQUAL);
 	glDepthRange(0.0, 1.0);
@@ -171,7 +180,7 @@ void renderer_demo_0(util::Path path) {
 			float xScale = 1.0/aspectRatio;
 
 			Eigen::Matrix4f pmat;
-			pmat << 1, 0, 0, 0,
+			pmat << xScale, 0, 0, 0,
 							0, 1, 0, 0,
 							0, 0, 1, 0,
 							0, 0, 0, 1;
@@ -184,12 +193,12 @@ void renderer_demo_0(util::Path path) {
 			texture_data_valid = false;
 
 			shader_display->update_uniform_input(color_texture_uniform.get(), "color_texture", color_texture.get(), "proj", pmat);
-			alpha_pass.target = fbo.get();
+			//pass.target = fbo.get();
 		} );
 
 	while (!window.should_close()) {
-		renderer->render_test(alpha_pass);
-		renderer->render_test(render_main);
+		//renderer->render_test(fbo_pass_test);
+		renderer->render_test(display_pass_test);
 		window.update();
 		window.get_context()->check_error();
 	}
