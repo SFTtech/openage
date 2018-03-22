@@ -23,7 +23,7 @@ public:
 
 	void update() override;
 
-	std::unique_ptr<Renderer> make_renderer() override;
+	std::shared_ptr<Renderer> make_renderer() override;
 
 	/// Make this window's context the current rendering context of the current thread.
 	/// Only use this and most other GL functions on a dedicated window thread.

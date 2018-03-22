@@ -281,8 +281,8 @@ void GlShaderProgram::execute_with(const GlUniformInput *unif_in, const GlGeomet
 	}
 }
 
-std::unique_ptr<UniformInput> GlShaderProgram::new_unif_in() {
-	auto in = std::make_unique<GlUniformInput>();
+std::shared_ptr<UniformInput> GlShaderProgram::new_unif_in() {
+	auto in = std::make_shared<GlUniformInput>();
 	in->program = this;
 	return in;
 }

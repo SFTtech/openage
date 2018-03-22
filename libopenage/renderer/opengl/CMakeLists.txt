@@ -4,7 +4,7 @@ add_sources(libopenage
   framebuffer.cpp
   geometry.cpp
   render_target.cpp
-  renderer.cpp
+  
   scrapped.h
   shader.cpp
   shader_program.cpp
@@ -13,4 +13,7 @@ add_sources(libopenage
   uniform_input.h
   vertex_array.cpp
   window.cpp
+  sprite.cpp
+  renderer.cpp
+
 )

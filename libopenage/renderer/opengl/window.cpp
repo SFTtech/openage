@@ -89,8 +89,8 @@ void GlWindow::update() {
 	SDL_GL_SwapWindow(this->window);
 }
 
-std::unique_ptr<Renderer> GlWindow::make_renderer() {
-	return std::make_unique<GlRenderer>(this->get_context());
+std::shared_ptr<Renderer> GlWindow::make_renderer() {
+	return std::make_shared<GlRenderer>(this->get_context());
 }
 
 void GlWindow::make_context_current() {

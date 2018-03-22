@@ -36,7 +36,7 @@ public:
 	bool has_uniform(const char*) override;
 
 protected:
-	std::unique_ptr<UniformInput> new_unif_in() override;
+	std::shared_ptr<UniformInput> new_unif_in() override;
 	void set_i32(UniformInput*, const char*, int32_t) override;
 	void set_u32(UniformInput*, const char*, uint32_t) override;
 	void set_f32(UniformInput*, const char*, float) override;
