@@ -187,6 +187,36 @@ def convert_metadata(args):
         with tgt['info/playercolortable.pal.png'].open_w() as outfile:
             player_palette.save_visualization(outfile)
 
+    # new texture conversion
+    slpid_for_terrain_name1 = {
+        terrain.name1: terrain.slp_id
+        for terrain in gamespec.empiresdat[0].terrains
+    }
+    name1_extractor = re.compile('([a-zA-Z0-9]+_[a-zA-Z0-9]+)_.+')
+    for filepath in args.srcdir['resources/_common/terrain/textures'].iterdir():
+        # filepath example: "g_ice_00_color.png"
+        filename = filepath.name
+        # ex: g_ice, this is the "name1" attribute in terrain metadata
+        name1_match = name1_extractor.match(filename)
+        if name1_match:
+            name1 = name1_match.group(1)
+            if name1 in slpid_for_terrain_name1:
+                slpid = slpid_for_terrain_name1[name1]
+                print('{} => {}'.format(filepath.name, slpid))
+                with filepath.open_r() as infile:
+                    with args.targetdir['terrain/{}.slp.png'.format(slpid)].open_w() as outfile:
+                        outfile.write(infile.read())
+                    with args.targetdir['terrain/{}.slp.docx'.format(slpid)].open_w() as outfile:
+                        outfile.write(b"""# struct subtexture
+# one sprite, as part of a texture atlas.
+#
+# this struct stores information about positions and sizes
+# of sprites included in the 'big texture'.
+# int32_t,int32_t,int32_t,int32_t,int32_t,int32_t
+# x,y,w,h,cx,cy
+0,0,97,49,0,0
+""")
+
 
 def extract_mediafiles_names_map(srcdir):
     """
@@ -252,6 +282,10 @@ def convert_media(args):
             # skip unwanted ids ("just debugging things(tm)")
             if getattr(args, "id", None) and\
                int(filepath.stem) != args.id:
+                skip_file = True
+
+            if filepath.name in ['8114.slp', '18249.slp', '8384.slp',
+                                 '18246.slp', '17246.slp', '17249.slp']:
                 skip_file = True
 
             if skip_file or filepath.is_dir():

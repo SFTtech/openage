@@ -96,7 +96,7 @@ class GameVersion(enum.Enum):
     age2_hd_rajas = (
         12.0,
         "Age of Empires 2: HD + Rise of the Rajas (Version 5.x)",
-        Support.breaks,
+        Support.yes,
         {'AoK HD.exe', 'resources/_common/dat/empires2_x2_p1.dat',
          'resources/_packages/rise-of-the-rajas/config.json'},
     )
