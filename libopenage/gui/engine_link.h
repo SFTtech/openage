@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -57,6 +57,8 @@ public:
 	}
 
 	QStringList get_global_binds() const;
+
+	Q_INVOKABLE void stop();
 
 signals:
 	void global_binds_changed();

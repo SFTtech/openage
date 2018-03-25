@@ -72,6 +72,13 @@ Item {
 				text: "reload_assets"
 				onClicked: gameSpec.invalidate()
 			}
+
+			ButtonFlat {
+				Layout.fillWidth: true
+
+				text: "quit"
+				onClicked: game.engine.stop()
+			}
 		}
 
 		Text {
