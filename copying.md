@@ -109,6 +109,7 @@ _the openage authors_ are:
 | Arne Sellmann               | PythonicChemist             | arne dawt sellmann à gmx dawt de                  |
 | Rafael X. Morales Georgi    | chocoladisco                | chocoladisco à gmail dawt com                     |
 | Marcel Schneider            | schnema123                  | marcelschneider5 à outlook dawt de                |
+| Samuel Grigolato            | samuelgrigolato             | samuel dawt grigolato à gmail dawt com            |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.

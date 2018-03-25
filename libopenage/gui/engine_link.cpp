@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #include "engine_link.h"
 
@@ -70,6 +70,10 @@ QObject* EngineLink::provider(QQmlEngine *engine, QJSEngine*) {
 
 QStringList EngineLink::get_global_binds() const {
 	return this->global_binds;
+}
+
+void EngineLink::stop() {
+	this->core->stop();
 }
 
 void EngineLink::on_global_binds_changed(const std::vector<std::string>& global_binds) {
