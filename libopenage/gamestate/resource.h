@@ -3,6 +3,7 @@
 #pragma once
 
 #include <functional>
+#include <string>
 
 namespace openage {
 
