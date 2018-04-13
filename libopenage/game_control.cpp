@@ -18,6 +18,15 @@ OutputMode::OutputMode(qtsdl::GuiItemLink *gui_link)
 	gui_link{gui_link} {
 }
 
+OutputMode::~OutputMode() {
+	// An empty deconstructor prevents our clients from needing
+	// to implement one.
+	//
+	// The deconstructor is needed in the first place to stop
+	// the compiler from generating ud2 (undefined) instructors
+	// for the body of this method.
+}
+
 void OutputMode::announce() {
 	emit this->gui_signals.announced(this->name());
 
