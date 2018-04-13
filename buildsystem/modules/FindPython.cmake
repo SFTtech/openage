@@ -166,9 +166,12 @@ foreach(PYTHON ${PYTHON_INTERPRETERS})
 		py_get_config_var(LIBDIR PYTHON_LIBRARY_DIR)
 		py_get_config_var(LIBPL PYTHON_LIBPL)
 		py_get_config_var(LDLIBRARY PYTHON_LIBRARY_NAME)
-		find_library(PYTHON_LIBRARIES ${PYTHON_LIBRARY_NAME}
+		py_get_config_var(VERSION PYTHON_VERSION)
+
+		find_library(PYTHON_LIBRARIES "${PYTHON_LIBRARY_NAME}" "libpython${PYTHON_VERSION}.dylib"
 			PATHS "${PYTHON_LIBRARY_DIR}" "${PYTHON_LIBPL}"
 		)
+
 	endif()
 
 	# there's a static_assert that tests the Python version.
