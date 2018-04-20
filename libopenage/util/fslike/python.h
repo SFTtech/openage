@@ -1,4 +1,4 @@
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+// Copyright 2017-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -49,6 +49,10 @@ public:
 	bool mkdirs(const Path::parts_t &parts) override;
 	File open_r(const Path::parts_t &parts) override;
 	File open_w(const Path::parts_t &parts) override;
+	File open_rw(const Path::parts_t &parts) override;
+	File open_a(const Path::parts_t &parts) override;
+	File open_ar(const Path::parts_t &parts) override;
+	// specialize the resolve functions to relay them to python.
 	std::pair<bool, Path> resolve_r(const Path::parts_t &parts) override;
 	std::pair<bool, Path> resolve_w(const Path::parts_t &parts) override;
 	std::string get_native_path(const Path::parts_t &parts) override;
@@ -91,6 +95,15 @@ extern OAAPI pyinterface::PyIfFunc<File, PyObject *, const std::vector<std::stri
 
 // pxd: PyIfFunc2[File, PyObjectPtr, const vector[string]] pyx_fs_open_w
 extern OAAPI pyinterface::PyIfFunc<File, PyObject *, const std::vector<std::string>&> pyx_fs_open_w;
+
+// pxd: PyIfFunc2[File, PyObjectPtr, const vector[string]] pyx_fs_open_rw
+extern OAAPI pyinterface::PyIfFunc<File, PyObject *, const std::vector<std::string>&> pyx_fs_open_rw;
+
+// pxd: PyIfFunc2[File, PyObjectPtr, const vector[string]] pyx_fs_open_a
+extern OAAPI pyinterface::PyIfFunc<File, PyObject *, const std::vector<std::string>&> pyx_fs_open_a;
+
+// pxd: PyIfFunc2[File, PyObjectPtr, const vector[string]] pyx_fs_open_ar
+extern OAAPI pyinterface::PyIfFunc<File, PyObject *, const std::vector<std::string>&> pyx_fs_open_ar;
 
 // pxd: PyIfFunc2[Path, PyObjectPtr, const vector[string]] pyx_fs_resolve_r
 extern OAAPI pyinterface::PyIfFunc<Path, PyObject *, const std::vector<std::string>&> pyx_fs_resolve_r;

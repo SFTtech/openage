@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -94,6 +94,9 @@ public:
 	File open(const std::string &mode="r") const;
 	File open_r() const;
 	File open_w() const;
+	File open_rw() const;
+	File open_a() const;
+	File open_ar() const;
 
 	/**
 	 * Resolve the native path by flattening all underlying

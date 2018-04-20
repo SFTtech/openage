@@ -1,4 +1,4 @@
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+// Copyright 2017-2018 the openage authors. See copying.md for legal info.
 
 #include "native.h"
 
@@ -27,6 +27,12 @@ Native::Native(const std::string &path, mode_t mode)
 		break;
 	case mode_t::RW:
 		open_mode = std::ios_base::in | std::ios_base::out;
+		break;
+	case mode_t::A:
+		open_mode = std::ios_base::out | std::ios_base::ate;
+		break;
+	case mode_t::AR:
+		open_mode = std::ios_base::in | std::ios_base::out | std::ios_base::ate;
 		break;
 	default:
 		throw Error{ERR << "unknown open mode"};

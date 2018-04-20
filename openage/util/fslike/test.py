@@ -1,4 +1,4 @@
-# Copyright 2017-2017 the openage authors. See copying.md for legal info.
+# Copyright 2017-2018 the openage authors. See copying.md for legal info.
 """
 Tests for the filesystem-like abstraction.
 """
@@ -154,15 +154,19 @@ def test_case_ignoring(root_path, root_dir):
 
     # open it with wrong-case name
     with ignorecase_dir["LeMmE_In"].open("rb") as fil:
+        assert_value(fil.readable(), True)
+        assert_value(fil.writable(), False)
         assert_value(fil.read(), b"pwnt")
 
     # then write it with wrong-case name
     with ignorecase_dir["LeMmE_In"].open("wb") as fil:
-        fil.write(b"changedit")
+        assert_value(fil.readable(), False)
+        assert_value(fil.writable(), True)
+        fil.write(b"yay")
 
     # check if changes went to known-name file
     with root_path["lemme_in"].open("rb") as fil:
-        assert_value(fil.read(), b"changedit")
+        assert_value(fil.read(), b"yay")
 
     # create new file with CamelCase name
     ignorecase_dir["WeirdCase"].touch()
@@ -180,6 +184,39 @@ def test_case_ignoring(root_path, root_dir):
     else:
         # The underlying fs should treat A as a.
         assert_value(root_path["A"].is_file(), True)
+
+
+def test_append(root_path):
+    """
+    Test the content append modes.
+    """
+
+    # create initial content
+    with root_path["appendfile"].open("wb") as fil:
+        fil.write(b"just")
+
+    # append some data
+    with root_path["appendfile"].open("ab") as fil:
+        assert_value(fil.readable(), False)
+        assert_value(fil.writable(), True)
+        fil.write(b" some")
+
+    # append some more data and then read it
+    with root_path["appendfile"].open("arb") as fil:
+        assert_value(fil.readable(), True)
+        assert_value(fil.writable(), True)
+        fil.write(b" test")
+
+    # use the read-write mode to first read, then write, then read.
+    with root_path["appendfile"].open("rwb") as fil:
+        assert_value(fil.readable(), True)
+        assert_value(fil.writable(), True)
+        assert_value(fil.read(), b"just some test")
+        fil.seek(0)
+        fil.write(b"overwritten")
+
+        fil.seek(0)
+        assert_value(fil.read(), b"overwrittenest")
 
 
 def test():
@@ -200,6 +237,9 @@ def test():
 
     # test the case ignoring dir
     test_case_ignoring(root_path, root_dir)
+
+    # test appending content
+    test_append(root_path)
 
     # and remove all the things we just created
     assert_value(root_path.is_dir(), True)

@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 """
 Provides Path, which is analogous to pathlib.Path,
@@ -105,16 +105,31 @@ class Path:
 
     def open(self, mode="r"):
         """ Opens the file at this path; returns a file-like object. """
-        if mode == "rb":
-            return self.fsobj.open_r(self.parts)
-        elif mode == "r":
-            return TextIOWrapper(self.fsobj.open_r(self.parts))
-        elif mode == "wb":
-            return self.fsobj.open_w(self.parts)
-        elif mode == "w":
-            return TextIOWrapper(self.fsobj.open_w(self.parts))
+
+        dmode = mode.replace("b", "")
+
+        if dmode == "r":
+            handle = self.fsobj.open_r(self.parts)
+
+        elif dmode == "w":
+            handle = self.fsobj.open_w(self.parts)
+
+        elif dmode == "r+" or dmode == "rw":
+            handle = self.fsobj.open_rw(self.parts)
+
+        elif dmode == "a":
+            handle = self.fsobj.open_a(self.parts)
+
+        elif dmode == "a+" or dmode == "ar":
+            handle = self.fsobj.open_ar(self.parts)
+
         else:
             raise UnsupportedOperation("unsupported open mode: " + mode)
+
+        if "b" in mode:
+            return handle
+
+        return TextIOWrapper(handle)
 
     def open_r(self):
         """ open with mode='rb' """

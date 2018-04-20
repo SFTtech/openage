@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 """
 FSLikeObjects that represent actual file system paths:
@@ -50,6 +50,15 @@ class Directory(FSLikeObject):
 
     def open_w(self, parts):
         return open(self.resolve(parts), 'wb')
+
+    def open_rw(self, parts):
+        return open(self.resolve(parts), 'r+b')
+
+    def open_a(self, parts):
+        return open(self.resolve(parts), 'ab')
+
+    def open_ar(self, parts):
+        return open(self.resolve(parts), 'a+b')
 
     def get_native_path(self, parts):
         return self.resolve(parts)
