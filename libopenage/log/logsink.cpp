@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #include "logsink.h"
 
@@ -11,7 +11,7 @@ LogSink::LogSink() {
 	std::lock_guard<std::mutex> lock(sink_list_mutex);
 	sink_list().push_back(this);
 
-	this->loglevel = lvl::dbg;
+	this->loglevel = level::dbg;
 }
 
 

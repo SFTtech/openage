@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #include "enum_test.h"
 
@@ -7,49 +7,41 @@
 
 namespace openage {
 namespace util {
-
-
-template<>
-tests::testtype::data_type tests::testtype::data{};
-
-
 namespace tests {
 
-namespace testtypes {
-
-testtype foo({"some text"});
-testtype bar({"some other text"});
-
-} // testtypes
-
+static constexpr testenum_value undefined {{"UNDEFINED", 0}, "undefined test string"};
+testenum::testenum() : Enum{undefined} {}
 
 void enum_() {
-	testtype tv0 = testtypes::foo;
-	tv0 == testtypes::foo or TESTFAIL;
-	tv0 != testtypes::bar or TESTFAIL;
+	testenum tv0 = testenum::foo;
+	tv0 == testenum::foo or TESTFAIL;
+	tv0 != testenum::bar or TESTFAIL;
 
-	testtype tv1 = testtypes::bar;
+	testenum tv1 = testenum::bar;
 	tv0 == tv1 and TESTFAIL;
 
-	// "default value"
-	testtype tv2;
+	tv1 = testenum::foo;
+	tv0 == tv1 or TESTFAIL;
+	tv0 != tv1 and TESTFAIL;
 
-	// the enum doesn't have 12 members; thus, this defaults to the default value.
-	testtype tv3;
-	tv2 == tv3 or TESTFAIL;
+	TESTEQUALS(tv0->get_stuff(), std::string("foooooooooooooooooo"));
+	TESTEQUALS(tv0->stuff, std::string("foooooooooooooooooo"));
+
+	// "default value"
+	testenum tv2;
+	TESTEQUALS(tv2->stuff, std::string("undefined test string"));
+
+	tv2 != tv0 or TESTFAIL;
+	tv2 != tv1 or TESTFAIL;
+	tv2 == tv2 or TESTFAIL;
 
 	FString fstr;
 	fstr << tv0;
-	TESTEQUALS(fstr.buffer, "openage::util::tests::testtypes::foo");
+	TESTEQUALS(fstr.buffer, "openage::util::tests::testenum_value::foo");
 
 	fstr.reset();
 	fstr << tv2;
-	TESTEQUALS(fstr.buffer, "<default enum value>");
-
-	TESTEQUALS(tv0.get()->stuff, "some text");
-	TESTEQUALS(tv0->stuff, "some text");
-	TESTEQUALS(tv2->stuff, "");
+	TESTEQUALS(fstr.buffer, "openage::util::tests::testenum_value::UNDEFINED");
 }
-
 
 }}} // openage::util::tests

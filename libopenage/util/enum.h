@@ -1,140 +1,183 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-// pxd: from libcpp cimport bool as cppbool
 #include <iostream>
-// pxd: from libcpp.string cimport string
-#include <string>
 #include <typeinfo>
-#include <utility>
-#include <vector>
 
 #include "compiler.h"
-#include "constinit_vector.h"
+
+// pxd: from libcpp cimport bool
+
 
 namespace openage {
 namespace util {
 
-
-/**
+/*
  * C++'s enum class has various deficits:
  *
  *  - Wrapping it via Cython requires hacks.
- *  - enum objects can't have member variables or methods.
- *  - you can't even determine the name of an enum object.
- *  - no further members can be added from other files.
+ *  - enum objects can't have any associated data.
+ *  - they can't have member methods
  *
- * This attempts to fix those issues.
- * It incurs a small runtime penalty for comparisions to constants,
- * since those are now global objects instead of compile-time constants.
+ * In cases where those features are required, we recommend to use references
+ * to non-copyable objects instead of enum values. Which is what this class provides.
  *
- * For an usage example, see enum_test.{h, cpp}.
+ * This class provides is a simple base which
+ *  - forbids copying
+ *  - provides an equality operator which compares the memory addresses of the objects.
+ *  - contains a const char *name, for use in operator <<
+ *  - provides operator <<
+ *  - contains a numeric value, as enums do
+ *  - provides comparison operators which use the numeric value
+ *
+ * In order to contain the const references to these objects,
+ * and as a namespace for static objects which contain the values,
+ * use the Enum class below.
+ *
+ * For a full usage example, see enum_test.{h, cpp}.
  *
  * pxd:
  *
- * cppclass Enum[T]:
- *     const T *get() except +
- *     string name() except +
- *
- *     cppbool operator ==(Enum[T] arg) except +
- *     cppbool operator !=(Enum[T] arg) except +
+ * cppclass EnumValue[DerivedType, NumericType]:
+ *     const char *name
+ *     NumericType numeric
  */
-template<typename T>
-class OAAPI Enum {
+template<typename DerivedType, typename NumericType=int>
+class OAAPI EnumValue {
 public:
-	/**
-	 * Adds a new value to the enum.
-	 *
-	 * This should only be required at program init time,
-	 * to initialize global objects.
-	 */
-	explicit Enum<T>(const T &obj) {
-		if (unlikely(this->data.size() == 0)) {
-			// add element #0, the default fallback value.
-			this->data.push_back({"<default enum value>", T()});
-		}
+	// implicit constructor: EnumValue(const char *value_name, int numeric_value)
 
-		this->id = this->data.size();
-		this->data.push_back({util::symbol_name(reinterpret_cast<void *>(this)), obj});
+	// enum values cannot be copied
+	EnumValue(const EnumValue &other) = delete;
+	EnumValue &operator =(const EnumValue &other) = delete;
+
+	// an explicit deletion of the implicitly defined copy constructor and assignment operator
+	// will implicitly delete the implicitly defined move constructor and assignment operator.
+	// yay for C++
+
+	// enum values are equal if the pointers are equal.
+	constexpr bool operator ==(const DerivedType &other) const {
+		return (this == &other);
 	}
 
-
-	/**
-	 * Initializes this to the default value.
-	 */
-	Enum()
-		:
-		id{0} {};
-
-
-	// regular low-cost copying.
-	Enum(const Enum<T> &other)
-		:
-		id{other.id} {};
-
-
-	Enum<T> &operator =(const Enum<T> other) {
-		id = other.id;
-		return *this;
+	constexpr bool operator !=(const DerivedType &other) const {
+		return !(*this == other);
 	}
 
-
-	bool operator ==(Enum<T> other) {
-		return this->id == other.id;
+	constexpr bool operator <=(const DerivedType &other) const {
+		return this->numeric <= other.numeric;
 	}
 
-
-	bool operator !=(Enum<T> other) {
-		return this->id != other.id;
+	constexpr bool operator <(const DerivedType &other) const {
+		return this->numeric < other.numeric;
 	}
 
-
-	// Allows you to access the associated member.
-	const T &operator *() const {
-		return this->data[this->id].second;
+	constexpr bool operator >=(const DerivedType &other) const {
+		return this->numeric >= other.numeric;
 	}
 
-	const T *operator ->() const {
-		return &this->data[this->id].second;
+	constexpr bool operator >(const DerivedType &other) const {
+		return this->numeric > other.numeric;
 	}
 
-
-	// Allows you to explicitly access the associated member.
-	const T *get() const {
-		return &this->data[this->id].second;
+	friend std::ostream &operator <<(std::ostream &os, const DerivedType &arg) {
+		os << util::demangle(typeid(DerivedType).name()) << "::" << arg.name;
+		return os;
 	}
 
-
-	/**
-	 * Returns the object's symbol name.
-	 */
-	const std::string &name() const {
-		return this->data[this->id].first;
-	}
-
-
-	using data_type = ConstInitVector<std::pair<std::string, T>>;
-
-
-private:
-	unsigned int id;
-
-
-	/**
-	 * Holds the names and objects for all enum values.
-	 *
-	 * Must be explicitly defined in some cpp file.
-	 */
-	static data_type data;
+	const char *name;
+	NumericType numeric;
 };
 
 
-template<typename T>
-std::ostream &operator <<(std::ostream &os, Enum<T> val) {
-	os << val.name();
-	return os;
-}
+/**
+ * Container for possible enum values.
+ * Inherit from this class with CRTP.
+ *
+ * This class should have the various values defined as `static constexpr`
+ * members.
+ * Due to the C++ standard, individual enum values must be declared
+ * as `static constexpr` members of a class.
+ * If they are declared as `static constexpr` constants in a namespace instead,
+ * the linker will place the constant in the ELF file once per object file
+ * instead of deduplicating it.
+ *
+ * Objects of this class contain a reference to a static constexpr value.
+ *
+ * The static constexpr values can be accessed through `operator ->`.
+ *
+ * See the documentation for the EnumValue class above.
+ *
+ * pxd:
+ *
+ * cppclass Enum[DerivedType]:
+ *     const DerivedType &get() except +
+ *
+ *     bool operator ==(Enum[DerivedType] other) except +
+ *     bool operator !=(Enum[DerivedType] other) except +
+ *
+ *     bool operator <(Enum[DerivedType] other) except +
+ *     bool operator >(Enum[DerivedType] other) except +
+ *     bool operator <=(Enum[DerivedType] other) except +
+ *     bool operator >=(Enum[DerivedType] other) except +
+ */
+template<typename DerivedType>
+class OAAPI Enum {
+	using this_type = Enum<DerivedType>;
 
+public:
+	// disallow the empty constructor to ensure that value is always a valid pointer.
+	constexpr Enum() = delete;
+	constexpr Enum(const DerivedType &value) : value{&value} {}
+
+	constexpr operator const DerivedType &() const {
+		return *this->value;
+	}
+
+	constexpr Enum &operator =(const DerivedType &value) {
+		this->value = &value;
+	}
+
+	constexpr const DerivedType *operator ->() const {
+		return this->value;
+	}
+
+	constexpr bool operator ==(const this_type &other) const {
+		return *this->value == *other.value;
+	}
+
+	constexpr bool operator !=(const this_type &other) const {
+		return *this->value != *other.value;
+	}
+
+	constexpr bool operator <=(const this_type &other) const {
+		return *this->value <= *other.value;
+	}
+
+	constexpr bool operator <(const this_type &other) const {
+		return *this->value < *other.value;
+	}
+
+	constexpr bool operator >=(const this_type &other) const {
+		return *this->value >= *other.value;
+	}
+
+	constexpr bool operator >(const this_type &other) const {
+		return *this->value > *other.value;
+	}
+
+	constexpr const DerivedType &get() const {
+		return *this->value;
+	}
+
+	friend std::ostream &operator <<(std::ostream &os, const this_type &arg) {
+		os << *arg.value;
+		return os;
+	}
+
+protected:
+	const DerivedType *value;
+};
 
 }} // openage::util

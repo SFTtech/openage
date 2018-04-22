@@ -20,9 +20,9 @@ namespace filelike {
  *
  * pxd:
  * ctypedef enum seek_t "openage::util::filelike::FileLike::seek_t":
- *     seek_t_SET "openage::util::filelike::FileLike::seek_t::SET" = 0
- *     seek_t_CUR "openage::util::filelike::FileLike::seek_t::CUR" = 1
- *     seek_t_END "openage::util::filelike::FileLike::seek_t::END" = 2
+ *     seek_t_SET "::openage::util::filelike::FileLike::seek_t::SET" = 0
+ *     seek_t_CUR "::openage::util::filelike::FileLike::seek_t::CUR" = 1
+ *     seek_t_END "::openage::util::filelike::FileLike::seek_t::END" = 2
  *
  * cppclass FileLike:
  *     string read(ssize_t max) except +

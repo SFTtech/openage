@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -87,12 +87,12 @@ struct OAAPI message {
 	int64_t timestamp;
 
 	/**
-	 * Sets all members except for filename, lineno, functionname and lvl.
+	 * Sets all members except for filename, lineno, functionname and level.
 	 */
 	void init();
 
 	/**
-	 * Sets all members except for lineno and lvl.
+	 * Sets all members except for lineno and level.
 	 *
 	 * filename and functionname are copied to an internal cache.
 	 *
@@ -126,7 +126,7 @@ public:
 	 * @param lvl                loglevel of the message. Also required for exception messages.
 	 */
 	MessageBuilder(const char *filename, unsigned lineno, const char *functionname,
-	               level lvl=lvl::info);
+	               level lvl=level::info);
 
 	// auto-convert to message
 	inline operator const message &() const {
@@ -162,8 +162,8 @@ private:
 	LVLOBJ)
 
 
-// for use with log::level iterals (auto-prefixes full qualification)
-#define MSG(LVL) MSG_LVLOBJ(::openage::log::lvl:: LVL)
+// for use with log::level literals (auto-prefixes full qualification)
+#define MSG(LVL) MSG_LVLOBJ(::openage::log::level:: LVL)
 
 
 // some convenience shorteners for MSG(...).

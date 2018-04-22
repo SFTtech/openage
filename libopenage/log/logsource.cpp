@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #include "logsource.h"
 
@@ -25,7 +25,7 @@ void LogSource::log(const message &msg) {
 
 	for (LogSink *sink : sink_list()) {
 		// TODO: more sophisticated filtering (iptables-chains-like)
-		if (msg.lvl->priority >= sink->loglevel->priority) {
+		if (msg.lvl >= sink->loglevel) {
 			sink->output_log_message(msg, this);
 		}
 	}
