@@ -1,4 +1,4 @@
-# Copyright 2017-2017 the openage authors. See copying.md for legal info.
+# Copyright 2017-2018 the openage authors. See copying.md for legal info.
 
 """
 Functions called from C++ to perform method calls on
@@ -27,6 +27,9 @@ from libopenage.util.fslike.python cimport (
     pyx_fs_mkdirs,
     pyx_fs_open_r,
     pyx_fs_open_w,
+    pyx_fs_open_rw,
+    pyx_fs_open_a,
+    pyx_fs_open_ar,
     pyx_fs_resolve_r,
     pyx_fs_resolve_w,
     pyx_fs_get_native_path,
@@ -253,7 +256,20 @@ cdef File_cpp fs_open(object path, int mode) except *:
         return File_cpp(native_path, mode)
 
     else:
-        access_mode = "rb" if mode == 0 else "wb"
+        # sync with filelike/filelike.h enum class mode_t
+        # (and the calls to fs_open_* below)
+        if mode == 0:
+            access_mode = 'rb'
+        elif mode == 1:
+            access_mode = 'wb'
+        elif mode == 2:
+            access_mode = 'r+b'
+        elif mode == 3:
+            access_mode = 'ab'
+        elif mode == 4:
+            access_mode = 'a+b'
+        else:
+            raise ValueError("unknown file open mode id: %s" % mode)
 
         # open it the python-way and wrap it
         filelike = path.open(access_mode)
@@ -269,6 +285,21 @@ cdef File_cpp fs_open_r(PyObject *fslike, const vector[string]& parts) except * 
 cdef File_cpp fs_open_w(PyObject *fslike, const vector[string]& parts) except * with gil:
     open_path = (<object> fslike).resolve_w(parts)
     return fs_open(open_path, 1)
+
+
+cdef File_cpp fs_open_rw(PyObject *fslike, const vector[string]& parts) except * with gil:
+    open_path = (<object> fslike).resolve_w(parts)
+    return fs_open(open_path, 2)
+
+
+cdef File_cpp fs_open_a(PyObject *fslike, const vector[string]& parts) except * with gil:
+    open_path = (<object> fslike).resolve_w(parts)
+    return fs_open(open_path, 3)
+
+
+cdef File_cpp fs_open_ar(PyObject *fslike, const vector[string]& parts) except * with gil:
+    open_path = (<object> fslike).resolve_w(parts)
+    return fs_open(open_path, 4)
 
 
 cdef Path_cpp fs_resolve_r(PyObject *fslike, const vector[string]& parts) except * with gil:
@@ -333,6 +364,9 @@ def setup():
     pyx_fs_mkdirs.bind0(fs_mkdirs)
     pyx_fs_open_r.bind0(fs_open_r)
     pyx_fs_open_w.bind0(fs_open_w)
+    pyx_fs_open_rw.bind0(fs_open_rw)
+    pyx_fs_open_a.bind0(fs_open_a)
+    pyx_fs_open_ar.bind0(fs_open_ar)
     pyx_fs_resolve_r.bind0(fs_resolve_r)
     pyx_fs_resolve_w.bind0(fs_resolve_w)
     pyx_fs_get_native_path.bind0(fs_get_native_path)

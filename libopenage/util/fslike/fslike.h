@@ -1,4 +1,4 @@
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+// Copyright 2017-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -47,6 +47,9 @@ namespace fslike {
  *
  *     File open_r(const parts_t &parts) except +
  *     File open_w(const parts_t &parts) except +
+ *     File open_rw(const parts_t &parts) except +
+ *     File open_a(const parts_t &parts) except +
+ *     File open_ar(const parts_t &parts) except +
  *     pair[bool, Path] resolve_r(const parts_t &parts) except +
  *     pair[bool, Path] resolve_w(const parts_t &parts) except +
  *     string get_native_path(const parts_t &parts) except +
@@ -78,6 +81,12 @@ public:
 	virtual bool mkdirs(const Path::parts_t &parts) = 0;
 	virtual File open_r(const Path::parts_t &parts) = 0;
 	virtual File open_w(const Path::parts_t &parts) = 0;
+	virtual File open_rw(const Path::parts_t &parts) = 0;
+	virtual File open_a(const Path::parts_t &parts) = 0;
+	virtual File open_ar(const Path::parts_t &parts) = 0;
+
+	// provide a default implementation that resolves the path
+	// by checking if it is readable/writable:
 	virtual std::pair<bool, Path> resolve_r(const Path::parts_t &parts);
 	virtual std::pair<bool, Path> resolve_w(const Path::parts_t &parts);
 	virtual std::string get_native_path(const Path::parts_t &parts) = 0;

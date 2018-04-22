@@ -1,4 +1,4 @@
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+// Copyright 2017-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -32,6 +32,10 @@ public:
 	bool mkdirs(const Path::parts_t &parts) override;
 	File open_r(const Path::parts_t &parts) override;
 	File open_w(const Path::parts_t &parts) override;
+	File open_rw(const Path::parts_t &parts) override;
+	File open_a(const Path::parts_t &parts) override;
+	File open_ar(const Path::parts_t &parts) override;
+	// inherit the resolve_r/resolve_w functions
 	std::string get_native_path(const Path::parts_t &parts) override;
 	bool rename(const Path::parts_t &parts,
 	            const Path::parts_t &target_parts) override;

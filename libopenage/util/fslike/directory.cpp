@@ -1,4 +1,4 @@
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+// Copyright 2017-2018 the openage authors. See copying.md for legal info.
 
 #include "directory.h"
 
@@ -52,6 +52,10 @@ Directory::Directory(const std::string &basepath, bool create_if_missing)
 }
 
 
+// We don't need a resolve_r and resolve_w here!
+// If the underlying fslike system is a Directory (i.e. this.)
+// then we don't have any overlay possibility!
+// -> Always resolve just the real system filename.
 std::string Directory::resolve(const Path::parts_t &parts) const {
 	std::string ret = this->basepath;
 	for (auto &part : parts) {
@@ -188,6 +192,30 @@ File Directory::open_w(const Path::parts_t &parts) {
 	return File{
 		std::make_shared<filelike::Native>(this->resolve(parts),
 		                                   filelike::Native::mode_t::W)
+	};
+}
+
+
+File Directory::open_rw(const Path::parts_t &parts) {
+	return File{
+		std::make_shared<filelike::Native>(this->resolve(parts),
+		                                   filelike::Native::mode_t::RW)
+	};
+}
+
+
+File Directory::open_a(const Path::parts_t &parts) {
+	return File{
+		std::make_shared<filelike::Native>(this->resolve(parts),
+		                                   filelike::Native::mode_t::A)
+	};
+}
+
+
+File Directory::open_ar(const Path::parts_t &parts) {
+	return File{
+		std::make_shared<filelike::Native>(this->resolve(parts),
+		                                   filelike::Native::mode_t::AR)
 	};
 }
 

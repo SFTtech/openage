@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #include "path.h"
 
@@ -115,6 +115,15 @@ File Path::open(const std::string &mode) const {
 	else if (mode == "w") {
 		return this->open_w();
 	}
+	else if (mode == "rw" or mode == "r+") {
+		return this->open_w();
+	}
+	else if (mode == "a") {
+		return this->open_a();
+	}
+	else if (mode == "a+" or mode == "ar") {
+		return this->open_ar();
+	}
 	else {
 		throw Error{ERR << "unsupported open mode: " << mode};
 	}
@@ -128,6 +137,21 @@ File Path::open_r() const {
 
 File Path::open_w() const {
 	return this->fsobj->open_w(this->parts);
+}
+
+
+File Path::open_rw() const {
+	return this->fsobj->open_rw(this->parts);
+}
+
+
+File Path::open_a() const {
+	return this->fsobj->open_a(this->parts);
+}
+
+
+File Path::open_ar() const {
+	return this->fsobj->open_ar(this->parts);
 }
 
 

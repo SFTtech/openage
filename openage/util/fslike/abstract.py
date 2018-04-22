@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 """
 Provides filesystem-like interfaces:
@@ -62,6 +62,18 @@ class FSLikeObject(ABC):
     @abstractmethod
     def open_w(self, parts):
         """ Shall return a BufferedWriter for the given file ("mode 'wb'"). """
+        pass
+
+    def open_rw(self, parts):
+        """ Shall return a BufferedWriter for the given file ("mode 'r+'"). """
+        pass
+
+    def open_a(self, parts):
+        """ Shall return a BufferedWriter for the given file ("mode 'a'"). """
+        pass
+
+    def open_ar(self, parts):
+        """ Shall return a BufferedWriter for the given file ("mode 'a+'"). """
         pass
 
     def exists(self, parts):

@@ -1,4 +1,4 @@
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+// Copyright 2017-2018 the openage authors. See copying.md for legal info.
 
 #include "python.h"
 
@@ -40,6 +40,18 @@ File Python::open_r(const Path::parts_t &parts) {
 
 File Python::open_w(const Path::parts_t &parts) {
 	return pyx_fs_open_w.call(this->fsobj->get_ref(), parts);
+}
+
+File Python::open_rw(const Path::parts_t &parts) {
+	return pyx_fs_open_rw.call(this->fsobj->get_ref(), parts);
+}
+
+File Python::open_a(const Path::parts_t &parts) {
+	return pyx_fs_open_a.call(this->fsobj->get_ref(), parts);
+}
+
+File Python::open_ar(const Path::parts_t &parts) {
+	return pyx_fs_open_ar.call(this->fsobj->get_ref(), parts);
 }
 
 std::pair<bool, Path> Python::resolve_r(const Path::parts_t &parts) {
@@ -113,6 +125,9 @@ pyinterface::PyIfFunc<std::vector<std::string>, PyObject *, const std::vector<st
 pyinterface::PyIfFunc<bool, PyObject *, const std::vector<std::string>&> pyx_fs_mkdirs;
 pyinterface::PyIfFunc<File, PyObject *, const std::vector<std::string>&> pyx_fs_open_r;
 pyinterface::PyIfFunc<File, PyObject *, const std::vector<std::string>&> pyx_fs_open_w;
+pyinterface::PyIfFunc<File, PyObject *, const std::vector<std::string>&> pyx_fs_open_rw;
+pyinterface::PyIfFunc<File, PyObject *, const std::vector<std::string>&> pyx_fs_open_a;
+pyinterface::PyIfFunc<File, PyObject *, const std::vector<std::string>&> pyx_fs_open_ar;
 pyinterface::PyIfFunc<Path, PyObject *, const std::vector<std::string>&> pyx_fs_resolve_r;
 pyinterface::PyIfFunc<Path, PyObject *, const std::vector<std::string>&> pyx_fs_resolve_w;
 
