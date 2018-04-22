@@ -14,7 +14,7 @@ sanity_check:
 configure:
 	- env: mode=debug              (? if job != "debian" ?)
 	- env: mode=release            (? if job == "debian" ?)
-	./configure --mode=${mode} --download-nyan
+	./configure --mode=${mode} --ccache --download-nyan
 
 build: configure
 	make -j$(nproc) build
