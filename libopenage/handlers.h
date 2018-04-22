@@ -16,6 +16,8 @@ class Engine;
  */
 class DrawHandler {
 public:
+	virtual ~DrawHandler() = default;
+
 	/**
 	 * execute the drawing action.
 	 */
@@ -27,6 +29,8 @@ public:
  */
 class HudHandler {
 public:
+	virtual ~HudHandler() = default;
+
 	/**
 	 * execute the drawing action.
 	 */
@@ -38,6 +42,8 @@ public:
  */
 class TickHandler {
 public:
+	virtual ~TickHandler() = default;
+
 	/**
 	 * execute the tick action.
 	 */
@@ -49,6 +55,8 @@ public:
  */
 class InputHandler {
 public:
+	virtual ~InputHandler() = default;
+
 	/**
 	 * execute the input handler.
 	 */
@@ -60,6 +68,8 @@ public:
  */
 class ResizeHandler {
 public:
+	virtual ~ResizeHandler() = default;
+
 	/**
 	 * execute the resize handler.
 	 */
