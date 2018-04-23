@@ -1,8 +1,9 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <functional>
+#include <string>
 
 namespace openage {
 

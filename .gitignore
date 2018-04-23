@@ -64,3 +64,6 @@ perf.data*
 
 # IDEs
 .vscode
+
+# macOS
+.DS_Store

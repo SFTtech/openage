@@ -38,8 +38,8 @@ THIRDPARTYLEGALHEADER = re.compile(
     "((#|//) .*\\n)*"
 
     # the openage copyright
-    "(#|//) (Modifications|Other (data|code)|Everything else) "
-    + OPENAGE_AUTHORS + "\n"
+    "(#|//) (Modifications|Other (data|code)|Everything else) " +
+    OPENAGE_AUTHORS + "\n"
     "(#|//) See copying\\.md for further legal info\\.\n")
 
 # Empty files (consisting of only comments) don't require a legal header.

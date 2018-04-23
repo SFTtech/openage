@@ -56,6 +56,7 @@ signals:
 class OutputMode : public input::InputContext {
 public:
 	explicit OutputMode(qtsdl::GuiItemLink *gui_link);
+	virtual ~OutputMode();
 
 	/**
 	 * Is this mode able to be used?
