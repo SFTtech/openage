@@ -1,4 +1,4 @@
-# Copyright 2014-2017 the openage authors. See copying.md for legal info.
+# Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 function(codegen_run)
 	# this function must be called once all required assets have been created, but before the executable is finalized.
@@ -35,10 +35,9 @@ function(codegen_run)
 	# otherwise the codegen invocation would be done for each generated source.
 	set(CODEGEN_TIMEFILE "${CMAKE_BINARY_DIR}/codegen_timefile")
 
-	list(APPEND CODEGEN_TARGET_FILES ${CODEGEN_TIMEFILE})
-
 	add_custom_command(
-		OUTPUT ${CODEGEN_TARGET_FILES}
+		OUTPUT "${CODEGEN_TIMEFILE}"
+		BYPRODUCTS ${CODEGEN_TARGET_FILES}
 		COMMAND ${CODEGEN_INVOCATION} --mode=codegen "--touch-file-on-cache-change=${CMAKE_CURRENT_LIST_FILE}" --force-rerun-on-generated-list-change
 		COMMAND "${CMAKE_COMMAND}" -E touch "${CODEGEN_TIMEFILE}"
 		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
@@ -46,7 +45,9 @@ function(codegen_run)
 		COMMENT "openage.codegen: generating c++ code"
 	)
 
-	add_custom_target(codegen DEPENDS "${CODEGEN_TIMEFILE}")
+	add_custom_target(codegen
+		DEPENDS "${CODEGEN_TIMEFILE}"
+	)
 
 	add_custom_target(cleancodegen
 		COMMAND ${CODEGEN_INVOCATION} --mode=clean
