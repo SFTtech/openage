@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 """
 Runs Cython on all modules that were listed via add_cython_module.
@@ -9,6 +9,45 @@ Runs Cython on all modules that were listed via add_cython_module.
 import argparse
 import os
 import sys
+
+
+class LineFilter:
+    """ Proxy for a stream (default stdout) to filter out whole unwanted lines """
+    # pylint: disable=too-few-public-methods
+    def __init__(self, stream=None, filtered=None):
+        self.stream = stream or sys.stdout
+        self.filtered = filtered or []
+        self.buf = ""
+
+    def __getattr__(self, attr_name):
+        return getattr(self.stream, attr_name)
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *args):
+        self.stream.write(self.buf)
+        self.buf = ""
+
+    def write(self, data):
+        """
+        Writes to output stream, buffered linewise,
+        omitting lines given in to constructor in filter
+        """
+        self.buf += data
+        lines = self.buf.split('\n')
+        for line in lines[:-1]:
+            if line not in self.filtered:
+                self.stream.write(line + '\n')
+        self.buf = lines[-1]
+
+
+class CythonFilter(LineFilter):
+    """ Filters output of cythonize for useless warnings """
+    # pylint: disable=too-few-public-methods
+    def __init__(self):
+        filtered = ['Please put "# distutils: language=c++" in your .pyx or .pxd file(s)']
+        super().__init__(filtered=filtered)
 
 
 def read_list_from_file(filename):
@@ -28,6 +67,19 @@ def remove_if_exists(filename):
     if os.path.exists(filename):
         print(os.path.relpath(filename, os.getcwd()))
         os.remove(filename)
+
+
+def cythonize_cpp_wrapper(modules):
+    """ Calls cythonize, filtering useless warnings """
+    from Cython.Build import cythonize
+    from contextlib import redirect_stdout
+
+    if not modules:
+        return
+
+    with CythonFilter() as cython_filter:
+        with redirect_stdout(cython_filter):
+            cythonize(modules, language='c++')
 
 
 def main():
@@ -69,15 +121,11 @@ def main():
     #      Until then, this has no effect.
     Options.short_cfilenm = '"cpp"'
 
-    from Cython.Build import cythonize
-
-    if modules:
-        cythonize(modules, language='c++')
+    cythonize_cpp_wrapper(modules)
 
     Options.embed = "main"
 
-    if embedded_modules:
-        cythonize(embedded_modules, language='c++')
+    cythonize_cpp_wrapper(embedded_modules)
 
     # verify depends
     from Cython.Build.Dependencies import _dep_tree
