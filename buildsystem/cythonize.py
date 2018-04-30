@@ -115,16 +115,19 @@ def main():
         sys.exit(0)
 
     from Cython.Compiler import Options
+    from Cython.Compiler.Main import default_options
     Options.annotate = True
     Options.fast_fail = True
     # TODO https://github.com/cython/cython/pull/415
     #      Until then, this has no effect.
     Options.short_cfilenm = '"cpp"'
 
+    default_options['cache'] = True
     cythonize_cpp_wrapper(modules)
 
     Options.embed = "main"
 
+    default_options['cache'] = False
     cythonize_cpp_wrapper(embedded_modules)
 
     # verify depends
