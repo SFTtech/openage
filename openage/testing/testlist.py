@@ -48,6 +48,8 @@ def demos_py():
            "demonstrates the translation of Python log messages")
     yield ("openage.convert.opus.demo.convert",
            "encodes an opus file from a wave file")
+    yield ("openage.event.demo.curvepong",
+           "play pong on steroids through future prediction")
     yield ("openage.renderer.tests.renderer_demo",
            "showcases the new renderer")
 
@@ -91,6 +93,9 @@ def tests_cpp():
     yield "openage::util::tests::siphash"
     yield "openage::util::tests::array_conversion"
     yield "openage::input::tests::parse_event_string", "keybinds parsing"
+    yield "openage::curve::tests::container"
+    yield "openage::curve::tests::curve_types"
+    yield "openage::event::tests::eventtrigger"
 
 
 def demos_cpp():

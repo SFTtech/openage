@@ -241,6 +241,12 @@ get_config_option_string()
 configure_file(config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
 configure_file(config.cpp.in ${CMAKE_CURRENT_SOURCE_DIR}/config.cpp)
 
+configure_file(
+	"${CMAKE_SOURCE_DIR}/openage/config.py.in"
+	"${CMAKE_SOURCE_DIR}/openage/config.py"
+)
+
+
 ##################################################
 # platform specifics
 if(APPLE)

@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #include "matrix.h"
 #include "vector.h"
@@ -11,15 +11,15 @@ namespace tests {
 
 void matrix() {
 	{ // matrix multiplication
-		const Matrix<5, 3> a(0.0, 0.5, 1.0,
-		                     1.5, 2.0, 2.5,
-		                     3.0, 3.5, 4.0,
-		                     4.5, 5.0, 5.5,
-		                     6.0, 6.5, 7.0);
-		const Matrix<3, 4> b(1, 0, 0, 0,
-		                     0, 1, 0, 0,
-		                     0, 0, 1, 0);
-		Matrix<5, 4> c = a * b;
+		const Matrix<5, 3, float> a(0.0, 0.5, 1.0,
+		                            1.5, 2.0, 2.5,
+		                            3.0, 3.5, 4.0,
+		                            4.5, 5.0, 5.5,
+		                            6.0, 6.5, 7.0);
+		const Matrix<3, 4, float> b(1, 0, 0, 0,
+		                            0, 1, 0, 0,
+		                            0, 0, 1, 0);
+		Matrix<5, 4, float> c = a * b;
 		TESTEQUALS_FLOAT(c[0][0], 0, 1e-7);
 		TESTEQUALS_FLOAT(c[0][1], 0.5, 1e-7);
 		TESTEQUALS_FLOAT(c[0][2], 1, 1e-7);
@@ -43,9 +43,9 @@ void matrix() {
 	}
 
 	{ // addition and subtraction
-		const Matrix2 a(1, 2, 3, 4);
-		const Matrix2 b(5, 6, 7, 8);
-		Matrix2 c = a + b;
+		const Matrix2f a(1, 2, 3, 4);
+		const Matrix2f b(5, 6, 7, 8);
+		Matrix2f c = a + b;
 		TESTEQUALS_FLOAT(c[0][0], 6, 1e-7);
 		TESTEQUALS_FLOAT(c[0][1], 8, 1e-7);
 		TESTEQUALS_FLOAT(c[1][0], 10, 1e-7);
@@ -59,8 +59,8 @@ void matrix() {
 	}
 
 	{ // scalar multiplication and division
-		const Matrix2 a(0, 1, 2, 3);
-		Matrix2 b = a * 2;
+		const Matrix2f a(0, 1, 2, 3);
+		Matrix2f b = a * 2;
 		TESTEQUALS_FLOAT(b[0][0], 0, 1e-7);
 		TESTEQUALS_FLOAT(b[0][1], 2, 1e-7);
 		TESTEQUALS_FLOAT(b[1][0], 4, 1e-7);
@@ -80,8 +80,8 @@ void matrix() {
 	}
 
 	{ // transposition
-		const Matrix2 a(1, 2, 3, 4);
-		const Matrix2 b = a.transpose();
+		const Matrix2f a(1, 2, 3, 4);
+		const Matrix2f b = a.transpose();
 		TESTEQUALS_FLOAT(b[0][0], 1, 1e-7);
 		TESTEQUALS_FLOAT(b[0][1], 3, 1e-7);
 		TESTEQUALS_FLOAT(b[1][0], 2, 1e-7);
@@ -89,10 +89,10 @@ void matrix() {
 	}
 
 	{ // vector interaction
-		const Matrix3 a(2, 0, 0,
-		                0, 2, 0,
-		                0, 0, 2);
-		const Vector3 v(1, 2, 3);
+		const Matrix3f a(2, 0, 0,
+		                 0, 2, 0,
+		                 0, 0, 2);
+		const Vector3f v(1, 2, 3);
 		auto u = (a * v).to_vector();
 		TESTEQUALS_FLOAT(u[0], 2, 1e-7);
 		TESTEQUALS_FLOAT(u[1], 4, 1e-7);

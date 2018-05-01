@@ -83,6 +83,13 @@ safe_shift(T value) {
  */
 template<typename int_type, unsigned int fractional_bits>
 class FixedPoint {
+public:
+	using raw_type = int_type;
+	using this_type = FixedPoint<int_type, fractional_bits>;
+	using unsigned_int_type = typename std::make_unsigned<int_type>::type;
+	using same_type_but_unsigned = FixedPoint<typename FixedPoint::unsigned_int_type,
+	                                          fractional_bits>;
+
 private:
 	// Helper function to create the scaling factors that are used below.
 	static constexpr double power_of_two(unsigned int power) {
@@ -93,6 +100,9 @@ private:
 		return result;
 	}
 
+	/**
+	 * Storage of the fixed point data.
+	 */
 	int_type raw_value;
 
 	static constexpr const double from_double_factor = power_of_two(fractional_bits);
@@ -103,10 +113,6 @@ private:
 	static constexpr const unsigned int approx_decimal_places = static_cast<unsigned int>(
 		static_cast<double>(fractional_bits) * 0.30103 + 1
 	);
-
-	using this_type = FixedPoint<int_type, fractional_bits>;
-	using unsigned_int_type = typename std::make_unsigned<int_type>::type;
-	using same_type_but_unsigned = FixedPoint<typename FixedPoint::unsigned_int_type, fractional_bits>;
 
 	// constexpr helper function for get_fractional_part()
 	static constexpr typename FixedPoint::unsigned_int_type fractional_part_bitmask() {
@@ -126,17 +132,30 @@ private:
 
 public:
 	// obligatory copy constructor / assignment operator.
-	constexpr FixedPoint(const FixedPoint &other) : raw_value(other.raw_value) {}
+	constexpr FixedPoint(const FixedPoint &other)
+		:
+		raw_value(other.raw_value) {}
+
+	constexpr FixedPoint(FixedPoint &&other) noexcept
+		:
+		raw_value(std::move(other.raw_value)) {}
 
 	constexpr FixedPoint &operator =(const FixedPoint &other) {
-		raw_value = other.raw_value;
+		this->raw_value = other.raw_value;
+		return *this;
+	}
+
+	constexpr FixedPoint &operator =(FixedPoint &&other) noexcept {
+		this->raw_value = std::move(other.raw_value);
 		return *this;
 	}
 
 	/**
 	 * Empty constructor. Initializes the number to 0.
 	 */
-	constexpr FixedPoint() : raw_value(0) {}
+	constexpr FixedPoint()
+		:
+		raw_value(0) {}
 
 	/**
 	 * floating-point constructor. Initializes the number from a double.
@@ -249,6 +268,18 @@ public:
 	}
 
 	/**
+	 * Show a string representation.
+	 */
+	constexpr std::string str() const {
+		std::ostringstream builder;
+		builder << "FixedPoint(" << this->to_double()
+		        << ", fracbits=" << fractional_bits
+		        << ", raw=" << this->raw_value
+		        << ")";
+		return builder.str();
+	};
+
+	/**
 	 * Converter to retrieve the fractional (post-decimal) part of the number.
 	 */
 	constexpr typename FixedPoint::same_type_but_unsigned get_fractional_part() const {
@@ -323,6 +354,25 @@ public:
 		return *this;
 	}
 
+	/**
+	 * FixedPoint *= N, where N is not a FixedPoint.
+	 */
+	template<typename N>
+	typename std::enable_if<std::is_arithmetic<N>::value, FixedPoint &>::type
+	constexpr operator *=(const N &rhs) {
+		this->raw_value *= rhs;
+		return *this;
+	}
+
+	/**
+	 * FixedPoint /= N
+	 */
+	template<typename N>
+	constexpr FixedPoint &operator /=(const N &rhs) {
+		this->raw_value = div(this->raw_value, static_cast<int_type>(rhs));
+		return *this;
+	}
+
 	void swap(FixedPoint &rhs) {
 		std::swap(this->raw_value, rhs.raw_value);
 	}
@@ -357,11 +407,27 @@ constexpr FixedPoint<I, F> operator +(const FixedPoint<I, F> &lhs, const FixedPo
 }
 
 /**
+ * FixedPoint + double
+ */
+template<typename I, unsigned int F>
+constexpr FixedPoint<I, F> operator +(const FixedPoint<I, F> &lhs, const double &rhs) {
+	return FixedPoint<I, F>{lhs} + FixedPoint<I, F>::from_double(rhs);
+}
+
+/**
  * FixedPoint - FixedPoint
  */
 template<typename I, unsigned int F>
 constexpr FixedPoint<I, F> operator -(const FixedPoint<I, F> &lhs, const FixedPoint<I, F> &rhs) {
 	return FixedPoint<I, F>::from_raw_value(lhs.get_raw_value() - rhs.get_raw_value());
+}
+
+/**
+ * FixedPoint - double
+ */
+template<typename I, unsigned int F>
+constexpr FixedPoint<I, F> operator -(const FixedPoint<I, F> &lhs, const double &rhs) {
+	return FixedPoint<I, F>{lhs} - FixedPoint<I, F>::from_double(rhs);
 }
 
 
@@ -436,6 +502,17 @@ template<typename I, unsigned F>
 struct hash<openage::util::FixedPoint<I, F>> {
 	constexpr size_t operator ()(const openage::util::FixedPoint<I, F> &n) const {
 		return std::hash<I>{}(n.raw_value);
+	}
+};
+
+template<typename I, unsigned F>
+struct numeric_limits<openage::util::FixedPoint<I, F>> {
+	constexpr static openage::util::FixedPoint<I, F> min() {
+		return openage::util::FixedPoint<I, F>::min_value();
+	}
+
+	constexpr static openage::util::FixedPoint<I, F> max() {
+		return openage::util::FixedPoint<I, F>::max_value();
 	}
 };
 
