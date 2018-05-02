@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #include "exctranslate.h"
 
@@ -143,7 +143,7 @@ void init_exc_message(log::message *msg, const std::string &filename, unsigned i
 		std::cout << "[WTF] failed so init exception message!" << std::endl;
 	}
 
-	msg->lvl = log::lvl::err;
+	msg->lvl = log::level::err;
 	msg->lineno = lineno;
 }
 

@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 """
 Translates Python log messages to C++ log messages.
@@ -37,15 +37,11 @@ cdef class CPPLevel:
     cdef level get(self):
         return self.value
 
-
-cdef CPPLevel wrap_level(level lvl):
-    """
-    Wraps a C++ 'level' object in a CPPLevel class.
-    """
-    cdef CPPLevel result = CPPLevel()
-    result.value = lvl
-    return result
-
+    @staticmethod
+    cdef wrap(level lvl):
+        cdef CPPLevel result = CPPLevel()
+        result.value = lvl
+        return result
 
 cdef unique_ptr[NamedLogSource] PY_LOGSOURCE
 
@@ -57,14 +53,14 @@ def enable_log_translation():
     """
     PY_LOGSOURCE.reset(new NamedLogSource(b"py"))
 
-    Level.MIN.cpp = wrap_level(MIN)
-    Level.spam.cpp = wrap_level(spam)
-    Level.dbg.cpp = wrap_level(dbg)
-    Level.info.cpp = wrap_level(info)
-    Level.warn.cpp = wrap_level(warn)
-    Level.err.cpp = wrap_level(err)
-    Level.crit.cpp = wrap_level(crit)
-    Level.MAX.cpp = wrap_level(MAX)
+    Level.MIN.cpp = CPPLevel.wrap(MIN)
+    Level.spam.cpp = CPPLevel.wrap(spam)
+    Level.dbg.cpp = CPPLevel.wrap(dbg)
+    Level.info.cpp = CPPLevel.wrap(info)
+    Level.warn.cpp = CPPLevel.wrap(warn)
+    Level.err.cpp = CPPLevel.wrap(err)
+    Level.crit.cpp = CPPLevel.wrap(crit)
+    Level.MAX.cpp = CPPLevel.wrap(MAX)
 
     set_level(Level.current.cpp)
 

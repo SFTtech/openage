@@ -1,10 +1,11 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+
+from cython.operator cimport dereference as deref
 
 from libcpp.string cimport string
 
-from libopenage.util.enum cimport Enum
 from libopenage.util.enum_test cimport (
-    testtype,
+    testenum,
 
     foo,
     bar,
@@ -15,10 +16,7 @@ from .testing import TestError, assert_value
 
 
 def enum():
-    cdef testtype test = foo
-
-    if not test.get().stuff == b"some text":
-        raise TestError()
+    cdef testenum test = foo
 
     if test != foo:
         raise TestError()
@@ -29,4 +27,11 @@ def enum():
     if foo == bar:
         raise TestError()
 
-    assert_value(test.name(), b"openage::util::tests::testtypes::foo")
+    assert_value(test.get().name, b"foo")
+    assert_value(test.get().numeric, 1)
+    assert_value(test.get().stuff, b"foooooooooooooooooo")
+
+    assert_value(foo > bar, False)
+    assert_value(foo < bar, True)
+    assert_value(foo >= bar, False)
+    assert_value(foo <= bar, True)

@@ -119,6 +119,8 @@ public:
 		:
 		type{t} {}
 
+	virtual ~AttributeContainer() = default;
+
 	attr_type type;
 
 	/**
