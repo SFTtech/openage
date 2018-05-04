@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 """
 Holds the game entry point for openage.
@@ -57,7 +57,20 @@ def main(args, error):
 
     # ensure that the assets have been converted
     if conversion_required(root["assets"], args):
-        if not convert_assets(root, args):
+        # try to get previously used source dir
+        asset_location_path = root["cfg"] / "asset_location"
+        try:
+            with asset_location_path.open("rb") as file_obj:
+                prev_source_dir_path = file_obj.read().strip()
+        except FileNotFoundError:
+            prev_source_dir_path = None
+        used_asset_path = convert_assets(root["assets"], args,
+                                         prev_source_dir_path=prev_source_dir_path)
+        if used_asset_path:
+            # Remember the asset location
+            with asset_location_path.open("wb") as file_obj:
+                file_obj.write(used_asset_path)
+        else:
             err("game asset conversion failed")
             return 1
 
