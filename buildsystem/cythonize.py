@@ -14,9 +14,9 @@ import sys
 class LineFilter:
     """ Proxy for a stream (default stdout) to filter out whole unwanted lines """
     # pylint: disable=too-few-public-methods
-    def __init__(self, stream=None, filtered=None):
+    def __init__(self, stream=None, filters=None):
         self.stream = stream or sys.stdout
-        self.filtered = filtered or []
+        self.filters = filters or []
         self.buf = ""
 
     def __getattr__(self, attr_name):
@@ -31,13 +31,13 @@ class LineFilter:
 
     def write(self, data):
         """
-        Writes to output stream, buffered linewise,
+        Writes to output stream, buffered line-wise,
         omitting lines given in to constructor in filter
         """
         self.buf += data
         lines = self.buf.split('\n')
         for line in lines[:-1]:
-            if line not in self.filtered:
+            if not any(f(line) for f in self.filters):
                 self.stream.write(line + '\n')
         self.buf = lines[-1]
 
@@ -46,8 +46,11 @@ class CythonFilter(LineFilter):
     """ Filters output of cythonize for useless warnings """
     # pylint: disable=too-few-public-methods
     def __init__(self):
-        filtered = ['Please put "# distutils: language=c++" in your .pyx or .pxd file(s)']
-        super().__init__(filtered=filtered)
+        filters = [
+            lambda x: x == 'Please put "# distutils: language=c++" in your .pyx or .pxd file(s)',
+            lambda x: x.startswith('Compiling ') and x.endswith(' because it changed.')
+        ]
+        super().__init__(filters=filters)
 
 
 def read_list_from_file(filename):
