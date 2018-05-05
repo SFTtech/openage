@@ -1,4 +1,4 @@
-# Copyright 2014-2017 the openage authors. See copying.md for legal info.
+# Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 """
 Utility and driver module for C++ code generation.
@@ -147,7 +147,7 @@ def codegen(projectdir, mode):
             # write new content to file
             wpath.parent.mkdirs()
             with wpath.open('wb') as outfile:
-                print(b'/'.join(parts).decode(errors='replace'))
+                print("\x1b[36mcodegen: %s\x1b[0m" % b'/'.join(parts).decode(errors='replace'))
                 outfile.write(data)
 
         elif mode == CodegenMode.dryrun:
