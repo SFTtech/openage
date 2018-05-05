@@ -87,14 +87,14 @@ def mount_drs_archives(srcdir, game_versions=None):
     return result
 
 
-def mount_input(srcdir=None, root=None):
+def mount_input(srcdir=None, prev_source_dir_path=None):
     """
     Mount the input folders for conversion.
     """
 
     # acquire conversion source directory
     if srcdir is None:
-        srcdir = acquire_conversion_source_dir(root)
+        srcdir = acquire_conversion_source_dir(prev_source_dir_path)
 
     game_versions = set(get_game_versions(srcdir))
     if not game_versions:
@@ -140,7 +140,7 @@ def mount_input(srcdir=None, root=None):
     return (output, game_versions)
 
 
-def convert_assets(root, args, srcdir=None):
+def convert_assets(assets, args, srcdir=None, prev_source_dir_path=None):
     """
     Perform asset conversion.
 
@@ -156,15 +156,14 @@ def convert_assets(root, args, srcdir=None):
     conversion experience, then passes them to .driver.convert().
     """
 
-    data_dir, game_versions = mount_input(srcdir, root)
+    data_dir, game_versions = mount_input(srcdir, prev_source_dir_path)
 
     if not data_dir:
-        return False
+        return None
 
     # make versions available easily
     args.game_versions = game_versions
 
-    assets = root["assets"]
     converted_path = assets / "converted"
     converted_path.mkdirs()
     targetdir = DirectoryCreator(converted_path).root
@@ -206,16 +205,11 @@ def convert_assets(root, args, srcdir=None):
 
         converted_count += 1
 
-    # Remember the asset location
-    asset_location_path = root["cfg"] / "asset_location"
-    with asset_location_path.open("wb") as file_obj:
-        file_obj.write(data_dir.resolve_native_path())
-
     # clean args
     del args.srcdir
     del args.targetdir
 
-    return True
+    return data_dir.resolve_native_path()
 
 
 def expand_relative_path(path):
@@ -323,12 +317,13 @@ def query_source_dir(proposals):
     return sourcedir
 
 
-def acquire_conversion_source_dir(root=None):
+def acquire_conversion_source_dir(prev_source_dir_path=None):
     """
     Acquires source dir for the asset conversion.
 
     Returns a file system-like object that holds all the required files.
     """
+
     if 'AGE2DIR' in os.environ:
         sourcedir = os.environ['AGE2DIR']
         print("found environment variable 'AGE2DIR'")
@@ -338,16 +333,8 @@ def acquire_conversion_source_dir(root=None):
             # TODO: use some sort of GUI for this (GTK, QtQuick, zenity?)
             #       probably best if directly integrated into the main GUI.
 
-            prev_source_dir = None
-            if root is not None:
-                asset_location_path = root["cfg"] / "asset_location"
-                try:
-                    with asset_location_path.open("rb") as file_obj:
-                        prev_source_dir = CaseIgnoringDirectory(file_obj.read().strip()).root
-                except FileNotFoundError:
-                    pass
-
-            if prev_source_dir is not None:
+            if prev_source_dir_path is not None:
+                prev_source_dir = CaseIgnoringDirectory(prev_source_dir_path).root
                 proposals = {
                     prev_source_dir.resolve_native_path().decode('utf-8', errors='replace')
                 }
