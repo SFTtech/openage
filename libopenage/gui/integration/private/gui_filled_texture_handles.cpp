@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #include "gui_filled_texture_handles.h"
 
@@ -27,7 +27,7 @@ void GuiFilledTextureHandles::free_texture_handle(SizedTextureHandle *filled_han
 
 void GuiFilledTextureHandles::fill_all_handles_with_texture(const TextureHandle &texture) {
 	std::unique_lock<std::mutex> lck{this->handles_mutex};
-	std::for_each(std::begin(this->handles), std::end(this->handles), [this, &texture] (std::tuple<QString, QSize, SizedTextureHandle*>& handle) {
+	std::for_each(std::begin(this->handles), std::end(this->handles), [&texture] (std::tuple<QString, QSize, SizedTextureHandle*>& handle) {
 		auto filled_handle = std::get<SizedTextureHandle*>(handle);
 		*filled_handle = {texture, textureSize(*filled_handle)};
 	});
@@ -38,7 +38,7 @@ void GuiFilledTextureHandles::refresh_all_handles_with_texture(std::function<voi
 
 	std::vector<SizedTextureHandle> refreshed_handles(this->handles.size());
 
-	std::transform(std::begin(this->handles), std::end(this->handles), std::begin(refreshed_handles), [this, refresher] (const std::tuple<QString, QSize, SizedTextureHandle*>& handle) {
+	std::transform(std::begin(this->handles), std::end(this->handles), std::begin(refreshed_handles), [refresher] (const std::tuple<QString, QSize, SizedTextureHandle*>& handle) {
 		SizedTextureHandle refreshed_handles;
 		refresher(std::get<QString>(handle), std::get<QSize>(handle), &refreshed_handles);
 		return refreshed_handles;
