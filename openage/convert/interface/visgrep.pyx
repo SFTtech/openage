@@ -1,4 +1,4 @@
-# Copyright 2016-2017 the openage authors. See copying.md for legal info.
+# Copyright 2016-2018 the openage authors. See copying.md for legal info.
 
 # If you wanna boost speed even further:
 # cython: profile=False
@@ -15,6 +15,7 @@ cimport numpy
 import sys
 
 from collections import namedtuple
+from libcpp.vector cimport vector
 from PIL import Image
 
 
@@ -62,6 +63,7 @@ cdef struct pixel:
     pixel_t b
     pixel_t a
 
+ctypedef pixel_t[:, :, :] image_t
 
 Point = namedtuple('Point', ['x', 'y'])
 Size = namedtuple('Size', ['width', 'height'])
@@ -107,8 +109,7 @@ cpdef numpy.ndarray crop_array(array, corners):
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-cdef inline pixel img_pixel_get(numpy.ndarray[pixel_t, ndim=3] img,
-                                Py_ssize_t x, Py_ssize_t y):
+cdef inline pixel img_pixel_get(image_t img, Py_ssize_t x, Py_ssize_t y):
     """
     Get pixel color or zero if outside bounds.
     Totally speed boosted.
@@ -125,8 +126,7 @@ cdef inline pixel img_pixel_get(numpy.ndarray[pixel_t, ndim=3] img,
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-cdef img_subimage_find(numpy.ndarray[pixel_t, ndim=3] master,
-                       numpy.ndarray[pixel_t, ndim=3] find,
+cdef img_subimage_find(image_t master, image_t find,
                        start_from, float tolerance, find_next):
     """
     Fuzzily find a part of an image that matches the pattern.
@@ -170,10 +170,8 @@ cdef inline float img_pixel_cmp(const pixel &pix, const pixel &other_pix):
 @cython.boundscheck(False)
 @cython.wraparound(False)
 @cython.nonecheck(False)
-cdef float img_subimage_cmp(numpy.ndarray[pixel_t, ndim=3] master,
-                            numpy.ndarray[pixel_t, ndim=3] subimage,
-                            Py_ssize_t where_x,
-                            Py_ssize_t where_y,
+cdef float img_subimage_cmp(image_t master, image_t subimage,
+                            Py_ssize_t where_x, Py_ssize_t where_y,
                             float tolerance):
     """
     Returns 0 if subimage is inside master at where, like *cmp usually does for other stuff
@@ -240,7 +238,7 @@ cdef advance_point(point, img, start_x):
     return next_point
 
 
-cdef img_match_any(img, patterns, off, tolerance, pt_match):
+cdef img_match_any(image_t img, patterns, off, tolerance, pt_match):
     """
     Move across the image.
     """
@@ -299,6 +297,9 @@ cdef visgrep_cli(geom_params, metric_params, img_params):
     """
     Perform search, return list of results.
     """
+
+    cdef image_t img, find
+    cdef vector[image_t] matches
 
     pt_match = FoundResult(0, Point(0, 0))
     results = []
