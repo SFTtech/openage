@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 """
 Auto-generates PXD files from annotated C++ headers.
@@ -338,7 +338,7 @@ class PXDGenerator:
         while dirname.startswith(CWD + os.path.sep):
             initfile = os.path.join(dirname, "__init__.py")
             if not os.path.isfile(initfile):
-                print("generating " + initfile)
+                print("\x1b[36mpxdgen: initfile %s\x1b[0m" % os.path.relpath(initfile, CWD))
                 with open(initfile, "w"):
                     pass
 
@@ -359,7 +359,7 @@ class PXDGenerator:
                     return False
 
         with open(pxdfile, 'w') as outfile:
-            print("generating " + os.path.relpath(pxdfile, CWD))
+            print("\x1b[36mpxdgen: generate %s\x1b[0m" % os.path.relpath(pxdfile, CWD))
             outfile.write(result)
 
         if print_warnings and self.warnings:
