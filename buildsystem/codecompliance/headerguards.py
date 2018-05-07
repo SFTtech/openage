@@ -20,12 +20,6 @@ GUARD_RE = re.compile((
 
     # the header guard
     "#pragma once\n"
-
-    # any number of lines of code
-    "(.*\\n)*"
-
-    # any number of empty lines
-    "(\\n)*$"
 ))
 
 NO_GUARD_REQUIRED_RE = re.compile((
