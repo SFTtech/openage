@@ -1,70 +1,49 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <cstdlib>
 
 
-namespace openage {
-namespace util {
-
 /**
- * this namespace contains constexpr functions, i.e. C++11 functions that are designed
+ * This namespace contains constexpr functions, i.e. C++14 functions that are designed
  * to run at compile-time.
- *
- * they're mostly ugly and use recursion because that's how C++11 works.
- * once C++14 support is widespread on the various target platforms, they can be made
- * much more readable.
  */
-namespace constexpr_ {
-
+namespace openage::util::constexpr_ {
 
 /**
- * returns true IFF the string literals have equal content.
+ * Returns true IFF the string literals have equal content.
  */
 constexpr bool streq(const char *a, const char *b) {
-	// if only c++14 had arrived a little bit earlier...
-
-	return
-
-	*a != *b ?
-		// if chars differ:
-		false
-	: *a == '\0' ?
-		// elif strs are over:
-		true
-	:
-		// else:
-		streq(a + 1, b + 1);
+	for (;*a == *b; ++a, ++b) {
+		if (*a == '\0') {
+			return true;
+		}
+	}
+	return false;
 }
 
 
 /**
- * returns the length of the string literal, excluding the terminating NULL byte.
- *
- * @param len   add this value to the result (used internally for recursing)
+ * Returns the length of the string literal, excluding the terminating NULL byte.
  */
-constexpr size_t strlen(const char *str, size_t len = 0) {
-	// if only c++14 had arrived a little bit earlier...
-
-	return
-
-	*str == '\0' ?
-		// if str is over:
-		len
-	:
-		// else:
-		strlen(str + 1, len + 1);
+constexpr size_t strlen(const char *str) {
+	for (size_t len = 0;; ++len) {
+		if (str[len] == '\0') {
+			return len;
+		}
+	}
 }
 
+
 /**
- * stores a string literal plus a "length specifier".
+ * Stores a string literal plus a "length specifier".
  *
- * due to the nature of C strings, parts can only be cut off at the start of the string;
+ * Due to the nature of C strings, parts can only be cut off at the start of the string;
  * this struct represents a string literal that has parts cut off at its end.
  *
  * length represents the remaining length of the string;
- * functions using an object of this type SHALL NOT access memory locations beyond &literal[length].
+ * Functions using an object of this type SHALL NOT access memory locations beyond &literal[length].
  */
 struct truncated_string_literal {
 	const char *literal;
@@ -73,84 +52,64 @@ struct truncated_string_literal {
 
 
 /**
- * truncates a suffix from a string literal.
+ * Truncates a suffix from a string literal.
  *
- * raises 'false' if str doesn't end in the given suffix.
+ * Raises 'false' if str doesn't end in the given suffix.
  */
 constexpr truncated_string_literal get_prefix(const char *str, const char *suffix) {
-	// if only c++14 had arrived a little bit earlier...
-
-	return
-
-	strlen(str) < strlen(suffix) ?
-		// if suffix is longer than str
-		throw false // string literal is shorter than supposed suffix
-	: streq(str + (strlen(str) - strlen(suffix)), suffix) ?
-		// elif str ends with suffix
-		truncated_string_literal{str, strlen(str) - strlen(suffix)}
-	:
-		// else
-		throw false; // string literal ends with wrong suffix
+	if (strlen(str) < strlen(suffix)) {
+		// suffix is longer than str
+		throw false;
+	} else if (streq(str + (strlen(str) - strlen(suffix)), suffix)) {
+		// str ends with suffix
+		return truncated_string_literal{str, strlen(str) - strlen(suffix)};
+	} else {
+		throw false;
+	}
 }
 
 
 /**
- * creates a truncated_string_literal from a regular string literal
+ * Creates a truncated_string_literal from a regular string literal.
  */
 constexpr truncated_string_literal create_truncated_string_literal(const char *str) {
 	return truncated_string_literal{str, strlen(str)};
 }
 
 /**
- * tests whether a string literal starts with the given prefix
- *
- * @param pos  start checking at a certain position. for internal recursion usage only.
+ * Tests whether a string literal starts with the given prefix.
  */
-constexpr bool has_prefix(const char *str, const truncated_string_literal prefix, size_t pos = 0) {
-	// if only c++14 had arrived a little bit earlier...
-
-	return
-
-	pos == prefix.length ?
-		// if prefix was tested completely:
-		true
-	: str[pos] != prefix.literal[pos] ?
-		// elif str differs from prefix:
-		false
-	:
-		// else:
-		has_prefix(str, prefix, pos + 1);
+constexpr bool has_prefix(const char *str, const truncated_string_literal prefix) {
+	for (size_t pos = 0; pos < prefix.length; ++pos) {
+		if (str[pos] != prefix.literal[pos]) {
+			return false;
+		}
+	}
+	return true;
 }
 
+
 /**
- * strips a prefix from a given string literal.
+ * Strips a prefix from a given string literal.
  *
- * if the string literal doesn't have that prefix, returns the string literal itself.
+ * If the string literal doesn't have that prefix, returns the string literal itself.
  */
 constexpr const char *strip_prefix(const char *str, const truncated_string_literal prefix) {
-	// if only c++14 had arrived a little bit earlier...
-
-	return
-
-	has_prefix(str, prefix) ?
-		// if str has the prefix:
-		str + prefix.length
-	:
-		// else:
-		str;
+	if (has_prefix(str, prefix)) {
+		return str + prefix.length;
+	} else {
+		return str;
+	}
 }
 
 
 /**
- * strips a prefix, given as const char *, from a given string literal.
+ * Strips a prefix, given as const char *, from a given string literal.
  *
- * if the string literal doesn't have that prefix, returns the string literal itself.
+ * If the string literal doesn't have that prefix, returns the string literal itself.
  */
 constexpr const char *strip_prefix(const char *str, const char *prefix) {
 	return strip_prefix(str, create_truncated_string_literal(prefix));
 }
 
-
-} // namespace constexpr_
-} // namespace util
-} // namespace openage
+} // namespace openage::util::constexpr_
