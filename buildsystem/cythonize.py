@@ -76,13 +76,14 @@ def cythonize_cpp_wrapper(modules):
     """ Calls cythonize, filtering useless warnings """
     from Cython.Build import cythonize
     from contextlib import redirect_stdout
+    from multiprocessing import cpu_count
 
     if not modules:
         return
 
     with CythonFilter() as cython_filter:
         with redirect_stdout(cython_filter):
-            cythonize(modules, language='c++')
+            cythonize(modules, language='c++', nthreads=cpu_count())
 
 
 def main():
