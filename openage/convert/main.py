@@ -12,7 +12,7 @@ from pathlib import Path
 from tempfile import NamedTemporaryFile
 
 from . import changelog
-from .game_versions import GameVersion, get_game_versions, Support
+from .game_versions import GameVersion, get_game_versions, Support, has_x1_p1
 
 from ..log import warn, info, dbg
 from ..util.files import which
@@ -82,7 +82,8 @@ def mount_drs_archives(srcdir, game_versions=None):
                   "gamedata")
     else:
         mount_drs("data/gamedata_x1.drs", "gamedata")
-        mount_drs("data/gamedata_x1_p1.drs", "gamedata")
+        if has_x1_p1(game_versions):
+            mount_drs("data/gamedata_x1_p1.drs", "gamedata")
 
     return result
 

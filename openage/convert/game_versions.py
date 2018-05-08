@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 """Detect the version of the original game"""
 
@@ -43,7 +43,7 @@ class GameVersion(enum.Enum):
     age2_tc = (
         11.76,
         "Age of Empires 2: The Conquerors",
-        Support.nope,
+        Support.yes,
         {'age2_x1/age2_x1.exe', 'data/empires2_x1.dat'},
     )
     age2_tc_10c = (
@@ -120,3 +120,14 @@ def get_game_versions(srcdir):
         if all(srcdir.joinpath(path).is_file()
                for path in version.required_files):
             yield version
+
+
+def has_x1_p1(versions):
+    """
+    Determine whether any of the versions has patch 1, i.e. the *_x1_p1.* files
+    """
+    for ver in versions:
+        for ver_file in ver.required_files:
+            if "x1_p1" in ver_file:
+                return True
+    return False

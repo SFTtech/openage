@@ -111,6 +111,7 @@ _the openage authors_ are:
 | Marcel Schneider            | schnema123                  | marcelschneider5 à outlook dawt de                |
 | Samuel Grigolato            | samuelgrigolato             | samuel dawt grigolato à gmail dawt com            |
 | Andrew Thompson             | mrwerdo331@me.com           | mrwerdo331 à me dawt com                          |
+| Benedikt Freisen            | roybaer                     | b dawt freisen à gmx dawt net                     |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.

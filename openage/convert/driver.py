@@ -10,7 +10,7 @@ from tempfile import gettempdir
 
 from ..log import info, dbg
 from .opus import opusenc
-from .game_versions import GameVersion
+from .game_versions import GameVersion, has_x1_p1
 from .blendomatic import Blendomatic
 from .changelog import (ASSET_VERSION, ASSET_VERSION_FILENAME,
                         GAMESPEC_VERSION_FILENAME)
@@ -45,7 +45,10 @@ def get_string_resources(args):
 
     elif srcdir["language.dll"].is_file():
         from .pefile import PEFile
-        for name in ["language.dll", "language_x1.dll", "language_x1_p1.dll"]:
+        names = ["language.dll", "language_x1.dll"]
+        if has_x1_p1(args.game_versions):
+            names.append("language_x1_p1.dll")
+        for name in names:
             pefile = PEFile(srcdir[name].open('rb'))
             stringres.fill_from(pefile.resources().strings)
             count += 1
@@ -77,8 +80,10 @@ def get_gamespec(srcdir, game_versions, dont_pickle):
 
     if GameVersion.age2_hd_ak in game_versions:
         filename = "empires2_x2_p1.dat"
-    else:
+    elif has_x1_p1(game_versions):
         filename = "empires2_x1_p1.dat"
+    else:
+        filename = "empires2_x1.dat"
 
     cache_file = os.path.join(gettempdir(), "{}.pickle".format(filename))
 
