@@ -1,0 +1,270 @@
+/*******************************************************
+ * Make footer black and content white
+ */
+
+body {
+	background-color: #445;
+}
+
+div.contents {
+	background-color: white;
+	padding-top: 10px;
+	padding-left: 12px;
+	padding-right: 8px;
+	padding-bottom: 1em;
+	margin: 0;
+}
+
+
+/*******************************************************
+ * Header
+ */
+
+#titlearea {
+	padding: 1em 0;
+	background-color: white;
+	border-bottom: 2px solid #5373B4;
+}
+
+#projectlogo {
+	padding-left: 1em;
+	text-align: left;
+}
+
+#projectlogo img {
+	height: 6em;
+}
+
+#projectname {
+	visibility: hidden; /* Hide project name, it's already on the logo */
+	text-align: right;
+	padding-right: .3em;
+}
+
+#projectnumber {
+	visibility: visible; /* Show openage version, because this is a children of
+	                        #projectname and I've made that invisible */
+}
+
+#projectalign {
+	width: 100%; /* So I can align the version number to the right */
+}
+
+
+/*******************************************************
+ * Main navbar
+ */
+
+.sm {
+	background-image: none;
+	background-color: black;
+}
+
+.sm a {
+	background-image: none;
+	background-color: black;
+	color: white;
+	text-shadow: 0 1px 1px black;
+	border: none;
+}
+
+.sm a.highlighted,
+.sm a:hover,
+.sm a:active,
+.sm a:focus {
+	background-image: url("tab_a.png");
+	background-repeat: repeat;
+	text-shadow: 0 1px 1px black;
+	border: none;
+}
+
+.sm ul a.highlighted,
+.sm ul a:hover,
+.sm ul a:active,
+.sm ul a:focus {
+	background-image: none;
+	background-color: #ccc;
+	text-shadow: none;
+	border: none;
+	color: inherit;
+}
+
+/*
+ * Those tiny arrows are instead a 0px box with a 4px border, that triangle it's
+ * the one border, the remaining borders are transparent
+ */
+.sm a span.sub-arrow {
+	border-color: white transparent transparent transparent;
+}
+
+.sm ul a span.sub-arrow {
+	border-color: transparent transparent transparent black;
+}
+
+.sm ul a.highlighted span.sub-arrow {
+	border-color: transparent transparent transparent white;
+}
+
+
+/*******************************************************
+ * Hierarchy navbar
+ */
+
+.navpath ul {
+	background-color: #445;
+	background-image: none;
+
+	border: 0;
+}
+
+.navpath ul li.navelem {
+	color: white;
+}
+
+.navpath ul li.navelem a {
+	color: #eee;
+	text-shadow: 0px 1px 1px black;
+}
+
+.navpath ul li.navelem a:hover {
+	color: white;
+	text-decoration: underline;
+}
+
+/*******************************************************
+ * Directory tables
+ */
+
+table.directory tr.even {
+	background-color: #eee;
+}
+
+table.directory td.entry {
+	color: #444;
+}
+
+table.directory td.desc {
+	border-left: 2px solid white;
+}
+
+/* Icons looked off */
+.iconfclosed,
+.iconfopen,
+.icondoc {
+	margin-top: 3px;
+}
+
+
+/*******************************************************
+ * Footer
+ */
+
+hr.footer {
+	display: none;
+}
+
+address.footer {
+	/*background-color: black;*/
+	color: white;
+	padding: 1em;
+	border-top: 2px solid #aac;
+}
+
+div.contents {
+	background-color: white;
+	padding-top: 10px;
+	padding-left: 12px;
+	padding-right: 8px;
+	padding-bottom: 1em;
+	margin: 0;
+}
+
+
+/*******************************************************
+ * Content
+ */
+
+div.textblock {
+	max-width: 900px;
+}
+
+/*
+ * Single-line code blocks
+ */
+pre.fragment {
+	padding: .7em;
+	border: none;
+	background-color: #f2f2f5;
+}
+
+/*
+ * Multiple-line code blocks
+ */
+div.fragment {
+	border: none;
+	background-color: #f2f2f5;
+	padding: .7em;
+}
+
+div.fragment div.line {
+	padding: .5em;
+	text-indent: 0;
+}
+
+div.fragment div.line span.lineno {
+	padding: .5em;
+	text-indent: 0;
+	border-right: 2px solid #aac;
+}
+
+/*
+ * Inline code
+ */
+code {
+	background-color: #eee;
+	padding: 0.3em;
+	margin: 0;
+	font-size: 85%;
+	border-radius: 3px;
+}
+
+/*
+ * Tables
+ */
+table.doxtable {
+	border-bottom: 1px solid #9CAFD4;
+}
+
+table.doxtable th {
+	background-color: #374F7F;
+	color: white;
+	border: none;
+}
+
+table.doxtable tr:nth-child(even) {
+	background-color: #f2f2f5;
+}
+
+table.doxtable tr:nth-child(odd) {
+	background-color: white;
+}
+
+table.doxtable td {
+	border: none;
+}
+
+/* Index letters (those in a black box) */
+div.ah, span.ah {
+	background-color: black;
+	background-image: none;
+	border: none;
+}
+
+/* Index bar */
+div.qindex {
+	border: 1px solid #bac8e4;
+	border-left: 0;
+	border-right: 0;
+	padding: .7em 0;
+	background-color: white;
+}

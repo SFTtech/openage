@@ -1,0 +1,13 @@
+//auto terrain_1 = sprite.create(path, true,"/assets/terrain/textures/g_m02_00_color.png",0, false, shader, renderer, aspect, (float)size.y, Eigen::Vector3f(0.0,0.0,0.0));
+	auto test_obj5 = sprite.create(path,false, "/assets/converted/graphics/305.slp.png",0, true, shader, renderer, aspect, (float)size.y, Eigen::Vector3f(500,0.0,0.0));
+	auto test_obj6 = sprite.create(path,false, "/assets/converted/graphics/281.slp.png",0, true, shader, renderer, aspect, (float)size.y, Eigen::Vector3f(300,700,0.0));
+	auto test_obj7 = sprite.create(path,false, "/assets/converted/graphics/104.slp.png",0, false, shader, renderer, aspect, (float)size.y, Eigen::Vector3f(0,700,0.0));
+	auto terrain_2 = sprite.create(path, true,"/assets/terrain/textures/g_m02_00_color.png",0, false, shader, renderer, aspect,(float)size.y, Eigen::Vector3f(1024,0.0,0.0));
+	auto terrain_3 = sprite.create(path, true,"/assets/terrain/textures/g_m02_00_color.png",0, false, shader, renderer, aspect,(float)size.y, Eigen::Vector3f(0,1024,0.0));
+	auto terrain_4 = sprite.create(path, true,"/assets/terrain/textures/g_m02_00_color.png",0, false, shader, renderer, aspect,(float)size.y, Eigen::Vector3f(1024,1024,0.0));
+	auto terrain_5 = sprite.create(path, true,"/assets/terrain/textures/g_m02_00_color.png",0, false, shader, renderer, aspect,(float)size.y, Eigen::Vector3f(-1024,-1024,0.0));
+	auto terrain_6 = sprite.create(path, true,"/assets/terrain/textures/g_m02_00_color.png",0, false, shader, renderer, aspect,(float)size.y, Eigen::Vector3f(-1024,0,0.0));
+	auto terrain_7 = sprite.create(path, true,"/assets/terrain/textures/g_m02_00_color.png",0, false, shader, renderer, aspect,(float)size.y, Eigen::Vector3f(0,-1024,0.0));
+	//auto terrain_8 = sprite.create(path, true,"/assets/terrain/textures/g_m02_00_color.png",0, false, shader, renderer, aspect,(float)size.y, Eigen::Vector3f(0,-1024,0.0));
+	auto terrain_8 = sprite.create(path, true,"/assets/terrain/textures/g_m02_00_color.png",0, false, shader, renderer, aspect,(float)size.y, Eigen::Vector3f(1024,-1024,0.0));
+	auto terrain_9 = sprite.create(path, true,"/assets/terrain/textures/g_m02_00_color.png",0, false, shader, renderer, aspect,(float)size.y, Eigen::Vector3f(-1024,1024,0.0));

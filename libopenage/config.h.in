@@ -1,0 +1,24 @@
+// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+
+// ${AUTOGEN_WARNING}
+
+#pragma once
+
+#define HAVE_THREAD_LOCAL_STORAGE ${HAVE_THREAD_LOCAL_STORAGE}
+
+#define WITH_BACKTRACE ${WITH_BACKTRACE}
+#define WITH_INOTIFY ${WITH_INOTIFY}
+#define WITH_OPENGL ${WITH_OPENGL}
+#define WITH_VULKAN ${WITH_VULKAN}
+#define WITH_GPERFTOOLS_PROFILER ${WITH_GPERFTOOLS_PROFILER}
+#define WITH_GPERFTOOLS_TCMALLOC ${WITH_GPERFTOOLS_TCMALLOC}
+
+namespace openage {
+namespace config {
+
+extern const char *const version;
+extern const char *const config_option_string;
+
+constexpr const char *buildsystem_sourcefile_dir = "${CMAKE_SOURCE_DIR}/";
+
+}} // openage::config

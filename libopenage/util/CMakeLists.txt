@@ -1,0 +1,48 @@
+add_sources(libopenage
+	color.cpp
+	compiler.cpp
+	constinit_vector.cpp
+	csv.cpp
+	enum.cpp
+	enum_test.cpp
+	externalprofiler.cpp
+	externalsstream.cpp
+	file.cpp
+	fds.cpp
+	fps.cpp
+	hash.cpp
+	hash_test.cpp
+	init.cpp
+	language.cpp
+	matrix.cpp
+	matrix_test.cpp
+	misc.cpp
+	misc_test.cpp
+	opengl.cpp
+	os.cpp
+	path.cpp
+	profiler.cpp
+	quaternion.cpp
+	quaternion_test.cpp
+	stringformatter.cpp
+	strings.cpp
+	subprocess.cpp
+	thread_id.cpp
+	timer.cpp
+	timing.cpp
+	unicode.cpp
+	vector.cpp
+	vector_test.cpp
+)
+
+pxdgen(
+	compiler.h
+	enum.h
+	enum_test.h
+	file.h
+	path.h
+)
+
+add_subdirectory(compress)
+add_subdirectory(filelike)
+add_subdirectory(fslike)

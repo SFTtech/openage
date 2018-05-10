@@ -1,0 +1,63 @@
+# editor-specific files
+\#*
+.#*
+*~
+.*.swp
+/CMakeLists.txt.user
+
+# ELF files
+*.o
+*.a
+*.so
+
+# python bytecode
+*.pyc
+*.pyo
+__pycache__
+*.pyd
+
+# MSVC files
+*.pdb
+*.dll
+*.exe
+
+# workflow
+*.orig
+/TODO.org
+
+# build system
+/bin
+/.bin
+/build
+/deps
+
+# root dir run script
+/run
+/run.cpp
+/run.html
+
+# CMake in-source builds
+/DartConfiguration.tcl
+/codegen_depend_cache
+/codegen_target_cache
+/Doxyfile
+/Testing
+/py/setup.py
+CTestTestfile.cmake
+CMakeFiles
+cmake_install.cmake
+CMakeCache.txt
+Makefile
+!/Makefile
+
+# debugging
+callgrind.out.*
+perf.data*
+.gdb_history
+
+# code search
+/.agignore
+/.globalrc
+/GPATH
+/GRTAGS
+/GTAGS
