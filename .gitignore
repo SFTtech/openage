@@ -62,5 +62,5 @@ perf.data*
 /GRTAGS
 /GTAGS
 #copyrighted assets
-/assets/converted
-/assets/terrain
+/assets/converted/
+/assets/terrain/
