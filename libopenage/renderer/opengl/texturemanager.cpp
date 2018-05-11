@@ -5,15 +5,32 @@ namespace openage{
 namespace renderer{
 namespace opengl{
 
+
 int TextureManager::get_activeID(Sprite_2& sprite){
-    
+    //log::log(INFO << "A");
     if(sprite.is_tex == false){
+        //log::log(INFO << "is_tex == false");
         sprite.active_id = -1;
         return -1;
     }
     else if(sprite.is_tex == true && sprite.active_id == -1){
-        is_change == true;
+        //log::log(INFO << "which sprite is: tex_id in true and -1 "<<sprite.tex_id);
+        bool found = false;
+        for(uint i = 0;i< textures.size();i++){
+            if(textures[i]->tex_id == sprite.tex_id){
+                found = true;
+                sprite.active_id = i;
+                log::log(INFO << "found true "<<sprite.tex_id);
+                break;
+            }
+
+        }
+
+        if(found == false){
+            log::log(INFO << "found false "<<sprite.tex_id);
+        is_change = true;
         auto texture = this->add_texture(sprite.texture_data);
+        //log::log(INFO << "just after the shared ptr fuckup");
         texture->tex_id = sprite.tex_id;
 
         if(textures.size() < 32){
@@ -27,15 +44,19 @@ int TextureManager::get_activeID(Sprite_2& sprite){
             textures[0] = std::move(texture);
             sprite.active_id = 0;
         }
+
+        }
     }
 
     else if(sprite.is_tex == true && sprite.active_id != -1){
-        
+        //log::log(INFO << "is tex true and active id not -1");
+        //log::log(INFO << "is_tex and not active id "<<sprite.tex_id);
         bool found = false;
-        for(int i = 0;i< textures.size();i++){
+        for(uint i = 0;i< textures.size();i++){
             if(textures[i]->tex_id == sprite.tex_id){
-                found == true;
+                found = true;
                 sprite.active_id = i;
+                //log::log(INFO << "is_tex and not active id found true "<<sprite.tex_id);
                 break;
             }
 
@@ -44,6 +65,7 @@ int TextureManager::get_activeID(Sprite_2& sprite){
         if(found == false){
             // we need to remove a texture and add this instead
             //for now this will be the first texture or textures[0]
+            log::log(INFO << "is_tex and not active id found false"<<sprite.tex_id);
             is_change = true;
             auto texture = this->add_texture(sprite.texture_data);
             texture->tex_id = sprite.tex_id;
@@ -58,14 +80,14 @@ int TextureManager::get_activeID(Sprite_2& sprite){
 }
 
 
-std::unique_ptr<Texture> TextureManager::add_texture(const resources::TextureData& data) {
-	    return std::make_unique<GlTexture>(data);
+std::unique_ptr<Texture> TextureManager::add_texture(resources::TextureData* data) {
+	    return std::make_unique<GlTexture>(*data);
 }
 
 int TextureManager::bind_textures(){
     if(is_change == true){
-    for(int i = 0;i<textures.size();i++){
-        GL_ACTIVE_TEXTURE(GL_TEXTURE0 + i);
+    for(uint i = 0;i<textures.size();i++){
+        glActiveTexture(GL_TEXTURE0 + i);
         textures[i]->bind();
     }
     }

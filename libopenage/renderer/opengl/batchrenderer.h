@@ -56,7 +56,6 @@ namespace opengl{
             std::unique_ptr<Texture> add_texture(const resources::TextureData& data);
             GlRenderTarget display;
         
-        
         private:
 	        /// The GL context.
 	        GlContext *gl_context;

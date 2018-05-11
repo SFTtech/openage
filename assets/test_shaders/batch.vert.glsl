@@ -10,10 +10,12 @@ out vec2 pos;
 out vec2 uv;
 out float a_id;
 
+
+
 void main()
 {
     gl_Position = ortho*vec4(aPos,0.0, 1.0);
-    ourColor = aColor;
+    ourColor = aColor;	
     pos =aPos;
     uv = auv;	
     a_id = active_id;

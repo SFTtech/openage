@@ -259,6 +259,7 @@ void GlShaderProgram::execute_with(const GlUniformInput *unif_in, const GlGeomet
 			//log::log(INFO << "tex_unit   "<<tex_unit<<"   tex  "<< tex);
 			// TODO: maybe call this at a more appropriate position
 			glUniform1i(loc, tex_unit);
+			log::log(INFO << pair.first<<"   "<<loc<<" value  "<<tex_unit);
 			//this->textures_per_texunits[tex_unit] = tex;
 			break;
 		}
@@ -408,6 +409,15 @@ void GlShaderProgram::set_tex(UniformInput *in, const char *unif, Texture const*
 	this->set_unif(in, unif, &handle, GL_SAMPLER_2D);
 }
 
-
+int GlShaderProgram::texture_array(){
+	std::string temp = "texture_";
+	for(int i = 0;i<32;i++){
+		std::string temp_2 = temp + std::to_string(i); 
+		auto loc = this->uniforms[temp_2].location;
+		glUniform1i(loc,i);
+		//log::log(INFO << temp_2<<"   "<<loc<<" value  "<< i);
+	}
+	return 0;
+}
 
 }}} // openage::renderer::opengl

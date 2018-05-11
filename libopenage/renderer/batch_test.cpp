@@ -21,28 +21,37 @@ void batch_demo(int demo_id,util::Path path){
     
     
     std::vector<opengl::Sprite_2*> sprites;
-
-    //char tex_path[] = "/assets/converted/graphics/795.slp.png";
+    
+    //char tex_path[] = "/assets/converted/graphics/35.slp.png";
     //bool use_metafile = true;
    //auto tex = resources::TextureData(path / tex_path,use_metafile);
     //resources::TextureInfo tex_info = tex.get_info();
     
     //int num_subtex = tex_info.get_subtexture_count();
-
-    /*for(int j = 0;j<180;j++){
-        for(int z = 0;z<180;z++){
-        std::tuple<float, float, float, float> sprite_coord = tex_info.get_subtexture_coordinates((j+z)%num_subtex);
-        float left = std::get<0>(sprite_coord);
-  	    float right = std::get<1>(sprite_coord);
-  	    float bottom = std::get<2>(sprite_coord);
-  	    float top = std::get<3>(sprite_coord);
-        sprites.push_back(new opengl::Sprite_2(10*j,6*z,5,5,1.0,0.0,1.0,1.0,left,right,top,bottom));
+    int tex_ids[10] = {2,5,689,695,716,779,795,859,855,849};
+    for(int j = 0;j<100;j++){
+        for(int z = 0;z<10;z++){
+        sprites.push_back(new opengl::Sprite_2(path,(float)8*j,(float)8*z,(float)50,(float)50,(float)1.0,(float)0.0,(float)1.0,(float)1.0));
+        sprites.back()->set_texture(tex_ids[rand()%10],true);
+        sprites.back()->set_subtex(rand()%6);
         }
-    }*/
-    
-    opengl::Sprite_2 test_sprite(path,100.0f,100.0f,20.0f,20.0f,0.0f,0.0f,1.0f,1.0f);
+    }
+
+    /*opengl::Sprite_2* heap_sprite;
+    heap_sprite = new opengl::Sprite_2(path,100.0f,100.0f,200.0f,200.0f,1.0f,0.0f,0.0f,1.0f);
+    heap_sprite->set_texture(35,false);
+    heap_sprite->set_subtex(0);*/
+    /*opengl::Sprite_2 test_sprite(path,100.0f,100.0f,200.0f,200.0f,1.0f,0.0f,0.0f,1.0f);
     test_sprite.set_texture(35,false);
     test_sprite.set_subtex(0);
+
+    opengl::Sprite_2 test_sprite_2(path,400.0f,400.0f,200.0f,200.0f,1.0f,0.0f,0.0f,1.0f);
+    test_sprite_2.set_texture(795,true);
+    test_sprite_2.set_subtex(4);
+
+    opengl::Sprite_2 test_sprite_3(path,700.0f,400.0f,200.0f,200.0f,1.0f,0.0f,0.0f,1.0f);
+    test_sprite_3.set_texture(35,false);
+    test_sprite_3.set_subtex(0);*/
    
    auto vshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
@@ -67,7 +76,7 @@ void batch_demo(int demo_id,util::Path path){
 				0.0f,0.0f,  1.0f,  1; 
     
     log::log(INFO <<  "hello 4");
-   
+    log::log(INFO <<  sizeof(opengl::Sprite_2)<<"  sprite size");
     float x,y;
     int closed = 0;
     SDL_Event event;
@@ -79,7 +88,7 @@ void batch_demo(int demo_id,util::Path path){
 
     
     //auto test_texture = renderer->add_texture(tex);
-
+    shade->texture_array();
 
 
     while(!closed){
@@ -88,18 +97,25 @@ void batch_demo(int demo_id,util::Path path){
 		if(curr_time-prev_time >= 1){
 			prev_time = curr_time;
 			log::log(INFO << frame);
+            for(int m = 0;m<sprites.size();m++){
+                sprites[m]->x = rand()%1920;
+                sprites[m]->y = rand()%1920;
+            }
 			frame = 0;
 		}
-        //auto new_uniform = shade->new_uniform_input("mouse_pos",Eigen::Vector2f(x,y),"ortho",pers2,"tex",test_texture.get());
+        //auto new_uniform = shade->new_uniform_input("mouse_pos",Eigen::Vector2f(x,y),"ortho",pers2,"texture_0",test_texture.get());
+        
         auto new_uniform = shade->new_uniform_input("mouse_pos",Eigen::Vector2f(x,y),"ortho",pers2);
         auto lala = dynamic_cast<opengl::GlUniformInput const*>(new_uniform.get());
         shade->execute_with(lala,nullptr);
         
         renderer->begin();
-        /*for(int k=0;k<32400;k++){
+        for(int k=0;k<sprites.size();k++){
             renderer->submit(*sprites[k]);
-        }*/
-        renderer->submit(test_sprite);
+        }
+        /*renderer->submit(test_sprite);
+        renderer->submit(test_sprite_2);
+        renderer->submit(test_sprite_3);*/
         renderer->end();
         
         renderer->render();
