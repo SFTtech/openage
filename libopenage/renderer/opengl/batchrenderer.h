@@ -15,7 +15,7 @@
 #include "texturemanager.h"
 
 #define RENDERER_MAX_SPRITES 60000
-#define RENDERER_VERTEX_SIZE 24
+#define RENDERER_VERTEX_SIZE 36
 #define RENDERER_SPRITE_SIZE RENDERER_VERTEX_SIZE*4
 #define RENDERER_BUFFER_SIZE RENDERER_SPRITE_SIZE * RENDERER_MAX_SPRITES
 #define RENDERER_INDICES_SIZE RENDERER_MAX_SPRITES*6
@@ -44,7 +44,7 @@ namespace opengl{
         
         public:
 
-            BatchRenderer(GlContext*);
+            BatchRenderer(GlContext*,util::Path& path);
             ~BatchRenderer();
 
             void begin();
@@ -55,7 +55,7 @@ namespace opengl{
             std::shared_ptr<GlShaderProgram> add_shader(std::vector<resources::ShaderSource> const& srcs);
             std::unique_ptr<Texture> add_texture(const resources::TextureData& data);
             GlRenderTarget display;
-        
+            util::Path root;
         private:
 	        /// The GL context.
 	        GlContext *gl_context;

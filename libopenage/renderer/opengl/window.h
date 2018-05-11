@@ -24,7 +24,7 @@ public:
 	void update() override;
 
 	std::shared_ptr<Renderer> make_renderer() override;
-	std::shared_ptr<BatchRenderer> make_batchrenderer();
+	std::shared_ptr<BatchRenderer> make_batchrenderer(util::Path& path);
 
 
 	/// Make this window's context the current rendering context of the current thread.

@@ -10,14 +10,21 @@
 #include <vector>
 #include "opengl/texture.h"
 #include "resources/texture_data.h"
+#include <algorithm>
 namespace openage {
 namespace renderer {
 namespace batch_test{
 
+bool compareSprite(opengl::Sprite_2* i1,opengl::Sprite_2* i2)
+{
+    return (i1->tex_id < i2->tex_id);
+}
+
+
 void batch_demo(int demo_id,util::Path path){
     
     opengl::GlWindow window("hello world",{1920, 1080});
-    auto renderer = window.make_batchrenderer();
+    auto renderer = window.make_batchrenderer(path);
     
     
     std::vector<opengl::Sprite_2*> sprites;
@@ -28,31 +35,16 @@ void batch_demo(int demo_id,util::Path path){
     //resources::TextureInfo tex_info = tex.get_info();
     
     //int num_subtex = tex_info.get_subtexture_count();
-    int tex_ids[10] = {2,5,689,695,716,779,795,859,855,849};
-    for(int j = 0;j<100;j++){
-        for(int z = 0;z<10;z++){
-        sprites.push_back(new opengl::Sprite_2(path,(float)8*j,(float)8*z,(float)50,(float)50,(float)1.0,(float)0.0,(float)1.0,(float)1.0));
-        sprites.back()->set_texture(tex_ids[rand()%10],true);
+    int tex_ids[32] = {2,5,12,689,695,716,779,795,859,855,849,351,343,342,330,339,320,326,354,361,357,363,499,576,578,581,584,591,594,601,600,666};
+    for(int j = 0;j<320;j++){
+        for(int z = 0;z<180;z++){
+        sprites.push_back(new opengl::Sprite_2(path,(float)8*j,(float)8*z,(float)6,(float)6,(float)(rand()%1000)/1000.0,(float)(rand()%1000)/1000.0,(float)(rand()%1000)/1000.0,(float)1.0));
+        sprites.back()->set_texture(tex_ids[rand()%32],true);
         sprites.back()->set_subtex(rand()%6);
         }
     }
 
-    /*opengl::Sprite_2* heap_sprite;
-    heap_sprite = new opengl::Sprite_2(path,100.0f,100.0f,200.0f,200.0f,1.0f,0.0f,0.0f,1.0f);
-    heap_sprite->set_texture(35,false);
-    heap_sprite->set_subtex(0);*/
-    /*opengl::Sprite_2 test_sprite(path,100.0f,100.0f,200.0f,200.0f,1.0f,0.0f,0.0f,1.0f);
-    test_sprite.set_texture(35,false);
-    test_sprite.set_subtex(0);
-
-    opengl::Sprite_2 test_sprite_2(path,400.0f,400.0f,200.0f,200.0f,1.0f,0.0f,0.0f,1.0f);
-    test_sprite_2.set_texture(795,true);
-    test_sprite_2.set_subtex(4);
-
-    opengl::Sprite_2 test_sprite_3(path,700.0f,400.0f,200.0f,200.0f,1.0f,0.0f,0.0f,1.0f);
-    test_sprite_3.set_texture(35,false);
-    test_sprite_3.set_subtex(0);*/
-   
+   //std::sort(sprites.begin(),sprites.end(),compareSprite);
    auto vshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::vertex,
@@ -97,11 +89,8 @@ void batch_demo(int demo_id,util::Path path){
 		if(curr_time-prev_time >= 1){
 			prev_time = curr_time;
 			log::log(INFO << frame);
-            for(int m = 0;m<sprites.size();m++){
-                sprites[m]->x = rand()%1920;
-                sprites[m]->y = rand()%1920;
-            }
 			frame = 0;
+
 		}
         //auto new_uniform = shade->new_uniform_input("mouse_pos",Eigen::Vector2f(x,y),"ortho",pers2,"texture_0",test_texture.get());
         
@@ -111,6 +100,8 @@ void batch_demo(int demo_id,util::Path path){
         
         renderer->begin();
         for(int k=0;k<sprites.size();k++){
+            sprites[k]->x = rand()%1920;
+            sprites[k]->y = rand()%1920;
             renderer->submit(*sprites[k]);
         }
         /*renderer->submit(test_sprite);

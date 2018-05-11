@@ -20,19 +20,15 @@ namespace opengl{
 
    void Sprite_2::set_texture(int id,bool use_metafile){
        this->meta = use_metafile;
-       std::string path = "/assets/converted/graphics/"+ std::to_string(id) +".slp.png";
-       this->texture_data = new resources::TextureData(root / path,use_metafile);
+       //std::string path = "/assets/converted/graphics/"+ std::to_string(id) +".slp.png";
+       //this->texture_data = new resources::TextureData(root / path,use_metafile);
        this->is_tex = true;
        this->tex_id = id;
    }
 
-   void Sprite_2::set_subtex(int subtex){
+   void Sprite_2::set_subtex(int tex){
         
-        std::tuple<float, float, float, float> sprite_coord = texture_data->get_info().get_subtexture_coordinates(subtex);
-        left = std::get<0>(sprite_coord);
-  	    right = std::get<1>(sprite_coord);
-  	    bottom = std::get<2>(sprite_coord);
-  	    top = std::get<3>(sprite_coord);
+       this->subtex = tex;
    }
 
     

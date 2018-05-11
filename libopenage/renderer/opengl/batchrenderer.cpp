@@ -7,13 +7,13 @@
 namespace openage{
 namespace renderer{
 namespace opengl{
-    BatchRenderer::BatchRenderer(GlContext* context)
-        :gl_context(context)
+    BatchRenderer::BatchRenderer(GlContext* context,util::Path& path)
+        :gl_context(context),root(path)
     {
     m_VBO = new opengl::GlBuffer(RENDERER_BUFFER_SIZE,GL_STATIC_DRAW);
     m_Vao = new opengl::GlVertexArray();
     m_Vao->bind();
-    tex_mngr = new TextureManager;
+    tex_mngr = new TextureManager(path);
     
     // position attribute
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)0);
@@ -53,7 +53,8 @@ namespace opengl{
     void BatchRenderer::submit(Sprite_2& sprite){
         
         tex_mngr->get_activeID(sprite);
-        
+        if(sprite.is_tex == true)
+            tex_mngr->getUV(sprite);
         
         m_buffer->x = sprite.x;
         m_buffer->y = sprite.y;
@@ -141,6 +142,7 @@ namespace opengl{
     std::unique_ptr<Texture> BatchRenderer::add_texture(const resources::TextureData& data) {
 	    return std::make_unique<GlTexture>(data);
     }
+
     
 }
 }
