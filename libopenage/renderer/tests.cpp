@@ -77,7 +77,7 @@ void renderer_demo_0(util::Path path) {
 	auto alpha_texture =  sprite.make_texture(path,"/assets/terrain/blends/watershore.png",false,renderer);
 	auto shore_texture =  sprite.make_texture(path,"/assets/terrain/textures/g_bch_00_color.png",false,renderer);
 	auto water_texture =  sprite.make_texture(path,"/assets/terrain/textures/g_wtr_00_color_1.png",false,renderer);
-	
+	auto dust_texture =  sprite.make_texture(path,"/assets/terrain/textures/g_ds3_00_color.png",false,renderer);
 	//now to choose which subtexture as well as the transformation matrix. Both of these can
 	//be fed in the same function and updated everytime as this does not consume as many resources.
 	
@@ -87,19 +87,21 @@ void renderer_demo_0(util::Path path) {
 	float top_terr = 0.125f*1;		
 	auto alpha_test = sprite.make_terrain(water_texture,alpha_texture,alpha_shader,aspect,(float)size.y,0,512-64,left_terr,top_terr);
 	auto shore_1 = sprite.make_render_obj(shore_texture,true,0,shader,aspect,(float)size.y,0,0);
-	auto water_1 = sprite.make_render_obj(water_texture,false,0,shader,aspect,(float)size.y,0,0);
+	auto water_1 = sprite.make_render_obj(water_texture,true,0,shader,aspect,(float)size.y,0,0);
+	auto dust = sprite.make_render_obj(dust_texture,true,0,shader,aspect,(float)size.y,600,50);
 	auto water_2 = sprite.make_render_obj(shore_texture,true,0,shader,aspect,(float)size.y,0,1024);
 	auto water_3 = sprite.make_render_obj(shore_texture,true,0,shader,aspect,(float)size.y,1024,0);
 	auto water_4 = sprite.make_render_obj(shore_texture,true,0,shader,aspect,(float)size.y,1024,1024);
-	auto elephant = sprite.make_render_obj(paladin,false,0,shader,aspect,(float)size.y,0,0);
+	auto elephant = sprite.make_render_obj(paladin,false,0,shader,aspect,(float)size.y,400,450);
 	std::vector<Renderable_test> mix_tex; 
-	for(int z = 0;z<32400;z++){
+	/*for(int z = 0;z<32400;z++){
 		
 		mix_tex.push_back(sprite.make_render_obj(paladin,false,15,shader,aspect,(float)size.y,z*(1.5f),0));
 			
-	}
-	//mix_tex.push_back(elephant);
-	//mix_tex.insert(water_1);
+	}*/
+	
+	mix_tex.push_back(dust);
+	mix_tex.push_back(elephant);
 	//mix_tex.insert(water_2);
 	//mix_tex.insert(water_3);
 	//mix_tex.insert(water_4);

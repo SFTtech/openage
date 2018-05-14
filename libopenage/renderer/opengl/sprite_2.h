@@ -11,6 +11,7 @@ class Sprite_2{
         //Sprite_2(float x, float y,float w, float h, float r,float g, float b, float a,float left,float right,float top,float bottom);
         Sprite_2(util::Path &path,float x, float y,float w, float h, float r,float g, float b, float a);
         void set_texture(int id,bool use_metafile);
+        void set_terrain(int id);
         void set_subtex(int tex);
         float x,y,w,h,r,g,b,a;
         float left = 0.0;
@@ -20,8 +21,10 @@ class Sprite_2{
         bool is_tex = false;
         int tex_id;
         int active_id = -1;
-        bool meta;
+        bool meta = false;
         int subtex = 0;
+        int vec_id;
+        bool is_terrain = false;
         resources::TextureData* texture_data;
 
     private:

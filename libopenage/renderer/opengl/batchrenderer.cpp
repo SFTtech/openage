@@ -16,17 +16,20 @@ namespace opengl{
     tex_mngr = new TextureManager(path);
     
     // position attribute
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 10* sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
     // color attribute
-    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(2 * sizeof(float)));
+    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 10 * sizeof(float), (void*)(2 * sizeof(float)));
     glEnableVertexAttribArray(1);
     //texture coord attribute
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(6 * sizeof(float)));
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 10 * sizeof(float), (void*)(6 * sizeof(float)));
     glEnableVertexAttribArray(2);
     //add active ID 
-    glVertexAttribPointer(3, 1, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(8 * sizeof(float)));
+    glVertexAttribPointer(3, 1, GL_FLOAT, GL_FALSE, 10 * sizeof(float), (void*)(8 * sizeof(float)));
     glEnableVertexAttribArray(3);
+    //add terrain tranform
+    glVertexAttribPointer(4, 1, GL_FLOAT, GL_FALSE, 10 * sizeof(float), (void*)(9 * sizeof(float)));
+    glEnableVertexAttribArray(4);
     m_VBO->unbind(GL_ARRAY_BUFFER);
 
     GLuint indices_2[RENDERER_INDICES_SIZE];
@@ -51,11 +54,23 @@ namespace opengl{
     }
 
     void BatchRenderer::submit(Sprite_2& sprite){
-        
+        if(tex_mngr->check_texture(sprite)){
+            //log::log(INFO<<"true");
+            this->end();
+            this->render();
+            //tex_mngr->current_textures.clear();
+            this->begin();
+        }
+        else{
+            //log::log(INFO<<"false");
+        }
         tex_mngr->get_activeID(sprite);
         if(sprite.is_tex == true)
             tex_mngr->getUV(sprite);
-        
+        //log::log(INFO<<"here   "<<m_buffer);
+        float temp_is_terrain = 0.0f;
+        //if(sprite.is_terrain)
+        //    temp_is_terrain = 1.0f;
         m_buffer->x = sprite.x;
         m_buffer->y = sprite.y;
         m_buffer->r = sprite.r;
@@ -65,6 +80,7 @@ namespace opengl{
         m_buffer->u = sprite.left;
         m_buffer->v = sprite.bottom;
         m_buffer->active_id = sprite.active_id;
+        m_buffer->is_terrain = temp_is_terrain;
         m_buffer++;
 
         m_buffer->x = sprite.x;
@@ -76,6 +92,7 @@ namespace opengl{
         m_buffer->u = sprite.left;
         m_buffer->v = sprite.top;
         m_buffer->active_id = sprite.active_id;
+        m_buffer->is_terrain = temp_is_terrain;
         m_buffer++;
 
         m_buffer->x = sprite.x + sprite.w;
@@ -87,6 +104,7 @@ namespace opengl{
         m_buffer->u = sprite.right;
         m_buffer->v = sprite.top;
         m_buffer->active_id = sprite.active_id;
+        m_buffer->is_terrain = temp_is_terrain;
         m_buffer++;
 
         m_buffer->x = sprite.x + sprite.w;
@@ -98,6 +116,7 @@ namespace opengl{
         m_buffer->u = sprite.right;
         m_buffer->v = sprite.bottom;
         m_buffer->active_id = sprite.active_id;
+        m_buffer->is_terrain = temp_is_terrain;
         m_buffer++;
 
         m_indexcount += 6;
@@ -115,8 +134,6 @@ namespace opengl{
     void BatchRenderer::render(){
         
         tex_mngr->bind_textures();
-        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         m_Vao->bind();
         m_IBO->bind();
 
@@ -143,7 +160,9 @@ namespace opengl{
 	    return std::make_unique<GlTexture>(data);
     }
 
-    
+    void BatchRenderer::clear_textures(){
+        tex_mngr->current_textures.clear();
+    }
 }
 }
 }

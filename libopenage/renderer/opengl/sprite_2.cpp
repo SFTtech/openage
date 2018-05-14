@@ -31,6 +31,13 @@ namespace opengl{
        this->subtex = tex;
    }
 
+   void Sprite_2::set_terrain(int id){
+       this->tex_id = id;
+       this->is_tex = true;
+       this->meta = true;
+       is_terrain = true;
+   }
+
     
 
 }
