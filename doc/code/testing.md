@@ -57,7 +57,7 @@ The header `libopenage/testing/testing.h` provides `TestError` and some convenie
     throws `TestError(exc)` if a non-`TestError` exception `exc` is raised.
  - `TESTTHROWS(expr)`
     evaluates `expr`, catching any exception, including `TestError`.
-    raises `TestError` if no exception was catched.
+    raises `TestError` if no exception was caught.
 
 Example test function:
 

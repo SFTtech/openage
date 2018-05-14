@@ -8,7 +8,7 @@ In the original Age of Kings game, villagers would lose any resources they carri
 
 AoE 2 : HD Edition further removed some instances where a player would lose resources. Now resources are only lost if the villager gets assigned to a resource that is different from what they are carrying. Food that was gathered in the role of a "shepard" will therefore carry over if the new role is "hunter", "gatherer" or "farmer".
 
-Looking at the first entry from **Weird AoE2 Quirks** it can be assumed that the HD Edition probably uses a dirty workaround to prevent the player from losing resources. The food is most likely put into the newly assigned sheep/boar/deer and then immediatly "collected" again.
+Looking at the first entry from **Weird AoE2 Quirks** it can be assumed that the HD Edition probably uses a dirty workaround to prevent the player from losing resources. The food is most likely put into the newly assigned sheep/boar/deer and then immediately "collected" again.
 
 ## Automatic task-switching for builders
 

@@ -5,7 +5,7 @@
 
 ## Setting up the build environment
  You will need to download and install the following manually.
- Those who already have the latest stable versions of these softwares can skip this:
+ Those who already have the latest stable versions of these programs can skip this:
  - [Visual Studio 2017 Community edition](https://www.visualstudio.com/downloads/)
    - With the "Desktop development with C++" workload.
    - With the "Windows 10 SDK". Choose the latest version listed.

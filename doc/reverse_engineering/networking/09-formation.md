@@ -273,7 +273,7 @@ Hex Value | Formation
 The 3 bytes after *:formation_type* are always zero.
 
 *:selected_ids*<br/>
-The IDs of the units whos formation type are changed.
+The IDs of the units whose formation type are changed.
 
 ### Examples
 

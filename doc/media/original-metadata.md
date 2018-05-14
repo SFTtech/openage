@@ -5,7 +5,7 @@ All data relevant for the game (e.g. how much costs building the castle?
 What cultures exist? Can my priest overclock his "Wololo?")
 are stored in a binary format in the file `empires2_x1_p1.dat`.
 
-The format is described in the [huge struct definiton](/openage/convert/gamedata/empiresdat.py).
+The format is described in the [huge struct definition](/openage/convert/gamedata/empiresdat.py).
 
 
 These data files are basically a huge tree structure.

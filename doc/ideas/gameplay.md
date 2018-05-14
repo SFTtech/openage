@@ -26,7 +26,7 @@ Environment
 
  - At night: View distance reduced, everything darker.
  - Villagers need sleep, otherwise they die at work.
- - Chemistry industry: Coffeine, Peniciline, ...?
+ - Chemistry industry: Caffeine, Penicillin, ...?
 
 
 ### Forests
@@ -98,7 +98,7 @@ Unit handling
 
  - Manually coloring units (e.g. for teammates)
  - "Mobile ping": designated unit pings its position periodically
- - Implicite group definitions/reselections (double-click?)
+ - Implicit group definitions/reselections (double-click?)
 
 ### Better movement
 

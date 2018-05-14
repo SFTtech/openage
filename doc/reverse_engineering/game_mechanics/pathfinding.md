@@ -10,7 +10,7 @@ and *Ensemble Studios Official Strategies & Secrets to Microsoft's Age of Empire
 
 Age of Empires 2 uses three different algorithms for pathfinding plus two obstruction systems.
 
-The first (high-level-)pathfinder is meant for long distances and uses mip-mapping to create a general route across the map. Criteria for the mip-map subdivision is *passibility*. It ignores moving objects, e.g. units or wildlife, though it takes "static" object like buildings into account. Whenever a building is constructed the pathfinder gets notified and updates the corresponding mip-map chains.
+The first (high-level-)pathfinder is meant for long distances and uses mip-mapping to create a general route across the map. Criteria for the mip-map subdivision is *passability*. It ignores moving objects, e.g. units or wildlife, though it takes "static" object like buildings into account. Whenever a building is constructed the pathfinder gets notified and updates the corresponding mip-map chains.
 
 Further reading: [3D Pathfinding](http://www.in.tum.de/fileadmin/user_upload/Lehrstuehle/Lehrstuhl_XV/Teaching/SS06/Seminar/3dpf-doc-final.pdf) (p. 11)
 

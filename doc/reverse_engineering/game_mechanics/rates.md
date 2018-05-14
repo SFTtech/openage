@@ -4,7 +4,7 @@ This file lists some rates used in AoE2
 
 # Animals
 
-Sheeps and deers rot at rate of `1 food / 2 seconds`.
+Sheep and deer rot at rate of `1 food / 2 seconds`.
 Shepherds get food at `10 food / 12 seconds` (one every 0.8333 seconds).
 
 # Relics

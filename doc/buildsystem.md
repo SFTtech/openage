@@ -77,7 +77,7 @@ At install time, the openage library, python modules, Cython extension
 modules and game assets are installed to the prefix that was set at cmake
 time (default: `/usr/local`), or, if the `DESTDIR` variable is present,
 to `$DESTDIR/$INSTALLPREFIX`. Note: The Python/Cython modules have their
-separate installation prefix, dictated by the Python environemnt, and
+separate installation prefix, dictated by the Python environment, and
 manually settable via the `--py-prefix` option to `./configure`.
 
 Some more `CMake` magic: the `-rpath` is automagically removed from the

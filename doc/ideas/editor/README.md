@@ -4,10 +4,10 @@
 ## Editor doc structure
 
 * **Terrain editor** -  for all your terrain editing needs. Your favourite TV show ten years ago was Bob the Builder? Then go ahead and look what tools he has in [terrain.md](terrain.md)!
-* **Economy editor** - discover the communist in yourself! In contrast to real life everything works as expcted - so plan the economy in [economy.md](economy.md)!
+* **Economy editor** - discover the communist in yourself! In contrast to real life everything works as expected - so plan the economy in [economy.md](economy.md)!
 * **Script editor** - you don't need to believe in god. You ARE god. Set your evil mind free in [scripting.md](scripting.md)
-* **Campaign editor** - You're fed up with low-quality campaings that you've known for years? You think the original tutorial campaign doesn't quite cut it? Your search is over - read [campaigns.md](campaigns.md) now!
-* **Unit editor** - Everyones favourite tool to create cats in nyan. Bonus points for correct unit music. Listen to it at [units.md](units.md).
+* **Campaign editor** - You're fed up with low-quality campaigns that you've known for years? You think the original tutorial campaign doesn't quite cut it? Your search is over - read [campaigns.md](campaigns.md) now!
+* **Unit editor** - Everyone's favourite tool to create cats in nyan. Bonus points for correct unit music. Listen to it at [units.md](units.md).
 * **Tech editor** - because having nuclear weapons in the middle age is not ignorant and totally not the point of this game. It's freakin *gnarly*. See how you can make your own weapons of math instruction at [tech.md](tech.md)
 * **Multiplayer Mode** - are you tired of working on maps all by yourself? do you want others to do your editing work for you? Fear no more and embrace *massive multiplayer online editor mode* (MMOEM) by looking inside [multiplayer.md](multiplayer.md).
 

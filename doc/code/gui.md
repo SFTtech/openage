@@ -118,7 +118,7 @@ Qt properties can be added to the model-based class just like to the property-ba
 
 Since the GUI and the game logic may be in different threads, additional care is needed.
 
-It's done by the `GuiItem::i()` functon (`GuiItem` is a base of `Link` classes).
+It's done by the `GuiItem::i()` function (`GuiItem` is a base of `Link` classes).
 
 For example, forwarding of a `clear()` member function call from `GameMainLink` to `GameMain`:
 ```cpp

@@ -51,7 +51,7 @@ Control of all Ruins or Artifacts | 50 point bonus
 Task                             | Score
 ---------------------------------|-------------------------
 Technologies researched          | 2 points per technology
-Most techonologies researched    | 50 point bonus
+Most technologies researched     | 50 point bonus
 First civilization to Bronze Age | 25 point bonus
 First civilization to Iron Age   | 25 point bonus
 
