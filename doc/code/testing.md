@@ -35,9 +35,6 @@ They usually produce lots of output on stdout or may even be interactive. Python
 
 All tests must be registered in `openage/testing/testlist.py` (else the game won't know about them).
 
-Also see `python3 -m openage.testing --help`.
-
-
 ## Adding new tests
 
 ### C++ tests
@@ -136,7 +133,7 @@ C++ demos don't support `argv`; if you want that, make it a Python demo in a `.p
 
 Similar to Python tests, but have one argument, `argv`. Pass arguments in the invocation:
 
-    python3 -m openage.testing -d prime_demo 100
+    ./run test -d prime_demo 100
 
 Example demo:
 
