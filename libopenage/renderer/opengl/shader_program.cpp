@@ -259,7 +259,7 @@ void GlShaderProgram::execute_with(const GlUniformInput *unif_in, const GlGeomet
 			//log::log(INFO << "tex_unit   "<<tex_unit<<"   tex  "<< tex);
 			// TODO: maybe call this at a more appropriate position
 			glUniform1i(loc, tex_unit);
-			log::log(INFO << pair.first<<"   "<<loc<<" value  "<<tex_unit);
+			//log::log(INFO << pair.first<<"   "<<loc<<" value  "<<tex_unit);
 			//this->textures_per_texunits[tex_unit] = tex;
 			break;
 		}

@@ -65,7 +65,7 @@ namespace opengl{
             GlVertexArray* m_Vao;
             GlIndexBuffer* m_IBO;
             TextureManager* tex_mngr;
-	    
+            int average = 0;
             VertexData* m_buffer;
             int m_indexcount = 0;
     };

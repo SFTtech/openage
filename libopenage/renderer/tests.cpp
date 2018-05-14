@@ -74,6 +74,7 @@ void renderer_demo_0(util::Path path) {
 	//load the texture that we will be using
 	auto terrain_texture =  sprite.make_texture(path,"/assets/terrain/textures/g_m02_00_color.png",false,renderer);
 	auto paladin = sprite.make_texture(path,"/assets/converted/graphics/795.slp.png",true,renderer);
+	auto paladin_2 = sprite.make_texture(path,"/assets/converted/graphics/805.slp.png",true,renderer);
 	auto alpha_texture =  sprite.make_texture(path,"/assets/terrain/blends/watershore.png",false,renderer);
 	auto shore_texture =  sprite.make_texture(path,"/assets/terrain/textures/g_bch_00_color.png",false,renderer);
 	auto water_texture =  sprite.make_texture(path,"/assets/terrain/textures/g_wtr_00_color_1.png",false,renderer);
@@ -94,21 +95,26 @@ void renderer_demo_0(util::Path path) {
 	auto water_4 = sprite.make_render_obj(shore_texture,true,0,shader,aspect,(float)size.y,1024,1024);
 	auto elephant = sprite.make_render_obj(paladin,false,0,shader,aspect,(float)size.y,400,450);
 	std::vector<Renderable_test> mix_tex; 
-	/*for(int z = 0;z<32400;z++){
+	
+	
+	//mix_tex.push_back(dust);
+	
+	//mix_tex.push_back(water_2);
+	//mix_tex.push_back(water_3);
+	//mix_tex.push_back(water_4);
+	//mix_tex.push_back(alpha_test);
+	for(int j = 0; j<4;j++){
+	for(int i=-3;i<2;i++){
+		mix_tex.push_back(sprite.make_render_obj(water_texture,true,0,shader,aspect,(float)size.y,512*j,512*i));
+	}
+	}
+	for(int z = 0;z<1000;z++){
 		
-		mix_tex.push_back(sprite.make_render_obj(paladin,false,15,shader,aspect,(float)size.y,z*(1.5f),0));
+		mix_tex.push_back(sprite.make_render_obj(paladin,false,rand()%20,shader,aspect,(float)size.y,rand()%1920,rand()%1920));
+		//mix_tex.push_back(sprite.make_render_obj(paladin_2,false,15,shader,aspect,(float)size.y,rand()%1024,rand()%1024));
 			
-	}*/
-	
-	mix_tex.push_back(dust);
-	mix_tex.push_back(elephant);
-	//mix_tex.insert(water_2);
-	//mix_tex.insert(water_3);
-	//mix_tex.insert(water_4);
-	
-	/*for(int i=-3;i<5;i++){
-		mix_tex.push_back(sprite.make_terrain(shore_texture,alpha_texture,alpha_shader,aspect,(float)size.y,i*128,512-64,left_terr,top_terr));
-	}*/
+	}
+	//mix_tex.push_back(elephant);
 	log::log(INFO << "what is path "<<path);
 	log::log(INFO << "Size of the Window "<<size.x<<"X"<<size.y);
 	auto color_texture = renderer->add_texture(resources::TextureInfo(size.x, size.y, resources::pixel_format::rgba8));

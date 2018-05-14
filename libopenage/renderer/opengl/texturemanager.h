@@ -28,6 +28,7 @@ class TextureManager{
         std::vector<TextureStruct> textures;
         bool is_change = true;
         util::Path root;
+        int forget_index = 0;
         
     
 };

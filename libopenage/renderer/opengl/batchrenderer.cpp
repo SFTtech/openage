@@ -55,10 +55,9 @@ namespace opengl{
 
     void BatchRenderer::submit(Sprite_2& sprite){
         if(tex_mngr->check_texture(sprite)){
-            //log::log(INFO<<"true");
             this->end();
             this->render();
-            //tex_mngr->current_textures.clear();
+            this->clear_textures();
             this->begin();
         }
         else{
@@ -69,8 +68,8 @@ namespace opengl{
             tex_mngr->getUV(sprite);
         //log::log(INFO<<"here   "<<m_buffer);
         float temp_is_terrain = 0.0f;
-        //if(sprite.is_terrain)
-        //    temp_is_terrain = 1.0f;
+        if(sprite.is_terrain)
+            temp_is_terrain = 1.0f;
         m_buffer->x = sprite.x;
         m_buffer->y = sprite.y;
         m_buffer->r = sprite.r;

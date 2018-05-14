@@ -137,8 +137,8 @@ TextureStruct TextureManager::add_texture(int tex_id,bool meta_file, bool is_ter
     if(!is_terrain)
         path = "/assets/converted/graphics/"+ std::to_string(tex_id) +".slp.png";
     else{
-        //path = "/assets/terrain/textures/" + std::to_string(tex_id - 6000) + ".png";
-        path = "/assets/converted/terrain/" + std::to_string(tex_id) + ".slp.png";
+        path = "/assets/terrain/textures/" + std::to_string(tex_id - 6000) + ".png";
+        //path = "/assets/converted/terrain/" + std::to_string(tex_id) + ".slp.png";
     }
     resources::TextureData data(root/path,meta_file);
     auto texture = this->add_tex(data);
