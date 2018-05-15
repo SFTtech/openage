@@ -9,7 +9,7 @@ namespace opengl{
 class Sprite_2{
     public:
         //Sprite_2(float x, float y,float w, float h, float r,float g, float b, float a,float left,float right,float top,float bottom);
-        Sprite_2(util::Path &path,float x, float y,float w, float h, float r,float g, float b, float a);
+        Sprite_2(float x, float y,float w, float h, float r,float g, float b, float a);
         void set_texture(int id,bool use_metafile);
         void set_terrain(int id);
         void set_subtex(int tex);
@@ -28,7 +28,6 @@ class Sprite_2{
         resources::TextureData* texture_data;
 
     private:
-        util::Path root;
 
         
 

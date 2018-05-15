@@ -6,10 +6,9 @@ namespace openage{
 namespace renderer{
 namespace opengl{
 
-   Sprite_2::Sprite_2(util::Path& path,float x, float y,float w, float h, float r,float g, float b, float a) 
+   Sprite_2::Sprite_2(float x, float y,float w, float h, float r,float g, float b, float a) 
    :x(x),y(y),w(w),h(h),r(r),g(g),b(b),a(a)
-   {
-        root = path;       
+   {     
    }
 
    /*Sprite_2::Sprite_2(float x, float y,float w, float h, float r,float g, float b, float a,float left,float right,float top,float bottom) 

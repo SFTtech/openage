@@ -49,5 +49,6 @@
         "thread": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled",
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "C_Cpp.intelliSenseEngineFallback": "Disabled"
 }

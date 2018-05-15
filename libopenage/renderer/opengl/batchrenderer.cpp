@@ -70,8 +70,8 @@ namespace opengl{
         float temp_is_terrain = 0.0f;
         if(sprite.is_terrain)
             temp_is_terrain = 1.0f;
-        m_buffer->x = sprite.x;
-        m_buffer->y = sprite.y;
+        m_buffer->x = sprite.x - sprite.w/2.0f;
+        m_buffer->y = sprite.y - sprite.h/2.0f;
         m_buffer->r = sprite.r;
         m_buffer->g = sprite.g;
         m_buffer->b = sprite.b;
@@ -82,8 +82,8 @@ namespace opengl{
         m_buffer->is_terrain = temp_is_terrain;
         m_buffer++;
 
-        m_buffer->x = sprite.x;
-        m_buffer->y = sprite.y+ sprite.h;
+        m_buffer->x = sprite.x - sprite.w/2.0f;
+        m_buffer->y = sprite.y+ sprite.h - sprite.h/2.0f;
         m_buffer->r = sprite.r;
         m_buffer->g = sprite.g;
         m_buffer->b = sprite.b;
@@ -94,8 +94,8 @@ namespace opengl{
         m_buffer->is_terrain = temp_is_terrain;
         m_buffer++;
 
-        m_buffer->x = sprite.x + sprite.w;
-        m_buffer->y = sprite.y + sprite.h;
+        m_buffer->x = sprite.x + sprite.w - sprite.w/2.0f;
+        m_buffer->y = sprite.y + sprite.h - sprite.h/2.0f;
         m_buffer->r = sprite.r;
         m_buffer->g = sprite.g;
         m_buffer->b = sprite.b;
@@ -106,8 +106,8 @@ namespace opengl{
         m_buffer->is_terrain = temp_is_terrain;
         m_buffer++;
 
-        m_buffer->x = sprite.x + sprite.w;
-        m_buffer->y = sprite.y;
+        m_buffer->x = sprite.x + sprite.w - sprite.w/2.0f;
+        m_buffer->y = sprite.y - sprite.h/2.0f;
         m_buffer->r = sprite.r;
         m_buffer->g = sprite.g;
         m_buffer->b = sprite.b;
