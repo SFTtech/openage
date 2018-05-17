@@ -28,7 +28,7 @@ namespace tests {
 
 
 void renderer_demo_0(util::Path path) {
-	opengl::GlWindow window("openage renderer test", { 1920, 1080 } );
+	opengl::GlWindow window("openage renderer test", { 1024, 768 } );
 
 	auto renderer = window.make_renderer();
 	
@@ -103,12 +103,14 @@ void renderer_demo_0(util::Path path) {
 	//mix_tex.push_back(water_3);
 	//mix_tex.push_back(water_4);
 	//mix_tex.push_back(alpha_test);
-	for(int j = 0; j<4;j++){
+	/*for(int j = 0; j<4;j++){
 	for(int i=-3;i<2;i++){
 		mix_tex.push_back(sprite.make_render_obj(water_texture,true,0,shader,aspect,(float)size.y,512*j,512*i));
+		mix_tex.push_back(sprite.make_render_obj(shore_texture,true,0,shader,aspect,(float)size.y,512*j,512*i));
+		mix_tex.push_back(sprite.make_render_obj(dust_texture,true,0,shader,aspect,(float)size.y,512*j,512*i));
 	}
-	}
-	for(int z = 0;z<1000;z++){
+	}*/
+	for(int z = 0;z<10000;z++){
 		
 		mix_tex.push_back(sprite.make_render_obj(paladin,false,rand()%20,shader,aspect,(float)size.y,rand()%1920,rand()%1920));
 		//mix_tex.push_back(sprite.make_render_obj(paladin_2,false,15,shader,aspect,(float)size.y,rand()%1024,rand()%1024));
@@ -155,7 +157,7 @@ void renderer_demo_0(util::Path path) {
 	};
 
 
-	glDepthFunc(GL_LEQUAL);
+	//glDepthFunc(GL_LEQUAL);
 	glDepthRange(0.0, 1.0);
 	// what is this
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

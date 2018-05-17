@@ -11,8 +11,7 @@
 #include "indexbuffer.h"
 #include <eigen3/Eigen/Dense>
 #include "shader_program.h"
-#include "texture.h"
-#include "texturemanager.h"
+#include "sprite_2.h"
 
 #define RENDERER_MAX_SPRITES 100000
 #define RENDERER_VERTEX_SIZE 40
@@ -37,25 +36,22 @@ namespace opengl{
        float a;
        float u;
        float v;
-       float active_id;
-       float is_terrain = 0.0f;
     };
         
-    class BatchRenderer{
+    class VertexRenderer{
         
         public:
 
-            BatchRenderer(GlContext*,util::Path& path);
-            ~BatchRenderer();
+            VertexRenderer(GlContext*,util::Path& path);
+
 
             void begin();
             void submit(Sprite_2& sprite);
             void end();
 
             void render();
-            void clear_textures();
             std::shared_ptr<GlShaderProgram> add_shader(std::vector<resources::ShaderSource> const& srcs);
-            std::unique_ptr<Texture> add_texture(const resources::TextureData& data);
+            std::unique_ptr<Texture> add_texture(const resources::TextureData& data);            
             GlRenderTarget display;
             util::Path root;
         private:
@@ -64,8 +60,6 @@ namespace opengl{
             GlBuffer* m_VBO;
             GlVertexArray* m_Vao;
             GlIndexBuffer* m_IBO;
-            TextureManager* tex_mngr;
-            int average = 0;
             VertexData* m_buffer;
             int m_indexcount = 0;
     };

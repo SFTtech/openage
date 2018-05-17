@@ -94,8 +94,12 @@ std::shared_ptr<Renderer> GlWindow::make_renderer() {
 	return std::make_shared<GlRenderer>(this->get_context());
 }
 
-std::shared_ptr<BatchRenderer> GlWindow::make_batchrenderer(util::Path& path) {
+/*std::shared_ptr<BatchRenderer> GlWindow::make_batchrenderer(util::Path& path) {
 	return std::make_shared<BatchRenderer>(this->get_context(),path);
+}*/
+
+std::shared_ptr<VertexRenderer> GlWindow::make_vertexrenderer(util::Path& path) {
+	return std::make_shared<VertexRenderer>(this->get_context(),path);
 }
 
 void GlWindow::make_context_current() {

@@ -37,7 +37,7 @@ public:
 
 	bool has_uniform(const char*) override;
 
-	int texture_array();
+	int texture_array(int num);
 
 protected:
 	std::shared_ptr<UniformInput> new_unif_in() override;

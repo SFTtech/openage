@@ -19,5 +19,5 @@ add_sources(libopenage
   texturemanager.cpp
   renderer.cpp
   batchrenderer.cpp
-
+  vertexrenderer.cpp
 )

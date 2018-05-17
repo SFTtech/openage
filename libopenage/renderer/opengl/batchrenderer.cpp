@@ -10,7 +10,7 @@ namespace opengl{
     BatchRenderer::BatchRenderer(GlContext* context,util::Path& path)
         :gl_context(context),root(path)
     {
-    m_VBO = new opengl::GlBuffer(RENDERER_BUFFER_SIZE,GL_STATIC_DRAW);
+    m_VBO = new opengl::GlBuffer(RENDERER_BUFFER_SIZE,GL_DYNAMIC_DRAW);
     m_Vao = new opengl::GlVertexArray();
     m_Vao->bind();
     tex_mngr = new TextureManager(path);
@@ -48,7 +48,7 @@ namespace opengl{
         }
 
 
-    m_IBO = new opengl::GlIndexBuffer(indices_2,RENDERER_INDICES_SIZE*sizeof(GLuint),GL_STATIC_DRAW);
+    m_IBO = new opengl::GlIndexBuffer(indices_2,RENDERER_INDICES_SIZE*sizeof(GLuint),GL_DYNAMIC_DRAW);
     m_Vao->unbind();
 
     }

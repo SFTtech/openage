@@ -39,6 +39,7 @@ int TextureManager::get_activeID(Sprite_2& sprite){
                 }
             }
             if(is_bound == false){
+                //log::log(INFO<<"fatal error");
                 if(current_textures.size() < 32){
                     current_textures.push_back(sprite.vec_id);
                     sprite.active_id = current_textures.size() - 1;
@@ -70,6 +71,7 @@ int TextureManager::get_activeID(Sprite_2& sprite){
             }
 
             else{
+                //log::log(INFO<<"fatal error 3");
                 // we need to remove a texture and replace this texture with it
                 //for now this will be the first texture or textures[0]
                 //log::log(INFO<<"fatal error loaded false");
@@ -95,6 +97,7 @@ int TextureManager::get_activeID(Sprite_2& sprite){
         }
 
         if(is_bound == false){
+            //log::log(INFO<<"fatal error 4");
             // we need to remove a texture and add this instead
             //for now this will be the first texture or textures[0]
             //log::log(INFO << "is_tex and not active id found false"<<sprite.tex_id);
@@ -123,6 +126,7 @@ std::unique_ptr<Texture> TextureManager::add_tex(resources::TextureData& data) {
 
 int TextureManager::bind_textures(){
     //if(is_change == true){
+    //log::log(INFO<<"current textures"<<current_textures.size());
     for(uint i = 0;i<current_textures.size();i++){
         glActiveTexture(GL_TEXTURE0 + i);
         textures[current_textures[i]].tex->bind();
