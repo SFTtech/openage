@@ -409,9 +409,9 @@ void GlShaderProgram::set_tex(UniformInput *in, const char *unif, Texture const*
 	this->set_unif(in, unif, &handle, GL_SAMPLER_2D);
 }
 
-int GlShaderProgram::texture_array(int num){
+int GlShaderProgram::texture_array(){
 	std::string temp = "texture_";
-	for(int i = 0;i<num;i++){
+	for(int i = 0;i<32;i++){
 		std::string temp_2 = temp + std::to_string(i); 
 		auto loc = this->uniforms[temp_2].location;
 		glUniform1i(loc,i);

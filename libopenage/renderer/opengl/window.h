@@ -7,8 +7,8 @@
 #include <experimental/optional>
 
 #include "context.h"
-//#include "batchrenderer.h"
-#include "vertexrenderer.h"
+#include "batchrenderer.h"
+//#include "vertexrenderer.h"
 
 namespace openage {
 namespace renderer {
@@ -25,8 +25,8 @@ public:
 	void update() override;
 
 	std::shared_ptr<Renderer> make_renderer() override;
-	//std::shared_ptr<BatchRenderer> make_batchrenderer(util::Path& path);
-	std::shared_ptr<VertexRenderer> make_vertexrenderer(util::Path& path);
+	std::shared_ptr<BatchRenderer> make_batchrenderer(util::Path& path);
+	//std::shared_ptr<VertexRenderer> make_vertexrenderer(util::Path& path);
 
 
 	/// Make this window's context the current rendering context of the current thread.

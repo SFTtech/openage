@@ -48,7 +48,7 @@ namespace opengl{
         }
 
 
-    m_IBO = new opengl::GlIndexBuffer(indices_2,RENDERER_INDICES_SIZE*sizeof(GLuint),GL_DYNAMIC_DRAW);
+    m_IBO = new opengl::GlIndexBuffer(indices_2,RENDERER_INDICES_SIZE*sizeof(GLuint),GL_STATIC_DRAW);
     m_Vao->unbind();
 
     }
@@ -134,11 +134,11 @@ namespace opengl{
         
         tex_mngr->bind_textures();
         m_Vao->bind();
-        m_IBO->bind();
+        //m_IBO->bind();
 
         glDrawElements(GL_TRIANGLES, m_indexcount, GL_UNSIGNED_INT, 0);
 
-        m_IBO->unbind();
+        //m_IBO->unbind();
         m_Vao->unbind();
 
         m_indexcount = 0;
