@@ -65,9 +65,9 @@ void batch_demo(int demo_id,util::Path path){
 
     auto tex_data = resources::TextureData(path / "/assets/terrain/textures/g_m02_00_color.png",false);
     auto testore = renderer->add_texture(tex_data);
-    glActiveTexture(GL_TEXTURE0);
-    testore->bind();
-    shade->texture_array(1);
+    //glActiveTexture(GL_TEXTURE0);
+    //testore->bind();
+    //shade->texture_array(1);
 	glDepthRange(0.0, 1.0);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); // important to remove the black square around the textures or the transperent area.
     glEnable(GL_BLEND);
