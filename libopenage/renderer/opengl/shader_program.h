@@ -38,6 +38,8 @@ public:
 	bool has_uniform(const char*) override;
 
 	int texture_array();
+	int sampler_array(int active_id);
+	
 
 protected:
 	std::shared_ptr<UniformInput> new_unif_in() override;

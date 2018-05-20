@@ -9,8 +9,10 @@
 #include <time.h>
 #include <vector>
 #include "opengl/texture.h"
+#include "opengl/texturearray.h"
 #include "resources/texture_data.h"
 #include <algorithm>
+#include "../util/externalprofiler.h"
 namespace openage {
 namespace renderer {
 namespace batch_test{
@@ -22,23 +24,27 @@ bool compareSprite(opengl::Sprite_2* i1,opengl::Sprite_2* i2)
 
 void batch_demo(int demo_id,util::Path path){
 
-    opengl::GlWindow window("hello world",{1024, 768});
+    util::ExternalProfiler external_profiler;
+
+    opengl::GlWindow window("hello world",{1920, 1080});
 
     std::vector<opengl::Sprite_2*> sprites;
+    std::vector<opengl::Sprite_2*> sprites_2;
     std::vector<opengl::Sprite_2*> terrains;
     std::vector<opengl::Sprite_2*> trees;
 
     auto renderer = window.make_batchrenderer(path);
     auto renderer_2 = window.make_batchrenderer(path);
+    auto renderer_3 = window.make_batchrenderer(path);
     auto vshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::vertex,
-		path / "/assets/test_shaders/batch.vert.glsl");
+		path / "/assets/test_shaders/not_batch.vert.glsl");
 
 	auto fshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::fragment,
-		path / "assets/test_shaders/batch.frag.glsl");
+		path / "assets/test_shaders/not_batch.frag.glsl");
     auto shade = renderer->add_shader({ vshader_src, fshader_src });
     log::log(INFO <<  RENDERER_BUFFER_SIZE);
     shade->use();
@@ -65,32 +71,39 @@ void batch_demo(int demo_id,util::Path path){
   	update_time = clock();
 
     int tex_ids[40] = {2,5,12,689,695,716,779,795,859,855,849,351,343,342,330,339,320,326,354,361,357,363,499,576,578,581,584,591,594,601,600,805,61,64,67,71,171,179,181,186};
-
-    opengl::Sprite_2 test_sprite(100.0f,100.0f,100.0f,100.0f,1.0f,0.0f,1.0f,1.0f);
-    /*for(int j = -3;j<2;j++){
+    int tree_list[6] = {1251,1254,1256,1258,1260,1262};
+    for(int j = -3;j<2;j++){
         for(int z = 0;z<4;z++){
         terrains.push_back(new opengl::Sprite_2(250 + 512*z,250 + 512*j,512.0f,512.0f,(rand()%1000)/1000.0f,(rand()%1000)/1000.0f,(rand()%1000)/1000.0f,1.0f));
-        terrains.back()->set_terrain(6009);
+        //terrains.back()->set_terrain(6009);
         //terrains.push_back(new opengl::Sprite_2(250 + 512*z,250 + 512*j,512.0f,512.0f,(rand()%1000)/1000.0f,(rand()%1000)/1000.0f,(rand()%1000)/1000.0f,1.0f));
         //terrains.back()->set_terrain(6010);
     }
-    }*/
+    }
 
-    for(int j = 0;j<40;j++){
+    for(int j = 0;j<20;j++){
         for(int z = 0;z<10;z++){
         trees.push_back(new opengl::Sprite_2((float)(rand()%1920),(float)(rand()%1080),(float)100,(float)100,(float)(rand()%1000)/1000.0,(float)(rand()%1000)/1000.0,(float)(rand()%1000)/1000.0,(float)1.0));
-        trees.back()->set_texture(4731,true);
-        trees.back()->set_subtex(rand()%6);
+        trees.back()->set_texture(tree_list[rand()%6],true);
+        trees.back()->set_subtex(0);
         }
     }
 
-    for(int j = 0;j<40;j++){
+    for(int j = 0;j<20;j++){
         for(int z = 0;z<10;z++){
         sprites.push_back(new opengl::Sprite_2((float)(rand()%1920),(float)(rand()%1080),(float)100,(float)100,(float)(rand()%1000)/1000.0,(float)(rand()%1000)/1000.0,(float)(rand()%1000)/1000.0,(float)1.0));
         sprites.back()->set_texture(tex_ids[rand()%40],true);
         //sprites.back()->set_subtex(rand()%6);
         }
     }
+
+    /*for(int j = 0;j<10;j++){
+        for(int z = 0;z<10;z++){
+        sprites_2.push_back(new opengl::Sprite_2((float)(rand()%1920),(float)(rand()%1080),(float)100,(float)100,(float)(rand()%1000)/1000.0,(float)(rand()%1000)/1000.0,(float)(rand()%1000)/1000.0,(float)1.0));
+        sprites_2.back()->set_texture(tex_ids[10 + rand()%22],true);
+        //sprites.back()->set_subtex(rand()%6);
+        }
+    }*/
 
     opengl::Sprite_2 archery(900.0f,100.0f,200.0f,200.0f,1.0f,1.0f,0.0f,1.0f);
     archery.set_texture(21,true);
@@ -117,8 +130,23 @@ void batch_demo(int demo_id,util::Path path){
 
     std::sort(terrains.begin(),terrains.end(),compareSprite);
     std::sort(sprites.begin(),sprites.end(),compareSprite);
+    std::sort(trees.begin(),trees.end(),compareSprite);
 
     shade->texture_array();
+
+    /// texture array test
+    auto test_data = resources::TextureData(path / "assets/terrain/textures/1.png",false);
+    auto test_data_2 = resources::TextureData(path / "assets/terrain/textures/2.png",false);
+    
+    //auto tex_array = opengl::GlTextureArray(test_data);
+    auto new_array = opengl::GlTextureArray(2,512,512,resources::pixel_format::rgba8);
+    new_array.submit_texture(test_data);
+    new_array.submit_texture(test_data_2);
+    glActiveTexture(GL_TEXTURE0);
+    new_array.bind();    
+    //tex_array.bind();
+    shade->sampler_array(0);
+    /// end texture array test
     glDepthFunc(GL_LEQUAL); 
 	glDepthRange(0.0, 1.0);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); // important to remove the black square around the textures or the transperent area.
@@ -153,12 +181,14 @@ void batch_demo(int demo_id,util::Path path){
         }
 
         //auto new_uniform = shade->new_uniform_input("mouse_pos",Eigen::Vector2f(x,y),"ortho",pers2,"dimet",dimet);
-        auto new_uniform = shade->new_uniform_input("ortho",pers2,"dimet",dimet);
+        auto new_uniform = shade->new_uniform_input("ortho",pers2,"layer",frame%2,"dimet",dimet);
         
         auto lala = dynamic_cast<opengl::GlUniformInput const*>(new_uniform.get());
         shade->execute_with(lala,nullptr);
-        renderer->begin();
         
+        
+        
+        renderer->begin();
         for(int k=0;k<terrains.size();k++){
 			//sprites[k]->x = rand()%1920;
 			//sprites[k]->y = rand()%1080;
@@ -168,7 +198,7 @@ void batch_demo(int demo_id,util::Path path){
 			//sprites[k]->x = rand()%1920;
 			//sprites[k]->y = rand()%1080;
             renderer->submit(*(trees[k]));
-		}*/
+		}
         renderer->submit(monastery);
         renderer->submit(archery);
         renderer->submit(castle);
@@ -178,19 +208,27 @@ void batch_demo(int demo_id,util::Path path){
         renderer->submit(paladin);
         renderer->submit(workshop);
         renderer->submit(blacksmith);
-        renderer->submit(trade_cart);
+        renderer->submit(trade_cart);*/
         renderer->end();
         renderer->render();
 
-        /*renderer_2->begin();
+        /* renderer_2->begin();
         for(int k=0;k<sprites.size();k++){
 			//sprites[k]->x = rand()%1920;
 			//sprites[k]->y = rand()%1080;
             renderer_2->submit(*(sprites[k]));
 		}
         renderer_2->end();
-        renderer_2->render();*/
-
+        renderer_2->render();
+ */
+        /*renderer_3->begin();
+        for(int k=0;k<sprites_2.size();k++){
+			//sprites[k]->x = rand()%1920;
+			//sprites[k]->y = rand()%1080;
+            renderer_3->submit(*(sprites_2[k]));
+		}
+        renderer_3->end();
+        renderer_3->render();*/
 
         SDL_PollEvent(&event);
         if(event.type == SDL_MOUSEMOTION){

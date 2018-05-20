@@ -145,7 +145,7 @@ case 31:
 }
 void main()
 {
-	float intensity = 100.0/(length(pos - mouse_pos));
+	float intensity = 500.0/(length(pos - mouse_pos));
 	FragColor = ourColor*intensity;	
 	if(a_id != -1.0){
 	int index = int(a_id + 0.5);

@@ -26,7 +26,8 @@ static constexpr auto glsl_to_gl_type = datastructure::create_const_map<const ch
 	std::make_pair("mat4", GL_FLOAT_MAT4),
 	std::make_pair("ivec2", GL_INT_VEC2),
 	std::make_pair("ivec3", GL_INT_VEC3),
-	std::make_pair("sampler2D", GL_SAMPLER_2D)
+	std::make_pair("sampler2D", GL_SAMPLER_2D),
+	std::make_pair("sampler2DArray", GL_SAMPLER_2D_ARRAY)
 );
 
 static void check_program_status(GLuint program, GLenum what_to_check) {
@@ -79,6 +80,7 @@ static constexpr auto gl_type_size = datastructure::create_const_map<GLenum, siz
 	std::make_pair(GL_FLOAT_MAT4, 64),
 	std::make_pair(GL_SAMPLER_1D, 4),
 	std::make_pair(GL_SAMPLER_2D, 4),
+	std::make_pair(GL_SAMPLER_2D_ARRAY, 4),
 	std::make_pair(GL_SAMPLER_3D, 4),
 	std::make_pair(GL_SAMPLER_CUBE, 4)
 );
@@ -418,6 +420,17 @@ int GlShaderProgram::texture_array(){
 		//log::log(INFO << temp_2<<"   "<<loc<<" value  "<< i);
 	}
 	return 0;
+}
+
+int GlShaderProgram::sampler_array(int active_id){
+	std::string temp = "texture_array";
+	//for(int i = 0;i<32;i++){
+		//std::string temp_2 = temp + std::to_string(i); 
+		auto loc = this->uniforms[temp].location;
+		glUniform1i(loc,active_id);
+		log::log(INFO << temp<<"   "<<loc<<" location  ");
+	//}
+	return active_id;
 }
 
 }}} // openage::renderer::opengl

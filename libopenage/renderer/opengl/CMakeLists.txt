@@ -11,6 +11,7 @@ add_sources(libopenage
   shader_program.cpp
   simple_object.cpp
   texture.cpp
+  texturearray.cpp
   uniform_input.h
   vertex_array.cpp
   window.cpp
