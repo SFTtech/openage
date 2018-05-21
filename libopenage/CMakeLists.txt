@@ -28,7 +28,6 @@ pxdgen(
 
 # add subsystem folders
 add_subdirectory("audio")
-add_subdirectory("RVO_lib")
 add_subdirectory("console")
 add_subdirectory("coord")
 add_subdirectory("cvar")
@@ -198,7 +197,6 @@ include_directories(
 	${SDL2IMAGE_INCLUDE_DIRS}
 	${HarfBuzz_INCLUDE_DIRS}
 	${QTPLATFORM_INCLUDE_DIRS}
-	${RVO_HEADERS}
 )
 
 # link the executable to those libraries
@@ -210,7 +208,6 @@ target_link_libraries(libopenage
 		${EPOXY_LIBRARIES}
 		${MATH_LIB}
 		${OPENGL_LIBRARY}
-		RVO
     ${Vulkan_LIBRARIES}
 		${OPUS_LIBRARIES}
 		${PNG_LIBRARIES}

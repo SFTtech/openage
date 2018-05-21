@@ -13,6 +13,7 @@
 #include "resources/texture_data.h"
 #include <algorithm>
 #include "../util/externalprofiler.h"
+#include "opengl/terrainmanager.h"
 namespace openage {
 namespace renderer {
 namespace batch_test{
@@ -72,10 +73,10 @@ void batch_demo(int demo_id,util::Path path){
 
     int tex_ids[40] = {2,5,12,689,695,716,779,795,859,855,849,351,343,342,330,339,320,326,354,361,357,363,499,576,578,581,584,591,594,601,600,805,61,64,67,71,171,179,181,186};
     int tree_list[6] = {1251,1254,1256,1258,1260,1262};
-    for(int j = -3;j<2;j++){
-        for(int z = 0;z<4;z++){
+    for(int j = -6;j<4;j++){
+        for(int z = 0;z<8;z++){
         terrains.push_back(new opengl::Sprite_2(250 + 512*z,250 + 512*j,512.0f,512.0f,(rand()%1000)/1000.0f,(rand()%1000)/1000.0f,(rand()%1000)/1000.0f,1.0f));
-        //terrains.back()->set_terrain(6009);
+        terrains.back()->set_terrain(6009 + (abs(j)*8 + z)%32);
         //terrains.push_back(new opengl::Sprite_2(250 + 512*z,250 + 512*j,512.0f,512.0f,(rand()%1000)/1000.0f,(rand()%1000)/1000.0f,(rand()%1000)/1000.0f,1.0f));
         //terrains.back()->set_terrain(6010);
     }
@@ -132,17 +133,21 @@ void batch_demo(int demo_id,util::Path path){
     std::sort(sprites.begin(),sprites.end(),compareSprite);
     std::sort(trees.begin(),trees.end(),compareSprite);
 
-    shade->texture_array();
+    //shade->texture_array();
 
     /// texture array test
     auto test_data = resources::TextureData(path / "assets/terrain/textures/1.png",false);
     auto test_data_2 = resources::TextureData(path / "assets/terrain/textures/2.png",false);
-    
+    auto test_data_3 = resources::TextureData(path / "assets/terrain/textures/23.png",false);
     //auto tex_array = opengl::GlTextureArray(test_data);
-    auto new_array = opengl::GlTextureArray(2,512,512,resources::pixel_format::rgba8);
+    auto new_array = opengl::GlTextureArray(3,512,512,resources::pixel_format::rgba8);
+    //auto terr_manager = opengl::TerrainManager(path);
     new_array.submit_texture(test_data);
     new_array.submit_texture(test_data_2);
+    new_array.submit_texture(test_data_3);
+
     glActiveTexture(GL_TEXTURE0);
+    //terr_manager.bind();
     new_array.bind();    
     //tex_array.bind();
     shade->sampler_array(0);
@@ -152,7 +157,7 @@ void batch_demo(int demo_id,util::Path path){
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); // important to remove the black square around the textures or the transperent area.
     glEnable(GL_BLEND);
     glEnable(GL_DEPTH_TEST);
-    
+    int depth = 0;
        
     
     while(!closed){
@@ -165,6 +170,7 @@ void batch_demo(int demo_id,util::Path path){
       		prev_time = clock();
 			log::log(INFO <<" frames " << frame);
 			frame = 0;
+            depth++;
 		}
 
         if((float)(clock() - update_time)/CLOCKS_PER_SEC >= 1.0f/20.0f){ 
@@ -181,7 +187,7 @@ void batch_demo(int demo_id,util::Path path){
         }
 
         //auto new_uniform = shade->new_uniform_input("mouse_pos",Eigen::Vector2f(x,y),"ortho",pers2,"dimet",dimet);
-        auto new_uniform = shade->new_uniform_input("ortho",pers2,"layer",frame%2,"dimet",dimet);
+        auto new_uniform = shade->new_uniform_input("ortho",pers2,"layer",depth%3,"dimet",dimet);
         
         auto lala = dynamic_cast<opengl::GlUniformInput const*>(new_uniform.get());
         shade->execute_with(lala,nullptr);
