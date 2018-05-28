@@ -414,7 +414,7 @@ def main():
               "from {} header{}...".format(hdr_count, plural))
 
     for filename in args.all_files:
-        filename = os.path.abspath(filename)
+        filename = os.path.realpath(os.path.abspath(filename))
         if not filename.startswith(cppdir):
             print("pxdgen source file is not in " + cppdir + ": " + filename)
             sys.exit(1)
