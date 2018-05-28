@@ -58,7 +58,7 @@ def read_list_from_file(filename):
     with open(filename) as fileobj:
         data = fileobj.read().strip()
 
-    data = [os.path.normpath(filename) for filename in data.split(';')]
+    data = [os.path.realpath(os.path.normpath(filename)) for filename in data.split(';')]
     if data == ['']:
         return []
 
@@ -141,7 +141,7 @@ def main():
                 # system include
                 continue
 
-            if os.path.abspath(filename) not in depends:
+            if os.path.realpath(os.path.abspath(filename)) not in depends:
                 print("\x1b[31mERR\x1b[m unlisted dependency: " + filename)
                 sys.exit(1)
 

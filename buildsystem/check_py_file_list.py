@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 """
 Tests whether the files listed via add_py_module are consistent with the
@@ -21,13 +21,14 @@ def main():
     args = cli.parse_args()
 
     with open(args.py_file_list) as fileobj:
-        listed = set(os.path.normpath(filepath) for filepath in fileobj.read().strip().split(';'))
+        listed = set(os.path.realpath(os.path.normpath(filepath))
+                     for filepath in fileobj.read().strip().split(';'))
         if listed == {''}:
             listed = set()
 
     actual = set()
     for dirname, _, files in os.walk('openage'):
-        dirname = os.path.abspath(dirname)
+        dirname = os.path.realpath(os.path.abspath(dirname))
         for filename in files:
             if filename.endswith('.py'):
                 actual.add(os.path.join(dirname, filename))
