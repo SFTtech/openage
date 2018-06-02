@@ -1,4 +1,4 @@
-# Copyright 2013-2017 the openage authors. See copying.md for legal info.
+# Copyright 2013-2018 the openage authors. See copying.md for legal info.
 
 """
 Conversion for the terrain blending masks.
@@ -11,7 +11,6 @@ from math import sqrt
 from struct import Struct, unpack_from
 
 from ..log import dbg
-
 from .dataformat.exportable import Exportable
 from .dataformat.data_definition import DataDefinition
 from .dataformat.struct_definition import StructDefinition
@@ -88,7 +87,7 @@ class BlendingMode:
         self.pxcount = header[0]
         # tile_flags = header[1:]  # TODO what do they do?
 
-        dbg("blending mode %d tiles have %d pixels" % (idx, self.pxcount))
+        dbg("blending mode %d tiles have %d pixels", idx, self.pxcount)
 
         # as we draw in isometric tile format, this is the row count
         self.row_count = int(sqrt(self.pxcount)) + 1  # should be 49
@@ -223,8 +222,8 @@ class Blendomatic(Exportable):
 
         blending_mode_count, tile_count = self.header
 
-        dbg("%d blending modes, each %d tiles" %
-            (blending_mode_count, tile_count))
+        dbg("%d blending modes, each %d tiles",
+            blending_mode_count, tile_count)
 
         blending_mode = Struct("< I %dB" % (tile_count))
 
@@ -269,7 +268,7 @@ class Blendomatic(Exportable):
 
         for idx, texture in enumerate(self.get_textures()):
             name = "mode%02d.png" % idx
-            dbg("saving blending mode %02d texture -> %s" % (idx, name))
+            dbg("saving blending mode %02d texture -> %s", idx, name)
             texture.save(fslikeobj, path + '/' + name, save_format)
 
         dbg("blending masks successfully exported")

@@ -1,4 +1,4 @@
-# Copyright 2013-2015 the openage authors. See copying.md for legal info.
+# Copyright 2013-2018 the openage authors. See copying.md for legal info.
 
 """
 The Python part of openage, a free engine re-write of
@@ -11,6 +11,7 @@ Requires Python 3.4.
 
 from sys import version_info as py_version
 
+from .log import setup_logging
 
 if py_version < (3, 4):
     raise Exception("openage requires python 3.4 or higher.")
@@ -40,3 +41,5 @@ else:
         compilerflags=config.COMPILERFLAGS,
         cython=config.CYTHONVERSION
     )
+
+setup_logging()

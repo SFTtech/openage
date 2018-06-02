@@ -1,4 +1,4 @@
-# Copyright 2013-2017 the openage authors. See copying.md for legal info.
+# Copyright 2013-2018 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -386,7 +386,7 @@ def load_gamespec(fileobj, game_versions, cachefile_name=None, load_cache=False)
                 # pylint: disable=broad-except
                 try:
                     gamespec = pickle.load(cachefile)
-                    info("using cached gamespec: " + cachefile_name)
+                    info("using cached gamespec: %s", cachefile_name)
                     return gamespec
                 except Exception:
                     warn("could not use cached gamespec:")
@@ -408,13 +408,13 @@ def load_gamespec(fileobj, game_versions, cachefile_name=None, load_cache=False)
     file_data = decompress(compressed_data, -15)
     del compressed_data
 
-    spam("length of decompressed data: %d" % len(file_data))
+    spam("length of decompressed data: %d", len(file_data))
 
     gamespec = EmpiresDatWrapper(game_versions=game_versions)
     gamespec.read(file_data, 0)
 
     if cachefile_name:
-        dbg("dumping dat file contents to cache file: " + cachefile_name)
+        dbg("dumping dat file contents to cache file: %s", cachefile_name)
         with open(cachefile_name, "wb") as cachefile:
             pickle.dump(gamespec, cachefile)
 

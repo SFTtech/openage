@@ -1,4 +1,4 @@
-# Copyright 2013-2017 the openage authors. See copying.md for legal info.
+# Copyright 2013-2018 the openage authors. See copying.md for legal info.
 
 """
 Code for reading Genie .DRS archives.
@@ -83,7 +83,7 @@ class DRS(FileCollection):
         header.ftype = decode_until_null(header.ftype)
         self.header = header
 
-        dbg(str(header))
+        dbg(header)
 
         # read table info
         self.tables = []
@@ -96,7 +96,7 @@ class DRS(FileCollection):
             fileext = fileext.decode('latin-1').lower()[::-1].rstrip()
             table_header.file_extension = fileext
 
-            dbg(str(table_header))
+            dbg(table_header)
             self.tables.append(table_header)
 
         for filename, offset, size in self.read_tables():
@@ -122,6 +122,6 @@ class DRS(FileCollection):
                 fileinfo = DRSFileInfo.read(self.fileobj)
 
                 file_name = str(fileinfo.file_id) + '.' + header.file_extension
-                spam(file_name + ": " + str(fileinfo))
+                spam("%s: %s", file_name, fileinfo)
 
                 yield file_name, fileinfo.file_data_offset, fileinfo.file_size

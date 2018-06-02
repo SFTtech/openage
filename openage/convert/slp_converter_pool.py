@@ -16,8 +16,7 @@ import queue
 
 from threading import Lock
 
-from ..log.logging import get_loglevel
-from ..log import warn, err
+from ..log import warn, err, get_loglevel
 from ..util.system import free_memory
 
 from .slp import SLP
@@ -115,7 +114,7 @@ class SLPConverterPool:
         self.idle.put((inqueue, outqueue))
 
         if isinstance(result, BaseException):
-            err("exception in worker process: %s" % result)
+            err("exception in worker process: %s", result)
             raise result
 
         return result
@@ -134,7 +133,7 @@ def converter_process(inqueue, outqueue):
     """
     import sys
 
-    from ..log.logging import set_loglevel
+    from ..log import set_loglevel
 
     # prevent writes to sys.stdout
     sys.stdout.write = sys.stderr.write

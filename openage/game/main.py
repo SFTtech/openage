@@ -40,8 +40,8 @@ def main(args, error):
     # initialize libopenage
     cpp_interface_setup(args)
 
-    info("launching openage {}".format(config.VERSION))
-    info("compiled by {}".format(config.COMPILER))
+    info("launching openage %s", config.VERSION)
+    info("compiled by %s", config.COMPILER)
 
     if config.DEVMODE:
         info("running in DEVMODE")

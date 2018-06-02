@@ -125,7 +125,7 @@ def convert(args):
     # clean args (set by convert_metadata for convert_media)
     del args.palette
 
-    info("asset conversion complete; asset version: " + str(ASSET_VERSION))
+    info("asset conversion complete; asset version: %s", ASSET_VERSION)
 
 
 def get_palette(srcdir, offset=0):

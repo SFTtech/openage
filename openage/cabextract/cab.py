@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 """
 Provides CABFile, an extractor for the MSCAB format.
@@ -355,8 +355,7 @@ class CABFile(FileCollection):
         # seek to the correct position
         if cab.tell() != self.header.coffFiles:
             cab.seek(self.header.coffFiles)
-            dbg("cabfile has nonstandard format: seek to header.coffFiles " +
-                "was required")
+            dbg("cabfile has nonstandard format: seek to header.coffFiles was required")
 
         for _ in range(self.header.cFiles):
             fileobj = CFFile.read(cab)

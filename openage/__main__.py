@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 """
 Behold: The central entry point for all of openage.
@@ -13,7 +13,7 @@ import multiprocessing
 import os
 import sys
 
-from .log.logging import set_loglevel, verbosity_to_level, ENV_VERBOSITY
+from .log import set_loglevel, verbosity_to_level, ENV_VERBOSITY
 
 
 class PrintVersion(argparse.Action):

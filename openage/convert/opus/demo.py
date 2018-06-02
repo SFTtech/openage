@@ -21,7 +21,7 @@ def convert(args):
     args = cli.parse_args(args)
 
     wavname = args.input
-    info("Reading {}...".format(wavname))
+    info("Reading %s...", wavname)
     wav = open(wavname, mode='rb').read()
 
     info("Encoding...")
@@ -31,18 +31,19 @@ def convert(args):
     tic = time.time() - tic
 
     if isinstance(out, (str, int)):
-        crit("Encoding failed: {}".format(out))
+        crit("Encoding failed: %s", out)
         return 1
 
     outname = args.out
     if outname is None:
         outname = wavname[:-3] + "opus" if wavname[-3:] == "wav" else wavname + ".opus"
 
-    info("Writing {}.".format(outname))
+    info("Writing %s.", outname)
     with open(outname, mode='wb') as fil:
         fil.write(out)
 
-    info("Wave size: {:>8}".format(len(wav)))
-    info("Opus size: {:>8} ({:2.1f}%)".format(len(out), 100 * len(out) / len(wav)))
-    info("Encoding time: {:.3f} seconds.".format(tic))
+    info("Wave size: %s", "{:>8}".format(len(wav)))
+    info("Opus size: %s (%s%)", "{:>8}".format(len(out)),
+         "{:2.1f}".format(100 * len(out) / len(wav)))
+    info("Encoding time: %s seconds.", "{:.3f}".format(tic))
     return 0

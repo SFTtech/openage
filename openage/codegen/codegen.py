@@ -130,9 +130,8 @@ def codegen(projectdir, mode):
         try:
             data = postprocess_write(parts, data)
         except ValueError as exc:
-            err("code generation issue with output file " +
-                b'/'.join(parts).decode(errors='replace') +
-                ":\n" + str(exc.args[0]))
+            err("code generation issue with output file %s:\n%s",
+                b'/'.join(parts).decode(errors='replace'), exc.args[0])
             sys.exit(1)
 
         if mode == CodegenMode.codegen:
@@ -159,7 +158,7 @@ def codegen(projectdir, mode):
                 print(b'/'.join(parts).decode(errors='replace'))
                 wpath.unlink()
         else:
-            err("unknown codegen mode: " + str(mode))
+            err("unknown codegen mode: %s", mode)
             sys.exit(1)
 
     generated = {os.path.abspath(path).decode() for path in generated}
