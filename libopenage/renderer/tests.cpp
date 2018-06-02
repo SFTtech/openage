@@ -79,6 +79,7 @@ void renderer_demo_0(util::Path path) {
 	auto shore_texture =  sprite.make_texture(path,"/assets/terrain/textures/g_bch_00_color.png",false,renderer);
 	auto water_texture =  sprite.make_texture(path,"/assets/terrain/textures/g_wtr_00_color_1.png",false,renderer);
 	auto dust_texture =  sprite.make_texture(path,"/assets/terrain/textures/g_ds3_00_color.png",false,renderer);
+	auto road_texture =  sprite.make_texture(path,"/assets/terrain/textures/62.png",false,renderer);	
 	//now to choose which subtexture as well as the transformation matrix. Both of these can
 	//be fed in the same function and updated everytime as this does not consume as many resources.
 	
@@ -104,18 +105,18 @@ void renderer_demo_0(util::Path path) {
 	//mix_tex.push_back(water_4);
 	//mix_tex.push_back(alpha_test);
 	
-	for(int z = 0;z<100;z++){
+	/*for(int z = 0;z<100;z++){
 		
 		mix_tex.push_back(sprite.make_render_obj(paladin,false,rand()%20,shader,aspect,(float)size.y,rand()%1920,rand()%1920));
 		//mix_tex.push_back(sprite.make_render_obj(paladin_2,false,15,shader,aspect,(float)size.y,rand()%1024,rand()%1024));
 			
-	}
+	}*/
 
 	for(int j = 0; j<4;j++){
 	for(int i=-3;i<2;i++){
-		mix_tex.push_back(sprite.make_render_obj(water_texture,true,0,shader,aspect,(float)size.y,512*j,512*i));
-		mix_tex.push_back(sprite.make_render_obj(shore_texture,true,0,shader,aspect,(float)size.y,512*j,512*i));
-		mix_tex.push_back(sprite.make_render_obj(dust_texture,true,0,shader,aspect,(float)size.y,512*j,512*i));
+		mix_tex.push_back(sprite.make_render_obj(road_texture,true,0,shader,aspect,(float)size.y,512*j,512*i));
+		//mix_tex.push_back(sprite.make_render_obj(shore_texture,true,0,shader,aspect,(float)size.y,512*j,512*i));
+		//mix_tex.push_back(sprite.make_render_obj(dust_texture,true,0,shader,aspect,(float)size.y,512*j,512*i));
 	}
 	}
 	//mix_tex.push_back(elephant);

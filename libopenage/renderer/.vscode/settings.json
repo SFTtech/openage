@@ -53,7 +53,8 @@
         "vector": "cpp",
         "fstream": "cpp",
         "iomanip": "cpp",
-        "string_view": "cpp"
+        "string_view": "cpp",
+        "algorithm": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled",
     "git.ignoreLimitWarning": true,

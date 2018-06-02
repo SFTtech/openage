@@ -428,7 +428,7 @@ int GlShaderProgram::sampler_array(int active_id){
 		//std::string temp_2 = temp + std::to_string(i); 
 		auto loc = this->uniforms[temp].location;
 		glUniform1i(loc,active_id);
-		log::log(INFO << temp<<"   "<<loc<<" location  ");
+		//log::log(INFO << temp<<"   "<<loc<<" location  ");
 	//}
 	return active_id;
 }

@@ -18,6 +18,7 @@ add_sources(libopenage
   sprite.cpp
   sprite_2.cpp
   texturemanager.cpp
+  terrainmanager.cpp
   renderer.cpp
   batchrenderer.cpp
   vertexrenderer.cpp

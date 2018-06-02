@@ -81,7 +81,7 @@ GlTextureArray::GlTextureArray(const resources::TextureData& data)
 
 	// drawing settings
 	// TODO these are outdated, use sampler settings
-	glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glBindTexture(GL_TEXTURE_2D_ARRAY, 0);
 	log::log(MSG(dbg) << "Created OpenGL texture array for the terrain");
@@ -100,8 +100,8 @@ GlTextureArray::GlTextureArray(int layers,int height, int width,resources::pixel
     glTexImage3D(GL_TEXTURE_2D_ARRAY,
              0,                 // mipmap level
              std::get<0>(fmt_in_out),          // gpu texel format
-             height,             // width
-             width,             // height
+             width,             // width
+             height,             // height
              len_z,             // depth
              0,                 // border
              std::get<1>(fmt_in_out),      // cpu pixel format
@@ -125,7 +125,7 @@ int GlTextureArray::submit_texture(resources::TextureData& data){
     
     log::log(INFO<<"what up -----" << current_layers);
 
-    glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     current_layers++;
     glBindTexture(GL_TEXTURE_2D_ARRAY, 0);

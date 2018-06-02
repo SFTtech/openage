@@ -1,19 +1,17 @@
 #include <cstdlib>
 #include "../input/input_manager.h"
 #include "opengl/window.h"
-#include <eigen3/Eigen/Dense>
 #include "../log/log.h"
 #include "../error/error.h"
 #include "batch_test.h"
 #include "opengl/render_target.h"
 #include <time.h>
 #include <vector>
-#include "opengl/texture.h"
-#include "opengl/texturearray.h"
+#include "opengl/terrainmanager.h"
+//#include "opengl/texturearray.h"
 #include "resources/texture_data.h"
 #include <algorithm>
 #include "../util/externalprofiler.h"
-#include "opengl/terrainmanager.h"
 namespace openage {
 namespace renderer {
 namespace batch_test{
@@ -40,15 +38,26 @@ void batch_demo(int demo_id,util::Path path){
     auto vshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::vertex,
-		path / "/assets/test_shaders/not_batch.vert.glsl");
+		path / "/assets/test_shaders/batch.vert.glsl");
 
 	auto fshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::fragment,
-		path / "assets/test_shaders/not_batch.frag.glsl");
+		path / "assets/test_shaders/batch.frag.glsl");
     auto shade = renderer->add_shader({ vshader_src, fshader_src });
+
+    auto vshader_batch = resources::ShaderSource(
+		resources::shader_lang_t::glsl,
+		resources::shader_stage_t::vertex,
+		path / "/assets/test_shaders/not_batch.vert.glsl");
+
+	auto fshader_batch = resources::ShaderSource(
+		resources::shader_lang_t::glsl,
+		resources::shader_stage_t::fragment,
+		path / "assets/test_shaders/not_batch.frag.glsl");
+    auto shadebatch = renderer->add_shader({ vshader_batch, fshader_batch });
+
     log::log(INFO <<  RENDERER_BUFFER_SIZE);
-    shade->use();
     float zfar = 0.1f;
     float znear = 100.0f;
     Eigen::Matrix4f pers2;
@@ -57,8 +66,8 @@ void batch_demo(int demo_id,util::Path path){
 				0,  0,1.0f,0,
 				0.0f,0.0f,  1.0f,  1;
     Eigen::Matrix4f dimet; /// This is the DIMETRIC Perspective. Used in age of empires (Reference: https://gamedev.stackexchange.com/questions/16746/what-is-the-name-of-perspective-of-age-of-empires-ii)
-	    dimet << 	1.0,1,0,0,
-	            	0.5,-0.5,0.75,0,
+	    dimet << 	1.0,1.0,0,0,
+	            	0.5,-0.5,1.0,0,
 	            	0,0,0,0,
 	            	0,0,0,1;
     log::log(INFO <<  "hello 4");
@@ -76,11 +85,15 @@ void batch_demo(int demo_id,util::Path path){
     for(int j = -6;j<4;j++){
         for(int z = 0;z<8;z++){
         terrains.push_back(new opengl::Sprite_2(250 + 512*z,250 + 512*j,512.0f,512.0f,(rand()%1000)/1000.0f,(rand()%1000)/1000.0f,(rand()%1000)/1000.0f,1.0f));
-        terrains.back()->set_terrain(6009 + (abs(j)*8 + z)%32);
+        //terrains.back()->set_terrain(6009 + (abs(j)*8 + z)%32);
         //terrains.push_back(new opengl::Sprite_2(250 + 512*z,250 + 512*j,512.0f,512.0f,(rand()%1000)/1000.0f,(rand()%1000)/1000.0f,(rand()%1000)/1000.0f,1.0f));
         //terrains.back()->set_terrain(6010);
     }
     }
+
+
+    opengl::Sprite_2 test_terrain(600,0,512.0,512.0,0.0,0.0,0.0,1.0);
+
 
     for(int j = 0;j<20;j++){
         for(int z = 0;z<10;z++){
@@ -90,7 +103,7 @@ void batch_demo(int demo_id,util::Path path){
         }
     }
 
-    for(int j = 0;j<20;j++){
+    for(int j = 0;j<80;j++){
         for(int z = 0;z<10;z++){
         sprites.push_back(new opengl::Sprite_2((float)(rand()%1920),(float)(rand()%1080),(float)100,(float)100,(float)(rand()%1000)/1000.0,(float)(rand()%1000)/1000.0,(float)(rand()%1000)/1000.0,(float)1.0));
         sprites.back()->set_texture(tex_ids[rand()%40],true);
@@ -132,25 +145,26 @@ void batch_demo(int demo_id,util::Path path){
     std::sort(terrains.begin(),terrains.end(),compareSprite);
     std::sort(sprites.begin(),sprites.end(),compareSprite);
     std::sort(trees.begin(),trees.end(),compareSprite);
-
-    //shade->texture_array();
+    shade->use();
+    shade->texture_array();
+    //shadebatch->use();
 
     /// texture array test
-    auto test_data = resources::TextureData(path / "assets/terrain/textures/1.png",false);
+    auto test_data = resources::TextureData(path / "assets/terrain/textures/62.png",false);
     auto test_data_2 = resources::TextureData(path / "assets/terrain/textures/2.png",false);
     auto test_data_3 = resources::TextureData(path / "assets/terrain/textures/23.png",false);
     //auto tex_array = opengl::GlTextureArray(test_data);
-    auto new_array = opengl::GlTextureArray(3,512,512,resources::pixel_format::rgba8);
-    //auto terr_manager = opengl::TerrainManager(path);
-    new_array.submit_texture(test_data);
-    new_array.submit_texture(test_data_2);
-    new_array.submit_texture(test_data_3);
+    //auto new_array = opengl::GlTextureArray(3,512,512,resources::pixel_format::rgba8);
+    auto terr_manager = opengl::TerrainManager(window.get_context(),path);
+    //new_array.submit_texture(test_data);
+    //new_array.submit_texture(test_data_2);
+    //new_array.submit_texture(test_data_3);
 
     glActiveTexture(GL_TEXTURE0);
-    //terr_manager.bind();
-    new_array.bind();    
+    terr_manager.bind();
+    //new_array.bind();    
     //tex_array.bind();
-    shade->sampler_array(0);
+    //shadebatch->sampler_array(0);
     /// end texture array test
     glDepthFunc(GL_LEQUAL); 
 	glDepthRange(0.0, 1.0);
@@ -185,56 +199,51 @@ void batch_demo(int demo_id,util::Path path){
         paladin.x -= 2.0;
         m++;
         }
-
-        //auto new_uniform = shade->new_uniform_input("mouse_pos",Eigen::Vector2f(x,y),"ortho",pers2,"dimet",dimet);
-        auto new_uniform = shade->new_uniform_input("ortho",pers2,"layer",depth%3,"dimet",dimet);
-        
-        auto lala = dynamic_cast<opengl::GlUniformInput const*>(new_uniform.get());
-        shade->execute_with(lala,nullptr);
-        
-        
-        
+        terr_manager.render();
+        /*auto batch_uniform = shadebatch->new_uniform_input("ortho",pers2,"layer",depth%32,"dimet",dimet);
+        //auto batch_uniform = shadebatch->new_uniform_input("ortho",pers2,"layer",0);        
+        auto lala_batch = dynamic_cast<opengl::GlUniformInput const*>(batch_uniform.get());
+        shadebatch->use();
+        shadebatch->execute_with(lala_batch,nullptr);        
         renderer->begin();
         for(int k=0;k<terrains.size();k++){
 			//sprites[k]->x = rand()%1920;
 			//sprites[k]->y = rand()%1080;
             renderer->submit(*(terrains[k]));
 		}
-        /*for(int k=0;k<trees.size();k++){
-			//sprites[k]->x = rand()%1920;
-			//sprites[k]->y = rand()%1080;
-            renderer->submit(*(trees[k]));
-		}
-        renderer->submit(monastery);
-        renderer->submit(archery);
-        renderer->submit(castle);
-        renderer->submit(barrack);
-        renderer->submit(market);
-        renderer->submit(elephant);
-        renderer->submit(paladin);
-        renderer->submit(workshop);
-        renderer->submit(blacksmith);
-        renderer->submit(trade_cart);*/
+        //renderer->submit(test_terrain);
         renderer->end();
-        renderer->render();
-
-        /* renderer_2->begin();
+        renderer->render();*/
+        shade->use();
+        auto new_uniform = shade->new_uniform_input("mouse_pos",Eigen::Vector2f(x,y),"ortho",pers2,"dimet",dimet);
+        auto lala = dynamic_cast<opengl::GlUniformInput const*>(new_uniform.get());
+        shade->execute_with(lala,nullptr);
+        renderer_2->begin();
         for(int k=0;k<sprites.size();k++){
 			//sprites[k]->x = rand()%1920;
 			//sprites[k]->y = rand()%1080;
             renderer_2->submit(*(sprites[k]));
 		}
-        renderer_2->end();
-        renderer_2->render();
- */
-        /*renderer_3->begin();
-        for(int k=0;k<sprites_2.size();k++){
+        for(int k=0;k<trees.size();k++){
 			//sprites[k]->x = rand()%1920;
 			//sprites[k]->y = rand()%1080;
-            renderer_3->submit(*(sprites_2[k]));
+            renderer_2->submit(*(trees[k]));
 		}
+        renderer_2->end();
+        renderer_2->render();
+        renderer_3->begin();
+        renderer_3->submit(monastery);
+        renderer_3->submit(archery);
+        renderer_3->submit(castle);
+        renderer_3->submit(barrack);
+        renderer_3->submit(market);
+        renderer_3->submit(elephant);
+        renderer_3->submit(paladin);
+        renderer_3->submit(workshop);
+        renderer_3->submit(blacksmith);
+        renderer_3->submit(trade_cart);
         renderer_3->end();
-        renderer_3->render();*/
+        renderer_3->render();
 
         SDL_PollEvent(&event);
         if(event.type == SDL_MOUSEMOTION){

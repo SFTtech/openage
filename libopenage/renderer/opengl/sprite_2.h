@@ -1,3 +1,5 @@
+#ifndef SPRITE_2_H
+#define SPRITE_2_H
 #include <eigen3/Eigen/Dense>
 #include "../resources/texture_data.h"
 #include "../../util/path.h"
@@ -36,3 +38,4 @@ class Sprite_2{
 }
 }
 }
+#endif 

@@ -1,5 +1,4 @@
 #pragma once
-
 // pxd: from libopenage.util.path cimport Path
 #include "../util/path.h"
 
