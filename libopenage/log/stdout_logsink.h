@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -12,6 +12,9 @@ namespace log {
  * Simple logsink that prints messages to stdout (via std::cout).
  */
 class StdOutSink : public LogSink {
+public:
+	StdOutSink();
+private:
 	void output_log_message(const message &msg, LogSource *source) override;
 };
 

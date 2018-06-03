@@ -1,15 +1,22 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #include "compiler.h"
 
 #ifndef _MSC_VER
 #include <cxxabi.h>
 #include <dlfcn.h>
+#else
+#define WIN32_LEAN_AND_MEAN
+#include <Windows.h>
+#include <DbgHelp.h>
 #endif
 
 #include "strings.h"
 
+#include <array>
 #include <iostream>
+#include <optional>
+#include <mutex>
 
 namespace openage {
 namespace util {
@@ -19,6 +26,7 @@ std::string demangle(const char *symbol) {
 #ifdef _MSC_VER
 	// TODO: demangle names for MSVC; Possibly using UnDecorateSymbolName
 	// https://msdn.microsoft.com/en-us/library/windows/desktop/ms681400(v=vs.85).aspx
+	// Could it be that MSVC's typeid(T).name() already returns a demangled name? It seems that .raw_name() returns the mangled name
 	return symbol;
 #else
 	int status;
@@ -39,12 +47,66 @@ std::string addr_to_string(const void *addr) {
 	return sformat("[%p]", addr);
 }
 
+#ifdef _MSC_VER
+namespace {
+
+
+bool initialized_symbol_handler_successfully = false;
+
+
+std::optional<std::string> symbol_name_win(const void *addr) {
+	// Handle to the current process
+	static HANDLE process_handle = INVALID_HANDLE_VALUE;
+	static bool initialized_symbol_handler = false;
+
+	// SymInitialize & SymFromAddr are, according to MSDN, not thread-safe.
+	static std::mutex sym_mutex;
+	std::lock_guard<std::mutex> sym_lock_guard{sym_mutex};
+
+	// Initialize symbol handler for process, if it has not yet been initialized
+	// If we are not succesful on the first try, leave it, since MSDN says that searching for symbol files is very time consuming
+	if (!initialized_symbol_handler) {
+		initialized_symbol_handler = true;
+
+		process_handle = GetCurrentProcess();
+		initialized_symbol_handler_successfully = SymInitialize(process_handle, nullptr, TRUE);
+	}
+
+	if (initialized_symbol_handler_successfully) {
+		// The magic of winapi
+		constexpr int name_buffer_size = 1024;
+		constexpr int buffer_size = sizeof(SYMBOL_INFO) + name_buffer_size * sizeof(char);
+		std::array<char, buffer_size> buffer;
+
+		SYMBOL_INFO *symbol_info = reinterpret_cast<SYMBOL_INFO*>(buffer.data());
+
+		symbol_info->SizeOfStruct = sizeof(SYMBOL_INFO);
+		symbol_info->MaxNameLen = name_buffer_size;
+
+		if (SymFromAddr(process_handle, reinterpret_cast<DWORD64>(addr), nullptr, symbol_info))	{
+			return std::string(symbol_info->Name);
+		}
+	}
+
+	return std::optional<std::string>();
+}
+
+
+}
+#endif
 
 std::string symbol_name(const void *addr, bool require_exact_addr, bool no_pure_addrs) {
 #ifdef _MSC_VER
-	// TODO: implement symbol_name for MSVC; Possibly using SymFromAddr
-	// https://msdn.microsoft.com/en-us/library/windows/desktop/ms681323(v=vs.85).aspx
-	return no_pure_addrs ? "" : addr_to_string(addr);
+
+	auto symbol_name_result = symbol_name_win(addr);
+
+	if (!initialized_symbol_handler_successfully ||
+		!symbol_name_result.has_value()) {
+		return no_pure_addrs ? "" : addr_to_string(addr);
+	}
+
+	return symbol_name_result.value();
+
 #else
 	Dl_info addr_info;
 
@@ -73,8 +135,13 @@ std::string symbol_name(const void *addr, bool require_exact_addr, bool no_pure_
 
 bool is_symbol(const void *addr) {
 #ifdef _MSC_VER
-	// TODO: Get dladdr equivalent for MSVC.
-	return true;
+
+	if (!initialized_symbol_handler_successfully) {
+		return true;
+	} else {
+		return symbol_name_win(addr).has_value();
+	}
+
 #else
 	Dl_info addr_info;
 
