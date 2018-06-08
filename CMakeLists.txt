@@ -29,6 +29,8 @@ Or ask for help:
 ")
 
 
+##################################################
+# main buildsystem setup entry point
 project(openage CXX)
 
 # C++ standard requirement
@@ -49,6 +51,9 @@ foreach(pol
 	endif()
 endforeach()
 
+# don't print 'Built target ...' messages
+# upstream since cmake v3.4.0-rc1 (by commit 1d3984780df8)
+set_property(GLOBAL PROPERTY TARGET_MESSAGES OFF)
 
 # Ensure CMAKE_BUILD_TYPE is set correctly.
 if(NOT CMAKE_BUILD_TYPE)
@@ -56,6 +61,8 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 string(TOUPPER "CMAKE_CXX_FLAGS_${CMAKE_BUILD_TYPE}" BUILD_TYPE_CXX_FLAGS)
 
+
+##################################################
 # options: keep up to date with those in ./configure!
 if(NOT DEFINED WANT_BACKTRACE)
 	set(WANT_BACKTRACE if_available)
@@ -73,6 +80,11 @@ if(NOT DEFINED WANT_GPERFTOOLS_TCMALLOC)
 	set(WANT_GPERFTOOLS_TCMALLOC false)
 endif()
 
+if(NOT DEFINED WANT_NCURSES)
+	set(WANT_NCURSES if_available)
+endif()
+
+##################################################
 # static content filesystem locations
 if(NOT DEFINED GLOBAL_ASSET_DIR)
 	set(ASSET_DIR "share/openage")
@@ -93,7 +105,9 @@ if(NOT DEFINED GLOBAL_CONFIG_DIR)
 endif()
 
 
-# build the project with ccache
+##################################################
+# ccache setup
+
 # distros can also do this but they don't use this mechanism
 option(ENABLE_CCACHE "prefix each compile command with ccache")
 
@@ -109,6 +123,7 @@ if(ENABLE_CCACHE)
 endif()
 
 
+##################################################
 # clang tidy static analysis
 option(
 	ENABLE_CLANG_TIDY
@@ -122,6 +137,9 @@ endif()
 
 # option processing is now done.
 
+
+##################################################
+# include buildsystem features
 
 # add search paths to helper modules
 set(BUILDSYSTEM_DIR "${CMAKE_SOURCE_DIR}/buildsystem")
@@ -137,6 +155,8 @@ include(HandlePythonOptions)
 include(CheckRuntimeDependencies)
 include(DetectProjectVersion)
 include(DependencyFetch)
+include(FindPkgConfig)
+include(FindPackageHandleStandardArgs)
 
 # include build configuration modules
 include(CTest)
@@ -151,19 +171,29 @@ include(util)
 
 
 # now that all modules and settings are loaded,
-# apply those to the project:
+# apply those to the project.
+
+
+##################################################
+# documentation generation
 
 # create documentation
 doxygen_configure(libopenage/ openage/ doc/ README.md)
 
+
+##################################################
 # static content
 add_subdirectory(assets/)
 add_subdirectory(dist/)
 add_subdirectory(cfg/)
 
+
+##################################################
 # C++ content
 add_subdirectory(libopenage/)
 
+
+##################################################
 # Python content (uses the C++ library)
 set(PYEXT_LINK_LIBRARY libopenage)
 if(MSVC)
@@ -172,20 +202,27 @@ else()
 	set(FORCE_INCLUDE_CXXFLAG "-include ")
 endif()
 set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} ${FORCE_INCLUDE_CXXFLAG}\"${CMAKE_SOURCE_DIR}/libopenage/pyinterface/hacks.h\"")
+
 add_cython_modules(EMBED NOINSTALL run.py)
 add_py_modules(BININSTALL run.py AS openage)
 add_subdirectory(openage/)
 
 python_finalize()
 
+
+##################################################
+# packaging.
+
 # Ensure that packaging is always the last step.
 add_subdirectory(packaging)
 
-message("")
 
+##################################################
+# show build configuration overview
+
+message("")
 print_config_options()
 
-# show build configuration overview
 message("${PROJECT_NAME} ${PROJECT_VERSION}
 
          compiler | ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}
@@ -197,6 +234,5 @@ message("${PROJECT_NAME} ${PROJECT_VERSION}
 py install prefix | ${CMAKE_PY_INSTALL_PREFIX}
 ")
 
-# don't print 'Built target ...' messages
-# upstream since cmake v3.4.0-rc1 (by commit 1d3984780df8)
-set_property(GLOBAL PROPERTY TARGET_MESSAGES OFF)
+##################################################
+# done! that was easy, right?

@@ -171,7 +171,6 @@ foreach(PYTHON ${PYTHON_INTERPRETERS})
 		find_library(PYTHON_LIBRARIES "${PYTHON_LIBRARY_NAME}" "libpython${PYTHON_VERSION}.dylib"
 			PATHS "${PYTHON_LIBRARY_DIR}" "${PYTHON_LIBPL}"
 		)
-
 	endif()
 
 	# there's a static_assert that tests the Python version.

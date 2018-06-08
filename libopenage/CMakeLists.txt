@@ -1,74 +1,34 @@
-# source file configuration
-# for the resulting binary
+# Copyright 2014-2018 the openage authors. See copying.md for legal info.
+
+# main C++ library definitions.
+# dependency and source file setup for the resulting library.
+declare_binary(libopenage openage library allow_no_undefined)
 
 
-# add new sources here, dependencies for linking and including
-# are specified below the source file list.
-
-declare_binary(libopenage)
-
-
-add_sources(libopenage
-	assetmanager.cpp
-	engine.cpp
-	game_control.cpp
-	game_renderer.cpp
-	handlers.cpp
-	main.cpp
-	options.cpp
-	screenshot.cpp
-	texture.cpp
-	config.cpp
-)
-
-pxdgen(
-	main.h
-	engine.h
-)
+#################################################################
+# source files and folders are added at the bottom of this file #
+#################################################################
 
 
-# add subsystem folders
-add_subdirectory("audio")
-add_subdirectory("console")
-add_subdirectory("coord")
-add_subdirectory("cvar")
-add_subdirectory("datastructure")
-add_subdirectory("gui")
-add_subdirectory("error")
-add_subdirectory("gamestate")
-add_subdirectory("input")
-add_subdirectory("log")
-add_subdirectory("job")
-add_subdirectory("pathfinding")
-add_subdirectory("pyinterface")
-add_subdirectory("renderer")
-add_subdirectory("rng")
-add_subdirectory("simulation")
-add_subdirectory("shader")
-add_subdirectory("terrain")
-add_subdirectory("testing")
-add_subdirectory("unit")
-add_subdirectory("util")
-
+##################################################
+# code generation
 
 # run codegen, add files to executable
 codegen_run()
 add_sources(libopenage GENERATED ${CODEGEN_TARGET_TUS})
 
-# after this point, no further sources can be added to the executable
-finalize_binary(libopenage openage library allow_no_undefined)
+# set basic library settings
 set_target_properties(libopenage PROPERTIES
 	VERSION 0
 	AUTOMOC ON
 	AUTOGEN_TARGET_DEPENDS "codegen"
 )
 
+##################################################
 # library dependency specification
 
 # freetype includedir hint for ubuntu...
 find_path(FREETYPE_INCLUDE_DIRS freetype/freetype.h HINTS /usr/include/freetype2)
-include(FindPkgConfig)
-include(FindPackageHandleStandardArgs)
 
 # provide apple qt5 location
 if(APPLE)
@@ -110,7 +70,7 @@ if(WANT_BACKTRACE)
 	find_package(GCCBacktrace)
 endif()
 
-#######################################
+##################################################
 # nyan integration
 
 # first, try to locate nyan directly
@@ -185,30 +145,35 @@ elseif(NOT nyan_FOUND)
 endif()
 
 
+##################################################
+# optional dependencies
+
+# advanced stacktraces with libbacktrace from gcc
 if(GCCBacktrace_FOUND)
-	include_directories(${GCCBacktrace_INCLUDE_DIRS})
-	target_link_libraries(libopenage PUBLIC "${GCCBacktrace_LIBRARIES}")
+	target_include_directories(libopenage PRIVATE ${GCCBacktrace_INCLUDE_DIRS})
+	target_link_libraries(libopenage PRIVATE "${GCCBacktrace_LIBRARIES}")
 	have_config_option(backtrace BACKTRACE true)
 else()
 	have_config_option(backtrace BACKTRACE false)
 endif()
 
+# google performance tools
 if(WANT_GPERFTOOLS_PROFILER OR WANT_GPERFTOOLS_TCMALLOC)
 	find_package(GPerfTools)
 endif()
 
 if(WANT_GPERFTOOLS_PROFILER AND GPERFTOOLS_FOUND)
 	have_config_option(gperftools-profiler GPERFTOOLS_PROFILER true)
-	include_directories(${GPERFTOOLS_INCLUDE_DIR})
-	target_link_libraries(libopenage PUBLIC ${GPERFTOOLS_PROFILER})
+	target_include_directories(libopenage PRIVATE ${GPERFTOOLS_INCLUDE_DIR})
+	target_link_libraries(libopenage PRIVATE ${GPERFTOOLS_PROFILER})
 else()
 	have_config_option(gperftools-profiler GPERFTOOLS_PROFILER false)
 endif()
 
 if(WITH_GPERFTOOLS_TCMALLOC AND GPERFTOOLS_FOUND)
 	have_config_option(gperftools-tcmalloc GPERFTOOLS_TCMALLOC true)
-	include_directories(${GPERFTOOLS_INCLUDE_DIR})
-	target_link_libraries(libopenage PUBLIC ${GPERFTOOLS_TCMALLOC})
+	target_include_directories(libopenage PRIVATE ${GPERFTOOLS_INCLUDE_DIR})
+	target_link_libraries(libopenage PRIVATE ${GPERFTOOLS_TCMALLOC})
 else()
 	have_config_option(gperftools-tcmalloc GPERFTOOLS_TCMALLOC false)
 endif()
@@ -220,22 +185,46 @@ endif()
 
 if(WANT_INOTIFY AND INOTIFY_FOUND)
 	have_config_option(inotify INOTIFY true)
-	include_directories(${INOTIFY_INCLUDE_DIR})
+	target_include_directories(libopenage PRIVATE ${INOTIFY_INCLUDE_DIRS})
 else()
 	have_config_option(inotify INOTIFY false)
 endif()
 
+# ncurses support
+if(WANT_NCURSES)
+	set(CURSES_NEED_NCURSES TRUE)
+	find_package(Curses)
+endif()
+
+if(WANT_NCURSES AND CURSES_FOUND)
+	have_config_option(ncurses NCURSES true)
+	target_include_directories(libopenage PRIVATE ${Curses_INCLUDE_DIRS})
+	target_link_libraries(libopenage PRIVATE ${CURSES_LIBRARIES})
+else()
+	have_config_option(ncurses NCURSES false)
+endif()
+
+# remember to add more options to config.{cpp,h}.in!
+
+
+##################################################
+# build configuration generation
 get_config_option_string()
 
 configure_file(config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
 configure_file(config.cpp.in ${CMAKE_CURRENT_SOURCE_DIR}/config.cpp)
 
+##################################################
+# platform specifics
 if(APPLE)
 	find_path(QTPLATFORM_INCLUDE_DIRS QtPlatformHeaders "/usr/local/opt/qt5/include")
 endif()
 
+
+##################################################
 # directories for header inclusion
-include_directories(
+target_include_directories(libopenage
+	PRIVATE
 	${OPENGL_INCLUDE_DIR}
 	${FREETYPE_INCLUDE_DIRS}
 	${EPOXY_INCLUDE_DIRS}
@@ -247,34 +236,85 @@ include_directories(
 	${QTPLATFORM_INCLUDE_DIRS}
 )
 
-# link the executable to those libraries
+##################################################
+# dependency linking
+
+# all the libraries are not exposed
+# to the public api of libopenage
 target_link_libraries(libopenage
 	PUBLIC
+		nyan::nyan
+		${PNG_LIBRARIES}
+		${OPUS_LIBRARIES}
+		${OGG_LIB}
+
 		${CMAKE_DL_LIBS}
 		${FONTCONFIG_LIB}
 		${FREETYPE_LIBRARIES}
 		${EPOXY_LIBRARIES}
 		${MATH_LIB}
 		${OPENGL_LIBRARY}
-		${OPUS_LIBRARIES}
-		${PNG_LIBRARIES}
 		${SDL2IMAGE_LIBRARIES}
 		${SDL2_LIBRARY}
 		${UTIL_LIB}
 		${HarfBuzz_LIBRARIES}
 		${RT_LIB}
-		${OGG_LIB}
 		${EXECINFO_LIB}
-		nyan::nyan
-
-	# TODO: change to PUBLIC (or, alternatively, remove all keywords
-	# of this type) when qt cmake scripts change declarations of the
-	# IMPORTED libraries to GLOBAL.
-	PRIVATE
 		Qt5::Core
 		Qt5::Quick
 )
 
+##################################################
+# installation of the library
 install(TARGETS libopenage
 	RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 	LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+
+
+
+##################################################
+# source file definitions
+
+# add new sources here, dependencies for linking and including
+# are specified above the source file list.
+
+add_sources(libopenage
+	assetmanager.cpp
+	engine.cpp
+	game_control.cpp
+	game_renderer.cpp
+	handlers.cpp
+	main.cpp
+	options.cpp
+	screenshot.cpp
+	texture.cpp
+	config.cpp
+)
+
+pxdgen(
+	main.h
+	engine.h
+)
+
+# add subsystem folders
+add_subdirectory("audio")
+add_subdirectory("console")
+add_subdirectory("coord")
+add_subdirectory("cvar")
+add_subdirectory("datastructure")
+add_subdirectory("gui")
+add_subdirectory("error")
+add_subdirectory("gamestate")
+add_subdirectory("input")
+add_subdirectory("log")
+add_subdirectory("job")
+add_subdirectory("pathfinding")
+add_subdirectory("pyinterface")
+add_subdirectory("renderer")
+add_subdirectory("rng")
+add_subdirectory("simulation")
+add_subdirectory("shader")
+add_subdirectory("terrain")
+add_subdirectory("testing")
+add_subdirectory("unit")
+add_subdirectory("util")

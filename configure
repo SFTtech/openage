@@ -71,6 +71,7 @@ OPTIONS = {
     "inotify": "if_available",
     "gperftools-tcmalloc": False,
     "gperftools-profiler": "if_available",
+    "ncurses": "if_available",
 }
 
 

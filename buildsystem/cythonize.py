@@ -9,6 +9,7 @@ Runs Cython on all modules that were listed via add_cython_module.
 import argparse
 import os
 import sys
+from multiprocessing import cpu_count
 
 
 class LineFilter:
@@ -72,18 +73,17 @@ def remove_if_exists(filename):
         os.remove(filename)
 
 
-def cythonize_cpp_wrapper(modules):
+def cythonize_cpp_wrapper(modules, nthreads):
     """ Calls cythonize, filtering useless warnings """
     from Cython.Build import cythonize
     from contextlib import redirect_stdout
-    from multiprocessing import cpu_count
 
     if not modules:
         return
 
     with CythonFilter() as cython_filter:
         with redirect_stdout(cython_filter):
-            cythonize(modules, language='c++', nthreads=cpu_count())
+            cythonize(modules, language='c++', nthreads=nthreads)
 
 
 def main():
@@ -105,6 +105,13 @@ def main():
     cli.add_argument("--clean", action="store_true", help=(
         "Clean compilation results and exit."
     ))
+    cli.add_argument("--memcleanup", type=int, default=0, help=(
+        "Generate memory cleanup code to make valgrind happy:\n"
+        "0: nothing, 1+: interned objects,\n"
+        "2+: cdef globals, 3+: types objects"
+    ))
+    cli.add_argument("--threads", type=int, default=cpu_count(),
+                     help="number of compilation threads to use")
     args = cli.parse_args()
 
     modules = read_list_from_file(args.module_list)
@@ -124,15 +131,17 @@ def main():
     # TODO https://github.com/cython/cython/pull/415
     #      Until then, this has no effect.
     Options.short_cfilenm = '"cpp"'
+    Options.generate_cleanup_code = args.memcleanup
 
-    cythonize_cpp_wrapper(modules)
+    cythonize_cpp_wrapper(modules, args.threads)
 
     Options.embed = "main"
 
-    cythonize_cpp_wrapper(embedded_modules)
+    cythonize_cpp_wrapper(embedded_modules, args.threads)
 
     # verify depends
     from Cython.Build.Dependencies import _dep_tree
+
     # TODO figure out a less hacky way of getting the depends out of Cython
     # pylint: disable=no-member, protected-access
     for module, files in _dep_tree.__cimported_files_cache.items():

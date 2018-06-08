@@ -1,4 +1,4 @@
-# Copyright 2014-2017 the openage authors. See copying.md for legal info.
+# Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 # logs whether the option NAME is enabled
 # sets WITH_${VARNAME} to HAVE
@@ -17,7 +17,7 @@ function(have_config_option NAME VARNAME HAVE)
 		set_property(GLOBAL APPEND PROPERTY SFT_CONFIG_OPTIONS_DISABLED "${NAME}")
 
 		if(WANT STREQUAL "if_available")
-			message("unavailable: ${NAME}")
+			message(STATUS "optional dependency is unavailable: ${NAME}")
 		elseif(WANT)
 			message(FATAL_ERROR "${NAME}: WANT_${VARNAME}=${WANT}, but WITH_${VARNAME}=${HAVE}")
 		endif()
