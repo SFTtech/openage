@@ -94,9 +94,9 @@ class SLP:
         version, frame_count, comment = header
 
         dbg("SLP")
-        dbg(" version:     " + version.decode('ascii'))
-        dbg(" frame count: " + str(frame_count))
-        dbg(" comment:     " + comment.decode('ascii'))
+        dbg(" version:     %s", version.decode('ascii'))
+        dbg(" frame count: %s", frame_count)
+        dbg(" comment:     %s", comment.decode('ascii'))
 
         self.frames = list()
 

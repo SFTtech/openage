@@ -1,4 +1,4 @@
-# Copyright 2013-2015 the openage authors. See copying.md for legal info.
+# Copyright 2013-2018 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -88,7 +88,7 @@ class ColorTable(Exportable):
         imgside_length = math.ceil(math.sqrt(len(self.palette)))
         imgsize = imgside_length * squaresize
 
-        dbg("generating palette image with size %dx%d" % (imgsize, imgsize))
+        dbg("generating palette image with size %dx%d", imgsize, imgsize)
 
         palette_image = Image.new('RGBA', (imgsize, imgsize),
                                   (255, 255, 255, 0))

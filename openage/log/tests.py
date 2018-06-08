@@ -1,12 +1,12 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 """ Testing code for the openage.log package. """
 
 import argparse
 from multiprocessing.pool import ThreadPool
 
-from . import spam, dbg, info, warn, err, crit
-from .logging import ENV_VERBOSITY, verbosity_to_level, set_loglevel
+from . import spam, dbg, info, warn, err, crit, \
+    set_loglevel, ENV_VERBOSITY, verbosity_to_level
 
 
 def demo(args):
@@ -19,9 +19,9 @@ def demo(args):
 
     level = verbosity_to_level(args.verbose - args.quiet)
 
-    info("new log level: " + str(level))
+    info("new log level: %s", level)
     old_level = set_loglevel(level)
-    info("old level was: " + str(old_level))
+    info("old level was: %s", old_level)
 
     info("printing some messages with different log levels")
 
@@ -41,6 +41,6 @@ def demo(args):
 
     pool = ThreadPool()
     for i in range(8):
-        pool.apply_async(info, ("async message #" + str(i),))
+        pool.apply_async(info, ("async message #%s", i))
     pool.close()
     pool.join()

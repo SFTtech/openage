@@ -20,8 +20,8 @@ def encode(inputdata):
     if not isinstance(inopt, dict):
         return inopt
 
-    dbg("Wavefile: Total length: {}\tHeader length: {}\tTrailer length: {}"\
-            .format(len(inputdata), inopt['header_len'], inopt['trailer_len']))
+    dbg("Wavefile: Total length: %s\tHeader length: %s\tTrailer length: %s",\
+        len(inputdata), inopt['header_len'], inopt['trailer_len'])
     if inopt['trailer_len']:
         inputdata = inputdata[inopt['header_len']:-inopt['trailer_len']]
     else:
@@ -56,13 +56,13 @@ def encode(inputdata):
     frame_sz = <opus.opus_int32> (frame_sz / (48000 / coding_rate))
 
     if coding_rate != rate:
-        dbg("Resampling necessary: input rate: {}\tcoding rate: {}".format(
-            rate, coding_rate))
+        dbg("Resampling necessary: input rate: %s\tcoding rate: %s",
+            rate, coding_rate)
         try:
             inputdata = upsample(inputdata, len(inputdata), inopt, coding_rate)
         except MemoryError:
             raise MemoryError("Upsampling failed.") from None
-        dbg("Resampled data length: {}".format(len(inputdata)))
+        dbg("Resampled data length: %s", len(inputdata))
 
     # initialize structs
     if ogg.ogg_stream_init(&os, int(time.time() * 100) % (1<<31)):

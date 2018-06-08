@@ -60,8 +60,7 @@ class TextureImage:
         self.width = picture_data.shape[1]
         self.height = picture_data.shape[0]
 
-        spam("creating TextureImage with size %d x %d" % (
-            self.width, self.height))
+        spam("creating TextureImage with size %d x %d", self.width, self.height)
 
         if hotspot is None:
             self.hotspot = (0, 0)
@@ -103,7 +102,7 @@ class Texture(exportable.Exportable):
 
     def __init__(self, input_data, palette=None, custom_cutter=None):
         super().__init__()
-        spam("creating Texture from %s" % (repr(input_data)))
+        spam("creating Texture from %s", repr(input_data))
 
         from .slp import SLP
 
@@ -224,8 +223,8 @@ def merge_frames(frames):
     used_area = width * height
     efficiency = area / used_area
 
-    spam("merging %d frames to %dx%d atlas, efficiency %.3f." %
-         (len(frames), width, height, efficiency))
+    spam("merging %d frames to %dx%d atlas, efficiency %.3f.",
+         len(frames), width, height, efficiency)
 
     atlas_data = numpy.zeros((height, width, 4), dtype=numpy.uint8)
     drawn_frames_meta = []
@@ -236,8 +235,8 @@ def merge_frames(frames):
 
         pos_x, pos_y = packer.pos(sub_frame)
 
-        spam("drawing frame %03d on atlas at %d x %d..." % (
-            len(drawn_frames_meta), pos_x, pos_y))
+        spam("drawing frame %03d on atlas at %d x %d...",
+             len(drawn_frames_meta), pos_x, pos_y)
 
         # draw the subtexture on atlas_data
         atlas_data[pos_y:pos_y + sub_h, pos_x:pos_x + sub_w] = sub_frame.data
@@ -250,6 +249,6 @@ def merge_frames(frames):
 
     atlas = TextureImage(atlas_data)
 
-    spam("successfully merged %d frames to atlas." % len(frames))
+    spam("successfully merged %d frames to atlas.", len(frames))
 
     return atlas, (width, height), drawn_frames_meta

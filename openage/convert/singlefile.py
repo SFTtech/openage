@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 """
 Convert a single slp file from some drs archive to a png image.
@@ -49,7 +49,7 @@ def main(args, error):
         interfacfile = drspath.with_name("interfac.drs").open("rb")  # pylint: disable=no-member
 
     # here, try opening slps from interfac or whereever
-    info("opening slp in drs '%s:%s'..." % (drspath, args.slp))
+    info("opening slp in drs '%s:%s'...", drspath, args.slp)
     slpfile = DRS(args.drs).root[args.slp].open("rb")
 
     # import here to prevent that the __main__ depends on SLP
@@ -61,7 +61,7 @@ def main(args, error):
     slpimage = SLP(slpfile.read())
 
     # open color palette
-    info("opening palette in drs '%s:%s.bina'..." % (interfacfile.name, args.palette))
+    info("opening palette in drs '%s:%s.bina'...", interfacfile.name, args.palette)
     palettefile = DRS(interfacfile).root["%s.bina" % args.palette].open("rb")
 
     info("parsing palette data...")

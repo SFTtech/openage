@@ -23,9 +23,9 @@ from libopenage.log.level cimport (
 from libopenage.log.named_logsource cimport NamedLogSource
 from libopenage.log.log cimport set_level as cpp_set_level
 
+import logging
 from inspect import getframeinfo
-
-from .logging import Level
+from ..log import get_loglevel, PYTHON_TO_CPP_LOG_LEVEL
 
 
 cdef class CPPLevel:
@@ -53,31 +53,29 @@ def enable_log_translation():
     """
     PY_LOGSOURCE.reset(new NamedLogSource(b"py"))
 
-    Level.MIN.cpp = CPPLevel.wrap(MIN)
-    Level.spam.cpp = CPPLevel.wrap(spam)
-    Level.dbg.cpp = CPPLevel.wrap(dbg)
-    Level.info.cpp = CPPLevel.wrap(info)
-    Level.warn.cpp = CPPLevel.wrap(warn)
-    Level.err.cpp = CPPLevel.wrap(err)
-    Level.crit.cpp = CPPLevel.wrap(crit)
-    Level.MAX.cpp = CPPLevel.wrap(MAX)
+    PYTHON_TO_CPP_LOG_LEVEL[logging.getLevelName("MIN")] = CPPLevel.wrap(MIN)
+    PYTHON_TO_CPP_LOG_LEVEL[logging.getLevelName("SPAM")] = CPPLevel.wrap(spam)
+    PYTHON_TO_CPP_LOG_LEVEL[logging.DEBUG] = CPPLevel.wrap(dbg)
+    PYTHON_TO_CPP_LOG_LEVEL[logging.INFO] = CPPLevel.wrap(info)
+    PYTHON_TO_CPP_LOG_LEVEL[logging.WARNING] = CPPLevel.wrap(warn)
+    PYTHON_TO_CPP_LOG_LEVEL[logging.ERROR] = CPPLevel.wrap(err)
+    PYTHON_TO_CPP_LOG_LEVEL[logging.CRITICAL] = CPPLevel.wrap(crit)
+    PYTHON_TO_CPP_LOG_LEVEL[logging.getLevelName("MAX")] = CPPLevel.wrap(MAX)
 
-    set_level(Level.current.cpp)
+    set_level(PYTHON_TO_CPP_LOG_LEVEL[get_loglevel()])
 
 
-def log(CPPLevel lvl, str msg, frame):
+def log(CPPLevel lvl, str msg, filename, function, lineno):
     """
     Forwards the message to C++.
     """
-    frameinfo = getframeinfo(frame, 0)
-
     cdef message cpp_msg
 
     cpp_msg.init_with_metadata_copy(
-        frameinfo.filename.encode(),
-        frameinfo.function.encode())
+        filename.encode(),
+        function.encode())
 
-    cpp_msg.lineno = frameinfo.lineno
+    cpp_msg.lineno = lineno
     cpp_msg.lvl = lvl.value
 
     cpp_msg.text = msg.encode()

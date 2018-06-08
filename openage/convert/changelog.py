@@ -50,8 +50,8 @@ def changes(asset_version, spec_version):
     """
 
     if asset_version >= len(CHANGES):
-        warn("asset version from the future: %d" % asset_version)
-        warn("current version is: %d" % (ASSET_VERSION))
+        warn("asset version from the future: %d", asset_version)
+        warn("current version is: %d", ASSET_VERSION)
         warn("leaving assets as they are.")
         return set()
 

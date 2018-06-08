@@ -99,7 +99,7 @@ def mount_input(srcdir=None, prev_source_dir_path=None):
 
     game_versions = set(get_game_versions(srcdir))
     if not game_versions:
-        warn("Game version(s) could not be detected in {}".format(srcdir))
+        warn("Game version(s) could not be detected in %s", srcdir)
 
     # true if no supported version was found
     no_support = False
@@ -113,14 +113,14 @@ def mount_input(srcdir=None, prev_source_dir_path=None):
     if break_vers:
         warn("You have installed incompatible game version(s):")
         for ver in break_vers:
-            warn(" * \x1b[31;1m{}\x1b[m".format(ver))
+            warn(" * \x1b[31;1m%s\x1b[m", ver)
         no_support = True
 
     # no supported version was found
     if not any(version.support == Support.yes for version in game_versions):
         warn("No supported game version found:")
         for version in GameVersion:
-            warn(" * {}".format(version))
+            warn(" * %s", version)
         no_support = True
 
     # inform about supported versions
@@ -128,13 +128,13 @@ def mount_input(srcdir=None, prev_source_dir_path=None):
         warn("You need at least one of:")
         for ver in GameVersion:
             if ver.support == Support.yes:
-                warn(" * \x1b[34m{}\x1b[m".format(ver))
+                warn(" * \x1b[34m%s\x1b[m", ver)
 
         return (False, set())
 
     info("Game version(s) detected:")
     for version in game_versions:
-        info(" * {}".format(version))
+        info(" * %s", version)
 
     output = mount_drs_archives(srcdir, game_versions)
 
@@ -197,12 +197,9 @@ def convert_assets(assets, args, srcdir=None, prev_source_dir_path=None):
         # TODO a GUI would be nice here.
 
         if total_count is None:
-            info("[%s] %s" % (converted_count, current_item))
+            info("[%s] %s", converted_count, current_item)
         else:
-            info("[%s] %s" % (
-                format_progress(converted_count, total_count),
-                current_item
-            ))
+            info("[%s] %s", format_progress(converted_count, total_count), current_item)
 
         converted_count += 1
 
@@ -313,7 +310,7 @@ def query_source_dir(proposals):
         if Path(sourcedir).is_dir():
             break
         else:
-            warn("No valid existing directory: {}".format(sourcedir))
+            warn("No valid existing directory: %s", sourcedir)
 
     return sourcedir
 
@@ -419,7 +416,7 @@ def source_dir_proposals(call_wine):
                                 reg_parser[reg_key]['"EXE Path"']))
 
     except OSError as error:
-        dbg("wine registry extraction failed: %s" % error)
+        dbg("wine registry extraction failed: %s", error)
 
 
 def conversion_required(asset_dir, args):
@@ -468,10 +465,9 @@ def conversion_required(asset_dir, args):
     else:
         if asset_version >= 0 and asset_version != changelog.ASSET_VERSION:
             info("Found converted assets with version %d, "
-                 "but need version %d" % (asset_version,
-                                          changelog.ASSET_VERSION))
+                 "but need version %d", asset_version, changelog.ASSET_VERSION)
 
-        info("Converting {}".format(", ".join(sorted(changes))))
+        info("Converting %s", ", ".join(sorted(changes)))
 
         # try to resolve resolve the output path
         target_path = asset_dir.resolve_native_path_w()
@@ -479,7 +475,7 @@ def conversion_required(asset_dir, args):
             raise OSError("could not resolve a writable asset path "
                           "in {}".format(asset_dir))
 
-        info("Will save to '{}'".format(target_path.decode(errors="replace")))
+        info("Will save to '%s'", target_path.decode(errors="replace"))
 
         for component in changelog.COMPONENTS:
             if component not in changes:

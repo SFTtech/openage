@@ -1,4 +1,4 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -61,8 +61,8 @@ class ContentSnippet:
             s for s in snippet_list if len(self.typerefs & s.typedefs) > 0
         }
 
-        spam("snippet %s requires %s" %
-             (repr(self), repr(self.required_snippets)))
+        spam("snippet %s requires %s",
+             repr(self), repr(self.required_snippets))
 
         resolved_types = set()
         for s in self.required_snippets:
