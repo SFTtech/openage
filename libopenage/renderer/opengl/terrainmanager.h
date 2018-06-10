@@ -25,6 +25,12 @@ struct TerrainData{
        float tex_index;
        float is_alpha;
     };
+struct terrain_array{
+    float x;
+    float y;
+    float tex;
+    int subtex;
+};
 class TerrainManager{
     public:
         TerrainManager(GlContext* context,util::Path path);
@@ -42,7 +48,7 @@ class TerrainManager{
         GlVertexArray* m_Vao;
         GlIndexBuffer* m_IBO;
         GlContext *gl_context;
-        int terrain_layout[35][35];        
+        terrain_array terrain_layout[35][35];        
         TerrainData* m_buffer;
         int m_indexcount;
         std::shared_ptr<GlShaderProgram> shade;

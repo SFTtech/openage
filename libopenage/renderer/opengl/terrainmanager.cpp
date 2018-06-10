@@ -10,7 +10,7 @@ namespace opengl{
     :gl_context(context){
         tex_array = new opengl::GlTextureArray(32,512,512,resources::pixel_format::rgba8);
         std::string url;
-        for(int i = 44; i <= 76;i++){
+        for(int i = 1; i <= 32;i++){
             url = "/assets/terrain/textures/" + std::to_string(i) + ".png";
             textures.push_back(resources::TextureData(path/url,false));
             tex_array->submit_texture(textures.back());
@@ -74,49 +74,53 @@ namespace opengl{
     }
 
     void TerrainManager::init_terrain(){
+        float offset_x = 0;
+        float offset_y = -1100;
         for(int i = 0;i<35;i++){
             for(int j = 0;j<35;j++){
-                terrain_layout[i][j] = rand()%32;
+                terrain_layout[i][j].tex = rand()%32;
+                //terrain_layout[i][j].tex = 11;
+                terrain_layout[i][j].subtex =(35*i + j)%64;
+                terrain_layout[i][j].x = offset_x + 64*j;
+                terrain_layout[i][j].y = offset_y + 64*i;
             }
         }
     }
 
     void TerrainManager::submit(){
         
-        float offset_x = 0;
-        float offset_y = -1100;
+        
         for(int i = 0;i<35;i++){
             for(int j = 0;j<35;j++){
-                float left = 0.125*(rand()%8);
-                float top = 0.125*(rand()%8);
-                float temp_tex = rand()%32;                
-                m_buffer->x = offset_x + 64*j;
-                m_buffer->y = offset_y + 64*i;
+                float left = 0.125*(terrain_layout[i][j].subtex%8);
+                float top = 0.125*(terrain_layout[i][j].subtex/8);
+                m_buffer->x = terrain_layout[i][j].x;
+                m_buffer->y = terrain_layout[i][j].y;
                 m_buffer->u = left;
                 m_buffer->v =  top + 0.125;
                 m_buffer->is_alpha = 0;
-                m_buffer->tex_index = terrain_layout[i][j];
+                m_buffer->tex_index = terrain_layout[i][j].tex;
                 m_buffer++;
-                m_buffer->x = offset_x + 64*j;
-                m_buffer->y = offset_y + 64*i + 64;
+                m_buffer->x = terrain_layout[i][j].x;
+                m_buffer->y = terrain_layout[i][j].y + 64;
                 m_buffer->u = left;
                 m_buffer->v = top;
                 m_buffer->is_alpha = 0;
-                m_buffer->tex_index = terrain_layout[i][j];
+                m_buffer->tex_index = terrain_layout[i][j].tex;
                 m_buffer++;
-                m_buffer->x = offset_x + 64*j + 64;
-                m_buffer->y = offset_y + 64*i + 64;
+                m_buffer->x = terrain_layout[i][j].x + 64;
+                m_buffer->y = terrain_layout[i][j].y + 64;
                 m_buffer->u = left + 0.125;
                 m_buffer->v = top;
                 m_buffer->is_alpha = 0;
-                m_buffer->tex_index = terrain_layout[i][j];
+                m_buffer->tex_index = terrain_layout[i][j].tex;
                 m_buffer++;
-                m_buffer->x = offset_x + 64*j + 64;
-                m_buffer->y = offset_y + 64*i;
+                m_buffer->x = terrain_layout[i][j].x + 64;
+                m_buffer->y = terrain_layout[i][j].y;
                 m_buffer->u = left + 0.125;
                 m_buffer->v = top + 0.125;
                 m_buffer->is_alpha = 0;
-                m_buffer->tex_index = terrain_layout[i][j];
+                m_buffer->tex_index = terrain_layout[i][j].tex;
                 m_buffer++;
                 m_indexcount += 6;
             }
@@ -140,15 +144,17 @@ namespace opengl{
 				0.0f,0.0f,  1.0f,  1;
     Eigen::Matrix4f dimet; /// This is the DIMETRIC Perspective. Used in age of empires (Reference: https://gamedev.stackexchange.com/questions/16746/what-is-the-name-of-perspective-of-age-of-empires-ii)
 	    dimet << 	1.0,1.0,0,0,
-	            	0.5,-0.5,1.0,0,
+	            	0.5,-0.5,0.75,0,
 	            	0,0,0,0,
 	            	0,0,0,1;
+    auto transform = Eigen::Affine3f::Identity();
+    transform.rotate(Eigen::AngleAxis<float>(M_PI/2.0, Eigen::Vector3f::UnitZ()));
         shade->use();
         shade->sampler_array(0); 
-        auto batch_uniform = shade->new_uniform_input("ortho",pers2,"dimet",dimet);
+        auto batch_uniform = shade->new_uniform_input("ortho",transform*pers2,"dimet",dimet);
         auto lala_batch = dynamic_cast<opengl::GlUniformInput const*>(batch_uniform.get());
         shade->execute_with(lala_batch,nullptr);      
-        this->init_terrain();
+        //this->init_terrain();
         this->begin();
         this->submit();
         this->end();

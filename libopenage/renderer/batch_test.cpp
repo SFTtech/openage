@@ -156,6 +156,7 @@ void batch_demo(int demo_id,util::Path path){
     //auto tex_array = opengl::GlTextureArray(test_data);
     //auto new_array = opengl::GlTextureArray(3,512,512,resources::pixel_format::rgba8);
     auto terr_manager = opengl::TerrainManager(window.get_context(),path);
+    terr_manager.init_terrain();
     //new_array.submit_texture(test_data);
     //new_array.submit_texture(test_data_2);
     //new_array.submit_texture(test_data_3);
@@ -214,7 +215,7 @@ void batch_demo(int demo_id,util::Path path){
         //renderer->submit(test_terrain);
         renderer->end();
         renderer->render();*/
-        shade->use();
+        /*shade->use();
         auto new_uniform = shade->new_uniform_input("mouse_pos",Eigen::Vector2f(x,y),"ortho",pers2,"dimet",dimet);
         auto lala = dynamic_cast<opengl::GlUniformInput const*>(new_uniform.get());
         shade->execute_with(lala,nullptr);
@@ -243,7 +244,7 @@ void batch_demo(int demo_id,util::Path path){
         renderer_3->submit(blacksmith);
         renderer_3->submit(trade_cart);
         renderer_3->end();
-        renderer_3->render();
+        renderer_3->render();*/
 
         SDL_PollEvent(&event);
         if(event.type == SDL_MOUSEMOTION){
