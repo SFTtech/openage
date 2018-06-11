@@ -21,5 +21,4 @@ add_sources(libopenage
   terrainmanager.cpp
   renderer.cpp
   batchrenderer.cpp
-  vertexrenderer.cpp
 )
