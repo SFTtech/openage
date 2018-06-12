@@ -17,7 +17,6 @@
 #include "geometry.h"
 #include "opengl/window.h"
 #include "opengl/context.h"
-//#include "perspective.h"
 #include "opengl/sprite.h"
 #include "opengl/shader_program.h"
 #include <time.h>
