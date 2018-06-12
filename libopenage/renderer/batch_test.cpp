@@ -75,10 +75,7 @@ void batch_demo(int demo_id,util::Path path){
     float x,y;
     int closed = 0;
     SDL_Event event;
-    clock_t curr_time,prev_time,update_time;
 	int frame = 0,j = 0,m=0;
-	prev_time = clock();
-  	update_time = clock();
 
     int tex_ids[40] = {2,5,12,689,695,716,779,795,859,855,849,351,343,342,330,339,320,326,354,361,357,363,499,576,578,581,584,591,594,601,600,805,61,64,67,71,171,179,181,186};
     int tree_list[6] = {1251,1254,1256,1258,1260,1262};
@@ -174,23 +171,27 @@ void batch_demo(int demo_id,util::Path path){
     glEnable(GL_DEPTH_TEST);
     int depth = 0;
        
-    
+    uint32_t time1,time2,time3;
+    time1 = SDL_GetTicks();
+    time2 = time1;
+    time3 = time1;
     while(!closed){
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
 		frame++;
-		if((float)(clock()-prev_time)/CLOCKS_PER_SEC >= 1.0){
-      		prev_time = clock();
+        time1 = SDL_GetTicks();
+		if(time1 - time2 >= 1000){
+      		time2 = time1;
 			log::log(INFO <<" frames " << frame);
 			frame = 0;
             depth++;
 		}
 
-        if((float)(clock() - update_time)/CLOCKS_PER_SEC >= 1.0f/20.0f){ 
+        if(time1 - time3 >= 50){ 
         //log::log(INFO << m);
-        update_time = clock();
+        time3 = time1;
         viking_ship.set_subtex(m%9);
          elephant.set_subtex(0 + m%10);
         paladin.set_subtex(20 + m%10);
@@ -215,7 +216,7 @@ void batch_demo(int demo_id,util::Path path){
         //renderer->submit(test_terrain);
         renderer->end();
         renderer->render();*/
-        /*shade->use();
+        shade->use();
         auto new_uniform = shade->new_uniform_input("mouse_pos",Eigen::Vector2f(x,y),"ortho",pers2,"dimet",dimet);
         auto lala = dynamic_cast<opengl::GlUniformInput const*>(new_uniform.get());
         shade->execute_with(lala,nullptr);
@@ -244,7 +245,7 @@ void batch_demo(int demo_id,util::Path path){
         renderer_3->submit(blacksmith);
         renderer_3->submit(trade_cart);
         renderer_3->end();
-        renderer_3->render();*/
+        renderer_3->render();
 
         SDL_PollEvent(&event);
         if(event.type == SDL_MOUSEMOTION){
