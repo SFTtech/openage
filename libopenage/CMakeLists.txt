@@ -190,25 +190,34 @@ else()
 	have_config_option(inotify INOTIFY false)
 endif()
 
-# ncurses support
-if(WANT_NCURSES)
-	set(CURSES_NEED_NCURSES TRUE)
-	find_package(Curses)
+# opengl support
+if(WANT_OPENGL)
+	find_package(OpenGL)
 endif()
 
-if(WANT_NCURSES AND CURSES_FOUND)
-	have_config_option(ncurses NCURSES true)
-	target_include_directories(libopenage PRIVATE ${Curses_INCLUDE_DIRS})
-	target_link_libraries(libopenage PRIVATE ${CURSES_LIBRARIES})
+# vulkan support
+if(WANT_VULKAN)
+	find_package(Vulkan)
+endif()
+
+if(WANT_OPENGL AND OPENGL_FOUND)
+	have_config_option(opengl OPENGL true)
+	include_directories(${OPENGL_INCLUDE_DIR})
 else()
-	have_config_option(ncurses NCURSES false)
+	have_config_option(opengl OPENGL false)
 endif()
 
-# remember to add more options to config.{cpp,h}.in!
+if(WANT_VULKAN AND VULKAN_FOUND)
+	have_config_option(vulkan VULKAN true)
+	include_directories(${Vulkan_INCLUDE_DIRS})
+else()
+	have_config_option(vulkan VULKAN false)
+endif()
 
+if(NOT (OPENGL_FOUND OR VULKAN_FOUND))
+	message(FATAL_ERROR "One of OpenGL or Vulkan is required!")
+endif()
 
-##################################################
-# build configuration generation
 get_config_option_string()
 
 configure_file(config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
@@ -243,6 +252,7 @@ target_include_directories(libopenage
 # to the public api of libopenage
 target_link_libraries(libopenage
 	PUBLIC
+		pthread
 		nyan::nyan
 		${PNG_LIBRARIES}
 		${OPUS_LIBRARIES}
@@ -254,6 +264,7 @@ target_link_libraries(libopenage
 		${EPOXY_LIBRARIES}
 		${MATH_LIB}
 		${OPENGL_LIBRARY}
+		${Vulkan_LIBRARIES}
 		${SDL2IMAGE_LIBRARIES}
 		${SDL2_LIBRARY}
 		${UTIL_LIB}

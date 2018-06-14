@@ -1,0 +1,15 @@
+add_sources(libopenage
+  buffer.cpp
+  context.cpp
+  framebuffer.cpp
+  geometry.cpp
+  render_target.cpp
+  renderer.cpp
+  shader.cpp
+  shader_program.cpp
+  simple_object.cpp
+  texture.cpp
+  texture_array.cpp
+  vertex_array.cpp
+  window.cpp
+)
