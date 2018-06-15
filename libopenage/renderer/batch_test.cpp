@@ -201,29 +201,15 @@ void batch_demo(int demo_id,util::Path path){
         paladin.x -= 2.0;
         m++;
         }
-        terr_manager.render();
-        /*auto batch_uniform = shadebatch->new_uniform_input("ortho",pers2,"layer",depth%32,"dimet",dimet);
-        //auto batch_uniform = shadebatch->new_uniform_input("ortho",pers2,"layer",0);        
-        auto lala_batch = dynamic_cast<opengl::GlUniformInput const*>(batch_uniform.get());
-        shadebatch->use();
-        shadebatch->execute_with(lala_batch,nullptr);        
-        renderer->begin();
-        for(int k=0;k<terrains.size();k++){
-			//sprites[k]->x = rand()%1920;
-			//sprites[k]->y = rand()%1080;
-            renderer->submit(*(terrains[k]));
-		}
-        //renderer->submit(test_terrain);
-        renderer->end();
-        renderer->render();*/
+        //terr_manager.render();
         shade->use();
         auto new_uniform = shade->new_uniform_input("mouse_pos",Eigen::Vector2f(x,y),"ortho",pers2,"dimet",dimet);
         auto lala = dynamic_cast<opengl::GlUniformInput const*>(new_uniform.get());
         shade->execute_with(lala,nullptr);
         renderer_2->begin();
         for(int k=0;k<1000;k++){
-			//sprites[k]->x = rand()%1920;
-			//sprites[k]->y = rand()%1080;
+			sprites[k]->x = rand()%1920;
+			sprites[k]->y = rand()%1080;
             renderer_2->submit(*(sprites[k]));
 		}
         /*for(int k=0;k<trees.size();k++){

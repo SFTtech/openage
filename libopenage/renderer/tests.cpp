@@ -95,7 +95,15 @@ void renderer_demo_0(util::Path path) {
 	auto water_4 = sprite.make_render_obj(shore_texture,true,0,shader,1024,1024);
 	auto elephant = sprite.make_render_obj(paladin,false,0,shader,0,0);
 	std::vector<Renderable_test> mix_tex; 
+	std::vector<Renderable_test> terrain_tex; 
 	
+	Renderable_test elephants[80];
+	for(int i = 0;i<50;i++){
+		elephants[i] = sprite.make_render_obj(paladin_2,false,i,shader,0,0);
+	}
+	/*for(int i = 50;i<80;i++){
+		elephants[i] = sprite.make_render_obj(paladin,false,i%30,shader,0,0);
+	}*/
 	
 	//mix_tex.push_back(dust);
 	
@@ -121,17 +129,17 @@ void renderer_demo_0(util::Path path) {
 		}
 		mix_tex.push_back({unif_temp,elephant.geometry,true,true});
 	}*/
-	/*for(int j = 0; j<4;j++){
-	for(int i=-3;i<2;i++){
-		auto terr_unif = sprite.get_uniform(road_texture,true,0,shader,512*j,512*i);
+	for(int j = 0; j<4;j++){
+	for(int i=0;i<6;i++){
+		auto terr_unif = sprite.get_uniform(road_texture,true,shader,512*j,512*(i-3));
 		if(rand()%3 == 0)
-			terr_unif = sprite.get_uniform(dust_texture,true,0,shader,512*j,512*i);
+			terr_unif = sprite.get_uniform(dust_texture,true,shader,512*j,512*(i-3));
 		if(rand()%3 == 1)
-			terr_unif = sprite.get_uniform(shore_texture,true,0,shader,512*j,512*i);		
-		mix_tex.push_back({terr_unif,water_4.geometry,true,true});
+			terr_unif = sprite.get_uniform(shore_texture,true,shader,512*j,512*(i-3));		
+		terrain_tex.push_back({terr_unif,water_4.geometry,true,true});
 		
 	}
-	}*/
+	}
 	
 	log::log(INFO << "what is path "<<path);
 	log::log(INFO << "Size of the Window "<<size.x<<"X"<<size.y);
@@ -156,6 +164,10 @@ void renderer_demo_0(util::Path path) {
 	};
 	RenderPass_test alpha_pass{
 		mix_tex,
+		fbo.get(),
+	};
+	RenderPass_test terrain_pass{
+		terrain_tex,
 		fbo.get(),
 	};
 	RenderPass_test render_main{
@@ -213,8 +225,17 @@ void renderer_demo_0(util::Path path) {
 
 			shader_display->update_uniform_input(color_texture_uniform.get(), "color_texture", color_texture.get(), "proj", pmat);
 			alpha_pass.target = fbo.get();
+			terrain_pass.target = fbo.get();
 		} );
 	time_t curr_time,prev_time;
+
+	std::shared_ptr<UniformInput> uni_array[1000];
+	std::vector<Renderable_test> loop_tex; 
+	loop_tex.push_back(elephant);
+	for(int i = 0;i<1000;i++){
+		uni_array[i] = sprite.get_uniform2(paladin_2,false,shader,rand()%1366,rand()%768);
+		loop_tex.push_back({uni_array[i],elephants[i/50].geometry,true,true});
+	}
 	int frame = 0;
 	time(&prev_time);
 	while (!window.should_close()) {
@@ -225,13 +246,13 @@ void renderer_demo_0(util::Path path) {
 			log::log(INFO << frame);
 			frame = 0;
 		}
-		std::vector<Renderable_test> loop_tex; 
-		loop_tex.push_back(elephant);
-		for(int i = 0;i<100;i++){
-		auto unif_temp = sprite.get_uniform2(paladin,false,shader,rand()%1366,rand()%768); 
-		loop_tex.push_back({unif_temp,elephant.geometry,true,true});
+		for(int i = 0;i<1000;i++){
+			shader->update_uniform_input(uni_array[i].get(),"pos",Eigen::Vector2f(rand()%1366,rand()%768)); 
+			loop_tex[i+1].unif_in = uni_array[i];
 		}
 		alpha_pass.renderables = loop_tex;
+		//render_main.renderables = loop_tex;
+		//renderer->render_test(terrain_pass);
 		renderer->render_test(alpha_pass);
 		renderer->render_test(render_main);
 		window.update();
