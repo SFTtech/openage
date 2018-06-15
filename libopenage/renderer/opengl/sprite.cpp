@@ -21,12 +21,12 @@ namespace openage{
     namespace renderer{
     namespace opengl{
 
-Renderable_test Sprite::make_render_obj(sprite_texture texture,bool pers_bool,int subtex,std::shared_ptr<ShaderProgram> shader,float aspect,float Y_screen,float X,float Y){
+Renderable_test Sprite::make_render_obj(sprite_texture texture,bool pers_bool,int subtex,std::shared_ptr<ShaderProgram> shader,float X,float Y){
 
   auto info_tex = texture.data.get_info();
   auto image_info = info_tex.get_subtexture_size(subtex);
   float image_aspect = (float)image_info.first/(float)image_info.second;
-  auto transform = make_transform((float)image_info.second/(float)Y_screen,pers_bool,Eigen::Vector3f(X,Y,0),(image_aspect)*aspect);
+  auto transform = make_transform(pers_bool,Eigen::Vector3f(X,Y,0));
   	auto unif_in1 = shader->new_uniform_input(
   		"mvp", transform.matrix(),
   		"u_id", 2u,
@@ -35,32 +35,35 @@ Renderable_test Sprite::make_render_obj(sprite_texture texture,bool pers_bool,in
   auto quad = this->get_subtex(texture.data,subtex, X,Y);
   return {unif_in1,quad,true,true};
 }
-/*Renderable_test Sprite::create(util::Path path,bool pers_bool,char tex_path[],int subtex,bool use_metafile,std::shared_ptr<ShaderProgram> shader,std::shared_ptr<Renderer> renderer,float aspect,float Y_screen,Eigen::Vector3f center_coord){
 
-    auto tex = resources::TextureData(path / tex_path,use_metafile);
-    auto info_tex = tex.get_info();
-    auto image_info = info_tex.get_subtexture_size(subtex);
-  	auto gltex = renderer->add_texture(tex);
-    float image_aspect = (float)image_info.first/(float)image_info.second;
-    auto transform = make_transform((float)image_info.second/(float)Y_screen,pers_bool,center_coord,(image_aspect)*aspect);
+std::shared_ptr<UniformInput> Sprite::get_uniform(sprite_texture texture,bool pers_bool,std::shared_ptr<ShaderProgram> shader,float X,float Y){
+  auto transform = make_transform(pers_bool,Eigen::Vector3f(X,Y,0));
   	auto unif_in1 = shader->new_uniform_input(
   		"mvp", transform.matrix(),
   		"u_id", 2u,
-  		"tex", gltex.get()
+  		"tex", texture.tex_handle.get()
   	);
-    log::log(INFO << "Yo Yo Yo");
-    auto quad = this->get_subtex(tex,subtex);
 
-    return {unif_in1,quad,true,true};
+    return unif_in1;
+}
 
-}*/
+std::shared_ptr<UniformInput> Sprite::get_uniform2(sprite_texture texture,bool pers_bool,std::shared_ptr<ShaderProgram> shader,float X,float Y){
+  	auto unif_in1 = shader->new_uniform_input(
+  		"pos", Eigen::Vector2f(X,Y),
+  		"u_id", 2u,
+  		"tex", texture.tex_handle.get()
+  	);
+
+    return unif_in1;
+}
+
 
 std::shared_ptr<Geometry> Sprite::get_subtex(resources::TextureData tex,int subtex,float X,float Y){
     resources::TextureInfo tex_info = tex.get_info();
   	size_t count = tex_info.get_subtexture_count();
-  	log::log(INFO << "Number of sprites in spritesheet : "<<count);
+  	//log::log(INFO << "Number of sprites in spritesheet : "<<count);
   	std::tuple<float, float, float, float> sprite_coord = tex_info.get_subtexture_coordinates(subtex);
-  	log::log(INFO << "Coordinate of Sprite "<<subtex<<" is : "<< std::get<0>(sprite_coord)<<"  "<<std::get<1>(sprite_coord)<<"  "<<std::get<2>(sprite_coord)<<"  "<<std::get<3>(sprite_coord));
+  	//log::log(INFO << "Coordinate of Sprite "<<subtex<<" is : "<< std::get<0>(sprite_coord)<<"  "<<std::get<1>(sprite_coord)<<"  "<<std::get<2>(sprite_coord)<<"  "<<std::get<3>(sprite_coord));
   	float left = std::get<0>(sprite_coord);
   	float right = std::get<1>(sprite_coord);
   	float bottom = std::get<2>(sprite_coord);
@@ -79,14 +82,21 @@ std::shared_ptr<Geometry> Sprite::get_subtex(resources::TextureData tex,int subt
   			position[0] + size_img[0], position[1], right, bottom,//bottom right
   			position[0] + size_img[0], position[1] + size_img[1], right, top//top right
   		} };
-    auto mesh = resources::MeshData::make_quad(quad_data2);
+      std::array<float, 16> quad_data3 = { {
+  			0, 0, left, bottom,//bottom left
+  			0, size_img[1], left, top,//top left
+  			size_img[0], 0, right, bottom,//bottom right
+  			size_img[0], size_img[1], right, top//top right
+  		} };
+    auto mesh = resources::MeshData::make_quad(quad_data3);
     return std::make_shared<GlGeometry>(mesh);
   }
-Eigen::Transform<float, 3, 32> Sprite::make_transform(float scale,bool pers_bool,Eigen::Vector3f center_coord,float aspect){
+Eigen::Transform<float, 3, 32> Sprite::make_transform(bool pers_bool,Eigen::Vector3f center_coord){
   float zfar = 0.1f;                 // for now these are constant
   float znear = 100.0f;
   auto transform = Eigen::Affine3f::Identity();
-	//transform.prescale(Eigen::Vector3f(100, 100,0.0f));
+	//transform.prescale(Eigen::Vector3f(0.5, 0.5,0.0f));
+  transform.pretranslate(center_coord);
   Eigen::Matrix4f dimet; /// This is the DIMETRIC Perspective. Used in age of empires (Reference: https://gamedev.stackexchange.com/questions/16746/what-is-the-name-of-perspective-of-age-of-empires-ii)
 	    dimet << 	1.0,-1,0,0,
 	            	0.5,0.5,0.75,0,
@@ -94,15 +104,15 @@ Eigen::Transform<float, 3, 32> Sprite::make_transform(float scale,bool pers_bool
 	            	0,0,0,1;
 
 	Eigen::Matrix4f pers,pers2;  //this is the Perspective Matrix, Currently Used to normalise the aspect ratio. Read about UV coordinates to see why this is needed.
-	pers << 	(float)aspect,0,0,0,
+	pers << 	(float)1.0,0,0,0,
 						0,1.0,0,0,
 						0,  0,-2*(float)(zfar*znear)/(zfar-znear),0,
 					  0,0,  -1*(float)(zfar+znear)/(zfar-znear),  1;
 
-  pers2 << 	-2.0f/(1920.0f),0,0,1.0f,
-						0,-2.0f/(1080.0f),0,1.0f,
-						0,  0,-2*(float)(zfar*znear)/(zfar-znear),0,
-					  0.0f,0.0f,  -1*(float)(zfar+znear)/(zfar-znear),  1;  
+  pers2 << 	2.0f/(1366.0f),0,0,-1.0f,
+						0,-2.0f/(768.0f),0,1.0f,
+						0,  0,1.0,0,
+					  0.0f,0.0f, 1.0,  1;  
               Eigen::Transform<float, 3, 32> transform_temp;
   if(pers_bool){
   transform_temp = pers2*dimet*transform;
@@ -110,11 +120,6 @@ Eigen::Transform<float, 3, 32> Sprite::make_transform(float scale,bool pers_bool
   else{
   transform_temp = pers2*transform;
   }
-  Eigen::Vector4f temp_cc;
-  center_coord /= 768.0;
-  temp_cc << center_coord, 1.0;
-  Eigen::Vector4f transform_center_coord = pers*dimet*temp_cc;
-  //transform_temp.pretranslate(transform_center_coord.head<3>());//translate to whatever coordinate you want.
   return transform_temp;
 
   }
@@ -142,7 +147,7 @@ Eigen::Transform<float, 3, 32> Sprite::make_transform(float scale,bool pers_bool
     float image_aspect = (float)image_info.first/(float)image_info.second;
     log::log(INFO << "this is image aspect : "<<image_aspect);
     //auto transform = make_transform((float)image_info.second/(float)Y_screen,true,Eigen::Vector3f(X,Y,0),(image_aspect)*aspect);
-    auto transform = make_transform(64.0f/(float)Y_screen,true,Eigen::Vector3f(X,Y,0),(image_aspect)*aspect);
+    auto transform = make_transform(true,Eigen::Vector3f(X,Y,0));
     
     auto alpha_uniform = alpha_shader->new_uniform_input(
 		"base_texture",base.tex_handle.get(),

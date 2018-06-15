@@ -54,7 +54,7 @@ GlTexture::GlTexture(const resources::TextureData& data)
 
 	// drawing settings
 	// TODO these are outdated, use sampler settings
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glBindTexture(GL_TEXTURE_2D, 0);
 	log::log(MSG(dbg) << "Created OpenGL texture from data");
@@ -81,7 +81,7 @@ GlTexture::GlTexture(const resources::TextureInfo &info)
 	);
 
 	// TODO these are outdated, use sampler settings
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 	log::log(MSG(dbg) << "Created OpenGL texture from parameters");

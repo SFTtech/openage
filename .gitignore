@@ -64,3 +64,4 @@ perf.data*
 #copyrighted assets
 /assets/converted/
 /assets/terrain/
+.vscode/settings.json

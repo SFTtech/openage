@@ -100,11 +100,11 @@ void batch_demo(int demo_id,util::Path path){
         }
     }
 
-    for(int j = 0;j<80;j++){
+    for(int j = 0;j<100;j++){
         for(int z = 0;z<10;z++){
         sprites.push_back(new opengl::Sprite_2((float)(rand()%1920),(float)(rand()%1080),(float)100,(float)100,(float)(rand()%1000)/1000.0,(float)(rand()%1000)/1000.0,(float)(rand()%1000)/1000.0,(float)1.0));
-        sprites.back()->set_texture(tex_ids[rand()%40],true);
-        //sprites.back()->set_subtex(rand()%6);
+        //sprites.back()->set_texture(tex_ids[rand()%40],true);
+        sprites.back()->set_texture(795,true);
         }
     }
 
@@ -221,19 +221,19 @@ void batch_demo(int demo_id,util::Path path){
         auto lala = dynamic_cast<opengl::GlUniformInput const*>(new_uniform.get());
         shade->execute_with(lala,nullptr);
         renderer_2->begin();
-        for(int k=0;k<sprites.size();k++){
+        for(int k=0;k<1000;k++){
 			//sprites[k]->x = rand()%1920;
 			//sprites[k]->y = rand()%1080;
             renderer_2->submit(*(sprites[k]));
 		}
-        for(int k=0;k<trees.size();k++){
+        /*for(int k=0;k<trees.size();k++){
 			//sprites[k]->x = rand()%1920;
 			//sprites[k]->y = rand()%1080;
             renderer_2->submit(*(trees[k]));
-		}
+		}*/
         renderer_2->end();
         renderer_2->render();
-        renderer_3->begin();
+        /*renderer_3->begin();
         renderer_3->submit(monastery);
         renderer_3->submit(archery);
         renderer_3->submit(castle);
@@ -245,7 +245,7 @@ void batch_demo(int demo_id,util::Path path){
         renderer_3->submit(blacksmith);
         renderer_3->submit(trade_cart);
         renderer_3->end();
-        renderer_3->render();
+        renderer_3->render();*/
 
         SDL_PollEvent(&event);
         if(event.type == SDL_MOUSEMOTION){

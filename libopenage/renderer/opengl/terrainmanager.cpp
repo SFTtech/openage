@@ -10,7 +10,7 @@ namespace opengl{
     :gl_context(context){
         tex_array = new opengl::GlTextureArray(32,512,512,resources::pixel_format::rgba8);
         std::string url;
-        for(int i = 1; i <= 32;i++){
+        for(int i = 45; i <=76;i++){
             url = "/assets/terrain/textures/" + std::to_string(i) + ".png";
             textures.push_back(resources::TextureData(path/url,false));
             tex_array->submit_texture(textures.back());
@@ -78,8 +78,8 @@ namespace opengl{
         float offset_y = -1100;
         for(int i = 0;i<35;i++){
             for(int j = 0;j<35;j++){
-                terrain_layout[i][j].tex = rand()%32;
-                //terrain_layout[i][j].tex = 11;
+                //terrain_layout[i][j].tex = rand()%32;
+                terrain_layout[i][j].tex = 17 + (i/8)*(j/8);
                 terrain_layout[i][j].subtex =(35*i + j)%64;
                 terrain_layout[i][j].x = offset_x + 64*j;
                 terrain_layout[i][j].y = offset_y + 64*i;

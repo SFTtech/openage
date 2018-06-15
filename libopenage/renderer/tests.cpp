@@ -27,7 +27,7 @@ namespace tests {
 
 
 void renderer_demo_0(util::Path path) {
-	opengl::GlWindow window("openage renderer test", { 1024, 768 } );
+	opengl::GlWindow window("openage renderer test", { 1366, 768 } );
 
 	auto renderer = window.make_renderer();
 	
@@ -87,13 +87,13 @@ void renderer_demo_0(util::Path path) {
 	float left_terr = 0.125f*7;
 	float top_terr = 0.125f*1;		
 	auto alpha_test = sprite.make_terrain(water_texture,alpha_texture,alpha_shader,aspect,(float)size.y,0,512-64,left_terr,top_terr);
-	auto shore_1 = sprite.make_render_obj(shore_texture,true,0,shader,aspect,(float)size.y,0,0);
-	auto water_1 = sprite.make_render_obj(water_texture,true,0,shader,aspect,(float)size.y,0,0);
-	auto dust = sprite.make_render_obj(dust_texture,true,0,shader,aspect,(float)size.y,600,50);
-	auto water_2 = sprite.make_render_obj(shore_texture,true,0,shader,aspect,(float)size.y,0,1024);
-	auto water_3 = sprite.make_render_obj(shore_texture,true,0,shader,aspect,(float)size.y,1024,0);
-	auto water_4 = sprite.make_render_obj(shore_texture,true,0,shader,aspect,(float)size.y,1024,1024);
-	auto elephant = sprite.make_render_obj(paladin,false,0,shader,aspect,(float)size.y,400,450);
+	auto shore_1 = sprite.make_render_obj(shore_texture,true,0,shader,0,0);
+	auto water_1 = sprite.make_render_obj(water_texture,true,0,shader,0,0);
+	auto dust = sprite.make_render_obj(dust_texture,true,0,shader,600,50);
+	auto water_2 = sprite.make_render_obj(shore_texture,true,0,shader,0,1024);
+	auto water_3 = sprite.make_render_obj(shore_texture,true,0,shader,1024,0);
+	auto water_4 = sprite.make_render_obj(shore_texture,true,0,shader,1024,1024);
+	auto elephant = sprite.make_render_obj(paladin,false,0,shader,0,0);
 	std::vector<Renderable_test> mix_tex; 
 	
 	
@@ -104,21 +104,35 @@ void renderer_demo_0(util::Path path) {
 	//mix_tex.push_back(water_4);
 	//mix_tex.push_back(alpha_test);
 	
-	/*for(int z = 0;z<100;z++){
+	/*for(int z = 0;z<1000;z++){
 		
-		mix_tex.push_back(sprite.make_render_obj(paladin,false,rand()%20,shader,aspect,(float)size.y,rand()%1920,rand()%1920));
+		mix_tex.push_back(sprite.make_render_obj(paladin,false,rand()%20,shader,aspect,(float)size.y,rand()%1366,rand()%768));
 		//mix_tex.push_back(sprite.make_render_obj(paladin_2,false,15,shader,aspect,(float)size.y,rand()%1024,rand()%1024));
 			
 	}*/
+	auto new_unif = shader->new_uniform_input("pos",Eigen::Vector2f(500,200));
+	mix_tex.push_back({new_unif,nullptr,true,true});	
+	mix_tex.push_back(elephant);
+	/*for(int i = 0;i<1000;i++){
+		auto unif_temp = sprite.get_uniform(paladin_2,false,30,shader,rand()%1366,rand()%768); 
+		if(rand()%2 == 0){
+		unif_temp = sprite.get_uniform(paladin,false,0,shader,rand()%1366,rand()%768); 
 
-	for(int j = 0; j<4;j++){
+		}
+		mix_tex.push_back({unif_temp,elephant.geometry,true,true});
+	}*/
+	/*for(int j = 0; j<4;j++){
 	for(int i=-3;i<2;i++){
-		mix_tex.push_back(sprite.make_render_obj(road_texture,true,0,shader,aspect,(float)size.y,512*j,512*i));
-		//mix_tex.push_back(sprite.make_render_obj(shore_texture,true,0,shader,aspect,(float)size.y,512*j,512*i));
-		//mix_tex.push_back(sprite.make_render_obj(dust_texture,true,0,shader,aspect,(float)size.y,512*j,512*i));
+		auto terr_unif = sprite.get_uniform(road_texture,true,0,shader,512*j,512*i);
+		if(rand()%3 == 0)
+			terr_unif = sprite.get_uniform(dust_texture,true,0,shader,512*j,512*i);
+		if(rand()%3 == 1)
+			terr_unif = sprite.get_uniform(shore_texture,true,0,shader,512*j,512*i);		
+		mix_tex.push_back({terr_unif,water_4.geometry,true,true});
+		
 	}
-	}
-	//mix_tex.push_back(elephant);
+	}*/
+	
 	log::log(INFO << "what is path "<<path);
 	log::log(INFO << "Size of the Window "<<size.x<<"X"<<size.y);
 	auto color_texture = renderer->add_texture(resources::TextureInfo(size.x, size.y, resources::pixel_format::rgba8));
@@ -140,15 +154,6 @@ void renderer_demo_0(util::Path path) {
 		false,
 		false,
 	};
-
-	/*RenderPass_test pastu{
-		{terrain_1,terrain_2,terrain_3,terrain_4,terrain_5,terrain_6,terrain_7,terrain_8,terrain_9,paladin_1},//,test_obj5,test_obj6,test_obj7},
-		fbo.get(),
-	};*/
-	/*RenderPass_test alpha_pass{
-		{water_1,water_2,water_3,water_4,alpha_test},
-		fbo.get(),
-	};*/
 	RenderPass_test alpha_pass{
 		mix_tex,
 		fbo.get(),
@@ -157,7 +162,10 @@ void renderer_demo_0(util::Path path) {
 		{display_obj},
 		renderer->get_display_target(),
 	};
-
+	/*RenderPass_test render_main{
+		mix_tex,
+		renderer->get_display_target(),
+	};*/
 
 	//glDepthFunc(GL_LEQUAL);
 	glDepthRange(0.0, 1.0);
@@ -217,7 +225,13 @@ void renderer_demo_0(util::Path path) {
 			log::log(INFO << frame);
 			frame = 0;
 		}
-		
+		std::vector<Renderable_test> loop_tex; 
+		loop_tex.push_back(elephant);
+		for(int i = 0;i<100;i++){
+		auto unif_temp = sprite.get_uniform2(paladin,false,shader,rand()%1366,rand()%768); 
+		loop_tex.push_back({unif_temp,elephant.geometry,true,true});
+		}
+		alpha_pass.renderables = loop_tex;
 		renderer->render_test(alpha_pass);
 		renderer->render_test(render_main);
 		window.update();
