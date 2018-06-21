@@ -1,5 +1,9 @@
-// Copyright 2018 the openage authors. See copying.md for legal info.
-// Lookup tables for translating various things in OpenGL.
+// Copyright 2018-2018 the openage authors. See copying.md for legal info.
+
+// Lookup tables for translating between OpenGL-specific values and generic renderer values,
+// as well as mapping things like type sizes within OpenGL.
+
+#pragma once
 
 #include <epoxy/gl.h>
 
