@@ -103,7 +103,7 @@ public:
 	/**
 	 * Releases the CachableOSStream object (if it was acquired).
 	 */
-	~StringFormatter() {
+	virtual ~StringFormatter() {
 		CachableOSStream::release(this->stream_ptr);
 	}
 
@@ -134,22 +134,28 @@ public:
 	// These methods allow usage like an ostream object.
 	template<typename T>
 	ChildType &operator <<(const T &t) {
-		this->ensure_stream_obj();
-		this->stream_ptr->stream << t;
+		if (this->should_format()) {
+			this->ensure_stream_obj();
+			this->stream_ptr->stream << t;
+		}
 		return this->child_type_ref();
 	}
 
 
 	ChildType &operator <<(std::ios &(*x)(std::ios &)) {
-		this->ensure_stream_obj();
-		this->stream_ptr->stream << x;
+		if (this->should_format()) {
+			this->ensure_stream_obj();
+			this->stream_ptr->stream << x;
+		}
 		return this->child_type_ref();
 	}
 
 
 	ChildType &operator <<(std::ostream &(*x)(std::ostream &)) {
-		this->ensure_stream_obj();
-		this->stream_ptr->stream << x;
+		if (this->should_format()) {
+			this->ensure_stream_obj();
+			this->stream_ptr->stream << x;
+		}
 		return this->child_type_ref();
 	}
 
@@ -157,23 +163,29 @@ public:
 	// Optimizations to prevent needless stream-acquiring if just a simple
 	// string is printed.
 	ChildType &operator <<(const char *s) {
-		this->output->append(s);
+		if (this->should_format()) {
+			this->output->append(s);
+		}
 		return this->child_type_ref();
 	}
 
 
 	ChildType &operator <<(const std::string &s) {
-		this->output->append(s);
+		if (this->should_format()) {
+			this->output->append(s);
+		}
 		return this->child_type_ref();
 	}
 
 
 	// Printf-style formatting
 	ChildType &fmt(const char *fmt, ...) ATTRIBUTE_FORMAT(2, 3) {
-		va_list ap;
-		va_start(ap, fmt);
-		util::vsformat(fmt, ap, *this->output);
-		va_end(ap);
+		if (this->should_format()) {
+			va_list ap;
+			va_start(ap, fmt);
+			util::vsformat(fmt, ap, *this->output);
+			va_end(ap);
+		}
 
 		return this->child_type_ref();
 	}
@@ -182,14 +194,18 @@ public:
 	// Allow direct inputting of stuff that's wrapped in the C++11 pointer types.
 	template<typename T>
 	ChildType &operator <<(const std::unique_ptr<T> &ptr) {
-		*this << ptr.get();
+		if (this->should_format()) {
+			*this << ptr.get();
+		}
 		return this->child_type_ref();
 	}
 
 
 	template<typename T>
 	ChildType &operator <<(const std::shared_ptr<T> &ptr) {
-		*this << ptr.get();
+		if (this->should_format()) {
+			*this << ptr.get();
+		}
 		return this->child_type_ref();
 	}
 
@@ -204,6 +220,12 @@ public:
 		}
 	}
 
+	/**
+	* Returns if formatting should actually occur.
+	*/
+	virtual bool should_format() const {
+		return true;
+	}
 
 private:
 	/**

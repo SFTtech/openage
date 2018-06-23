@@ -1,51 +1,83 @@
 // Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #include "logsink.h"
-
+#include "message.h"
 
 namespace openage {
 namespace log {
 
 
 LogSink::LogSink() {
-	std::lock_guard<std::mutex> lock(sink_list_mutex);
-	sink_list().push_back(this);
+	LogSinkList::instance().add(this);
 
-	this->loglevel = level::dbg;
+	this->set_loglevel(level::dbg);
 }
 
 
 LogSink::~LogSink() {
-	// TODO: de-constructing log_sink_list takes O(n^2) time...
-	// while this is utterly insignificant, building a map upon
-	// start-of-deinitialization might be prettier.
+	LogSinkList::instance().remove(this);
+}
 
-	std::lock_guard<std::mutex> lock(sink_list_mutex);
-	auto &sinks = sink_list();
 
-	for (size_t i = 0; i < sinks.size(); i++) {
-		if (sinks[i] == this) {
-			// Replace the element with the last element on the vector.
-			sinks[i] = sinks[sinks.size() - 1];
-			// Delete the last element on the vector.
-			sinks.pop_back();
+void LogSink::set_loglevel(level loglevel) {
+	this->loglevel = loglevel;
+	LogSinkList::instance().loglevel_changed();
+}
 
-			return;
+
+LogSinkList::LogSinkList() {
+	this->set_lowest_loglevel();
+}
+
+
+LogSinkList &LogSinkList::instance() {
+	static LogSinkList instance;
+	return instance;
+}
+
+
+void LogSinkList::log(const message &msg, class LogSource *source) const {
+	std::lock_guard<std::mutex> lock(this->sinks_mutex);
+	for (auto *sink : this->sinks) {
+		// TODO: more sophisticated filtering (iptables-chains-like)
+		if (msg.lvl >= sink->loglevel) {
+			sink->output_log_message(msg, source);
 		}
 	}
-
-	// We didn't find the source in the global sink list.
-	// It should have been there!
-	// Seriously, I'm freaked out!
-	std::cout << "Logger error: Couldn't find log sink in global sink list." << std::endl;
 }
 
 
-std::mutex sink_list_mutex;
-std::vector<LogSink *> &sink_list() {
-	static std::vector<LogSink *> value;
-	return value;
+void LogSinkList::add(LogSink *sink) {
+	std::lock_guard<std::mutex> lock(this->sinks_mutex);
+	this->sinks.push_back(sink);
+	this->set_lowest_loglevel();
 }
 
+
+void LogSinkList::loglevel_changed() {
+	std::lock_guard<std::mutex> lock(this->sinks_mutex);
+	this->set_lowest_loglevel();
+}
+
+
+void LogSinkList::set_lowest_loglevel() {
+	this->lowest_loglevel = level::MAX;
+	for (auto *sink : this->sinks) {
+		this->lowest_loglevel = std::min(this->lowest_loglevel, sink->loglevel);
+	}
+}
+
+
+void LogSinkList::remove(LogSink *sink) {
+	std::lock_guard<std::mutex> lock(this->sinks_mutex);
+	this->sinks.remove(sink);
+	this->set_lowest_loglevel();
+}
+
+
+bool LogSinkList::supports_loglevel(level loglevel) const {
+	std::lock_guard<std::mutex> lock(this->sinks_mutex);
+	return loglevel >= this->lowest_loglevel;
+}
 
 }} // namespace openage::log

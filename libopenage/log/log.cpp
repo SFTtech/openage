@@ -16,7 +16,7 @@ void log(const message &msg) {
 
 
 void set_level(level lvl) {
-	global_stdoutsink().loglevel = lvl;
+	global_stdoutsink().set_loglevel(lvl);
 }
 
 

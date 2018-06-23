@@ -10,6 +10,7 @@
 #include "../config.h"
 #include "../util/constexpr.h"
 #include "../util/stringformatter.h"
+#include "logsink.h"
 
 // pxd: from libopenage.log.level cimport level
 #include "level.h"
@@ -108,7 +109,6 @@ struct OAAPI message {
  */
 std::ostream &operator <<(std::ostream &os, const message &msg);
 
-
 /**
  * Wrapper around a log message that allows appending to the message with operator <<.
  *
@@ -135,6 +135,11 @@ public:
 
 	inline operator message &() {
 		return this->msg;
+	}
+
+	inline bool should_format() const override {
+		// only format if this message will actually be logged
+		return LogSinkList::instance().supports_loglevel(this->msg.lvl);
 	}
 
 private:
