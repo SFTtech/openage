@@ -21,14 +21,7 @@ void LogSource::log(const message &msg) {
 	// (and thus at least one sink exists).
 	global_stdoutsink();
 
-	std::lock_guard<std::mutex> lock(sink_list_mutex);
-
-	for (LogSink *sink : sink_list()) {
-		// TODO: more sophisticated filtering (iptables-chains-like)
-		if (msg.lvl >= sink->loglevel) {
-			sink->output_log_message(msg, this);
-		}
-	}
+	LogSinkList::instance().log(msg, this);
 }
 
 

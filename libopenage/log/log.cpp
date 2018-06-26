@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #include "log.h"
 
@@ -16,7 +16,7 @@ void log(const message &msg) {
 
 
 void set_level(level lvl) {
-	global_stdoutsink().loglevel = lvl;
+	global_stdoutsink().set_loglevel(lvl);
 }
 
 
