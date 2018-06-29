@@ -14,7 +14,7 @@ Villagers respect the garrison limit of nearby buildings. The town center for ex
 
 ## Where will villagers garrison?
 
-In the following figure the town bell range is represented by the dotted area. `C` is the town center, every `X` is a villager and `G` represents possible garrisons, e.g. towers or castles. The `O` shows a tile that is outside of the bell's range. The left and top row are coordniates for referencing, e.g. `coord(H,D)` is referencing the location of the town center.
+In the following figure the town bell range is represented by the dotted area. `C` is the town center, every `X` is a villager and `G` represents possible garrisons, e.g. towers or castles. The `O` shows a tile that is outside of the bell's range. The left and top row are coordinates for referencing, e.g. `coord(H,D)` is referencing the location of the town center.
 
 ```
 __|ABCDEFGHIJKLMNO

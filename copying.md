@@ -112,6 +112,7 @@ _the openage authors_ are:
 | Samuel Grigolato            | samuelgrigolato             | samuel dawt grigolato à gmail dawt com            |
 | Andrew Thompson             | mrwerdo331@me.com           | mrwerdo331 à me dawt com                          |
 | Benedikt Freisen            | roybaer                     | b dawt freisen à gmx dawt net                     |
+| Finn Günther                | Kawzeg                      | kawzeg à gmail dawt com                           |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.

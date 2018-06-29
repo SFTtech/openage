@@ -95,5 +95,5 @@ Now that we know `unit_dps_pierce`, the amount of additional projectiles for eac
 
 # Weird AoE2 Quirks
 
-* Only units that do pierce damage can increase the number of projectiles fired by a building. Units that fire projectiles dealing melee damage - like Gbetos, Throwing Axemen and Mameluks - will have no effect on the arrow count.
+* Only units that do pierce damage can increase the number of projectiles fired by a building. Units that fire projectiles dealing melee damage - like Gbetos, Throwing Axemen and Mamelukes - will have no effect on the arrow count.
 * For the Cho Ko Nu `unit_dps_pierce` does not use the pierce attack value of the first arrow fired. Instead it only takes the damage the last arrow does into consideration. Because this arrow only does 3 pierce damage, the number of projectiles added to a building's attack is fairly low.

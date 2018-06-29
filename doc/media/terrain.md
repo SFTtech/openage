@@ -27,7 +27,7 @@ id | filename   | priority | tilecount | description
 13 | 015016.slp |      141 | 100 tiles | ocean
 14 | 015017.slp |      110 | 100 tiles | sandy sand
 15 | 015018.slp |      122 | 100 tiles | ancient building fundaments
-16 | 015019.slp |      123 | 100 tiles | dirt ancient bulding fundaments
+16 | 015019.slp |      123 | 100 tiles | dirt ancient building fundaments
 17 | 015021.slp |      150 |   9 tiles | ready and empty farm field
 18 | 015022.slp |      151 |   9 tiles | stage 0 plants on farm field
 19 | 015023.slp |      152 |   9 tiles | stage 1 plants on farm field

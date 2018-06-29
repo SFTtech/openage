@@ -1,11 +1,11 @@
 The openage base exception type is `error::Error`.
 
- - The first argument is a `message` object; the usage is identical to `log::log()` (i.e. preferrably via the `MSG` macro).
+ - The first argument is a `message` object; the usage is identical to `log::log()` (i.e. preferably via the `MSG` macro).
  - If `true` is given as the second argument (default: `false`), a stack trace is collected, using gcc 4.9's `libbacktrace.a`.
 The collection itself is quite fast and has a low performance impact, as no symbol look-ups/string translations happen at that time.
  - If `true` is given as the third argument (default: `true`), and currently inside a `catch` block, the current exception is stored as a cause, and can later be re-thrown via `rethrow_cause()`.
 
-Exceptions should always be catched by reference, or inheritance won't work.
+Exceptions should always be caught by reference, or inheritance won't work.
 
 Example usage:
 

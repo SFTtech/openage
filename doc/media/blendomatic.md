@@ -345,7 +345,7 @@ struct {
 ```
 
 The `alpha_bytemap` array contains values to be drawn as `*`
-We have to add the spaces (.) ourself.
+We have to add the spaces (.) ourselves.
 
 With the default `tile_size`, we end up drawing the rhombus with 49 rows.
 

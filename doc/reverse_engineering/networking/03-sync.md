@@ -164,14 +164,14 @@ The standard header. Works the same way as outlined in [02-header.md](02-header.
 A field with unknown purpose. Changes between values of `0x04` and `0x08`.
 
 *:unknown2*<br/>
-Another field with unkown purpose. Possibly ping.
+Another field with unknown purpose. Possibly ping.
 
 *:communication_turn*<br/>
 The current communication turn as a 16 bit value.
 
 ### 32BC44
 
-Sncs up the communication turns in the game. Packets are transmitted in intervals of 120ms.
+Syncs up the communication turns in the game. Packets are transmitted in intervals of 120ms.
 
 ```ruby
 def 32BC44

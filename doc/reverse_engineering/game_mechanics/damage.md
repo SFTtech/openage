@@ -36,7 +36,7 @@ Explanation:
 * `attack_bonus`: Attack bonus (flat additive) against a target's armor class.
 * `attack_resist`: Attack resist (flat additive) against an attack bonus.
 * `elevation_factor`: Multiplies damage by `1.25` (`1.33` in AoE1) if the attacking units is on higher elevated terrain or on top of a cliff. Similarly, units on lower ground receive a malus that multiplies their damage by `0.75` (`0.66` in AoE1). The malus doesn't apply when standing at the bottom of a cliff.
-* `stray_factor`: When a projectile misses its intended target but hits a bystanding unit, damage is halfed. Check [Accuracy](accuracy.md) for more details.
+* `stray_factor`: When a projectile misses its intended target but hits a bystanding unit, damage is halved. Check [Accuracy](accuracy.md) for more details.
 
 Standing on top of cliffs and additionally being higher elevated does not increase the damage bonus. Also, standing on higher elevated terrain while at the bottom of a cliff does not negate the bonus damage of the unit on top of a cliff. However, it does gives the unit at the bottom of the cliff the elevation damage bonus of `1.25`. The only requirement for the application of the cliff damage bonus is that there must be a cliff in between the units. The distance to the cliff does not matter.
 

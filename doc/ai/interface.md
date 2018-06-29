@@ -41,7 +41,7 @@ Relevant structures for the AI
 ------------------------------
 
 Remember: These are just some ideas for possible interfaces,
-they are not existant in the game yet.
+they are not existent in the game yet.
 
 ```cpp
 struct game_info {

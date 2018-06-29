@@ -35,9 +35,6 @@ They usually produce lots of output on stdout or may even be interactive. Python
 
 All tests must be registered in `openage/testing/testlist.py` (else the game won't know about them).
 
-Also see `python3 -m openage.testing --help`.
-
-
 ## Adding new tests
 
 ### C++ tests
@@ -60,7 +57,7 @@ The header `libopenage/testing/testing.h` provides `TestError` and some convenie
     throws `TestError(exc)` if a non-`TestError` exception `exc` is raised.
  - `TESTTHROWS(expr)`
     evaluates `expr`, catching any exception, including `TestError`.
-    raises `TestError` if no exception was catched.
+    raises `TestError` if no exception was caught.
 
 Example test function:
 
@@ -136,7 +133,7 @@ C++ demos don't support `argv`; if you want that, make it a Python demo in a `.p
 
 Similar to Python tests, but have one argument, `argv`. Pass arguments in the invocation:
 
-    python3 -m openage.testing -d prime_demo 100
+    ./run test -d prime_demo 100
 
 Example demo:
 

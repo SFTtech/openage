@@ -38,7 +38,7 @@ This type of documentation is written inside code files:
  - C++ methods and classes are documented in their header files
  - Python methods and classes are documented via docstrings
 
-Due to potential documentation lazyness,
+Due to potential documentation laziness,
 the above statements might be out-right fabrications.
 
 
