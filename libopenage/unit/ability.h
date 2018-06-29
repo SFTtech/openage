@@ -373,8 +373,8 @@ std::string to_string(const openage::ability_type &at);
 template<>
 struct hash<openage::ability_type> {
 	typedef underlying_type<openage::ability_type>::type underlying_type;
-	typedef hash<underlying_type>::result_type result_type;
-	result_type operator()(const openage::ability_type &arg) const {
+
+	size_t operator()(const openage::ability_type &arg) const {
 		hash<underlying_type> hasher;
 		return hasher(static_cast<underlying_type>(arg));
 	}
