@@ -199,8 +199,8 @@ std::string to_string(const openage::game_resource &res);
  */
 template<> struct hash<openage::game_resource> {
 	typedef underlying_type<openage::game_resource>::type underlying_type;
-	typedef hash<underlying_type>::result_type result_type;
-	result_type operator()( const openage::game_resource& arg ) const {
+
+	size_t operator()(const openage::game_resource &arg) const {
 		hash<underlying_type> hasher;
 		return hasher(static_cast<underlying_type>(arg));
 	}

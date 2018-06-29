@@ -1,4 +1,4 @@
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+// Copyright 2017-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -127,10 +127,11 @@ std::string to_string(const openage::score_category &cat);
  * hasher for score_category
  * TODO decide if needed, not used at the moment
  */
-template<> struct hash<openage::score_category> {
+template<>
+struct hash<openage::score_category> {
 	typedef underlying_type<openage::score_category>::type underlying_type;
-	typedef hash<underlying_type>::result_type result_type;
-	result_type operator()( const openage::score_category& arg ) const {
+
+	size_t operator()(const openage::score_category &arg) const {
 		hash<underlying_type> hasher;
 		return hasher(static_cast<underlying_type>(arg));
 	}
