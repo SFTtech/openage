@@ -1,4 +1,4 @@
-# Copyright 2014-2017 the openage authors. See copying.md for legal info.
+# Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 # ${AUTOGEN_WARNING}
 
@@ -24,6 +24,10 @@ CONFIG_OPTIONS = "${CONFIG_OPTION_STRING}"
 COMPILER = "${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}"
 COMPILERFLAGS = "${CMAKE_CXX_FLAGS}"
 CYTHONVERSION = "${CYTHON_VERSION}"
+
+# features
+WITH_NCURSES = ("${WITH_NCURSES}" == "true")
+
 
 try:
     importlib.import_module("openage.devmode")
