@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include <experimental/optional>
+#include <optional>
 
 #include "../geometry.h"
 #include "../resources/mesh_data.h"
@@ -35,15 +35,15 @@ private:
 	struct GlMesh {
 		GlBuffer vertices;
 		GlVertexArray vao;
-		std::experimental::optional<GlBuffer> indices;
-		std::experimental::optional<GLenum> index_type;
+		std::optional<GlBuffer> indices;
+		std::optional<GLenum> index_type;
 		size_t vert_count;
 		GLenum primitive;
 	};
 
 	/// Data managing GPU memory and interpretation of mesh data.
 	/// Only present if the type is a mesh.
-	std::experimental::optional<GlMesh> mesh;
+	std::optional<GlMesh> mesh;
 };
 
 }}} // openage::renderer::opengl

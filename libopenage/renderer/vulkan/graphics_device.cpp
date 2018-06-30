@@ -14,12 +14,12 @@ namespace openage {
 namespace renderer {
 namespace vulkan {
 
-std::experimental::optional<SurfaceSupportDetails> VlkGraphicsDevice::find_device_surface_support(VkPhysicalDevice dev, VkSurfaceKHR surf) {
+std::optional<SurfaceSupportDetails> VlkGraphicsDevice::find_device_surface_support(VkPhysicalDevice dev, VkSurfaceKHR surf) {
 		// Search for queue families in the device
 		auto q_fams = vk_do_ritual(vkGetPhysicalDeviceQueueFamilyProperties, dev);
 
-		std::experimental::optional<uint32_t> maybe_graphics_fam = {};
-		std::experimental::optional<uint32_t> maybe_present_fam = {};
+		std::optional<uint32_t> maybe_graphics_fam = {};
+		std::optional<uint32_t> maybe_present_fam = {};
 
 		// Figure out if any of the families supports graphics
 		for (size_t i = 0; i < q_fams.size(); i++) {

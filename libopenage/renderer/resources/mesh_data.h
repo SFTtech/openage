@@ -6,7 +6,7 @@
 #include <unordered_map>
 #include <cstdint>
 #include <cstdlib>
-#include <experimental/optional>
+#include <optional>
 
 #include "../../util/path.h"
 
@@ -77,7 +77,7 @@ public:
 	const std::vector<vertex_input_t> &get_inputs() const;
 
 	/// Returns the shader input map or an empty optional if it's not present.
-	std::experimental::optional<std::unordered_map<size_t, size_t>> const& get_shader_input_map() const;
+	std::optional<std::unordered_map<size_t, size_t>> const& get_shader_input_map() const;
 
 	/// Returns the layout of vertices in memory.
 	vertex_layout_t get_layout() const;
@@ -90,7 +90,7 @@ public:
 
 	/// Returns the type of indices used for indexed drawing,
 	/// which may not be present if array drawing is used.
-	std::experimental::optional<index_t> get_index_type() const;
+	std::optional<index_t> get_index_type() const;
 
 private:
 	/// What kind of data the vertices contain and how it is laid out in memory.
@@ -99,7 +99,7 @@ private:
 	/// An optional attribute specifying how vertex inputs in the mesh map to vertex inputs
 	/// in a given shader, for example to reorder inputs of the form (pos, uv) into a shader
 	/// that takes in (uv, pos) inputs.
-	std::experimental::optional<std::unordered_map<size_t, size_t>> shader_input_map;
+	std::optional<std::unordered_map<size_t, size_t>> shader_input_map;
 
 	/// How the vertices are laid out in the data buffer.
 	vertex_layout_t layout;
@@ -108,7 +108,7 @@ private:
 	vertex_primitive_t primitive;
 
 	/// The type of indices if they exist.
-	std::experimental::optional<index_t> index_type;
+	std::optional<index_t> index_type;
 };
 
 class MeshData {
@@ -126,7 +126,7 @@ public:
 	std::vector<uint8_t> const &get_data() const;
 
 	/// Returns the indices used for indexed drawing if they exist.
-	std::experimental::optional<std::vector<uint8_t>> const &get_ids() const;
+	std::optional<std::vector<uint8_t>> const &get_ids() const;
 
 	/// Returns information describing the vertices in this mesh.
 	VertexInputInfo get_info() const;
@@ -141,13 +141,13 @@ private:
 
 	/// The indices of vertices to be drawn if the mesh is indexed.
 	/// For array drawing, empty optional.
-	std::experimental::optional<std::vector<uint8_t>> ids;
+	std::optional<std::vector<uint8_t>> ids;
 
 	/// Information about how to interpret the data to make vertices.
 	/// This is optional because initialization is deferred until the constructor
 	/// obtains the mesh data e.g. from disk, but it should always be present after
 	/// construction.
-	std::experimental::optional<VertexInputInfo> info;
+	std::optional<VertexInputInfo> info;
 };
 
 }}}

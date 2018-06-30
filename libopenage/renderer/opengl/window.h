@@ -4,7 +4,7 @@
 
 #include "../window.h"
 
-#include <experimental/optional>
+#include <optional>
 
 #include "context.h"
 
@@ -38,7 +38,7 @@ private:
 
 	/// The window's OpenGL context. It's optional because it can't be constructed immediately,
 	/// but after the constructor runs it's guaranteed to be available.
-	std::experimental::optional<opengl::GlContext> context;
+	std::optional<opengl::GlContext> context;
 };
 
 }}} // namespace openage::renderer::opengl

@@ -154,13 +154,8 @@ GlVertexArray::GlVertexArray()
 void GlVertexArray::bind() const {
 	glBindVertexArray(*this->handle);
 
-	// TODO necessary?
-	/*
-	// then enable all contained attribute ids
-	for (auto &attr_id : this->bound_attributes) {
-		glEnableVertexAttribArray(attr_id);
-	}
-	*/
+	// Enabling the vertexAttribArrays here again is unnecessary,
+	// because the VAO bind does it anyway.
 }
 
 }}} // openage::renderer::opengl

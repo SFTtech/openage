@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include <experimental/optional>
+#include <optional>
 
 #include "../renderer.h"
 #include "texture.h"
@@ -44,7 +44,7 @@ private:
 	gl_render_target_t type;
 
 	/// For textures target type, the framebuffer.
-	std::experimental::optional<GlFramebuffer> framebuffer;
+	std::optional<GlFramebuffer> framebuffer;
 };
 
 }}} // openage::renderer::opengl

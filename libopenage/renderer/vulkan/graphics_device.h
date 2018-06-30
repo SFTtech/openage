@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include <experimental/optional>
+#include <optional>
 #include <vector>
 
 #include <vulkan/vulkan.h>
@@ -35,7 +35,7 @@ struct SurfaceSupportDetails {
 
 	/// Index of the queue family with presentation support. This might be the same as the graphics
 	/// family, in which case this optional is empty.
-	std::experimental::optional<uint32_t> maybe_present_fam;
+	std::optional<uint32_t> maybe_present_fam;
 };
 
 /// Owns a device capable of graphics operations and surface presentation using WSI.
@@ -52,7 +52,7 @@ class VlkGraphicsDevice {
 public:
 	/// Given a physical device and a surface, checks whether the device is capable of presenting to the surface.
 	/// If it is, returns information about its presentation capabilities, otherwise returns an empty optional.
-	static std::experimental::optional<SurfaceSupportDetails> find_device_surface_support(VkPhysicalDevice, VkSurfaceKHR);
+	static std::optional<SurfaceSupportDetails> find_device_surface_support(VkPhysicalDevice, VkSurfaceKHR);
 
 	/// Given a physical device and a list of queue family indices in that device, instantiates
 	/// a logical device with a queue per each of the families. The device has to support the

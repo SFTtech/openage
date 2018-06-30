@@ -67,7 +67,7 @@ const std::vector<vertex_input_t> &VertexInputInfo::get_inputs() const {
 	return this->inputs;
 }
 
-std::experimental::optional<std::unordered_map<size_t, size_t>> const& VertexInputInfo::get_shader_input_map() const {
+std::optional<std::unordered_map<size_t, size_t>> const& VertexInputInfo::get_shader_input_map() const {
 	return this->shader_input_map;
 }
 
@@ -79,7 +79,7 @@ vertex_primitive_t VertexInputInfo::get_primitive() const {
 	return this->primitive;
 }
 
-std::experimental::optional<index_t> VertexInputInfo::get_index_type() const {
+std::optional<index_t> VertexInputInfo::get_index_type() const {
 	return this->index_type;
 }
 
@@ -101,7 +101,7 @@ std::vector<uint8_t> const& MeshData::get_data() const {
 	return this->data;
 }
 
-std::experimental::optional<std::vector<uint8_t>> const &MeshData::get_ids() const {
+std::optional<std::vector<uint8_t>> const &MeshData::get_ids() const {
 	return this->ids;
 }
 

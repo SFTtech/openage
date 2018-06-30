@@ -133,13 +133,13 @@ GlContext::~GlContext() {
 
 GlContext::GlContext(GlContext &&other)
 	: gl_context(other.gl_context)
-	, capabilities(other.capabilities) {
+	, capabilities(std::move(other.capabilities)) {
 	other.gl_context = nullptr;
 }
 
 GlContext& GlContext::operator=(GlContext &&other) {
 	this->gl_context = other.gl_context;
-	this->capabilities = other.capabilities;
+	this->capabilities = std::move(other.capabilities);
 	other.gl_context = nullptr;
 
 	return *this;

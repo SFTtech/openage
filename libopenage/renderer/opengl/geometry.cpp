@@ -51,10 +51,12 @@ void GlGeometry::update_verts_offset(std::vector<uint8_t> const &verts, size_t o
 }
 
 void GlGeometry::draw() const {
-	if (this->get_type() == geometry_t::bufferless_quad) {
+	switch (this->get_type()) {
+	case geometry_t::bufferless_quad:
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-	}
-	else if (this->get_type() == geometry_t::mesh) {
+		break;
+
+	case geometry_t::mesh: {
 		auto const& mesh = *this->mesh;
 		mesh.vao.bind();
 
@@ -62,10 +64,14 @@ void GlGeometry::draw() const {
 			mesh.indices->bind(GL_ELEMENT_ARRAY_BUFFER);
 
 			glDrawElements(mesh.primitive, mesh.vert_count, *mesh.index_type, 0);
-		}
-		else {
+		} else {
 			glDrawArrays(GL_TRIANGLE_STRIP, 0, mesh.vert_count);
 		}
+
+		break;
+	}
+	default:
+		throw Error(MSG(err) << "Unknown geometry type in GlGeometry.");
 	}
 }
 

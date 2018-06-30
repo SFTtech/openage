@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include <experimental/optional>
+#include <optional>
 #include <functional>
 
 #include <epoxy/gl.h>
@@ -38,7 +38,7 @@ protected:
 	explicit GlSimpleObject(std::function<void(GLuint)> delete_fun);
 
 	/// The handle to the OpenGL Object that this class represents.
-	std::experimental::optional<GLuint> handle;
+	std::optional<GLuint> handle;
 
 	/// The function that deletes the underlying OpenGL Object.
 	std::function<void(GLuint)> delete_fun;

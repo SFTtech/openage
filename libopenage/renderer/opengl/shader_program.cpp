@@ -183,7 +183,7 @@ void GlShaderProgram::use() const {
 }
 
 void GlShaderProgram::execute_with(const GlUniformInput *unif_in, const GlGeometry *geom) {
-	assert(unif_in->program == this);
+	ENSURE(unif_in->program == this);
 
 	this->use();
 
