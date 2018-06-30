@@ -25,7 +25,7 @@ public:
 
 	/// Constructs an array of ln_layers empty layers, with the per-layer texture
 	/// format specified in layer_info.
-	GlTexture2dArray(size_t n_layers, resources::Texture2dInfo layer_info);
+	GlTexture2dArray(size_t n_layers, resources::Texture2dInfo const& layer_info);
 
 	void upload(size_t layer, resources::Texture2dData const&) override;
 

@@ -42,7 +42,7 @@ GlTexture2dArray::GlTexture2dArray(const std::vector<resources::Texture2dData>& 
 	}
 }
 
-GlTexture2dArray::GlTexture2dArray(size_t n_layers, resources::Texture2dInfo layer_info)
+GlTexture2dArray::GlTexture2dArray(size_t n_layers, resources::Texture2dInfo const& layer_info)
 	: Texture2dArray(layer_info)
 	, GlSimpleObject([] (GLuint handle) { glDeleteTextures(1, &handle); } )
 	, n_layers(n_layers)
