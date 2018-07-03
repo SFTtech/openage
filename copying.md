@@ -1,5 +1,5 @@
 Any file in this project that doesn't state otherwise, and isn't listed as an
-exception below, is Copyright 2013-2017 The openage authors, and licensed
+exception below, is Copyright 2013-2018 The openage authors, and licensed
 under the terms of the GNU General Public License Version 3, or
 (at your option) any later version ("GPL3+").
 A copy of the license can be found in [legal/GPLV3](/legal/GPLv3).
@@ -113,6 +113,7 @@ _the openage authors_ are:
 | Andrew Thompson             | mrwerdo331@me.com           | mrwerdo331 à me dawt com                          |
 | Benedikt Freisen            | roybaer                     | b dawt freisen à gmx dawt net                     |
 | Finn Günther                | Kawzeg                      | kawzeg à gmail dawt com                           |
+| Akshit Sharma               | akshit-sharma               | akshit9sharma à gmail dawt com                    |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
