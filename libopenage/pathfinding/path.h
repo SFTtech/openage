@@ -169,7 +169,7 @@ public:
 	/**
 	 * Priority queue node that contains this path node.
 	 */
-	heap_t::node_t* heap_node;
+	heap_t::element_t heap_node;
 };
 
 

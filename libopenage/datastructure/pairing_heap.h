@@ -16,6 +16,7 @@
  * Algorithmica 1, no. 1-4 (1986): 111-129.
  */
 
+#include <memory>
 #include <functional>
 #include <type_traits>
 #include <unordered_set>
@@ -23,54 +24,56 @@
 #include "../util/compiler.h"
 #include "../error/error.h"
 
-namespace openage {
-namespace datastructure {
+namespace openage::datastructure {
 
-template<class T, class compare=std::less<T>>
-class PairingHeapNode {
+
+template<typename T, typename compare=std::less<T>>
+class PairingHeapNode final : public std::enable_shared_from_this<PairingHeapNode<T, compare>> {
 public:
 	using this_type = PairingHeapNode<T, compare>;
 
-	PairingHeapNode *first_child;
-	PairingHeapNode *prev_sibling;
-	PairingHeapNode *next_sibling;
-	PairingHeapNode *parent;       // for decrease-key and delete
+	std::shared_ptr<this_type> first_child;
+	std::shared_ptr<this_type> prev_sibling;
+	std::shared_ptr<this_type> next_sibling;
+	std::shared_ptr<this_type> parent;       // for decrease-key and delete
 
 	T data;
 	compare cmp;
 
 	PairingHeapNode(const T &data)
 		:
-		first_child{nullptr},
-		prev_sibling{nullptr},
-		next_sibling{nullptr},
-		parent{nullptr},
-		data(data) {
-	}
+		data(data) {}
 
-	~PairingHeapNode() {}
+	PairingHeapNode(T &&data)
+		:
+		data(std::move(data)) {}
+
+	~PairingHeapNode() = default;
+
 
 	/**
 	 * Let this node become a child of the given one.
 	 */
-	void become_child_of(this_type *node) {
-		node->add_child(this);
+	void become_child_of(const std::shared_ptr<this_type> &node) {
+		node->add_child(this->shared_from_this());
 	}
 
 	/**
 	 * Add the given node as a child to this one.
 	 */
-	void add_child(this_type *node) {
+	void add_child(const std::shared_ptr<this_type> &node) {
 		// first child is the most recently attached one
 		// it must not have siblings as they will get lost.
 
 		node->prev_sibling = nullptr;
 		node->next_sibling = this->first_child;
+
 		if (this->first_child != nullptr) {
 			this->first_child->prev_sibling = node;
 		}
+
 		this->first_child = node;
-		node->parent = this;
+		node->parent = this->shared_from_this();
 	}
 
 	/**
@@ -78,16 +81,17 @@ public:
 	 * Returns the resulting subtree root node after both
 	 * nodes were compared and linked.
 	 */
-	this_type *link_with(this_type *node) {
-		this_type *linked_root, *linked_child;
+	std::shared_ptr<this_type> link_with(const std::shared_ptr<this_type> &node) {
+		std::shared_ptr<this_type> linked_root;
+		std::shared_ptr<this_type> linked_child;
 
 		if (this->cmp(this->data, node->data)) {
-			linked_root  = this;
+			linked_root  = this->shared_from_this();
 			linked_child = node;
 		}
 		else {
 			linked_root  = node;
-			linked_child = this;
+			linked_child = this->shared_from_this();
 		}
 
 		linked_root->add_child(linked_child);
@@ -99,22 +103,22 @@ public:
 	 * Recursive call, one stage for each all childs of the root node.
 	 * This results in the computation of the new subtree root.
 	 */
-	this_type *link_backwards() {
+	std::shared_ptr<this_type> link_backwards() {
 		if (this->next_sibling == nullptr) {
 			// reached end, return this as current root,
 			// the previous siblings will be linked to it.
-			return this;
+			return this->shared_from_this();
 		}
 
 		// recurse to last sibling,
-		this_type *root = this->next_sibling->link_backwards();
+		std::shared_ptr<this_type> node = this->next_sibling->link_backwards();
 
 		// then link ourself to the new root.
 		this->next_sibling = nullptr;
 		this->prev_sibling = nullptr;
-		root->next_sibling = nullptr;
-		root->prev_sibling = nullptr;
-		return root->link_with(this);
+		node->next_sibling = nullptr;
+		node->prev_sibling = nullptr;
+		return node->link_with(this->shared_from_this());
 	}
 
 	/**
@@ -124,7 +128,7 @@ public:
 	void loosen() {
 		if (this->parent != nullptr) {
 			// release us from some other node
-			if (this->parent->first_child == this) {
+			if (this->parent->first_child.get() == this) {
 				// we are the first child
 				// make the next sibling the first child
 				this->parent->first_child = this->next_sibling;
@@ -149,12 +153,16 @@ public:
 };
 
 
-template<class T,
-         class compare=std::less<T>,
-         class heapnode_t=PairingHeapNode<T, compare>>
-class PairingHeap {
+/**
+ * (Quite) efficient heap implementation.
+ */
+template<typename T,
+         typename compare=std::less<T>,
+         typename heapnode_t=PairingHeapNode<T, compare>>
+class PairingHeap final {
 public:
 	using node_t = heapnode_t;
+	using element_t = std::shared_ptr<node_t>;
 	using this_type = PairingHeap<T, compare, node_t>;
 
 	/**
@@ -166,20 +174,34 @@ public:
 		root_node(nullptr) {
 	}
 
-	~PairingHeap() {
-		this->clear();
-	}
+	~PairingHeap() = default;
 
 	/**
 	 * adds the given item to the heap.
 	 * O(1)
 	 */
-	node_t *push(const T &item) {
-		node_t *new_node = new node_t{item};
+	element_t push(const T &item) {
+		element_t new_node = std::make_shared<node_t>(item);
 		this->push_node(new_node);
 		return new_node;
 	}
 
+	/**
+	 * moves the given item to the heap.
+	 * O(1)
+	 */
+	element_t push(T &&item) {
+		element_t new_node = std::make_shared<node_t>(std::move(item));
+		this->push_node(new_node);
+		return new_node;
+	}
+
+	/**
+	 * returns and removes the smallest item on the heap.
+	 */
+	T pop() {
+		return std::move(this->pop_node()->data);
+	}
 
 	/**
 	 * returns the smallest item on the heap and deletes it.
@@ -187,24 +209,23 @@ public:
 	 *                       _________
 	 * Ω(log log n), O(2^(2*√log log n'))
 	 */
-	T pop() {
+	element_t pop_node() {
 		if (this->root_node == nullptr) {
 			throw Error{MSG(err) << "Can't pop an empty heap!"};
 		}
 
 		// 0. remove tree root, it's the minimum.
-		T ret = this->root_node->data;
-		node_t *current_sibling = this->root_node->first_child;
-		this->delete_node(this->root_node);
+		element_t ret = this->root_node;
+		element_t current_sibling = this->root_node->first_child;
 		this->root_node = nullptr;
 
 		// 1. link root children pairwise, last node may be alone
-		node_t *first_pair = nullptr;
-		node_t *previous_pair = nullptr;
+		element_t first_pair = nullptr;
+		element_t previous_pair = nullptr;
 
 		while (unlikely(current_sibling != nullptr)) {
-			node_t *link0 = current_sibling;
-			node_t *link1 = current_sibling->next_sibling;
+			element_t link0 = current_sibling;
+			element_t link1 = current_sibling->next_sibling;
 
 			// pair link0 and link1
 			if (link1 != nullptr) {
@@ -212,7 +233,7 @@ public:
 				current_sibling = link1->next_sibling;
 
 				// do the link: merges two nodes, smaller one = root.
-				node_t *link_root = link0->link_with(link1);
+				element_t link_root = link0->link_with(link1);
 				link_root->parent = nullptr;
 
 				if (previous_pair == nullptr) {
@@ -250,6 +271,8 @@ public:
 			this->root_node = first_pair->link_backwards();
 		}
 
+		this->node_count -= 1;
+
 		// and it's done!
 		return ret;
 	}
@@ -262,25 +285,24 @@ public:
 	 * and merge these trees.
 	 * O(1)
 	 */
-	T pop_node(node_t *node) {
+	void erase_node(const element_t &node) {
 		if (node == this->root_node) {
-			return this->pop();
-		} else {
-			T ret = node->data;
+			this->pop();
+		}
+		else {
 			node->loosen();
-			node_t *child = node->first_child;
+			element_t child = node->first_child;
 
 			// merge all children of the node to pop
 			while (child != nullptr) {
-				node_t *next = child->next_sibling;
+				element_t next = child->next_sibling;
 				child->parent = nullptr;
 				child->loosen();
 				this->root_node = this->root_node->link_with(child);
 				child = next;
 			}
 
-			this->delete_node(node);
-			return ret;
+			this->node_count -= 1;
 		}
 	}
 
@@ -288,8 +310,16 @@ public:
 	 * Returns the smallest item on the heap.
 	 * O(1)
 	 */
-	T top() const {
+	const T &top() const {
 		return this->root_node->data;
+	}
+
+	/**
+	 * Returns the smallest node on the heap.
+	 * O(1)
+	 */
+	const element_t &top_node() const {
+		return this->root_node;
 	}
 
 	/**
@@ -298,7 +328,7 @@ public:
 	 * Also known as the decrease_key operation.
 	 * O(1)
 	 */
-	void update(node_t *node) {
+	void update(const element_t &node) {
 		// decreasing the root node won't change it.
 		if (likely(node != this->root_node)) {
 			node->loosen();
@@ -307,20 +337,18 @@ public:
 			// relink node.childs with rootnode. Might be a nice feature
 			// someday.
 		}
+		else {
+			// it's the root node, so we just pop and push it.
+			this->push_node(this->pop_node());
+		}
 	}
 
 	/**
 	 * erase all elements on the heap.
 	 */
 	void clear() {
-		for (auto it = this->nodes.begin(); it != this->nodes.end();) {
-			// srsly fak u c++ why you so broken pls
-			auto to_erase = it;
-			delete *to_erase;
-			++it;
-			this->nodes.erase(to_erase);
-			this->node_count -= 1;
-		}
+		this->root_node = nullptr;
+		this->node_count = 0;
 	}
 
 	/**
@@ -334,7 +362,7 @@ public:
 	 * @returns whether there are no nodes stored on the heap.
 	 */
 	bool empty() const {
-		return (this->node_count == 0);
+		return this->node_count == 0;
 	}
 
 protected:
@@ -342,38 +370,20 @@ protected:
 	 * adds the given node to the heap.
 	 * O(1)
 	 */
-	void push_node(node_t *node) {
+	void push_node(const element_t &node) {
 		if (unlikely(this->root_node == nullptr)) {
 			this->root_node = node;
 		} else {
 			this->root_node = this->root_node->link_with(node);
 		}
 
-		this->nodes.insert(node);
 		this->node_count += 1;
 	}
 
-	/**
-	 * Erase a node from the heap freeing its memory.
-	 */
-	void delete_node(node_t *node) {
-		auto it = this->nodes.find(node);
-		if (likely(it != this->nodes.end())) {
-			this->nodes.erase(it);
-			delete node;
-			this->node_count -= 1;
-		} else {
-			throw Error{MSG(err) << "Specified node not found for deletion!"};
-		}
-	}
-
-
 protected:
-	size_t node_count;
 	compare cmp;
-	node_t *root_node;
-
-	std::unordered_set<node_t *> nodes;
+	size_t node_count;
+	element_t root_node;
 };
 
-}} // openage::datastructure
+} // openage::datastructure
