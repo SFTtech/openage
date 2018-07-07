@@ -27,29 +27,40 @@
 namespace openage::datastructure {
 
 
+template<typename T,
+         typename compare,
+         typename heapnode_t>
+class PairingHeap;
+
+
+
 template<typename T, typename compare=std::less<T>>
-class PairingHeapNode final : public std::enable_shared_from_this<PairingHeapNode<T, compare>> {
+class PairingHeapNode : public std::enable_shared_from_this<PairingHeapNode<T, compare>> {
 public:
 	using this_type = PairingHeapNode<T, compare>;
 
-	std::shared_ptr<this_type> first_child;
-	std::shared_ptr<this_type> prev_sibling;
-	std::shared_ptr<this_type> next_sibling;
-	std::shared_ptr<this_type> parent;       // for decrease-key and delete
+	friend PairingHeap<T, compare, this_type>;
 
 	T data;
 	compare cmp;
 
+public:
 	PairingHeapNode(const T &data)
 		:
-		data(data) {}
+		data{data} {}
 
 	PairingHeapNode(T &&data)
 		:
-		data(std::move(data)) {}
+		data{std::move(data)} {}
 
 	~PairingHeapNode() = default;
 
+	/**
+	 * Get contained node data.
+	 */
+	const T &get_data() const {
+		return this->data;
+	}
 
 	/**
 	 * Let this node become a child of the given one.
@@ -61,41 +72,54 @@ public:
 	/**
 	 * Add the given node as a child to this one.
 	 */
-	void add_child(const std::shared_ptr<this_type> &node) {
+	void add_child(const std::shared_ptr<this_type> &new_child) {
 		// first child is the most recently attached one
 		// it must not have siblings as they will get lost.
 
-		node->prev_sibling = nullptr;
-		node->next_sibling = this->first_child;
+		new_child->prev_sibling = nullptr;
+		new_child->next_sibling = this->first_child;
 
 		if (this->first_child != nullptr) {
-			this->first_child->prev_sibling = node;
+			this->first_child->prev_sibling = new_child;
 		}
 
-		this->first_child = node;
-		node->parent = this->shared_from_this();
+		this->first_child = new_child;
+		new_child->parent = this->shared_from_this();
 	}
 
 	/**
-	 * Links the given subtree root node with this one.
-	 * Returns the resulting subtree root node after both
-	 * nodes were compared and linked.
+	 * This method decides which node becomes the new root node
+	 * by comparing `this` with `node`.
+	 * The new root is returned, it has the other node as child.
 	 */
 	std::shared_ptr<this_type> link_with(const std::shared_ptr<this_type> &node) {
-		std::shared_ptr<this_type> linked_root;
-		std::shared_ptr<this_type> linked_child;
+		std::shared_ptr<this_type> new_root;
+		std::shared_ptr<this_type> new_child;
 
 		if (this->cmp(this->data, node->data)) {
-			linked_root  = this->shared_from_this();
-			linked_child = node;
+			new_root  = this->shared_from_this();
+			new_child = node;
 		}
 		else {
-			linked_root  = node;
-			linked_child = this->shared_from_this();
+			new_root  = node;
+			new_child = this->shared_from_this();
 		}
 
-		linked_root->add_child(linked_child);
-		return linked_root;
+		// children of new root become siblings of new new_child
+		// -> parent of new child = new root
+
+		// this whll be set by the add_child method
+		new_child->prev_sibling = nullptr;
+		new_child->next_sibling = nullptr;
+
+		// this is then set to the previous pair root:
+		new_root->prev_sibling = nullptr;
+		new_root->next_sibling = nullptr;
+
+		// set up the child
+		new_root->add_child(new_child);
+
+		return new_root;
 	}
 
 	/**
@@ -118,38 +142,43 @@ public:
 		this->prev_sibling = nullptr;
 		node->next_sibling = nullptr;
 		node->prev_sibling = nullptr;
-		return node->link_with(this->shared_from_this());
+		return this->link_with(node);
 	}
 
 	/**
-	 * Cut this node from all parent and sibling connections.
+	 * Cut this node from all parent and sibling connections,
+	 * but keeps the child pointer.
 	 * This effectively cuts out the subtree.
 	 */
 	void loosen() {
-		if (this->parent != nullptr) {
-			// release us from some other node
-			if (this->parent->first_child.get() == this) {
-				// we are the first child
-				// make the next sibling the first child
-				this->parent->first_child = this->next_sibling;
-			}
-			// if we have a previous sibling
-			if (this->prev_sibling != nullptr) {
-				// set its next sibling to skip us.
-				this->prev_sibling->next_sibling = this->next_sibling;
-			}
-			// if we have a next sibling
-			if (this->next_sibling != nullptr) {
-				// tell its previous sibling to skip us.
-				this->next_sibling->prev_sibling = this->prev_sibling;
-			}
-
-			// reset sibling and parent ptrs.
-			this->prev_sibling = nullptr;
-			this->next_sibling = nullptr;
-			this->parent = nullptr;
+		// release us from some other node
+		if (this->parent and this->parent->first_child == this->shared_from_this()) {
+			// we are the first child
+			// make the next sibling the first child
+			this->parent->first_child = this->next_sibling;
 		}
+		// if we have a previous sibling
+		if (this->prev_sibling != nullptr) {
+			// set its next sibling to skip us.
+			this->prev_sibling->next_sibling = this->next_sibling;
+		}
+		// if we have a next sibling
+		if (this->next_sibling != nullptr) {
+			// tell its previous sibling to skip us.
+			this->next_sibling->prev_sibling = this->prev_sibling;
+		}
+
+		// reset sibling and parent ptrs.
+		this->prev_sibling = nullptr;
+		this->next_sibling = nullptr;
+		this->parent = nullptr;
 	}
+
+private:
+	std::shared_ptr<this_type> first_child;
+	std::shared_ptr<this_type> prev_sibling;
+	std::shared_ptr<this_type> next_sibling;
+	std::shared_ptr<this_type> parent;       // for decrease-key and delete
 };
 
 
@@ -266,6 +295,7 @@ public:
 			}
 		}
 
+
 		// 2. then link remaining trees to the last one, from right to left
 		if (first_pair != nullptr) {
 			this->root_node = first_pair->link_backwards();
@@ -273,34 +303,42 @@ public:
 
 		this->node_count -= 1;
 
+		// (to find those two lines, 14h of debugging passed)
+		ret->loosen();
+		ret->first_child = nullptr;
+
 		// and it's done!
 		return ret;
 	}
 
 	/**
-	 * Delete a node from the heap.
+	 * Unlink a node from the heap.
 	 *
 	 * If the item is the current root, just pop().
 	 * else, cut the node from its parent, pop() that subtree
 	 * and merge these trees.
-	 * O(1)
+	 *
+	 * O(1), O(pop) if node is the root
 	 */
-	void erase_node(const element_t &node) {
+	void unlink_node(const element_t &node) {
 		if (node == this->root_node) {
-			this->pop();
+			this->pop_node();
 		}
 		else {
 			node->loosen();
 			element_t child = node->first_child;
 
-			// merge all children of the node to pop
+			// merge all children of the node to unlink
 			while (child != nullptr) {
 				element_t next = child->next_sibling;
-				child->parent = nullptr;
 				child->loosen();
-				this->root_node = this->root_node->link_with(child);
+				this->push_node(child);
+
 				child = next;
 			}
+
+			// to create this line, 13h of debugging were required.
+			node->first_child = nullptr;
 
 			this->node_count -= 1;
 		}
@@ -311,11 +349,12 @@ public:
 	 * O(1)
 	 */
 	const T &top() const {
-		return this->root_node->data;
+		return this->root_node->get_data();
 	}
 
 	/**
 	 * Returns the smallest node on the heap.
+	 *
 	 * O(1)
 	 */
 	const element_t &top_node() const {
@@ -323,19 +362,35 @@ public:
 	}
 
 	/**
-	 * Update a given node.
+	 * You must call this after the node data decreased.
 	 * This cuts the subtree and links the subtree again.
+	 * If the node value _increased_ and you call this,
+	 * the heap is corrupted.
 	 * Also known as the decrease_key operation.
+	 *
 	 * O(1)
 	 */
-	void update(const element_t &node) {
-		// decreasing the root node won't change it.
+	void decrease(const element_t &node) {
 		if (likely(node != this->root_node)) {
+			// cut out the node and its subtree
 			node->loosen();
 			this->root_node = node->link_with(this->root_node);
-			// TODO: if increasing value (=contradicting 'decrease_key'),
-			// relink node.childs with rootnode. Might be a nice feature
-			// someday.
+		}
+		// decreasing the root node won't change it, so we do nothing.
+	}
+
+	/**
+	 * After a change, call this to reorganize the given node.
+	 * Support increase and decrease of values.
+	 *
+	 * Use `decrease` instead when you know the value decreased.
+	 *
+	 * O(1) (but slower than decrease), and O(pop) when node is the root.
+	 */
+	void update(const element_t &node) {
+		if (likely(node != this->root_node)) {
+			this->unlink_node(node);
+			this->push_node(node);
 		}
 		else {
 			// it's the root node, so we just pop and push it.

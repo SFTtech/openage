@@ -65,17 +65,47 @@ void pairing_heap_0() {
 void pairing_heap_1() {
 	PairingHeap<heap_elem> heap{};
 	heap.push(heap_elem{1});
-	auto node = heap.push(heap_elem{2});
+	auto node_u1 = heap.push(heap_elem{2});
 	heap.push(heap_elem{3});
 
 	// 1 2 3
-	node->data.data = 0;
-	heap.update(node);
+	node_u1->data.data = 0;
+	heap.decrease(node_u1);
 
 	// 0 1 3
 	TESTEQUALS(heap.pop().data, 0);
 	TESTEQUALS(heap.pop().data, 1);
+
+	// 3
+	heap.push(heap_elem{4});
+	heap.push(heap_elem{0});
+	heap.push(heap_elem{2});
+	heap.push(heap_elem{5});
+	heap.push(heap_elem{1});
+	heap.push(heap_elem{6});
+	auto node_u2 = heap.push(heap_elem{7});
+	heap.push(heap_elem{8});
+	heap.push(heap_elem{9});
+	heap.push(heap_elem{10});
+
+	TESTEQUALS(heap.pop().data, 0);
+
+	TESTEQUALS(heap.pop().data, 1);
+
+	// now update the 7-node to 8
+	node_u2->data.data = 8;
+	heap.update(node_u2);
+
+	// 2 3 4 5 6 8 8 9 10
+	TESTEQUALS(heap.pop().data, 2);
 	TESTEQUALS(heap.pop().data, 3);
+	TESTEQUALS(heap.pop().data, 4);
+	TESTEQUALS(heap.pop().data, 5);
+	TESTEQUALS(heap.pop().data, 6);
+	TESTEQUALS(heap.pop().data, 8);
+	TESTEQUALS(heap.pop().data, 8);
+	TESTEQUALS(heap.pop().data, 9);
+	TESTEQUALS(heap.pop().data, 10);
 }
 
 
@@ -86,7 +116,7 @@ void pairing_heap_2() {
 	heap.push(heap_elem{3});
 
 	// state: 1 2 3, now remove 2
-	heap.erase_node(node);
+	heap.unlink_node(node);
 
 	// state: 1 3
 	TESTEQUALS(heap.pop().data, 1);
