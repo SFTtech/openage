@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -22,10 +22,15 @@ public:
 		key{key},
 		value{value} {}
 
-	constexpr ConstMapEntry(std::pair<K, V> pair)
+	constexpr ConstMapEntry(const std::pair<K, V> &pair)
 		:
 		key{pair.first},
 		value{pair.second} {}
+
+	constexpr ConstMapEntry(std::pair<K, V> &&pair)
+		:
+		key{std::move(pair.first)},
+		value{std::move(pair.second)} {}
 
 	/**
 	 * Map entry key.
