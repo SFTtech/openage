@@ -7,11 +7,14 @@
 
 #if WITH_NCURSES
 #include <ncurses.h>
+
+#include "gui.h"
 #endif
 
 #include "../../config.h"
 #include "../../error/error.h"
 #include "../../rng/global_rng.h"
+#include "../../util/stringformatter.h"
 
 
 namespace openage::event::demo {
@@ -96,9 +99,10 @@ public:
 
 #if WITH_NCURSES
 		if (state->enable_gui) {
-			mvprintw(22, 40,
-			         "WALL TY %f NOW %f, NOWTY %f ",
-			         ty.to_double(), now.to_double(), (now + ty).to_double());
+			util::FString str;
+			str.fmt("WALL TY %f NOW %f, NOWTY %f ",
+			        ty.to_double(), now.to_double(), (now + ty).to_double());
+			state->gui->log(str);
 		};
 #endif
 		return now + ty;
@@ -141,7 +145,9 @@ public:
 #if WITH_NCURSES
 		if (state->enable_gui) {
 			static int cnt = 0;
-			mvprintw(21, 22, "Panel hit [%i]", ++cnt);
+			util::FString str;
+			str.fmt("Panel hit [%i]", ++cnt);
+			state->gui->log(str);
 		}
 		else {
 #endif
@@ -163,7 +169,6 @@ public:
 			state->ball->position->set_last(now, pos);
 
 			Physics::reset(state, mgr, now);
-			mvprintw(21, 18, "1");
 		}
 		else if (pos[0] >= state->display_boundary[0] - 1 and
 		         speed[0] > 0 and
@@ -177,7 +182,6 @@ public:
 			state->ball->position->set_last(now, pos);
 
 			Physics::reset(state, mgr, now);
-			mvprintw(21, 18, "2");
 		}
 		else if (pos[0] >= state->display_boundary[0]- 1 || pos[0] <= 1) {
 			speed[0] *= -1;
@@ -228,7 +232,9 @@ public:
 
 #if WITH_NCURSES
 		if (state->enable_gui) {
-			mvprintw(21, 40, "PANEL REFLECT AT %f NEXT %f", now.to_double(), (now + ty).to_double());
+			util::FString str;
+			str.fmt("PANEL REFLECT AT %f NEXT %f", now.to_double(), (now + ty).to_double());
+			state->gui->log(str);
 		}
 		else {
 #endif
@@ -301,12 +307,15 @@ public:
 #if WITH_NCURSES
 		if (state->enable_gui) {
 			static int cnt = 0;
-			mvprintw(20, 20, "Reset. Speed %f | %f POS %f | %f [%i]",
-			         init_speed[0],
-			         init_speed[1],
-			         pos[0],
-			         pos[1],
-			         ++cnt);
+
+			util::FString str;
+			str.fmt("Reset. Speed %f | %f POS %f | %f [%i]",
+			        init_speed[0],
+			        init_speed[1],
+			        pos[0],
+			        pos[1],
+			        ++cnt);
+			state->gui->log(str);
 		}
 		else {
 #endif

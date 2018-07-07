@@ -7,14 +7,12 @@
 
 #if WITH_NCURSES
 #include <vector>
+#include <deque>
 
 #include "gamestate.h"
-#endif
 
 
 namespace openage::event::demo {
-
-#if WITH_NCURSES
 
 class PongEvent;
 class PongState;
@@ -35,10 +33,13 @@ public:
 	void draw(const std::shared_ptr<PongState> &state, const curve::time_t &now);
 	void draw_ball(util::Vector2d ball, const char *str);
 
+	void log(const std::string &msg);
+
 private:
 	std::vector<PongEvent> input_cache;
+	std::deque<std::string> log_msgs;
 };
 
-#endif
-
 } // openage::event::demo
+
+#endif

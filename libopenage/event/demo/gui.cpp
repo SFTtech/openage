@@ -87,7 +87,10 @@ enum {
 };
 
 
+constexpr const int max_log_msgs = 10;
+
 Gui::Gui() {}
+
 
 void Gui::init() {
 	initscr();
@@ -187,17 +190,24 @@ void Gui::draw(const std::shared_ptr<PongState> &state, const curve::time_t &now
 	for (int i = 0; i < 10; i++) {
 		auto i_as_ctt = curve::time_t::from_int(i);
 		mvprintw((5 + i), 1,
-		         "BALL in %03f: %f | %f; SPEED: %f | %f | PLpos: %f, PRpos: %f | PLst: %d",
+		         "BALL in %03f: %f | %f; SPEED: %f | %f | PLpos: %f, PRpos: %f",
 		         i_as_ctt.to_double(),
 		         state->ball->position->get(now + i_as_ctt)[0],
 		         state->ball->position->get(now + i_as_ctt)[1],
 		         state->ball->speed->get(now + i_as_ctt)[0],
 		         state->ball->speed->get(now + i_as_ctt)[1],
 		         state->p1->position->get(now + i_as_ctt),
-		         state->p2->position->get(now + i_as_ctt),
-		         state->p1->state->get(now + i_as_ctt).state
+		         state->p2->position->get(now + i_as_ctt)
 		);
 	}
+
+	// show log
+	int msg_i = 0;
+	for (auto & msg : this->log_msgs) {
+		mvprintw((6 + msg_i), state->display_boundary[0]/2 + 10, msg.c_str());
+		msg_i += 1;
+	}
+
 
 	// exit hint message
 	mvprintw(state->display_boundary[1] - 1, 1, "Press ESC to exit");
@@ -241,6 +251,15 @@ void Gui::draw_ball(util::Vector2d pos, const char *str) {
 	mvprintw((int)(pos[1]), (int)(pos[0]), "%s", str);
 	standend();
 }
+
+
+void Gui::log(const std::string &msg) {
+	if (this->log_msgs.size() >= max_log_msgs) {
+		this->log_msgs.pop_back();
+	}
+	this->log_msgs.push_front(msg);
+}
+
 
 #endif
 
