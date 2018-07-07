@@ -268,9 +268,9 @@ public:
 	}
 
 	/**
-	 * Show a string representation.
+	 * Show a string representation. Useful for debugging in gdb.
 	 */
-	constexpr std::string str() const {
+	std::string str() const {
 		std::ostringstream builder;
 		builder << "FixedPoint(" << this->to_double()
 		        << ", fracbits=" << fractional_bits
