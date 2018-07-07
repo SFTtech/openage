@@ -28,6 +28,7 @@ std::weak_ptr<Event> Loop::create_event(const std::string &name,
 		throw Error{MSG(err) << "Trying to subscribe to eventclass "
 		                     << name << ", which does not exist."};
 	}
+
 	return this->queue.create_event(target, it->second, state, reference_time, params);
 }
 
@@ -94,7 +95,7 @@ int Loop::execute_events(const curve::time_t &time_until,
 
 	{
 		size_t i = 0;
-		for (const auto &e : this->queue.get_event_queue()) {
+		for (const auto &e : this->queue.get_event_queue().get_sorted_events()) {
 			log::log(DBG << "  event "
 			         << i << ": t=" << e->get_time() << ": " << e->get_eventclass()->id());
 			i++;
@@ -113,11 +114,11 @@ int Loop::execute_events(const curve::time_t &time_until,
 		auto target = event->get_target().lock();
 
 		if (target) {
-			this->active_event = event;
-
 			log::log(DBG << "Loop: invoking event \"" << event->get_eventclass()->id()
 			         << "\" on target \"" << target->id()
 			         << "\" for time t=" << event->get_time());
+
+			this->active_event = event;
 
 			// apply the event effects
 			event->get_eventclass()->invoke(
@@ -133,9 +134,15 @@ int Loop::execute_events(const curve::time_t &time_until,
 				curve::time_t new_time = event->get_eventclass()->predict_invoke_time(
 					target, state, event->get_time()
 				);
+
 				if (new_time != std::numeric_limits<curve::time_t>::min()) {
 					event->set_time(new_time);
-					this->queue.readd(event);
+
+					log::log(DBG << "Loop: repeating event \"" << event->get_eventclass()->id()
+					         << "\" on target \"" << target->id()
+					         << "\" will be reenqueued for time t=" << event->get_time());
+
+					this->queue.reenqueue(event);
 				}
 			}
 		}
@@ -154,6 +161,8 @@ void Loop::update_changes(const std::shared_ptr<State> &state) {
 	         << " target changes have to be processed");
 
 	size_t i = 0;
+
+	// reevaluate depending events beecause of the change
 	for (const auto &change : this->queue.get_changes()) {
 		auto evnt = change.evnt.lock();
 		if (evnt) {
@@ -167,15 +176,25 @@ void Loop::update_changes(const std::shared_ptr<State> &state) {
 				if (target) {
 					curve::time_t new_time = evnt->get_eventclass()
 					                             ->predict_invoke_time(target, state, change.time);
-					log::log(DBG << "Loop: rescheduled event of '"
-					         << evnt->get_eventclass()->id()
-					         << "' on target '" << target->id()
-					         << "' at time t=" << change.time
-					         << " to NEW TIME t=" << new_time);
 
 					if (new_time != std::numeric_limits<curve::time_t>::min()) {
+						log::log(DBG << "Loop: due to a change, rescheduling event of '"
+						         << evnt->get_eventclass()->id()
+						         << "' on target '" << target->id()
+						         << "' at time t=" << change.time
+						         << " to NEW TIME t=" << new_time);
+
 						evnt->set_time(new_time);
-						this->queue.update(evnt);
+
+						this->queue.enqueue_change(evnt);
+					}
+					else {
+						log::log(DBG << "Loop: due to a change, canceled execution of '"
+						         << evnt->get_eventclass()->id()
+						         << "' on target '" << target->id()
+						         << "' at time t=" << change.time);
+
+						this->queue.remove(evnt);
 					}
 				}
 			} break;
@@ -183,7 +202,7 @@ void Loop::update_changes(const std::shared_ptr<State> &state) {
 			case EventClass::trigger_type::TRIGGER:
 			case EventClass::trigger_type::DEPENDENCY_IMMEDIATELY:
 				evnt->set_time(change.time);
-				this->queue.update(evnt);
+				this->queue.enqueue_change(evnt);
 				break;
 
 			case EventClass::trigger_type::REPEAT:

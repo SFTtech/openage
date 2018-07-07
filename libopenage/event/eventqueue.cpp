@@ -8,15 +8,16 @@
 #include "eventclass.h"
 #include "eventtarget.h"
 #include "../log/log.h"
+#include "../util/compiler.h"
 
 
 namespace openage::event {
 
-std::weak_ptr<Event> EventQueue::create_event(const std::shared_ptr<EventTarget> &trgt,
-                                              const std::shared_ptr<EventClass> &cls,
-                                              const std::shared_ptr<State> &state,
-                                              const curve::time_t &reference_time,
-                                              const EventClass::param_map &params) {
+std::shared_ptr<Event> EventQueue::create_event(const std::shared_ptr<EventTarget> &trgt,
+                                                const std::shared_ptr<EventClass> &cls,
+                                                const std::shared_ptr<State> &state,
+                                                const curve::time_t &reference_time,
+                                                const EventClass::param_map &params) {
 
 	auto event = std::make_shared<Event>(trgt, cls, params);
 
@@ -30,7 +31,11 @@ std::weak_ptr<Event> EventQueue::create_event(const std::shared_ptr<EventTarget>
 		                     ->predict_invoke_time(trgt, state, reference_time));
 
 		if (event->get_time() == std::numeric_limits<curve::time_t>::min()) {
-			return std::weak_ptr<Event>();
+			log::log(DBG << "Queue: ignoring insertion of event "
+			         << event->get_eventclass()->id() <<
+			         " because no execution was scheduled.");
+
+			return {};
 		}
 		break;
 
@@ -43,8 +48,26 @@ std::weak_ptr<Event> EventQueue::create_event(const std::shared_ptr<EventTarget>
 	log::log(DBG << "Queue: inserting event " << event->get_eventclass()->id() <<
 	         " into queue to be executed at t=" << event->get_time());
 
-	auto &queue = this->select_queue(event->get_eventclass()->type);
-	queue.emplace_back(event);
+	// store the event
+	// or enqueue it for execution
+	switch(event->get_eventclass()->type) {
+	case EventClass::trigger_type::DEPENDENCY:
+		this->dependency_events.insert(event);
+		break;
+
+	case EventClass::trigger_type::DEPENDENCY_IMMEDIATELY:
+		this->dependency_immediately_events.insert(event);
+		break;
+
+	case EventClass::trigger_type::TRIGGER:
+		this->trigger_events.insert(event);
+		break;
+
+	case EventClass::trigger_type::REPEAT:
+	case EventClass::trigger_type::ONCE:
+	default:
+		this->event_queue.push(event);
+	}
 
 	return event;
 }
@@ -104,115 +127,29 @@ void EventQueue::add_change(const std::shared_ptr<Event> &event,
 
 
 void EventQueue::remove(const std::shared_ptr<Event> &evnt) {
-	auto &queue = this->select_queue(evnt->get_eventclass()->type);
-	auto it = std::find(std::begin(queue), std::end(queue), evnt);
-
-	if (it != queue.end()) {
-		queue.erase(it);
-	}
+	// TODO: remove the event from the other storages.
+	//       this would require changes to dependent events and triggers.
+	//       (to stop being a dependent event or allow being triggered)
+	this->event_queue.erase(evnt);
 }
 
 
-std::deque<std::shared_ptr<Event>> &EventQueue::select_queue(EventClass::trigger_type type) {
-	switch(type) {
-	case EventClass::trigger_type::DEPENDENCY:
-		return this->dependency_queue;
-
-	case EventClass::trigger_type::DEPENDENCY_IMMEDIATELY:
-		return this->dependency_immediately_queue;
-
-	case EventClass::trigger_type::TRIGGER:
-		return this->trigger_queue;
-
-	case EventClass::trigger_type::REPEAT:
-	case EventClass::trigger_type::ONCE:
-	default:
-		return this->event_queue;
-	}
-}
-
-
-void EventQueue::update(const std::shared_ptr<Event> &evnt) {
-	decltype(this->event_queue)::iterator it = std::find(std::begin(this->event_queue),
-	                                                     std::end(this->event_queue),
-	                                                     evnt);
-
-	if (it != this->event_queue.end()) { // we only want to update the pending queue
-		int dir = 0;
-
-		{
-			auto nxt = std::next(it);
-			if (nxt != std::end(this->event_queue) and
-			    (*nxt)->get_time() < (*it)->get_time()) {
-				dir -= 1;
-			}
-			auto prv = std::prev(it);
-			if (it != std::begin(this->event_queue) and
-			    (*prv)->get_time() > (*it)->get_time()) {
-				dir += 1;
-			}
-			// dir is now one of these values:
-			// 0: the element is perfectly placed
-			// +: the elements time is too low for its position, move forward
-			// -: the elements time is too high for its position, move backwards
-		}
-
-		if (dir == 0) {
-			// do nothing
-		}
-		else if (dir > 0) {
-			auto e = *it;
-			it = this->event_queue.erase(it);
-			while (it != this->event_queue.begin()
-			       && evnt->get_time() < (*std::prev(it))->get_time()) {
-				it--;
-			}
-			this->event_queue.insert(it, e);
-		}
-		else if (dir < 0) {
-			auto e = *it;
-			it = this->event_queue.erase(it);
-			while (it != this->event_queue.end()
-			       && evnt->get_time() > (*std::prev(it))->get_time()) {
-				it++;
-			}
-			this->event_queue.insert(it, e);
-		}
-
-		log::log(DBG << "Queue: readded Element: " << evnt->get_eventclass()->id()
-		         << " at t=" << evnt->get_time());
+void EventQueue::enqueue_change(const std::shared_ptr<Event> &evnt) {
+	if (this->event_queue.contains(evnt)) {
+		this->event_queue.update(evnt);
 	}
 	else {
-		it = std::find_if(
-			std::begin(this->event_queue),
-			std::end(this->event_queue),
-			[&evnt] (const std::shared_ptr<Event> &e) {
-				return e->get_time() > evnt->get_time();
-			}
-		);
-
-		this->event_queue.insert(it, evnt);
-		log::log(DBG << "Queue: inserted Element: " << evnt->get_eventclass()->id()
-		         << " at t=" << evnt->get_time());
+		this->event_queue.push(evnt);
 	}
 }
 
 
-void EventQueue::readd(const std::shared_ptr<Event> &evnt) {
-	auto &container = this->select_queue(evnt->get_eventclass()->type);
-
-	auto it = std::find_if(
-		std::begin(container),
-		std::end(container),
-		[&evnt](const std::shared_ptr<Event> &element) {
-			return element->get_time() < evnt->get_time();
-		}
-	);
-	container.insert(it, evnt);
+void EventQueue::reenqueue(const std::shared_ptr<Event> &evnt) {
+	this->event_queue.push(evnt);
 }
 
 
-const std::deque<std::shared_ptr<Event>> &EventQueue::get_event_queue() const {
+const EventStore &EventQueue::get_event_queue() const {
 	return this->event_queue;
 }
 
@@ -222,13 +159,13 @@ std::shared_ptr<Event> EventQueue::take_event(const curve::time_t &max_time) {
 		return nullptr;
 	}
 
-	std::shared_ptr<Event> event = this->event_queue.front();
+	std::shared_ptr<Event> event = this->event_queue.top();
 
 	// check if this event should be processed
 	// we take any event that happens <= max_time
 	if (event->get_time() <= max_time) {
 		// remove the event from the queue
-		this->event_queue.pop_front();
+		this->event_queue.pop();
 
 		return event;
 	}
@@ -279,6 +216,5 @@ size_t EventQueue::OnChangeElement::Equal::operator()(const OnChangeElement& lef
 	return left_trgt && right_trgt &&
 	left_trgt->id() == right_trgt->id();
 }
-
 
 } // namespace openage::event

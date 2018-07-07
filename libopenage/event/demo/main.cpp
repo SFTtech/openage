@@ -144,7 +144,7 @@ void curvepong(bool disable_gui, bool no_human) {
 
 				int pos = 1;
 				mvprintw(pos++, state->display_boundary[0]/2 + 10, "Enqueued events:");
-				for (const auto &e : loop->get_queue().get_event_queue()) {
+				for (const auto &e : loop->get_queue().get_event_queue().get_sorted_events()) {
 					mvprintw(pos++, state->display_boundary[0]/2 + 10,
 					         "%f: %s",
 					         e->get_time().to_double(),

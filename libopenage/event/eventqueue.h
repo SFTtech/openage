@@ -2,12 +2,13 @@
 
 #pragma once
 
-#include <deque>
 #include <memory>
 #include <unordered_set>
 
 #include "eventclass.h"
+#include "eventstore.h"
 #include "../curve/curve.h"
+
 
 namespace openage::event {
 
@@ -18,7 +19,7 @@ class EventTarget;
 /**
  * The core event class for execution and execution dependencies.
  */
-class EventQueue {
+class EventQueue final {
 public:
 
 	class OnChangeElement {
@@ -32,15 +33,15 @@ public:
 
 		class Hasher : public std::unary_function<OnChangeElement, size_t> {
 		public:
-			size_t operator()(const OnChangeElement& e) const {
+			size_t operator ()(const OnChangeElement& e) const {
 				return e.hash;
 			}
 		};
 
 		class Equal : public std::unary_function<OnChangeElement, size_t> {
 		public:
-			size_t operator()(const OnChangeElement& left,
-			                  const OnChangeElement& right) const;
+			size_t operator ()(const OnChangeElement& left,
+			                   const OnChangeElement& right) const;
 		};
 	};
 
@@ -63,11 +64,11 @@ public:
 	 * The `insertion_time` is the time used to calculate when
 	 * the actual event time will happen!
 	 */
-	std::weak_ptr<Event> create_event(const std::shared_ptr<EventTarget> &eventtarget,
-	                                  const std::shared_ptr<EventClass> &eventclass,
-	                                  const std::shared_ptr<State> &state,
-	                                  const curve::time_t &reference_time,
-	                                  const EventClass::param_map &params);
+	std::shared_ptr<Event> create_event(const std::shared_ptr<EventTarget> &eventtarget,
+	                                    const std::shared_ptr<EventClass> &eventclass,
+	                                    const std::shared_ptr<State> &state,
+	                                    const curve::time_t &reference_time,
+	                                    const EventClass::param_map &params);
 
 	/**
 	 * Remove the given event from the queue.
@@ -75,15 +76,18 @@ public:
 	void remove(const std::shared_ptr<Event> &evnt);
 
 	/**
-	 * The event may be already part of the execution queue,
-	 * so update it, if it shall be executed in the future.
+	 * An update to existing events has to be applied.
+	 * The execution time of this event may have changed or it
+	 * is newly created. This updates/inserts the given event
+	 * in the main queue.
 	 */
-	void update(const std::shared_ptr<Event> &);
+	void enqueue_change(const std::shared_ptr<Event> &event);
 
 	/**
-	 * The event was just removed.
+	 * The event was just removed, add it again.
+	 * This is used for REPEAT events so that they are repeated.
 	 */
-	void readd(const std::shared_ptr<Event> &);
+	void reenqueue(const std::shared_ptr<Event> &event);
 
 	/**
 	 * An event target has changed, and the event shall be retriggered
@@ -94,7 +98,7 @@ public:
 	/**
 	 * Get an accessor to the running queue for state output purpose.
 	 */
-	const std::deque<std::shared_ptr<Event>> &get_event_queue() const;
+	const EventStore &get_event_queue() const;
 
 	/**
 	 * Obtain the next event from the `event_queue` that happens before `<= max_time`.
@@ -129,30 +133,26 @@ private:
 	change_set changeset_B;
 
 	/**
-	 * Get a reference to the correct event queue by
-	 * the given trigger type.
+	 * Stores events that sleep until their dependency changes.
 	 */
-	std::deque<std::shared_ptr<Event>> &select_queue(EventClass::trigger_type type);
+	std::unordered_set<std::shared_ptr<Event>> dependency_events;
 
 	/**
-	 * Will trigger itself and add to the queue.
+	 * Stores events that sleep until their dependency changes, but they trigger
+	 * instantly when their dependency changes.
 	 */
-	std::deque<std::shared_ptr<Event>> dependency_queue;
-
-	/**
-	 * Will trigger itself and add to the queue.
-	 */
-	std::deque<std::shared_ptr<Event>> dependency_immediately_queue;
+	std::unordered_set<std::shared_ptr<Event>> dependency_immediately_events;
 
 	/**
 	 * Events that fire only when triggered.
 	 */
-	std::deque<std::shared_ptr<Event>> trigger_queue;
+	std::unordered_set<std::shared_ptr<Event>> trigger_events;
 
 	/**
+	 * The universe timeline processes through this queue.
 	 * Type::ONCE is only inserted into the queue.
 	 */
-	std::deque<std::shared_ptr<Event>> event_queue;
+	EventStore event_queue;
 };
 
 } // openage::event

@@ -60,6 +60,11 @@ public:
 	 */
 	void depend_on(const std::shared_ptr<EventTarget> &dependency);
 
+	/**
+	 * For sorting events by their trigger time.
+	 */
+	bool operator <(const Event &other) const;
+
 	curve::time_t last_triggered = 0;
 
 private:

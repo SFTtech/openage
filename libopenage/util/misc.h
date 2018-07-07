@@ -8,12 +8,14 @@
 #include <cstring>
 #include <string>
 #include <vector>
+#include <memory>
 
 #include "../error/error.h"
+#include "compiler.h"
 
 
-namespace openage {
-namespace util {
+namespace openage::util {
+
 
 /**
  * global empty string, sometimes needed
@@ -278,5 +280,23 @@ void vector_remove_swap_end(std::vector<T> &vec, size_t idx) {
 }
 
 
-} // namespace util
-} // namespace openage
+/**
+ * Comparator that returns true
+ * if the contained value of the left sharedptr is `<`
+ * than the value contained in the right sharedptr.
+ */
+template <typename T>
+struct SharedPtrLess {
+	bool operator ()(const std::shared_ptr<T> &left,
+	                 const std::shared_ptr<T> &right) {
+
+		if (unlikely(not left or not right)) {
+			return false;
+		}
+
+		return *left < *right;
+	}
+};
+
+
+} // namespace openage::util

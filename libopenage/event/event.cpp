@@ -34,4 +34,8 @@ void Event::depend_on(const std::shared_ptr<EventTarget> &dependency) {
 }
 
 
+bool Event::operator <(const Event &other) const {
+	return this->time < other.time;
+}
+
 } // openage::event

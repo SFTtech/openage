@@ -85,7 +85,7 @@ public:
 
 		auto state = std::dynamic_pointer_cast<TestState>(gstate);
 
-		switch(idx) {
+		switch(this->idx) {
 		case 0:
 			// let the modification of objectA depend on objectB
 			event->depend_on(state->objectB);
@@ -105,7 +105,7 @@ public:
 
 		auto state = std::dynamic_pointer_cast<TestState>(gstate);
 
-		switch (idx) {
+		switch (this->idx) {
 		case 0: {
 			auto t = std::dynamic_pointer_cast<TestState::TestObject>(target);
 			state->objectA->set_number(t->number + 1, time);
@@ -125,7 +125,6 @@ public:
 	curve::time_t predict_invoke_time(const std::shared_ptr<EventTarget> &/*target*/,
 	                                  const std::shared_ptr<State> &/*state*/,
 	                                  const curve::time_t &at) override {
-		// TODO recalculate a hit time
 		return at + curve::time_t::from_double(2);
 	}
 };
@@ -453,12 +452,12 @@ void eventtrigger() {
 			loop->reach_time(11, gstate);
 			TESTEQUALS(state->trace.size(), 2);
 			auto it = state->trace.begin();
-			if (it->name != "once")
-				TESTFAILMSG("Unexpected Event: " << it->name << " expected once");
-			TESTEQUALS(it->time, 10);
-			it++;
 			if (it->name != "repeat_exec")
 				TESTFAILMSG("Unexpected Event: " << it->name << " expected repeat_exec");
+			TESTEQUALS(it->time, 10);
+			it++;
+			if (it->name != "once")
+				TESTFAILMSG("Unexpected Event: " << it->name << " expected once");
 			TESTEQUALS(it->time, 10);
 			state->trace.clear();
 		}
