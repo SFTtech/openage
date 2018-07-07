@@ -4,6 +4,7 @@
 
 #include <functional>
 
+#include "../../config.h"
 #include "../state.h"
 #include "../loop.h"
 #include "../eventtarget.h"
@@ -11,8 +12,12 @@
 #include "../../curve/discrete.h"
 #include "../../util/vector.h"
 
-
 namespace openage::event::demo {
+
+#if WITH_NCURSES
+class Gui;
+#endif
+
 
 
 class PongEvent {
@@ -110,13 +115,21 @@ private:
 
 class PongState : public State {
 public:
-	PongState(const std::shared_ptr<Loop> &mgr, bool enable_gui)
+	PongState(const std::shared_ptr<Loop> &mgr, bool enable_gui
+#if WITH_NCURSES
+	          , const std::shared_ptr<Gui> &gui
+#endif
+	)
 		:
 		State{mgr},
 		p1(std::make_shared<PongPlayer>(mgr, 0)),
 		p2(std::make_shared<PongPlayer>(mgr, 1)),
 		ball(std::make_shared<PongBall>(mgr, 2)),
-		enable_gui{enable_gui} {}
+		enable_gui{enable_gui}
+#if WITH_NCURSES
+		, gui{gui}
+#endif
+		{}
 
 	std::shared_ptr<PongPlayer> p1;
 	std::shared_ptr<PongPlayer> p2;
@@ -124,6 +137,10 @@ public:
 	util::Vector2d display_boundary;
 
 	bool enable_gui;
+
+#if WITH_NCURSES
+	std::shared_ptr<Gui> gui;
+#endif
 };
 
 } // openage::event::demo

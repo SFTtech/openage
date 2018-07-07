@@ -42,9 +42,10 @@ void curvepong(bool disable_gui, bool no_human) {
 
 
 #if WITH_NCURSES
-	Gui gui;
+	std::shared_ptr<Gui> gui = std::make_shared<Gui>();
+
 	if (enable_gui) {
-		gui.init();
+		gui->init();
 	}
 #endif
 
@@ -56,7 +57,11 @@ void curvepong(bool disable_gui, bool no_human) {
 		Physics phys;
 		AIInput ai;
 
-		auto state = std::make_shared<PongState>(loop, enable_gui);
+		auto state = std::make_shared<PongState>(loop, enable_gui
+#if WITH_NCURSES
+		                                         , gui
+#endif
+		);
 		Physics::init(state, loop, now);
 
 		state->p1->lives->set_last(now, 3);
@@ -67,8 +72,8 @@ void curvepong(bool disable_gui, bool no_human) {
 
 #if WITH_NCURSES
 		if (state->enable_gui) {
-			gui.clear();
-			gui.draw(state, now);  // update gui related parameters
+			gui->clear();
+			gui->get_display_size(state, now);  // update gui related parameters
 		}
 		else {
 #endif
@@ -77,16 +82,12 @@ void curvepong(bool disable_gui, bool no_human) {
 		}
 #endif
 
-		{
-			std::vector<PongEvent> start_event{PongEvent(0, PongEvent::START)};
-			phys.process_input(state, state->p1, start_event, loop, now);
-		}
+		// initialize the game by resetting physics
+		std::vector<PongEvent> start_event{PongEvent{0, PongEvent::START}};
+		phys.process_input(state, state->p1, start_event, loop, now);
 
-#if WITH_NCURSES
-		if (state->enable_gui) {
-			gui.draw(state, now);  // initial drawing with corrected ball
-		}
-#endif
+
+		std::vector<PongEvent> inputs;
 
 		// this is the game loop, running while both players live!
 		while (state->p1->lives->get(now) > 0 and
@@ -96,7 +97,8 @@ void curvepong(bool disable_gui, bool no_human) {
 
 #if WITH_NCURSES
 			if (enable_gui) {
-				gui.clear();
+				gui->clear();
+				gui->get_display_size(state, now);
 			}
 #endif
 
@@ -104,23 +106,10 @@ void curvepong(bool disable_gui, bool no_human) {
 			// player 1 can be AI or human.
 
 			if (human_player) {
-#if WITH_NCURSES
-				auto inputs = gui.get_inputs(state->p1);
-#else
-				// TODO: take terminal input without ncurses, if on tty?
-				//       e.g. 'q' to close it?
-				std::vector<PongEvent> inputs;
-#endif
 				phys.process_input(state, state->p1,
 				                   inputs, loop, now);
 			}
 			else {
-#if WITH_NCURSES
-				// We still need to get the inputs to be able to kill the game
-				if (state->enable_gui) {
-					gui.get_inputs(state->p1);
-				}
-#endif
 
 				phys.process_input(state, state->p1,
 				                   ai.get_inputs(state->p1, state->ball, now),
@@ -135,12 +124,12 @@ void curvepong(bool disable_gui, bool no_human) {
 			state->p1->paddle_x = 0;
 			state->p2->paddle_x = state->display_boundary[0] - 1;
 
-			// run the event queue!
+			// evaluate the event queue to reach the desired game time!
 			loop->reach_time(now, state);
 
 #if WITH_NCURSES
 			if (state->enable_gui) {
-				gui.draw(state, now);
+				gui->draw(state, now);
 
 				int pos = 1;
 				mvprintw(pos++, state->display_boundary[0]/2 + 10, "Enqueued events:");
@@ -151,12 +140,18 @@ void curvepong(bool disable_gui, bool no_human) {
 					         e->get_eventclass()->id().c_str());
 				}
 
-				gui.update_screen();
+				gui->update_screen();
+
+				// get the input after the current frame, because the get_inputs
+				// implicitly updates the screen. if this is done too early,
+				// the screen will be updated to be empty -> flickering.
+				// TODO: take terminal input without ncurses, if on tty?
+				//       e.g. 'q' to close it?
+				inputs = gui->get_inputs(state->p1);
 			}
 #endif
 
 			// handle timing for screen refresh and simulation advancement
-
 			using dt_s_t = std::chrono::duration<double, std::ratio<1>>;
 			using dt_us_t = std::chrono::duration<double, std::micro>;
 

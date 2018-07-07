@@ -229,7 +229,6 @@ public:
 #if WITH_NCURSES
 		if (state->enable_gui) {
 			mvprintw(21, 40, "PANEL REFLECT AT %f NEXT %f", now.to_double(), (now + ty).to_double());
-			mvprintw(21, 18, "2");
 		}
 		else {
 #endif
@@ -292,7 +291,7 @@ public:
 		float dirx = (rng::random() % 2) ? 1 : -1;
 		float diry = (rng::random() % 2) ? 1 : -1;
 		auto init_speed = util::Vector2d(
-			dirx * (1.5 + (rng::random() % 100) / 3.f),
+			dirx * (10 + (rng::random() % 100) / 4.f),
 			diry * (0.3 + (rng::random() % 100) / 18.f)
 		);
 
