@@ -1,4 +1,4 @@
-// Copyright 2014-2016 the openage authors. See copying.md for legal info.
+// Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -23,6 +23,10 @@
 
 #include "../util/compiler.h"
 #include "../error/error.h"
+
+
+#define OPENAGE_PAIRINGHEAP_DEBUG false
+
 
 namespace openage::datastructure {
 
@@ -193,6 +197,7 @@ public:
 	using node_t = heapnode_t;
 	using element_t = std::shared_ptr<node_t>;
 	using this_type = PairingHeap<T, compare, node_t>;
+	using cmp_t = compare;
 
 	/**
 	 * create a empty heap.
@@ -303,6 +308,12 @@ public:
 
 		this->node_count -= 1;
 
+#if OPENAGE_PAIRINGHEAP_DEBUG
+		if (1 != this->nodes.erase(ret)) {
+			throw Error{ERR << "didn't remove node"};
+		}
+#endif
+
 		// (to find those two lines, 14h of debugging passed)
 		ret->loosen();
 		ret->first_child = nullptr;
@@ -318,7 +329,7 @@ public:
 	 * else, cut the node from its parent, pop() that subtree
 	 * and merge these trees.
 	 *
-	 * O(1), O(pop) if node is the root
+	 * O(pop_node)
 	 */
 	void unlink_node(const element_t &node) {
 		if (node == this->root_node) {
@@ -326,21 +337,17 @@ public:
 		}
 		else {
 			node->loosen();
-			element_t child = node->first_child;
 
-			// merge all children of the node to unlink
-			while (child != nullptr) {
-				element_t next = child->next_sibling;
-				child->loosen();
-				this->push_node(child);
+			element_t real_root = this->root_node;
+			this->root_node = node;
+			this->pop_node();
 
-				child = next;
+			element_t new_root = this->root_node;
+			this->root_node = real_root;
+
+			if (new_root != nullptr) {
+				this->root_insert(new_root);
 			}
-
-			// to create this line, 13h of debugging were required.
-			node->first_child = nullptr;
-
-			this->node_count -= 1;
 		}
 	}
 
@@ -404,6 +411,9 @@ public:
 	void clear() {
 		this->root_node = nullptr;
 		this->node_count = 0;
+#if OPENAGE_PAIRINGHEAP_DEBUG
+		this->nodes.clear();
+#endif
 	}
 
 	/**
@@ -420,25 +430,218 @@ public:
 		return this->node_count == 0;
 	}
 
+#if OPENAGE_PAIRINGHEAP_DEBUG
+	/**
+	 * verify the consistency of the heap.
+	 * - check if each node is only present once.
+	 * - check if the nodes are referenced at their correct place only
+	 */
+	std::unordered_set<element_t> check_consistency() const {
+		std::unordered_set<element_t> found_nodes;
+
+		auto func = [&](const element_t &root) {
+			if (not root) {
+				throw Error{ERR << "test function called with nullptr node"};
+			}
+
+			if (found_nodes.find(root) == std::end(found_nodes)) {
+				found_nodes.insert(root);
+			}
+			else {
+				throw Error{ERR << "encountered node twice"};
+			}
+
+			if (this->node_count != this->nodes.size()) {
+				throw Error{ERR << "node count fail"};
+			}
+
+			if (root->next_sibling) {
+				if (not root->next_sibling->prev_sibling) {
+					throw Error{ERR << "node has next sibling, which has no prev sibling"};
+				}
+				if (root->next_sibling->prev_sibling != root) {
+					throw Error{ERR << "node not referenced by next.prev"};
+				}
+			}
+
+			if (root->prev_sibling) {
+				if (not root->prev_sibling->next_sibling) {
+					throw Error{ERR << "node has prev sibling, which has no next sibling"};
+				}
+				if (root->prev_sibling->next_sibling != root) {
+					throw Error{ERR << "node not referenced by prev.next"};
+				}
+			}
+
+			if (root->first_child) {
+				if (root->first_child == root->next_sibling) {
+					throw Error{ERR << "first_child is next_sibling"};
+				}
+				if (root->first_child == root->prev_sibling) {
+					throw Error{ERR << "first_child is prev_sibling"};
+				}
+				if (root->first_child == root->parent) {
+					throw Error{ERR << "first_child is parent"};
+				}
+			}
+
+			if (root->parent) {
+				if (found_nodes.find(root->parent) == std::end(found_nodes)) {
+					throw Error{ERR << "parent node is not known"};
+				}
+				element_t child = root->parent->first_child;
+				element_t lastchild;
+
+				bool foundvianext = false, foundviaprev = false;
+				std::unordered_set<element_t> loopprotect;
+				while (true) {
+					if (not child) {
+						break;
+					}
+
+					if (loopprotect.find(child) == std::end(loopprotect)) {
+						loopprotect.insert(child);
+					}
+					else {
+						throw Error{ERR << "child reencountered when walking forward"};
+					}
+
+					if (child == root) {
+						foundvianext = true;
+					}
+
+					// if both are equal, cmp will still be false.
+					if (this->cmp(child->data, root->parent->data)) {
+						throw Error{ERR << "tree invariant violated"};
+					}
+
+					lastchild = child;
+					child = child->next_sibling;
+				}
+
+				loopprotect.clear();
+				while (true) {
+					if (not lastchild) {
+						break;
+					}
+
+					if (loopprotect.find(lastchild) == std::end(loopprotect)) {
+						loopprotect.insert(lastchild);
+					}
+					else {
+						throw Error{ERR << "child reencountered when walking back"};
+					}
+
+					if (lastchild == root) {
+						foundviaprev = true;
+					}
+
+					lastchild = lastchild->prev_sibling;
+				}
+
+				if (not foundvianext and not foundviaprev) {
+					throw Error{ERR << "node not found as parent's child at all"};
+				}
+				else if (not foundvianext) {
+					throw Error{ERR << "node not found via parent's next childs"};
+				}
+				else if (not foundviaprev) {
+					throw Error{ERR << "node not found via parent's prev childs"};
+				}
+			}
+		};
+
+		if (this->root_node) {
+			this->walk_tree(this->root_node, func);
+
+			if (found_nodes.size() != this->size()) {
+				for (auto &it : found_nodes) {
+					const element_t &elem = it;
+					if (this->nodes.find(elem) == std::end(this->nodes)) {
+						throw Error{ERR << "node not recorded but found"};
+					}
+				}
+
+				for (auto &it : this->nodes) {
+					const element_t &elem = it;
+					if (found_nodes.find(elem) == std::end(found_nodes)) {
+						throw Error{ERR << "node recorded but not found"};
+					}
+				}
+
+				throw Error{ERR << "node count inconsistent"};
+			}
+		}
+		else {
+			if (not this->empty()) {
+				throw Error{ERR << "root missing but heap not empty"};
+			}
+		}
+
+		return found_nodes;
+	}
+#endif
+
+	void iter_all(const std::function<void(const element_t &)> &func) const {
+		this->walk_tree(this->root_node, func);
+	}
+
 protected:
+	void walk_tree(const element_t &root,
+	               const std::function<void(const element_t &)> &func) const {
+
+		func(root);
+
+		if (root) {
+			auto node = root->first_child;
+			while (true) {
+				if (not node) {
+					break;
+				}
+
+				this->walk_tree(node, func);
+				node = node->next_sibling;
+			}
+		}
+	}
+
 	/**
 	 * adds the given node to the heap.
+	 * use this if the node was not in the heap before.
 	 * O(1)
 	 */
 	void push_node(const element_t &node) {
+		this->root_insert(node);
+
+#if OPENAGE_PAIRINGHEAP_DEBUG
+		auto ins = this->nodes.insert(node);
+		if (not ins.second) {
+			throw Error{ERR << "node already known"};
+		}
+#endif
+
+		this->node_count += 1;
+	}
+
+	/**
+	 * insert a node into the heap.
+	 */
+	void root_insert(const element_t &node) {
 		if (unlikely(this->root_node == nullptr)) {
 			this->root_node = node;
 		} else {
 			this->root_node = this->root_node->link_with(node);
 		}
-
-		this->node_count += 1;
 	}
 
 protected:
 	compare cmp;
 	size_t node_count;
 	element_t root_node;
+
+#if OPENAGE_PAIRINGHEAP_DEBUG
+	std::unordered_set<element_t> nodes;
+#endif
 };
 
 } // openage::datastructure
