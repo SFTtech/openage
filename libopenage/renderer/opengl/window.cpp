@@ -58,7 +58,7 @@ void GlWindow::set_size(size_t width, size_t height) {
 void GlWindow::update() {
 	SDL_Event event;
 
-	while (SDL_PollEvent(&event)) {
+	while (SDL_PollEvent(&event) != 0) {
 		if (event.type == SDL_WINDOWEVENT) {
 			if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
 				size_t width = event.window.data1;

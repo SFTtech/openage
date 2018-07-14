@@ -23,9 +23,9 @@ namespace renderer {
 namespace tests {
 
 // Macro for debugging OpenGL state.
-#define TEST_DBG(txt)                  \
+#define DBG_GL(txt)                    \
 	printf("before %s\n", txt);          \
-	window.get_context()->check_error(); \
+	opengl::GlContext::check_error();    \
 	printf("after %s\n", txt);
 
 void renderer_demo_0(util::Path path) {
@@ -247,7 +247,7 @@ void main() {
 		renderer->render(pass);
 		renderer->render(display_pass);
 		window.update();
-		window.get_context()->check_error();
+		opengl::GlContext::check_error();
 	}
 }
 

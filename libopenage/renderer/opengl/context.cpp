@@ -44,11 +44,10 @@ static gl_context_capabilities find_capabilities() {
 				                     << gl_versions[0].first << "." << gl_versions[0].second
 				                     << " is not available. It is the minimal required version.");
 			}
-			else {
-				SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, gl_versions[i_ver - 1].first);
-				SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, gl_versions[i_ver - 1].second);
-				break;
-			}
+
+			SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, gl_versions[i_ver - 1].first);
+			SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, gl_versions[i_ver - 1].second);
+			break;
 		}
 
 		SDL_GL_DeleteContext(test_context);

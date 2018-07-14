@@ -16,7 +16,6 @@ namespace opengl {
 
 GlRenderer::GlRenderer(GlContext *ctx)
 	: gl_context(ctx)
-	, display()
 {
 	log::log(MSG(info) << "Created OpenGL renderer");
 }

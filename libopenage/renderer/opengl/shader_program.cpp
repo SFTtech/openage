@@ -216,10 +216,10 @@ void GlShaderProgram::execute_with(const GlUniformInput *unif_in, const GlGeomet
 			glUniform4fv(loc, 1, reinterpret_cast<const float*>(ptr));
 			break;
 		case GL_FLOAT_MAT3:
-			glUniformMatrix3fv(loc, 1, false, reinterpret_cast<const float*>(ptr));
+			glUniformMatrix3fv(loc, 1, GLboolean(false), reinterpret_cast<const float*>(ptr));
 			break;
 		case GL_FLOAT_MAT4:
-			glUniformMatrix4fv(loc, 1, false, reinterpret_cast<const float*>(ptr));
+			glUniformMatrix4fv(loc, 1, GLboolean(false), reinterpret_cast<const float*>(ptr));
 			break;
 		case GL_INT_VEC2:
 			glUniform2iv(loc, 1, reinterpret_cast<const GLint*>(ptr));

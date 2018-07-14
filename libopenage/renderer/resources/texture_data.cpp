@@ -23,9 +23,11 @@ static constexpr size_t guess_row_alignment(size_t width, pixel_format fmt, size
 	// Use the highest possible alignment for even-width images.
 	if (width % 8 == 0) {
 		return 8;
-	} else if (width % 4 == 0) {
+	}
+	if (width % 4 == 0) {
 		return 4;
-	} else if (width % 2 == 0) {
+	}
+	if (width % 2 == 0) {
 		return 2;
 	}
 
@@ -36,11 +38,14 @@ static constexpr size_t guess_row_alignment(size_t width, pixel_format fmt, size
 
 	if (padding == 0) {
 		return 1;
-	} else if (padding <= 1) {
+	}
+	if (padding <= 1) {
 		return 2;
-	} else if (padding <= 3) {
+	}
+	if (padding <= 3) {
 		return 4;
-	} else if (padding <= 7) {
+	}
+	if (padding <= 7) {
 		return 8;
 	}
 
@@ -56,12 +61,12 @@ Texture2dData::Texture2dData(const util::Path &path, bool use_metafile) {
 	);
 
 	if (!surface) {
-		throw Error(MSG(err) <<
-			"Could not load texture from " <<
-			native_path << ": " << IMG_GetError());
-	} else {
-		log::log(MSG(dbg) << "Texture has been loaded from " << native_path);
+		throw Error(MSG(err)
+		            << "Could not load texture from " << native_path
+		            << ": " << IMG_GetError());
 	}
+
+	log::log(MSG(dbg) << "Texture has been loaded from " << native_path);
 
 	auto surf_fmt = *surface->format;
 
@@ -84,8 +89,8 @@ Texture2dData::Texture2dData(const util::Path &path, bool use_metafile) {
 		throw Error(MSG(err) << "Texture " << native_path << " uses an unsupported format.");
 	}
 
-	auto w = surface->w;
-	auto h = surface->h;
+	uint32_t w = uint32_t(surface->w);
+	uint32_t h = uint32_t(surface->h);
 
 	size_t data_size = surf_fmt.BytesPerPixel * surface->w * surface->h;
 
