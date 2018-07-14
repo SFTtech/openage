@@ -14,6 +14,12 @@ pxdgen(
 )
 
 add_subdirectory(font/)
-add_subdirectory(opengl/)
 add_subdirectory(resources/)
-#add_subdirectory(vulkan/)
+
+if(OPENGL_FOUND)
+    add_subdirectory(opengl/)
+endif()
+
+if(VULKAN_FOUND)
+    add_subdirectory(vulkan/)
+endif()

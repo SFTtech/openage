@@ -26,13 +26,13 @@ std::optional<SurfaceSupportDetails> VlkGraphicsDevice::find_device_surface_supp
 		auto const& q_fam = q_fams[i];
 
 		if (q_fam.queueCount > 0) {
-			if (q_fam.queueFlags & VK_QUEUE_GRAPHICS_BIT) {
+			if ((q_fam.queueFlags & VK_QUEUE_GRAPHICS_BIT) != 0u) {
 				maybe_graphics_fam = i;
 
 				// See if it also supports present
-				VkBool32 support = false;
+				VkBool32 support = VK_FALSE;
 				vkGetPhysicalDeviceSurfaceSupportKHR(dev, i, surf, &support);
-				if (support) {
+				if (support != VK_FALSE) {
 					// This family support both, we're done
 					maybe_present_fam = i;
 					break;
@@ -59,9 +59,9 @@ std::optional<SurfaceSupportDetails> VlkGraphicsDevice::find_device_surface_supp
 		for (size_t i = 0; i < q_fams.size(); i++) {
 			auto const& q_fam = q_fams[i];
 			if (q_fam.queueCount > 0) {
-				VkBool32 support = false;
+				VkBool32 support = VK_FALSE;
 				vkGetPhysicalDeviceSurfaceSupportKHR(dev, i, surf, &support);
-				if (support) {
+				if (support != VK_FALSE) {
 					maybe_present_fam = i;
 					break;
 				}

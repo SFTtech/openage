@@ -34,9 +34,9 @@ VkResult VlkLoader::vkCreateDebugReportCallbackEXT(
 
 	if (this->pCreateDebugReportCallbackEXT != nullptr) {
 		return this->pCreateDebugReportCallbackEXT(instance, pCreateInfo, pAllocator, pCallback);
-	} else {
-		return VK_ERROR_EXTENSION_NOT_PRESENT;
 	}
+
+	return VK_ERROR_EXTENSION_NOT_PRESENT;
 }
 
 void VlkLoader::vkDestroyDebugReportCallbackEXT(

@@ -37,6 +37,8 @@ class VlkWindow : public openage::renderer::Window {
 #endif
 	VlkLoader loader;
 
+	SDL_Window* window;
+
 public:
 	VlkWindow(const char* title);
 	~VlkWindow();

@@ -54,13 +54,13 @@ endif()
 find_library(FONTCONFIG_LIB fontconfig)
 
 find_package(Freetype REQUIRED)
-find_package(OpenGL REQUIRED)
 find_package(PNG REQUIRED)
 find_package(SDL2 REQUIRED)
 find_package(SDL2Image REQUIRED)
 find_package(Opusfile REQUIRED)
 find_package(Epoxy REQUIRED)
 find_package(HarfBuzz 1.0.0 REQUIRED)
+find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 
 set(QT_VERSION_REQ "5.5")
 find_package(Qt5Core ${QT_VERSION_REQ} REQUIRED)
@@ -190,6 +190,20 @@ else()
 	have_config_option(inotify INOTIFY false)
 endif()
 
+# ncurses support
+if(WANT_NCURSES)
+	set(CURSES_NEED_NCURSES TRUE)
+	find_package(Curses)
+endif()
+
+if(WANT_NCURSES AND CURSES_FOUND)
+	have_config_option(ncurses NCURSES true)
+	target_include_directories(libopenage PRIVATE ${Curses_INCLUDE_DIRS})
+	target_link_libraries(libopenage PRIVATE ${CURSES_LIBRARIES})
+else()
+	have_config_option(ncurses NCURSES false)
+endif()
+
 # opengl support
 if(WANT_OPENGL)
 	find_package(OpenGL)
@@ -203,6 +217,7 @@ endif()
 if(WANT_OPENGL AND OPENGL_FOUND)
 	have_config_option(opengl OPENGL true)
 	include_directories(${OPENGL_INCLUDE_DIR})
+	target_link_libraries(libopenage PRIVATE ${OPENGL_LIBRARY})
 else()
 	have_config_option(opengl OPENGL false)
 endif()
@@ -210,6 +225,7 @@ endif()
 if(WANT_VULKAN AND VULKAN_FOUND)
 	have_config_option(vulkan VULKAN true)
 	include_directories(${Vulkan_INCLUDE_DIRS})
+	target_link_libraries(libopenage PRIVATE ${Vulkan_LIBRARIES})
 else()
 	have_config_option(vulkan VULKAN false)
 endif()
@@ -218,6 +234,8 @@ if(NOT (OPENGL_FOUND OR VULKAN_FOUND))
 	message(FATAL_ERROR "One of OpenGL or Vulkan is required!")
 endif()
 
+##################################################
+# build configuration generation
 get_config_option_string()
 
 configure_file(config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
@@ -234,7 +252,6 @@ endif()
 # directories for header inclusion
 target_include_directories(libopenage
 	PRIVATE
-	${OPENGL_INCLUDE_DIR}
 	${FREETYPE_INCLUDE_DIRS}
 	${EPOXY_INCLUDE_DIRS}
 	${OPUS_INCLUDE_DIRS}
@@ -254,6 +271,7 @@ target_link_libraries(libopenage
 	PUBLIC
 		pthread
 		nyan::nyan
+		Eigen3::Eigen
 		${PNG_LIBRARIES}
 		${OPUS_LIBRARIES}
 		${OGG_LIB}
@@ -263,8 +281,6 @@ target_link_libraries(libopenage
 		${FREETYPE_LIBRARIES}
 		${EPOXY_LIBRARIES}
 		${MATH_LIB}
-		${OPENGL_LIBRARY}
-		${Vulkan_LIBRARIES}
 		${SDL2IMAGE_LIBRARIES}
 		${SDL2_LIBRARY}
 		${UTIL_LIB}

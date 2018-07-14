@@ -51,8 +51,6 @@ std::vector<R> vk_do_ritual(R2 (*func)(T, U, V, uint32_t*, R*), T2&& a, U2&& b, 
 	{ \
 		VkResult res = fun(__VA_ARGS__); \
 		if (res != VK_SUCCESS) { \
+			throw Error(MSG(err) << "Call to Vulkan function " << #fun << " failed with " << res << "."); \
 		} \
 	}
-
-//throw Error(MSG(err) << "Call to Vulkan function " << #fun << " failed with " << vk::to_string(vk::Result(res)) << "."); \
-//

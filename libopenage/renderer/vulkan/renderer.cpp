@@ -3,7 +3,6 @@
 #include "renderer.h"
 
 #include "../../error/error.h"
-#include "../../util/path.h"
 #include "../../util/fslike/directory.h"
 
 #include "../resources/shader_source.h"
@@ -18,12 +17,12 @@ namespace openage {
 namespace renderer {
 namespace vulkan {
 
-void VlkRenderer::do_the_thing(fslike::Path& dir) {
+void VlkRenderer::do_the_thing(util::Path& dir) {
 	// Please keep in mind that this function is only for testing and so might be messy.
 
 	// Enumerate available physical devices
 	auto devices = vk_do_ritual(vkEnumeratePhysicalDevices, this->instance);
-	if (devices.size() == 0) {
+	if (devices.empty()) {
 		throw Error(MSG(err) << "No Vulkan devices available.");
 	}
 

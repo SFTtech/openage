@@ -26,7 +26,7 @@ public:
 		, surface(surface) {}
 
 	/// Testing function that draws a triangle. Not part of the final renderer implementation.
-	void do_the_thing(fslike::Path& root);
+	void do_the_thing(util::Path& dir);
 };
 
 }}} // openage::renderer::vulkan

@@ -183,7 +183,7 @@ void GlShaderProgram::use() const {
 }
 
 void GlShaderProgram::execute_with(const GlUniformInput *unif_in, const GlGeometry *geom) {
-	ENSURE(unif_in->program == this);
+	ENSURE(unif_in->program == this, "Uniform input passed to different shader than it was created with.");
 
 	this->use();
 

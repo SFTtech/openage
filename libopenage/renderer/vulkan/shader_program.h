@@ -20,6 +20,7 @@ static VkShaderStageFlagBits vk_shader_stage(resources::shader_stage_t stage) {
 	case resources::shader_stage_t::tesselation_control: return VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT;
 	case resources::shader_stage_t::tesselation_evaluation: return VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT;
 	case resources::shader_stage_t::fragment: return VK_SHADER_STAGE_FRAGMENT_BIT;
+	default: throw Error(MSG(err) << "Unknown shader stage.");
 	}
 }
 

@@ -8,9 +8,10 @@
 
 #include "../../error/error.h"
 #include "../../log/log.h"
+#include "../sdl_global.h"
+
 #include "graphics_device.h"
 #include "util.h"
-
 
 
 namespace openage {
@@ -19,14 +20,14 @@ namespace vulkan {
 
 #ifndef NDEBUG
 static VKAPI_ATTR VkBool32 VKAPI_CALL vlk_debug_cb(
-	VkDebugReportFlagsEXT flags,
-	VkDebugReportObjectTypeEXT objType,
-	uint64_t obj,
-	size_t location,
-	int32_t code,
+	VkDebugReportFlagsEXT /*flags*/,
+	VkDebugReportObjectTypeEXT /*objType*/,
+	uint64_t /*obj*/,
+	size_t /*location*/,
+	int32_t /*code*/,
 	const char* layerPrefix,
 	const char* msg,
-	void* userData)
+	void* /*userData*/)
 {
 	log::log(MSG(dbg) << layerPrefix << " " << msg);
 
@@ -77,8 +78,24 @@ static vlk_capabilities find_capabilities() {
 }
 
 VlkWindow::VlkWindow(const char* title)
-	: capabilities(find_capabilities())
+	: Window(800, 600)
+	, capabilities(find_capabilities())
 {
+	make_sdl_available();
+
+	this->window = SDL_CreateWindow(
+		title,
+		SDL_WINDOWPOS_CENTERED,
+		SDL_WINDOWPOS_CENTERED,
+		this->size.first,
+		this->size.second,
+		SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED
+	);
+
+	if (this->window == nullptr) {
+		throw Error{MSG(err) << "Failed to create SDL window: " << SDL_GetError()};
+	}
+
 	// Find which extensions the SDL window requires.
 	auto extension_names = vk_do_ritual(SDL_Vulkan_GetInstanceExtensions, this->window);
 	/*

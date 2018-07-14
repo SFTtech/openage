@@ -156,7 +156,7 @@ class VlkFramebuffer final : public RenderTarget {
 	VkViewport viewport;
 
 public:
-	VlkFramebuffer(VkRenderPass pass, std::vector<VkImageView> const& attachments) {
+	VlkFramebuffer(VkRenderPass /*pass*/, std::vector<VkImageView> const& /*attachments*/) {
 
 	}
 };
