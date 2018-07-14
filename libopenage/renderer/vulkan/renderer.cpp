@@ -18,7 +18,9 @@ namespace openage {
 namespace renderer {
 namespace vulkan {
 
-void VlkRenderer::do_the_thing() {
+void VlkRenderer::do_the_thing(fslike::Path& dir) {
+	// Please keep in mind that this function is only for testing and so might be messy.
+
 	// Enumerate available physical devices
 	auto devices = vk_do_ritual(vkEnumeratePhysicalDevices, this->instance);
 	if (devices.size() == 0) {
@@ -53,8 +55,6 @@ void VlkRenderer::do_the_thing() {
 	VlkDrawableDisplay display(dev.get_device(), info.second);
 
 	// TODO reinit swapchain on window resize
-
-	auto dir = std::make_shared<util::fslike::Directory>("/home/wojtek/Programming/C++/openage/");
 
 	auto vert = resources::ShaderSource(
 		resources::shader_lang_t::spirv,

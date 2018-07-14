@@ -5,6 +5,7 @@
 #include <vulkan/vulkan.h>
 
 #include "../renderer.h"
+#include "../../util/path.h"
 
 #include "graphics_device.h"
 
@@ -24,7 +25,8 @@ public:
 		: instance(instance)
 		, surface(surface) {}
 
-	void do_the_thing();
+	/// Testing function that draws a triangle. Not part of the final renderer implementation.
+	void do_the_thing(fslike::Path& root);
 };
 
 }}} // openage::renderer::vulkan

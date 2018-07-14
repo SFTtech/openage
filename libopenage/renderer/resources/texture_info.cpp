@@ -2,28 +2,12 @@
 
 #include "texture_info.h"
 
-#include "../../datastructure/constexpr_map.h"
-
 
 namespace openage {
 namespace renderer {
 namespace resources {
 
-static constexpr auto pix_size = datastructure::create_const_map<pixel_format, size_t>(
-	std::make_pair(pixel_format::r16ui, 2),
-	std::make_pair(pixel_format::r32ui, 4),
-	std::make_pair(pixel_format::rgb8, 3),
-	std::make_pair(pixel_format::bgr8, 3),
-	std::make_pair(pixel_format::rgba8, 4),
-	std::make_pair(pixel_format::rgba8ui, 4),
-	std::make_pair(pixel_format::depth24, 3)
-);
-
-size_t pixel_size(pixel_format fmt) {
-	return pix_size.get(fmt);
-}
-
-Texture2dInfo::Texture2dInfo(size_t width, size_t height, pixel_format fmt, size_t row_alignment, std::vector<gamedata::subtexture> &&subs)
+Texture2dInfo::Texture2dInfo(size_t width, size_t height, pixel_format fmt, size_t row_alignment, std::vector<Texture2dSubInfo>&& subs)
 	: w(width)
 	, h(height)
 	, format(fmt)
@@ -74,7 +58,7 @@ size_t Texture2dInfo::get_subtexture_count() const {
 	return this->subtextures.size();
 }
 
-const gamedata::subtexture& Texture2dInfo::get_subtexture(size_t subid) const {
+const Texture2dSubInfo& Texture2dInfo::get_subtexture(size_t subid) const {
 	if (subid < this->subtextures.size()) {
 		return this->subtextures[subid];
 	}

@@ -26,22 +26,22 @@ public:
 			}
 		}
 
-		sdl = SDL();
+		SDL::sdl = SDL();
 
 		SDL_version version;
 		SDL_GetVersion(&version);
 
 		log::log(MSG(info) << "Initialized SDL " << uint32_t(version.major) << "." << uint32_t(version.minor) << "." << uint32_t(version.patch));
 
-		inited = true;
+		SDL::inited = true;
 	}
 
 	~SDL() {
-		if (inited) {
+		if (SDL::inited) {
 			IMG_Quit();
 			SDL_Quit();
 
-			log::log(MSG(info) << "Exited SDL");
+			log::log(MSG(info) << "Destroyed SDL global context");
 		}
 	}
 

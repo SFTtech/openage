@@ -5,7 +5,9 @@
 #include <cstdint>
 #include <vector>
 
-#include "../../gamedata/texture.gen.h"
+#include "../../datastructure/constexpr_map.h"
+
+#include "texture_subinfo.h"
 
 
 namespace openage {
@@ -31,7 +33,19 @@ enum class pixel_format {
 };
 
 /// Returns the size in bytes of a single pixel of the specified format.
-size_t pixel_size(pixel_format);
+constexpr size_t pixel_size(pixel_format fmt) {
+	constexpr auto pix_size = datastructure::create_const_map<pixel_format, size_t>(
+		std::make_pair(pixel_format::r16ui, 2),
+		std::make_pair(pixel_format::r32ui, 4),
+		std::make_pair(pixel_format::rgb8, 3),
+		std::make_pair(pixel_format::bgr8, 3),
+		std::make_pair(pixel_format::rgba8, 4),
+		std::make_pair(pixel_format::rgba8ui, 4),
+		std::make_pair(pixel_format::depth24, 3)
+  );
+
+	return pix_size.get(fmt);
+}
 
 /// Contains information about a 2D texture surface, without actual texture data.
 /// The class supports subtextures, so that one big texture ("texture atlas")
@@ -40,7 +54,7 @@ size_t pixel_size(pixel_format);
 class Texture2dInfo {
 public:
 	/// Constructs a Texture2dInfo with the given information.
-	Texture2dInfo(size_t width, size_t height, pixel_format, size_t row_alignment = 1, std::vector<gamedata::subtexture>&& = std::vector<gamedata::subtexture>());
+	Texture2dInfo(size_t width, size_t height, pixel_format, size_t row_alignment = 1, std::vector<Texture2dSubInfo>&& = std::vector<Texture2dSubInfo>());
 
 	Texture2dInfo() = default;
 	Texture2dInfo(Texture2dInfo const&) = default;
@@ -75,7 +89,7 @@ public:
 	size_t get_subtexture_count() const;
 
 	/// Returns the coordinates of the subtexture with the given ID.
-	const gamedata::subtexture& get_subtexture(size_t subid) const;
+	const Texture2dSubInfo& get_subtexture(size_t subid) const;
 
 	/// Returns the size of the subtexture with the given ID.
 	std::pair<int32_t, int32_t> get_subtexture_size(size_t subid) const;
@@ -101,7 +115,7 @@ private:
 
 	/// Some textures are merged together into texture atlases, large images which contain
 	/// more than one individual texture. These are their positions in the atlas.
-	std::vector<gamedata::subtexture> subtextures;
+	std::vector<Texture2dSubInfo> subtextures;
 };
 
 }}}

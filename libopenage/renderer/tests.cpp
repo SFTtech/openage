@@ -219,7 +219,6 @@ void main() {
 			}
 			id--; //real id is id-1
 			log::log(INFO << "Object number " << id << " clicked.");
-			renderer->display_into_data().store(path / "/assets/screen.png");
 		} );
 
 	window.add_resize_callback([&] (size_t w, size_t h) {
@@ -229,9 +228,9 @@ void main() {
 
 			Eigen::Matrix4f pmat;
 			pmat << xScale, 0, 0, 0,
-							0, 1, 0, 0,
-							0, 0, 1, 0,
-							0, 0, 0, 1;
+			             0, 1, 0, 0,
+			             0, 0, 1, 0,
+			             0, 0, 0, 1;
 
 			// resize fbo
 			color_texture = renderer->add_texture(resources::Texture2dInfo(w, h, resources::pixel_format::rgba8));

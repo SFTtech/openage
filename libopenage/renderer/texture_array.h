@@ -13,22 +13,22 @@ namespace renderer {
 /// (size, pixel format, etc).
 class Texture2dArray {
 public:
-  virtual ~Texture2dArray();
+	virtual ~Texture2dArray();
 
-  /// Returns information about the layer format.
-  resources::Texture2dInfo const& get_info() const;
+	/// Returns information about the layer format.
+	resources::Texture2dInfo const& get_info() const;
 
-  /// Uploads the given texture data into the specified layer. `layer` must
-  /// be strictly less than the size of the array and the data format must
-  /// match the format this array was originally created with.
-  virtual void upload(size_t layer, resources::Texture2dData const&) = 0;
+	/// Uploads the given texture data into the specified layer. `layer` must
+	/// be strictly less than the size of the array and the data format must
+	/// match the format this array was originally created with.
+	virtual void upload(size_t layer, resources::Texture2dData const&) = 0;
 
 protected:
-  /// Constructs the base class.
-  Texture2dArray(resources::Texture2dInfo);
+	/// Constructs the base class.
+	Texture2dArray(resources::Texture2dInfo);
 
-  /// Information about the size, format, etc. of every layer in this array.
-  resources::Texture2dInfo layer_info;
+	/// Information about the size, format, etc. of every layer in this array.
+	resources::Texture2dInfo layer_info;
 };
 
 }} // openage::renderer

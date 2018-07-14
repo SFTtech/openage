@@ -19,7 +19,7 @@ namespace resources {
 /// @param width in pixels of the image
 /// @param fmt of pixels in the image
 /// @param row_size the actual size in bytes of an image row, including padding
-static size_t guess_row_alignment(size_t width, pixel_format fmt, size_t row_size) {
+static constexpr size_t guess_row_alignment(size_t width, pixel_format fmt, size_t row_size) {
 	// Use the highest possible alignment for even-width images.
 	if (width % 8 == 0) {
 		return 8;
@@ -50,7 +50,10 @@ static size_t guess_row_alignment(size_t width, pixel_format fmt, size_t row_siz
 
 Texture2dData::Texture2dData(const util::Path &path, bool use_metafile) {
 	std::string native_path = path.resolve_native_path();
-	SDL_Surface *surface = IMG_Load(native_path.c_str());
+	std::unique_ptr<SDL_Surface, decltype(&SDL_FreeSurface)> surface(
+		IMG_Load(native_path.c_str()),
+		&SDL_FreeSurface
+	);
 
 	if (!surface) {
 		throw Error(MSG(err) <<
@@ -89,20 +92,19 @@ Texture2dData::Texture2dData(const util::Path &path, bool use_metafile) {
 	// copy pixel data from surface
 	this->data = std::vector<uint8_t>(data_size);
 	memcpy(this->data.data(), surface->pixels, data_size);
-	SDL_FreeSurface(surface);
 
-	std::vector<gamedata::subtexture> subtextures;
+	std::vector<Texture2dSubInfo> subtextures;
 	if (use_metafile) {
 		util::Path meta = (path.get_parent() / path.get_stem()).with_suffix(".slp.docx");
 		log::log(MSG(info) << "Loading meta file: " << meta);
 
 		// get subtexture information by meta file exported by script
-		subtextures = util::read_csv_file<gamedata::subtexture>(meta);
+		subtextures = util::read_csv_file<Texture2dSubInfo>(meta);
 	}
 	else {
 		// we don't have a texture description file.
 		// use the whole image as one texture then.
-		gamedata::subtexture s{0, 0, w, h, w/2, h/2};
+		Texture2dSubInfo s{0, 0, w, h, w/2, h/2};
 
 		subtextures.push_back(s);
 	}
@@ -144,7 +146,7 @@ void Texture2dData::store(const util::Path& file) const {
 	log::log(MSG(info) << "Saving texture data to " << file);
 
 	if (this->info.get_format() != pixel_format::rgba8) {
-		throw "unimplemented";
+		throw Error(MSG(err) << "Storing 2D textures into files is unimplemented. PRs welcome :D");
 	}
 
 	auto size = this->info.get_size();
@@ -164,31 +166,36 @@ void Texture2dData::store(const util::Path& file) const {
 	amask = 0xff000000;
 #endif
 
-	SDL_Surface *surf = SDL_CreateRGBSurfaceFrom(
-		// const_cast is okay, because the surface doesn't modify data
-		const_cast<void*>(static_cast<void const*>(this->data.data())),
-		size.first,
-		size.second,
-		32,
-		this->info.get_row_size(),
-		rmask, gmask, bmask, amask
+	std::unique_ptr<SDL_Surface, decltype(&SDL_FreeSurface)> surf(
+		SDL_CreateRGBSurfaceFrom(
+			// const_cast is okay, because the surface doesn't modify data
+			const_cast<void*>(static_cast<void const*>(this->data.data())),
+			size.first,
+			size.second,
+			32,
+			this->info.get_row_size(),
+			rmask, gmask, bmask, amask
+		),
+		&SDL_FreeSurface
 	);
 #else
-	SDL_Surface *surf = SDL_CreateRGBSurfaceWithFormatFrom(
-		// const_cast is okay, because the surface doesn't modify data
-		const_cast<void*>(static_cast<void const*>(this->data.data())),
-		size.first,
-		size.second,
-		32,
-		this->info.get_row_size(),
-		SDL_PIXELFORMAT_RGBA32
+	std::unique_ptr<SDL_Surface, decltype(&SDL_FreeSurface)> surf(
+		SDL_CreateRGBSurfaceWithFormatFrom(
+			// const_cast is okay, because the surface doesn't modify data
+			const_cast<void*>(static_cast<void const*>(this->data.data())),
+			size.first,
+			size.second,
+			32,
+			this->info.get_row_size(),
+			SDL_PIXELFORMAT_RGBA32
+		),
+		&SDL_FreeSurface
 	);
 #endif
 
 	// Call sdl_image for saving the screenshot to PNG
 	std::string path = file.resolve_native_path_w();
-	IMG_SavePNG(surf, path.c_str());
-	SDL_FreeSurface(surf);
+	IMG_SavePNG(surf.get(), path.c_str());
 }
 
 }}}

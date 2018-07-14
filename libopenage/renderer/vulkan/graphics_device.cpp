@@ -15,79 +15,79 @@ namespace renderer {
 namespace vulkan {
 
 std::optional<SurfaceSupportDetails> VlkGraphicsDevice::find_device_surface_support(VkPhysicalDevice dev, VkSurfaceKHR surf) {
-		// Search for queue families in the device
-		auto q_fams = vk_do_ritual(vkGetPhysicalDeviceQueueFamilyProperties, dev);
+	// Search for queue families in the device
+	auto q_fams = vk_do_ritual(vkGetPhysicalDeviceQueueFamilyProperties, dev);
 
-		std::optional<uint32_t> maybe_graphics_fam = {};
-		std::optional<uint32_t> maybe_present_fam = {};
+	std::optional<uint32_t> maybe_graphics_fam = {};
+	std::optional<uint32_t> maybe_present_fam = {};
 
-		// Figure out if any of the families supports graphics
+	// Figure out if any of the families supports graphics
+	for (size_t i = 0; i < q_fams.size(); i++) {
+		auto const& q_fam = q_fams[i];
+
+		if (q_fam.queueCount > 0) {
+			if (q_fam.queueFlags & VK_QUEUE_GRAPHICS_BIT) {
+				maybe_graphics_fam = i;
+
+				// See if it also supports present
+				VkBool32 support = false;
+				vkGetPhysicalDeviceSurfaceSupportKHR(dev, i, surf, &support);
+				if (support) {
+					// This family support both, we're done
+					maybe_present_fam = i;
+					break;
+				}
+			}
+		}
+	}
+
+	if (!maybe_graphics_fam) {
+		// This device has no graphics queue family that works with the surface
+		return {};
+	}
+
+	SurfaceSupportDetails details = {};
+	details.phys_device = dev;
+	details.surface = surf;
+
+	// If we have found a family that support both graphics and present
+	if (maybe_present_fam) {
+		details.graphics_fam = *maybe_graphics_fam;
+		details.maybe_present_fam = {};
+	} else {
+		// Otherwise look for a present-only queue
 		for (size_t i = 0; i < q_fams.size(); i++) {
 			auto const& q_fam = q_fams[i];
-
 			if (q_fam.queueCount > 0) {
-				if (q_fam.queueFlags & VK_QUEUE_GRAPHICS_BIT) {
-					maybe_graphics_fam = i;
-
-					// See if it also supports present
-					VkBool32 support = false;
-					vkGetPhysicalDeviceSurfaceSupportKHR(dev, i, surf, &support);
-					if (support) {
-						// This family support both, we're done
-						maybe_present_fam = i;
-						break;
-					}
+				VkBool32 support = false;
+				vkGetPhysicalDeviceSurfaceSupportKHR(dev, i, surf, &support);
+				if (support) {
+					maybe_present_fam = i;
+					break;
 				}
 			}
 		}
 
-		if (!maybe_graphics_fam) {
-			// This device has no graphics queue family that works with the surface
+		if (!maybe_present_fam) {
+			// This device has no present queue family that works with the surface
 			return {};
 		}
 
-		SurfaceSupportDetails details = {};
-		details.phys_device = dev;
-		details.surface = surf;
+		details.graphics_fam = *maybe_graphics_fam;
+		details.maybe_present_fam = maybe_present_fam;
+	}
 
-		// If we have found a family that support both graphics and present
-		if (maybe_present_fam) {
-			details.graphics_fam = *maybe_graphics_fam;
-			details.maybe_present_fam = {};
-		} else {
-			// Otherwise look for a present-only queue
-			for (size_t i = 0; i < q_fams.size(); i++) {
-				auto const& q_fam = q_fams[i];
-				if (q_fam.queueCount > 0) {
-					VkBool32 support = false;
-					vkGetPhysicalDeviceSurfaceSupportKHR(dev, i, surf, &support);
-					if (support) {
-						maybe_present_fam = i;
-						break;
-					}
-				}
-			}
+	// Obtain other information
+	details.surface_formats = vk_do_ritual(vkGetPhysicalDeviceSurfaceFormatsKHR, dev, surf);
+	details.present_modes = vk_do_ritual(vkGetPhysicalDeviceSurfacePresentModesKHR, dev, surf);
+	vkGetPhysicalDeviceSurfaceCapabilitiesKHR(dev, surf, &details.surface_caps);
 
-			if (!maybe_present_fam) {
-				// This device has no present queue family that works with the surface
-				return {};
-			}
+	// Finally, check that we have at least one format and present mode
+	if (details.surface_formats.empty() || details.present_modes.empty()) {
+		return {};
+	}
 
-			details.graphics_fam = *maybe_graphics_fam;
-			details.maybe_present_fam = maybe_present_fam;
-		}
-
-		// Obtain other information
-		details.surface_formats = vk_do_ritual(vkGetPhysicalDeviceSurfaceFormatsKHR, dev, surf);
-		details.present_modes = vk_do_ritual(vkGetPhysicalDeviceSurfacePresentModesKHR, dev, surf);
-		vkGetPhysicalDeviceSurfaceCapabilitiesKHR(dev, surf, &details.surface_caps);
-
-		// Finally, check that we have at least one format and present mode
-		if (details.surface_formats.empty() || details.present_modes.empty()) {
-			return {};
-		}
-
-		return details;
+	return details;
 }
 
 VlkGraphicsDevice::VlkGraphicsDevice(VkPhysicalDevice dev, std::vector<uint32_t> const& q_fams)
@@ -111,9 +111,9 @@ VlkGraphicsDevice::VlkGraphicsDevice(VkPhysicalDevice dev, std::vector<uint32_t>
 	auto exts = vk_do_ritual(vkEnumerateDeviceExtensionProperties, dev, nullptr);
 	for (auto ext : ext_names) {
 		if (std::count_if(exts.begin(), exts.end(), [=] (VkExtensionProperties const& p) {
-					return std::strcmp(p.extensionName, ext) == 0;
-				} ) == 0)
-		{
+			                                            return std::strcmp(p.extensionName, ext) == 0;
+		                                            } ) == 0
+		) {
 			throw Error(MSG(err) << "Tried to instantiate device, but it's missing this extension: " << ext);
 		}
 	}
