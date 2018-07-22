@@ -462,30 +462,29 @@ def conversion_required(asset_dir, args):
         dbg("Converted assets are up to date")
         return False
 
-    else:
-        if asset_version >= 0 and asset_version != changelog.ASSET_VERSION:
-            info("Found converted assets with version %d, "
-                 "but need version %d", asset_version, changelog.ASSET_VERSION)
+    if asset_version >= 0 and asset_version != changelog.ASSET_VERSION:
+        info("Found converted assets with version %d, "
+             "but need version %d", asset_version, changelog.ASSET_VERSION)
 
-        info("Converting %s", ", ".join(sorted(changes)))
+    info("Converting %s", ", ".join(sorted(changes)))
 
-        # try to resolve resolve the output path
-        target_path = asset_dir.resolve_native_path_w()
-        if not target_path:
-            raise OSError("could not resolve a writable asset path "
-                          "in {}".format(asset_dir))
+    # try to resolve resolve the output path
+    target_path = asset_dir.resolve_native_path_w()
+    if not target_path:
+        raise OSError("could not resolve a writable asset path "
+                      "in {}".format(asset_dir))
 
-        info("Will save to '%s'", target_path.decode(errors="replace"))
+    info("Will save to '%s'", target_path.decode(errors="replace"))
 
-        for component in changelog.COMPONENTS:
-            if component not in changes:
-                # don't reconvert this component:
-                setattr(args, "no_{}".format(component), True)
+    for component in changelog.COMPONENTS:
+        if component not in changes:
+            # don't reconvert this component:
+            setattr(args, "no_{}".format(component), True)
 
-        if "metadata" in changes:
-            args.no_pickle_cache = True
+    if "metadata" in changes:
+        args.no_pickle_cache = True
 
-        return True
+    return True
 
 
 def interactive_browser(srcdir=None):
@@ -497,7 +496,7 @@ def interactive_browser(srcdir=None):
     info("launching interactive data browser...")
 
     # the variables are actually used, in the interactive prompt.
-    # pylint: disable=unused-variable
+    # pylint: disable=possibly-unused-variable
     data, game_versions = mount_input(srcdir)
 
     if not data:

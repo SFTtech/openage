@@ -150,13 +150,14 @@ def env_verbosity():
 
     if val.lower() in {'y', 'yes', 'true'}:
         return logging.WARNING
-    elif val.lower() in {'max'}:
+
+    if val.lower() in {'max'}:
         return logging.CRITICAL
-    else:
-        try:
-            return int(val)
-        except ValueError:
-            return logging.INFO
+
+    try:
+        return int(val)
+    except ValueError:
+        return logging.INFO
 
 
 ENV_VERBOSITY = env_verbosity()

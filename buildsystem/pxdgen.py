@@ -179,7 +179,7 @@ class PXDGenerator:
             # advance to next state on 'namespace'
             return 1
 
-        elif (token, val) == (Token.Punctuation, '{'):
+        if (token, val) == (Token.Punctuation, '{'):
             self.stack.append('{')
 
         elif (token, val) == (Token.Punctuation, '}'):

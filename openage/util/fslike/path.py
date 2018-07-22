@@ -50,7 +50,7 @@ class Path:
             if isinstance(part, str):
                 part = part.encode()
 
-            if part == b'.' or part == b'':
+            if part in (b'.', b''):
                 pass
             elif part == b'..':
                 try:
@@ -114,13 +114,13 @@ class Path:
         elif dmode == "w":
             handle = self.fsobj.open_w(self.parts)
 
-        elif dmode == "r+" or dmode == "rw":
+        elif dmode in ("r+", "rw"):
             handle = self.fsobj.open_rw(self.parts)
 
         elif dmode == "a":
             handle = self.fsobj.open_a(self.parts)
 
-        elif dmode == "a+" or dmode == "ar":
+        elif dmode in ("a+", "ar"):
             handle = self.fsobj.open_ar(self.parts)
 
         else:
@@ -169,10 +169,11 @@ class Path:
         """
         if mode == "r":
             return self.resolve_native_path_r()
-        elif mode == "w":
+
+        if mode == "w":
             return self.resolve_native_path_w()
-        else:
-            raise UnsupportedOperation("unsupported resolve mode: " + mode)
+
+        raise UnsupportedOperation("unsupported resolve mode: " + mode)
 
     def resolve_native_path_r(self):
         """
@@ -319,3 +320,9 @@ class Path:
             suffix = suffix.decode()
 
         return self.parent.joinpath(self.stem + suffix)
+
+    def mount(self, pathobj, priority=0):
+        """This is only valid for UnionPath, don't call here"""
+        # pylint: disable=no-self-use,unused-argument
+        # TODO: https://github.com/PyCQA/pylint/issues/2329
+        raise Exception("Do not call mount on Path instances!")
