@@ -35,9 +35,6 @@ public:
 private:
 	/// The size in bytes of this buffer.
 	size_t size;
-
-	/// The GL usage hint for this buffer.
-	GLenum usage;
 };
 
 }}} // openage::renderer::opengl
