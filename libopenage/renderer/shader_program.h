@@ -20,6 +20,8 @@ class Texture2d;
 
 class ShaderProgram {
 public:
+	virtual ~ShaderProgram() = default;
+
 	// Template dispatches for uniform variable setting.
 	void update_uniform_input(UniformInput*) {}
 
