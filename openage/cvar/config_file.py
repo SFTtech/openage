@@ -4,7 +4,7 @@
 Load and save the configuration : file <-> console var system
 """
 
-from ..log import info
+from ..log import info, spam
 
 
 def load_config_file(path, set_cvar_func, loaded_files=None):
@@ -34,7 +34,7 @@ def load_config_file(path, set_cvar_func, loaded_files=None):
 
     with path.open() as config:
         for line in config:
-            print("Reading config line: %s" % line)
+            spam("Reading config line: %s" % line)
             lstrip = line.lstrip()
             if not lstrip or lstrip.startswith("#"):
                 continue

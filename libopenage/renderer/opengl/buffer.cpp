@@ -11,8 +11,7 @@ namespace opengl {
 
 GlBuffer::GlBuffer(size_t size, GLenum usage)
 	: GlSimpleObject([] (GLuint handle) { glDeleteBuffers(1, &handle); } )
-	, size(size)
-	, usage(usage) {
+	, size(size) {
 	GLuint handle;
 	glGenBuffers(1, &handle);
 	this->handle = handle;
@@ -23,8 +22,7 @@ GlBuffer::GlBuffer(size_t size, GLenum usage)
 
 GlBuffer::GlBuffer(const uint8_t *data, size_t size, GLenum usage)
 	: GlSimpleObject([] (GLuint handle) { glDeleteBuffers(1, &handle); } )
-	, size(size)
-	, usage(usage) {
+	, size(size) {
 	GLuint handle;
 	glGenBuffers(1, &handle);
 	this->handle = handle;
