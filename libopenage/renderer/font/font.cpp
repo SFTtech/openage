@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #include "font.h"
 
@@ -117,9 +117,11 @@ void Font::initialize(FT_Library ft_library) {
 		throw Error(MSG(err) << "Failed to set font face size to " << this->description.size);
 	}
 
-	// TODO Replace this trickery with hb_ft_font_create_referenced for harfbuzz version > 1.0
 	hb_ft_font_create_referenced(ft_face);
-	this->hb_font = hb_ft_font_create(ft_face, (hb_destroy_func_t) FT_Done_Face);
+	// lambda with static_cast to help gcc understand this is ok
+	this->hb_font = hb_ft_font_create(ft_face, [] (void *user_data) -> void {
+		FT_Done_Face(static_cast<FT_FaceRec_ *>(user_data));
+	});
 }
 
 Font::~Font() {
