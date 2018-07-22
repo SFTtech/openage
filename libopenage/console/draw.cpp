@@ -36,7 +36,7 @@ void to_opengl(Engine *engine, Console *console) {
 	bool slowblinking_visible = (monotime % 300000000 < 150000000);
 
 	for (coord::term_t x = 0; x < console->buf.dims.x; x++) {
-		coord::camhud chartopleft{chartopleft.x = topleft.x + console->charsize.x * x, 0};
+		coord::camhud chartopleft{topleft.x + console->charsize.x * x, 0};
 
 		for (coord::term_t y = 0; y < console->buf.dims.y; y++) {
 			chartopleft.y = topleft.y - console->charsize.y * y;
