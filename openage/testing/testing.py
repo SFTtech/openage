@@ -1,4 +1,4 @@
-# Copyright 2014-2015 the openage authors. See copying.md for legal info.
+# Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 """ Testing utilities, such as TestError, assert_value, assert_raises. """
 
@@ -32,8 +32,8 @@ def assert_value(value, expected=None, validator=None):
 
     if success:
         return
-    else:
-        raise TestError("unexpected result: " + repr(value))
+
+    raise TestError("unexpected result: " + repr(value))
 
 
 def result(value):
@@ -58,6 +58,7 @@ def assert_raises(expectedexception):
     with assert_raises(ValueError):
         result(fibonacci(-3))
     """
+    # pylint: disable=try-except-raise
     try:
         yield
     except expectedexception:

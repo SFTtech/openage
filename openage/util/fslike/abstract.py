@@ -98,7 +98,7 @@ class FSLikeObject(ABC):
         """
         return Path(self, parts) if self.writable(parts) else None
 
-    def get_native_path(self, parts):  # pylint: disable=no-self-use,unused-argument
+    def get_native_path(self, parts):  # pylint: disable=no-self-use,unused-argument,useless-return
         """
         Return the path bytestring that represents a location usable
         by your kernel.
