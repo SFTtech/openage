@@ -23,6 +23,7 @@ Dependencies are needed for:
 * R = running
 * A = asset conversion
 * S = sanity checks (make checkall)
+* O = optional, we can continue without it
 
 Dependency list:
 
@@ -40,6 +41,7 @@ Dependency list:
     CR    fontconfig
     CR    harfbuzz >= 1.0.0
     CR    nyan  (https://github.com/SFTtech/nyan)
+    CR  O ncurses
     C     jinja2
     CR    sdl2
     CR    sdl2_image

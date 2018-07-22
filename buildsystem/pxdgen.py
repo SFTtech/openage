@@ -180,10 +180,12 @@ class PXDGenerator:
             return 1
 
         if (token, val) == (Token.Punctuation, '{'):
+            # we're in a struct/class/...
             self.stack.append('{')
 
         elif (token, val) == (Token.Punctuation, '}'):
             try:
+                # leave the struct/class/...
                 self.stack.pop()
             except IndexError as ex:
                 raise self.parser_error("unmatched '}'") from ex
@@ -210,31 +212,63 @@ class PXDGenerator:
         together with info about the namespace in which they were encountered.
         """
 
+        def handle_state_0(self, token, val, namespace_parts):
+            del namespace_parts
+            return self.handle_token(token, val)
+
+        def handle_state_1(self, token, val, namespace_parts):
+            # we're inside a namespace definition; expect Token.Name
+            if token != Token.Name:
+                raise self.parser_error(
+                    "expected identifier after 'namespace'")
+            namespace_parts.append(val)
+            return 2
+
+        def handle_state_2(self, token, val, namespace_parts):
+            # either :: or {
+            # the former is for nested namespaces,
+            # the latter ends the namespace
+            if (token, val) == (Token.Operator, ':'):
+                return 3
+
+            if (token, val) != (Token.Punctuation, '{'):
+                raise self.parser_error("expected '{' or '::' after "
+                                        "'namespace %s'" % self.stack[-1])
+            # { found, so fill the stack
+            self.stack.append('::'.join(namespace_parts))
+            namespace_parts.clear()
+            return 0
+
+        def handle_state_3(self, token, val, namespace_parts):
+            del namespace_parts
+            if (token, val) == (Token.Operator, ':'):
+                # now, a name must follow
+                return 1
+
+            raise self.parser_error("nested namespaces are separated "
+                                    "with '::'")
+
+        transitions = {0: handle_state_0,
+                       1: handle_state_1,
+                       2: handle_state_2,
+                       3: handle_state_3}
+
         self.annotations = []
         state = 0
+
+        # to build up nested namespaces
+        namespace_parts = []
 
         for token, val in self.tokenize():
             # ignore whitespaces
             if token == Token.Text and not val.strip():
                 continue
 
-            if state == 0:
-                state = self.handle_token(token, val)
+            try:
+                state = transitions[state](self, token, val, namespace_parts)
 
-            elif state == 1:
-                # we're inside a namespace definition; expect Token.Name
-                if token != Token.Name:
-                    raise self.parser_error(
-                        "expected identifier after 'namespace'")
-                state = 2
-                self.stack.append(val)
-
-            elif state == 2:
-                # expect {
-                if (token, val) != (Token.Punctuation, '{'):
-                    raise self.parser_error("expected '{' after 'namespace " +
-                                            self.stack[-1] + "'")
-                state = 0
+            except KeyError as exp:
+                raise Exception("reached invalid state in pxdgen") from exp
 
         if self.stack:
             raise self.parser_error("expected '}', but found EOF")

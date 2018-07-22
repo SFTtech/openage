@@ -147,7 +147,7 @@ foreach(INTERPRETER ${PYTHON_INTERPRETERS})
 
 	if(NOT TEST_OUTPUT STREQUAL "${PY_OUTPUT_TEST}\n" OR NOT TEST_RETVAL EQUAL 42)
 		# not a python interpreter
-		message("-- Dropping invalid python interpreter '${INTERPRETER}'")
+		message(STATUS "Dropping invalid python interpreter '${INTERPRETER}'")
 		list(REMOVE_ITEM PYTHON_INTERPRETERS "${INTERPRETER}")
 	endif()
 endforeach()
@@ -171,7 +171,6 @@ foreach(PYTHON ${PYTHON_INTERPRETERS})
 		find_library(PYTHON_LIBRARIES "${PYTHON_LIBRARY_NAME}" "libpython${PYTHON_VERSION}.dylib"
 			PATHS "${PYTHON_LIBRARY_DIR}" "${PYTHON_LIBPL}"
 		)
-
 	endif()
 
 	# there's a static_assert that tests the Python version.
@@ -181,29 +180,34 @@ foreach(PYTHON ${PYTHON_INTERPRETERS})
 		"${CMAKE_BINARY_DIR}"
 		SOURCES "${CMAKE_CURRENT_LIST_DIR}/FindPython_test.cpp"
 		LINK_LIBRARIES ${PYTHON_LIBRARIES}
-		CMAKE_FLAGS "-DINCLUDE_DIRECTORIES=${PYTHON_INCLUDE_DIRS}" "-DCMAKE_CXX_STANDARD=14"
+		CMAKE_FLAGS "-DINCLUDE_DIRECTORIES=${PYTHON_INCLUDE_DIRS}" "-DCMAKE_CXX_STANDARD=17"
 		COMPILE_DEFINITIONS "-DTARGET_VERSION=${PYTHON_MIN_VERSION_HEX}"
 		OUTPUT_VARIABLE PYTHON_TEST_OUTPUT
 	)
 
 	if(PYTHON_TEST_RESULT)
-		message("-- Using python interpreter: ${PYTHON}")
+		message(STATUS "Using python interpreter: ${PYTHON}")
 
 		set(PYTHON_INTERP "${PYTHON}")
 		break()
 	else()
-		set(PYTHON_TEST_ERRORS "${PYTHON_TEST_ERRORS}python candidate ${PYTHON}:\n${PYTHON_TEST_OUTPUT}\n\n")
+		set(PYTHON_TEST_ERRORS "${PYTHON_TEST_ERRORS}trying python candidate ${PYTHON}:\n${PYTHON_TEST_OUTPUT}\n\n")
 	endif()
 endforeach()
 
 if(NOT PYTHON_INTERP)
+	message(WARNING "!! No suitable Python interpreter was found. !!")
+
 	if(PYTHON_TEST_ERRORS)
-		message("Python interpreter candidates:")
+		message(WARNING "Errors occurred when looking for python interpreter candidates:")
+		message(WARNING "---------------------------------------------------------------")
 		message("${PYTHON_TEST_ERRORS}")
+		message(WARNING "---------------------------------------------------------------")
 	endif()
-	message("No suitable Python interpreter found.")
-	message("We need an interpreter that is shipped with libpython and header files.")
-	message("Specify your own with -DPYTHON=/path/to/executable\n\n\n")
+
+	message(WARNING "We need a Python interpreter that is shipped with libpython and header files.")
+	message(WARNING "Specify your own with -DPYTHON=/path/to/executable\n\n\n")
+
 	set(PYTHON_INTERP "")
 	set(PYTHON_INCLUDE_DIRS "")
 	set(PYTHON_LIBRARIES "")
