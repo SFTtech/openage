@@ -68,3 +68,7 @@ perf.data*
 
 # macOS
 .DS_Store
+
+# copyrighted assets
+/assets/converted/
+/assets/terrain/
