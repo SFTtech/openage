@@ -45,6 +45,7 @@ set(CYTHON_MIN_VERSION 0.25)
 foreach(pol
         CMP0067  # honor language standard in try_compile()
         CMP0071  # enable automoc for generated files
+        CMP0072  # prefers GLVND by default FindOpenGL
        )
 	if (POLICY ${pol})
 		cmake_policy(SET ${pol} NEW)
