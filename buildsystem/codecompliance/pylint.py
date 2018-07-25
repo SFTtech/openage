@@ -21,17 +21,8 @@ def find_issues(check_files, dirnames):
 
     invocation = ['--rcfile=etc/pylintrc', '--reports=n']
 
-    # pylint crashes with multiprocessing when cython modules are present
-    if any(findfiles(dirnames, [".so"])):
-        print("Cython modules found, using single process linting.")
-    else:
-        from multiprocessing import cpu_count
-        invocation.append("--jobs={:d}".format(cpu_count()))
-
-    ignored_modules = list(find_pyx_modules(dirnames))
-    ignored_modules.append('numpy')
-
-    invocation.append('--ignored-modules=' + ','.join(ignored_modules))
+    from multiprocessing import cpu_count
+    invocation.append("--jobs={:d}".format(cpu_count()))
 
     if check_files is None:
         invocation.extend(dirnames)
