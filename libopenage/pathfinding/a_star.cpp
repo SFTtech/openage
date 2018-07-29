@@ -136,7 +136,7 @@ Path a_star(coord::phys3 start,
 					neighbor->heap_node = node_candidates.push(neighbor);
 					visited_tiles[neighbor->position] = neighbor;
 				} else {
-					node_candidates.update(neighbor->heap_node);
+					node_candidates.decrease(neighbor->heap_node);
 				}
 			}
 		}

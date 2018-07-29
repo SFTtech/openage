@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #include "vector.h"
 
@@ -11,17 +11,17 @@ namespace tests {
 void vector() {
 	{
 		// zero-initialization test.
-		Vector<5> zero_explicit{0, 0, 0, 0, 0};
-		Vector<5> zero;
+		Vectorf<5> zero_explicit{0, 0, 0, 0, 0};
+		Vectorf<5> zero;
 
 		zero.equals(zero_explicit) or TESTFAIL;
 	}
 	{
 		// tests in 2 dimensions.
 		// we want to be able to reuse the variable names later.
-		const Vector<2> a(1.0, 2.0);
-		const Vector<2> b(3.0, 4.0);
-		Vector<2> c;
+		const Vectorf<2> a(1.0, 2.0);
+		const Vectorf<2> b(3.0, 4.0);
+		Vectorf<2> c;
 
 		// test basic operators.
 		c = a + b;
@@ -50,9 +50,9 @@ void vector() {
 
 	{
 		// test for the cross_product
-		const Vector<3> a(1.0, 2.0, 3.0);
-		const Vector<3> b(4.0, 5.0, 6.0);
-		Vector<3> c = a.cross_product(b);
+		const Vectorf<3> a(1.0, 2.0, 3.0);
+		const Vectorf<3> b(4.0, 5.0, 6.0);
+		Vectorf<3> c = a.cross_product(b);
 
 		c.equals({-3.0, 6.0, -3.0}) or TESTFAIL;
 	}

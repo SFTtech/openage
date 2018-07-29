@@ -46,7 +46,7 @@ using nodemap_t = std::unordered_map<coord::phys3, node_pt>;
  * Calls operator < on Node.
  */
 struct compare_node_cost {
-	bool operator ()(const node_pt lhs, const node_pt rhs) const;
+	bool operator ()(const node_pt &lhs, const node_pt &rhs) const;
 };
 
 /**
@@ -169,7 +169,7 @@ public:
 	/**
 	 * Priority queue node that contains this path node.
 	 */
-	heap_t::node_t* heap_node;
+	heap_t::element_t heap_node;
 };
 
 

@@ -5,7 +5,6 @@
 #include <memory>
 #include <stddef.h>
 
-#include "../pathfinding/path.h"
 #include "../coord/tile.h"
 #include "../coord/phys.h"
 

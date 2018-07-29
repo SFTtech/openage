@@ -216,16 +216,14 @@ endif()
 
 if(WANT_OPENGL AND OPENGL_FOUND)
 	have_config_option(opengl OPENGL true)
-	include_directories(${OPENGL_INCLUDE_DIR})
-	target_link_libraries(libopenage PRIVATE ${OPENGL_LIBRARY})
+	target_link_libraries(libopenage PRIVATE OpenGL::GL)
 else()
 	have_config_option(opengl OPENGL false)
 endif()
 
 if(WANT_VULKAN AND VULKAN_FOUND)
 	have_config_option(vulkan VULKAN true)
-	include_directories(${Vulkan_INCLUDE_DIRS})
-	target_link_libraries(libopenage PRIVATE ${Vulkan_LIBRARIES})
+	target_link_libraries(libopenage PRIVATE Vulkan::Vulkan)
 else()
 	have_config_option(vulkan VULKAN false)
 endif()
@@ -240,6 +238,12 @@ get_config_option_string()
 
 configure_file(config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
 configure_file(config.cpp.in ${CMAKE_CURRENT_SOURCE_DIR}/config.cpp)
+
+configure_file(
+	"${CMAKE_SOURCE_DIR}/openage/config.py.in"
+	"${CMAKE_SOURCE_DIR}/openage/config.py"
+)
+
 
 ##################################################
 # platform specifics
@@ -327,8 +331,10 @@ pxdgen(
 add_subdirectory("audio")
 add_subdirectory("console")
 add_subdirectory("coord")
+add_subdirectory("curve")
 add_subdirectory("cvar")
 add_subdirectory("datastructure")
+add_subdirectory("event")
 add_subdirectory("gui")
 add_subdirectory("error")
 add_subdirectory("gamestate")

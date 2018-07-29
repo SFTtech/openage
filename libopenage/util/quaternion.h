@@ -1,4 +1,4 @@
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+// Copyright 2017-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -27,7 +27,7 @@ namespace util {
  * From Quaternion to Matrix and Back
  * J.M.P. van Waveren, id Software, 2005
  */
-template <typename T=float>
+template <typename T>
 class Quaternion {
 public:
 	using this_type = Quaternion<T>;
@@ -63,7 +63,7 @@ public:
 	 * which is larger than |w| and >= 1/2
 	 */
 	template <size_t N=4>
-	Quaternion(const Matrix<N, N> &mat) {
+	Quaternion(const Matrix<N, N, T> &mat) {
 
 		static_assert(N == 3 or N == 4, "only 3 and 4 dimensional matrices can be converted to a quaternion!");
 
@@ -142,7 +142,7 @@ public:
 	/**
 	 * Create a quaternion from a rotation in radians around a given axis.
 	 */
-	static this_type from_rad(T rad, Vector3 axis) {
+	static this_type from_rad(T rad, Vector3t<T> axis) {
 		T rot = rad / 2.0;
 		this_type q{
 			std::cos(rot),
@@ -156,7 +156,7 @@ public:
 	/**
 	 * Create a quaternion from a rotation in degree around a given axis.
 	 */
-	static this_type from_deg(T deg, Vector3 axis) {
+	static this_type from_deg(T deg, Vector3t<T> axis) {
 		return this_type::from_rad(deg * math::DEGSPERRAD, axis);
 	}
 
@@ -279,7 +279,7 @@ public:
 	/**
 	 * Generate the corresponding rotation matrix.
 	 */
-	Matrix3 to_matrix() const {
+	Matrix3t<T> to_matrix() const {
 		T x2  = this->x * 2;
 		T y2  = this->y * 2;
 		T z2  = this->z * 2;
@@ -296,7 +296,7 @@ public:
 		T z2y = z2 * this->y;
 		T z3  = z2 * this->z;
 
-		Matrix3 m{
+		Matrix3t<T> m{
 			1.0 - (y3 + z3), y2x - z2w, z2x + y2w,
 			y2x + z2w, 1.0 - (x3 + z3), z2y - x2w,
 			z2x - y2w, z2y + x2w, 1.0 - (x3 + y3)
@@ -308,11 +308,11 @@ public:
 	/**
 	 * Transforms a vector by this quaternion.
 	 */
-	Vector3 operator *(const Vector3 &vec) const {
-		Vector3 axis{this->x, this->y, this->z};
+	Vector3t<T> operator *(const Vector3t<T> &vec) const {
+		Vector3t<T> axis{this->x, this->y, this->z};
 
-		Vector3 axis_vec_normal = axis.cross_product(vec);
-		Vector3 axis_vec_inplane = axis.cross_product(axis_vec_normal);
+		Vector3t<T> axis_vec_normal = axis.cross_product(vec);
+		Vector3t<T> axis_vec_inplane = axis.cross_product(axis_vec_normal);
 
 		axis_vec_normal *= 2.0f * this->w;
 		axis_vec_inplane *= 2.0f;
@@ -431,5 +431,8 @@ protected:
 	 */
 	T w, x, y, z;
 };
+
+using Quaternionf = Quaternion<float>;
+using Quaterniond = Quaternion<double>;
 
 }} // openage::util

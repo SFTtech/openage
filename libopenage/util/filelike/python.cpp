@@ -1,4 +1,4 @@
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+// Copyright 2017-2018 the openage authors. See copying.md for legal info.
 
 #include "python.h"
 
@@ -74,6 +74,11 @@ ssize_t Python::get_size() {
 
 bool Python::is_python_native() const noexcept {
 	return true;
+}
+
+
+py::Obj &Python::get_py_fileobj() const {
+	return *this->fileobj.get();
 }
 
 
