@@ -110,7 +110,7 @@ _the openage authors_ are:
 | Rafael X. Morales Georgi    | chocoladisco                | chocoladisco à gmail dawt com                     |
 | Marcel Schneider            | schnema123                  | marcelschneider5 à outlook dawt de                |
 | Samuel Grigolato            | samuelgrigolato             | samuel dawt grigolato à gmail dawt com            |
-| Andrew Thompson             | mrwerdo331@me.com           | mrwerdo331 à me dawt com                          |
+| Andrew Thompson             | mrwerdo                     | mrwerdo331 à me dawt com                          |
 | Benedikt Freisen            | roybaer                     | b dawt freisen à gmx dawt net                     |
 | Finn Günther                | Kawzeg                      | kawzeg à gmail dawt com                           |
 | Akshit Sharma               | akshit-sharma               | akshit9sharma à gmail dawt com                    |
