@@ -31,5 +31,5 @@ If you want to install the latest git version:
 =games-strategy/openage-9999::sft **
 ```
 
-Beware, the git version does not do automatic updates.
+Beware, the git version does **not** do automatic updates.
 You have to explicitly "reinstall" openage or use `app-portage/smart-live-rebuild`.

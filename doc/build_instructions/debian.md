@@ -1,6 +1,6 @@
 # Prerequisite steps for Debian Sid users
 
  - `sudo apt-get update`
- - `sudo apt-get install cmake libfreetype6-dev python3-dev python3-pip libepoxy-dev libsdl2-dev libsdl2-image-dev libopusfile-dev libfontconfig1-dev libharfbuzz-dev libpng-dev opus-tools python3-pil python3-numpy python3-pygments qtdeclarative5-dev qml-module-qtquick-controls cython3 python3-jinja2`
+ - `sudo apt-get install cmake cython3 libeigen3-dev libepoxy-dev libfontconfig1-dev libfreetype6-dev libharfbuzz-dev libogg-dev libopus-dev libopusfile-dev libpng-dev libsdl2-dev libsdl2-image-dev python3-dev python3-jinja2 python3-numpy python3-pil python3-pip python3-pygments qml-module-qtquick-controls qtdeclarative5-dev`
 
 You will also need [nyan](https://github.com/SFTtech/nyan/blob/master/doc/building.md) and its dependencies.

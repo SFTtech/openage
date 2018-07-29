@@ -33,28 +33,30 @@ Dependency list:
     C     cmake >=3.1.0
       A   numpy
       A   python imaging library (PIL) -> pillow
-    CR    opengl >=2.1
+    CR    opengl >=3.3
     CR    libepoxy
     CR    libpng
      R    dejavu font
+    CR    eigen >=3
     CR    freetype2
     CR    fontconfig
-    CR    harfbuzz >= 1.0.0
+    CR    harfbuzz >=1.0.0
     CR    nyan  (https://github.com/SFTtech/nyan)
     CR  O ncurses
     C     jinja2
     CR    sdl2
     CR    sdl2_image
     CR    opusfile
-    CRA   libopus
-    CRA   libogg
-       S  pycodestyle (or pep8 (deprecated))
+    CRA   opus
+    CRA   ogg
+       S  pycodestyle
     C     pygments
        S  pylint
     CR    qt5 >=5.5 (Core, Quick, QuickControls modules)
+    CR  O vulkan
 
       A   An installed version of any of the following (wine is your friend).
-          Other versions _might_ work; setup disk support will be added soon:
+          Other versions _might_ work:
 
      - Age of Empires II: The Conquerors Patch 1.0c
      - Age of Empires II: Forgotten Empires
