@@ -260,7 +260,6 @@ void Gui::log(const std::string &msg) {
 	this->log_msgs.push_front(msg);
 }
 
+} // openage::event::demo
 
 #endif
-
-} // openage::event::demo
