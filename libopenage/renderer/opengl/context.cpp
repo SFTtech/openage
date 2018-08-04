@@ -2,6 +2,7 @@
 
 #include "context.h"
 
+#include <array>
 #include <epoxy/gl.h>
 
 #include "../../log/log.h"
