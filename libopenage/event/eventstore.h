@@ -6,6 +6,7 @@
 #include "../util/misc.h"
 
 #include <memory>
+#include <unordered_map>
 
 
 namespace openage::event {

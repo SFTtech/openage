@@ -2,6 +2,7 @@
 
 #include "mesh_data.h"
 
+#include <array>
 #include <cstring>
 
 #include "../../error/error.h"
