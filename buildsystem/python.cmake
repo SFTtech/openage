@@ -1,4 +1,4 @@
-# Copyright 2014-2017 the openage authors. See copying.md for legal info.
+# Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 # provides macros for defining python extension modules and pxdgen sources.
 # and a 'finalize' function that must be called in the end.
@@ -169,11 +169,14 @@ function(pxdgen)
 			set(source "${CMAKE_CURRENT_SOURCE_DIR}/${source}")
 		endif()
 
-		if(NOT "${source}" MATCHES ".*\\.h$")
+		get_filename_component(source_ext "${source}" EXT)
+		if(NOT "${source_ext}" STREQUAL ".h")
 			message(FATAL_ERROR "non-.h file given to pxdgen: ${source}")
 		endif()
 
-		string(REGEX REPLACE "\\.h$" ".pxd" PXDNAME "${source}")
+		# TODO: change if multiple files with the same name are supported in a directory
+		get_filename_component(source_name_without_ext "${source}" NAME_WE)
+		set(PXDNAME "${CMAKE_CURRENT_BINARY_DIR}/${source_name_without_ext}.pxd")
 		set_source_files_properties("${PXDNAME}" PROPERTIES GENERATED ON)
 
 		set_property(GLOBAL APPEND PROPERTY SFT_PXDGEN_SOURCES "${source}")
@@ -302,6 +305,7 @@ function(python_finalize)
 	add_custom_command(OUTPUT "${PXDGEN_TIMEFILE}"
 		COMMAND "${PYTHON}" -m buildsystem.pxdgen
 		--file-list "${CMAKE_BINARY_DIR}/py/pxdgen_sources"
+		--output-dir "${CMAKE_BINARY_DIR}"
 		COMMAND "${CMAKE_COMMAND}" -E touch "${PXDGEN_TIMEFILE}"
 		DEPENDS ${pxdgen_sources} "${CMAKE_BINARY_DIR}/py/pxdgen_sources"
 		COMMENT "pxdgen: generating .pxd files from headers"
@@ -325,6 +329,7 @@ function(python_finalize)
 		"${CMAKE_BINARY_DIR}/py/cython_modules"
 		"${CMAKE_BINARY_DIR}/py/cython_modules_embed"
 		"${CMAKE_BINARY_DIR}/py/pxd_list"
+		"--include-path" "${CMAKE_BINARY_DIR}"
 		COMMAND "${CMAKE_COMMAND}" -E touch "${CYTHONIZE_TIMEFILE}"
 		DEPENDS
 		"${PXDGEN_TIMEFILE}"
@@ -453,10 +458,10 @@ function(python_finalize)
 	)
 
 	add_custom_target(cleanpxdgen
-		COMMAND find libopenage -name "*.pxd" -type f -print -delete
+		COMMAND find libopenage -name "'*.pxd'" -type f -print -delete
 		COMMAND find libopenage -name "__init__.py" -type f -print -delete
 		COMMAND "${CMAKE_COMMAND}" -E remove "${PXDGEN_TIMEFILE}"
-		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+		WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
 	)
 
 

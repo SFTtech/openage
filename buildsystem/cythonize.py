@@ -76,22 +76,13 @@ def remove_if_exists(filename):
         os.remove(filename)
 
 
-def cythonize_cpp_wrapper(modules, nthreads):
+def cythonize_wrapper(modules, **kwargs):
     """ Calls cythonize, filtering useless warnings """
     if not modules:
         return
 
     with CythonFilter() as cython_filter:
         with redirect_stdout(cython_filter):
-            kwargs = {
-                'nthreads': nthreads,
-                'compiler_directives': {'language_level': 3},
-            }
-
-            # this is deprecated, but still better than
-            # writing funny lines at the head of each file.
-            kwargs['language'] = 'c++'
-
             cythonize(modules, **kwargs)
 
 
@@ -113,6 +104,9 @@ def main():
     ))
     cli.add_argument("--clean", action="store_true", help=(
         "Clean compilation results and exit."
+    ))
+    cli.add_argument("--include-path", nargs='+', help=(
+        "Additional directories to add to module search path."
     ))
     cli.add_argument("--memcleanup", type=int, default=0, help=(
         "Generate memory cleanup code to make valgrind happy:\n"
@@ -141,11 +135,22 @@ def main():
     Options.cplus = 1
 
     # build cython modules (emits shared libraries)
-    cythonize_cpp_wrapper(modules, args.threads)
+    cythonize_args = {
+        'compiler_directives': {'language_level': 3},
+        'include_path': args.include_path,
+        'nthreads': args.threads
+    }
+
+    # this is deprecated, but still better than
+    # writing funny lines at the head of each file.
+    cythonize_args['language'] = 'c++'
+
+    cythonize_wrapper(modules, **cythonize_args)
 
     # build standalone executables that embed the py interpreter
     Options.embed = "main"
-    cythonize_cpp_wrapper(embedded_modules, args.threads)
+
+    cythonize_wrapper(embedded_modules, **cythonize_args)
 
     # verify depends
     from Cython.Build.Dependencies import _dep_tree
