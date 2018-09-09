@@ -12,6 +12,7 @@ from enum import Enum
 from io import UnsupportedOperation
 from itertools import chain
 
+from ..util.fslike.directory import Directory
 from ..util.fslike.wrapper import Wrapper
 from ..util.filelike.fifo import FIFO
 from ..log import err
@@ -102,16 +103,20 @@ class CodegenDirWrapper(Wrapper):
         return "CodegenDirWrapper({})".format(repr(self.obj))
 
 
-def codegen(projectdir, mode):
+def codegen(mode, output_dir):
     """
     Calls .listing.generate_all(), and post-processes the generated
     data, checking them and adding a header.
-    Writes them to projectdir according to mode. projectdir is a FSLikeObject.
+    Writes them to output_dir according to mode. output_dir is a path or str.
 
     Returns ({generated}, {depends}), where
     generated is a list of (absolute) filenames of generated files, and
     depends is a list of (absolute) filenames of dependency files.
     """
+    # TODO: seriously need to give up using CWD
+    projectdir = Directory(os.getcwd()).root
+    output_dir = Directory(output_dir).root
+
     # this wrapper intercepts all writes and logs all reads.
     wrapper = CodegenDirWrapper(projectdir)
     generate_all(wrapper.root)
@@ -121,11 +126,11 @@ def codegen(projectdir, mode):
 
     for parts, data in wrapper.get_writes():
         # TODO: this assumes projectdir is a fslike.Directory!
-        generated.add(projectdir.fsobj.resolve(parts))
+        generated.add(output_dir.fsobj.resolve(parts))
 
         # now, actually perform the generation.
         # first, assemble the path for the current file
-        wpath = projectdir[parts]
+        wpath = output_dir[parts]
 
         try:
             data = postprocess_write(parts, data)
