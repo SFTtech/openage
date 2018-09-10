@@ -83,7 +83,7 @@ function(add_cython_modules)
 			endif()
 
 			get_filename_component(OUTPUTNAME "${source}" NAME_WE)
-			string(REGEX REPLACE "\\.pyx?$" ".cpp" CPPNAME "${source}")
+			set(CPPNAME "${CMAKE_CURRENT_BINARY_DIR}/${OUTPUTNAME}.cpp")
 			set_source_files_properties("${CPPNAME}" PROPERTIES GENERATED ON)
 
 			# construct some hopefully unique target name
@@ -329,7 +329,7 @@ function(python_finalize)
 		"${CMAKE_BINARY_DIR}/py/cython_modules"
 		"${CMAKE_BINARY_DIR}/py/cython_modules_embed"
 		"${CMAKE_BINARY_DIR}/py/pxd_list"
-		"--include-path" "${CMAKE_BINARY_DIR}"
+		"--build-dir" "${CMAKE_BINARY_DIR}"
 		COMMAND "${CMAKE_COMMAND}" -E touch "${CYTHONIZE_TIMEFILE}"
 		DEPENDS
 		"${PXDGEN_TIMEFILE}"
@@ -448,13 +448,17 @@ function(python_finalize)
 		"${CMAKE_BINARY_DIR}/py/cython_modules"
 		"${CMAKE_BINARY_DIR}/py/cython_modules_embed"
 		"${CMAKE_BINARY_DIR}/py/pxd_list"
+		"--build-dir" "${CMAKE_BINARY_DIR}"
+		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+	)
+	add_custom_command(TARGET cleancython POST_BUILD
 		# general deleters to catch files that have already been un-listed.
-		COMMAND find openage -name "*.cpp" -type f -print -delete
-		COMMAND find openage -name "*.html" -type f -print -delete
-		COMMAND find openage -name "*.so" -type f -print -delete
+		COMMAND find openage -name "'*.cpp'" -type f -print -delete
+		COMMAND find openage -name "'*.html'" -type f -print -delete
+		COMMAND find openage -name "'*.so'" -type f -print -delete
 		COMMAND "${CMAKE_COMMAND}" -E remove "${CYTHONIZE_TIMEFILE}"
 		COMMAND "${CMAKE_COMMAND}" -E remove "${INPLACEMODULES_TIMEFILE}"
-		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+		WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
 	)
 
 	add_custom_target(cleanpxdgen

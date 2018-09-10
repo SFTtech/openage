@@ -69,6 +69,12 @@ def read_list_from_file(filename):
     return data
 
 
+def convert_to_relpath(filenames):
+    """ Convert a list of absolute paths to relative paths """
+    cwd = os.getcwd()
+    return [os.path.relpath(filename, cwd) for filename in filenames]
+
+
 def remove_if_exists(filename):
     """ Deletes the file (if it exists) """
     if os.path.exists(filename):
@@ -105,8 +111,9 @@ def main():
     cli.add_argument("--clean", action="store_true", help=(
         "Clean compilation results and exit."
     ))
-    cli.add_argument("--include-path", nargs='+', help=(
-        "Additional directories to add to module search path."
+    cli.add_argument("--build-dir", help=(
+        "Build output directory to generate the cpp files in."
+        "note: this is also added for module search path."
     ))
     cli.add_argument("--memcleanup", type=int, default=0, help=(
         "Generate memory cleanup code to make valgrind happy:\n"
@@ -117,8 +124,10 @@ def main():
                      help="number of compilation threads to use")
     args = cli.parse_args()
 
-    modules = read_list_from_file(args.module_list)
-    embedded_modules = read_list_from_file(args.embedded_module_list)
+    # cython emits warnings on using absolute paths to modules
+    # https://github.com/cython/cython/issues/2323
+    modules = convert_to_relpath(read_list_from_file(args.module_list))
+    embedded_modules = convert_to_relpath(read_list_from_file(args.embedded_module_list))
     depends = set(read_list_from_file(args.depends_list))
 
     if args.clean:
@@ -137,7 +146,8 @@ def main():
     # build cython modules (emits shared libraries)
     cythonize_args = {
         'compiler_directives': {'language_level': 3},
-        'include_path': args.include_path,
+        'build_dir': args.build_dir,
+        'include_path': [args.build_dir],
         'nthreads': args.threads
     }
 
