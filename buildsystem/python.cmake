@@ -359,7 +359,7 @@ function(python_finalize)
 		COMMAND "${PYTHON}" -m buildsystem.compilepy
 		"${CMAKE_BINARY_DIR}/py/py_files"
 		"${CMAKE_SOURCE_DIR}"
-		"${CMAKE_SOURCE_DIR}"
+		"${CMAKE_BINARY_DIR}"
 		COMMAND "${CMAKE_COMMAND}" -E touch "${COMPILEPY_TIMEFILE}"
 		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
 		DEPENDS "${CMAKE_BINARY_DIR}/py/py_files" ${py_files}
@@ -413,6 +413,10 @@ function(python_finalize)
 
 
 	# inplace module install (bin/module.so -> module.so)
+#[==[
+	# TODO: FIXME: MSVC, Xcode (multi-config generators) produce outputs
+	# in a directory different from `CMAKE_CURRENT_BINARY_DIR`.
+	# link/copy the output files as required for the cython modules.
 
 	get_property(cython_module_targets GLOBAL PROPERTY SFT_CYTHON_MODULE_TARGETS)
 	set(cython_module_files_expr)
@@ -436,14 +440,14 @@ function(python_finalize)
 		COMMENT "creating in-place modules"
 	)
 	add_custom_target(inplacemodules ALL DEPENDS "${INPLACEMODULES_TIMEFILE}")
-
+#]==]
 
 	# cleaning of all in-sourcedir stuff
 
 	add_custom_target(cleancython
-		COMMAND "${PYTHON}" -m buildsystem.inplacemodules --clean
-		"${CMAKE_BINARY_DIR}/py/inplace_module_list$<CONFIG>"
-		"${CMAKE_BINARY_DIR}" "$<CONFIG>"
+		# COMMAND "${PYTHON}" -m buildsystem.inplacemodules --clean
+		# "${CMAKE_BINARY_DIR}/py/inplace_module_list$<CONFIG>"
+		# "${CMAKE_BINARY_DIR}" "$<CONFIG>"
 		COMMAND "${PYTHON}" -m buildsystem.cythonize --clean
 		"${CMAKE_BINARY_DIR}/py/cython_modules"
 		"${CMAKE_BINARY_DIR}/py/cython_modules_embed"
@@ -457,7 +461,7 @@ function(python_finalize)
 		COMMAND find openage -name "'*.html'" -type f -print -delete
 		COMMAND find openage -name "'*.so'" -type f -print -delete
 		COMMAND "${CMAKE_COMMAND}" -E remove "${CYTHONIZE_TIMEFILE}"
-		COMMAND "${CMAKE_COMMAND}" -E remove "${INPLACEMODULES_TIMEFILE}"
+		# COMMAND "${CMAKE_COMMAND}" -E remove "${INPLACEMODULES_TIMEFILE}"
 		WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
 	)
 
