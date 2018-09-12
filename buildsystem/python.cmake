@@ -361,14 +361,6 @@ function(python_finalize)
 		"${CMAKE_SOURCE_DIR}"
 		"${CMAKE_BINARY_DIR}"
 	)
-	add_custom_command(OUTPUT "${COMPILEPY_TIMEFILE}"
-		COMMAND ${COMPILEPY_INVOCATION}
-		COMMAND "${CMAKE_COMMAND}" -E touch "${COMPILEPY_TIMEFILE}"
-		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
-		DEPENDS "${CMAKE_BINARY_DIR}/py/py_files" ${py_files}
-		COMMENT "compiling .py files to .pyc files"
-	)
-	add_custom_target(compilepy ALL DEPENDS "${COMPILEPY_TIMEFILE}")
 
 	# determine the compiled file name for all source files
 	execute_process(COMMAND
@@ -380,6 +372,16 @@ function(python_finalize)
 	if(NOT ${COMMAND_RESULT} EQUAL 0)
 		message(FATAL_ERROR "failed to get output list from compilepy invocation")
 	endif()
+	string(STRIP "${py_compiled_files}" py_compiled_files)
+
+	add_custom_command(OUTPUT "${COMPILEPY_TIMEFILE}"
+		COMMAND ${COMPILEPY_INVOCATION}
+		COMMAND "${CMAKE_COMMAND}" -E touch "${COMPILEPY_TIMEFILE}"
+		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+		DEPENDS "${CMAKE_BINARY_DIR}/py/py_files" ${py_files}
+		COMMENT "compiling .py files to .pyc files"
+	)
+	add_custom_target(compilepy ALL DEPENDS "${COMPILEPY_TIMEFILE}")
 
 	list(LENGTH py_files py_files_count)
 	math(EXPR py_files_count_range "${py_files_count} - 1")

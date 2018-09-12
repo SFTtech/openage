@@ -8,26 +8,32 @@ import argparse
 import importlib.util
 import os
 import py_compile
+import shutil
 import sys
 
 
-def clone_file_to_dir(module, input_dir, output_dir):
+def clone_file_to_dir(sourcefile, input_dir, output_dir):
     """
-    Make a copy of module from input_dir to output_dir
+    Make a copy of sourcefile from input_dir to output_dir
     Try hardlinking first; on failure fallback to copy.
     Caveat: source files already in output_dir are not cloned.
 
     :return: the path of file created in output_dir
     """
-    if os.path.samefile(input_dir, output_dir) or module.startswith(output_dir):
-        return module
+    if os.path.samefile(input_dir, output_dir) or sourcefile.startswith(output_dir):
+        return sourcefile
 
-    relsrcpath = os.path.relpath(module, input_dir)
+    relsrcpath = os.path.relpath(sourcefile, input_dir)
     targetfile = os.path.join(output_dir, relsrcpath)
+
+    if os.path.exists(targetfile) and os.path.samefile(sourcefile, targetfile):
+        return targetfile
+
+    os.makedirs(os.path.dirname(targetfile), exist_ok=True)
 
     # try to hardlink
     try:
-        os.link(module, targetfile)
+        os.link(sourcefile, targetfile)
         return targetfile
     except OSError:
         pass
@@ -36,9 +42,7 @@ def clone_file_to_dir(module, input_dir, output_dir):
     # determine the actual location, and refuse to work.
 
     # fallback to copying the file
-    with open(module, 'rb') as infile:
-        with open(targetfile, 'wb') as outfile:
-            outfile.write(infile.read())
+    shutil.copy(sourcefile, targetfile)
 
     return targetfile
 
@@ -68,12 +72,14 @@ def main():
     if not os.path.isdir(args.output_dir):
         cli.error("not a directory: '%s'" % args.output_dir)
 
+    all_output_files = []
     to_compile = []
 
     for module in modules:
         # the module is required in the output directory
         sourcefile = clone_file_to_dir(module, args.input_dir, args.output_dir)
         outputfile = importlib.util.cache_from_source(sourcefile)
+        all_output_files.append(outputfile)
 
         if os.path.exists(outputfile):
             if os.path.getmtime(outputfile) >= os.path.getmtime(sourcefile):
@@ -84,7 +90,7 @@ def main():
         to_compile.append((sourcefile, outputfile))
 
     if args.print_output_paths_only:
-        print(';'.join([outfile for (sourcefile, outfile) in to_compile]))
+        print(';'.join(all_output_files))
         exit(0)
 
     maxwidth = len(str(len(to_compile)))

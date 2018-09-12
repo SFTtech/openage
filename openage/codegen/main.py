@@ -58,6 +58,11 @@ def init_subparser(cli):
     cli.set_defaults(entrypoint=main)
 
     cli.add_argument(
+        "--input-dir", required=True,
+        help=("the directory to read inputs from."
+              "this is the usually the repository root."))
+
+    cli.add_argument(
         "--output-dir", required=True,
         help=("the directory to produce outputs in."
               "this is the directory corresponding to the repository root "
@@ -132,7 +137,7 @@ def main(args, error):
     # arguments are OK.
 
     # generate sources
-    generated, depends = codegen(mode, args.output_dir)
+    generated, depends = codegen(mode, args.input_dir, args.output_dir)
 
     def print_set_differences(old, new, name):
         """ Prints the difference between old and new. """

@@ -12,6 +12,7 @@ function(codegen_run)
 
 	set(CODEGEN_INVOCATION
 		"${PYTHON}" -m openage codegen
+		"--input-dir=${CMAKE_SOURCE_DIR}"
 		"--output-dir=${CMAKE_BINARY_DIR}"
 		"--generated-list-file=${CMAKE_BINARY_DIR}/codegen_generated_files"
 		"--depend-list-file=${CMAKE_BINARY_DIR}/codegen_depends")

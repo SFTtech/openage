@@ -103,29 +103,29 @@ class CodegenDirWrapper(Wrapper):
         return "CodegenDirWrapper({})".format(repr(self.obj))
 
 
-def codegen(mode, output_dir):
+def codegen(mode, input_dir, output_dir):
     """
     Calls .listing.generate_all(), and post-processes the generated
     data, checking them and adding a header.
+    Reads the input templates relative to input_dir.
     Writes them to output_dir according to mode. output_dir is a path or str.
 
     Returns ({generated}, {depends}), where
     generated is a list of (absolute) filenames of generated files, and
     depends is a list of (absolute) filenames of dependency files.
     """
-    # TODO: seriously need to give up using CWD
-    projectdir = Directory(os.getcwd()).root
+    input_dir = Directory(input_dir).root
     output_dir = Directory(output_dir).root
 
     # this wrapper intercepts all writes and logs all reads.
-    wrapper = CodegenDirWrapper(projectdir)
+    wrapper = CodegenDirWrapper(input_dir)
     generate_all(wrapper.root)
 
     # set of all generated filenames
     generated = set()
 
     for parts, data in wrapper.get_writes():
-        # TODO: this assumes projectdir is a fslike.Directory!
+        # TODO: this assumes output_dir is a fslike.Directory!
         generated.add(output_dir.fsobj.resolve(parts))
 
         # now, actually perform the generation.
