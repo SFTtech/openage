@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 """
 Compiles python modules with cpython to pyc/pyo files.
@@ -55,6 +55,9 @@ def main():
     cli.add_argument("output_dir", help=(
         "base directory where output files will be created."
     ))
+    cli.add_argument("--print-output-paths-only", action="store_true", help=(
+        "print the paths of the compiled output files and exit"
+    ))
     args = cli.parse_args()
 
     with open(args.pymodule_list_file) as fileobj:
@@ -79,6 +82,10 @@ def main():
             os.remove(outputfile)
 
         to_compile.append((sourcefile, outputfile))
+
+    if args.print_output_paths_only:
+        print(';'.join([outfile for (sourcefile, outfile) in to_compile]))
+        exit(0)
 
     maxwidth = len(str(len(to_compile)))
     for idx, (module, outputfile) in enumerate(to_compile):

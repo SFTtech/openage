@@ -355,11 +355,14 @@ function(python_finalize)
 
 	write_on_change("${CMAKE_BINARY_DIR}/py/py_files" "${py_files}")
 	set(COMPILEPY_TIMEFILE "${CMAKE_BINARY_DIR}/py/compilepy_timefile")
-	add_custom_command(OUTPUT "${COMPILEPY_TIMEFILE}"
-		COMMAND "${PYTHON}" -m buildsystem.compilepy
+	set(COMPILEPY_INVOCATION
+		"${PYTHON}" -m buildsystem.compilepy
 		"${CMAKE_BINARY_DIR}/py/py_files"
 		"${CMAKE_SOURCE_DIR}"
 		"${CMAKE_BINARY_DIR}"
+	)
+	add_custom_command(OUTPUT "${COMPILEPY_TIMEFILE}"
+		COMMAND ${COMPILEPY_INVOCATION}
 		COMMAND "${CMAKE_COMMAND}" -E touch "${COMPILEPY_TIMEFILE}"
 		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
 		DEPENDS "${CMAKE_BINARY_DIR}/py/py_files" ${py_files}
@@ -368,7 +371,15 @@ function(python_finalize)
 	add_custom_target(compilepy ALL DEPENDS "${COMPILEPY_TIMEFILE}")
 
 	# determine the compiled file name for all source files
-	py_exec("from importlib import util; print(';'.join(util.cache_from_source(f) for f in open('${CMAKE_BINARY_DIR}/py/py_files').read().split(';')))" py_compiled_files)
+	execute_process(COMMAND
+		${COMPILEPY_INVOCATION} "--print-output-paths-only"
+		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+		OUTPUT_VARIABLE py_compiled_files
+		RESULT_VARIABLE COMMAND_RESULT
+	)
+	if(NOT ${COMMAND_RESULT} EQUAL 0)
+		message(FATAL_ERROR "failed to get output list from compilepy invocation")
+	endif()
 
 	list(LENGTH py_files py_files_count)
 	math(EXPR py_files_count_range "${py_files_count} - 1")
