@@ -204,13 +204,17 @@ add_subdirectory(libopenage/)
 
 ##################################################
 # Python content (uses the C++ library)
-set(PYEXT_LINK_LIBRARY libopenage)
+add_library(pyext_libopenage INTERFACE)
 if(MSVC)
 	set(FORCE_INCLUDE_CXXFLAG "/FI")
 else()
-	set(FORCE_INCLUDE_CXXFLAG "-include ")
+	set(FORCE_INCLUDE_CXXFLAG "-include")
 endif()
-set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} ${FORCE_INCLUDE_CXXFLAG}\"${CMAKE_SOURCE_DIR}/libopenage/pyinterface/hacks.h\"")
+target_compile_options(pyext_libopenage INTERFACE
+	${FORCE_INCLUDE_CXXFLAG} "${CMAKE_SOURCE_DIR}/libopenage/pyinterface/hacks.h"
+)
+target_link_libraries(pyext_libopenage INTERFACE libopenage)
+set(PYEXT_LINK_LIBRARY pyext_libopenage)
 
 add_cython_modules(EMBED NOINSTALL run.py)
 add_py_modules(BININSTALL run.py AS openage)

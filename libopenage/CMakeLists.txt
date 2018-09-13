@@ -236,8 +236,8 @@ endif()
 # build configuration generation
 get_config_option_string()
 
-configure_file(config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
-configure_file(config.cpp.in ${CMAKE_CURRENT_SOURCE_DIR}/config.cpp)
+configure_file(config.h.in config.h)
+configure_file(config.cpp.in config.cpp)
 
 configure_file(
 	"${CMAKE_SOURCE_DIR}/openage/config.py.in"
@@ -255,9 +255,10 @@ endif()
 ##################################################
 # directories for header inclusion
 target_include_directories(libopenage
+	PUBLIC
+	${CMAKE_CURRENT_BINARY_DIR}
 	PRIVATE
 	${CMAKE_CURRENT_SOURCE_DIR}
-	${CMAKE_CURRENT_BINARY_DIR}
 	${FREETYPE_INCLUDE_DIRS}
 	${EPOXY_INCLUDE_DIRS}
 	${OPUS_INCLUDE_DIRS}
@@ -321,7 +322,7 @@ add_sources(libopenage
 	options.cpp
 	screenshot.cpp
 	texture.cpp
-	config.cpp
+	${CMAKE_CURRENT_BINARY_DIR}/config.cpp
 )
 
 pxdgen(

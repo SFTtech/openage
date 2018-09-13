@@ -11,7 +11,7 @@
 #include "gui.h"
 #endif
 
-#include "../../config.h"
+#include "config.h"
 #include "../../error/error.h"
 #include "../../rng/global_rng.h"
 #include "../../util/stringformatter.h"

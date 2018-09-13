@@ -1,8 +1,8 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #include "thread_id.h"
 
-#include "../config.h"
+#include "config.h"
 
 #if HAVE_THREAD_LOCAL_STORAGE
 #include <atomic>
