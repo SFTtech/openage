@@ -114,6 +114,7 @@ _the openage authors_ are:
 | Benedikt Freisen            | roybaer                     | b dawt freisen à gmx dawt net                     |
 | Finn Günther                | Kawzeg                      | kawzeg à gmail dawt com                           |
 | Akshit Sharma               | akshit-sharma               | akshit9sharma à gmail dawt com                    |
+| Jacek Wielemborek           | d33tah                      | d33tah à gmail dawt com                           |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.

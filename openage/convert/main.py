@@ -25,6 +25,8 @@ STANDARD_PATH_IN_32BIT_WINEPREFIX =\
     "drive_c/Program Files/Microsoft Games/Age of Empires II/"
 STANDARD_PATH_IN_64BIT_WINEPREFIX =\
     "drive_c/Program Files (x86)/Microsoft Games/Age of Empires II/"
+STANDARD_PATH_IN_WINEPREFIX_STEAM = \
+    "drive_c/Program Files (x86)/Steam/steamapps/common/Age2HD/"
 REGISTRY_KEY = \
     "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Microsoft Games\\"
 REGISTRY_SUFFIX_AOK = "Age of Empires\\2.0"
@@ -377,8 +379,10 @@ def source_dir_proposals(call_wine):
     if "WINEPREFIX" in os.environ:
         yield "$WINEPREFIX/" + STANDARD_PATH_IN_32BIT_WINEPREFIX
         yield "$WINEPREFIX/" + STANDARD_PATH_IN_64BIT_WINEPREFIX
+        yield "$WINEPREFIX/" + STANDARD_PATH_IN_WINEPREFIX_STEAM
     yield "~/.wine/" + STANDARD_PATH_IN_32BIT_WINEPREFIX
     yield "~/.wine/" + STANDARD_PATH_IN_64BIT_WINEPREFIX
+    yield "~/.wine/" + STANDARD_PATH_IN_WINEPREFIX_STEAM
 
     if not call_wine:
         # user wants wine not to be called
