@@ -424,6 +424,10 @@ function(python_finalize)
 		endif()
 	endforeach()
 
+	##################################################
+	# code generation
+
+	codegen_run()
 
 	# inplace module install (bin/module.so -> module.so)
 #[==[

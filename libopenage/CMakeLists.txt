@@ -9,14 +9,6 @@ declare_binary(libopenage openage library allow_no_undefined)
 # source files and folders are added at the bottom of this file #
 #################################################################
 
-
-##################################################
-# code generation
-
-# run codegen, add files to executable
-codegen_run()
-add_sources(libopenage GENERATED ${CODEGEN_TARGET_TUS})
-
 # set basic library settings
 set_target_properties(libopenage PROPERTIES
 	VERSION 0
@@ -308,6 +300,7 @@ install(TARGETS libopenage
 
 ##################################################
 # source file definitions
+get_codegen_scu_file()
 
 # add new sources here, dependencies for linking and including
 # are specified above the source file list.
@@ -323,6 +316,7 @@ add_sources(libopenage
 	screenshot.cpp
 	texture.cpp
 	${CMAKE_CURRENT_BINARY_DIR}/config.cpp
+	${CODEGEN_SCU_FILE}
 )
 
 pxdgen(
