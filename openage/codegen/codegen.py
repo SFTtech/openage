@@ -218,6 +218,10 @@ def get_codegen_depends(outputwrapper):
             # depends.
             continue
 
+        if filename is None:
+            # some modules have __file__ == None, we don't want those either.
+            continue
+
         if module.__package__ == '':
             continue
 
