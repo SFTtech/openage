@@ -233,7 +233,7 @@ configure_file(config.cpp.in config.cpp)
 
 configure_file(
 	"${CMAKE_SOURCE_DIR}/openage/config.py.in"
-	"${CMAKE_SOURCE_DIR}/openage/config.py"
+	"${CMAKE_BINARY_DIR}/openage/config.py"
 )
 
 

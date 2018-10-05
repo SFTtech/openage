@@ -495,6 +495,7 @@ function(python_finalize)
 	execute_process(
 		COMMAND "${PYTHON}" -m buildsystem.check_py_file_list
 		"${CMAKE_BINARY_DIR}/py/py_files"
+		"${CMAKE_SOURCE_DIR}/openage"
 		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
 		RESULT_VARIABLE res
 	)
