@@ -430,8 +430,7 @@ function(python_finalize)
 	codegen_run()
 
 	# inplace module install (bin/module.so -> module.so)
-#[==[
-	# TODO: FIXME: MSVC, Xcode (multi-config generators) produce outputs
+	# MSVC, Xcode (multi-config generators) produce outputs
 	# in a directory different from `CMAKE_CURRENT_BINARY_DIR`.
 	# link/copy the output files as required for the cython modules.
 
@@ -440,31 +439,33 @@ function(python_finalize)
 	foreach(cython_module_target ${cython_module_targets})
 		list(APPEND cython_module_files_expr "$<TARGET_FILE:${cython_module_target}>")
 	endforeach()
+
+	set(INPLACEMODULES_LISTFILE "${CMAKE_BINARY_DIR}/py/inplace_module_list_$<CONFIG>")
 	file(GENERATE
-		OUTPUT "${CMAKE_BINARY_DIR}/py/inplace_module_list$<CONFIG>"
+		OUTPUT ${INPLACEMODULES_LISTFILE}
 		CONTENT "${cython_module_files_expr}"
+	)
+	set(INPLACEMODULES_INVOCATION
+		"${PYTHON}" -m buildsystem.inplacemodules
+		${INPLACEMODULES_LISTFILE}
+		"$<CONFIG>"
 	)
 	set(INPLACEMODULES_TIMEFILE "${CMAKE_BINARY_DIR}/py/inplacemodules_timefile")
 	add_custom_command(OUTPUT "${INPLACEMODULES_TIMEFILE}"
-		COMMAND "${PYTHON}" -m buildsystem.inplacemodules
-		"${CMAKE_BINARY_DIR}/py/inplace_module_list$<CONFIG>"
-		"${CMAKE_BINARY_DIR}" "$<CONFIG>"
+		COMMAND ${INPLACEMODULES_INVOCATION}
 		DEPENDS
-		"${CMAKE_BINARY_DIR}/py/inplace_module_list$<CONFIG>"
-		${cython_module_targets}
+		${INPLACEMODULES_LISTFILE} ${cython_module_targets}
 		COMMAND "${CMAKE_COMMAND}" -E touch "${INPLACEMODULES_TIMEFILE}"
 		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
 		COMMENT "creating in-place modules"
 	)
 	add_custom_target(inplacemodules ALL DEPENDS "${INPLACEMODULES_TIMEFILE}")
-#]==]
+
 
 	# cleaning of all in-sourcedir stuff
 
 	add_custom_target(cleancython
-		# COMMAND "${PYTHON}" -m buildsystem.inplacemodules --clean
-		# "${CMAKE_BINARY_DIR}/py/inplace_module_list$<CONFIG>"
-		# "${CMAKE_BINARY_DIR}" "$<CONFIG>"
+		COMMAND ${INPLACEMODULES_INVOCATION} --clean
 		COMMAND "${PYTHON}" -m buildsystem.cythonize --clean
 		"${CMAKE_BINARY_DIR}/py/cython_modules"
 		"${CMAKE_BINARY_DIR}/py/cython_modules_embed"
@@ -478,7 +479,7 @@ function(python_finalize)
 		COMMAND find openage -name "'*.html'" -type f -print -delete
 		COMMAND find openage -name "'*.so'" -type f -print -delete
 		COMMAND "${CMAKE_COMMAND}" -E remove "${CYTHONIZE_TIMEFILE}"
-		# COMMAND "${CMAKE_COMMAND}" -E remove "${INPLACEMODULES_TIMEFILE}"
+		COMMAND "${CMAKE_COMMAND}" -E remove "${INPLACEMODULES_TIMEFILE}"
 		WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
 	)
 
