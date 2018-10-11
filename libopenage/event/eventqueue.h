@@ -31,14 +31,14 @@ public:
 		std::weak_ptr<Event> evnt;
 		const size_t hash;
 
-		class Hasher : public std::unary_function<OnChangeElement, size_t> {
+		class Hasher {
 		public:
 			size_t operator ()(const OnChangeElement& e) const {
 				return e.hash;
 			}
 		};
 
-		class Equal : public std::unary_function<OnChangeElement, size_t> {
+		class Equal {
 		public:
 			size_t operator ()(const OnChangeElement& left,
 			                   const OnChangeElement& right) const;
