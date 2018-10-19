@@ -27,7 +27,7 @@ public:
 
 protected:
 	/// Constructs the base with the given information.
-	Texture2d(resources::Texture2dInfo);
+	Texture2d(const resources::Texture2dInfo&);
 
 	/// Information about the size, format, etc. of this texture.
 	resources::Texture2dInfo info;

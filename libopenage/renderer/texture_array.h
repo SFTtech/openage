@@ -25,7 +25,7 @@ public:
 
 protected:
 	/// Constructs the base class.
-	Texture2dArray(resources::Texture2dInfo);
+	Texture2dArray(const resources::Texture2dInfo&);
 
 	/// Information about the size, format, etc. of every layer in this array.
 	resources::Texture2dInfo layer_info;
