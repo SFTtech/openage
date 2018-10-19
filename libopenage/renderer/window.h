@@ -29,10 +29,10 @@ public:
 	using mouse_wheel_cb_t = std::function<void(SDL_MouseWheelEvent const&)>;
 	using resize_cb_t = std::function<void(size_t, size_t)>;
 
-	void add_key_callback(key_cb_t);
-	void add_mouse_button_callback(mouse_button_cb_t);
-	void add_mouse_wheel_callback(mouse_wheel_cb_t);
-	void add_resize_callback(resize_cb_t);
+	void add_key_callback(const key_cb_t&);
+	void add_mouse_button_callback(const mouse_button_cb_t&);
+	void add_mouse_wheel_callback(const mouse_wheel_cb_t&);
+	void add_resize_callback(const resize_cb_t&);
 
 	/// Force the window to the given size. It's generally not a good idea to use this,
 	/// as it makes the window jump around wierdly.

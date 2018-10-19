@@ -28,7 +28,7 @@ namespace tests {
 	opengl::GlContext::check_error();    \
 	printf("after %s\n", txt);
 
-void renderer_demo_0(util::Path path) {
+void renderer_demo_0(const util::Path& path) {
 	opengl::GlWindow window("openage renderer test", 800, 600);
 
 	auto renderer = window.make_renderer();

@@ -89,8 +89,8 @@ Texture2dData::Texture2dData(const util::Path &path, bool use_metafile) {
 		throw Error(MSG(err) << "Texture " << native_path << " uses an unsupported format.");
 	}
 
-	uint32_t w = uint32_t(surface->w);
-	uint32_t h = uint32_t(surface->h);
+	auto w = uint32_t(surface->w);
+	auto h = uint32_t(surface->h);
 
 	size_t data_size = surf_fmt.BytesPerPixel * surface->w * surface->h;
 
@@ -118,8 +118,8 @@ Texture2dData::Texture2dData(const util::Path &path, bool use_metafile) {
 	this->info = Texture2dInfo(w, h, pix_fmt, align, std::move(subtextures));
 }
 
-Texture2dData::Texture2dData(Texture2dInfo &&info, std::vector<uint8_t> &&data)
-	: info(std::move(info))
+Texture2dData::Texture2dData(Texture2dInfo const& info, std::vector<uint8_t> &&data)
+	: info(info)
 	, data(std::move(data)) {}
 
 Texture2dData Texture2dData::flip_y() {

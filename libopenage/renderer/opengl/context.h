@@ -55,7 +55,7 @@ private:
 	SDL_GLContext gl_context;
 
 	/// Context capabilities.
-	gl_context_capabilities capabilities;
+	gl_context_capabilities capabilities{};
 };
 
 }}} // openage::renderer::opengl
