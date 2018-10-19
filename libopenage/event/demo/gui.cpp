@@ -10,8 +10,6 @@
 #include <ncurses.h>
 #include <vector>
 
-#include <unistd.h>
-
 
 namespace openage::event::demo {
 
