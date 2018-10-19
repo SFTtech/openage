@@ -60,7 +60,7 @@ static gl_context_capabilities find_capabilities() {
 	}
 	SDL_GL_MakeCurrent(test_window, test_context);
 
-	gl_context_capabilities caps;
+	gl_context_capabilities caps{};
 
 	GLint temp;
 	glGetIntegerv(GL_MAX_TEXTURE_SIZE, &temp);
@@ -133,13 +133,13 @@ GlContext::~GlContext() {
 
 GlContext::GlContext(GlContext &&other)
 	: gl_context(other.gl_context)
-	, capabilities(std::move(other.capabilities)) {
+	, capabilities(other.capabilities) {
 	other.gl_context = nullptr;
 }
 
 GlContext& GlContext::operator=(GlContext &&other) {
 	this->gl_context = other.gl_context;
-	this->capabilities = std::move(other.capabilities);
+	this->capabilities = other.capabilities;
 	other.gl_context = nullptr;
 
 	return *this;

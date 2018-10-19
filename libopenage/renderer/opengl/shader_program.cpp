@@ -25,7 +25,7 @@ static void check_program_status(GLuint program, GLenum what_to_check) {
 		glGetProgramiv(program, GL_INFO_LOG_LENGTH, &loglen);
 
 		std::vector<char> infolog(loglen);
-		glGetProgramInfoLog(program, loglen, 0, infolog.data());
+		glGetProgramInfoLog(program, loglen, nullptr, infolog.data());
 
 		const char *what_str = [=] {
 			switch (what_to_check) {
@@ -50,7 +50,7 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 	this->handle = handle;
 
 	std::vector<GlShader> shaders;
-	for (auto src : srcs) {
+	for (auto const& src : srcs) {
 		GlShader shader(src);
 		glAttachShader(handle, shader.get_handle());
 		shaders.push_back(std::move(shader));
@@ -88,7 +88,7 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 			handle,
 			i_unif,
 			name.size(),
-			0,
+			nullptr,
 			&count,
 			&type,
 			name.data()
@@ -134,7 +134,7 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 			handle,
 			i_attrib,
 			name.size(),
-			0,
+			nullptr,
 			&size,
 			&type,
 			name.data()
@@ -269,7 +269,7 @@ bool GlShaderProgram::has_uniform(const char* name) {
 }
 
 void GlShaderProgram::set_unif(UniformInput *in, const char *unif, void const* val, GLenum type) {
-	GlUniformInput *unif_in = static_cast<GlUniformInput*>(in);
+	auto *unif_in = static_cast<GlUniformInput*>(in);
 
 	if (unlikely(this->uniforms.count(unif) == 0)) {
 		throw Error(MSG(err) << "Tried to set uniform " << unif << " that does not exist in the shader program.");

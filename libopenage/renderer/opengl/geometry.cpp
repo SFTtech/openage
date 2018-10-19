@@ -64,7 +64,7 @@ void GlGeometry::draw() const {
 		if (mesh.indices) {
 			mesh.indices->bind(GL_ELEMENT_ARRAY_BUFFER);
 
-			glDrawElements(mesh.primitive, mesh.vert_count, *mesh.index_type, 0);
+			glDrawElements(mesh.primitive, mesh.vert_count, *mesh.index_type, nullptr);
 		} else {
 			glDrawArrays(GL_TRIANGLE_STRIP, 0, mesh.vert_count);
 		}

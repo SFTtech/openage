@@ -17,7 +17,7 @@ GlBuffer::GlBuffer(size_t size, GLenum usage)
 	this->handle = handle;
 
 	this->bind(GL_COPY_WRITE_BUFFER);
-	glBufferData(GL_COPY_WRITE_BUFFER, size, 0, usage);
+	glBufferData(GL_COPY_WRITE_BUFFER, size, nullptr, usage);
 }
 
 GlBuffer::GlBuffer(const uint8_t *data, size_t size, GLenum usage)
