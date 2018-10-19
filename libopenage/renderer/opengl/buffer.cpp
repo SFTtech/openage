@@ -45,6 +45,10 @@ void GlBuffer::upload_data(const uint8_t *data, size_t offset, size_t size) {
 }
 
 void GlBuffer::bind(GLenum target) const {
+	if (unlikely(!bool(this->handle))) {
+		throw Error(MSG(err) << "OpenGL buffer has been moved out of.");
+	}
+
 	glBindBuffer(target, *this->handle);
 }
 
