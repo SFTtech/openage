@@ -62,9 +62,8 @@ const Texture2dSubInfo& Texture2dInfo::get_subtexture(size_t subid) const {
 	if (subid < this->subtextures.size()) {
 		return this->subtextures[subid];
 	}
-	else {
-		throw Error(MSG(err) << "Unknown subtexture requested: " << subid);
-	}
+
+	throw Error(MSG(err) << "Unknown subtexture requested: " << subid);
 }
 
 std::pair<int, int> Texture2dInfo::get_subtexture_size(size_t subid) const {

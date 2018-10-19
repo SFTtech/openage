@@ -17,13 +17,13 @@ namespace resources {
  * are within one texture file. */
 struct Texture2dSubInfo {
 	/// The subtexture position within the atlas
-	uint32_t x, y;
+	uint32_t x{}, y{};
 
 	/// The subtexture size
-	uint32_t w, h;
+	uint32_t w{}, h{};
 
 	/// Position of the subtexture's center within the atlas
-	uint32_t cx, cy;
+	uint32_t cx{}, cy{};
 
 	/// Initializes the info from a CSV line containing its members.
 	Texture2dSubInfo(const std::string& line);

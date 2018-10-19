@@ -24,10 +24,10 @@ public:
 	///
 	/// Uses SDL Image internally. For supported image file types,
 	/// see the SDL_Image initialization in the engine.
-	Texture2dData(const util::Path &path, bool use_metafile = false);
+	Texture2dData(const util::Path& path, bool use_metafile = false);
 
 	/// Construct by moving the information and raw texture data from somewhere else.
-	Texture2dData(Texture2dInfo &&info, std::vector<uint8_t> &&data);
+	Texture2dData(Texture2dInfo const& info, std::vector<uint8_t>&& data);
 
 	/// Flips the texture along the Y-axis and returns the flipped data with the same info.
 	/// Sometimes necessary when converting between storage modes.
