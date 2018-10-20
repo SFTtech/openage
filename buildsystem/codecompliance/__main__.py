@@ -45,6 +45,8 @@ def parse_args():
     cli.add_argument("--test-git-change-years", action="store_true",
                      help=("when doing legal checks, test whether the "
                            "copyright year matches the git history."))
+    cli.add_argument("--clangtidy", action="store_true",
+                     help="check the cpp code with clang-tidy")
 
     cli.add_argument("--fix", action="store_true",
                      help=("try to automatically fix the found issues"))
@@ -79,10 +81,11 @@ def process_args(args, error):
         args.pystyle = True
         args.pylint = True
         args.test_git_change_years = True
+        args.clangtidy = True
 
     if not any((args.headerguards, args.legal, args.authors, args.pystyle,
                 args.cppstyle, args.test_git_change_years, args.pylint,
-                args.filemodes, args.textfiles)):
+                args.filemodes, args.textfiles, args.clangtidy)):
         error("no checks were specified")
 
     has_git = bool(shutil.which('git'))
@@ -114,6 +117,11 @@ def process_args(args, error):
     if args.pylint:
         if not importlib.util.find_spec('pylint'):
             error("pylint python module required for linting")
+
+    if args.clangtidy:
+        has_clangtidy = bool(shutil.which('clang-tidy'))
+        if not has_clangtidy:
+            error("--clang-tidy requires clang-tidy")
 
 
 def get_changed_files(gitref):
@@ -247,6 +255,10 @@ def find_all_issues(args, check_files=None):
         from .modes import find_issues
         yield from find_issues(check_files, ('openage', 'buildsystem',
                                              'libopenage'))
+
+    if args.clangtidy:
+        from .clangtidy import find_issues
+        yield from find_issues(check_files, ('libopenage',))
 
 
 if __name__ == '__main__':
