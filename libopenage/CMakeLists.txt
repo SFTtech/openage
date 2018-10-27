@@ -62,7 +62,7 @@ find_package(Epoxy REQUIRED)
 find_package(HarfBuzz 1.0.0 REQUIRED)
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 
-set(QT_VERSION_REQ "5.5")
+set(QT_VERSION_REQ "5.9")
 find_package(Qt5Core ${QT_VERSION_REQ} REQUIRED)
 find_package(Qt5Quick ${QT_VERSION_REQ} REQUIRED)
 
