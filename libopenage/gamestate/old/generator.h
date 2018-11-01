@@ -4,8 +4,8 @@
 
 #include <unordered_set>
 
-#include "../coord/tile.h"
-#include "../gui/guisys/public/gui_property_map.h"
+#include "../../coord/tile.h"
+#include "../../gui/guisys/public/gui_property_map.h"
 
 namespace qtsdl {
 class GuiItemLink;

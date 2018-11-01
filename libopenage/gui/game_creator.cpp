@@ -4,9 +4,9 @@
 
 #include <QtQml>
 
-#include "../gamestate/game_main.h"
-#include "../gamestate/game_spec.h"
-#include "../gamestate/generator.h"
+#include "../gamestate/old/game_main.h"
+#include "../gamestate/old/game_spec.h"
+#include "../gamestate/old/generator.h"
 
 #include "game_main_link.h"
 #include "game_spec_link.h"

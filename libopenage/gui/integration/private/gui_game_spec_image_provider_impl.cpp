@@ -8,7 +8,7 @@
 
 #include "../../../error/error.h"
 
-#include "../../../gamestate/game_spec.h"
+#include "../../../gamestate/old/game_spec.h"
 #include "../../guisys/private/gui_event_queue_impl.h"
 
 #include "gui_texture_factory.h"

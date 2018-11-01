@@ -11,10 +11,10 @@
 #include "market.h"
 #include "player.h"
 #include "team.h"
-#include "../options.h"
-#include "../terrain/terrain.h"
-#include "../unit/unit_container.h"
-#include "../util/timing.h"
+#include "../../options.h"
+#include "../../terrain/terrain.h"
+#include "../../unit/unit_container.h"
+#include "../../util/timing.h"
 
 
 namespace openage {

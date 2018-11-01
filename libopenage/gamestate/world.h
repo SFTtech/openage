@@ -2,10 +2,9 @@
 
 #pragma once
 
-
 namespace openage::gamestate {
 
-class Player {
+class World {
 
 };
 

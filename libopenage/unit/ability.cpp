@@ -3,8 +3,8 @@
 #include <memory>
 
 #include "../terrain/terrain_object.h"
-#include "../gamestate/cost.h"
-#include "../gamestate/player.h"
+#include "../gamestate/old/cost.h"
+#include "../gamestate/old/player.h"
 #include "ability.h"
 #include "action.h"
 #include "command.h"

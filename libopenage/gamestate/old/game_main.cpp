@@ -2,10 +2,10 @@
 
 #include "game_main.h"
 
-#include "../engine.h"
-#include "../log/log.h"
-#include "../terrain/terrain.h"
-#include "../unit/unit_type.h"
+#include "../../engine.h"
+#include "../../log/log.h"
+#include "../../terrain/terrain.h"
+#include "../../unit/unit_type.h"
 #include "game_spec.h"
 #include "generator.h"
 

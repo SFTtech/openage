@@ -1,4 +1,4 @@
-// Copyright 2015-2016 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -6,7 +6,7 @@
 
 #include "guisys/link/gui_item.h"
 
-#include "../gamestate/game_main.h"
+#include "../gamestate/old/game_main.h"
 
 namespace openage {
 namespace gui {

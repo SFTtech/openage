@@ -9,7 +9,7 @@
 #include "coord/pixel.h"
 #include "input/input_context.h"
 #include "rng/rng.h"
-#include "gamestate/game_main.h"
+#include "gamestate/old/game_main.h"
 #include "unit/command.h"
 #include "unit/selection.h"
 #include "unit/unit_type.h"

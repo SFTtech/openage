@@ -4,7 +4,7 @@
 
 #include "../../../error/error.h"
 
-#include "../../../gamestate/game_spec.h"
+#include "../../../gamestate/old/game_spec.h"
 
 namespace openage::gui {
 

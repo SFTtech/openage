@@ -6,7 +6,7 @@
 #include <vector>
 
 #include "../pathfinding/path.h"
-#include "../gamestate/resource.h"
+#include "../gamestate/old/resource.h"
 #include "attribute.h"
 #include "research.h"
 #include "unit.h"

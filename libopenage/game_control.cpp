@@ -4,7 +4,7 @@
 
 #include "engine.h"
 #include "error/error.h"
-#include "gamestate/game_spec.h"
+#include "gamestate/old/game_spec.h"
 #include "log/log.h"
 #include "renderer/color.h"
 #include "terrain/terrain_chunk.h"

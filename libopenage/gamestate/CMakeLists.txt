@@ -1,14 +1,12 @@
 add_sources(libopenage
-	civilisation.cpp
-	cost.cpp
-	game_main.cpp
-	game_save.cpp
-	game_spec.cpp
-	generator.cpp
-	market.cpp
+	entity.cpp
+	game.cpp
 	player.cpp
-	population_tracker.cpp
-	score.cpp
-	team.cpp
-	resource.cpp
+	terrain.cpp
+	terrain_chunk.cpp
+	types.cpp
+	world.cpp
 )
+
+# TODO: remove once migration is done.
+add_subdirectory(old/)

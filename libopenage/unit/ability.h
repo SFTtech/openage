@@ -9,7 +9,6 @@
 #include <vector>
 
 #include "../coord/phys.h"
-#include "../gamestate/resource.h"
 
 namespace openage {
 
