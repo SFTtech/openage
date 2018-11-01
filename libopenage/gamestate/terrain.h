@@ -5,8 +5,8 @@
 
 namespace openage::gamestate {
 
-class Player {
+class Terrain {
 
 };
 
-} // openage
+} // openage::gamestate

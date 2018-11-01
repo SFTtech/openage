@@ -2,11 +2,13 @@
 
 #pragma once
 
+#include "world.h"
 
 namespace openage::gamestate {
 
-class Player {
-
+class Game {
+public:
+	World world;
 };
 
 } // openage

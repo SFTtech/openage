@@ -1,13 +1,14 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include "../job/job.h"
-#include "../gamedata/gamedata.gen.h"
-#include "../gamedata/graphic.gen.h"
-#include "../terrain/terrain.h"
-#include "../unit/unit_texture.h"
-#include "../util/csv.h"
+#include "../types.h"
+#include "../../job/job.h"
+#include "../../gamedata/gamedata.gen.h"
+#include "../../gamedata/graphic.gen.h"
+#include "../../terrain/terrain.h"
+#include "../../unit/unit_texture.h"
+#include "../../util/csv.h"
 
 #include <unordered_map>
 #include <memory>
@@ -21,12 +22,6 @@ class GameSpec;
 class UnitType;
 class UnitTypeMeta;
 class Player;
-
-
-/**
- * the key type mapped to data objects
- */
-using index_t = int;
 
 
 /**

@@ -1,6 +1,6 @@
 // Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
-#include "../gamestate/player.h"
+#include "../gamestate/old/player.h"
 #include "../terrain/terrain_object.h"
 #include "../util/math_constants.h"
 #include "action.h"

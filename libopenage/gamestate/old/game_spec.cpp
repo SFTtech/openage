@@ -4,19 +4,19 @@
 
 #include <tuple>
 
-#include "../assetmanager.h"
-#include "../audio/error.h"
-#include "../audio/resource_def.h"
-#include "../engine.h"
-#include "../gamedata/blending_mode.gen.h"
-#include "../gamedata/string_resource.gen.h"
-#include "../gamedata/terrain.gen.h"
-#include "../log/log.h"
-#include "../rng/global_rng.h"
-#include "../unit/producer.h"
-#include "../util/compiler.h"
-#include "../util/strings.h"
-#include "../util/timer.h"
+#include "../../assetmanager.h"
+#include "../../audio/error.h"
+#include "../../audio/resource_def.h"
+#include "../../engine.h"
+#include "../../gamedata/blending_mode.gen.h"
+#include "../../gamedata/string_resource.gen.h"
+#include "../../gamedata/terrain.gen.h"
+#include "../../log/log.h"
+#include "../../rng/global_rng.h"
+#include "../../unit/producer.h"
+#include "../../util/compiler.h"
+#include "../../util/strings.h"
+#include "../../util/timer.h"
 #include "civilisation.h"
 
 

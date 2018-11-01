@@ -5,7 +5,7 @@
 #include "player.h"
 #include "score.h"
 #include "team.h"
-#include "../log/log.h"
+#include "../../log/log.h"
 
 namespace openage {
 

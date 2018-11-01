@@ -1,4 +1,4 @@
-// Copyright 2016-2016 the openage authors. See copying.md for legal info.
+// Copyright 2016-2018 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -7,7 +7,7 @@
 
 #include <QAbstractListModel>
 
-#include "../gamestate/resource.h"
+#include "../gamestate/old/resource.h"
 
 namespace openage {
 namespace gui {

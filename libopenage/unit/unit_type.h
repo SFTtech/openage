@@ -8,7 +8,7 @@
 #include <vector>
 
 #include "../coord/phys.h"
-#include "../gamestate/cost.h"
+#include "../gamestate/old/cost.h"
 #include "attributes.h"
 
 namespace openage {

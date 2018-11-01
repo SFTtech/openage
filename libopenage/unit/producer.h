@@ -9,7 +9,7 @@
 #include "../coord/tile.h"
 #include "../gamedata/gamedata.gen.h"
 #include "../gamedata/graphic.gen.h"
-#include "../gamestate/player.h"
+#include "../gamestate/old/player.h"
 #include "unit.h"
 #include "unit_type.h"
 

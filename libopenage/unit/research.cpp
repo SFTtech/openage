@@ -1,6 +1,6 @@
-// Copyright 2017-2017 the openage authors. See copying.md for legal info.
+// Copyright 2017-2018 the openage authors. See copying.md for legal info.
 
-#include "../gamestate/player.h"
+#include "../gamestate/old/player.h"
 #include "research.h"
 
 
