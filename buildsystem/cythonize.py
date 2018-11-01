@@ -9,7 +9,10 @@ Runs Cython on all modules that were listed via add_cython_module.
 import argparse
 import os
 import sys
+from contextlib import redirect_stdout
 from multiprocessing import cpu_count
+
+from Cython.Build import cythonize
 
 
 class LineFilter:
@@ -75,15 +78,21 @@ def remove_if_exists(filename):
 
 def cythonize_cpp_wrapper(modules, nthreads):
     """ Calls cythonize, filtering useless warnings """
-    from Cython.Build import cythonize
-    from contextlib import redirect_stdout
-
     if not modules:
         return
 
     with CythonFilter() as cython_filter:
         with redirect_stdout(cython_filter):
-            cythonize(modules, language='c++', nthreads=nthreads)
+            kwargs = {
+                'nthreads': nthreads,
+                'compiler_directives': {'language_level': 3},
+            }
+
+            # this is deprecated, but still better than
+            # writing funny lines at the head of each file.
+            kwargs['language'] = 'c++'
+
+            cythonize(modules, **kwargs)
 
 
 def main():
@@ -128,31 +137,34 @@ def main():
     from Cython.Compiler import Options
     Options.annotate = True
     Options.fast_fail = True
-    # TODO https://github.com/cython/cython/pull/415
-    #      Until then, this has no effect.
-    Options.short_cfilenm = '"cpp"'
     Options.generate_cleanup_code = args.memcleanup
+    Options.cplus = 1
 
+    # build cython modules (emits shared libraries)
     cythonize_cpp_wrapper(modules, args.threads)
 
+    # build standalone executables that embed the py interpreter
     Options.embed = "main"
-
     cythonize_cpp_wrapper(embedded_modules, args.threads)
 
     # verify depends
     from Cython.Build.Dependencies import _dep_tree
 
+    depend_failed = False
     # TODO figure out a less hacky way of getting the depends out of Cython
     # pylint: disable=no-member, protected-access
     for module, files in _dep_tree.__cimported_files_cache.items():
         for filename in files:
             if not filename.startswith('.'):
-                # system include
+                # system include starts with /
                 continue
 
             if os.path.realpath(os.path.abspath(filename)) not in depends:
                 print("\x1b[31mERR\x1b[m unlisted dependency: " + filename)
-                sys.exit(1)
+                depend_failed = True
+
+    if depend_failed:
+        sys.exit(1)
 
 
 if __name__ == '__main__':

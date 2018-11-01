@@ -370,11 +370,14 @@ class PXDGenerator:
         # Cython requires this; else it won't find the .pxd files.
         dirname = os.path.abspath(os.path.dirname(self.filename))
         while dirname.startswith(CWD + os.path.sep):
-            initfile = os.path.join(dirname, "__init__.py")
-            if not os.path.isfile(initfile):
-                print("\x1b[36mpxdgen: initfile %s\x1b[0m" % os.path.relpath(initfile, CWD))
-                with open(initfile, "w"):
-                    pass
+            for extension in ("py", "pxd"):
+                initfile = os.path.join(dirname, "__init__.%s" % extension)
+                if not os.path.isfile(initfile):
+                    print("\x1b[36mpxdgen: create package index %s\x1b[0m" % (
+                        os.path.relpath(initfile, CWD)))
+
+                    with open(initfile, "w"):
+                        pass
 
             # parent dir
             dirname = os.path.dirname(dirname)
