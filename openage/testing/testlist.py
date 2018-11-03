@@ -52,6 +52,8 @@ def demos_py():
            "play pong on steroids through future prediction")
     yield ("openage.renderer.tests.renderer_demo",
            "showcases the new renderer")
+    yield ("openage.main.tests.engine_demo",
+           "showcases the engine features")
 
 
 def benchmark_py():
