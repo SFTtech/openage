@@ -8,7 +8,8 @@ from ...log import dbg, spam
 
 from .bytearray cimport (PyByteArray_AS_STRING, PyByteArray_GET_SIZE,
                          PyByteArray_Resize)
-cimport ogg, opus
+from . cimport ogg, opus
+
 
 def encode(inputdata):
     '''
@@ -145,7 +146,7 @@ def encode(inputdata):
 
         # append converted opuspacket.
         op.bytes = enc_bytes
-        op.granulepos += nb_samples * (48000 / coding_rate)
+        op.granulepos += nb_samples * (48000 // coding_rate)
         if op.e_o_s:
             pass  # TODO. set granulepos ? for resampling decoders.
         op.packetno += 1

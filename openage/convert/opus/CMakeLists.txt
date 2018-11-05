@@ -21,6 +21,7 @@ add_cython_modules(
 )
 
 add_pxds(
+	__init__.pxd
 	bytearray.pxd
 	ogg.pxd
 	opus.pxd
