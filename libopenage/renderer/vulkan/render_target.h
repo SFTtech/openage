@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include <algorithm>
+
 #include "../renderer.h"
 
 #include "graphics_device.h"

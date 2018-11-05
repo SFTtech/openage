@@ -2,6 +2,7 @@
 
 #include "selection.h"
 
+#include <algorithm>
 #include <cmath>
 
 #include "../coord/tile.h"
