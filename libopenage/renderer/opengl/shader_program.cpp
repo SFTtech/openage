@@ -2,6 +2,8 @@
 
 #include "shader_program.h"
 
+#include <algorithm>
+
 #include "../../error/error.h"
 #include "../../log/log.h"
 #include "../../datastructure/constexpr_map.h"

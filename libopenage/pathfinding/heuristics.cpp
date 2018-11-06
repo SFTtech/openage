@@ -2,6 +2,7 @@
 
 #include "heuristics.h"
 
+#include <algorithm>
 #include <cmath>
 
 

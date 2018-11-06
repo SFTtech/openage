@@ -1,6 +1,9 @@
 // Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 #include "logsink.h"
+
+#include <algorithm>
+
 #include "message.h"
 
 namespace openage {
