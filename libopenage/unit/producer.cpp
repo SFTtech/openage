@@ -27,52 +27,54 @@ namespace openage {
 
 std::unordered_set<terrain_t> allowed_terrains(const gamedata::ground_type &restriction) {
 	// returns a terrain whitelist for a given restriction
-    // you can also define a blacklist for brevity, it will be converted and returned
-    std::unordered_set<terrain_t> whitelist;
-    std::unordered_set<terrain_t> blacklist;
+	// you can also define a blacklist for brevity, it will be converted and returned
+	std::unordered_set<terrain_t> whitelist;
+	std::unordered_set<terrain_t> blacklist;
 
 	// 1, 14, and 15 are water, 2 is shore
 	if (restriction == gamedata::ground_type::WATER ||
-	    restriction == gamedata::ground_type::WATER_0x0D ||
-	    restriction == gamedata::ground_type::WATER_SHIP_0x03 ||
-	    restriction == gamedata::ground_type::WATER_SHIP_0x0F) {
-        whitelist.insert(1); // water
-        whitelist.insert(2); // shore
-        whitelist.insert(4); // shallows
-        whitelist.insert(14); // medium water
-        whitelist.insert(15); // deep water
-    }
-    else if (restriction == gamedata::ground_type::SOLID) {
-        blacklist.insert(1); // water
-        blacklist.insert(4); // shallows
-        blacklist.insert(14); // medium water
-        blacklist.insert(15); // deep water
-    }
-	else if (restriction == gamedata::ground_type::FOUNDATION ||
-             restriction == gamedata::ground_type::NO_ICE_0x08 ||
-             restriction == gamedata::ground_type::FOREST) {
-        blacklist.insert(1); // water
-        blacklist.insert(4); // shallows
-        blacklist.insert(14); // medium water
-        blacklist.insert(15); // deep water
-        blacklist.insert(18); // ice
-    }
-    else {
-        log::log(MSG(warn) << "undefined terrain restriction, assuming solid");
-        blacklist.insert(1); // water
-        blacklist.insert(4); // shallows
-        blacklist.insert(14); // medium water
-        blacklist.insert(15); // deep water
-    }
+		restriction == gamedata::ground_type::WATER_0x0D ||
+		restriction == gamedata::ground_type::WATER_SHIP_0x03 ||
+		restriction == gamedata::ground_type::WATER_SHIP_0x0F) {
 
-    // if we're using a blacklist, fill out a whitelist with everything not on it
-    if (blacklist.size() > 0) {
-        // Allow all terrains that are not on blacklist
-        for (int i = 0; i < 32; ++i) {
-            if (blacklist.count(i) == 0) {
-                whitelist.insert(i);
-            }
-        }
+		whitelist.insert(1); // water
+		whitelist.insert(2); // shore
+		whitelist.insert(4); // shallows
+		whitelist.insert(14); // medium water
+		whitelist.insert(15); // deep water
+	}
+	else if (restriction == gamedata::ground_type::SOLID) {
+		blacklist.insert(1); // water
+		blacklist.insert(4); // shallows
+		blacklist.insert(14); // medium water
+		blacklist.insert(15); // deep water
+	}
+	else if (restriction == gamedata::ground_type::FOUNDATION ||
+		restriction == gamedata::ground_type::NO_ICE_0x08 ||
+		restriction == gamedata::ground_type::FOREST) {
+
+		blacklist.insert(1); // water
+		blacklist.insert(4); // shallows
+		blacklist.insert(14); // medium water
+		blacklist.insert(15); // deep water
+		blacklist.insert(18); // ice
+	}
+	else {
+		log::log(MSG(warn) << "undefined terrain restriction, assuming solid");
+		blacklist.insert(1); // water
+		blacklist.insert(4); // shallows
+		blacklist.insert(14); // medium water
+		blacklist.insert(15); // deep water
+	}
+
+	// if we're using a blacklist, fill out a whitelist with everything not on it
+	if (blacklist.size() > 0) {
+		// Allow all terrains that are not on blacklist
+		for (int i = 0; i < 32; ++i) {
+			if (blacklist.count(i) == 0) {
+				whitelist.insert(i);
+			}
+		}
 	}
 
 	return whitelist;
@@ -690,34 +692,22 @@ TerrainObject *BuildingProducer::place(Unit *u, std::shared_ptr<Terrain> terrain
 	TerrainObject *obj_ptr = u->location.get();
 	std::weak_ptr<Terrain> terrain_ptr = terrain;
 
-    // find set of allowed terrains
-    std::unordered_set<terrain_t> terrains = allowed_terrains(this->unit_data.terrain_restriction);
+	// find set of allowed terrains
+	std::unordered_set<terrain_t> terrains = allowed_terrains(this->unit_data.terrain_restriction);
 
-    u->location->passable = [obj_ptr, terrain_ptr, terrains](const coord::phys3 &pos) -> bool {
+	u->location->passable = [obj_ptr, terrain_ptr, terrains](const coord::phys3 &pos) -> bool {
 		auto terrain = terrain_ptr.lock();
 
 		// look at all tiles in the bases range
 		for (coord::tile check_pos : tile_list(obj_ptr->get_range(pos, *terrain))) {
 			TileContent *tc = terrain->get_data(check_pos);
-			if (!tc || terrains.count(tc->terrain_id) == 0) {
+
+			// check if terrains are suitable and free of content
+			if (!tc || !terrains.count(tc->terrain_id) || tc->obj.size()) {
 				return false;
 			}
-
-			for (auto tobj : tc->obj) {
-				// check if there's a generic collision (e.g. with trees)
-				if (tobj->check_collisions()) return false;
-
-				// handle building collisions as a special case
-				if (tobj->unit.unit_type->unit_class == gamedata::unit_classes::BUILDING) {
-
-					// all conflicts with placed buildings should block foundation placement
-					if (tobj->is_placed()) return false;
-
-					// conflicts with your own foundations should block placement
-					if (tobj->is_floating() && tobj->unit.is_own_unit()) return false;
-				}
-			}
 		}
+
 		return true;
 	};
 
