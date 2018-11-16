@@ -81,7 +81,7 @@ def encode(inputdata):
         free_buffers(&os, oe, NULL, NULL)
         return "Getting encoder lookahead failed: {}".format(err)
 
-    inopt['pre_skip'] = lookahead / (48000 / coding_rate)
+    inopt['pre_skip'] = int(lookahead / (48000 / coding_rate))
 
     try:
         if write_opus_header(&os, &op, inopt):
