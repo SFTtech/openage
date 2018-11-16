@@ -276,9 +276,9 @@ void ActionMode::on_game_control_set() {
 			this->mousepos_phys3 = arg.mouse.to_phys3(coord, 0);
 			this->mousepos_tile = this->mousepos_phys3.to_tile();
 
-			this->place_selection(this->mousepos_phys3);
+			bool placed = this->place_selection(this->mousepos_phys3);
 
-			if (!increase) {
+			if (placed && !increase) {
 				this->type_focus = nullptr;
 				input->remove_context(&this->building_context);
 				this->announce_buttons_type();
