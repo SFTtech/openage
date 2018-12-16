@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
 	if(ALLOW_IN_SOURCE_BUILD)
@@ -27,5 +27,13 @@ those traces (remove CMakeCache.txt and CMakeFiles).
 
 ")
 		message(FATAL_ERROR "aborting")
+	endif()
+else()
+	# Check if the source directory has a generated file.
+	if (EXISTS ${CMAKE_SOURCE_DIR}/openage/config.py)
+		# Clean the generated files from the source directory.
+		execute_process(
+			COMMAND git clean -Xf -- libopenage/ openage/
+			WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 	endif()
 endif()

@@ -1,10 +1,10 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 #include "externalprofiler.h"
 
 #include <string>
 
-#include "../config.h"
+#include "config.h"
 
 #if WITH_GPERFTOOLS_PROFILER
 #include <gperftools/profiler.h>

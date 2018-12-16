@@ -1,4 +1,4 @@
-# Copyright 2014-2017 the openage authors. See copying.md for legal info.
+# Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 # provides macros for defining python extension modules and pxdgen sources.
 # and a 'finalize' function that must be called in the end.
@@ -83,7 +83,7 @@ function(add_cython_modules)
 			endif()
 
 			get_filename_component(OUTPUTNAME "${source}" NAME_WE)
-			string(REGEX REPLACE "\\.pyx?$" ".cpp" CPPNAME "${source}")
+			set(CPPNAME "${CMAKE_CURRENT_BINARY_DIR}/${OUTPUTNAME}.cpp")
 			set_source_files_properties("${CPPNAME}" PROPERTIES GENERATED ON)
 
 			# construct some hopefully unique target name
@@ -169,11 +169,14 @@ function(pxdgen)
 			set(source "${CMAKE_CURRENT_SOURCE_DIR}/${source}")
 		endif()
 
-		if(NOT "${source}" MATCHES ".*\\.h$")
+		get_filename_component(source_ext "${source}" EXT)
+		if(NOT "${source_ext}" STREQUAL ".h")
 			message(FATAL_ERROR "non-.h file given to pxdgen: ${source}")
 		endif()
 
-		string(REGEX REPLACE "\\.h$" ".pxd" PXDNAME "${source}")
+		# TODO: change if multiple files with the same name are supported in a directory
+		get_filename_component(source_name_without_ext "${source}" NAME_WE)
+		set(PXDNAME "${CMAKE_CURRENT_BINARY_DIR}/${source_name_without_ext}.pxd")
 		set_source_files_properties("${PXDNAME}" PROPERTIES GENERATED ON)
 
 		set_property(GLOBAL APPEND PROPERTY SFT_PXDGEN_SOURCES "${source}")
@@ -302,6 +305,7 @@ function(python_finalize)
 	add_custom_command(OUTPUT "${PXDGEN_TIMEFILE}"
 		COMMAND "${PYTHON}" -m buildsystem.pxdgen
 		--file-list "${CMAKE_BINARY_DIR}/py/pxdgen_sources"
+		--output-dir "${CMAKE_BINARY_DIR}"
 		COMMAND "${CMAKE_COMMAND}" -E touch "${PXDGEN_TIMEFILE}"
 		DEPENDS ${pxdgen_sources} "${CMAKE_BINARY_DIR}/py/pxdgen_sources"
 		COMMENT "pxdgen: generating .pxd files from headers"
@@ -325,6 +329,7 @@ function(python_finalize)
 		"${CMAKE_BINARY_DIR}/py/cython_modules"
 		"${CMAKE_BINARY_DIR}/py/cython_modules_embed"
 		"${CMAKE_BINARY_DIR}/py/pxd_list"
+		"--build-dir" "${CMAKE_BINARY_DIR}"
 		COMMAND "${CMAKE_COMMAND}" -E touch "${CYTHONIZE_TIMEFILE}"
 		DEPENDS
 		"${PXDGEN_TIMEFILE}"
@@ -350,20 +355,33 @@ function(python_finalize)
 
 	write_on_change("${CMAKE_BINARY_DIR}/py/py_files" "${py_files}")
 	set(COMPILEPY_TIMEFILE "${CMAKE_BINARY_DIR}/py/compilepy_timefile")
-	add_custom_command(OUTPUT "${COMPILEPY_TIMEFILE}"
-		COMMAND "${PYTHON}" -m buildsystem.compilepy
+	set(COMPILEPY_INVOCATION
+		"${PYTHON}" -m buildsystem.compilepy
 		"${CMAKE_BINARY_DIR}/py/py_files"
 		"${CMAKE_SOURCE_DIR}"
-		"${CMAKE_SOURCE_DIR}"
+		"${CMAKE_BINARY_DIR}"
+	)
+
+	# determine the compiled file name for all source files
+	execute_process(COMMAND
+		${COMPILEPY_INVOCATION} "--print-output-paths-only"
+		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+		OUTPUT_VARIABLE py_compiled_files
+		RESULT_VARIABLE COMMAND_RESULT
+	)
+	if(NOT ${COMMAND_RESULT} EQUAL 0)
+		message(FATAL_ERROR "failed to get output list from compilepy invocation")
+	endif()
+	string(STRIP "${py_compiled_files}" py_compiled_files)
+
+	add_custom_command(OUTPUT "${COMPILEPY_TIMEFILE}"
+		COMMAND ${COMPILEPY_INVOCATION}
 		COMMAND "${CMAKE_COMMAND}" -E touch "${COMPILEPY_TIMEFILE}"
 		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
 		DEPENDS "${CMAKE_BINARY_DIR}/py/py_files" ${py_files}
 		COMMENT "compiling .py files to .pyc files"
 	)
 	add_custom_target(compilepy ALL DEPENDS "${COMPILEPY_TIMEFILE}")
-
-	# determine the compiled file name for all source files
-	py_exec("from importlib import util; print(';'.join(util.cache_from_source(f) for f in open('${CMAKE_BINARY_DIR}/py/py_files').read().split(';')))" py_compiled_files)
 
 	list(LENGTH py_files py_files_count)
 	math(EXPR py_files_count_range "${py_files_count} - 1")
@@ -406,26 +424,37 @@ function(python_finalize)
 		endif()
 	endforeach()
 
+	##################################################
+	# code generation
+
+	codegen_run()
 
 	# inplace module install (bin/module.so -> module.so)
+	# MSVC, Xcode (multi-config generators) produce outputs
+	# in a directory different from `CMAKE_CURRENT_BINARY_DIR`.
+	# link/copy the output files as required for the cython modules.
 
 	get_property(cython_module_targets GLOBAL PROPERTY SFT_CYTHON_MODULE_TARGETS)
 	set(cython_module_files_expr)
 	foreach(cython_module_target ${cython_module_targets})
 		list(APPEND cython_module_files_expr "$<TARGET_FILE:${cython_module_target}>")
 	endforeach()
+
+	set(INPLACEMODULES_LISTFILE "${CMAKE_BINARY_DIR}/py/inplace_module_list_$<CONFIG>")
 	file(GENERATE
-		OUTPUT "${CMAKE_BINARY_DIR}/py/inplace_module_list$<CONFIG>"
+		OUTPUT ${INPLACEMODULES_LISTFILE}
 		CONTENT "${cython_module_files_expr}"
+	)
+	set(INPLACEMODULES_INVOCATION
+		"${PYTHON}" -m buildsystem.inplacemodules
+		${INPLACEMODULES_LISTFILE}
+		"$<CONFIG>"
 	)
 	set(INPLACEMODULES_TIMEFILE "${CMAKE_BINARY_DIR}/py/inplacemodules_timefile")
 	add_custom_command(OUTPUT "${INPLACEMODULES_TIMEFILE}"
-		COMMAND "${PYTHON}" -m buildsystem.inplacemodules
-		"${CMAKE_BINARY_DIR}/py/inplace_module_list$<CONFIG>"
-		"${CMAKE_BINARY_DIR}" "$<CONFIG>"
+		COMMAND ${INPLACEMODULES_INVOCATION}
 		DEPENDS
-		"${CMAKE_BINARY_DIR}/py/inplace_module_list$<CONFIG>"
-		${cython_module_targets}
+		${INPLACEMODULES_LISTFILE} ${cython_module_targets}
 		COMMAND "${CMAKE_COMMAND}" -E touch "${INPLACEMODULES_TIMEFILE}"
 		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
 		COMMENT "creating in-place modules"
@@ -436,27 +465,29 @@ function(python_finalize)
 	# cleaning of all in-sourcedir stuff
 
 	add_custom_target(cleancython
-		COMMAND "${PYTHON}" -m buildsystem.inplacemodules --clean
-		"${CMAKE_BINARY_DIR}/py/inplace_module_list$<CONFIG>"
-		"${CMAKE_BINARY_DIR}" "$<CONFIG>"
+		COMMAND ${INPLACEMODULES_INVOCATION} --clean
 		COMMAND "${PYTHON}" -m buildsystem.cythonize --clean
 		"${CMAKE_BINARY_DIR}/py/cython_modules"
 		"${CMAKE_BINARY_DIR}/py/cython_modules_embed"
 		"${CMAKE_BINARY_DIR}/py/pxd_list"
+		"--build-dir" "${CMAKE_BINARY_DIR}"
+		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+	)
+	add_custom_command(TARGET cleancython POST_BUILD
 		# general deleters to catch files that have already been un-listed.
-		COMMAND find openage -name "*.cpp" -type f -print -delete
-		COMMAND find openage -name "*.html" -type f -print -delete
-		COMMAND find openage -name "*.so" -type f -print -delete
+		COMMAND find openage -name "'*.cpp'" -type f -print -delete
+		COMMAND find openage -name "'*.html'" -type f -print -delete
+		COMMAND find openage -name "'*.so'" -type f -print -delete
 		COMMAND "${CMAKE_COMMAND}" -E remove "${CYTHONIZE_TIMEFILE}"
 		COMMAND "${CMAKE_COMMAND}" -E remove "${INPLACEMODULES_TIMEFILE}"
-		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+		WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
 	)
 
 	add_custom_target(cleanpxdgen
-		COMMAND find libopenage -name "*.pxd" -type f -print -delete
+		COMMAND find libopenage -name "'*.pxd'" -type f -print -delete
 		COMMAND find libopenage -name "__init__.py" -type f -print -delete
 		COMMAND "${CMAKE_COMMAND}" -E remove "${PXDGEN_TIMEFILE}"
-		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+		WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
 	)
 
 
@@ -465,6 +496,7 @@ function(python_finalize)
 	execute_process(
 		COMMAND "${PYTHON}" -m buildsystem.check_py_file_list
 		"${CMAKE_BINARY_DIR}/py/py_files"
+		"${CMAKE_SOURCE_DIR}/openage"
 		WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
 		RESULT_VARIABLE res
 	)

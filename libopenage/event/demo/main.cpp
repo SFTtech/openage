@@ -4,7 +4,7 @@
 #include <ratio>
 #include <SDL.h>
 
-#include "../../config.h"
+#include "config.h"
 #include "../event.h"
 #include "aicontroller.h"
 #include "gamestate.h"

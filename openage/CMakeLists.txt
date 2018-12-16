@@ -7,7 +7,7 @@ add_py_modules(
 	__init__.py
 	__main__.py
 	assets.py
-	config.py
+	${CMAKE_CURRENT_BINARY_DIR}/config.py
 	default_dirs.py
 	NOINSTALL devmode.py
 )

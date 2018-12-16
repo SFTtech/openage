@@ -3,7 +3,7 @@
 #pragma once
 
 
-#include "../../config.h"
+#include "config.h"
 
 #if WITH_NCURSES
 #include <vector>

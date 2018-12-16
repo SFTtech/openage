@@ -4,7 +4,7 @@
 
 #include <functional>
 
-#include "../../config.h"
+#include "config.h"
 #include "../state.h"
 #include "../loop.h"
 #include "../eventtarget.h"

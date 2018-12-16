@@ -1,4 +1,4 @@
-# Copyright 2014-2017 the openage authors. See copying.md for legal info.
+# Copyright 2014-2018 the openage authors. See copying.md for legal info.
 
 """
 Codegen interface to the build system.
@@ -50,14 +50,23 @@ depending on the specified invocation commands,
 import os
 import sys
 
-from ..util.fslike.directory import Directory
-
 from .codegen import CodegenMode, codegen
 
 
 def init_subparser(cli):
     """ Codegen-specific CLI. """
     cli.set_defaults(entrypoint=main)
+
+    cli.add_argument(
+        "--input-dir", required=True,
+        help=("the directory to read inputs from."
+              "this is the usually the repository root."))
+
+    cli.add_argument(
+        "--output-dir", required=True,
+        help=("the directory to produce outputs in."
+              "this is the directory corresponding to the repository root "
+              "which is inferred using current working directory."))
 
     cli.add_argument(
         "--generated-list-file", required=True,
@@ -128,7 +137,7 @@ def main(args, error):
     # arguments are OK.
 
     # generate sources
-    generated, depends = codegen(Directory(os.getcwd()).root, mode)
+    generated, depends = codegen(mode, args.input_dir, args.output_dir)
 
     def print_set_differences(old, new, name):
         """ Prints the difference between old and new. """

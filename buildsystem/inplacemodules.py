@@ -1,15 +1,17 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
 """
-Installs the Python extension modules that were created in the build directory
-to the places where they would be expected in the source tree.
+Installs the Python extension modules that were created in the configuration
+specific subdirectory of the build directory to the places where they would
+be expected.
 
 Attemts to use OS facilities such as hardlinking, and falls back to copying.
 """
 
 import argparse
 import os
-import sys
+from pathlib import Path
+import shutil
 
 
 def main():
@@ -18,9 +20,6 @@ def main():
     cli.add_argument("module_list_file", help=(
         "semicolon-separated list of all modules that shall be installed "
         "in-place."
-    ))
-    cli.add_argument("binary_dir", help=(
-        "the build directory where those files will be found."
     ))
     cli.add_argument("configuration", help=(
         "the build configuration like Debug or Release"
@@ -35,27 +34,27 @@ def main():
         if modules == ['']:
             modules = []
 
-    if not os.path.isdir(args.binary_dir):
-        print("not a directory: " + args.binary_dir)
-        sys.exit(1)
-
     for module in modules:
-        sourcefile = module
-        targetfile = os.path.relpath(module, args.binary_dir)
+        sourcefile = Path(module)
 
-        # If `targetfile` has a configuration component, remove it.
-        targetfile = os.path.normpath(targetfile.replace(args.configuration, '.'))
+        if args.configuration in sourcefile.parts:
+            # If `sourcefile` has a configuration component, remove it.
+            file_parts = list(sourcefile.parts)
+            file_parts.remove(args.configuration)
+            targetfile = Path(*file_parts)
+        else:
+            continue
 
-        if os.path.exists(targetfile):
+        if targetfile.exists():
             if args.clean:
                 print(targetfile)
-                os.remove(targetfile)
+                targetfile.unlink()
                 continue
 
-            if os.path.getmtime(targetfile) >= os.path.getmtime(sourcefile):
+            if targetfile.stat().st_mtime >= sourcefile.stat().st_mtime:
                 continue
 
-            os.remove(targetfile)
+            targetfile.unlink()
 
         if args.clean:
             continue
@@ -71,9 +70,7 @@ def main():
         # determine the actual location, and refuse to work.
 
         # fallback to copying the file
-        with open(sourcefile, 'rb') as infile:
-            with open(targetfile, 'wb') as outfile:
-                outfile.write(infile.read())
+        shutil.copy(sourcefile, targetfile)
 
 
 if __name__ == '__main__':

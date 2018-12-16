@@ -69,6 +69,12 @@ def read_list_from_file(filename):
     return data
 
 
+def convert_to_relpath(filenames):
+    """ Convert a list of absolute paths to relative paths """
+    cwd = os.getcwd()
+    return [os.path.relpath(filename, cwd) for filename in filenames]
+
+
 def remove_if_exists(filename):
     """ Deletes the file (if it exists) """
     if os.path.exists(filename):
@@ -76,22 +82,13 @@ def remove_if_exists(filename):
         os.remove(filename)
 
 
-def cythonize_cpp_wrapper(modules, nthreads):
+def cythonize_wrapper(modules, **kwargs):
     """ Calls cythonize, filtering useless warnings """
     if not modules:
         return
 
     with CythonFilter() as cython_filter:
         with redirect_stdout(cython_filter):
-            kwargs = {
-                'nthreads': nthreads,
-                'compiler_directives': {'language_level': 3},
-            }
-
-            # this is deprecated, but still better than
-            # writing funny lines at the head of each file.
-            kwargs['language'] = 'c++'
-
             cythonize(modules, **kwargs)
 
 
@@ -114,6 +111,10 @@ def main():
     cli.add_argument("--clean", action="store_true", help=(
         "Clean compilation results and exit."
     ))
+    cli.add_argument("--build-dir", help=(
+        "Build output directory to generate the cpp files in."
+        "note: this is also added for module search path."
+    ))
     cli.add_argument("--memcleanup", type=int, default=0, help=(
         "Generate memory cleanup code to make valgrind happy:\n"
         "0: nothing, 1+: interned objects,\n"
@@ -123,8 +124,10 @@ def main():
                      help="number of compilation threads to use")
     args = cli.parse_args()
 
-    modules = read_list_from_file(args.module_list)
-    embedded_modules = read_list_from_file(args.embedded_module_list)
+    # cython emits warnings on using absolute paths to modules
+    # https://github.com/cython/cython/issues/2323
+    modules = convert_to_relpath(read_list_from_file(args.module_list))
+    embedded_modules = convert_to_relpath(read_list_from_file(args.embedded_module_list))
     depends = set(read_list_from_file(args.depends_list))
 
     if args.clean:
@@ -141,11 +144,23 @@ def main():
     Options.cplus = 1
 
     # build cython modules (emits shared libraries)
-    cythonize_cpp_wrapper(modules, args.threads)
+    cythonize_args = {
+        'compiler_directives': {'language_level': 3},
+        'build_dir': args.build_dir,
+        'include_path': [args.build_dir],
+        'nthreads': args.threads
+    }
+
+    # this is deprecated, but still better than
+    # writing funny lines at the head of each file.
+    cythonize_args['language'] = 'c++'
+
+    cythonize_wrapper(modules, **cythonize_args)
 
     # build standalone executables that embed the py interpreter
     Options.embed = "main"
-    cythonize_cpp_wrapper(embedded_modules, args.threads)
+
+    cythonize_wrapper(embedded_modules, **cythonize_args)
 
     # verify depends
     from Cython.Build.Dependencies import _dep_tree
