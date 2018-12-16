@@ -32,5 +32,5 @@ struct templets {
         // For example, at offset 0x00419AAB
         // It doesn't make much sense because I don't think it updates the slp_command_offsets, but I may be wrong.
     }[17];                                 // always seems to be 17
-};    
+};
 ```
