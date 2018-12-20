@@ -21,7 +21,7 @@ _the openage authors_ are:
 | Jimmy Berry                 | boombatower                 | jimmy à boombatower dawt com                      |
 | João Roque                  | joaoroque                   | joaoroque à gmail dawt com                        |
 | Julius Michaelis            | jcaesar                     | gitter à liftm dawt de                            |
-| Katharina Bogad             | delirium, masterofjellyfish | bogad à cs dawt tum dawt edu                      |
+| Katharina Bogad             | mistressofjellyfish         | delirium à hacked dawt xyz                        |
 | Oliver Fawcett-Griffiths    | ollyfg                      | olly à ollyfg dawt com                            |
 | Ross Murray                 | rossmurray                  | rm à egoorb dawt com                              |
 | Alexandre Arpin             | AlexandreArpin              | arpin dawt alexandre à gmail dawt com             |
