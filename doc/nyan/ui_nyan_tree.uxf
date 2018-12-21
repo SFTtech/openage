@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?><diagram program="umlet" version="13.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>680</x>
+      <y>90</y>
+      <w>100</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>
+*Entity*
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>680</x>
+      <y>220</y>
+      <w>110</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>
+*UIElement*
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>320</x>
+      <y>370</y>
+      <w>260</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>*Container*
+bg=pink
+
+--
+background : optional(file)
+allowed_elements : set(UIElement)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>610</x>
+      <y>370</y>
+      <w>240</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>*Button*
+bg=pink
+
+--
+sprite_pressed : file
+sprite_unpressed : optional(file)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>880</x>
+      <y>370</y>
+      <w>110</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>
+*Label*
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>440</x>
+      <y>490</y>
+      <w>110</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>
+*Frame*
+bg=pink
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>440</x>
+      <y>560</y>
+      <w>130</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>
+*ButtonGroup*
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>720</x>
+      <y>490</y>
+      <w>110</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>
+*RadioButton*
+bg=pink
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>720</x>
+      <y>560</y>
+      <w>110</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>
+*Checkbox*
+bg=pink
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>440</x>
+      <y>700</y>
+      <w>160</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>*ScrollArea*
+bg=pink
+
+--
+scroll_bar : ScrollBar
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>140</x>
+      <y>370</y>
+      <w>150</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>*ScrollBar*
+bg=pink
+
+--
+sprite_bar : file</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>880</x>
+      <y>490</y>
+      <w>140</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>*IconLabel*
+bg=pink
+
+--
+icon : Icon</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>720</x>
+      <y>630</y>
+      <w>110</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>
+*PushButton*
+bg=pink
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>440</x>
+      <y>630</y>
+      <w>100</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>
+*List*
+bg=pink
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1030</x>
+      <y>370</y>
+      <w>140</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>*Icon*
+bg=pink
+
+--
+icon : file</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>720</x>
+      <y>140</y>
+      <w>30</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>720</x>
+      <y>270</y>
+      <w>30</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>670</x>
+      <y>440</y>
+      <w>70</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0;50.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>390</x>
+      <y>440</y>
+      <w>70</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0;50.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>920</x>
+      <y>420</y>
+      <w>30</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>720</x>
+      <y>320</y>
+      <w>230</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;210.0;10.0;210.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>920</x>
+      <y>320</y>
+      <w>200</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;180.0;10.0;180.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>440</x>
+      <y>320</y>
+      <w>310</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>290.0;10.0;10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>200</x>
+      <y>320</y>
+      <w>270</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>250.0;10.0;10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>390</x>
+      <y>510</y>
+      <w>70</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0;50.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>390</x>
+      <y>580</y>
+      <w>70</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0;50.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>390</x>
+      <y>650</y>
+      <w>70</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0;50.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>670</x>
+      <y>510</y>
+      <w>70</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0;50.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>670</x>
+      <y>580</y>
+      <w>70</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0;50.0;80.0</additional_attributes>
+  </element>
+</diagram>
