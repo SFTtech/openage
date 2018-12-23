@@ -246,7 +246,7 @@ cdef bool fs_mkdirs(PyObject *fslike, const vector[string]& parts) except * with
 
 cdef File_cpp fs_open(object path, int mode) except *:
     if path is None:
-        raise FileNotFoundError("file could not be found")
+        raise Exception("fs_open can't open a path that is None")
 
     cdef PyObj ref
 
@@ -277,28 +277,42 @@ cdef File_cpp fs_open(object path, int mode) except *:
         return File_cpp(ref)
 
 
+cdef check_file_exists(object path, object fslike, const vector[string]& parts):
+    if path is None:
+        raise FileNotFoundError("file could not be found in filesystem %s "
+                                "for path '%s'" % (
+                                    fslike,
+                                    b"/".join(parts).decode(errors='ignore')
+                                ))
+
+
 cdef File_cpp fs_open_r(PyObject *fslike, const vector[string]& parts) except * with gil:
     open_path = (<object> fslike).resolve_r(parts)
+    check_file_exists(open_path, <object> fslike, parts)
     return fs_open(open_path, 0)
 
 
 cdef File_cpp fs_open_w(PyObject *fslike, const vector[string]& parts) except * with gil:
     open_path = (<object> fslike).resolve_w(parts)
+    check_file_exists(open_path, <object> fslike, parts)
     return fs_open(open_path, 1)
 
 
 cdef File_cpp fs_open_rw(PyObject *fslike, const vector[string]& parts) except * with gil:
     open_path = (<object> fslike).resolve_w(parts)
+    check_file_exists(open_path, <object> fslike, parts)
     return fs_open(open_path, 2)
 
 
 cdef File_cpp fs_open_a(PyObject *fslike, const vector[string]& parts) except * with gil:
     open_path = (<object> fslike).resolve_w(parts)
+    check_file_exists(open_path, <object> fslike, parts)
     return fs_open(open_path, 3)
 
 
 cdef File_cpp fs_open_ar(PyObject *fslike, const vector[string]& parts) except * with gil:
     open_path = (<object> fslike).resolve_w(parts)
+    check_file_exists(open_path, <object> fslike, parts)
     return fs_open(open_path, 4)
 
 
