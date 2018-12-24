@@ -57,10 +57,36 @@ private:
 	struct GlUniform {
 		GLenum type;
 		GLint location;
-		/// For arrays, the number of elements. For scalars, 1.
-		size_t count;
-		/// The size in bytes of the whole uniform (whole array if it's one).
+		/// The size in bytes of the whole uniform. If the uniform is an array,
+		/// the size of the whole array.
 		size_t size;
+		/// If this uniform is within a uniform block, the block name, otherwise empty.
+		/// Its existence (or lack thereof) can be used to check whether the uniform
+		/// is in a named block.
+		std::optional<std::string> block_name;
+
+		// The members below are only relevant for uniforms in named uniform blocks.
+		/// Offset from the beginning of the block at which this uniform is placed.
+		size_t offset;
+		/// Only relevant for arrays and matrices.
+		/// In arrays, specifies the distance between the start of each element.
+		/// In row-major matrices, specifies the distance between the start of each row.
+		/// In column-major matrices, specifies the distance between the start of each column.
+		size_t stride;
+		/// Only relevant for arrays. The number of elements in the array.
+		size_t count;
+	};
+
+	/// Represents a uniform block in the shader program.
+	struct GlUniformBlock {
+		GLint location;
+		/// Size of the entire block. How uniforms are packed within depends
+		/// on the block layout and is described in corresponding GlUniforms.
+		size_t data_size;
+		/// Names of the uniforms within this block.
+		std::vector<std::string> uniforms;
+		/// The binding point assigned to this block.
+		GLuint binding_point;
 	};
 
 	/// Represents a per-vertex input to the shader program.
@@ -71,19 +97,19 @@ private:
 		GLint size;
 	};
 
-	/// A map of uniform names to their descriptions.
+	/// Maps uniform names to their descriptions. Contains all
+	/// uniforms, both within and outside of uniform blocks.
 	std::unordered_map<std::string, GlUniform> uniforms;
 
-	/// A map of per-vertex attribute names to their descriptions.
+	/// Maps uniform block names to their descriptions.
+	std::unordered_map<std::string, GlUniformBlock> uniform_blocks;
+
+	/// Maps per-vertex attribute names to their descriptions.
 	std::unordered_map<std::string, GlVertexAttrib> attribs;
 
-	// TODO parse uniform buffer structure ugh
-	// std::unordered_map<std::string, ..> uniform_buffers;
-	// GlVertexInputInfo;
-
-	/// A map from sampler uniform names to their assigned texture units.
+	/// Maps sampler uniform names to their assigned texture units.
 	std::unordered_map<std::string, GLuint> texunits_per_unifs;
-	/// A map from texture units to the texture handles that are currently bound to them.
+	/// Maps texture units to the texture handles that are currently bound to them.
 	std::unordered_map<GLuint, GLuint> textures_per_texunits;
 };
 

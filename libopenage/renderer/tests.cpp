@@ -109,7 +109,6 @@ void main() {
 	auto shader = renderer->add_shader( { vshader_src, fshader_src } );
 	auto shader_display = renderer->add_shader( { vshader_display_src, fshader_display_src } );
 
-
 	auto transform1 = Eigen::Affine3f::Identity();
 	transform1.prescale(Eigen::Vector3f(0.4f, 0.2f, 1.0f));
 	transform1.prerotate(Eigen::AngleAxisf(30.0f * 3.14159f / 180.0f, Eigen::Vector3f::UnitX()));
