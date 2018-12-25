@@ -27,7 +27,7 @@ public:
 	explicit GlShaderProgram(const std::vector<resources::ShaderSource>&, const gl_context_capabilities&);
 
 	/// Bind this program as the currently used one in the OpenGL context.
-	void use() const;
+	void use();
 
 	/// Does what the description of Renderable specifies - updates the uniform values
 	/// and draws the Geometry if it's not nullptr. If geometry is null, only the
@@ -53,21 +53,22 @@ protected:
 private:
 	void set_unif(UniformInput*, const char*, void const*, GLenum);
 
-	/// Represents a uniform location in the shader program.
+	/// Represents a uniform in the default block, i.e. not within a named block.
 	struct GlUniform {
 		GLenum type;
-		GLint location;
+		/// Location of the uniform for use with glUniform and glGetUniform.
+		/// NOT the same as the uniform index.
+		GLuint location;
+	};
+
+	/// Represents a uniform in a named block.
+	struct GlInBlockUniform {
+		GLenum type;
+		/// Offset from the beginning of the block at which this uniform is placed.
+		size_t offset;
 		/// The size in bytes of the whole uniform. If the uniform is an array,
 		/// the size of the whole array.
 		size_t size;
-		/// If this uniform is within a uniform block, the block name, otherwise empty.
-		/// Its existence (or lack thereof) can be used to check whether the uniform
-		/// is in a named block.
-		std::optional<std::string> block_name;
-
-		// The members below are only relevant for uniforms in named uniform blocks.
-		/// Offset from the beginning of the block at which this uniform is placed.
-		size_t offset;
 		/// Only relevant for arrays and matrices.
 		/// In arrays, specifies the distance between the start of each element.
 		/// In row-major matrices, specifies the distance between the start of each row.
@@ -79,12 +80,13 @@ private:
 
 	/// Represents a uniform block in the shader program.
 	struct GlUniformBlock {
-		GLint location;
+		GLuint index;
 		/// Size of the entire block. How uniforms are packed within depends
 		/// on the block layout and is described in corresponding GlUniforms.
 		size_t data_size;
-		/// Names of the uniforms within this block.
-		std::vector<std::string> uniforms;
+		/// Maps uniform names within this block to their descriptions.
+		std::unordered_map<std::string, GlInBlockUniform> uniforms;
+
 		/// The binding point assigned to this block.
 		GLuint binding_point;
 	};
@@ -97,8 +99,8 @@ private:
 		GLint size;
 	};
 
-	/// Maps uniform names to their descriptions. Contains all
-	/// uniforms, both within and outside of uniform blocks.
+	/// Maps uniform names to their descriptions. Contains only
+	/// uniforms in the default block, i.e. not within named blocks.
 	std::unordered_map<std::string, GlUniform> uniforms;
 
 	/// Maps uniform block names to their descriptions.
@@ -111,6 +113,9 @@ private:
 	std::unordered_map<std::string, GLuint> texunits_per_unifs;
 	/// Maps texture units to the texture handles that are currently bound to them.
 	std::unordered_map<GLuint, GLuint> textures_per_texunits;
+
+	/// Whether this program has been validated.
+	bool validated;
 };
 
 }}} // openage::renderer::opengl

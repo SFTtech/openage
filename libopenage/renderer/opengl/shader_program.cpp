@@ -3,6 +3,7 @@
 #include "shader_program.h"
 
 #include <algorithm>
+#include <unordered_set>
 
 #include "../../error/error.h"
 #include "../../log/log.h"
@@ -47,7 +48,8 @@ static void check_program_status(GLuint program, GLenum what_to_check) {
 }
 
 GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &srcs, const gl_context_capabilities &caps)
-	: GlSimpleObject([] (GLuint handle) { glDeleteProgram(handle); } ) {
+	: GlSimpleObject([] (GLuint handle) { glDeleteProgram(handle); } )
+	, validated(false) {
 	GLuint handle = glCreateProgram();
 	this->handle = handle;
 
@@ -60,9 +62,6 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 
 	glLinkProgram(handle);
 	check_program_status(handle, GL_LINK_STATUS);
-
-	glValidateProgram(handle);
-	check_program_status(handle, GL_VALIDATE_STATUS);
 
 	// after linking we can delete the shaders
 	for (auto const& shdr : shaders) {
@@ -85,44 +84,12 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 	max_name_len = std::max(size_t(val), max_name_len);
 
 	std::vector<char> name(max_name_len);
-
-	GLuint tex_unit = 0;
-	for (GLuint i_unif = 0; i_unif < unif_count; ++i_unif) {
-		GLint count;
-		GLenum type;
-		glGetActiveUniform(
-			handle,
-			i_unif,
-			name.size(),
-			nullptr,
-			&count,
-			&type,
-			name.data()
-		);
-
-		this->uniforms.insert(std::make_pair(
-			name.data(),
-			GlUniform {
-				type,
-				GLint(i_unif),
-				size_t(count) * GL_SHADER_TYPE_SIZE.get(type),
-				{},
-				0, 0, size_t(count)
-			}
-		));
-
-		if (type == GL_SAMPLER_2D) {
-			ENSURE(tex_unit < caps.max_texture_slots,
-				"Tried to create an OpenGL shader that uses more texture sampler uniforms "
-				<< "than there are texture unit slots (" << caps.max_texture_slots << " available)."
-			);
-
-			this->texunits_per_unifs.insert(std::make_pair(name.data(), tex_unit));
-			tex_unit += 1;
-		}
-	}
+	// Indices of uniforms within named blocks.
+	std::unordered_set<GLuint> in_block_unifs;
 
 	GLuint block_binding = 0;
+
+	// Extract uniform block descriptions.
 	for (GLuint i_unif_block = 0; i_unif_block < unif_block_count; ++i_unif_block) {
 		glGetActiveUniformBlockName(
 			handle,
@@ -141,40 +108,45 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 		std::vector<GLint> uniform_indices(val);
 		glGetActiveUniformBlockiv(handle, i_unif_block, GL_UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES, uniform_indices.data());
 
-		// Names of uniforms within this block
-		std::vector<std::string> uniform_names{};
+		std::unordered_map<std::string, GlInBlockUniform> uniforms;
 		for (GLuint const i_unif : uniform_indices) {
-			glGetActiveUniformName(handle, i_unif, name.size(), nullptr, name.data());
-			try {
-				auto& unif = this->uniforms.at(name.data());
-				unif.block_name = block_name;
-				uniform_names.push_back(name.data());
+			in_block_unifs.insert(i_unif);
 
-				glGetActiveUniformsiv(handle, 1, &i_unif, GL_UNIFORM_OFFSET, &val);
-				unif.offset = val;
-				glGetActiveUniformsiv(handle, 1, &i_unif, GL_UNIFORM_ARRAY_STRIDE, &val);
-				unif.stride = val;
-				if (unif.stride == 0) {
-					// The uniform is not an array, but it's declared in a named block and hence might
-					// be a matrix whose stride we need to know.
-					glGetActiveUniformsiv(handle, 1, &i_unif, GL_UNIFORM_MATRIX_STRIDE, &val);
-					unif.stride = val;
+			GLenum type;
+			GLint offset, count, stride;
+
+			glGetActiveUniform(
+				handle,
+				i_unif,
+				name.size(),
+				nullptr,
+				&count,
+				&type,
+				name.data()
+			);
+
+			glGetActiveUniformsiv(handle, 1, &i_unif, GL_UNIFORM_OFFSET, &offset);
+			glGetActiveUniformsiv(handle, 1, &i_unif, GL_UNIFORM_ARRAY_STRIDE, &stride);
+			if (stride == 0) {
+				// The uniform is not an array, but it's declared in a named block and hence might
+				// be a matrix whose stride we need to know.
+				glGetActiveUniformsiv(handle, 1, &i_unif, GL_UNIFORM_MATRIX_STRIDE, &stride);
+			}
+
+			// We do not need to handle sampler types here like in the uniform loop below,
+			// because named blocks cannot contain samplers.
+
+			uniforms.insert(std::make_pair(
+				name.data(),
+				GlInBlockUniform {
+					type,
+					size_t(offset),
+					size_t(count) * GL_SHADER_TYPE_SIZE.get(type),
+					size_t(stride),
+					size_t(count)
 				}
-			} catch (std::out_of_range const&) {
-				throw Error(MSG(err) << "Could not find OpenGL uniform " << i_unif
-				                     << " from block " << name.data() << " in uniform list.");
-			}
+			));
 		}
-
-		this->uniform_blocks.insert(std::make_pair(
-			block_name,
-			GlUniformBlock {
-				GLint(i_unif_block),
-				size_t(data_size),
-				std::move(uniform_names),
-				block_binding
-			}
-		));
 
 		ENSURE(block_binding < caps.max_uniform_buffer_bindings,
 			"Tried to create an OpenGL shader that uses more uniform blocks "
@@ -183,9 +155,64 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 		);
 
 		glUniformBlockBinding(handle, i_unif_block, block_binding);
+
+		this->uniform_blocks.insert(std::make_pair(
+			block_name,
+			GlUniformBlock {
+				i_unif_block,
+				size_t(data_size),
+				std::move(uniforms),
+				block_binding
+			}
+		));
+
 		block_binding += 1;
 	}
 
+	GLuint tex_unit = 0;
+
+	// Extract information about uniforms in the default block.
+	for (GLuint i_unif = 0; i_unif < unif_count; ++i_unif) {
+		if (in_block_unifs.count(i_unif) == 1) {
+			// Skip uniforms within named blocks.
+			continue;
+		}
+
+		GLint count;
+		GLenum type;
+		glGetActiveUniform(
+			handle,
+			i_unif,
+			name.size(),
+			nullptr,
+			&count,
+			&type,
+			name.data()
+		);
+
+		GLuint loc = glGetUniformLocation(handle, name.data());
+
+		this->uniforms.insert(std::make_pair(
+			name.data(),
+			GlUniform {
+				type,
+				loc
+			}
+		));
+
+		if (type == GL_SAMPLER_2D) {
+			ENSURE(tex_unit < caps.max_texture_slots,
+				"Tried to create an OpenGL shader that uses more texture sampler uniforms "
+				<< "than there are texture unit slots (" << caps.max_texture_slots << " available)."
+			);
+
+			this->texunits_per_unifs.insert(std::make_pair(name.data(), tex_unit));
+
+			tex_unit += 1;
+		}
+	}
+
+	// Extract vertex attribute descriptions.
 	for (GLuint i_attrib = 0; i_attrib < attrib_count; ++i_attrib) {
 		GLint size;
 		GLenum type;
@@ -211,32 +238,47 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 
 	log::log(MSG(info) << "Created OpenGL shader program");
 
-	log::log(MSG(dbg) << "Uniform blocks: ");
-	for (auto const &pair : this->uniform_blocks) {
-		log::log(MSG(dbg) << "(" << pair.second.location << ") " << pair.first
-		                  << " (size " << pair.second.data_size << ") {");
-		for (auto const& unif_name : pair.second.uniforms) {
-			auto const& unif = this->uniforms[unif_name];
-			log::log(MSG(dbg) << "\t(" << unif.location << ") +" << unif.offset << " "
-			                  << unif_name << ": " << GLSL_TYPE_NAME.get(unif.type));
+	if (!this->uniform_blocks.empty()) {
+		log::log(MSG(dbg) << "Uniform blocks: ");
+		for (auto const& pair : this->uniform_blocks) {
+			log::log(MSG(dbg) << "(" << pair.second.index << ") " << pair.first
+			                  << " (size: " << pair.second.data_size << ") {");
+			for (auto const& unif_pair : pair.second.uniforms) {
+				log::log(MSG(dbg) << "\t+" << unif_pair.second.offset
+				                  << " " << unif_pair.first << ": "
+				                  << GLSL_TYPE_NAME.get(unif_pair.second.type));
+			}
+			log::log(MSG(dbg) << "}");
 		}
-		log::log(MSG(dbg) << "}");
 	}
-	log::log(MSG(dbg) << "Uniforms: ");
-	for (auto const &pair : this->uniforms) {
-		if (!pair.second.block_name) {
+
+	if (!this->uniforms.empty()) {
+		log::log(MSG(dbg) << "Uniforms: ");
+		for (auto const& pair : this->uniforms) {
 			log::log(MSG(dbg) << "(" << pair.second.location << ") " << pair.first << ": "
 			                  << GLSL_TYPE_NAME.get(pair.second.type));
 		}
 	}
-	log::log(MSG(dbg) << "Vertex attributes: ");
-	for (auto const &pair : this->attribs) {
-		log::log(MSG(dbg) << "(" << pair.second.location << ") " << pair.first << ": "
-			                << GLSL_TYPE_NAME.get(pair.second.type));
+
+	if (!this->attribs.empty()) {
+		log::log(MSG(dbg) << "Vertex attributes: ");
+		for (auto const& pair : this->attribs) {
+			log::log(MSG(dbg) << "(" << pair.second.location << ") " << pair.first << ": "
+			                  << GLSL_TYPE_NAME.get(pair.second.type));
+		}
 	}
 }
 
-void GlShaderProgram::use() const {
+void GlShaderProgram::use() {
+	if (!this->validated) {
+		// TODO(Vtec234): validation depends on the context state, so this might be worth calling
+		// more than once. However, once per frame is probably too much.
+		glValidateProgram(*this->handle);
+		check_program_status(*this->handle, GL_VALIDATE_STATUS);
+
+		this->validated = true;
+	}
+
 	glUseProgram(*this->handle);
 
 	for (auto const &pair : this->textures_per_texunits) {
