@@ -47,7 +47,7 @@ GlShader::GlShader(const resources::ShaderSource &src)
 		std::vector<char> infolog(loglen);
 		glGetShaderInfoLog(handle, loglen, nullptr, infolog.data());
 
-		throw Error(MSG(err) << "Failed to compiler shader:\n" << infolog.data() );
+		throw Error(MSG(err) << "Failed to compile shader:\n" << infolog.data() );
 	}
 }
 

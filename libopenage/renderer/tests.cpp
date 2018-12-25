@@ -109,6 +109,8 @@ void main() {
 	auto shader = renderer->add_shader( { vshader_src, fshader_src } );
 	auto shader_display = renderer->add_shader( { vshader_display_src, fshader_display_src } );
 
+	auto tex = resources::Texture2dData(path / "/assets/gaben.png");
+	auto gltex = renderer->add_texture(tex);
 
 	auto transform1 = Eigen::Affine3f::Identity();
 	transform1.prescale(Eigen::Vector3f(0.4f, 0.2f, 1.0f));
@@ -117,8 +119,8 @@ void main() {
 
 	auto unif_in1 = shader->new_uniform_input(
 		"mvp", transform1.matrix(),
-		//"color", Eigen::Vector4f(1.0f, 0.0f, 0.0f, 1.0f),
-		"u_id", 1u
+		"u_id", 1u,
+		"tex", gltex.get()
 	);
 
 	auto transform2 = Eigen::Affine3f::Identity();
@@ -129,11 +131,8 @@ void main() {
 
 	transform2.pretranslate(Eigen::Vector3f(0.3f, 0.1f, 0.3f));
 
-	auto tex = resources::Texture2dData(path / "/assets/gaben.png");
-	auto gltex = renderer->add_texture(tex);
 	auto unif_in2 = shader->new_uniform_input(
 		"mvp", transform2.matrix(),
-		//"color", Eigen::Vector4f(0.0f, 1.0f, 0.0f, 1.0f),
 		"u_id", 2u,
 		"tex", gltex.get()
 	);
@@ -143,8 +142,8 @@ void main() {
 
 	auto unif_in3 = shader->new_uniform_input(
 		"mvp", transform3.matrix(),
-		//"color", Eigen::Vector4f(0.0f, 0.0f, 1.0f, 1.0f),
-		"u_id", 3u
+		"u_id", 3u,
+		"tex", gltex.get()
 	);
 
 	auto quad = renderer->add_mesh_geometry(resources::MeshData::make_quad());

@@ -93,8 +93,8 @@ public:
 	virtual std::unique_ptr<Geometry> add_bufferless_quad() = 0;
 
 	/// Constructs a render target from the given textures. All subsequent drawing operations pointed at this
-	/// target will write to these textures. Textures are attached to the target in the order that they are
-	/// present in within the vector. Depth textures are attached as depth components. Textures of every other
+	/// target will write to these textures. Textures are attached to the target in the order in which they
+	/// appear within the vector. Depth textures are attached as depth components. Textures of every other
 	/// type are attached as color components.
 	virtual std::unique_ptr<RenderTarget> create_texture_target(std::vector<Texture2d*>) = 0;
 

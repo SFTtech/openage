@@ -3,6 +3,7 @@
 #include "shader_program.h"
 
 #include <algorithm>
+#include <unordered_set>
 
 #include "../../error/error.h"
 #include "../../log/log.h"
@@ -47,7 +48,8 @@ static void check_program_status(GLuint program, GLenum what_to_check) {
 }
 
 GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &srcs, const gl_context_capabilities &caps)
-	: GlSimpleObject([] (GLuint handle) { glDeleteProgram(handle); } ) {
+	: GlSimpleObject([] (GLuint handle) { glDeleteProgram(handle); } )
+	, validated(false) {
 	GLuint handle = glCreateProgram();
 	this->handle = handle;
 
@@ -61,9 +63,6 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 	glLinkProgram(handle);
 	check_program_status(handle, GL_LINK_STATUS);
 
-	glValidateProgram(handle);
-	check_program_status(handle, GL_VALIDATE_STATUS);
-
 	// after linking we can delete the shaders
 	for (auto const& shdr : shaders) {
 		glDetachShader(handle, shdr.get_handle());
@@ -74,16 +73,111 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 	glGetProgramiv(handle, GL_ACTIVE_ATTRIBUTES, &val);
 	size_t attrib_count = val;
 	glGetProgramiv(handle, GL_ACTIVE_ATTRIBUTE_MAX_LENGTH, &val);
-	size_t attrib_maxlen = val;
+	size_t max_name_len = val;
 	glGetProgramiv(handle, GL_ACTIVE_UNIFORMS, &val);
 	size_t unif_count = val;
 	glGetProgramiv(handle, GL_ACTIVE_UNIFORM_MAX_LENGTH, &val);
-	size_t unif_maxlen = val;
+	max_name_len = std::max(size_t(val), max_name_len);
+	glGetProgramiv(handle, GL_ACTIVE_UNIFORM_BLOCKS, &val);
+	size_t unif_block_count = val;
+	glGetProgramiv(handle, GL_ACTIVE_UNIFORM_BLOCK_MAX_NAME_LENGTH, &val);
+	max_name_len = std::max(size_t(val), max_name_len);
 
-	std::vector<char> name(std::max(unif_maxlen, attrib_maxlen));
+	std::vector<char> name(max_name_len);
+	// Indices of uniforms within named blocks.
+	std::unordered_set<GLuint> in_block_unifs;
+
+	GLuint block_binding = 0;
+
+	// Extract uniform block descriptions.
+	for (GLuint i_unif_block = 0; i_unif_block < unif_block_count; ++i_unif_block) {
+		glGetActiveUniformBlockName(
+			handle,
+			i_unif_block,
+			name.size(),
+			nullptr,
+			name.data()
+		);
+
+		std::string block_name(name.data());
+
+		GLint data_size;
+		glGetActiveUniformBlockiv(handle, i_unif_block, GL_UNIFORM_BLOCK_DATA_SIZE, &data_size);
+
+		glGetActiveUniformBlockiv(handle, i_unif_block, GL_UNIFORM_BLOCK_ACTIVE_UNIFORMS, &val);
+		std::vector<GLint> uniform_indices(val);
+		glGetActiveUniformBlockiv(handle, i_unif_block, GL_UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES, uniform_indices.data());
+
+		std::unordered_map<std::string, GlInBlockUniform> uniforms;
+		for (GLuint const i_unif : uniform_indices) {
+			in_block_unifs.insert(i_unif);
+
+			GLenum type;
+			GLint offset, count, stride;
+
+			glGetActiveUniform(
+				handle,
+				i_unif,
+				name.size(),
+				nullptr,
+				&count,
+				&type,
+				name.data()
+			);
+
+			glGetActiveUniformsiv(handle, 1, &i_unif, GL_UNIFORM_OFFSET, &offset);
+			glGetActiveUniformsiv(handle, 1, &i_unif, GL_UNIFORM_ARRAY_STRIDE, &stride);
+			if (stride == 0) {
+				// The uniform is not an array, but it's declared in a named block and hence might
+				// be a matrix whose stride we need to know.
+				glGetActiveUniformsiv(handle, 1, &i_unif, GL_UNIFORM_MATRIX_STRIDE, &stride);
+			}
+
+			// We do not need to handle sampler types here like in the uniform loop below,
+			// because named blocks cannot contain samplers.
+
+			uniforms.insert(std::make_pair(
+				name.data(),
+				GlInBlockUniform {
+					type,
+					size_t(offset),
+					size_t(count) * GL_SHADER_TYPE_SIZE.get(type),
+					size_t(stride),
+					size_t(count)
+				}
+			));
+		}
+
+		ENSURE(block_binding < caps.max_uniform_buffer_bindings,
+			"Tried to create an OpenGL shader that uses more uniform blocks "
+			<< "than there are binding points (" << caps.max_uniform_buffer_bindings
+			<< " available)."
+		);
+
+		glUniformBlockBinding(handle, i_unif_block, block_binding);
+
+		this->uniform_blocks.insert(std::make_pair(
+			block_name,
+			GlUniformBlock {
+				i_unif_block,
+				size_t(data_size),
+				std::move(uniforms),
+				block_binding
+			}
+		));
+
+		block_binding += 1;
+	}
 
 	GLuint tex_unit = 0;
+
+	// Extract information about uniforms in the default block.
 	for (GLuint i_unif = 0; i_unif < unif_count; ++i_unif) {
+		if (in_block_unifs.count(i_unif) == 1) {
+			// Skip uniforms within named blocks.
+			continue;
+		}
+
 		GLint count;
 		GLenum type;
 		glGetActiveUniform(
@@ -96,39 +190,29 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 			name.data()
 		);
 
-		this->uniforms.insert(std::make_pair(
-			                      name.data(),
-			                      GlUniform {
-				                      type,
-				                      GLint(i_unif),
-				                      size_t(count),
-				                      size_t(count) * GL_SHADER_TYPE_SIZE.get(type),
-				                  }
-		                      ));
+		GLuint loc = glGetUniformLocation(handle, name.data());
 
-		if (count != 1) {
-			// TODO support them
-			log::log(MSG(warn) << "Found array uniform " << name.data() << " in shader. Arrays are unsupported.");
-		}
+		this->uniforms.insert(std::make_pair(
+			name.data(),
+			GlUniform {
+				type,
+				loc
+			}
+		));
 
 		if (type == GL_SAMPLER_2D) {
-			if (tex_unit >= caps.max_texture_slots) {
-				throw Error(MSG(err)
-				            << "Tried to create shader that uses more texture sampler uniforms "
-				            << "than there are texture unit slots available.");
-			}
-			this->texunits_per_unifs.insert(std::make_pair(name.data(), tex_unit));
-			tex_unit += 1;
-		}
+			ENSURE(tex_unit < caps.max_texture_slots,
+				"Tried to create an OpenGL shader that uses more texture sampler uniforms "
+				<< "than there are texture unit slots (" << caps.max_texture_slots << " available)."
+			);
 
-		// TODO optimized away detection
-		if (0 == -1) {
-			log::log(MSG(warn)
-			         << "OpenGL shader uniform " << name.data() << " was present in the source, but isn't present in the program. Probably optimized away.");
-			continue;
+			this->texunits_per_unifs.insert(std::make_pair(name.data(), tex_unit));
+
+			tex_unit += 1;
 		}
 	}
 
+	// Extract vertex attribute descriptions.
 	for (GLuint i_attrib = 0; i_attrib < attrib_count; ++i_attrib) {
 		GLint size;
 		GLenum type;
@@ -143,28 +227,58 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 		);
 
 		this->attribs.insert(std::make_pair(
-			                     name.data(),
-			                     GlVertexAttrib {
-				                     type,
-				                     GLint(i_attrib),
-				                     size,
-			                     }
-		                     ));
+			name.data(),
+			GlVertexAttrib {
+				type,
+				GLint(i_attrib),
+				size,
+			}
+		));
 	}
 
 	log::log(MSG(info) << "Created OpenGL shader program");
 
-	log::log(MSG(dbg) << "Uniforms: ");
-	for (auto const &pair : this->uniforms) {
-		log::log(MSG(dbg) << "(" << pair.second.location << ") " << pair.first << ": " << pair.second.type);
+	if (!this->uniform_blocks.empty()) {
+		log::log(MSG(dbg) << "Uniform blocks: ");
+		for (auto const& pair : this->uniform_blocks) {
+			log::log(MSG(dbg) << "(" << pair.second.index << ") " << pair.first
+			                  << " (size: " << pair.second.data_size << ") {");
+			for (auto const& unif_pair : pair.second.uniforms) {
+				log::log(MSG(dbg) << "\t+" << unif_pair.second.offset
+				                  << " " << unif_pair.first << ": "
+				                  << GLSL_TYPE_NAME.get(unif_pair.second.type));
+			}
+			log::log(MSG(dbg) << "}");
+		}
 	}
-	log::log(MSG(dbg) << "Vertex attributes: ");
-	for (auto const &pair : this->attribs) {
-		log::log(MSG(dbg) << "(" << pair.second.location << ") " << pair.first << ": " << pair.second.type);
+
+	if (!this->uniforms.empty()) {
+		log::log(MSG(dbg) << "Uniforms: ");
+		for (auto const& pair : this->uniforms) {
+			log::log(MSG(dbg) << "(" << pair.second.location << ") " << pair.first << ": "
+			                  << GLSL_TYPE_NAME.get(pair.second.type));
+		}
+	}
+
+	if (!this->attribs.empty()) {
+		log::log(MSG(dbg) << "Vertex attributes: ");
+		for (auto const& pair : this->attribs) {
+			log::log(MSG(dbg) << "(" << pair.second.location << ") " << pair.first << ": "
+			                  << GLSL_TYPE_NAME.get(pair.second.type));
+		}
 	}
 }
 
-void GlShaderProgram::use() const {
+void GlShaderProgram::use() {
+	if (!this->validated) {
+		// TODO(Vtec234): validation depends on the context state, so this might be worth calling
+		// more than once. However, once per frame is probably too much.
+		glValidateProgram(*this->handle);
+		check_program_status(*this->handle, GL_VALIDATE_STATUS);
+
+		this->validated = true;
+	}
+
 	glUseProgram(*this->handle);
 
 	for (auto const &pair : this->textures_per_texunits) {
@@ -273,15 +387,15 @@ bool GlShaderProgram::has_uniform(const char* name) {
 void GlShaderProgram::set_unif(UniformInput *in, const char *unif, void const* val, GLenum type) {
 	auto *unif_in = static_cast<GlUniformInput*>(in);
 
-	if (unlikely(this->uniforms.count(unif) == 0)) {
-		throw Error(MSG(err) << "Tried to set uniform " << unif << " that does not exist in the shader program.");
-	}
+	ENSURE(this->uniforms.count(unif) != 0,
+		"Tried to set uniform " << unif << " that does not exist in the shader program."
+	);
 
 	auto const& unif_data = this->uniforms.at(unif);
 
-	if (unlikely(type != unif_data.type)) {
-		throw Error(MSG(err) << "Tried to set uniform " << unif << " to a value of the wrong type.");
-	}
+	ENSURE(type == unif_data.type,
+		"Tried to set uniform " << unif << " to a value of the wrong type."
+	);
 
 	size_t size = GL_SHADER_TYPE_SIZE.get(unif_data.type);
 
@@ -290,7 +404,8 @@ void GlShaderProgram::set_unif(UniformInput *in, const char *unif, void const* v
 		size_t off = unif_in->update_offs[unif];
 		memcpy(unif_in->update_data.data() + off, val, size);
 	} else {
-		// first time writing to this uniform since last upload
+		// first time writing to this uniform since last upload, so
+		// extend the buffer before storing the uniform value
 		size_t prev_size = unif_in->update_data.size();
 		unif_in->update_data.resize(prev_size + size);
 		memcpy(unif_in->update_data.data() + prev_size, val, size);

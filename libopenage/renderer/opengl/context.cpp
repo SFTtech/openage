@@ -71,6 +71,8 @@ static gl_context_capabilities find_capabilities() {
 	caps.max_texture_slots = temp;
 	glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &temp);
 	caps.max_vertex_attributes = temp;
+	glGetIntegerv(GL_MAX_UNIFORM_BUFFER_BINDINGS, &temp);
+	caps.max_uniform_buffer_bindings = temp;
 
 	glGetIntegerv(GL_MAJOR_VERSION, &caps.major_version);
 	glGetIntegerv(GL_MINOR_VERSION, &caps.minor_version);
