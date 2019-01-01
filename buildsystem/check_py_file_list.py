@@ -24,7 +24,7 @@ def main():
     ))
     args = cli.parse_args()
 
-    openage_dir = args.py_module_dir
+    openage_dir = os.path.realpath(args.py_module_dir)
 
     listed = set()
     with open(args.py_file_list) as fileobj:
