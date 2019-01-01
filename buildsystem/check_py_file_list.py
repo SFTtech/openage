@@ -1,4 +1,4 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 """
 Tests whether the files listed via add_py_module are consistent with the

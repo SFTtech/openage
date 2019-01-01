@@ -117,6 +117,7 @@ _the openage authors_ are:
 | Jacek Wielemborek           | d33tah                      | d33tah à gmail dawt com                           |
 | Charles Offenbacher         | coffenbacher                | charles.offenbacher à gmail dawt com              |
 | Ilia Vladimirskiy           | ivvory                      | ivv.evol à gmail dawt com                         |
+| Nicholas Schmidt            | schmidtnicholas             | schmidtnicholas111 à gmail dawt com               |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
