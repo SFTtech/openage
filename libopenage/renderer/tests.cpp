@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include <cstdlib>
 #include <epoxy/gl.h>
@@ -30,10 +30,10 @@ namespace tests {
 
 void renderer_demo_0(const util::Path& path) {
 	opengl::GlWindow window("openage renderer test", 800, 600);
-
 	auto renderer = window.make_renderer();
 
-	auto vshader_src = resources::ShaderSource(
+	/* Shader for individual objects in pass 1. */
+	auto obj_vshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::vertex,
 		R"s(
@@ -41,16 +41,17 @@ void renderer_demo_0(const util::Path& path) {
 
 layout(location=0) in vec2 position;
 layout(location=1) in vec2 uv;
-uniform mat4 mvp;
+uniform mat4 mv;
+uniform mat4 proj;
 out vec2 v_uv;
 
 void main() {
-	gl_Position = mvp * vec4(position, 0.0, 1.0);
+	gl_Position = proj * mv * vec4(position, 0.0, 1.0);
   v_uv = vec2(uv.x, 1.0 - uv.y);
 }
 )s");
 
-	auto fshader_src = resources::ShaderSource(
+	auto obj_fshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::fragment,
 		R"s(
@@ -69,11 +70,12 @@ void main() {
 		discard;
 	}
 	col = tex_val;
-	id = u_id + 1u;
+	id = u_id;
 }
 )s");
 
-	auto vshader_display_src = resources::ShaderSource(
+	/* Shader for copying the framebuffer in pass 2. */
+	auto display_vshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::vertex,
 		R"s(
@@ -81,16 +83,15 @@ void main() {
 
 layout(location=0) in vec2 position;
 layout(location=1) in vec2 uv;
-uniform mat4 proj;
 out vec2 v_uv;
 
 void main() {
-	gl_Position = proj * vec4(position, 0.0, 1.0);
+	gl_Position =  vec4(position, 0.0, 1.0);
 	v_uv = uv;
 }
 )s");
 
-	auto fshader_display_src = resources::ShaderSource(
+	auto display_fshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::fragment,
 		R"s(
@@ -106,9 +107,10 @@ void main() {
 }
 )s");
 
-	auto shader = renderer->add_shader( { vshader_src, fshader_src } );
-	auto shader_display = renderer->add_shader( { vshader_display_src, fshader_display_src } );
+	auto obj_shader = renderer->add_shader( { obj_vshader_src, obj_fshader_src } );
+	auto display_shader = renderer->add_shader( { display_vshader_src, display_fshader_src } );
 
+	/* Texture for the clickable objects. */
 	auto tex = resources::Texture2dData(path / "/assets/gaben.png");
 	auto gltex = renderer->add_texture(tex);
 
@@ -117,8 +119,10 @@ void main() {
 	transform1.prerotate(Eigen::AngleAxisf(30.0f * 3.14159f / 180.0f, Eigen::Vector3f::UnitX()));
 	transform1.pretranslate(Eigen::Vector3f(-0.4f, -0.6f, 0.0f));
 
-	auto unif_in1 = shader->new_uniform_input(
-		"mvp", transform1.matrix(),
+	/* Clickable objects on the screen consist of a transform (matrix which places each object
+	 * in the correct location), an identifier and a reference to the texture. */
+	auto obj1_unifs = obj_shader->new_uniform_input(
+		"mv", transform1.matrix(),
 		"u_id", 1u,
 		"tex", gltex.get()
 	);
@@ -131,8 +135,8 @@ void main() {
 
 	transform2.pretranslate(Eigen::Vector3f(0.3f, 0.1f, 0.3f));
 
-	auto unif_in2 = shader->new_uniform_input(
-		"mvp", transform2.matrix(),
+	auto obj2_unifs = obj_shader->new_uniform_input(
+		"mv", transform2.matrix(),
 		"u_id", 2u,
 		"tex", gltex.get()
 	);
@@ -140,64 +144,84 @@ void main() {
 	transform3.prerotate(Eigen::AngleAxisf(90.0f * 3.14159f / 180.0f, Eigen::Vector3f::UnitZ()));
 	transform3.pretranslate(Eigen::Vector3f(0.3f, 0.1f, 0.5f));
 
-	auto unif_in3 = shader->new_uniform_input(
-		"mvp", transform3.matrix(),
+	auto obj3_unifs = obj_shader->new_uniform_input(
+		"mv", transform3.matrix(),
 		"u_id", 3u,
 		"tex", gltex.get()
 	);
 
+	/* The objects are using built-in quadrilateral geometry. */
 	auto quad = renderer->add_mesh_geometry(resources::MeshData::make_quad());
 	Renderable obj1 {
-		unif_in1.get(),
+		obj1_unifs.get(),
 		quad.get(),
 		true,
 		true,
 	};
 
 	Renderable obj2{
-		unif_in2.get(),
+		obj2_unifs.get(),
 		quad.get(),
 		true,
 		true,
 	};
 
 	Renderable obj3 {
-		unif_in3.get(),
+		obj3_unifs.get(),
 		quad.get(),
 		true,
 		true,
 	};
 
+	/* Make a framebuffer for the first render pass to draw into. The framebuffer consists of a color texture
+	 * to be copied onto the back buffer in pass 2, as well as an id texture which will contain the object ids
+	 * which we can later read in order to determine which object was clicked. The depth texture is required,
+	 * but mostly irrelevant in this case. */
 	auto size = window.get_size();
 	auto color_texture = renderer->add_texture(resources::Texture2dInfo(size.first, size.second, resources::pixel_format::rgba8));
 	auto id_texture = renderer->add_texture(resources::Texture2dInfo(size.first, size.second, resources::pixel_format::r32ui));
 	auto depth_texture = renderer->add_texture(resources::Texture2dInfo(size.first, size.second, resources::pixel_format::depth24));
 	auto fbo = renderer->create_texture_target( { color_texture.get(), id_texture.get(), depth_texture.get() } );
 
-	auto color_texture_uniform = shader_display->new_uniform_input("color_texture", color_texture.get());
+	/* Make an object to update the projection matrix in pass 1 according to changes in the screen size.
+	 * Because uniform values are preserved across objects using the same shader in a single render pass,
+	 * it is sufficient to set it once at the beginning of the pass. To do this, we use an object with no
+	 * geometry, which will set the uniform but not render anything. */
+	auto proj_unif = obj_shader->new_uniform_input();
+	Renderable proj_update {
+		proj_unif.get(),
+		nullptr,
+		false,
+		false,
+	};
+
+	RenderPass pass1 {
+		{ proj_update, obj1, obj2, obj3 },
+		fbo.get()
+	};
+
+	/* Make an object encompassing the entire screen for the second render pass. The object
+	 * will be textured with the color output of pass 1, effectively copying its framebuffer. */
+	auto color_texture_unif = display_shader->new_uniform_input("color_texture", color_texture.get());
 	Renderable display_obj {
-		color_texture_uniform.get(),
+		color_texture_unif.get(),
 		quad.get(),
 		false,
 		false,
 	};
 
-	RenderPass pass {
-		{ obj1, obj2, obj3 },
-		fbo.get()
-	};
-
-	RenderPass display_pass {
+	RenderPass pass2 {
 		{ display_obj },
 		renderer->get_display_target(),
 	};
 
+	/* Data retrieved from the object index texture. */
 	resources::Texture2dData id_texture_data = id_texture->into_data();
 	bool texture_data_valid = false;
 
+	// TODO(Vtec234): move these into the renderer
 	glDepthFunc(GL_LEQUAL);
 	glDepthRange(0.0, 1.0);
-	// what is this
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	window.add_mouse_button_callback([&] (SDL_MouseButtonEvent const& ev) {
@@ -212,16 +236,14 @@ void main() {
 			auto id = id_texture_data.read_pixel<uint32_t>(x, y);
 			log::log(INFO << "Id-texture-value at location: " << id);
 			if (id == 0) {
-				//no renderable at given location
 				log::log(INFO << "Clicked at non existent object");
-				return;
+			} else {
+				log::log(INFO << "Object number " << id << " clicked.");
 			}
-			id--; //real id is id-1
-			log::log(INFO << "Object number " << id << " clicked.");
 		} );
 
 	window.add_resize_callback([&] (size_t w, size_t h) {
-			// Calculate projection matrix
+			/* Calculate a projection matrix for the new screen size. */
 			float aspectRatio = float(w)/float(h);
 			float xScale = 1.0/aspectRatio;
 
@@ -231,20 +253,23 @@ void main() {
 			             0, 0, 1, 0,
 			             0, 0, 0, 1;
 
-			// resize fbo
+			obj_shader->update_uniform_input(proj_unif.get(), "proj", pmat);
+
+			/* Create a new FBO with the right dimensions. */
 			color_texture = renderer->add_texture(resources::Texture2dInfo(w, h, resources::pixel_format::rgba8));
 			id_texture = renderer->add_texture(resources::Texture2dInfo(w, h, resources::pixel_format::r32ui));
 			depth_texture = renderer->add_texture(resources::Texture2dInfo(w, h, resources::pixel_format::depth24));
 			fbo = renderer->create_texture_target( { color_texture.get(), id_texture.get(), depth_texture.get() } );
-			texture_data_valid = false;
 
-			shader_display->update_uniform_input(color_texture_uniform.get(), "color_texture", color_texture.get(), "proj", pmat);
-			pass.target = fbo.get();
+			display_shader->update_uniform_input(color_texture_unif.get(), "color_texture", color_texture.get());
+
+			texture_data_valid = false;
+			pass1.target = fbo.get();
 		} );
 
 	while (!window.should_close()) {
-		renderer->render(pass);
-		renderer->render(display_pass);
+		renderer->render(pass1);
+		renderer->render(pass2);
 		window.update();
 		opengl::GlContext::check_error();
 	}
@@ -257,7 +282,7 @@ void renderer_demo(int demo_id, util::Path path) {
 		break;
 
 	default:
-		log::log(MSG(err) << "unknown renderer demo " << demo_id << " requested.");
+		log::log(MSG(err) << "Unknown renderer demo requested: " << demo_id << ".");
 		break;
 	}
 }
