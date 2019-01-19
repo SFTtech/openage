@@ -27,7 +27,9 @@ class GuiTexture;
  */
 class BackgroundUpdate {
 public:
-	explicit BackgroundUpdate() = default;
+    explicit BackgroundUpdate() :
+        bounding_square(std::tuple<coord::chunk, coord::chunk_t>{coord::chunk({0,0}), coord::chunk_t{} })
+    {}
 
 	/**
 	 * @param background_tex terrain texture, size and bottom/right spacing in it in pixels
@@ -49,7 +51,7 @@ public:
 
 private:
 	std::tuple<std::unique_ptr<uint32_t[]>, int, int> background_tex;
-	std::tuple<coord::chunk, coord::chunk_t> bounding_square;
+    std::tuple<coord::chunk, coord::chunk_t> bounding_square;
 };
 
 /**
@@ -158,12 +160,12 @@ private:
 	/**
 	 * Generate background texture if terrain data has changed.
 	 */
-	std::function<void(BackgroundUpdate&&, const coord_data&)> update_backround;
+    std::function<void(BackgroundUpdate&&, const coord::CoordManager&)> update_backround;
 
 	/**
 	 * Update the coordinates of the frame that shows the field of view of the camera.
 	 */
-	std::function<void(const coord_data&)> update_view_frame_rect;
+    std::function<void(const coord::CoordManager&)> update_view_frame_rect;
 
 	/**
 	 * Update positions of the markers.
@@ -212,7 +214,7 @@ private:
 	std::vector<ColoredTexturedPoint2D> unit_marker_points;
 
 	// TODO: maybe replace with something like std::optional
-	std::tuple<coord_data, bool> engine_coord_data;
+    std::tuple<coord::CoordManager, bool> engine_coord_data;
 };
 
 }} // namespace openage::gui

@@ -552,7 +552,7 @@ struct influence_group Terrain::calculate_influences(struct tile_data *base_tile
 				// get the adjacent neighbors to the current diagonal
 				// influence
 				//  (a & 0x07) == (a % 8)
-				uint8_t adj_neigh_0 = (neigh_id - 1) & 0x07;
+                uint8_t adj_neigh_0 = (neigh_id - 1) & 0x07;
 				uint8_t adj_neigh_1 = (neigh_id + 1) & 0x07;
 
 				uint8_t neigh_mask = (1 << adj_neigh_0) | (1 << adj_neigh_1);
@@ -761,8 +761,8 @@ void Terrain::calculate_masks(coord::tile position,
 
 std::tuple<coord::chunk, coord::chunk> Terrain::used_bounding_rect() const {
 	if (!this->chunks.empty()) {
-		coord::chunk some_chunk = std::begin(this->chunks)->first;
-		coord::chunk min = some_chunk, max = some_chunk;
+        coord::chunk some_chunk = std::begin(this->chunks)->first;
+        coord::chunk min = some_chunk, max = some_chunk;
 
 		for (auto &c : this->chunks) {
 			if (c.first.ne < min.ne)
@@ -776,10 +776,10 @@ std::tuple<coord::chunk, coord::chunk> Terrain::used_bounding_rect() const {
 				max.se = c.first.se;
 		}
 
-		return std::make_tuple(min, max + coord::chunk_delta{1, 1});
+        return std::make_tuple(min, max + coord::chunk_delta{1, 1});
 	}
 
-	return std::tuple<coord::chunk, coord::chunk>{};
+    return std::tuple<coord::chunk, coord::chunk>{coord::chunk({0,0}), coord::chunk({0,0}) };
 }
 
 size_t Terrain::used_chunks_hash() const {

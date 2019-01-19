@@ -9,17 +9,25 @@ namespace openage {
 namespace coord {
 
 
-tile3 tile::to_tile3(const Terrain & /*terrain*/, tile_t altitude) const {
-	// TODO: once terrain elevations have been implemented,
-	//       query the terrain elevation at {ne, se}.
-	tile_t elevation = 0;
+tile tile::from_chunk(const chunk &c, tile_delta pos_on_chunk) {
+    const tile_t ne = (((tile_t) c.ne) * tiles_per_chunk)
+            + pos_on_chunk.ne;
+    const tile_t se = (((tile_t) c.se) * tiles_per_chunk)
+            + pos_on_chunk.se;
+    return {ne, se};
+}
 
-	return tile3{this->ne, this->se, elevation + altitude};
+tile3 tile::to_tile3(const Terrain & /*terrain*/, tile_t altitude) const {
+    // TODO: once terrain elevations have been implemented,
+    //       query the terrain elevation at {ne, se}.
+    tile_t elevation = 0;
+
+    return tile3{this->ne, this->se, elevation + altitude};
 }
 
 
 phys2 tile::to_phys2() const {
-	return phys2{phys3::elem_t::from_int(this->ne), phys3::elem_t::from_int(this->se)};
+    return phys2{phys3::elem_t::from_int(this->ne), phys3::elem_t::from_int(this->se)};
 }
 
 
@@ -69,7 +77,17 @@ tile_delta tile::get_pos_on_chunk() const {
 	return tile_delta{
 		util::mod(this->ne, tiles_per_chunk),
 		util::mod(this->se, tiles_per_chunk)
-	};
+    };
+}
+
+tile tile_delta::from_chunk(const chunk_delta &c, tile_delta pos_on_chunk)
+{
+    const tile_t ne = (((tile_t) c.ne) * tiles_per_chunk)
+            + pos_on_chunk.ne;
+    const tile_t se = (((tile_t) c.se) * tiles_per_chunk)
+            + pos_on_chunk.se;
+    return {ne, se};
+
 }
 
 

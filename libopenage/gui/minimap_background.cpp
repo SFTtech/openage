@@ -17,8 +17,8 @@ const int spacing = 1;
 
 std::tuple<std::unique_ptr<uint32_t[]>, int, int> generate_minimap_background(Terrain &terrain, const std::vector<gamedata::palette_color> &palette) {
 	auto bounding_rect = terrain.used_bounding_rect();
-	auto origin = std::get<0>(bounding_rect).to_tile({0, 0});
-	auto size = (std::get<1>(bounding_rect) - std::get<0>(bounding_rect)).as_absolute().to_tile({0, 0});
+    auto origin = coord::tile::from_chunk(std::get<0>(bounding_rect), {0, 0});
+    auto size = coord::tile_delta::from_chunk(std::get<1>(bounding_rect) - std::get<0>(bounding_rect), {0, 0});
 
 	auto max_size = std::max(size.ne, size.se);
 
@@ -71,8 +71,9 @@ coord::chunk_t terrain_square_dimensions(const std::tuple<coord::chunk, coord::c
 coord::tile terrain_square_center(const std::tuple<coord::chunk, coord::chunk_t> &square) {
 	auto side_len = std::get<1>(square);
 
-	static_assert(coord::settings::tiles_per_chunk % 2 == 0, "Center of a even-sided bounding rectangle will be a fractional numbers of tiles.");
-	return std::get<0>(square).to_tile({0, 0}) + (coord::chunk{side_len, side_len}.to_tile({0, 0}) / 2).as_relative();
+    static_assert(coord::tiles_per_chunk % 2 == 0, "Center of a even-sided bounding rectangle will be a fractional numbers of tiles.");
+    const coord::tile_delta pos_on_tile({side_len/2, side_len/2});
+    return coord::tile::from_chunk(std::get<0>(square), pos_on_tile);
 }
 
 }} // namespace openage::gui

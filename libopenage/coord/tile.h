@@ -24,10 +24,13 @@ class CoordManager;
 
 struct tile_delta : CoordNeSeRelative<tile_t, tile, tile_delta> {
 	using CoordNeSeRelative<tile_t, tile, tile_delta>::CoordNeSeRelative;
+    static tile from_chunk(const chunk_delta &c, tile_delta pos_on_chunk = {});
 };
 
 struct tile : CoordNeSeAbsolute<tile_t, tile, tile_delta> {
 	using CoordNeSeAbsolute<tile_t, tile, tile_delta>::CoordNeSeAbsolute;
+
+    static tile from_chunk(const chunk &c, tile_delta pos_on_chunk = {});
 
 	/**
 	 * adds an UP component to the coordinate.

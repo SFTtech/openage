@@ -13,9 +13,6 @@
 #include <QSGGeometryNode>
 #include <QSGSimpleTextureNode>
 
-#include "../coord/tile3.h"
-#include "../coord/camgame.h"
-
 #include "guisys/link/qtsdl_checked_static_cast.h"
 #include "integration/private/gui_texture.h"
 #include "integration/private/gui_texture_from_img_data.h"
@@ -106,13 +103,13 @@ BackgroundUpdate get_background_update(GameMainLink *game, const std::vector<gam
 	return BackgroundUpdate{generate_minimap_background(*terrain, palette), terrain_bounding_square(*terrain)};
 }
 
-std::tuple<coord_data, bool> get_engine_coord_data(GameMainLink *game) {
+std::tuple<coord::CoordManager, bool> get_engine_coord_data(GameMainLink *game) {
 	ENSURE(game->current_thread_is_game_logic_thread(), "Operations with Engine are allowed only in the game logic thread.");
 
 	if (Engine *engine = unwrap(game->get_engine()))
-		return std::make_tuple(*engine->get_coord_data(), true);
+        return std::make_tuple(engine->coord, true);
 
-	return std::tuple<coord_data, bool>{};
+    return std::tuple<coord::CoordManager, bool>{};
 }
 
 std::vector<ColoredTexturedPoint2D> get_marker_points(GameMainLink *game, const std::vector<gamedata::minimap_modes> &markers_types, const std::vector<gamedata::palette_color> &player_palette) {
@@ -202,7 +199,7 @@ std::unique_ptr<QSGNode> Minimap::create_tree() {
 		}
 	};
 
-	this->update_backround = [this, background, world_to_background, turn] (BackgroundUpdate &&bg_update, const coord_data &engine_coord_data) {
+    this->update_backround = [this, background, world_to_background, turn] (BackgroundUpdate &&bg_update, const coord::CoordManager &engine_coord_data) {
 		if (!bg_update.consumed()) {
 			const bool width_bigger = this->boundingRect().width() >= this->boundingRect().height();
 			auto big_side = std::max(this->boundingRect().width(), this->boundingRect().height());
@@ -214,7 +211,7 @@ std::unique_ptr<QSGNode> Minimap::create_tree() {
 			background->setSourceRect({QPointF{}, std::get<QSizeF>(background_gui_tex)});
 
 			auto terrain_bounding_square_max_side_len = terrain_square_dimensions(std::get<std::tuple<coord::chunk, coord::chunk_t>>(background_gui_tex));
-			coord::phys_t max_terrain_side_len = coord::chunk{terrain_bounding_square_max_side_len, 0}.to_tile({0, 0}).to_phys2({0, 0}).as_relative().ne;
+            coord::phys_t max_terrain_side_len = coord::tile::from_chunk(coord::chunk{terrain_bounding_square_max_side_len, 0}, {0, 0}).to_phys2().ne;
 
 			/**
 			 * Setup transformation from the world coordinates to the coordinates on the minimap background texture.
@@ -222,23 +219,23 @@ std::unique_ptr<QSGNode> Minimap::create_tree() {
 			{
 				QMatrix4x4 downscale_world;
 				downscale_world.translate(big_side / 2, big_side / 2);
-				downscale_world.scale(big_side / max_terrain_side_len, big_side / max_terrain_side_len);
-				auto terrain_bounding_rect_center_phys = terrain_square_center(std::get<std::tuple<coord::chunk, coord::chunk_t>>(background_gui_tex)).to_tile3().to_phys3();
-				downscale_world.translate(-terrain_bounding_rect_center_phys.ne, -terrain_bounding_rect_center_phys.se);
+                downscale_world.scale(big_side / double(max_terrain_side_len), big_side / double(max_terrain_side_len));
+                auto terrain_bounding_rect_center_phys = terrain_square_center(std::get<std::tuple<coord::chunk, coord::chunk_t>>(background_gui_tex)).to_tile3(*unwrap(game)->get_game()->terrain).to_phys3();
+                downscale_world.translate(double(-terrain_bounding_rect_center_phys.ne), double(-terrain_bounding_rect_center_phys.se));
 				world_to_background->setMatrix(downscale_world);
 			}
 
 			if (this->last_bounding_rect != this->boundingRect()) {
 				QMatrix4x4 trans_to_center(QTransform::fromTranslate(-big_side / 2., -big_side / 2.));
 
-				auto iv = (coord::tile3{1, 0, 0}.to_phys3() - coord::tile3{0, 0, 0}.to_phys3()).to_camgame().to_window();
-				auto jv = (coord::tile3{0, 1, 0}.to_phys3() - coord::tile3{0, 0, 0}.to_phys3()).to_camgame().to_window();
+                auto iv = (coord::tile3{1, 0, 0}.to_phys3() - coord::tile3{0, 0, 0}.to_phys3()).to_camgame(engine_coord_data).to_viewport();
+                auto jv = (coord::tile3{0, 1, 0}.to_phys3() - coord::tile3{0, 0, 0}.to_phys3()).to_camgame(engine_coord_data).to_viewport();
 
 				/**
 				 * Background texture uses square pixels for tiles, so need to undo the tile sizing.
 				 */
-				auto i = QVector2D(iv.x / engine_coord_data.tile_halfsize.x, iv.y / engine_coord_data.tile_halfsize.y);
-				auto j = QVector2D(jv.x / engine_coord_data.tile_halfsize.x, jv.y / engine_coord_data.tile_halfsize.y);
+                auto i = QVector2D(iv.x / engine_coord_data.tile_size.x/2, iv.y / engine_coord_data.tile_size.y/2);
+                auto j = QVector2D(jv.x / engine_coord_data.tile_size.x/2, jv.y / engine_coord_data.tile_size.y/2);
 
 				QMatrix4x4 cam_rotate(
 					i.x(), j.x(), 0.f, 0.f,
@@ -270,12 +267,12 @@ std::unique_ptr<QSGNode> Minimap::create_tree() {
 		ENSURE(background->texture(), "Minimap background texture is undefined.");
 	};
 
-	this->update_view_frame_rect = [this, world_to_background, turn] (const coord_data &engine_coord_data) {
-		auto world_cam_left_top = coord::window{0, 0}.to_camgame().to_phys3();
-		auto world_cam_right_bottom = engine_coord_data.window_size.to_camgame().to_phys3();
+    this->update_view_frame_rect = [this, world_to_background, turn] (const coord::CoordManager &engine_coord_data) {
+        auto world_cam_left_top = coord::viewport{0, 0}.to_camgame(engine_coord_data).to_phys3(engine_coord_data);
+        auto world_cam_right_bottom = engine_coord_data.viewport_size.to_camgame().to_phys3(engine_coord_data);
 
-		QVector3D cam_frame_lt = turn->matrix() * world_to_background->matrix() * QVector3D(world_cam_left_top.ne, world_cam_left_top.se, 0);
-		QVector3D cam_frame_rb = turn->matrix() * world_to_background->matrix() * QVector3D(world_cam_right_bottom.ne, world_cam_right_bottom.se, 0);
+        QVector3D cam_frame_lt = turn->matrix() * world_to_background->matrix() * QVector3D(double(world_cam_left_top.ne), double(world_cam_left_top.se), 0);
+        QVector3D cam_frame_rb = turn->matrix() * world_to_background->matrix() * QVector3D(double(world_cam_right_bottom.ne), double(world_cam_right_bottom.se), 0);
 
 		auto cam_frame_size = cam_frame_rb - cam_frame_lt;
 
@@ -306,8 +303,8 @@ std::unique_ptr<QSGNode> Minimap::create_tree() {
 		const QPointF pos = local_to_world_transform.map(mouseEvent->localPos());
 
 		emit this->game->in_game_logic_thread_blocking([engine, pos] {
-				engine->get_coord_data()->camgame_phys.ne = pos.x();
-				engine->get_coord_data()->camgame_phys.se = pos.y();
+                engine->coord.camgame_phys.ne = pos.x();
+                engine->coord.camgame_phys.se = pos.y();
 				});
 	};
 
@@ -343,7 +340,7 @@ QSGNode* Minimap::updatePaintNode(QSGNode *node, UpdatePaintNodeData*) {
 			}
 
 			if (std::get<bool>(this->engine_coord_data)) {
-				auto& engine_coord_data = std::get<coord_data>(this->engine_coord_data);
+                auto& engine_coord_data = std::get<coord::CoordManager>(this->engine_coord_data);
 				this->update_backround(std::move(this->bg_update), engine_coord_data);
 				this->update_view_frame_rect(engine_coord_data);
 			}
