@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 """
 Provides the FileLikeObject abstract base class, which specifies a file-like
@@ -29,14 +29,12 @@ class FileLikeObject(ABC):
 
         Shall raise UnsupportedOperation for write-only objects.
         """
-        pass
 
     @abstractmethod
     def readable(self):
         """
         Returns True if read() is allowed.
         """
-        pass
 
     @abstractmethod
     def write(self, data):
@@ -47,14 +45,12 @@ class FileLikeObject(ABC):
 
         There is no return value.
         """
-        pass
 
     @abstractmethod
     def writable(self):
         """
         Returns True if write() is allowed.
         """
-        pass
 
     @abstractmethod
     def seek(self, offset, whence=os.SEEK_SET):
@@ -69,14 +65,12 @@ class FileLikeObject(ABC):
 
         There is no return value.
         """
-        pass
 
     @abstractmethod
     def seekable(self):
         """
         Returns True if seek() is allowed.
         """
-        pass
 
     @abstractmethod
     def tell(self):
@@ -85,7 +79,6 @@ class FileLikeObject(ABC):
 
         Must work properly for all file-like objects.
         """
-        pass
 
     @abstractmethod
     def close(self):
@@ -93,7 +86,6 @@ class FileLikeObject(ABC):
         Frees internal resources, making the object unusable.
         May be a no-op.
         """
-        pass
 
     @abstractmethod
     def flush(self):
@@ -101,7 +93,6 @@ class FileLikeObject(ABC):
         Syncs data with the disk, or something
         May be a no-op.
         """
-        pass
 
     @abstractmethod
     def get_size(self):
@@ -112,7 +103,6 @@ class FileLikeObject(ABC):
         Note: Actual file objects don't have this method;
               it exists mostly for internal usage.
         """
-        pass
 
     # allow usage with 'with'
     def __enter__(self):

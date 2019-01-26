@@ -1,4 +1,4 @@
-# Copyright 2015-2016 the openage authors. See copying.md for legal info.
+# Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 """
 Provides ByteQueue, a high-performance queue for bytes objects.
@@ -174,7 +174,6 @@ class ByteBuffer:
         raised by get_buffers and the indexing operator if the requested
         data has already been discarded.
         """
-        pass
 
     def get_buffers(self, start, end):
         """
