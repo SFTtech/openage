@@ -45,9 +45,9 @@ struct Renderable {
 	/// Can be nullptr to only set uniforms but do not perform draw call.
 	std::shared_ptr<Geometry> geometry;
 	/// Whether to perform alpha-based color blending with whatever was in the render target before.
-	bool alpha_blending;
+	bool alpha_blending = true;
 	/// Whether to perform depth testing and discard occluded fragments.
-	bool depth_test;
+	bool depth_test = true;
 };
 
 /// A render pass is a series of draw calls represented by renderables that output into the given render target.

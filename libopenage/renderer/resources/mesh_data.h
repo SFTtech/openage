@@ -133,7 +133,16 @@ public:
 
 	/// Initializes the mesh data with a simple quadrilateral spanning the whole window space,
 	/// with (vec2 pos, vec2 uv) vertex format.
-	static MeshData make_quad();
+	/// (0, 0) of this quad is at the quad center and it stretches from (-1, -1) to (1, 1)
+	/// and uv=(0, 0) at bottom left (-> (-1, -1)) and uv=(1, 1) top right (at (1, 1)).
+	/// When centered = false, the quad stretches from (0, 0) to (1, 1).
+	static MeshData make_quad(bool centered=true);
+
+	/// Initialize the mesh data with given sidelength. Optionally place (0, 0) bottom left.
+	static MeshData make_quad(float sidelength, bool centered=true);
+
+	/// Initialize the mesh data with given width and height. Optionally place (0, 0) bottom left.
+	static MeshData make_quad(float width, float height, bool centered=true);
 
 private:
 	/// The raw vertex data. The size is an integer multiple of the size of a single vertex.

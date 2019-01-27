@@ -11,6 +11,7 @@
 
 #include "../log/log.h"
 #include "../error/error.h"
+#include "../util/math_constants.h"
 #include "resources/shader_source.h"
 #include "resources/texture_data.h"
 #include "resources/mesh_data.h"
@@ -118,7 +119,7 @@ void main() {
 
 	auto transform1 = Eigen::Affine3f::Identity();
 	transform1.prescale(Eigen::Vector3f(0.4f, 0.2f, 1.0f));
-	transform1.prerotate(Eigen::AngleAxisf(30.0f * 3.14159f / 180.0f, Eigen::Vector3f::UnitX()));
+	transform1.prerotate(Eigen::AngleAxisf(30.0f * math::PI / 180.0f, Eigen::Vector3f::UnitX()));
 	transform1.pretranslate(Eigen::Vector3f(-0.4f, -0.6f, 0.0f));
 
 	/* Clickable objects on the screen consist of a transform (matrix which places each object
@@ -131,7 +132,7 @@ void main() {
 
 	auto transform2 = Eigen::Affine3f::Identity();
 	transform2.prescale(Eigen::Vector3f(0.3f, 0.1f, 1.0f));
-	transform2.prerotate(Eigen::AngleAxisf(50.0f * 3.14159f / 180.0f, Eigen::Vector3f::UnitZ()));
+	transform2.prerotate(Eigen::AngleAxisf(50.0f * math::PI / 180.0f, Eigen::Vector3f::UnitZ()));
 
 	auto transform3 = transform2;
 
@@ -144,7 +145,7 @@ void main() {
 		"tex", gltex
 	);
 
-	transform3.prerotate(Eigen::AngleAxisf(90.0f * 3.14159f / 180.0f, Eigen::Vector3f::UnitZ()));
+	transform3.prerotate(Eigen::AngleAxisf(90.0f * math::PI / 180.0f, Eigen::Vector3f::UnitZ()));
 	transform3.pretranslate(Eigen::Vector3f(0.3f, 0.1f, 0.5f));
 
 	auto obj3_unifs = obj_shader->new_uniform_input(

@@ -111,21 +111,122 @@ VertexInputInfo MeshData::get_info() const {
 
 /// Vertices of a quadrilateral filling the whole screen.
 /// Format: (pos, tex_coords) = (x, y, u, v)
-static constexpr const std::array<float, 16> QUAD_DATA = { {
+static constexpr const std::array<float, 16> QUAD_DATA_CENTERED = {
+	{
 		-1.0f, 1.0f, 0.0f, 1.0f,
 		-1.0f, -1.0f, 0.0f, 0.0f,
 		1.0f, 1.0f, 1.0f, 1.0f,
 		1.0f, -1.0f, 1.0f, 0.0f
-	} };
+	}
+};
 
-MeshData MeshData::make_quad() {
-	auto const data_size = QUAD_DATA.size() * sizeof(decltype(QUAD_DATA)::value_type);
+/// Vertices of a quad from (0, 0) to (1, 1)
+/// Format: (pos, tex_coords) = (x, y, u, v)
+static constexpr const std::array<float, 16> QUAD_DATA_UNIT = {
+	{
+		0.0f, 1.0f, 0.0f, 1.0f,
+		0.0f, 0.0f, 0.0f, 0.0f,
+		1.0f, 1.0f, 1.0f, 1.0f,
+		1.0f, 0.0f, 1.0f, 0.0f
+	}
+};
+
+
+namespace {
+
+/**
+ * Generate triangle-strip meshdata for a given 4-vertex/uv-coord array.
+ */
+template <uint64_t size>
+MeshData create_float_mesh(const std::array<float, size> &src) {
+	auto const data_size = size * sizeof(float);
+
 	std::vector<uint8_t> verts(data_size);
-	std::memcpy(verts.data(), reinterpret_cast<const uint8_t*>(QUAD_DATA.data()), data_size);
+	std::memcpy(verts.data(), reinterpret_cast<const uint8_t*>(src.data()), data_size);
 
-	VertexInputInfo info { { vertex_input_t::V2F32, vertex_input_t::V2F32 }, vertex_layout_t::AOS, vertex_primitive_t::TRIANGLE_STRIP };
+	VertexInputInfo info {
+		{ vertex_input_t::V2F32, vertex_input_t::V2F32 },
+		vertex_layout_t::AOS,
+		vertex_primitive_t::TRIANGLE_STRIP
+	};
 
 	return MeshData(std::move(verts), info);
 }
 
+} // anon namespace
+
+
+MeshData MeshData::make_quad(bool centered) {
+	if (centered) {
+		return create_float_mesh(QUAD_DATA_CENTERED);
+	}
+	else {
+		return create_float_mesh(QUAD_DATA_UNIT);
+	}
 }
+
+
+MeshData MeshData::make_quad(float sidelength, bool centered) {
+
+	// 8 positions and 8 uv-coords.
+	// store pos and uv as: (x, y, uvx, uvy)
+	std::array<float, 16> positions;
+
+	if (centered) {
+		float halfsidelength = sidelength/2;
+		positions = {
+			{
+				-halfsidelength, halfsidelength, 0.0f, 1.0f,
+				-halfsidelength, -halfsidelength, 0.0f, 0.0f,
+				halfsidelength, halfsidelength, 1.0f, 1.0f,
+				halfsidelength, -halfsidelength, 1.0f, 0.0f
+			}
+		};
+	}
+	else {
+		positions = {
+			{
+				0.0f, sidelength, 0.0f, 1.0f,
+				0.0f, 0.0f, 0.0f, 0.0f,
+				sidelength, sidelength, 1.0f, 1.0f,
+				sidelength, 0.0f, 1.0f, 0.0f
+			}
+		};
+	}
+
+	return create_float_mesh(positions);
+}
+
+
+MeshData MeshData::make_quad(float width, float height, bool centered) {
+	// 8 positions and 8 uv-coords.
+	// store pos and uv as: (x, y, uvx, uvy)
+	std::array<float, 16> positions;
+
+	if (centered) {
+		float halfwidth = width/2;
+		float halfheight = height/2;
+		positions = {
+			{
+				-halfwidth, halfheight, 0.0f, 1.0f,
+				-halfwidth, -halfheight, 0.0f, 0.0f,
+				halfwidth, halfheight, 1.0f, 1.0f,
+				halfwidth, -halfheight, 1.0f, 0.0f
+			}
+		};
+	}
+	else {
+		positions = {
+			{
+				0.0f, height, 0.0f, 1.0f,
+				0.0f, 0.0f, 0.0f, 0.0f,
+				width, height, 1.0f, 1.0f,
+				width, 0.0f, 1.0f, 0.0f
+			}
+		};
+	}
+
+	return create_float_mesh(positions);
+}
+
+} // namespace openage::renderer::resources
