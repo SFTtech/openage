@@ -1,4 +1,4 @@
-# Copyright 2014-2018 the openage authors. See copying.md for legal info.
+# Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 # set CODEGEN_SCU_FILE to the absolute path to SCU file
 macro(get_codegen_scu_file)
@@ -37,27 +37,20 @@ function(codegen_run)
 	STRING(REGEX REPLACE "\n" ";" CODEGEN_TARGET_FILES ${CODEGEN_TARGET_FILES})
 	STRING(REGEX REPLACE "\n" ";" CODEGEN_DEPENDS ${CODEGEN_DEPENDS})
 
-	# as the codegen creates all files at once,
-	# let the buildsystem only depend on this single dummy file.
-	# otherwise the codegen invocation would be done for each generated source.
-	set(CODEGEN_TIMEFILE "${CMAKE_BINARY_DIR}/codegen_timefile")
-
 	add_custom_command(
-		OUTPUT "${CODEGEN_TIMEFILE}" ${CODEGEN_TARGET_FILES}
+		OUTPUT ${CODEGEN_TARGET_FILES}
 		COMMAND ${CODEGEN_INVOCATION} --mode=codegen "--touch-file-on-cache-change=${CMAKE_CURRENT_LIST_FILE}" --force-rerun-on-generated-list-change
-		COMMAND "${CMAKE_COMMAND}" -E touch "${CODEGEN_TIMEFILE}"
 		WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
 		DEPENDS ${CODEGEN_DEPENDS}
 		COMMENT "openage.codegen: generating c++ code"
 	)
 
 	add_custom_target(codegen
-		DEPENDS "${CODEGEN_TIMEFILE}"
+		DEPENDS ${CODEGEN_TARGET_FILES}
 	)
 
 	add_custom_target(cleancodegen
 		COMMAND ${CODEGEN_INVOCATION} --mode=clean
-		COMMAND "${CMAKE_COMMAND}" -E remove "${CODEGEN_TIMEFILE}"
 		WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
 	)
 
