@@ -1,3 +1,3 @@
 add_sources(libopenage
-	test.cpp
+	pong.cpp
 )

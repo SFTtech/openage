@@ -28,7 +28,6 @@ def engine_demo(list argv):
 
     args = cmd.parse_args(argv)
 
-
     from ..cvar.location import get_config_path
     from ..assets import get_asset_path
     from ..util.fslike.union import Union
