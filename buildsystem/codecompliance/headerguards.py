@@ -1,4 +1,4 @@
-# Copyright 2014-2018 the openage authors. See copying.md for legal info.
+# Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 """
 Verifies the guard macros of all C++ header files.
@@ -11,7 +11,6 @@ from .util import findfiles, readfile
 
 class HeaderIssue(Exception):
     """ Some issue was detected with the Header guard. """
-    pass
 
 
 GUARD_RE = re.compile((

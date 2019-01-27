@@ -1,4 +1,4 @@
-# Copyright 2013-2018 the openage authors. See copying.md for legal info.
+# Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 """
 The Python part of openage, a free engine re-write of
@@ -18,7 +18,7 @@ if py_version < (3, 4):
 
 
 try:
-    # TODO pylint: disable=wrong-import-position
+    # TODO pylint: disable=wrong-import-position,import-self
     from . import config
 
 except ImportError:

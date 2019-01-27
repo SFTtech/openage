@@ -1,4 +1,4 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 """
 Provides filesystem-like interfaces:
@@ -57,24 +57,19 @@ class FSLikeObject(ABC):
     @abstractmethod
     def open_r(self, parts):
         """ Shall return a BufferedReader for the given file ("mode 'rb'"). """
-        pass
 
     @abstractmethod
     def open_w(self, parts):
         """ Shall return a BufferedWriter for the given file ("mode 'wb'"). """
-        pass
 
     def open_rw(self, parts):
         """ Shall return a BufferedWriter for the given file ("mode 'r+'"). """
-        pass
 
     def open_a(self, parts):
         """ Shall return a BufferedWriter for the given file ("mode 'a'"). """
-        pass
 
     def open_ar(self, parts):
         """ Shall return a BufferedWriter for the given file ("mode 'a+'"). """
-        pass
 
     def exists(self, parts):
         """ Test if the parts are a file or a directory """
@@ -117,7 +112,6 @@ class FSLikeObject(ABC):
         Shall determine the file size (bytes),
         and return None if unknown.
         """
-        pass
 
     @abstractmethod
     def mtime(self, parts):
@@ -125,32 +119,26 @@ class FSLikeObject(ABC):
         Shall determine the last modification time (UNIX timestamp),
         and return None if unknown.
         """
-        pass
 
     @abstractmethod
     def mkdirs(self, parts):
         """ Shall ensure that the directory exists. """
-        pass
 
     @abstractmethod
     def rmdir(self, parts):
         """ Shall remove an empty directory. """
-        pass
 
     @abstractmethod
     def unlink(self, parts):
         """ Shall remove a single file. """
-        pass
 
     @abstractmethod
     def touch(self, parts):
         """ Shall create the file or update its timestamp. """
-        pass
 
     @abstractmethod
     def rename(self, srcparts, tgtparts):
         """ Shall rename a file or directory to the target name. """
-        pass
 
     @abstractmethod
     def is_file(self, parts):
@@ -158,7 +146,6 @@ class FSLikeObject(ABC):
         Shall return true if the path is a file (or symlink to one).
         Shall not raise.
         """
-        pass
 
     @abstractmethod
     def is_dir(self, parts):
@@ -166,7 +153,6 @@ class FSLikeObject(ABC):
         Shall return true if the path is a directory (or symlink to one).
         Shall not raise.
         """
-        pass
 
     @abstractmethod
     def writable(self, parts):
@@ -174,7 +160,6 @@ class FSLikeObject(ABC):
         Shall return an educated guess whether the path can be written to.
         Shall not raise.
         """
-        pass
 
     @abstractmethod
     def watch(self, parts, callback):
@@ -184,7 +169,6 @@ class FSLikeObject(ABC):
         performed.
         Shall not raise.
         """
-        pass
 
     @abstractmethod
     def poll_watches(self):
@@ -193,7 +177,6 @@ class FSLikeObject(ABC):
         any of the files have changed. Shall have a low performance impact.
         Shall not raise.
         """
-        pass
 
 
 class ReadOnlyFSLikeObject(FSLikeObject):

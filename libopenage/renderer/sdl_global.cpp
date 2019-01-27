@@ -1,4 +1,4 @@
-// Copyright 2018-2018 the openage authors. See copying.md for legal info.
+// Copyright 2018-2019 the openage authors. See copying.md for legal info.
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -51,6 +51,7 @@ private:
 };
 
 bool SDL::inited = false;
+SDL SDL::sdl;
 
 void make_sdl_available() {
 	SDL::make_available();
