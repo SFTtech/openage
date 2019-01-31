@@ -1,4 +1,6 @@
-// Copyright 2016-2018 the openage authors. See copying.md for legal info.
+// Copyright 2016-2019 the openage authors. See copying.md for legal info.
+
+#include "main.h"
 
 #include <chrono>
 #include <ratio>
