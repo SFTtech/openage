@@ -1,5 +1,7 @@
 // Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
+#include "tests.h"
+
 #include <cstdlib>
 #include <epoxy/gl.h>
 #include <functional>

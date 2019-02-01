@@ -1,4 +1,4 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 """
 Auto-generates PXD files from annotated C++ headers.
@@ -462,19 +462,15 @@ def main():
 
         # create empty __init__.py in all parent directories.
         # Cython requires this; else it won't find the .pxd files.
-        dirname = os.path.abspath(os.path.dirname(pxdfile))
-        while dirname.startswith(args.output_dir):
+        for dirname in pxdfile_relpath.parents:
+            template = args.output_dir / dirname / "__init__"
             for extension in ("py", "pxd"):
-                initfile = os.path.join(dirname, "__init__.%s" % extension)
-                if not os.path.isfile(initfile):
+                initfile = template.with_suffix("." + extension)
+                if not initfile.exists():
                     print("\x1b[36mpxdgen: create package index %s\x1b[0m" % (
-                        os.path.relpath(initfile, CWD)))
+                        initfile.relative_to(CWD)))
 
-                    with open(initfile, "w"):
-                        pass
-
-            # parent dir
-            dirname = os.path.dirname(dirname)
+                    initfile.touch()
 
 
 if __name__ == '__main__':

@@ -54,6 +54,9 @@ find_package(Epoxy REQUIRED)
 find_package(HarfBuzz 1.0.0 REQUIRED)
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 
+set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
+find_package(Threads REQUIRED)
+
 set(QT_VERSION_REQ "5.9")
 find_package(Qt5Core ${QT_VERSION_REQ} REQUIRED)
 find_package(Qt5Quick ${QT_VERSION_REQ} REQUIRED)
@@ -268,7 +271,7 @@ target_include_directories(libopenage
 # to the public api of libopenage
 target_link_libraries(libopenage
 	PUBLIC
-		pthread
+		Threads::Threads
 		nyan::nyan
 		Eigen3::Eigen
 		${PNG_LIBRARIES}
