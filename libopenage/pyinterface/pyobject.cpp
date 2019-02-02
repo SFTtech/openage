@@ -1,6 +1,9 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "pyobject.h"
+
+#include <algorithm>
+#include <functional>
 
 
 namespace openage {
@@ -63,6 +66,33 @@ PyObjectRef &PyObjectRef::operator =(PyObjectRef &&other) {
 }
 
 
+/**
+ * Integer conversion.
+ */
+template <>
+PyObjectRef::PyObjectRef(int number)
+	:
+	PyObjectRef(py::integer(number)) {}
+
+
+/**
+ * Bytes conversion.
+ */
+template <>
+PyObjectRef::PyObjectRef(const char *data)
+	:
+	PyObjectRef(py::bytes(data)) {}
+
+
+/**
+ * String conversion.
+ */
+template <>
+PyObjectRef::PyObjectRef(const std::string &txt)
+	:
+	PyObjectRef(py::bytes(txt)) {}
+
+
 PyObjectRef::~PyObjectRef() {
 	if (this->ref != nullptr) {
 		py_xdecref.call(this->ref);
@@ -114,16 +144,16 @@ bool PyObjectRef::callable() const {
 }
 
 
-PyObjectRef PyObjectRef::call() const {
+PyObjectRef PyObjectRef::call_impl(std::vector<PyObjectRef> &args) const {
 	PyObjectRef result;
-	py_call0.call(&result, this->ref);
-	return result;
-}
-
-
-PyObjectRef PyObjectRef::call(std::vector<PyObject *> &args) const {
-	PyObjectRef result;
-	py_calln.call(&result, this->ref, args);
+	if (args.empty()) {
+		py_call0.call(&result, this->ref);
+	} else {
+		std::vector<PyObject *> py_args{args.size()};
+		std::transform(args.begin(), args.end(), py_args.begin(),
+		               std::mem_fn(&PyObjectRef::get_ref));
+		py_calln.call(&result, this->ref, py_args);
+	}
 	return result;
 }
 
@@ -273,6 +303,10 @@ PyIfFunc<void, PyObjectRef *, int> py_createint;
 PyIfFunc<void, PyObjectRef *> py_createdict;
 PyIfFunc<void, PyObjectRef *> py_createlist;
 
+PyObjectRef None;
+PyObjectRef True;
+PyObjectRef False;
+
 } // pyinterface
 
 
@@ -327,11 +361,6 @@ Obj list() {
 	py_createlist.call(&result);
 	return result;
 }
-
-
-Obj None;
-Obj True;
-Obj False;
 
 
 } // py

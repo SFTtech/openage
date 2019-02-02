@@ -1,4 +1,4 @@
-// Copyright 2015-2017 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -21,15 +21,6 @@
 
 namespace openage {
 namespace pyinterface {
-
-
-/**
- * Primary class template for PyObjectRef conversions.
- */
-template <typename T>
-struct to_pyobj;
-
-// the specializations follow somewhere below.
 
 
 /**
@@ -123,55 +114,30 @@ public:
 	bool callable() const;
 
 	/**
-	 * obj()
-	 *
-	 * Implement other combinations of arguments as needed.
-	 */
-	PyObjectRef call() const;
-
-	/**
-	 * obj(args)
-	 */
-	PyObjectRef call(std::vector<PyObject *> &args) const;
-
-	/**
 	 * obj(args...)
 	 */
 	template <typename ...Args>
 	PyObjectRef call(Args... args) const {
 		// this vector collects the function call arguments
-		std::vector<PyObject *> arg_objs;
+		std::vector<PyObjectRef> arg_objs {
+			PyObjectRef(args)...
+		};
 
-		return this->call_collect<Args...>(arg_objs, args...);
+		return this->call_impl(arg_objs);
 	}
 
 private:
 	/**
-	 * obj(arg0)
-	 *
-	 * This is the recursion end. It performs the function call.
+	 * obj(args)
 	 */
-	template <typename T>
-	PyObjectRef call_collect(std::vector<PyObject *> &args, T arg) const {
-
-		PyObjectRef py_arg = to_pyobj<T>{}(arg);
-		args.push_back(py_arg.get_ref());
-		return this->call(args);
-	}
+	PyObjectRef call_impl(std::vector<PyObjectRef> &args) const;
 
 	/**
-	 * obj(arg0, ...)
-	 *
-	 * This is the recursion step.
-	 * It converts earch argument to a pyobject * recursively.
+	 * Primary template for PyObjectRef conversions.
 	 */
-	template <typename T, typename ...Args>
-	PyObjectRef call_collect(std::vector<PyObject *> &args, T arg, Args... moreargs) const {
-
-		PyObjectRef py_arg = to_pyobj<T>{}(arg);
-		args.push_back(py_arg.get_ref());
-		return this->call_collect<Args...>(args, moreargs...);
-	}
+	template <typename T>
+	explicit PyObjectRef(T arg);
+	// the specializations follow in the cpp file.
 
 public:
 	/**
@@ -394,11 +360,18 @@ extern OAAPI PyIfFunc<void, PyObjectRef *> py_createdict;
 // pxd: PyIfFunc1[void, PyObjectRefPtr] py_createlist
 extern OAAPI PyIfFunc<void, PyObjectRef *> py_createlist;
 
+// pxd: PyObjectRef None
+extern OAAPI PyObjectRef None;
+// pxd: PyObjectRef True
+extern OAAPI PyObjectRef True;
+// pxd: PyObjectRef False
+extern OAAPI PyObjectRef False;
+
 } // pyinterface
 
 
 /**
- * Contenience functions and types for the python interface.
+ * Convenience functions and types for the python interface.
  */
 namespace py {
 
@@ -452,86 +425,20 @@ Obj list();
 
 /**
  * The None python object.
- *
- * pxd: PyObjectRef None
  */
-extern OAAPI Obj None;
+using pyinterface::None;
 
 
 /**
  * The True python object.
- *
- * pxd: PyObjectRef True
  */
-extern OAAPI Obj True;
+using pyinterface::True;
 
 
 /**
  * The False python object.
- *
- * pxd: PyObjectRef False
  */
-extern OAAPI Obj False;
+using pyinterface::False;
 
 } // py
-
-
-namespace pyinterface {
-
-/**
- * Base template for object conversions.
- * It's separate from the primary class template so it can skip its body.
- */
-template <typename T>
-struct __py_conversion_base {
-	using argument_type = T;
-	using result_type = PyObjectRef;
-};
-
-
-/**
- * Passthrough for PyObjectRef.
- */
-template <>
-struct to_pyobj<PyObjectRef> : __py_conversion_base<PyObjectRef> {
-	result_type operator ()(PyObjectRef &obj) const {
-		return obj;
-	}
-};
-
-
-/**
- * Integer conversion.
- */
-template <>
-struct to_pyobj<int> : __py_conversion_base<int> {
-	result_type operator ()(int number) const {
-		return py::integer(number);
-	}
-};
-
-
-/**
- * Bytes conversion.
- */
-template <>
-struct to_pyobj<const char *> : __py_conversion_base<const char *> {
-	result_type operator ()(const char *data) const {
-		return py::bytes(data);
-	}
-};
-
-
-/**
- * String conversion.
- */
-template <>
-struct to_pyobj<std::string> : __py_conversion_base<std::string> {
-	result_type operator ()(const std::string &txt) const {
-		return py::bytes(txt);
-	}
-};
-
-
-} // pyinterface
 } // openage
