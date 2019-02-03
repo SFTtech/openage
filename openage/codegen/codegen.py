@@ -1,4 +1,4 @@
-# Copyright 2014-2018 the openage authors. See copying.md for legal info.
+# Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 """
 Utility and driver module for C++ code generation.
@@ -166,8 +166,8 @@ def codegen(mode, input_dir, output_dir):
             err("unknown codegen mode: %s", mode)
             sys.exit(1)
 
-    generated = {os.path.abspath(path).decode() for path in generated}
-    depends = {os.path.abspath(path) for path in get_codegen_depends(wrapper)}
+    generated = {os.path.realpath(path).decode() for path in generated}
+    depends = {os.path.realpath(path) for path in get_codegen_depends(wrapper)}
 
     return generated, depends
 
