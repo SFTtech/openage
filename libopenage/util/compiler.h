@@ -1,4 +1,4 @@
-// Copyright 2014-2017 the openage authors. See copying.md for legal info.
+// Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -58,7 +58,7 @@
  * Software breakpoint if you're too lazy
  * to add it in gdb but instead wanna add it into the code directly.
  */
-#ifdef _MSC_VER
+#ifdef _WIN32
 	#define BREAKPOINT __debugbreak()
 #else
 	#include <signal.h>

@@ -1,4 +1,4 @@
-# Copyright 2014-2018 the openage authors. See copying.md for legal info.
+# Copyright 2014-2019 the openage authors. See copying.md for legal info.
 
 # provides macros for defining python extension modules and pxdgen sources.
 # and a 'finalize' function that must be called in the end.
@@ -103,6 +103,10 @@ function(add_cython_modules)
 				set_property(GLOBAL APPEND PROPERTY SFT_CYTHON_MODULES_EMBED "${source}")
 				add_executable("${TARGETNAME}" "${CPPNAME}")
 
+				if(MINGW)
+					set_target_properties("${TARGETNAME}" PROPERTIES LINK_FLAGS "-municode")
+				endif()
+
 				# TODO: use full ldflags and cflags provided by python${VERSION}-config
 				target_link_libraries("${TARGETNAME}" ${PYEXT_LIBRARY})
 			else()
@@ -114,7 +118,7 @@ function(add_cython_modules)
 					SUFFIX "${PYEXT_SUFFIX}"
 				)
 
-				if(MSVC)
+				if(WIN32)
 					target_link_libraries("${TARGETNAME}" ${PYEXT_LIBRARY})
 				endif()
 			endif()
