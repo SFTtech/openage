@@ -1,39 +1,49 @@
 #
-# This is a valgrind suppression file that should be used
-# when running Python with valgrind.
+# This is a valgrind suppression file that should be used when using valgrind.
+#
+# It was taken from the cpython project and adapted for openage.
+# Upstream URL is: https://raw.githubusercontent.com/python/cpython/master/Misc/valgrind-python.supp
+#
 #
 #  Here's an example of running valgrind:
 #
-#	cd python/dist/src
-#	valgrind --tool=memcheck --suppressions=Misc/valgrind-python.supp \
+#	cd openage/bin/
+#	PYTHONMALLOC=malloc valgrind --tool=memcheck --suppressions=../etc/valgrind-python.supp \
 #		python3 -m openage test -a
 #
-# python can be compiled with --with-valgrind to enhance the experience
+# Python can be compiled with --with-valgrind to enhance the valgrind experience:
+# valgrind presence is detected and python memory is allocated more valgrind-friendly then.
+#
 # Python 3.6 supports PYTHONMALLOC=malloc environment var to force malloc()
-
+#
+# Disable the suppressions for _PyObject_Free and _PyObject_Realloc below by comment
+# if valgrind shall complain about python memory leaks.
+#
+# See cpython/Misc/README.valgrind for more information
+#
 # all tool names: Addrcheck,Memcheck,cachegrind,helgrind,massif
 {
    ADDRESS_IN_RANGE/Invalid read of size 4
    Memcheck:Addr4
-   fun:Py_ADDRESS_IN_RANGE
+   fun:address_in_range
 }
 
 {
    ADDRESS_IN_RANGE/Invalid read of size 4
    Memcheck:Value4
-   fun:Py_ADDRESS_IN_RANGE
+   fun:address_in_range
 }
 
 {
    ADDRESS_IN_RANGE/Invalid read of size 8 (x86_64 aka amd64)
    Memcheck:Value8
-   fun:Py_ADDRESS_IN_RANGE
+   fun:address_in_range
 }
 
 {
    ADDRESS_IN_RANGE/Conditional jump or move depends on uninitialised value
    Memcheck:Cond
-   fun:Py_ADDRESS_IN_RANGE
+   fun:address_in_range
 }
 
 #
@@ -123,61 +133,61 @@
 {
    ADDRESS_IN_RANGE/Invalid read of size 4
    Memcheck:Addr4
-   fun:PyObject_Free
+   fun:_PyObject_Free
 }
 
 {
    ADDRESS_IN_RANGE/Invalid read of size 4
    Memcheck:Value4
-   fun:PyObject_Free
+   fun:_PyObject_Free
 }
 
 {
    ADDRESS_IN_RANGE/Use of uninitialised value of size 8
    Memcheck:Addr8
-   fun:PyObject_Free
+   fun:_PyObject_Free
 }
 
 {
    ADDRESS_IN_RANGE/Use of uninitialised value of size 8
    Memcheck:Value8
-   fun:PyObject_Free
+   fun:_PyObject_Free
 }
 
 {
    ADDRESS_IN_RANGE/Conditional jump or move depends on uninitialised value
    Memcheck:Cond
-   fun:PyObject_Free
+   fun:_PyObject_Free
 }
 
 {
    ADDRESS_IN_RANGE/Invalid read of size 4
    Memcheck:Addr4
-   fun:PyObject_Realloc
+   fun:_PyObject_Realloc
 }
 
 {
    ADDRESS_IN_RANGE/Invalid read of size 4
    Memcheck:Value4
-   fun:PyObject_Realloc
+   fun:_PyObject_Realloc
 }
 
 {
    ADDRESS_IN_RANGE/Use of uninitialised value of size 8
    Memcheck:Addr8
-   fun:PyObject_Realloc
+   fun:_PyObject_Realloc
 }
 
 {
    ADDRESS_IN_RANGE/Use of uninitialised value of size 8
    Memcheck:Value8
-   fun:PyObject_Realloc
+   fun:_PyObject_Realloc
 }
 
 {
    ADDRESS_IN_RANGE/Conditional jump or move depends on uninitialised value
    Memcheck:Cond
-   fun:PyObject_Realloc
+   fun:_PyObject_Realloc
 }
 
 ###
