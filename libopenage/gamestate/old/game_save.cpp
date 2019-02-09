@@ -5,6 +5,7 @@
 #include <fstream>
 #include <vector>
 
+#include "version.h"
 #include "../../log/log.h"
 #include "../../terrain/terrain_chunk.h"
 #include "../../unit/producer.h"

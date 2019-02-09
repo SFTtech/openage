@@ -1,0 +1,11 @@
+// Copyright 2019-2019 the openage authors. See copying.md for legal info.
+
+// ${AUTOGEN_WARNING}
+
+#include "version.h"
+
+namespace openage::version {
+
+const char *const version = "${VERSION_FULL_STRING}";
+
+} // openage::version

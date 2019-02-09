@@ -26,7 +26,9 @@
 #include "util/opengl.h"
 #include "util/strings.h"
 #include "util/timer.h"
+#include "version.h"
 #include "versions/compiletime.h"
+
 
 /**
  * Main openage namespace to store all things that make the have to do with the game.
