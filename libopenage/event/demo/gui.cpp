@@ -1,4 +1,4 @@
-// Copyright 2016-2018 the openage authors. See copying.md for legal info.
+// Copyright 2016-2019 the openage authors. See copying.md for legal info.
 
 #include "gui.h"
 
@@ -7,7 +7,11 @@
 
 #include <algorithm>
 #include <cstdio>
+#ifdef __MINGW32__
+#include <ncurses/ncurses.h>
+#else
 #include <ncurses.h>
+#endif // __MINGW32__
 #include <vector>
 
 

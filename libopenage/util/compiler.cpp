@@ -1,8 +1,8 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "compiler.h"
 
-#ifndef _MSC_VER
+#ifndef _WIN32
 #include <cxxabi.h>
 #include <dlfcn.h>
 #else
@@ -23,7 +23,7 @@ namespace util {
 
 
 std::string demangle(const char *symbol) {
-#ifdef _MSC_VER
+#ifdef _WIN32
 	// TODO: demangle names for MSVC; Possibly using UnDecorateSymbolName
 	// https://msdn.microsoft.com/en-us/library/windows/desktop/ms681400(v=vs.85).aspx
 	// Could it be that MSVC's typeid(T).name() already returns a demangled name? It seems that .raw_name() returns the mangled name
@@ -47,7 +47,7 @@ std::string addr_to_string(const void *addr) {
 	return sformat("[%p]", addr);
 }
 
-#ifdef _MSC_VER
+#ifdef _WIN32
 namespace {
 
 
@@ -96,7 +96,7 @@ std::optional<std::string> symbol_name_win(const void *addr) {
 #endif
 
 std::string symbol_name(const void *addr, bool require_exact_addr, bool no_pure_addrs) {
-#ifdef _MSC_VER
+#ifdef _WIN32
 
 	auto symbol_name_result = symbol_name_win(addr);
 
@@ -134,7 +134,7 @@ std::string symbol_name(const void *addr, bool require_exact_addr, bool no_pure_
 
 
 bool is_symbol(const void *addr) {
-#ifdef _MSC_VER
+#ifdef _WIN32
 
 	if (!initialized_symbol_handler_successfully) {
 		return true;

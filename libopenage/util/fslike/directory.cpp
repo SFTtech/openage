@@ -1,9 +1,9 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "directory.h"
 
 // HACK: windows.h defines max and min as macros. This results in compile errors.
-#ifdef _MSC_VER
+#ifdef _WIN32
 // defining `NOMINMAX` disables the definition of those macros.
 #define NOMINMAX
 #endif
@@ -18,7 +18,7 @@
 #ifdef __APPLE__
 #include <sys/time.h>
 #endif
-#ifdef _MSC_VER
+#ifdef _WIN32
 #include <direct.h>
 #include <io.h>
 #include <sys/utime.h>
@@ -168,6 +168,8 @@ bool Directory::mkdirs(const Path::parts_t &parts) {
 		// create the folder, umask will turn it to 755.
 #ifdef _MSC_VER
 		bool dir_created = _mkdir(dirpath.c_str()) == 0;
+#elif __MINGW32__
+		bool dir_created = mkdir(dirpath.c_str()) == 0;
 #else
 		bool dir_created = mkdir(dirpath.c_str(), 0777) == 0;
 #endif
@@ -257,7 +259,7 @@ bool Directory::touch(const Path::parts_t &parts) {
 	// update the timestamp
 #ifdef __APPLE__
 	int result = utimes(path.c_str(), nullptr) == 0;
-#elif defined _MSC_VER
+#elif defined _WIN32
 	int result = _utime(path.c_str(), nullptr) == 0;
 #else
 	int result = utimensat(AT_FDCWD, path.c_str(), nullptr, 0) == 0;
@@ -279,7 +281,7 @@ int Directory::get_mtime(const Path::parts_t &parts) {
 	if (std::get<1>(stat_result) == 0) {
 #ifdef __APPLE__
 		return std::get<0>(stat_result).st_mtimespec.tv_sec;
-#elif defined _MSC_VER
+#elif defined _WIN32
 		return std::get<0>(stat_result).st_mtime;
 #else
 		return std::get<0>(stat_result).st_mtim.tv_sec;

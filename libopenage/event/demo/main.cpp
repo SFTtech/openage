@@ -14,7 +14,11 @@
 #include "physics.h"
 
 #if WITH_NCURSES
+#ifdef __MINGW32__
+#include <ncurses/ncurses.h>
+#else
 #include <ncurses.h>
+#endif // __MINGW32__
 #endif
 
 
