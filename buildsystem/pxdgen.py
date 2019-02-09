@@ -334,7 +334,7 @@ class PXDGenerator:
         Post-processes each individual annotation line, applying hacks and
         testing it, etc.
 
-        See openage/pyinterface/hacks.h for documentation on the individual
+        See libopenage/pyinterface/hacks.h for documentation on the individual
         hacks.
         """
         annotation = annotation.rstrip()
@@ -383,7 +383,7 @@ class PXDGenerator:
             outfile.write(result)
 
         if print_warnings and self.warnings:
-            print("\x1b[33;1mWARNING\x1b[m pxdgen[" + self.filename + "]:")
+            print("\x1b[33;1mWARNING\x1b[m pxdgen[%s]:" % self.filename)
             for warning in self.warnings:
                 print(warning)
 
