@@ -26,6 +26,8 @@
 #include "util/opengl.h"
 #include "util/strings.h"
 #include "util/timer.h"
+#include "version.h"
+
 
 /**
  * Main openage namespace to store all things that make the have to do with the game.
@@ -281,7 +283,7 @@ bool Engine::draw_debug_overlay() {
 	// Draw version string in the lower left corner
 	this->render_text(
 		{5, 35}, 20, renderer::Colors::WHITE,
-		"openage %s", config::version
+		"openage %s", version::version
 	);
 	this->render_text(
 		{5, 15}, 12, renderer::Colors::WHITE,

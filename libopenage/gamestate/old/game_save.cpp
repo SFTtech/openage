@@ -5,6 +5,7 @@
 #include <fstream>
 #include <vector>
 
+#include "version.h"
 #include "../../log/log.h"
 #include "../../terrain/terrain_chunk.h"
 #include "../../unit/producer.h"
@@ -73,7 +74,7 @@ void save(openage::GameMain *game, const std::string &fname) {
 	// metadata
 	file << save_label << std::endl;
 	file << save_version << std::endl;
-	file << config::version << std::endl;
+	file << version::version << std::endl;
 
 	// how many chunks
 	std::vector<coord::chunk> used = game->terrain->used_chunks();

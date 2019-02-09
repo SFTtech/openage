@@ -235,6 +235,8 @@ get_config_option_string()
 
 configure_file(config.h.in config.h)
 configure_file(config.cpp.in config.cpp)
+configure_file(version.h.in version.h)
+configure_file(version.cpp.in version.cpp)
 
 configure_file(
 	"${CMAKE_SOURCE_DIR}/openage/config.py.in"
@@ -325,6 +327,7 @@ add_sources(libopenage
 	screenshot.cpp
 	texture.cpp
 	${CMAKE_CURRENT_BINARY_DIR}/config.cpp
+	${CMAKE_CURRENT_BINARY_DIR}/version.cpp
 	${CODEGEN_SCU_FILE}
 )
 

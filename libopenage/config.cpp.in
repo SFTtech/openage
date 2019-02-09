@@ -7,7 +7,6 @@
 namespace openage {
 namespace config {
 
-const char *const version = "${VERSION_FULL_STRING}";
 const char *const config_option_string = "${CONFIG_OPTION_STRING}";
 
 }} // openage::config
