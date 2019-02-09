@@ -22,30 +22,32 @@ class GlRenderer final : public Renderer {
 public:
 	GlRenderer(GlContext*);
 
-	std::unique_ptr<Texture2d> add_texture(resources::Texture2dData const&) override;
-	std::unique_ptr<Texture2d> add_texture(resources::Texture2dInfo const&) override;
+	std::shared_ptr<Texture2d> add_texture(resources::Texture2dData const&) override;
+	std::shared_ptr<Texture2d> add_texture(resources::Texture2dInfo const&) override;
 
-	std::unique_ptr<ShaderProgram> add_shader(std::vector<resources::ShaderSource> const&) override;
+	std::shared_ptr<ShaderProgram> add_shader(std::vector<resources::ShaderSource> const&) override;
 
-	std::unique_ptr<Geometry> add_mesh_geometry(resources::MeshData const&) override;
-	std::unique_ptr<Geometry> add_bufferless_quad() override;
+	std::shared_ptr<Geometry> add_mesh_geometry(resources::MeshData const&) override;
+	std::shared_ptr<Geometry> add_bufferless_quad() override;
 
-	std::unique_ptr<RenderPass> add_render_pass(std::vector<Renderable>, RenderTarget const*) override;
+	std::shared_ptr<RenderPass> add_render_pass(std::vector<Renderable>, const std::shared_ptr<RenderTarget> &) override;
 
-	std::unique_ptr<RenderTarget> create_texture_target(std::vector<Texture2d*>) override;
-	RenderTarget const* get_display_target() override;
+	std::shared_ptr<RenderTarget> create_texture_target(std::vector<std::shared_ptr<Texture2d>> const&) override;
+
+	std::shared_ptr<RenderTarget> get_display_target() override;
 
 	resources::Texture2dData display_into_data() override;
 
-	void render(RenderPass*) override;
+	void render(const std::shared_ptr<RenderPass> &) override;
 
 private:
+	/// Optimize the render pass by reordering stuff
+	static void optimise(const std::shared_ptr<GlRenderPass> &);
+
 	/// The GL context.
 	GlContext *gl_context;
 
-	GlRenderTarget display;
-
-	static void optimise(GlRenderPass*);
+	std::shared_ptr<GlRenderTarget> display;
 };
 
 }}} // openage::renderer::opengl

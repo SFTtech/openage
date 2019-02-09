@@ -1,13 +1,13 @@
 add_sources(libopenage
-  color.cpp
-  geometry.cpp
-  sdl_global.cpp
-  tests.cpp
-  text.cpp
-  texture.cpp
-  texture_array.cpp
-  window.cpp
-  renderer.cpp
+	color.cpp
+	geometry.cpp
+	renderer.cpp
+	sdl_global.cpp
+	tests.cpp
+	text.cpp
+	texture.cpp
+	texture_array.cpp
+	window.cpp
 )
 
 pxdgen(

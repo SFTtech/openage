@@ -7,7 +7,7 @@ namespace openage::renderer::opengl {
 
 // TODO the validity of this object is contingent
 // on its texture existing. use shared_ptr?
-GlFramebuffer::GlFramebuffer(const std::vector<const GlTexture2d*> &textures)
+GlFramebuffer::GlFramebuffer(std::vector<std::shared_ptr<GlTexture2d>> const& textures)
 	: GlSimpleObject([] (GLuint handle) { glDeleteFramebuffers(1, &handle); } )
 {
 	GLuint handle;

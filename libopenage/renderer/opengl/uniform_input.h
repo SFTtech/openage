@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -17,7 +17,7 @@ class GlShaderProgram;
 /// Describes OpenGL-specific uniform valuations.
 struct GlUniformInput final : public UniformInput {
 	/// The program that this was created for.
-	GlShaderProgram* program;
+	std::shared_ptr<GlShaderProgram> program;
 
 	/// We store uniform updates lazily. They are only actually uploaded to GPU
 	/// when a draw call is made. Update_offs maps the uniform names to where their

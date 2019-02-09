@@ -4,15 +4,20 @@
 
 namespace openage::renderer {
 
-RenderPass::RenderPass(std::vector<Renderable> renderables, RenderTarget const* target)
-:renderables(renderables), target(target) {}
+RenderPass::RenderPass(std::vector<Renderable> renderables,
+                       const std::shared_ptr<RenderTarget> &target)
+	:
+	renderables(std::move(renderables)),
+	target{target} {}
 
-RenderTarget const* RenderPass::get_target() const {
+
+const std::shared_ptr<RenderTarget> &RenderPass::get_target() const {
 	return this->target;
 }
 
-void RenderPass::set_target(RenderTarget const* target) {
+
+void RenderPass::set_target(const std::shared_ptr<RenderTarget> &target) {
 	this->target = target;
 }
 
-} // openage::renderer
+} // namespace openage::renderer

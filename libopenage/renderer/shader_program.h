@@ -1,10 +1,11 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <cstdint>
 #include <vector>
 #include <map>
+#include <memory>
 
 #include <eigen3/Eigen/Dense>
 
@@ -18,56 +19,59 @@ namespace renderer {
 class UniformInput;
 class Texture2d;
 
-class ShaderProgram {
+class ShaderProgram : public std::enable_shared_from_this<ShaderProgram> {
 public:
 	virtual ~ShaderProgram() = default;
 
 	// Template dispatches for uniform variable setting.
-	void update_uniform_input(UniformInput*) {}
+	void update_uniform_input(std::shared_ptr<UniformInput> const&) {}
 
-	void update_uniform_input(UniformInput* input, const char* unif, int32_t val) {
+	void update_uniform_input(std::shared_ptr<UniformInput> const& input, const char* unif, int32_t val) {
 		this->set_i32(input, unif, val);
 	}
 
-	void update_uniform_input(UniformInput* input, const char* unif, uint32_t val) {
+	void update_uniform_input(std::shared_ptr<UniformInput> const& input, const char* unif, uint32_t val) {
 		this->set_u32(input, unif, val);
 	}
 
-	void update_uniform_input(UniformInput* input, const char* unif, float val) {
+	void update_uniform_input(std::shared_ptr<UniformInput> const& input, const char* unif, float val) {
 		this->set_f32(input, unif, val);
 	}
 
-	void update_uniform_input(UniformInput* input, const char* unif, double val) {
+	void update_uniform_input(std::shared_ptr<UniformInput> const& input, const char* unif, double val) {
 		this->set_f64(input, unif, val);
 	}
 
-	void update_uniform_input(UniformInput* input, const char* unif, Eigen::Vector2f const& val) {
+	void update_uniform_input(std::shared_ptr<UniformInput> const& input, const char* unif, Eigen::Vector2f const& val) {
 		this->set_v2f32(input, unif, val);
 	}
 
-	void update_uniform_input(UniformInput* input, const char* unif, Eigen::Vector3f const& val) {
+	void update_uniform_input(std::shared_ptr<UniformInput> const& input, const char* unif, Eigen::Vector3f const& val) {
 		this->set_v3f32(input, unif, val);
 	}
 
-	void update_uniform_input(UniformInput* input, const char* unif, Eigen::Vector4f const& val) {
+	void update_uniform_input(std::shared_ptr<UniformInput> const& input, const char* unif, Eigen::Vector4f const& val) {
 		this->set_v4f32(input, unif, val);
 	}
 
-	void update_uniform_input(UniformInput* input, const char* unif, Texture2d const* val) {
+	void update_uniform_input(std::shared_ptr<UniformInput> const& input, const char* unif, std::shared_ptr<Texture2d> const& val) {
 		this->set_tex(input, unif, val);
 	}
 
-	void update_uniform_input(UniformInput* input, const char* unif, Texture2d* val) {
+	void update_uniform_input(std::shared_ptr<UniformInput> const& input, const char* unif, std::shared_ptr<Texture2d> & val) {
 		this->set_tex(input, unif, val);
 	}
 
-	void update_uniform_input(UniformInput* input, const char* unif, Eigen::Matrix4f const& val) {
+	void update_uniform_input(std::shared_ptr<UniformInput> const& input, const char* unif, Eigen::Matrix4f const& val) {
 		this->set_m4f32(input, unif, val);
 	}
 
+	/* catch-all template in order to avoid infinite recursion */
 	template<typename T>
-	void update_uniform_input(UniformInput*, const char* unif, T) {
-		throw Error(MSG(err) << "Tried to set uniform " << unif << " using unknown type.");
+	void update_uniform_input(const std::shared_ptr<UniformInput> &, const char* unif, T) {
+		// TODO: maybe craft an static_assert that contains the `unif` content
+		throw Error(MSG(err) << "Tried to set uniform '" << unif
+		            << "' using unsupported type '" << util::typestring<T>() << "'");
 	}
 
 	/// Returns whether the shader program contains a uniform variable with the given name.
@@ -80,9 +84,9 @@ public:
 	/// "color" to { 0.5, 0.5, 0.5, 0.5 } and "num" to 5. Types are important here and a type
 	/// mismatch between the uniform variable and the input might result in an error.
 	template<typename... Ts>
-	std::unique_ptr<UniformInput> new_uniform_input(Ts... vals) {
+	std::shared_ptr<UniformInput> new_uniform_input(Ts... vals) {
 		auto input = this->new_unif_in();
-		this->update_uniform_input(input.get(), vals...);
+		this->update_uniform_input(input, vals...);
 		return input;
 	}
 
@@ -90,7 +94,7 @@ public:
 	/// For example, update_uniform_input(in, "awesome", true) will set the "awesome" uniform
 	/// in addition to whatever values were in the uniform input before.
 	template<typename T, typename... Ts>
-	void update_uniform_input(UniformInput* input, const char* unif, T val, Ts... vals) {
+	void update_uniform_input(std::shared_ptr<UniformInput> const & input, const char* unif, T val, Ts... vals) {
 		this->update_uniform_input(input, unif, val);
 		this->update_uniform_input(input, vals...);
 	}
@@ -105,16 +109,16 @@ public:
 
 protected:
 	// Virtual dispatches to the actual shader program implementation.
-	virtual std::unique_ptr<UniformInput> new_unif_in() = 0;
-	virtual void set_i32(UniformInput*, const char*, int32_t) = 0;
-	virtual void set_u32(UniformInput*, const char*, uint32_t) = 0;
-	virtual void set_f32(UniformInput*, const char*, float) = 0;
-	virtual void set_f64(UniformInput*, const char*, double) = 0;
-	virtual void set_v2f32(UniformInput*, const char*, Eigen::Vector2f const&) = 0;
-	virtual void set_v3f32(UniformInput*, const char*, Eigen::Vector3f const&) = 0;
-	virtual void set_v4f32(UniformInput*, const char*, Eigen::Vector4f const&) = 0;
-	virtual void set_m4f32(UniformInput*, const char*, Eigen::Matrix4f const&) = 0;
-	virtual void set_tex(UniformInput*, const char*, Texture2d const*) = 0;
+	virtual std::shared_ptr<UniformInput> new_unif_in() = 0;
+	virtual void set_i32(std::shared_ptr<UniformInput> const&, const char*, int32_t) = 0;
+	virtual void set_u32(std::shared_ptr<UniformInput> const&, const char*, uint32_t) = 0;
+	virtual void set_f32(std::shared_ptr<UniformInput> const&, const char*, float) = 0;
+	virtual void set_f64(std::shared_ptr<UniformInput> const&, const char*, double) = 0;
+	virtual void set_v2f32(std::shared_ptr<UniformInput> const&, const char*, Eigen::Vector2f const&) = 0;
+	virtual void set_v3f32(std::shared_ptr<UniformInput> const&, const char*, Eigen::Vector3f const&) = 0;
+	virtual void set_v4f32(std::shared_ptr<UniformInput> const&, const char*, Eigen::Vector4f const&) = 0;
+	virtual void set_m4f32(std::shared_ptr<UniformInput> const&, const char*, Eigen::Matrix4f const&) = 0;
+	virtual void set_tex(std::shared_ptr<UniformInput> const&, const char*, std::shared_ptr<Texture2d> const&) = 0;
 };
 
 }}
