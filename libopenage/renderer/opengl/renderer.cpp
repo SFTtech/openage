@@ -82,8 +82,10 @@ void GlRenderer::optimise(const std::shared_ptr<GlRenderPass> &pass) {
 	if (!pass->get_is_optimised()) {
 		auto renderables = pass->get_renderables();
 		std::stable_sort(renderables.begin(), renderables.end(), [](const Renderable& a, const Renderable& b) {
-			GLuint shader_a = std::dynamic_pointer_cast<GlUniformInput>(a.unif_in)->program->get_handle();
-			GLuint shader_b = std::dynamic_pointer_cast<GlUniformInput>(b.unif_in)->program->get_handle();
+			GLuint shader_a = std::dynamic_pointer_cast<GlShaderProgram>(
+				std::dynamic_pointer_cast<GlUniformInput>(a.unif_in)->get_program())->get_handle();
+			GLuint shader_b = std::dynamic_pointer_cast<GlShaderProgram>(
+				std::dynamic_pointer_cast<GlUniformInput>(b.unif_in)->get_program())->get_handle();
 			return shader_a < shader_b;
 		});
 
@@ -119,7 +121,7 @@ void GlRenderer::render(const std::shared_ptr<RenderPass> &pass) {
 
 		auto in = std::dynamic_pointer_cast<GlUniformInput>(obj.unif_in);
 		auto geom = std::dynamic_pointer_cast<GlGeometry>(obj.geometry);
-		in->program->execute_with(in, geom);
+		std::static_pointer_cast<GlShaderProgram>(in->get_program())->execute_with(in, geom);
 	}
 }
 

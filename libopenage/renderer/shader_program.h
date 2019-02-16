@@ -9,70 +9,20 @@
 
 #include <eigen3/Eigen/Dense>
 
+#include "uniform_input.h"
 #include "resources/mesh_data.h"
-#include "../error/error.h"
 
 
 namespace openage {
 namespace renderer {
 
-class UniformInput;
 class Texture2d;
 
 class ShaderProgram : public std::enable_shared_from_this<ShaderProgram> {
+	friend UniformInput;
+
 public:
 	virtual ~ShaderProgram() = default;
-
-	// Template dispatches for uniform variable setting.
-	void update_uniform_input(std::shared_ptr<UniformInput> const&) {}
-
-	void update_uniform_input(std::shared_ptr<UniformInput> const& input, const char* unif, int32_t val) {
-		this->set_i32(input, unif, val);
-	}
-
-	void update_uniform_input(std::shared_ptr<UniformInput> const& input, const char* unif, uint32_t val) {
-		this->set_u32(input, unif, val);
-	}
-
-	void update_uniform_input(std::shared_ptr<UniformInput> const& input, const char* unif, float val) {
-		this->set_f32(input, unif, val);
-	}
-
-	void update_uniform_input(std::shared_ptr<UniformInput> const& input, const char* unif, double val) {
-		this->set_f64(input, unif, val);
-	}
-
-	void update_uniform_input(std::shared_ptr<UniformInput> const& input, const char* unif, Eigen::Vector2f const& val) {
-		this->set_v2f32(input, unif, val);
-	}
-
-	void update_uniform_input(std::shared_ptr<UniformInput> const& input, const char* unif, Eigen::Vector3f const& val) {
-		this->set_v3f32(input, unif, val);
-	}
-
-	void update_uniform_input(std::shared_ptr<UniformInput> const& input, const char* unif, Eigen::Vector4f const& val) {
-		this->set_v4f32(input, unif, val);
-	}
-
-	void update_uniform_input(std::shared_ptr<UniformInput> const& input, const char* unif, std::shared_ptr<Texture2d> const& val) {
-		this->set_tex(input, unif, val);
-	}
-
-	void update_uniform_input(std::shared_ptr<UniformInput> const& input, const char* unif, std::shared_ptr<Texture2d> & val) {
-		this->set_tex(input, unif, val);
-	}
-
-	void update_uniform_input(std::shared_ptr<UniformInput> const& input, const char* unif, Eigen::Matrix4f const& val) {
-		this->set_m4f32(input, unif, val);
-	}
-
-	/* catch-all template in order to avoid infinite recursion */
-	template<typename T>
-	void update_uniform_input(const std::shared_ptr<UniformInput> &, const char* unif, T) {
-		// TODO: maybe craft an static_assert that contains the `unif` content
-		throw Error(MSG(err) << "Tried to set uniform '" << unif
-		            << "' using unsupported type '" << util::typestring<T>() << "'");
-	}
 
 	/// Returns whether the shader program contains a uniform variable with the given name.
 	virtual bool has_uniform(const char* unif) = 0;
@@ -86,17 +36,8 @@ public:
 	template<typename... Ts>
 	std::shared_ptr<UniformInput> new_uniform_input(Ts... vals) {
 		auto input = this->new_unif_in();
-		this->update_uniform_input(input, vals...);
+		input->update(vals...);
 		return input;
-	}
-
-	/// Updates the given uniform input with new uniform values similarly to new_uniform_input.
-	/// For example, update_uniform_input(in, "awesome", true) will set the "awesome" uniform
-	/// in addition to whatever values were in the uniform input before.
-	template<typename T, typename... Ts>
-	void update_uniform_input(std::shared_ptr<UniformInput> const & input, const char* unif, T val, Ts... vals) {
-		this->update_uniform_input(input, unif, val);
-		this->update_uniform_input(input, vals...);
 	}
 
 	/// Returns a list of _active_ vertex attributes in the shader program. Active attributes

@@ -307,7 +307,7 @@ void GlShaderProgram::use() {
 }
 
 void GlShaderProgram::execute_with(std::shared_ptr<GlUniformInput> const& unif_in, std::shared_ptr<GlGeometry> const& geom) {
-	ENSURE(unif_in->program == this->shared_from_this(), "Uniform input passed to different shader than it was created with.");
+	ENSURE(unif_in->get_program() == this->shared_from_this(), "Uniform input passed to different shader than it was created with.");
 
 	this->use();
 
@@ -383,8 +383,10 @@ std::map<size_t, resources::vertex_input_t> GlShaderProgram::vertex_attributes()
 }
 
 std::shared_ptr<UniformInput> GlShaderProgram::new_unif_in() {
-	auto in = std::make_shared<GlUniformInput>();
-	in->program = std::static_pointer_cast<GlShaderProgram>(this->shared_from_this());
+	auto in = std::make_shared<GlUniformInput>(
+		this->shared_from_this()
+	);
+
 	return in;
 }
 

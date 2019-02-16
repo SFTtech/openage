@@ -19,16 +19,7 @@ class MeshData;
 class ShaderProgram;
 class Geometry;
 class Texture2d;
-
-/// The abstract base for uniform input. Besides the uniform values, it stores information about
-/// which shader program the input was created for.
-class UniformInput : public std::enable_shared_from_this<UniformInput> {
-protected:
-	UniformInput() = default;
-
-public:
-	virtual ~UniformInput() = default;
-};
+class UniformInput;
 
 /// The abstract base for a render target.
 class RenderTarget : public std::enable_shared_from_this<RenderTarget> {

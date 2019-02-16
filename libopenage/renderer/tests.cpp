@@ -253,7 +253,7 @@ void main() {
 		             0, 0, 1, 0,
 		             0, 0, 0, 1;
 
-		obj_shader->update_uniform_input(proj_unif, "proj", pmat);
+		proj_unif->update("proj", pmat);
 
 		/* Create a new FBO with the right dimensions. */
 		color_texture = renderer->add_texture(resources::Texture2dInfo(w, h, resources::pixel_format::rgba8));
@@ -261,7 +261,7 @@ void main() {
 		depth_texture = renderer->add_texture(resources::Texture2dInfo(w, h, resources::pixel_format::depth24));
 		fbo = renderer->create_texture_target( { color_texture, id_texture, depth_texture } );
 
-		display_shader->update_uniform_input(color_texture_unif, "color_texture", color_texture);
+		color_texture_unif->update("color_texture", color_texture);
 
 		texture_data_valid = false;
 		pass1->set_target(fbo);
