@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #include "simple_object.h"
 
@@ -9,12 +9,18 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
-GlSimpleObject::GlSimpleObject(std::function<void(GLuint)> delete_fun)
-	: delete_fun(std::move(delete_fun)) {}
+GlSimpleObject::GlSimpleObject(const std::shared_ptr<GlContext> &context,
+                               std::function<void(GLuint)> &&delete_fun)
+	:
+	context{context},
+	delete_fun(std::move(delete_fun)) {}
 
 GlSimpleObject::GlSimpleObject(GlSimpleObject&& other)
-	: handle(other.handle)
-	, delete_fun(std::move(other.delete_fun)) {
+	:
+	context{std::move(other.context)},
+	handle{other.handle},
+	delete_fun(std::move(other.delete_fun)) {
+
 	other.handle = {};
 }
 
@@ -23,6 +29,7 @@ GlSimpleObject &GlSimpleObject::operator =(GlSimpleObject&& other) {
 		this->delete_fun(*this->handle);
 	}
 
+	this->context = std::move(other.context);
 	this->handle = other.handle;
 	this->delete_fun = std::move(other.delete_fun);
 	other.handle = {};

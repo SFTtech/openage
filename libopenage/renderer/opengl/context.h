@@ -1,6 +1,8 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
+
+#include <memory>
 
 #include <SDL2/SDL.h>
 
@@ -29,7 +31,7 @@ struct gl_context_capabilities {
 class GlContext {
 public:
 	/// Create a GL context in the given SDL window.
-	explicit GlContext(SDL_Window*);
+	explicit GlContext(const std::shared_ptr<SDL_Window> &);
 	~GlContext();
 
 	/// It doesn't make sense to have more than one instance of the same context.
@@ -54,6 +56,9 @@ public:
 	static void check_error();
 
 private:
+	/// The associated SDL window is held here so the context remains active.
+	std::shared_ptr<SDL_Window> window;
+
 	/// Pointer to SDL struct representing the GL context.
 	SDL_GLContext gl_context;
 

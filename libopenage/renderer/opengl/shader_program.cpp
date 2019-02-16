@@ -55,15 +55,20 @@ static void check_program_status(GLuint program, GLenum what_to_check) {
 	}
 }
 
-GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &srcs, const gl_context_capabilities &caps)
-	: GlSimpleObject([] (GLuint handle) { glDeleteProgram(handle); } )
+GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
+                                 const std::vector<resources::ShaderSource> &srcs)
+	: GlSimpleObject(context,
+	                 [] (GLuint handle) { glDeleteProgram(handle); } )
 	, validated(false) {
+
+	const gl_context_capabilities& caps = context->get_capabilities();
+
 	GLuint handle = glCreateProgram();
 	this->handle = handle;
 
 	std::vector<GlShader> shaders;
 	for (auto const& src : srcs) {
-		GlShader shader(src);
+		GlShader shader{context, src};
 		glAttachShader(handle, shader.get_handle());
 		shaders.push_back(std::move(shader));
 	}
@@ -276,6 +281,7 @@ GlShaderProgram::GlShaderProgram(const std::vector<resources::ShaderSource> &src
 		}
 	}
 }
+
 
 void GlShaderProgram::use() {
 	if (!this->validated) {

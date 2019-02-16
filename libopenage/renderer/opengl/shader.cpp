@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "shader.h"
 
@@ -17,8 +17,10 @@ static constexpr auto gl_shdr_type = datastructure::create_const_map<resources::
 	std::make_pair(resources::shader_stage_t::fragment, GL_FRAGMENT_SHADER)
 );
 
-GlShader::GlShader(const resources::ShaderSource &src)
-	: GlSimpleObject([] (GLuint handle) { glDeleteShader(handle); } )
+GlShader::GlShader(const std::shared_ptr<GlContext> &context,
+                   const resources::ShaderSource &src)
+	: GlSimpleObject(context,
+	                 [] (GLuint handle) { glDeleteShader(handle); } )
 	, type(gl_shdr_type.get(src.get_stage()))
 {
 	if (src.get_lang() != resources::shader_lang_t::glsl) {

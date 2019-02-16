@@ -24,7 +24,8 @@ class GlShaderProgram final : public ShaderProgram, public GlSimpleObject {
 public:
 	/// Tries to create a shader program from the given sources.
 	/// Throws an exception on compile/link errors.
-	explicit GlShaderProgram(const std::vector<resources::ShaderSource>&, const gl_context_capabilities&);
+	explicit GlShaderProgram(const std::shared_ptr<GlContext> &,
+	                         const std::vector<resources::ShaderSource>&);
 
 	/// Bind this program as the currently used one in the OpenGL context.
 	void use();

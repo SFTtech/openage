@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -15,11 +15,13 @@ class GlBuffer final : public GlSimpleObject {
 public:
 	/// Creates an empty buffer of the specified size.
 	/// Binds the GL_COPY_WRITE_BUFFER target.
-	GlBuffer(size_t size, GLenum usage = GL_STATIC_DRAW);
+	GlBuffer(const std::shared_ptr<GlContext> &context,
+	         size_t size, GLenum usage = GL_STATIC_DRAW);
 
 	/// Creates a buffer of the specified size and fills it with the given data.
 	/// Binds the GL_COPY_WRITE_BUFFER target.
-	GlBuffer(const uint8_t *data, size_t size, GLenum usage = GL_STATIC_DRAW);
+	GlBuffer(const std::shared_ptr<GlContext> &context,
+	         const uint8_t *data, size_t size, GLenum usage = GL_STATIC_DRAW);
 
 	/// The size in bytes of this buffer.
 	size_t get_size() const;

@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -21,11 +21,13 @@ public:
 	/// vector, and fills the layers with the corresponding vector element. The
 	/// texture formats in all vector elements must be the same as defined by
 	/// Textur2dInfo::operator==.
-	GlTexture2dArray(const std::vector<resources::Texture2dData>&);
+	GlTexture2dArray(const std::shared_ptr<GlContext> &context,
+	                 const std::vector<resources::Texture2dData>&);
 
 	/// Constructs an array of ln_layers empty layers, with the per-layer texture
 	/// format specified in layer_info.
-	GlTexture2dArray(size_t n_layers, resources::Texture2dInfo const& layer_info);
+	GlTexture2dArray(const std::shared_ptr<GlContext> &context,
+	                 size_t n_layers, resources::Texture2dInfo const& layer_info);
 
 	void upload(size_t layer, resources::Texture2dData const&) override;
 

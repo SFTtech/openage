@@ -1,4 +1,4 @@
-// Copyright 2018-2018 the openage authors. See copying.md for legal info.
+// Copyright 2018-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -17,7 +17,7 @@ class GlWindow final : public Window {
 public:
 	/// Create a shiny window with the given title.
 	GlWindow(const char *title, size_t width, size_t height);
-	~GlWindow();
+	~GlWindow() = default;
 
 	void set_size(size_t width, size_t height) override;
 
@@ -30,15 +30,17 @@ public:
 	void make_context_current();
 
 	/// Return a pointer to this window's GL context.
-	opengl::GlContext *get_context();
+	const std::shared_ptr<opengl::GlContext> &get_context() const;
 
 private:
-	/// The SDL struct representing this window.
-	SDL_Window *window;
+	/// The SDL window to which the OpenGL context is associated.
+	std::shared_ptr<SDL_Window> window;
 
-	/// The window's OpenGL context. It's optional because it can't be constructed immediately,
+	/// The window's OpenGL context. It can't be constructed immediately,
 	/// but after the constructor runs it's guaranteed to be available.
-	std::optional<opengl::GlContext> context;
+	/// The SDL window is also held within this context, because when the window is deallocated,
+	/// the context is gone.
+	std::shared_ptr<opengl::GlContext> context;
 };
 
 }}} // namespace openage::renderer::opengl

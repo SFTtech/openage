@@ -21,32 +21,35 @@ GlWindow::GlWindow(const char *title, size_t width, size_t height)
 	// We need HIGHDPI for eventual support of GUI scaling.
 	// TODO HIGHDPI fails (requires newer SDL2?)
 	int32_t window_flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED;
-	this->window = SDL_CreateWindow(
-		title,
-		SDL_WINDOWPOS_CENTERED,
-		SDL_WINDOWPOS_CENTERED,
-		this->size.first,
-		this->size.second,
-		window_flags
+	this->window = std::shared_ptr<SDL_Window>(
+		SDL_CreateWindow(
+			title,
+			SDL_WINDOWPOS_CENTERED,
+			SDL_WINDOWPOS_CENTERED,
+			this->size.first,
+			this->size.second,
+			window_flags
+		),
+		[] (SDL_Window *window) {
+			log::log(MSG(info) << "Destroying SDL window...");
+			SDL_DestroyWindow(window);
+		}
 	);
 
 	if (this->window == nullptr) {
 		throw Error{MSG(err) << "Failed to create SDL window: " << SDL_GetError()};
 	}
 
-	this->context = opengl::GlContext(this->window);
+	this->context = std::make_shared<opengl::GlContext>(this->window);
 	this->add_resize_callback([] (size_t w, size_t h) { glViewport(0, 0, w, h); } );
 
 	log::log(MSG(info) << "Created SDL window with OpenGL context.");
 }
 
-GlWindow::~GlWindow() {
-	SDL_DestroyWindow(this->window);
-}
 
 void GlWindow::set_size(size_t width, size_t height) {
 	if (this->size.first != width || this->size.second != height) {
-		SDL_SetWindowSize(this->window, width, height);
+		SDL_SetWindowSize(this->window.get(), width, height);
 		this->size = std::make_pair(width, height);
 	}
 
@@ -87,7 +90,7 @@ void GlWindow::update() {
 		}
 	}
 
-	SDL_GL_SwapWindow(this->window);
+	SDL_GL_SwapWindow(this->window.get());
 }
 
 std::unique_ptr<Renderer> GlWindow::make_renderer() {
@@ -95,11 +98,11 @@ std::unique_ptr<Renderer> GlWindow::make_renderer() {
 }
 
 void GlWindow::make_context_current() {
-	SDL_GL_MakeCurrent(this->window, this->context->get_raw_context());
+	SDL_GL_MakeCurrent(this->window.get(), this->context->get_raw_context());
 }
 
-opengl::GlContext *GlWindow::get_context() {
-	return &this->context.value();
+const std::shared_ptr<opengl::GlContext> &GlWindow::get_context() const {
+	return this->context;
 }
 
 }}} // namespace openage::renderer::opengl

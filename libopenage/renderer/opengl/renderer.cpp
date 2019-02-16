@@ -14,28 +14,28 @@
 
 namespace openage::renderer::opengl {
 
-GlRenderer::GlRenderer(GlContext *ctx)
+GlRenderer::GlRenderer(const std::shared_ptr<GlContext> &ctx)
 	:
-	gl_context(ctx),
+	gl_context{ctx},
 	display{std::make_shared<GlRenderTarget>()}
 {
 	log::log(MSG(info) << "Created OpenGL renderer");
 }
 
 std::shared_ptr<Texture2d> GlRenderer::add_texture(const resources::Texture2dData& data) {
-	return std::make_shared<GlTexture2d>(data);
+	return std::make_shared<GlTexture2d>(this->gl_context, data);
 }
 
 std::shared_ptr<Texture2d> GlRenderer::add_texture(const resources::Texture2dInfo& info) {
-	return std::make_shared<GlTexture2d>(info);
+	return std::make_shared<GlTexture2d>(this->gl_context, info);
 }
 
 std::shared_ptr<ShaderProgram> GlRenderer::add_shader(std::vector<resources::ShaderSource> const& srcs) {
-	return std::make_shared<GlShaderProgram>(srcs, this->gl_context->get_capabilities());
+	return std::make_shared<GlShaderProgram>(this->gl_context, srcs);
 }
 
 std::shared_ptr<Geometry> GlRenderer::add_mesh_geometry(resources::MeshData const& mesh) {
-	return std::make_shared<GlGeometry>(mesh);
+	return std::make_shared<GlGeometry>(this->gl_context, mesh);
 }
 
 std::shared_ptr<Geometry> GlRenderer::add_bufferless_quad() {
@@ -53,7 +53,7 @@ std::shared_ptr<RenderTarget> GlRenderer::create_texture_target(std::vector<std:
 		gl_textures.push_back(std::dynamic_pointer_cast<GlTexture2d>(tex));
 	}
 
-	return std::make_shared<GlRenderTarget>(gl_textures);
+	return std::make_shared<GlRenderTarget>(this->gl_context, gl_textures);
 }
 
 std::shared_ptr<RenderTarget> GlRenderer::get_display_target() {

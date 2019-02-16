@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -22,7 +22,7 @@ public:
 	GlGeometry();
 
 	/// Initialize a meshed geometry. Relatively costly, has to initialize GL buffers and copy vertex data.
-	explicit GlGeometry(resources::MeshData const&);
+	explicit GlGeometry(const std::shared_ptr<GlContext> &context, resources::MeshData const&);
 
 	/// Executes a draw command for the geometry on the currently active context.
 	/// Assumes bound and valid shader program and all other necessary state.
