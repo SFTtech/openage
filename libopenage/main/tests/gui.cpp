@@ -237,12 +237,12 @@ void Gui::draw(const std::shared_ptr<PongState> &state, const curve::time_t &now
 	// draw the ball
 	//this->draw_ball(state->ball->position->get(now), "M"); // TODO: use "⚽"
 
-	//auto ball_pos = state->ball->position->get(now);
-	//auto pos1 = Eigen::Affine3f::Identity();
-	//pos1.prescale(Eigen::Vector3f(200.0f, 200.0f, 1.0f));
-	//pos1.prerotate(Eigen::AngleAxisf(45.0f * math::PI / 180.0f, Eigen::Vector3f::UnitZ()));
-	//pos1.pretranslate(Eigen::Vector3f(ball_pos[0], ball_pos[1], 0.0f));
-	//this->ball->unif_in->update_uniform_input("pos", ball_pos_matrix);
+	auto ball_pos = state->ball->position->get(now);
+	auto ball_pos_matrix = Eigen::Affine3f::Identity();
+	ball_pos_matrix.prescale(Eigen::Vector3f(200.0f, 200.0f, 1.0f));
+	//ball_pos_matrix.prerotate(Eigen::AngleAxisf(45.0f * math::PI / 180.0f, Eigen::Vector3f::UnitZ()));
+	ball_pos_matrix.pretranslate(Eigen::Vector3f(ball_pos[0], ball_pos[1], 0.0f));
+	this->ball.unif_in->update("pos", ball_pos_matrix.matrix());
 
 	this->renderer->render(this->pass);
 	this->window.update();
