@@ -84,10 +84,8 @@ public:
 	 * This inserts the event into the changes queue
 	 * so it will be evaluated in the next loop iteration.
 	 */
-	template<class T>
 	void create_change(const std::shared_ptr<Event> &event,
-	                   const curve::time_t &changes_at,
-	                   const T &new_value);
+	                   const curve::time_t &changes_at);
 
 	const EventQueue &get_queue() const {
 		return this->queue;
@@ -131,17 +129,5 @@ private:
 
 	std::unordered_map<uint64_t, std::weak_ptr<EventTarget>> curveindex;
 };
-
-
-template <typename T>
-void Loop::create_change(const std::shared_ptr<Event> &evnt,
-                         const curve::time_t &changes_at,
-                         const T &new_value) {
-
-	log::log(DBG << "Loop: registering change of " << evnt->get_eventclass()->id()
-	         << " at t=" << changes_at << " to " << new_value);
-	this->queue.add_change(evnt, changes_at);
-}
-
 
 } // openage::event

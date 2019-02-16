@@ -61,21 +61,24 @@ void Loop::reach_time(const curve::time_t &max_time,
 	// at least one processed event adds another event so
 	// the queue never stops adding changes
 	// simple "solution": abort after over 9000 attempts.
+	int max_attempts = 10;
 
 	int cnt = 0;
 	int attempts = 0;
+
 	do {
+		if (attempts > max_attempts) {
+			throw Error(ERR << "Loop: reached event settling threshold of "
+			            << max_attempts << ", giving up.");
+			break;
+		}
+
 		log::log(DBG << "Loop: Attempt " << attempts << " to reach t=" << max_time);
 		this->update_changes(state);
 		cnt = this->execute_events(max_time, state);
 
 		log::log(DBG << "Loop: to reach t=" << max_time
 		         << ", n=" << cnt << " events were executed");
-
-		if (attempts > 9000) {
-			log::log(WARN << "Loop: reached event settling threshold, giving up.");
-			break;
-		}
 
 		attempts += 1;
 	} while (cnt != 0);
@@ -115,7 +118,7 @@ int Loop::execute_events(const curve::time_t &time_until,
 
 		if (target) {
 			log::log(DBG << "Loop: invoking event \"" << event->get_eventclass()->id()
-			         << "\" on target \"" << target->id()
+			         << "\" on target \"" << target->idstr()
 			         << "\" for time t=" << event->get_time());
 
 			this->active_event = event;
@@ -155,6 +158,12 @@ int Loop::execute_events(const curve::time_t &time_until,
 }
 
 
+void Loop::create_change(const std::shared_ptr<Event> &evnt,
+                         const curve::time_t &changes_at) {
+	this->queue.add_change(evnt, changes_at);
+}
+
+
 void Loop::update_changes(const std::shared_ptr<State> &state) {
 
 	log::log(DBG << "Loop: " << this->queue.get_changes().size()
@@ -162,7 +171,7 @@ void Loop::update_changes(const std::shared_ptr<State> &state) {
 
 	size_t i = 0;
 
-	// reevaluate depending events beecause of the change
+	// reevaluate depending events because of the change
 	for (const auto &change : this->queue.get_changes()) {
 		auto evnt = change.evnt.lock();
 		if (evnt) {
@@ -186,7 +195,7 @@ void Loop::update_changes(const std::shared_ptr<State> &state) {
 
 						evnt->set_time(new_time);
 
-						this->queue.enqueue_change(evnt);
+						this->queue.enqueue(evnt);
 					}
 					else {
 						log::log(DBG << "Loop: due to a change, canceled execution of '"
@@ -202,7 +211,7 @@ void Loop::update_changes(const std::shared_ptr<State> &state) {
 			case EventClass::trigger_type::TRIGGER:
 			case EventClass::trigger_type::DEPENDENCY_IMMEDIATELY:
 				evnt->set_time(change.time);
-				this->queue.enqueue_change(evnt);
+				this->queue.enqueue(evnt);
 				break;
 
 			case EventClass::trigger_type::REPEAT:

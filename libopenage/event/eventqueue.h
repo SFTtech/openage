@@ -61,8 +61,8 @@ public:
 	 * A target is every single unit in the game world - so best add these events
 	 * in the constructor of the game objects.
 	 *
-	 * The `insertion_time` is the time used to calculate when
-	 * the actual event time will happen!
+	 * The `reference_time` is the time used to calculate when
+	 * the actual event time will happen by calling `eventclass->predict_invoke_time()`!
 	 */
 	std::shared_ptr<Event> create_event(const std::shared_ptr<EventTarget> &eventtarget,
 	                                    const std::shared_ptr<EventClass> &eventclass,
@@ -81,7 +81,7 @@ public:
 	 * is newly created. This updates/inserts the given event
 	 * in the main queue.
 	 */
-	void enqueue_change(const std::shared_ptr<Event> &event);
+	void enqueue(const std::shared_ptr<Event> &event);
 
 	/**
 	 * The event was just removed, add it again.
@@ -150,7 +150,6 @@ private:
 
 	/**
 	 * The universe timeline processes through this queue.
-	 * Type::ONCE is only inserted into the queue.
 	 */
 	EventStore event_queue;
 };

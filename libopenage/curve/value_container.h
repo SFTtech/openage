@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -15,11 +15,13 @@ class ValueContainer : public event::EventTarget {
 public:
 	ValueContainer(const std::shared_ptr<event::Loop> &mgr,
 	               size_t id,
+	               const std::string &idstr="",
 	               const EventTarget::single_change_notifier &notifier=nullptr)
 		:
 		EventTarget(mgr, notifier),
 		container{mgr},
 		_id{id},
+		_idstr{idstr},
 		last_element{this->container.begin()} {}
 
 	virtual ~ValueContainer() = default;
@@ -37,8 +39,15 @@ public:
 	virtual void set_last(const time_t &at, const T &value);
 	virtual void set_insert(const time_t &at, const T &value);
 
-	virtual size_t id() const override {
-		return _id;
+	size_t id() const override {
+		return this->_id;
+	}
+
+	std::string idstr() const override {
+		if (this->_idstr.size() == 0) {
+			return std::to_string(this->id());
+		}
+		return this->_idstr;
 	}
 
 protected:
@@ -51,6 +60,11 @@ protected:
 	 * Identifier for the container
 	 */
 	const size_t _id;
+
+	/**
+	 * Human-readable identifier for the container
+	 */
+	const std::string _idstr;
 
 	/**
 	 * Cache the iterator for quickly finding the end

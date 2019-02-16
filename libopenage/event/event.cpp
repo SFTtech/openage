@@ -29,8 +29,9 @@ void Event::depend_on(const std::shared_ptr<EventTarget> &dependency) {
 	// TODO: do REPEAT and TRIGGER listen to changes (i.e. have dependents)?
 	// if not, exclude them here and return early.
 
-	log::log(DBG << "Adding change listener for: " << this->get_eventclass()->id()
-	         << " to dependency with id=" << dependency->id());
+	log::log(DBG << "Registering dependency event from EventClass "
+	         << this->get_eventclass()->id()
+	         << " to EventTarget " << dependency->idstr());
 
 	dependency->add_dependent(this->shared_from_this());
 }

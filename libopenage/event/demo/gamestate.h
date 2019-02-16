@@ -3,6 +3,7 @@
 #pragma once
 
 #include <functional>
+#include <sstream>
 
 #include "config.h"
 #include "../state.h"
@@ -10,7 +11,9 @@
 #include "../eventtarget.h"
 #include "../../curve/continuous.h"
 #include "../../curve/discrete.h"
+#include "../../util/strings.h"
 #include "../../util/vector.h"
+
 
 namespace openage::event::demo {
 
@@ -44,22 +47,27 @@ public:
 		speed(std::make_shared<curve::Discrete<float>>(
 			      mgr,
 			      (id << 4) + 1,
+			      util::sformat("PongPlayer(%zd).speed", id),
 			      std::bind(&PongPlayer::child_changes, this, _1))),
 		position(std::make_shared<curve::Continuous<float>>(
 			         mgr,
 			         (id << 4) + 2,
+			         util::sformat("PongPlayer(%zd).position", id),
 			         std::bind(&PongPlayer::child_changes, this, _1))),
 		lives(std::make_shared<curve::Discrete<int>>(
 			      mgr,
 			      (id << 4) + 3,
+			      util::sformat("PongPlayer(%zd).lives", id),
 			      std::bind(&PongPlayer::child_changes, this, _1))),
 		state(std::make_shared<curve::Discrete<PongEvent>>(
 			      mgr,
 			      (id << 4) + 4,
+			      util::sformat("PongPlayer(%zd).state", id),
 			      std::bind(&PongPlayer::child_changes, this, _1))),
 		size(std::make_shared<curve::Discrete<float>>(
 			     mgr,
 			     (id << 4) + 5,
+			     util::sformat("PongPlayer(%zd).size", id),
 			     std::bind(&PongPlayer::child_changes, this, _1))),
 		_id{id},
 		paddle_x{0} {}
@@ -77,6 +85,12 @@ public:
 		return _id;
 	}
 
+	std::string idstr() const override {
+		std::stringstream ss;
+		ss << "PongPlayer[" << this->id() << "]";
+		return ss.str();
+	}
+
 private:
 	void child_changes(const curve::time_t &time) {
 		this->changes(time);
@@ -92,10 +106,12 @@ public:
 		speed(std::make_shared<curve::Discrete<util::Vector2d>>(
 			      mgr,
 			      (id << 2) + 1,
+			      util::sformat("PongBall(%zd).speed", id),
 			      std::bind(&PongBall::child_changes, this, _1))),
 		position(std::make_shared<curve::Continuous<util::Vector2d>>(
 			         mgr,
 			         (id << 2) + 2,
+			         util::sformat("PongBall(%zd).position", id),
 			         std::bind(&PongBall::child_changes, this, _1))),
 		_id{id} {}
 
@@ -105,6 +121,13 @@ public:
 	size_t id() const override {
 		return _id;
 	}
+
+	std::string idstr() const override {
+		std::stringstream ss;
+		ss << "PongBall[" << this->id() << "]";
+		return ss.str();
+	}
+
 private:
 	void child_changes(const curve::time_t &time) {
 		this->changes(time);

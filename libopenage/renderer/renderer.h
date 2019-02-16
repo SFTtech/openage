@@ -21,6 +21,7 @@ class Geometry;
 class Texture2d;
 class UniformInput;
 
+
 /// The abstract base for a render target.
 class RenderTarget : public std::enable_shared_from_this<RenderTarget> {
 protected:
@@ -50,6 +51,17 @@ struct Renderable {
 	bool depth_test = true;
 };
 
+
+/// Simplified form of Renderable, which is just an update for a shader.
+struct ShaderUpdate : Renderable {
+	ShaderUpdate(std::shared_ptr<UniformInput> const& unif_in)
+		: Renderable{unif_in, nullptr} {}
+
+	ShaderUpdate(std::shared_ptr<UniformInput> && unif_in)
+		: Renderable{std::move(unif_in), nullptr} {}
+};
+
+
 /// A render pass is a series of draw calls represented by renderables that output into the given render target.
 class RenderPass {
 protected:
@@ -65,6 +77,7 @@ private:
 	/// The render target to write into.
 	std::shared_ptr<RenderTarget> target;
 };
+
 
 /// The renderer. This class is used for performing all graphics operations. It is abstract and has implementations
 /// for various low-level graphics APIs like OpenGL.

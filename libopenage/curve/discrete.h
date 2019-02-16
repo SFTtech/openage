@@ -1,9 +1,10 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <optional>
 #include <utility>
+#include <sstream>
 
 #include "value_container.h"
 
@@ -29,6 +30,9 @@ public:
 	 */
 	T get(const time_t &t) const override;
 
+	/** human readable id string */
+	std::string idstr() const override;
+
 	/**
 	 * Return the last time and keyframe with time <= t.
 	 */
@@ -46,6 +50,21 @@ T Discrete<T>::get(const time_t &time) const {
 	auto e = this->container.last(time, this->last_element);
 	this->last_element = e;   // TODO if Caching?
 	return e->value;
+}
+
+
+template <typename T>
+std::string Discrete<T>::idstr() const {
+	std::stringstream ss;
+	ss << "DiscreteCurve[";
+	if (this->_idstr.size()) {
+		ss << this->_idstr;
+	}
+	else {
+		ss << this->id();
+	}
+	ss << "]";
+	return ss.str();
 }
 
 
