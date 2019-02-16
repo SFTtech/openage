@@ -1,6 +1,8 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #include "eventtarget.h"
+
+#include <string>
 
 #include "event.h"
 #include "eventclass.h"
@@ -11,11 +13,13 @@
 
 namespace openage::event {
 
+
 void EventTarget::changes(const curve::time_t &time) {
 	// This target has some change, so we have to notify all dependents
 	// that subscribed on this target.
 
-	log::log(DBG << "Target: change happens on " << this->id() << " at t=" << time);
+	log::log(DBG << "Target: processing change request at t=" << time
+	         << " for EventTarget " << this->idstr() << "...");
 	if (this->parent_notifier != nullptr) {
 		this->parent_notifier(time);
 	}
@@ -27,28 +31,29 @@ void EventTarget::changes(const curve::time_t &time) {
 			switch (dependent->get_eventclass()->type) {
 			case EventClass::trigger_type::DEPENDENCY_IMMEDIATELY:
 			case EventClass::trigger_type::DEPENDENCY:
-				// Enqueue a change so that change events will be retriggered
-				// (that depend on this target)
-				// FIXME: Traverse the changed value
-				this->loop->create_change(dependent, time, 0);
+				// Enqueue a change so that change events,
+				// which depend on this target, will be retriggered
+
+				log::log(DBG << "Target: change at t=" << time
+				         << " for EventTarget " << this->idstr() << " registered");
+				this->loop->create_change(dependent, time);
 				++it;
 				break;
 
 			case EventClass::trigger_type::ONCE:
 				// If the dependent is a ONCE-event
-				// Has it been triggered? If so - forget it.
-				if (dependent->last_triggered > 0) {
+				// forget the change if the once event has been triggered already.
+				if (dependent->get_last_triggered() > curve::time_t::min_value()) {
 					it = this->dependents.erase(it);
 				} else {
-					// FIXME: Traverse the changed value
-					this->loop->create_change(dependent, time, 0);
+					this->loop->create_change(dependent, time);
 					++it;
 				}
 				break;
 
 			case EventClass::trigger_type::TRIGGER:
 			case EventClass::trigger_type::REPEAT:
-				// Ignore announced changes for execute/keyframe events
+				// Ignore announced changes for triggered or repeated events
 				++it;
 				break;
 			}
@@ -74,8 +79,7 @@ void EventTarget::trigger(const curve::time_t &last_valid_time) {
 				         << dependent->get_eventclass()->id()
 				         << " at t=" << last_valid_time);
 
-				// FIXME: Traverse the changed value
-				loop->create_change(dependent, last_valid_time, 0);
+				loop->create_change(dependent, last_valid_time);
 			}
 
 			++it;

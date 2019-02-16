@@ -65,7 +65,19 @@ public:
 	 */
 	bool operator <(const Event &other) const;
 
-	curve::time_t last_triggered = 0;
+	/**
+	 * asdf what?
+	 */
+	const curve::time_t &get_last_triggered() const {
+		return this->last_triggered;
+	}
+
+	/**
+	 * asdf what?
+	 */
+	void set_last_triggered(const curve::time_t &t) {
+		this->last_triggered = t;
+	}
 
 private:
 	/**
@@ -81,6 +93,9 @@ private:
 
 	/** Time this event occurs/occured */
 	curve::time_t time;
+
+	/** Time this event was asdf what? */
+	curve::time_t last_triggered = curve::time_t::min_value();
 
 	/** Precalculated std::hash for the event */
 	size_t myhash;

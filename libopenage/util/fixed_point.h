@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -10,6 +10,7 @@
 #include <ostream>
 #include <type_traits>
 
+#include "compiler.h"
 #include "misc.h"
 
 namespace openage {
@@ -381,6 +382,14 @@ public:
 	// I/O operators
 	friend std::ostream &operator <<(std::ostream &os, const FixedPoint &n) {
 		os << std::fixed << std::setprecision(FixedPoint::approx_decimal_places) << double(n);
+
+		if (unlikely(n == FixedPoint::max_value())) {
+			os << "[MAX]";
+		}
+		else if (unlikely(n != 0 and n == FixedPoint::min_value())) {
+			os << "[MIN]";
+		}
+
 		return os;
 	}
 

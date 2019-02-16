@@ -1,33 +1,46 @@
-// Copyright 2018-2018 the openage authors. See copying.md for legal info.
+// Copyright 2018-2019 the openage authors. See copying.md for legal info.
 
 #include <cstdlib>
 #include <epoxy/gl.h>
 #include <functional>
 #include <unordered_map>
 #include <memory>
-#include <eigen3/Eigen/Dense>
 
 #include <nyan/nyan.h>
 
-#include "../../util/math_constants.h"
-#include "../../log/log.h"
+#include "aicontroller.h"
+#include "gui.h"
+#include "physics.h"
 #include "../../error/error.h"
-#include "../../renderer/resources/shader_source.h"
-#include "../../renderer/resources/texture_data.h"
-#include "../../renderer/resources/mesh_data.h"
-#include "../../renderer/texture.h"
-#include "../../renderer/shader_program.h"
-#include "../../renderer/util.h"
-#include "../../renderer/geometry.h"
-#include "../../renderer/opengl/window.h"
+#include "../../event/loop.h"
+#include "../../log/log.h"
+#include "../../util/math_constants.h"
+#include "../../util/path.h"
 
 
 namespace openage::main::tests::pong {
 
 
+
+using Clock = std::chrono::high_resolution_clock;
+using namespace std::literals::chrono_literals;
+
+
+enum class timescale {
+	NOSLEEP,
+	REALTIME,
+	SLOW,
+	FAST,
+};
+
+
 void main(const util::Path& path) {
+	bool human_player = false;
+
+	timescale speed = timescale::REALTIME;
 
 	std::shared_ptr<nyan::Database> db = nyan::Database::create();
+	std::shared_ptr<Gui> gui = std::make_shared<Gui>();
 
 	db->load(
 		"test.nyan",
@@ -47,90 +60,143 @@ void main(const util::Path& path) {
 	nyan::Object test = root->get("test.Test");
 	log::log(INFO << "nyan read test: " << *test.get<nyan::Int>("member"));
 
-	renderer::opengl::GlWindow window("openage engine test", 800, 600);
 
-	auto renderer = window.make_renderer();
+	bool running = true;
 
-	auto vshader_src = renderer::resources::ShaderSource(
-		renderer::resources::shader_lang_t::glsl,
-		renderer::resources::shader_stage_t::vertex,
-		R"s(
-#version 330
+	while (running) {
+		log::log(INFO << "initializing new pong game...");
 
-layout(location=0) in vec2 position;
-uniform mat4 pos;
-uniform mat4 proj;
+		auto loop = std::make_shared<event::Loop>();
+		curve::time_t now = 0;
+		Physics phys;
+		AIInput ai;
 
-void main() {
-	gl_Position = proj * pos * vec4(position, 0.0, 1.0);
-}
-)s");
+		auto state = std::make_shared<PongState>(loop, gui);
+		Physics::init(state, loop, now);
 
-	auto fshader_src = renderer::resources::ShaderSource(
-		renderer::resources::shader_lang_t::glsl,
-		renderer::resources::shader_stage_t::fragment,
-		R"s(
-#version 330
+		state->p1->lives->set_last(now, 3);
+		state->p1->size->set_last(now, 4);
 
-out vec4 col;
+		state->p2->lives->set_last(now, 3);
+		state->p2->size->set_last(now, 4);
 
-void main() {
-	col = vec4(1.0, 0, 0, 1.0);
-}
-)s");
+		gui->get_display_size(state, now);  // update gui related parameters
 
-	auto shader = renderer->add_shader( { vshader_src, fshader_src } );
+		// initialize the game enqueuing a physics reset should happen.
+		log::log(INFO << "initializing the physics state...");
+		std::vector<PongEvent> start_event{PongEvent{0, PongEvent::START}};
+		phys.process_input(state, state->p1, start_event, loop, now);
+		loop->reach_time(now, state);
 
-	auto pos1 = Eigen::Affine3f::Identity();
-	pos1.prescale(Eigen::Vector3f(200.0f, 200.0f, 1.0f));
-	//pos1.prerotate(Eigen::AngleAxisf(45.0f * math::PI / 180.0f, Eigen::Vector3f::UnitZ()));
-	pos1.pretranslate(Eigen::Vector3f(400.0f, 400.0f, 0.0f));
+		std::vector<PongEvent> inputs;
 
-	auto pos_in = shader->new_uniform_input(
-		"pos", pos1.matrix()
-	);
+		log::log(INFO << "starting game loop...");
 
-	auto proj_in = shader->new_uniform_input(
-		"proj", Eigen::Affine3f::Identity().matrix()
-	);
+		// this is the game loop, running while both players live!
+		while (running and
+		       state->p1->lives->get(now) > 0 and
+		       state->p2->lives->get(now) > 0) {
 
-	auto quad = renderer->add_mesh_geometry(renderer::resources::MeshData::make_quad());
-	renderer::Renderable obj1 {
-		pos_in.get(),
-		quad.get(),
-		true,
-		true,
-	};
+			log::log(DBG << "=================== LOOPING ====================");
 
-	renderer::Renderable projsetup {
-		proj_in.get(),
-		nullptr,
-	};
+			auto loop_start = Clock::now();
 
-	renderer::RenderPass pass {
-		{ projsetup, obj1 },
-		renderer->get_display_target(),
-	};
+			gui->get_display_size(state, now);
 
+			// process the input for both players
+			// player 1 can be AI or human.
 
-	glDepthFunc(GL_LEQUAL);
-	glDepthRange(0.0, 1.0);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+			if (human_player) {
+				phys.process_input(state, state->p1,
+				                   inputs, loop, now);
+			}
+			else {
+				phys.process_input(state, state->p1,
+				                   ai.get_inputs(state->p1, state->ball, now),
+				                   loop, now);
+			}
 
-	window.add_resize_callback(
-		[&] (size_t w, size_t h) {
-			Eigen::Matrix4f proj_matrix = renderer::util::ortho_matrix_f(0.0f, w,
-			                                                             0.0f, h,
-			                                                             0.0f, 1.0f);
+			phys.process_input(state, state->p2,
+			                   ai.get_inputs(state->p2, state->ball, now),
+			                   loop, now);
 
-			shader->update_uniform_input(proj_in.get(), "proj", proj_matrix);
+			// paddle x positions
+			state->p1->paddle_x = 0;
+			state->p2->paddle_x = state->display_boundary[0] - 1;
+
+			// evaluate the event queue to reach the desired game time!
+			loop->reach_time(now, state);
+
+			// draw the new state
+			gui->draw(state, now);
+
+			/*
+			int pos = 1;
+			mvprintw(pos++, state->display_boundary[0]/2 + 10, "Enqueued events:");
+			for (const auto &e : loop->get_queue().get_event_queue().get_sorted_events()) {
+				mvprintw(pos++, state->display_boundary[0]/2 + 10,
+				         "%f: %s",
+				         e->get_time().to_double(),
+				         e->get_eventclass()->id().c_str());
+			}
+			*/
+
+			// get the input after the current frame, because the get_inputs
+			// implicitly updates the screen. if this is done too early,
+			// the screen will be updated to be empty -> flickering.
+			// TODO: take terminal input without ncurses, if on tty?
+			//       e.g. 'q' to close it?
+			inputs = gui->get_inputs(state->p1);
+
+			if (gui->exit_requested) {
+				running = false;
+			}
+
+			// handle timing for screen refresh and simulation advancement
+			using dt_s_t = std::chrono::duration<double, std::ratio<1>>;
+			using dt_ms_t = std::chrono::duration<double, std::milli>;
+
+			// microseconds per frame
+			// 30fps = 1s/30 = 1000000us/30 per frame
+			constexpr static std::chrono::microseconds per_frame = 33333us;
+			constexpr static curve::time_t per_frame_s = std::chrono::duration_cast<dt_s_t>(per_frame).count();
+
+			if (speed == timescale::NOSLEEP) {
+				// increase the simulation loop time a bit
+				SDL_Delay(5);
+			}
+
+			dt_ms_t dt_us = Clock::now() - loop_start;
+
+			if (speed != timescale::NOSLEEP) {
+				dt_ms_t wait_time = per_frame - dt_us;
+
+				if (wait_time > dt_ms_t::zero()) {
+					SDL_Delay(wait_time.count());
+				}
+			}
+
+			switch (speed) {
+			case timescale::NOSLEEP:
+				// advance the frame calculation time only,
+				// because we didn't sleep
+				now += std::chrono::duration_cast<dt_s_t>(dt_us).count();
+				break;
+
+			case timescale::REALTIME:
+				// advance the game time in seconds
+				now += per_frame_s;
+				break;
+
+			case timescale::SLOW:
+				now += per_frame_s / 10;
+				break;
+
+			case timescale::FAST:
+				now += per_frame_s * 4;
+				break;
+			}
 		}
-	);
-
-	while (!window.should_close()) {
-		renderer->render(pass);
-		window.update();
-		renderer::opengl::GlContext::check_error();
 	}
 }
 

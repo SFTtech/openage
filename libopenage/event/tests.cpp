@@ -1,8 +1,9 @@
 // Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
-#include <cstring> // for strcmp
+#include <cstring>
 #include <iostream>
 #include <utility>
+#include <sstream>
 
 #include "../testing/testing.h"
 #include "../log/log.h"
@@ -34,6 +35,12 @@ public:
 
 		[[nodiscard]] size_t id() const override {
 			return _id;
+		}
+
+		std::string idstr() const override {
+			std::stringstream ss;
+			ss << "TestObject[" << this->id() << "]";
+			return ss.str();
 		}
 
 		void test_trigger(const curve::time_t &time) {

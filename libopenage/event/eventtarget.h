@@ -18,10 +18,14 @@ class EventClass;
  * Every Object in the gameworld that wants to be targeted by events or as
  * dependency for events, has to implement this class.
  */
+// asdf rename to EventSource ? because it is a source for event triggering?
 class EventTarget {
 public:
 	/** Give a unique event system identifier for the entity */
 	virtual size_t id() const = 0;
+
+	/** Give a human-readable identifier for this target */
+	virtual std::string idstr() const = 0;
 
 	using single_change_notifier = std::function<void(const curve::time_t &)>;
 

@@ -83,15 +83,19 @@ EventQueue::EventQueue()
 void EventQueue::add_change(const std::shared_ptr<Event> &event,
                             const curve::time_t &changed_at) {
 
-	auto it = this->changes->find(OnChangeElement(event, changed_at));
+	const curve::time_t event_last_triggered = event->get_last_triggered();
 
 	// Has the event been triggered in this round?
-	if (event->last_triggered < changed_at) {
+	if (event_last_triggered < changed_at) {
+		auto it = this->changes->find(OnChangeElement(event, changed_at));
+
 		// Is the change already in the queue?
 		if (it != changes->end()) {
 			// Is the new change dated _before_ the old one?
-			if (it->time > changed_at) {
-				log::log(DBG << "Queue: adjusting time in change queue");
+			if (changed_at < it->time) {
+				log::log(DBG << "Queue: adjusting time in change queue: moving event of "
+				         << event->get_eventclass()->id()
+				         << " to earlier time");
 
 				// Save the element
 				OnChangeElement e = *it;
@@ -105,25 +109,26 @@ void EventQueue::add_change(const std::shared_ptr<Event> &event,
 				// this change is to be ignored
 				log::log(DBG << "Queue: skipping change for " << event->get_eventclass()->id()
 				         << " at " << changed_at
-				         << " because there was already a better one at t=" << it->time);
+				         << " because there was already an earlier one at t=" << it->time);
 			}
 		}
 		else {
 			// the change was not in the to be changed list
 			this->changes->emplace(event, changed_at);
-			log::log(DBG << "Queue: inserting change for " << event->get_eventclass()->id()
+			log::log(DBG << "Queue: inserting change for event from "
+			         << event->get_eventclass()->id()
 			         << " to be applied at t=" << changed_at);
 		}
 	}
 	else {
 		// the event has been triggered in this round already, so skip it this time
 		this->future_changes->emplace(event, changed_at);
-		log::log(DBG << "Queue: putting change for "
-		         << event->get_eventclass()->id() << " into the future, "
-		         << "applied at t=" << changed_at);
+		log::log(DBG << "Queue: ignoring change at t=" << changed_at
+		         << " for event of EventClass" << event->get_eventclass()->id()
+		         << " because it has been triggered at t=" << event_last_triggered);
 	}
 
-	event->last_triggered = changed_at;
+	event->set_last_triggered(changed_at);
 }
 
 
@@ -135,7 +140,7 @@ void EventQueue::remove(const std::shared_ptr<Event> &evnt) {
 }
 
 
-void EventQueue::enqueue_change(const std::shared_ptr<Event> &evnt) {
+void EventQueue::enqueue(const std::shared_ptr<Event> &evnt) {
 	if (this->event_queue.contains(evnt)) {
 		this->event_queue.update(evnt);
 	}

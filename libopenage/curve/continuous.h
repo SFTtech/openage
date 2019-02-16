@@ -1,8 +1,9 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <type_traits>
+#include <sstream>
 
 #include "value_container.h"
 #include "../log/log.h"
@@ -24,6 +25,9 @@ public:
 	 * will interpolate between the keyframes linearly based on the time.
 	 */
 	T get(const time_t &) const override;
+
+	/** human readable identifier */
+	std::string idstr() const override;
 };
 
 
@@ -59,5 +63,21 @@ T Continuous<T>::get(const time_t &time) const {
 		return e->value + (nxt->value - e->value) * elapsed_frac;
 	}
 }
+
+
+template <typename T>
+std::string Continuous<T>::idstr() const {
+	std::stringstream ss;
+	ss << "ContinuousCurve[";
+	if (this->_idstr.size()) {
+		ss << this->_idstr;
+	}
+	else {
+		ss << this->id();
+	}
+	ss << "]";
+	return ss.str();
+}
+
 
 } // openage::curve

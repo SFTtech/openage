@@ -49,7 +49,9 @@ void translate_exc_cpp_to_py() {
 		// when we reach this, cython caught an error.
 		// and we're now in the handler.
 
-		// to continue, first rethrow the exception so we can analyze it:
+		// to continue, first rethrow the exception so we can analyze it
+		// and to restore its context in case it's an exception that doesn't
+		// store useful information.
 		throw;
 
 	} catch (PyException &exc) {
@@ -77,28 +79,9 @@ void translate_exc_cpp_to_py() {
 		// = insert it in pythons backtrace
 		raise_cpp_error(&exc);
 	}
-	// we also need to catch std::exception so that rethrown causes are handled
-	// properly. otherwise they just crash everything. not good.
-	catch (const std::exception &exc) {
-		// the std::exception doesn't contain a stack trace...
-		// as we're at a special place we must not generate the current
-		// stack trace either. and we _must not_ store the causing
-		// exception, as the whole point of this code is to get rid
-		// of std::exceptions.
-		Error error{
-			ERR << "std::exception: "
-			    << util::demangle(typeid(exc).name())
-			    << ": "
-			    << exc.what(),
-			false,
-			false
-		};
-
-		raise_cpp_error(&error);
-	}
 
 	/*
-	 * all other exceptions are more than unexpected;
+	 * all other exceptions are more than unexpected; even std::exception.
 	 * they don't contain any useful stack trace information,
 	 * so the safest course of action is not to catch them.
 	 * That way, terminate() is called, where we can analyze the stack
