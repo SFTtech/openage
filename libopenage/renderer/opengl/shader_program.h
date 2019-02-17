@@ -30,10 +30,11 @@ public:
 	/// Bind this program as the currently used one in the OpenGL context.
 	void use();
 
-	/// Does what the description of Renderable specifies - updates the uniform values
-	/// and draws the Geometry if it's not nullptr. If geometry is null, only the
-	/// uniform values are updated.
-	void execute_with(std::shared_ptr<GlUniformInput> const&, std::shared_ptr<GlGeometry> const&);
+	/// Check if this program is currently in use in the OpenGL context.
+	bool in_use() const;
+
+	/// Updates the uniform values with the given input specification.
+	void update_uniforms(std::shared_ptr<GlUniformInput> const&);
 
 	bool has_uniform(const char*) override;
 

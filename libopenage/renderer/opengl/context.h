@@ -11,6 +11,8 @@ namespace openage {
 namespace renderer {
 namespace opengl {
 
+class GlShaderProgram;
+
 /// Stores information about context capabilities and limitations.
 struct gl_context_capabilities {
 	/// The maximum number of vertex attributes in a shader.
@@ -55,6 +57,12 @@ public:
 	/// and throws an exception if it did. Note that it's static.
 	static void check_error();
 
+	/// Returns a handle to the last-activated shader program
+	const std::weak_ptr<GlShaderProgram> &get_current_program() const;
+
+	/// Store the last-activated shader program
+	void set_current_program(const std::shared_ptr<GlShaderProgram> &);
+
 private:
 	/// The associated SDL window is held here so the context remains active.
 	std::shared_ptr<SDL_Window> window;
@@ -64,6 +72,9 @@ private:
 
 	/// Context capabilities.
 	gl_context_capabilities capabilities{};
+
+	// The last-active shader program
+	std::weak_ptr<GlShaderProgram> last_program;
 };
 
 }}} // openage::renderer::opengl

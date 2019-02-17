@@ -181,9 +181,9 @@ void main() {
 	 * which we can later read in order to determine which object was clicked. The depth texture is required,
 	 * but mostly irrelevant in this case. */
 	auto size = window.get_size();
-	auto color_texture = renderer->add_texture(resources::Texture2dInfo(size.first, size.second, resources::pixel_format::rgba8));
-	auto id_texture = renderer->add_texture(resources::Texture2dInfo(size.first, size.second, resources::pixel_format::r32ui));
-	auto depth_texture = renderer->add_texture(resources::Texture2dInfo(size.first, size.second, resources::pixel_format::depth24));
+	auto color_texture = renderer->add_texture(resources::Texture2dInfo(size[0], size[1], resources::pixel_format::rgba8));
+	auto id_texture = renderer->add_texture(resources::Texture2dInfo(size[0], size[1], resources::pixel_format::r32ui));
+	auto depth_texture = renderer->add_texture(resources::Texture2dInfo(size[0], size[1], resources::pixel_format::depth24));
 	auto fbo = renderer->create_texture_target( { color_texture, id_texture, depth_texture } );
 
 	/* Make an object to update the projection matrix in pass 1 according to changes in the screen size.

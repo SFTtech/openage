@@ -7,9 +7,9 @@ namespace openage {
 namespace renderer {
 
 Window::Window(size_t width, size_t height)
-	: size(std::make_pair(width, height)) {}
+	: size{width, height} {}
 
-std::pair<size_t, size_t> Window::get_size() const {
+const util::Vector2s &Window::get_size() const {
 	return this->size;
 }
 

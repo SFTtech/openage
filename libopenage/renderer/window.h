@@ -1,4 +1,4 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -9,6 +9,7 @@
 #include <SDL2/SDL.h>
 
 #include "renderer.h"
+#include "../util/vector.h"
 
 
 namespace openage {
@@ -19,7 +20,7 @@ public:
 	virtual ~Window() = default;
 
 	/// Returns the dimensions of this window.
-	std::pair<size_t, size_t> get_size() const;
+	const util::Vector2s &get_size() const;
 
 	/// Returns true if this window should be closed.
 	bool should_close() const;
@@ -51,7 +52,7 @@ protected:
 	bool should_be_closed = false;
 
 	/// The current size of the framebuffer.
-	std::pair<size_t, size_t> size;
+	util::Vector2s size;
 
 	std::vector<key_cb_t> on_key;
 	std::vector<mouse_button_cb_t> on_mouse_button;

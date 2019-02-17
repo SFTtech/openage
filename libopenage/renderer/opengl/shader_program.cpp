@@ -284,6 +284,11 @@ GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
 
 
 void GlShaderProgram::use() {
+	// the setup doesn't need to be done if this program is already active.
+	if (this->in_use()) {
+		return;
+	}
+
 	if (!this->validated) {
 		// TODO(Vtec234): validation depends on the context state, so this might be worth calling
 		// more than once. However, once per frame is probably too much.
@@ -295,27 +300,43 @@ void GlShaderProgram::use() {
 
 	glUseProgram(*this->handle);
 
+	// store this program as the active one
+	this->context->set_current_program(
+		std::static_pointer_cast<GlShaderProgram>(
+			this->shared_from_this()
+		)
+	);
+
 	for (auto const &pair : this->textures_per_texunits) {
 		// We have to bind the texture to their texture units here because
 		// the texture unit bindings are global to the context. Each time
 		// the shader switches, it is possible that some other shader overwrote
-		// these, and since we want the uniform values to persist across execute_with
-		// calls, we have to set them more often than just on execute_with.
+		// these, and since we want the uniform values to persist across update_uniforms
+		// calls, we have to set them more often than just on update_uniforms.
 		glActiveTexture(GL_TEXTURE0 + pair.first);
 		glBindTexture(GL_TEXTURE_2D, pair.second);
 
 		// By the time we call bind, the texture may have been deleted, but if it's fixed
-		// afterwards using execute_with, the render state will still be fine, so we can ignore
+		// afterwards using update_uniforms, the render state will still be fine, so we can ignore
 		// this error.
 		// TODO this will swallow actual errors elsewhere, and should be avoided. how?
+		// probably by holding the texture object as shared_ptr as long as it is bound
 		glGetError();
 	}
 }
 
-void GlShaderProgram::execute_with(std::shared_ptr<GlUniformInput> const& unif_in, std::shared_ptr<GlGeometry> const& geom) {
+
+bool GlShaderProgram::in_use() const {
+	return this->context->get_current_program().lock() == this->shared_from_this();
+}
+
+
+void GlShaderProgram::update_uniforms(std::shared_ptr<GlUniformInput> const& unif_in) {
 	ENSURE(unif_in->get_program() == this->shared_from_this(), "Uniform input passed to different shader than it was created with.");
 
-	this->use();
+	if (not this->in_use()) {
+		this->use();
+	}
 
 	uint8_t const* data = unif_in->update_data.data();
 	for (auto const &pair : unif_in->update_offs) {
@@ -370,11 +391,6 @@ void GlShaderProgram::execute_with(std::shared_ptr<GlUniformInput> const& unif_i
 		default:
 			throw Error(MSG(err) << "Tried to upload unknown uniform type to GL shader.");
 		}
-	}
-
-	if (geom != nullptr) {
-		// TODO read obj.blend + family
-		geom->draw();
 	}
 }
 

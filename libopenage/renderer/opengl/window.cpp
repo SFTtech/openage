@@ -26,8 +26,8 @@ GlWindow::GlWindow(const char *title, size_t width, size_t height)
 			title,
 			SDL_WINDOWPOS_CENTERED,
 			SDL_WINDOWPOS_CENTERED,
-			this->size.first,
-			this->size.second,
+			this->size[0],
+			this->size[1],
 			window_flags
 		),
 		[] (SDL_Window *window) {
@@ -48,9 +48,9 @@ GlWindow::GlWindow(const char *title, size_t width, size_t height)
 
 
 void GlWindow::set_size(size_t width, size_t height) {
-	if (this->size.first != width || this->size.second != height) {
+	if (this->size[0] != width || this->size[1] != height) {
 		SDL_SetWindowSize(this->window.get(), width, height);
-		this->size = std::make_pair(width, height);
+		this->size = {width, height};
 	}
 
 	for (auto& cb : this->on_resize) {
@@ -67,7 +67,8 @@ void GlWindow::update() {
 				size_t width = event.window.data1;
 				size_t height = event.window.data2;
 				log::log(MSG(dbg) << "Window resized to: " << width << "x" << height);
-				this->size = std::make_pair(width, height);
+
+				this->size = {width, height};
 				for (auto& cb : this->on_resize) {
 					cb(width, height);
 				}

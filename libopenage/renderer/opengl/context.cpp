@@ -223,4 +223,15 @@ void GlContext::set_vsync(bool on) {
 	}
 }
 
+
+const std::weak_ptr<GlShaderProgram> &GlContext::get_current_program() const {
+	return this->last_program;
+}
+
+
+void GlContext::set_current_program(const std::shared_ptr<GlShaderProgram> &prog) {
+	this->last_program = prog;
+}
+
+
 }}} // openage::renderer::opengl

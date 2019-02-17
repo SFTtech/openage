@@ -120,8 +120,17 @@ void GlRenderer::render(const std::shared_ptr<RenderPass> &pass) {
 		}
 
 		auto in = std::dynamic_pointer_cast<GlUniformInput>(obj.unif_in);
-		auto geom = std::dynamic_pointer_cast<GlGeometry>(obj.geometry);
-		std::static_pointer_cast<GlShaderProgram>(in->get_program())->execute_with(in, geom);
+		auto program = std::static_pointer_cast<GlShaderProgram>(in->get_program());
+
+		// this also calls program->use()
+		program->update_uniforms(in);
+
+		// draw the geometry
+		if (obj.geometry != nullptr) {
+			auto geom = std::dynamic_pointer_cast<GlGeometry>(obj.geometry);
+			// TODO read obj.blend + family
+			geom->draw();
+		}
 	}
 }
 
