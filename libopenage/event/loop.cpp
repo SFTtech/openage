@@ -142,7 +142,7 @@ int Loop::execute_events(const curve::time_t &time_until,
 					event->set_time(new_time);
 
 					log::log(DBG << "Loop: repeating event \"" << event->get_eventclass()->id()
-					         << "\" on target \"" << target->id()
+					         << "\" on target \"" << target->idstr()
 					         << "\" will be reenqueued for time t=" << event->get_time());
 
 					this->queue.reenqueue(event);
@@ -189,7 +189,7 @@ void Loop::update_changes(const std::shared_ptr<State> &state) {
 					if (new_time != std::numeric_limits<curve::time_t>::min()) {
 						log::log(DBG << "Loop: due to a change, rescheduling event of '"
 						         << evnt->get_eventclass()->id()
-						         << "' on target '" << target->id()
+						         << "' on target '" << target->idstr()
 						         << "' at time t=" << change.time
 						         << " to NEW TIME t=" << new_time);
 
@@ -200,7 +200,7 @@ void Loop::update_changes(const std::shared_ptr<State> &state) {
 					else {
 						log::log(DBG << "Loop: due to a change, canceled execution of '"
 						         << evnt->get_eventclass()->id()
-						         << "' on target '" << target->id()
+						         << "' on target '" << target->idstr()
 						         << "' at time t=" << change.time);
 
 						this->queue.remove(evnt);
