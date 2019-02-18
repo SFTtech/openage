@@ -4,8 +4,9 @@
 
 #include <sstream>
 
+#include "gui.h"
+#include "../../log/log.h"
 #include "../../util/strings.h"
-
 
 namespace openage::main::tests::pong {
 
@@ -39,8 +40,7 @@ PongPlayer::PongPlayer(const std::shared_ptr<event::Loop> &mgr, size_t id)
 		     (id << 4) + 5,
 		     util::sformat("PongPlayer(%zu).size", id),
 		     std::bind(&PongPlayer::child_changes, this, _1))),
-	_id{id},
-	paddle_x{0} {}
+	_id{id} {}
 
 
 size_t PongPlayer::id() const {
@@ -99,6 +99,20 @@ PongState::PongState(const std::shared_ptr<event::Loop> &mgr,
 	p1(std::make_shared<PongPlayer>(mgr, 0)),
 	p2(std::make_shared<PongPlayer>(mgr, 1)),
 	ball(std::make_shared<PongBall>(mgr, 2)),
-	gui{gui} {}
+	area_size(
+		std::make_shared<curve::Discrete<util::Vector2s>>(
+			mgr,
+			1001,
+			"area_size")),
+	gui{gui} {
+
+		auto size = gui->get_window_size();
+
+		log::log(INFO << "initializing pong state with area_size="
+		         << size << "...");
+
+		// initialize display size with real window size
+		this->area_size->set_last(0, size);
+	}
 
 } // openage::main::tests::pong

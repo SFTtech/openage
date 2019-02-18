@@ -40,7 +40,6 @@ void main(const util::Path& path) {
 	timescale speed = timescale::REALTIME;
 
 	std::shared_ptr<nyan::Database> db = nyan::Database::create();
-	std::shared_ptr<Gui> gui = std::make_shared<Gui>();
 
 	db->load(
 		"test.nyan",
@@ -60,6 +59,7 @@ void main(const util::Path& path) {
 	nyan::Object test = root->get("test.Test");
 	log::log(INFO << "nyan read test: " << *test.get<nyan::Int>("member"));
 
+	std::shared_ptr<Gui> gui = std::make_shared<Gui>();
 
 	bool running = true;
 
@@ -72,15 +72,25 @@ void main(const util::Path& path) {
 		AIInput ai;
 
 		auto state = std::make_shared<PongState>(loop, gui);
+
+		gui->clear_resize_callbacks();
+		gui->add_resize_callback(
+			[&] (size_t w, size_t h) {
+				log::log(INFO << "update pong area size=("
+				         << w << "," << h << ")...");
+
+				state->area_size->set_last(now, {w, h});
+			}
+		);
+
 		Physics::init(state, loop, now);
 
+		// initialize player properties
 		state->p1->lives->set_last(now, 3);
-		state->p1->size->set_last(now, 4);
+		state->p1->size->set_last(now, 200);
 
 		state->p2->lives->set_last(now, 3);
-		state->p2->size->set_last(now, 4);
-
-		gui->get_display_size(state, now);  // update gui related parameters
+		state->p2->size->set_last(now, 200);
 
 		// initialize the game enqueuing a physics reset should happen.
 		log::log(INFO << "initializing the physics state...");
@@ -101,8 +111,6 @@ void main(const util::Path& path) {
 
 			auto loop_start = Clock::now();
 
-			gui->get_display_size(state, now);
-
 			// process the input for both players
 			// player 1 can be AI or human.
 
@@ -120,10 +128,6 @@ void main(const util::Path& path) {
 			                   ai.get_inputs(state->p2, state->ball, now),
 			                   loop, now);
 
-			// paddle x positions
-			state->p1->paddle_x = 0;
-			state->p2->paddle_x = state->display_boundary[0] - 1;
-
 			// evaluate the event queue to reach the desired game time!
 			loop->reach_time(now, state);
 
@@ -132,9 +136,9 @@ void main(const util::Path& path) {
 
 			/*
 			int pos = 1;
-			mvprintw(pos++, state->display_boundary[0]/2 + 10, "Enqueued events:");
+			mvprintw(pos++, state->area_size->get(now)[0]/2 + 10, "Enqueued events:");
 			for (const auto &e : loop->get_queue().get_event_queue().get_sorted_events()) {
-				mvprintw(pos++, state->display_boundary[0]/2 + 10,
+				mvprintw(pos++, state->area_size->get(now)[0]/2 + 10,
 				         "%f: %s",
 				         e->get_time().to_double(),
 				         e->get_eventclass()->id().c_str());

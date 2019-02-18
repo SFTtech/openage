@@ -111,15 +111,6 @@ void main() {
 
 	auto shader = renderer->add_shader( { vshader_src, fshader_src } );
 
-	auto pos1 = Eigen::Affine3f::Identity();
-	pos1.prescale(Eigen::Vector3f(200.0f, 200.0f, 1.0f));
-	//pos1.prerotate(Eigen::AngleAxisf(45.0f * math::PI / 180.0f, Eigen::Vector3f::UnitZ()));
-	pos1.pretranslate(Eigen::Vector3f(400.0f, 400.0f, 0.0f));
-
-	auto ball_props = shader->new_uniform_input(
-		"pos", pos1.matrix()
-	);
-
 	auto proj_in = shader->new_uniform_input(
 		"proj", Eigen::Affine3f::Identity().matrix()
 	);
@@ -127,7 +118,27 @@ void main() {
 	auto quad = renderer->add_mesh_geometry(renderer::resources::MeshData::make_quad());
 
 	this->ball = renderer::Renderable{
-		ball_props,
+		shader->new_uniform_input(
+			"pos", Eigen::Affine3f::Identity().matrix()
+		),
+		quad,
+		true,
+		true,
+	};
+
+	this->p1paddle = renderer::Renderable{
+		shader->new_uniform_input(
+			"pos", Eigen::Affine3f::Identity().matrix()
+		),
+		quad,
+		true,
+		true,
+	};
+
+	this->p2paddle = renderer::Renderable{
+		shader->new_uniform_input(
+			"pos", Eigen::Affine3f::Identity().matrix()
+		),
 		quad,
 		true,
 		true,
@@ -136,7 +147,7 @@ void main() {
 	auto set_projmatrix = renderer::ShaderUpdate{proj_in};
 
 	this->pass = renderer::RenderPass{
-		{ std::move(set_projmatrix), this->ball },
+		{ std::move(set_projmatrix), this->ball, this->p1paddle, this->p2paddle },
 		this->renderer->get_display_target(),
 	};
 
@@ -150,25 +161,22 @@ void main() {
 				0.0f, w, 0.0f, h, 0.0f, 1.0f
 			);
 
-			shader->update_uniform_input(proj_in, "proj", proj_matrix);
+			proj_in->update("proj", proj_matrix);
+
+			for (auto &cb : this->resize_callbacks) {
+				cb(w, h);
+			}
 		}
 	);
 }
 
 
-void Gui::get_display_size(const std::shared_ptr<PongState> &state,
-                           const curve::time_t &/*now*/) {
-	// TODO: make the display_boundary a curve as well.
-
-
-	// TODO asdf actually get graphical display size
-
-	state->display_boundary[0] = 80;
-	state->display_boundary[1] = 60;
-}
-
-
 void Gui::draw(const std::shared_ptr<PongState> &state, const curve::time_t &now) {
+
+	constexpr float ball_size = 50.0f;
+	constexpr float paddle_width = 20.0f;
+
+	auto screen_size = state->area_size->get(now);
 
 	// TODO draw score
 	//mvprintw(xpos,
@@ -186,12 +194,12 @@ void Gui::draw(const std::shared_ptr<PongState> &state, const curve::time_t &now
 	mvprintw(2, 1,
 	         "P1:   %f, %f, %i",
 	         state->p1->position->get(now),
-	         state->p1->paddle_x,
+	         state->display_size->get(now)[0],
 	         state->p1->state->get(now).state);
 	mvprintw(3, 1,
 	         "P2:   %f, %f, %i",
 	         state->p2->position->get(now),
-	         state->p2->paddle_x,
+	         state->display_size->get(now)[0],
 	         state->p2->state->get(now).state);
 	*/
 
@@ -220,29 +228,42 @@ void Gui::draw(const std::shared_ptr<PongState> &state, const curve::time_t &now
 
 	// draw player 1 paddle
 	for (int i = -state->p1->size->get(now) / 2; i < state->p1->size->get(now) / 2; i++) {
-		//mvprintw(state->p1->position->get(now) + i, state->p1->paddle_x, "|");
+		//mvprintw(state->p1->position->get(now) + i, state->display_size->get(now)[0], "|");
 	}
 
 	// draw player 2 paddle
 	for (int i = -state->p2->size->get(now) / 2; i < state->p2->size->get(now) / 2; i++) {
-		//mvprintw(state->p2->position->get(now) + i, state->p2->paddle_x, "|");
+		//mvprintw(state->p2->position->get(now) + i, state->display_size->get(now)[0], "|");
 	}
 
-	// ball position prediction 10s into the future
+	// ball position prediction display 10s into the future
 	for (int i = 1; i < 100; ++i) {
 		auto i_as_ctt = curve::time_t::from_double(i/10.0);
 		//this->draw_ball(state->ball->position->get(now + i_as_ctt), "x");
 	}
 
 	// draw the ball
-	//this->draw_ball(state->ball->position->get(now), "M"); // TODO: use "⚽"
-
+	// TODO: use "⚽"
 	auto ball_pos = state->ball->position->get(now);
 	auto ball_pos_matrix = Eigen::Affine3f::Identity();
-	ball_pos_matrix.prescale(Eigen::Vector3f(200.0f, 200.0f, 1.0f));
+	ball_pos_matrix.prescale(Eigen::Vector3f(ball_size, ball_size, 1.0f));
 	//ball_pos_matrix.prerotate(Eigen::AngleAxisf(45.0f * math::PI / 180.0f, Eigen::Vector3f::UnitZ()));
 	ball_pos_matrix.pretranslate(Eigen::Vector3f(ball_pos[0], ball_pos[1], 0.0f));
 	this->ball.unif_in->update("pos", ball_pos_matrix.matrix());
+
+	auto p1_pos = state->p1->position->get(now);
+	auto p1_size = state->p1->size->get(now);
+	auto p1_pos_matrix = Eigen::Affine3f::Identity();
+	p1_pos_matrix.prescale(Eigen::Vector3f(paddle_width, p1_size, 1.0f));
+	p1_pos_matrix.pretranslate(Eigen::Vector3f(0, p1_pos, 0.0f));
+	this->p1paddle.unif_in->update("pos", p1_pos_matrix.matrix());
+
+	auto p2_pos = state->p2->position->get(now);
+	auto p2_size = state->p2->size->get(now);
+	auto p2_pos_matrix = Eigen::Affine3f::Identity();
+	p2_pos_matrix.prescale(Eigen::Vector3f(paddle_width, p2_size, 1.0f));
+	p2_pos_matrix.pretranslate(Eigen::Vector3f(screen_size[0], p2_pos, 0.0f));
+	this->p2paddle.unif_in->update("pos", p2_pos_matrix.matrix());
 
 	this->renderer->render(this->pass);
 	this->window.update();
@@ -250,8 +271,13 @@ void Gui::draw(const std::shared_ptr<PongState> &state, const curve::time_t &now
 
 	this->exit_requested = window.should_close();
 	if (this->exit_requested) {
-		log::log(INFO << "should exit");
+		log::log(INFO << "game exit requested due to window close");
 	}
+}
+
+
+const util::Vector2s &Gui::get_window_size() const {
+	return this->window.get_size();
 }
 
 
@@ -264,5 +290,16 @@ void Gui::log(const std::string &msg) {
 	}
 	this->log_msgs.push_front(msg);
 }
+
+
+void Gui::add_resize_callback(const renderer::Window::resize_cb_t& cb) {
+	this->resize_callbacks.push_back(cb);
+}
+
+
+void Gui::clear_resize_callbacks() {
+	this->resize_callbacks.clear();
+}
+
 
 } // openage::main::tests::pong
