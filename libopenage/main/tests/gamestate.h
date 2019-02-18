@@ -46,7 +46,6 @@ public:
 	std::shared_ptr<curve::Discrete<float>> size;
 
 	size_t _id;
-	float paddle_x;
 
 private:
 	void child_changes(const curve::time_t &time);
@@ -77,7 +76,7 @@ public:
 	std::shared_ptr<PongPlayer> p1;
 	std::shared_ptr<PongPlayer> p2;
 	std::shared_ptr<PongBall> ball;
-	util::Vector2d display_boundary;
+	std::shared_ptr<curve::Discrete<util::Vector2s>> area_size;
 
 	std::shared_ptr<Gui> gui;
 };

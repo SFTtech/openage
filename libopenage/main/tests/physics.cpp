@@ -45,6 +45,8 @@ public:
 		// get speed and position to insert new movement keyframe
 		auto speed = speedcurve->get(now);
 		auto pos = positioncurve->get(now);
+		auto screen_size = state->area_size->get(now);
+
 		speed[1] *= -1.0;
 		state->ball->speed->set_last(now, speed);
 		state->ball->position->set_last(now, pos);
@@ -56,7 +58,7 @@ public:
 		curve::time_t ty = 0;
 		if (speed[1] > 0) {
 			ty = curve::time_t::from_double(
-				(state->display_boundary[1] - pos[1]) / speed[1]
+				(screen_size[1] - pos[1]) / speed[1]
 			);
 		}
 		else if (speed[1] < 0) {
@@ -77,6 +79,7 @@ public:
 
 		auto speed = state->ball->speed->get(now);
 		auto pos = positioncurve->get(now);
+		auto screen_size = state->area_size->get(now);
 
 		if (speed[1] == 0) {
 			return std::numeric_limits<curve::time_t>::max();
@@ -84,7 +87,7 @@ public:
 
 		curve::time_t ty = 0;
 		if (speed[1] > 0) {
-			ty = curve::time_t::from_double((state->display_boundary[1] - pos[1]) / speed[1]);
+			ty = curve::time_t::from_double((screen_size[1] - pos[1]) / speed[1]);
 		}
 		else if (speed[1] < 0) {
 			ty = curve::time_t::from_double(pos[1] / -speed[1]);
@@ -131,6 +134,7 @@ public:
 
 		auto pos = state->ball->position->get(now);
 		auto speed = state->ball->speed->get(now);
+		auto screen_size = state->area_size->get(now);
 
 		static int cnt = 0;
 		util::FString str;
@@ -151,7 +155,7 @@ public:
 
 			Physics::reset(state, mgr, now);
 		}
-		else if (pos[0] >= state->display_boundary[0] - 1 and
+		else if (pos[0] >= screen_size[0] - 1 and
 		         speed[0] > 0 and
 		         (pos[1] < state->p2->position->get(now) - state->p2->size->get(now) / 2 or
 		          pos[1] > state->p2->position->get(now) + state->p2->size->get(now) / 2)) {
@@ -164,7 +168,7 @@ public:
 
 			Physics::reset(state, mgr, now);
 		}
-		else if (pos[0] >= state->display_boundary[0]- 1 || pos[0] <= 1) {
+		else if (pos[0] >= screen_size[0]- 1 || pos[0] <= 1) {
 			speed[0] *= -1;
 			state->ball->speed->set_last(now, speed);
 			state->ball->position->set_last(now, pos);
@@ -172,7 +176,7 @@ public:
 
 		curve::time_t ty = 0;
 		if (speed[0] > 0) {
-			ty = curve::time_t::from_double((state->display_boundary[0] - pos[0]) / speed[0]);
+			ty = curve::time_t::from_double((screen_size[0] - pos[0]) / speed[0]);
 		}
 		else if (speed[0] < 0) {
 			ty = curve::time_t::from_double(pos[0] / -speed[0]);
@@ -180,7 +184,7 @@ public:
 
 		auto hit_pos = pos + speed * ty.to_double();
 		if (speed[0] > 0) {
-			hit_pos[0] = state->display_boundary[0];
+			hit_pos[0] = screen_size[0];
 		}
 		else {
 			hit_pos[0] = 0;
@@ -198,6 +202,7 @@ public:
 
 		auto speed = state->ball->speed->get(now);
 		auto pos = positioncurve->get(now);
+		auto screen_size = state->area_size->get(now);
 
 		if (speed[0] == 0)
 			return std::numeric_limits<curve::time_t>::max();
@@ -205,7 +210,7 @@ public:
 		curve::time_t ty = 0;
 
 		if (speed[0] > 0) {
-			ty = curve::time_t::from_double((state->display_boundary[0] - pos[0]) / speed[0]);
+			ty = curve::time_t::from_double((screen_size[0] - pos[0]) / speed[0]);
 		}
 		else if (speed[0] < 0) {
 			ty = curve::time_t::from_double(pos[0] / -speed[0]);
@@ -219,7 +224,7 @@ public:
 
 		auto hit_pos = pos + speed * ty.to_double();
 		if (speed[0] > 0) {
-			hit_pos[0] = state->display_boundary[0];
+			hit_pos[0] = screen_size[0];
 		}
 		else {
 			hit_pos[0] = 0;
@@ -249,10 +254,12 @@ public:
 
 		auto state = std::dynamic_pointer_cast<PongState>(gstate);
 
+		auto screen_size = state->area_size->get(now);
+
 		// Check if the condition still applies
 		{
 			auto pos = state->ball->position->get(now);
-			if (pos[0] > 0 && pos[0] < state->display_boundary[0]) {
+			if (pos[0] > 0 && pos[0] < screen_size[0]) {
 				// the gamestate is still valid - there is no need to reset
 				throw Error(ERR << "reset invoked even though unnecessary");
 			}
@@ -261,17 +268,18 @@ public:
 		// move ball to the center, quickly
 		state->ball->position->set_last(now - curve::time_t::from_double(0.01),
 		                                state->ball->position->get(now));
-		state->ball->position->set_last(now, state->display_boundary / 2);
+		state->ball->position->set_last(now, screen_size.casted<double>() / 2);
 
 		// move paddles to center
-		state->p1->position->set_last(now, state->display_boundary[1] / 2);
-		state->p2->position->set_last(now, state->display_boundary[1] / 2);
+		state->p1->position->set_last(now, screen_size[1] / 2);
+		state->p2->position->set_last(now, screen_size[1] / 2);
 
+		// initial speed of the ball:
 		float dirx = (rng::random() % 2) ? 1 : -1;
 		float diry = (rng::random() % 2) ? 1 : -1;
 		auto init_speed = util::Vector2d(
-			dirx * (10 + (rng::random() % 100) / 4.f),
-			diry * (0.3 + (rng::random() % 100) / 18.f)
+			dirx * (screen_size[0] / 15.0 + (rng::random() % (screen_size[0]/10))),
+			diry * (screen_size[1] / 20.0 + (rng::random() % (screen_size[1]/20)))
 		);
 
 		state->ball->speed->set_last(now, init_speed);
@@ -294,7 +302,7 @@ public:
 
 		// calculate the wall-hit-times
 		if (init_speed[1] > 0) {
-			ty = curve::time_t::from_double((state->display_boundary[1] - pos[1]) / init_speed[1]);
+			ty = curve::time_t::from_double((screen_size[1] - pos[1]) / init_speed[1]);
 		}
 		else if (init_speed[1] < 0) {
 			ty = curve::time_t::from_double(pos[1] / -init_speed[1]);
@@ -303,7 +311,7 @@ public:
 			// currently never happens, but this would be a non-vertically-moving ball
 			// fallback to calculating panel-hit-times
 			if (init_speed[0] > 0) {
-				ty = curve::time_t::from_double((state->display_boundary[0] - pos[0]) / init_speed[0]);
+				ty = curve::time_t::from_double((screen_size[0] - pos[0]) / init_speed[0]);
 			}
 			else {
 				ty = curve::time_t::from_double(pos[0] / -init_speed[0]);
@@ -321,11 +329,9 @@ public:
 };
 
 
-void Physics::init(const std::shared_ptr<PongState> &gstate,
+void Physics::init(const std::shared_ptr<PongState> &state,
                    const std::shared_ptr<event::Loop> &loop,
                    const curve::time_t &now) {
-
-	auto state = std::dynamic_pointer_cast<PongState>(gstate);
 
 	loop->add_event_class(std::make_shared<BallReflectPanel>());
 	loop->add_event_class(std::make_shared<BallReflectWall>());
@@ -357,8 +363,8 @@ void Physics::process_input(const std::shared_ptr<PongState> &state,
 	// seconds into the future
 	constexpr static auto predicted_movement_time = curve::time_t::from_double(5.0);
 
-	// lines per second
-	constexpr static double movement_speed = 8.0;
+	// pixels per second for paddle movement
+	constexpr static double movement_speed = 250.0;
 
 	for (auto& evnt : events) {
 
@@ -367,6 +373,8 @@ void Physics::process_input(const std::shared_ptr<PongState> &state,
 
 			// log the new input in the state curve
 			player->state->set_last(now, evnt);
+
+			auto screen_size = state->area_size->get(now);
 
 			// if the state is active longer than predicted,
 			// we have to extend the prediction!
@@ -417,9 +425,9 @@ void Physics::process_input(const std::shared_ptr<PongState> &state,
 					new_pos = 0;
 				}
 
-				if (new_pos > state->display_boundary[1]) {
-					move_stop_guess = now + ((state->display_boundary[1] - current_pos) / movement_speed);
-					new_pos = state->display_boundary[1];
+				if (new_pos > screen_size[1]) {
+					move_stop_guess = now + ((screen_size[1] - current_pos) / movement_speed);
+					new_pos = screen_size[1];
 				}
 
 				PongEvent set_idle{evnt.player, PongEvent::IDLE};

@@ -23,12 +23,15 @@ public:
 	Gui();
 
 	const std::vector<PongEvent> &get_inputs(const std::shared_ptr<PongPlayer> &player);
-	void get_display_size(const std::shared_ptr<PongState> &state,
-	                      const curve::time_t &now);
 
 	void draw(const std::shared_ptr<PongState> &state, const curve::time_t &now);
 
+	const util::Vector2s &get_window_size() const;
+
 	void log(const std::string &msg);
+
+	void add_resize_callback(const renderer::Window::resize_cb_t&);
+	void clear_resize_callbacks();
 
 	bool exit_requested = false;
 
@@ -41,8 +44,12 @@ private:
 
 	// rendering objects
 	renderer::Renderable ball;
+	renderer::Renderable p1paddle;
+	renderer::Renderable p2paddle;
 
 	renderer::RenderPass pass;
+
+	std::vector<renderer::Window::resize_cb_t> resize_callbacks;
 };
 
 } // openage::main::tests::pong
