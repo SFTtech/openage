@@ -69,7 +69,6 @@ void main(const util::Path& path) {
 		auto loop = std::make_shared<event::Loop>();
 		curve::time_t now = 0;
 		Physics phys;
-		AIInput ai;
 
 		auto state = std::make_shared<PongState>(loop, gui);
 
@@ -120,12 +119,14 @@ void main(const util::Path& path) {
 			}
 			else {
 				phys.process_input(state, state->p1,
-				                   ai.get_inputs(state->p1, state->ball, now),
+				                   get_ai_inputs(state->p1, state->ball,
+				                                 state->area_size, now, false),
 				                   loop, now);
 			}
 
 			phys.process_input(state, state->p2,
-			                   ai.get_inputs(state->p2, state->ball, now),
+			                   get_ai_inputs(state->p2, state->ball,
+			                                 state->area_size, now, true),
 			                   loop, now);
 
 			// evaluate the event queue to reach the desired game time!
