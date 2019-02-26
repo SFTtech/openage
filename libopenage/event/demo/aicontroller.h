@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -8,16 +8,8 @@
 
 namespace openage::event::demo {
 
-class AIInput {
-public:
-	const std::vector<PongEvent> &get_inputs(
-		const std::shared_ptr<PongPlayer> &player,
-		const std::shared_ptr<PongBall> &ball,
-		const curve::time_t &now
-	);
+std::vector<PongEvent> get_ai_inputs(const std::shared_ptr<PongPlayer> &player,
+                                     const std::shared_ptr<PongBall> &ball,
+                                     const curve::time_t &now);
 
-private:
-	std::vector<PongEvent> commands;
-};
-
-} // openage::event::demo
+}  // openage::event::demo
