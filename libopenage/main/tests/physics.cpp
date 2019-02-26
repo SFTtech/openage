@@ -278,8 +278,8 @@ public:
 		float dirx = (rng::random() % 2) ? 1 : -1;
 		float diry = (rng::random() % 2) ? 1 : -1;
 		auto init_speed = util::Vector2d(
-			dirx * (screen_size[0] / 15.0 + (rng::random() % (screen_size[0]/10))),
-			diry * (screen_size[1] / 20.0 + (rng::random() % (screen_size[1]/20)))
+			dirx * (screen_size[0] / 2.0 + (rng::random() % (screen_size[0]/4))),
+			diry * (screen_size[1] / 3.0 + (rng::random() % (screen_size[1]/5)))
 		);
 
 		state->ball->speed->set_last(now, init_speed);
@@ -364,7 +364,7 @@ void Physics::process_input(const std::shared_ptr<PongState> &state,
 	constexpr static auto predicted_movement_time = curve::time_t::from_double(5.0);
 
 	// pixels per second for paddle movement
-	constexpr static double movement_speed = 250.0;
+	constexpr static double movement_speed = 350.0;
 
 	for (auto& evnt : events) {
 

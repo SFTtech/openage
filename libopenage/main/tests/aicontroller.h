@@ -4,21 +4,15 @@
 
 #include "gamestate.h"
 
-#include <vector>
-
 
 namespace openage::main::tests::pong {
 
-class AIInput {
-public:
-	const std::vector<PongEvent> &get_inputs(
-		const std::shared_ptr<PongPlayer> &player,
-		const std::shared_ptr<PongBall> &ball,
-		const curve::time_t &now
-	);
-
-private:
-	std::vector<PongEvent> commands;
-};
+std::vector<PongEvent> get_ai_inputs(
+	const std::shared_ptr<PongPlayer> &player,
+	const std::shared_ptr<PongBall> &ball,
+	const std::shared_ptr<curve::Discrete<util::Vector2s>> &area_size,
+	const curve::time_t &now,
+	bool right_player
+);
 
 } // openage::main::tests::pong
