@@ -61,7 +61,6 @@ void curvepong(bool disable_gui, bool no_human) {
 		auto loop = std::make_shared<Loop>();
 		curve::time_t now = 1;
 		Physics phys;
-		AIInput ai;
 
 		auto state = std::make_shared<PongState>(loop, enable_gui
 #if WITH_NCURSES
@@ -118,12 +117,12 @@ void curvepong(bool disable_gui, bool no_human) {
 			else {
 
 				phys.process_input(state, state->p1,
-				                   ai.get_inputs(state->p1, state->ball, now),
+				                   get_ai_inputs(state->p1, state->ball, now),
 				                   loop, now);
 			}
 
 			phys.process_input(state, state->p2,
-			                   ai.get_inputs(state->p2, state->ball, now),
+			                   get_ai_inputs(state->p2, state->ball, now),
 			                   loop, now);
 
 			// paddle x positions
