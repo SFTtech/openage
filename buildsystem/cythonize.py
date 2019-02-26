@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 """
 Runs Cython on all modules that were listed via add_cython_module.
@@ -11,6 +11,7 @@ import os
 import sys
 from contextlib import redirect_stdout
 from multiprocessing import cpu_count
+from pathlib import Path
 
 from Cython.Build import cythonize
 
@@ -51,7 +52,7 @@ class CythonFilter(LineFilter):
     # pylint: disable=too-few-public-methods
     def __init__(self):
         filters = [
-            lambda x: x == 'Please put "# distutils: language=c++" in your .pyx or .pxd file(s)',
+            lambda x: 'put "# distutils: language=c++" in your .pyx or .pxd file(s)' in x,
             lambda x: x.startswith('Compiling ') and x.endswith(' because it changed.')
         ]
         super().__init__(filters=filters)
@@ -62,34 +63,36 @@ def read_list_from_file(filename):
     with open(filename) as fileobj:
         data = fileobj.read().strip()
 
-    data = [os.path.realpath(os.path.normpath(filename)) for filename in data.split(';')]
-    if data == ['']:
-        return []
-
-    return data
-
-
-def convert_to_relpath(filenames):
-    """ Convert a list of absolute paths to relative paths """
-    cwd = os.getcwd()
-    return [os.path.relpath(filename, cwd) for filename in filenames]
+    return [Path(filename).resolve() for filename in data.split(';')]
 
 
 def remove_if_exists(filename):
     """ Deletes the file (if it exists) """
-    if os.path.exists(filename):
-        print(os.path.relpath(filename, os.getcwd()))
-        os.remove(filename)
+    if filename.is_file():
+        print(filename.relative_to(os.getcwd()))
+        filename.unlink()
 
 
 def cythonize_wrapper(modules, **kwargs):
     """ Calls cythonize, filtering useless warnings """
-    if not modules:
-        return
+    bin_dir, bin_modules = kwargs['build_dir'], []
+    src_dir, src_modules = Path.cwd(), []
+
+    for module in modules:
+        if Path(bin_dir) in module.parents:
+            bin_modules.append(str(module.relative_to(bin_dir)))
+        else:
+            src_modules.append(str(module.relative_to(src_dir)))
 
     with CythonFilter() as cython_filter:
         with redirect_stdout(cython_filter):
-            cythonize(modules, **kwargs)
+            if src_modules:
+                cythonize(src_modules, **kwargs)
+
+            if bin_modules:
+                os.chdir(bin_dir)
+                cythonize(bin_modules, **kwargs)
+                os.chdir(src_dir)
 
 
 def main():
@@ -126,15 +129,16 @@ def main():
 
     # cython emits warnings on using absolute paths to modules
     # https://github.com/cython/cython/issues/2323
-    modules = convert_to_relpath(read_list_from_file(args.module_list))
-    embedded_modules = convert_to_relpath(read_list_from_file(args.embedded_module_list))
+    modules = read_list_from_file(args.module_list)
+    embedded_modules = read_list_from_file(args.embedded_module_list)
     depends = set(read_list_from_file(args.depends_list))
 
     if args.clean:
         for module in modules + embedded_modules:
-            module = os.path.splitext(module)[0]
-            remove_if_exists(module + '.cpp')
-            remove_if_exists(module + '.html')
+            rel_module = module.relative_to(Path.cwd())
+            build_module = args.build_dir / rel_module
+            remove_if_exists(build_module.with_suffix('.cpp'))
+            remove_if_exists(build_module.with_suffix('.html'))
         sys.exit(0)
 
     from Cython.Compiler import Options
