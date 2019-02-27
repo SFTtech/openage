@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -9,7 +9,6 @@
 
 #include "../curve/curve.h"
 #include "eventqueue.h"
-#include "eventfilter.h"
 #include "event.h"
 #include "../log/log.h"
 
@@ -62,15 +61,6 @@ public:
 	                                  const curve::time_t &reference_time,
 	                                  const EventClass::param_map &params=EventClass::param_map({}));
 
-	void onfilter(const std::shared_ptr<EventClass> &eventclass, const EventFilter &);
-
-	template <class evntclass_t>
-	void onfilter(const EventFilter &filter) {
-		this->onfilter(std::make_shared<evntclass_t>(), filter);
-	}
-
-	void register_object(const std::shared_ptr<EventTarget> &);
-
 	/**
 	 * Execute all events that are registered until a certain point in time.
 	 */
@@ -111,12 +101,6 @@ private:
 	std::unordered_map<std::string, std::shared_ptr<EventClass>> classstore;
 
 	/**
-	 * Here we store all running filters that shall be applied whenever a new
-	 * obejct is added to our objectstore
-	 */
-	std::list<EventFilter> filters;
-
-	/**
 	 * All events are enqueued here.
 	 */
 	EventQueue queue;
@@ -126,8 +110,6 @@ private:
 	 * This is useful for event cancelations (so one can't cancel itself).
 	 */
 	std::shared_ptr<Event> active_event;
-
-	std::unordered_map<uint64_t, std::weak_ptr<EventTarget>> curveindex;
 };
 
 } // openage::event

@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -63,9 +63,9 @@ protected:
 	void changes(const curve::time_t &change_time);
 
 	/**
-	 * Call this when a keyframe in the underlying container was passed by in time.
+	 * Call this when depending TriggerEventClasses should be invoked.
 	 */
-	void trigger(const curve::time_t &last_valid_time);
+	void trigger(const curve::time_t &invoke_time);
 
 private:
 	/** Event loop this target is registered to */
