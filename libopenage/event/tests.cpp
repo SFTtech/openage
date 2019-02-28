@@ -10,7 +10,7 @@
 
 #include "loop.h"
 #include "event.h"
-#include "eventtarget.h"
+#include "evententity.h"
 #include "state.h"
 
 
@@ -19,12 +19,12 @@ namespace openage::event::tests {
 // We have to create a temporary State due to the magic of C++
 class TestState : public State {
 public:
-	class TestObject : public EventTarget {
+	class TestObject : public EventEntity {
 		const int _id;
 	public:
 		TestObject(const std::shared_ptr<Loop> &loop, int id)
 			:
-			EventTarget(loop),
+			EventEntity(loop),
 			_id{id},
 			number(0) {}
 
@@ -80,12 +80,12 @@ public:
 };
 
 
-class TestEventClass : public EventClass {
+class TestEventHandler : public EventHandler {
 	int idx;
 public:
-	TestEventClass(const std::string &name, int idx)
+	TestEventHandler(const std::string &name, int idx)
 		:
-		EventClass(name, EventClass::trigger_type::DEPENDENCY),
+		EventHandler(name, EventHandler::trigger_type::DEPENDENCY),
 		idx{idx} {}
 
 	void setup_event(const std::shared_ptr<Event> &event,
@@ -106,10 +106,10 @@ public:
 	}
 
 	void invoke(Loop &/*loop*/,
-	            const std::shared_ptr<EventTarget> &target,
+	            const std::shared_ptr<EventEntity> &target,
 	            const std::shared_ptr<State> &gstate,
 	            const curve::time_t &time,
-	            const EventClass::param_map &/*param*/) override {
+	            const EventHandler::param_map &/*param*/) override {
 
 		auto state = std::dynamic_pointer_cast<TestState>(gstate);
 
@@ -130,7 +130,7 @@ public:
 		}
 	}
 
-	curve::time_t predict_invoke_time(const std::shared_ptr<EventTarget> &/*target*/,
+	curve::time_t predict_invoke_time(const std::shared_ptr<EventEntity> &/*target*/,
 	                                  const std::shared_ptr<State> &/*state*/,
 	                                  const curve::time_t &at) override {
 		return at + curve::time_t::from_double(2);
@@ -138,11 +138,11 @@ public:
 };
 
 
-class TestEventClassTwo : public EventClass {
+class TestEventHandlerTwo : public EventHandler {
 public:
-	explicit TestEventClassTwo(const std::string &name)
+	explicit TestEventHandlerTwo(const std::string &name)
 		:
-		EventClass(name, EventClass::trigger_type::DEPENDENCY) {}
+		EventHandler(name, EventHandler::trigger_type::DEPENDENCY) {}
 
 	void setup_event(const std::shared_ptr<Event> &target,
 	                 const std::shared_ptr<State> &gstate) override {
@@ -152,20 +152,20 @@ public:
 	}
 
 	void invoke(Loop &/*loop*/,
-	            const std::shared_ptr<EventTarget> &gtarget,
+	            const std::shared_ptr<EventEntity> &gtarget,
 	            const std::shared_ptr<State> &gstate,
 	            const curve::time_t &time,
-	            const EventClass::param_map &/*param*/) override {
+	            const EventHandler::param_map &/*param*/) override {
 
 		auto state = std::dynamic_pointer_cast<TestState>(gstate);
 		auto target = std::dynamic_pointer_cast<TestState::TestObject>(gtarget);
 		state->objectB->set_number(target->number + 1, time);
 
-		log::log(DBG << "I am EventClassTwo. Setting B.number to " << state->objectB->number);
+		log::log(DBG << "I am EventHandlerTwo. Setting B.number to " << state->objectB->number);
 		state->trace.emplace_back("B", time);
 	}
 
-	curve::time_t predict_invoke_time(const std::shared_ptr<EventTarget> &/*target*/,
+	curve::time_t predict_invoke_time(const std::shared_ptr<EventEntity> &/*target*/,
 	                                  const std::shared_ptr<State> &/*state*/,
 	                                  const curve::time_t &at) override {
 		// TODO recalculate a hit time
@@ -174,11 +174,11 @@ public:
 };
 
 
-class EventTypeTestClass : public EventClass {
+class EventTypeTestClass : public EventHandler {
 public:
-	EventTypeTestClass(const std::string &name, EventClass::trigger_type type)
+	EventTypeTestClass(const std::string &name, EventHandler::trigger_type type)
 		:
-		EventClass(name, type) {}
+		EventHandler(name, type) {}
 
 	void setup_event(const std::shared_ptr<Event> &event,
 	                 const std::shared_ptr<State> &gstate) override {
@@ -191,10 +191,10 @@ public:
 	}
 
 	void invoke(Loop &/*loop*/,
-	            const std::shared_ptr<EventTarget> &target,
+	            const std::shared_ptr<EventEntity> &target,
 	            const std::shared_ptr<State> &gstate,
 	            const curve::time_t &time,
-	            const EventClass::param_map &/*param*/) override {
+	            const EventHandler::param_map &/*param*/) override {
 
 		auto state = std::dynamic_pointer_cast<TestState>(gstate);
 
@@ -205,27 +205,27 @@ public:
 		state->trace.emplace_back(this->id(), time);
 	}
 
-	curve::time_t predict_invoke_time(const std::shared_ptr<EventTarget> &/*target*/,
+	curve::time_t predict_invoke_time(const std::shared_ptr<EventEntity> &/*target*/,
 	                                  const std::shared_ptr<State> &/*state*/,
 	                                  const curve::time_t &at) override {
 		switch(this->type) {
-		case EventClass::trigger_type::DEPENDENCY:
+		case EventHandler::trigger_type::DEPENDENCY:
 			// Execute 1 after the change (usually it is neccessary to recalculate a collision
 			return at + curve::time_t::from_double(1);
 
-		case EventClass::trigger_type::DEPENDENCY_IMMEDIATELY:
+		case EventHandler::trigger_type::DEPENDENCY_IMMEDIATELY:
 			TESTFAILMSG("DEPENDENCY_IMMEDIATELY does not recalculate time!");
 			return 0;
 
-		case EventClass::trigger_type::TRIGGER:
+		case EventHandler::trigger_type::TRIGGER:
 			TESTFAILMSG("TRIGGER does not recalculate time!");
 			return 0;
 
-		case EventClass::trigger_type::REPEAT:
+		case EventHandler::trigger_type::REPEAT:
 			// This will force the execution every 5ms
 			return at + curve::time_t::from_double(5);
 
-		case EventClass::trigger_type::ONCE:
+		case EventHandler::trigger_type::ONCE:
 			return 10;  // even if data changed it will happen at the given time!
 		}
 		return at;
@@ -240,11 +240,11 @@ void eventtrigger() {
 	std::weak_ptr<TestState> destruction_test_state;
 
 	{
-		// Test with one event class
+		// Test with one event handler
 		auto loop = std::make_shared<Loop>();
 
-		loop->add_event_class(std::make_shared<TestEventClass>("test_on_A", 0));
-		loop->add_event_class(std::make_shared<TestEventClass>("test_on_B", 1));
+		loop->add_event_class(std::make_shared<TestEventHandler>("test_on_A", 0));
+		loop->add_event_class(std::make_shared<TestEventHandler>("test_on_B", 1));
 
 		auto state = std::make_shared<TestState>(loop);
 		auto gstate = std::static_pointer_cast<State>(state);
@@ -299,11 +299,11 @@ void eventtrigger() {
 
 	log::log(DBG << "------------- [ Starting Test: Two Event Ping Pong ] ------------");
 	{
-		// Test with two event classes to check interplay
+		// Test with two event handleres to check interplay
 		auto loop = std::make_shared<Loop>();
 
-		loop->add_event_class(std::make_shared<TestEventClass>("test_on_A", 0));
-		loop->add_event_class(std::make_shared<TestEventClassTwo>("test_on_B"));
+		loop->add_event_class(std::make_shared<TestEventHandler>("test_on_A", 0));
+		loop->add_event_class(std::make_shared<TestEventHandlerTwo>("test_on_B"));
 
 		auto state = std::make_shared<TestState>(loop);
 		auto gstate = std::static_pointer_cast<State>(state);
@@ -357,19 +357,19 @@ void eventtrigger() {
 
 		loop->add_event_class(std::make_shared<EventTypeTestClass>(
 			                         "object_modify",
-			                         EventClass::trigger_type::DEPENDENCY));
+			                         EventHandler::trigger_type::DEPENDENCY));
 		loop->add_event_class(std::make_shared<EventTypeTestClass>(
 			                         "object_modify_immediately",
-			                         EventClass::trigger_type::DEPENDENCY_IMMEDIATELY));
+			                         EventHandler::trigger_type::DEPENDENCY_IMMEDIATELY));
 		loop->add_event_class(std::make_shared<EventTypeTestClass>(
 			                         "object_trigger",
-			                         EventClass::trigger_type::TRIGGER));
+			                         EventHandler::trigger_type::TRIGGER));
 		loop->add_event_class(std::make_shared<EventTypeTestClass>(
 			                         "repeat_exec",
-			                         EventClass::trigger_type::REPEAT));
+			                         EventHandler::trigger_type::REPEAT));
 		loop->add_event_class(std::make_shared<EventTypeTestClass>(
 			                         "once",
-			                         EventClass::trigger_type::ONCE));
+			                         EventHandler::trigger_type::ONCE));
 
 		auto state = std::make_shared<TestState>(loop);
 		auto gstate = std::static_pointer_cast<State>(state);
@@ -496,20 +496,20 @@ void eventtrigger() {
 
 	log::log(DBG << "------------- [ Starting Test: Event parameter Mapping ] ------------");
 	{
-		class EventParameterMapTestClass : public EventClass {
+		class EventParameterMapTestClass : public EventHandler {
 		public:
 			EventParameterMapTestClass()
 				:
-				EventClass("EventParameterMap", EventClass::trigger_type::ONCE) {}
+				EventHandler("EventParameterMap", EventHandler::trigger_type::ONCE) {}
 
 			void setup_event(const std::shared_ptr<Event> &/*target*/,
 			                 const std::shared_ptr<State> &/*state*/) override {}
 
 			void invoke(Loop &/*loop*/,
-			            const std::shared_ptr<EventTarget> &/*target*/,
+			            const std::shared_ptr<EventEntity> &/*target*/,
 			            const std::shared_ptr<State> &/*state*/,
 			            const curve::time_t &/*time*/,
-			            const EventClass::param_map &param) override {
+			            const EventHandler::param_map &param) override {
 
 				log::log(DBG << "Testing unknown parameter");
 				TESTEQUALS(param.contains("tomato"), false);
@@ -537,7 +537,7 @@ void eventtrigger() {
 				TESTEQUALS(param.get<std::string>("testStdString"), "stdstring");
 			}
 
-			curve::time_t predict_invoke_time(const std::shared_ptr<EventTarget> &/*target*/,
+			curve::time_t predict_invoke_time(const std::shared_ptr<EventEntity> &/*target*/,
 			                                  const std::shared_ptr<State> &/*state*/,
 			                                  const curve::time_t &at) override {
 				return at;

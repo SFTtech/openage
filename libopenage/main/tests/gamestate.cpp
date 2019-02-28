@@ -14,7 +14,7 @@ namespace openage::main::tests::pong {
 using namespace std::placeholders;
 PongPlayer::PongPlayer(const std::shared_ptr<event::Loop> &mgr, size_t id)
 	:
-	EventTarget{mgr},
+	EventEntity{mgr},
 	speed(std::make_shared<curve::Discrete<float>>(
 		      mgr,
 		      (id << 4) + 1,
@@ -61,7 +61,7 @@ void PongPlayer::child_changes(const curve::time_t &time) {
 
 PongBall::PongBall(const std::shared_ptr<event::Loop> &mgr, size_t id)
 	:
-	EventTarget{mgr},
+	EventEntity{mgr},
 	speed(std::make_shared<curve::Discrete<util::Vector2d>>(
 		      mgr,
 		      (id << 2) + 1,

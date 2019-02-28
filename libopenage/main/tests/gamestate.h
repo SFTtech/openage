@@ -7,7 +7,7 @@
 #include "config.h"
 #include "../../curve/continuous.h"
 #include "../../curve/discrete.h"
-#include "../../event/eventtarget.h"
+#include "../../event/evententity.h"
 #include "../../event/loop.h"
 #include "../../event/state.h"
 #include "../../util/vector.h"
@@ -32,7 +32,7 @@ public:
 };
 
 
-class PongPlayer : public event::EventTarget {
+class PongPlayer : public event::EventEntity {
 public:
 	PongPlayer(const std::shared_ptr<event::Loop> &mgr, size_t id);
 
@@ -52,7 +52,7 @@ private:
 };
 
 
-class PongBall : public event::EventTarget {
+class PongBall : public event::EventEntity {
 public:
 	PongBall(const std::shared_ptr<event::Loop> &mgr, size_t id);
 

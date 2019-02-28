@@ -24,9 +24,9 @@
 namespace openage::event::demo {
 
 
-class BallReflectWall : public DependencyEventClass {
+class BallReflectWall : public DependencyEventHandler {
 public:
-	BallReflectWall() : DependencyEventClass("demo.ball.reflect_wall") {}
+	BallReflectWall() : DependencyEventHandler("demo.ball.reflect_wall") {}
 
 	void setup_event(const std::shared_ptr<Event> &evnt,
 	                 const std::shared_ptr<State> &gstate) override {
@@ -39,15 +39,15 @@ public:
 		evnt->depend_on(state->ball->speed);
 		// TODO add dependency to size of game area
 
-		// FIXME: warn if it's not a dependency eventclass
+		// FIXME: warn if it's not a dependency eventhandler
 	}
 
-	// FIXME we REALLY need dependencies to objects i.e. Ball : public EventTarget()
+	// FIXME we REALLY need dependencies to objects i.e. Ball : public EventEntity()
 	void invoke(Loop &,
-	            const std::shared_ptr<EventTarget> &target,
+	            const std::shared_ptr<EventEntity> &target,
 	            const std::shared_ptr<State> &gstate,
 	            const curve::time_t &now,
-	            const EventClass::param_map &/*param*/) override {
+	            const EventHandler::param_map &/*param*/) override {
 
 		auto positioncurve = std::dynamic_pointer_cast<curve::Continuous<util::Vector2d>>(target);
 		auto state = std::dynamic_pointer_cast<PongState>(gstate);
@@ -79,7 +79,7 @@ public:
 		state->ball->position->set_last(now + ty, pos + (speed * ty.to_double()));
 	}
 
-	curve::time_t predict_invoke_time(const std::shared_ptr<EventTarget> &target,
+	curve::time_t predict_invoke_time(const std::shared_ptr<EventEntity> &target,
 	                                  const std::shared_ptr<State> &gstate,
 	                                  const curve::time_t &now) override {
 
@@ -114,11 +114,11 @@ public:
 };
 
 
-class BallReflectPanel : public DependencyEventClass {
+class BallReflectPanel : public DependencyEventHandler {
 public:
 	BallReflectPanel ()
 		:
-		DependencyEventClass("demo.ball.reflect_panel") {}
+		DependencyEventHandler("demo.ball.reflect_panel") {}
 
 	void setup_event(const std::shared_ptr<Event> &target,
 	                 const std::shared_ptr<State> &gstate) override {
@@ -136,10 +136,10 @@ public:
 
 	// FIXME we REALLY need dependencies to objects
 	void invoke(Loop &mgr,
-	            const std::shared_ptr<EventTarget> &/*target*/,
+	            const std::shared_ptr<EventEntity> &/*target*/,
 	            const std::shared_ptr<State> &gstate,
 	            const curve::time_t &now,
-	            const EventClass::param_map &/*param*/) override {
+	            const EventHandler::param_map &/*param*/) override {
 
 		auto state = std::dynamic_pointer_cast<PongState>(gstate);
 
@@ -212,7 +212,7 @@ public:
 		state->ball->position->set_last(now + ty, hit_pos);
 	}
 
-	curve::time_t predict_invoke_time(const std::shared_ptr<EventTarget> &target,
+	curve::time_t predict_invoke_time(const std::shared_ptr<EventEntity> &target,
 	                                  const std::shared_ptr<State> &gstate,
 	                                  const curve::time_t &now) override {
 
@@ -263,20 +263,20 @@ public:
 };
 
 
-class ResetGame : public OnceEventClass {
+class ResetGame : public OnceEventHandler {
 public:
 	ResetGame ()
 		:
-		OnceEventClass("demo.reset") {}
+		OnceEventHandler("demo.reset") {}
 
 	void setup_event(const std::shared_ptr<Event> &/*target*/,
 	                 const std::shared_ptr<State> &/*state*/) override {}
 
 	void invoke(Loop &/*mgr*/,
-	            const std::shared_ptr<EventTarget> &/*target*/,
+	            const std::shared_ptr<EventEntity> &/*target*/,
 	            const std::shared_ptr<State> &gstate,
 	            const curve::time_t &now,
-	            const EventClass::param_map &/*param*/) override {
+	            const EventHandler::param_map &/*param*/) override {
 
 		auto state = std::dynamic_pointer_cast<PongState>(gstate);
 
@@ -351,7 +351,7 @@ public:
 		state->ball->position->set_last(now + ty, pos + init_speed * ty.to_double());
 	}
 
-	curve::time_t predict_invoke_time(const std::shared_ptr<EventTarget> &/*target*/,
+	curve::time_t predict_invoke_time(const std::shared_ptr<EventEntity> &/*target*/,
 	                                  const std::shared_ptr<State> &/*state*/,
 	                                  const curve::time_t &old_time) override {
 		return old_time;

@@ -8,7 +8,7 @@
 #include "config.h"
 #include "../state.h"
 #include "../loop.h"
-#include "../eventtarget.h"
+#include "../evententity.h"
 #include "../../curve/continuous.h"
 #include "../../curve/discrete.h"
 #include "../../util/strings.h"
@@ -39,11 +39,11 @@ public:
 
 
 using namespace std::placeholders;
-class PongPlayer : public EventTarget {
+class PongPlayer : public EventEntity {
 public:
 	PongPlayer(const std::shared_ptr<Loop> &mgr, size_t id)
 		:
-		EventTarget{mgr},
+		EventEntity{mgr},
 		speed(std::make_shared<curve::Discrete<float>>(
 			      mgr,
 			      (id << 4) + 1,
@@ -98,11 +98,11 @@ private:
 };
 
 
-class PongBall : public EventTarget {
+class PongBall : public EventEntity {
 public:
 	PongBall(const std::shared_ptr<Loop> &mgr, size_t id)
 		:
-		EventTarget{mgr},
+		EventEntity{mgr},
 		speed(std::make_shared<curve::Discrete<util::Vector2d>>(
 			      mgr,
 			      (id << 2) + 1,
