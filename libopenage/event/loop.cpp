@@ -3,9 +3,9 @@
 #include "loop.h"
 
 #include "event.h"
-#include "eventclass.h"
+#include "eventhandler.h"
 #include "eventqueue.h"
-#include "eventtarget.h"
+#include "evententity.h"
 
 #include "../log/log.h"
 
@@ -13,19 +13,19 @@
 namespace openage::event {
 
 
-void Loop::add_event_class(const std::shared_ptr<EventClass> &cls) {
+void Loop::add_event_class(const std::shared_ptr<EventHandler> &cls) {
 	classstore.insert(std::make_pair(cls->id(), cls));
 }
 
 
 std::weak_ptr<Event> Loop::create_event(const std::string &name,
-                                        const std::shared_ptr<EventTarget> &target,
+                                        const std::shared_ptr<EventEntity> &target,
                                         const std::shared_ptr<State> &state,
                                         const curve::time_t &reference_time,
-                                        const EventClass::param_map &params) {
+                                        const EventHandler::param_map &params) {
 	auto it = classstore.find(name);
 	if (it == classstore.end()) {
-		throw Error{MSG(err) << "Trying to subscribe to eventclass "
+		throw Error{MSG(err) << "Trying to subscribe to eventhandler "
 		                     << name << ", which does not exist."};
 	}
 
@@ -33,19 +33,19 @@ std::weak_ptr<Event> Loop::create_event(const std::string &name,
 }
 
 
-std::weak_ptr<Event> Loop::create_event(const std::shared_ptr<EventClass> &eventclass,
-                                        const std::shared_ptr<EventTarget> &target,
+std::weak_ptr<Event> Loop::create_event(const std::shared_ptr<EventHandler> &eventhandler,
+                                        const std::shared_ptr<EventEntity> &target,
                                         const std::shared_ptr<State> &state,
                                         const curve::time_t &reference_time,
-                                        const EventClass::param_map &params) {
+                                        const EventHandler::param_map &params) {
 
-	auto it = this->classstore.find(eventclass->id());
+	auto it = this->classstore.find(eventhandler->id());
 	if (it == this->classstore.end()) {
-		auto res = this->classstore.insert(std::make_pair(eventclass->id(), eventclass));
+		auto res = this->classstore.insert(std::make_pair(eventhandler->id(), eventhandler));
 		if (res.second) {
 			it = res.first;
 		} else {
-			throw Error{ERR << "could not insert eventclass into class store"};
+			throw Error{ERR << "could not insert eventhandler into class store"};
 		}
 	}
 
@@ -100,7 +100,7 @@ int Loop::execute_events(const curve::time_t &time_until,
 		size_t i = 0;
 		for (const auto &e : this->queue.get_event_queue().get_sorted_events()) {
 			log::log(DBG << "  event "
-			         << i << ": t=" << e->get_time() << ": " << e->get_eventclass()->id());
+			         << i << ": t=" << e->get_time() << ": " << e->get_eventhandler()->id());
 			i++;
 		}
 	}
@@ -114,17 +114,17 @@ int Loop::execute_events(const curve::time_t &time_until,
 			break;
 		}
 
-		auto target = event->get_target().lock();
+		auto target = event->get_entity().lock();
 
 		if (target) {
-			log::log(DBG << "Loop: invoking event \"" << event->get_eventclass()->id()
+			log::log(DBG << "Loop: invoking event \"" << event->get_eventhandler()->id()
 			         << "\" on target \"" << target->idstr()
 			         << "\" for time t=" << event->get_time());
 
 			this->active_event = event;
 
 			// apply the event effects
-			event->get_eventclass()->invoke(
+			event->get_eventhandler()->invoke(
 				*this, target, state,
 				event->get_time(), event->get_params()
 			);
@@ -133,15 +133,15 @@ int Loop::execute_events(const curve::time_t &time_until,
 			cnt += 1;
 
 			// if the event is REPEAT, readd the event.
-			if (event->get_eventclass()->type == EventClass::trigger_type::REPEAT) {
-				curve::time_t new_time = event->get_eventclass()->predict_invoke_time(
+			if (event->get_eventhandler()->type == EventHandler::trigger_type::REPEAT) {
+				curve::time_t new_time = event->get_eventhandler()->predict_invoke_time(
 					target, state, event->get_time()
 				);
 
 				if (new_time != std::numeric_limits<curve::time_t>::min()) {
 					event->set_time(new_time);
 
-					log::log(DBG << "Loop: repeating event \"" << event->get_eventclass()->id()
+					log::log(DBG << "Loop: repeating event \"" << event->get_eventhandler()->id()
 					         << "\" on target \"" << target->idstr()
 					         << "\" will be reenqueued for time t=" << event->get_time());
 
@@ -171,25 +171,26 @@ void Loop::update_changes(const std::shared_ptr<State> &state) {
 
 	size_t i = 0;
 
-	// reevaluate depending events because of the change
+	// Some EventEntity has changed, so all depending events were
+	// added to the EventQueue as changes.
+	// These changes need to be reevaluated.
 	for (const auto &change : this->queue.get_changes()) {
 		auto evnt = change.evnt.lock();
 		if (evnt) {
-			log::log(DBG << "  change " << i++ << ": " << evnt->get_eventclass()->id());
-			switch(evnt->get_eventclass()->type) {
-			case EventClass::trigger_type::ONCE:
-			case EventClass::trigger_type::DEPENDENCY: {
-				auto target = evnt->get_target().lock();
-				// TODO what happens when the target is degraded?
+			log::log(DBG << "  change " << i++ << ": " << evnt->get_eventhandler()->id());
+			switch(evnt->get_eventhandler()->type) {
+			case EventHandler::trigger_type::ONCE:
+			case EventHandler::trigger_type::DEPENDENCY: {
+				auto entity = evnt->get_entity().lock();
 
-				if (target) {
-					curve::time_t new_time = evnt->get_eventclass()
-					                             ->predict_invoke_time(target, state, change.time);
+				if (entity) {
+					curve::time_t new_time = evnt->get_eventhandler()
+					                             ->predict_invoke_time(entity, state, change.time);
 
 					if (new_time != std::numeric_limits<curve::time_t>::min()) {
 						log::log(DBG << "Loop: due to a change, rescheduling event of '"
-						         << evnt->get_eventclass()->id()
-						         << "' on target '" << target->idstr()
+						         << evnt->get_eventhandler()->id()
+						         << "' on entity '" << entity->idstr()
 						         << "' at time t=" << change.time
 						         << " to NEW TIME t=" << new_time);
 
@@ -199,22 +200,27 @@ void Loop::update_changes(const std::shared_ptr<State> &state) {
 					}
 					else {
 						log::log(DBG << "Loop: due to a change, canceled execution of '"
-						         << evnt->get_eventclass()->id()
-						         << "' on target '" << target->idstr()
+						         << evnt->get_eventhandler()->id()
+						         << "' on entity '" << entity->idstr()
 						         << "' at time t=" << change.time);
 
 						this->queue.remove(evnt);
 					}
 				}
+				else {
+					// the event is for a no-longer-existing entity,
+					// so we can remove it from the queue.
+					this->queue.remove(evnt);
+				}
 			} break;
 
-			case EventClass::trigger_type::TRIGGER:
-			case EventClass::trigger_type::DEPENDENCY_IMMEDIATELY:
+			case EventHandler::trigger_type::TRIGGER:
+			case EventHandler::trigger_type::DEPENDENCY_IMMEDIATELY:
 				evnt->set_time(change.time);
 				this->queue.enqueue(evnt);
 				break;
 
-			case EventClass::trigger_type::REPEAT:
+			case EventHandler::trigger_type::REPEAT:
 				break;
 			}
 		}

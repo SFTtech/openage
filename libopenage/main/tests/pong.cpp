@@ -142,7 +142,7 @@ void main(const util::Path& path) {
 				mvprintw(pos++, state->area_size->get(now)[0]/2 + 10,
 				         "%f: %s",
 				         e->get_time().to_double(),
-				         e->get_eventclass()->id().c_str());
+				         e->get_eventhandler()->id().c_str());
 			}
 			*/
 

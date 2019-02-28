@@ -142,7 +142,7 @@ void curvepong(bool disable_gui, bool no_human) {
 					mvprintw(pos++, state->display_boundary[0]/2 + 10,
 					         "%f: %s",
 					         e->get_time().to_double(),
-					         e->get_eventclass()->id().c_str());
+					         e->get_eventhandler()->id().c_str());
 				}
 
 				gui->update_screen();

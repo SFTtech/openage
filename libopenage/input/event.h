@@ -80,7 +80,7 @@ using modset_t = std::unordered_set<modifier, modifier_hash>;
 
 
 /**
- * base event type containing event class and event code
+ * base event type containing event handler and event code
  */
 class ClassCode {
 public:

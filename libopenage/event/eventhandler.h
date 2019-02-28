@@ -15,19 +15,19 @@ namespace openage::event {
 
 class Event;
 class Loop;
-class EventTarget;
+class EventEntity;
 class State;
 
 
 /**
- * A eventclass has to be implemented for every type of event that exists.
+ * A eventhandler.has to be implemented for every type of event that exists.
  * It determines what the event means and how it is handled.
  */
-class EventClass {
+class EventHandler {
 public:
 	/**
-	 * Available types for the event class:
-	 * These decide when an event of this event class will be executed.
+	 * Available types for the event handler:
+	 * These decide when an event of this event handler will be executed.
 	 */
 	enum class trigger_type {
 		/**
@@ -67,7 +67,7 @@ public:
 	};
 
 	/**
-	 * Storage for parameters for an event class.
+	 * Storage for parameters for an event handler.
 	 */
 	class param_map {
 	public:
@@ -125,12 +125,12 @@ public:
 	/**
 	 * Constructor to be constructed with the unique identifier
 	 */
-	EventClass(std::string name, const trigger_type &type);
+	EventHandler(const std::string &name, const trigger_type &type);
 
-	virtual ~EventClass() = default;
+	virtual ~EventHandler() = default;
 
 	/**
-	 * The event type this event class represents.
+	 * The event type this event handler represents.
 	 */
 	const trigger_type type;
 
@@ -140,7 +140,7 @@ public:
 	const std::string &id();
 
 	/**
-	 * Called for each event that is created for this EventClass.
+	 * Called for each event that is created for this EventHandler.
 	 * The job of the setup function is to add all dependencies with other event
 	 * targets found in state.
 	 */
@@ -154,13 +154,13 @@ public:
 	 * Called from the Loop.
 	 */
 	virtual void invoke(Loop &loop,
-	                    const std::shared_ptr<EventTarget> &target,
+	                    const std::shared_ptr<EventEntity> &target,
 	                    const std::shared_ptr<State> &state,
 	                    const curve::time_t &time,
 	                    const param_map &params) = 0;
 
 	/**
-	 * Is called to calculate the execution time for an event of this eventclass.
+	 * Is called to calculate the execution time for an event of this eventhandler.
 	 * This is called whenever one of the set up dependencies was changed,
 	 * or when a REPEAT event was executed.
 	 *
@@ -175,13 +175,13 @@ public:
 	 * then dependencies may not be resolved perfectly anymore
 	 * (if other events have already been calculated before that).
 	 */
-	virtual curve::time_t predict_invoke_time(const std::shared_ptr<EventTarget> &target,
+	virtual curve::time_t predict_invoke_time(const std::shared_ptr<EventEntity> &target,
 	                                          const std::shared_ptr<State> &state,
 	                                          const curve::time_t &at) = 0;
 
 private:
 	/**
-	 * String identifier for this event class.
+	 * String identifier for this event handler.
 	 */
 	std::string _id;
 };
@@ -189,29 +189,29 @@ private:
 
 // helper classes
 
-class DependencyEventClass : public EventClass {
+class DependencyEventHandler : public EventHandler {
 public:
-	DependencyEventClass(const std::string &name);
+	DependencyEventHandler(const std::string &name);
 };
 
-class DependencyImmediatelyEventClass : public EventClass {
+class DependencyImmediatelyEventHandler : public EventHandler {
 public:
-	DependencyImmediatelyEventClass(const std::string &name);
+	DependencyImmediatelyEventHandler(const std::string &name);
 };
 
-class TriggerEventClass : public EventClass {
+class TriggerEventHandler : public EventHandler {
 public:
-	TriggerEventClass(const std::string &name);
+	TriggerEventHandler(const std::string &name);
 };
 
-class RepeatEventClass : public EventClass {
+class RepeatEventHandler : public EventHandler {
 public:
-	RepeatEventClass(const std::string &name);
+	RepeatEventHandler(const std::string &name);
 };
 
-class OnceEventClass : public EventClass {
+class OnceEventHandler : public EventHandler {
 public:
-	OnceEventClass(const std::string &name);
+	OnceEventHandler(const std::string &name);
 };
 
 

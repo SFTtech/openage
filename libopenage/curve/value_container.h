@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "../event/eventtarget.h"
+#include "../event/evententity.h"
 #include "keyframe_container.h"
 
 #include <cmath>
@@ -11,14 +11,14 @@
 namespace openage::curve {
 
 template<typename T>
-class ValueContainer : public event::EventTarget {
+class ValueContainer : public event::EventEntity {
 public:
 	ValueContainer(const std::shared_ptr<event::Loop> &mgr,
 	               size_t id,
 	               const std::string &idstr="",
-	               const EventTarget::single_change_notifier &notifier=nullptr)
+	               const EventEntity::single_change_notifier &notifier=nullptr)
 		:
-		EventTarget(mgr, notifier),
+		EventEntity(mgr, notifier),
 		container{mgr},
 		_id{id},
 		_idstr{idstr},

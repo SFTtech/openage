@@ -20,13 +20,13 @@ int curvepong();
 }
 
 class Event;
-class EventTarget;
+class EventEntity;
 class State;
 
 
 
 /**
- * The core class to manage event class and targets.
+ * The core class to manage event handler and targets.
  */
 class Loop {
 
@@ -34,8 +34,8 @@ class Loop {
 	friend int demo::curvepong();
 
 public:
-	/** register a new event class */
-	void add_event_class(const std::shared_ptr<EventClass> &cls);
+	/** register a new event handler */
+	void add_event_class(const std::shared_ptr<EventHandler> &cls);
 
 	/**
 	 * Add a new Event to the queue.
@@ -45,21 +45,21 @@ public:
 	 * The `reference_time` is used to calculate the actual event time.
 	 */
 	std::weak_ptr<Event> create_event(const std::string &name,
-	                                  const std::shared_ptr<EventTarget> &target,
+	                                  const std::shared_ptr<EventEntity> &target,
 	                                  const std::shared_ptr<State> &state,
 	                                  const curve::time_t &reference_time,
-	                                  const EventClass::param_map &params=EventClass::param_map({}));
+	                                  const EventHandler::param_map &params=EventHandler::param_map({}));
 
 	/**
-	 * This will generate a new randomly named eventclass for this specific element
+	 * This will generate a new randomly named eventhandler for this specific element
 	 *
 	 * The `reference_time` is used to determine the actual event trigger time.
 	 */
-	std::weak_ptr<Event> create_event(const std::shared_ptr<EventClass> &eventclass,
-	                                  const std::shared_ptr<EventTarget> &target,
+	std::weak_ptr<Event> create_event(const std::shared_ptr<EventHandler> &eventhandler,
+	                                  const std::shared_ptr<EventEntity> &target,
 	                                  const std::shared_ptr<State> &state,
 	                                  const curve::time_t &reference_time,
-	                                  const EventClass::param_map &params=EventClass::param_map({}));
+	                                  const EventHandler::param_map &params=EventHandler::param_map({}));
 
 	/**
 	 * Execute all events that are registered until a certain point in time.
@@ -69,7 +69,7 @@ public:
 
 	/**
 	 * Register that a given event must be reevaluated at a time,
-	 * this usually happens because this event depended on an eventtarget
+	 * this usually happens because this event depended on an evententity
 	 * that got changed at this time.
 	 * This inserts the event into the changes queue
 	 * so it will be evaluated in the next loop iteration.
@@ -96,9 +96,9 @@ private:
 	void update_changes(const std::shared_ptr<State> &state);
 
 	/**
-	 * Here we do the bookkeeping of registered event classes.
+	 * Here we do the bookkeeping of registered event handleres.
 	 */
-	std::unordered_map<std::string, std::shared_ptr<EventClass>> classstore;
+	std::unordered_map<std::string, std::shared_ptr<EventHandler>> classstore;
 
 	/**
 	 * All events are enqueued here.

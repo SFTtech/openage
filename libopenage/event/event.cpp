@@ -4,34 +4,34 @@
 
 #include <utility>
 
-#include "eventtarget.h"
-#include "eventclass.h"
+#include "evententity.h"
+#include "eventhandler.h"
 
 #include "../log/log.h"
 #include "../util/hash.h"
 
 namespace openage::event {
 
-Event::Event(const std::shared_ptr<EventTarget> &target,
-             const std::shared_ptr<EventClass> &eventclass,
-             EventClass::param_map params)
+Event::Event(const std::shared_ptr<EventEntity> &entity,
+             const std::shared_ptr<EventHandler> &eventhandler,
+             const EventHandler::param_map &params)
 	:
-	params(std::move(params)),
-	target{target},
-	eventclass{eventclass},
+	params(params),
+	entity{entity},
+	eventhandler{eventhandler},
 	myhash{
-		util::hash_combine(std::hash<size_t>()(target->id()),
-		                   std::hash<std::string>()(eventclass->id()))
+		util::hash_combine(std::hash<size_t>()(entity->id()),
+		                   std::hash<std::string>()(eventhandler->id()))
 	} {}
 
 
-void Event::depend_on(const std::shared_ptr<EventTarget> &dependency) {
+void Event::depend_on(const std::shared_ptr<EventEntity> &dependency) {
 	// TODO: do REPEAT and TRIGGER listen to changes (i.e. have dependents)?
 	// if not, exclude them here and return early.
 
-	log::log(DBG << "Registering dependency event from EventClass "
-	         << this->get_eventclass()->id()
-	         << " to EventTarget " << dependency->idstr());
+	log::log(DBG << "Registering dependency event from EventHandler "
+	         << this->get_eventhandler()->id()
+	         << " to EventEntity " << dependency->idstr());
 
 	dependency->add_dependent(this->shared_from_this());
 }
