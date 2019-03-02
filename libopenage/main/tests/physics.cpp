@@ -26,7 +26,7 @@ public:
 		// triggers a change
 		evnt->depend_on(state->ball->position);
 		evnt->depend_on(state->ball->speed);
-		// TODO add dependency to size of game area
+		evnt->depend_on(state->area_size);
 
 		// FIXME: warn if it's not a dependency eventhandler
 	}
@@ -109,18 +109,18 @@ public:
 		:
 		event::DependencyEventHandler("demo.ball.reflect_panel") {}
 
-	void setup_event(const std::shared_ptr<event::Event> &target,
+	void setup_event(const std::shared_ptr<event::Event> &evnt,
 	                 const std::shared_ptr<event::State> &gstate) override {
 
 		auto state = std::dynamic_pointer_cast<PongState>(gstate);
 
 		// FIXME dependency to a full ball object
 		// then a change to any of the curves triggers the update.
-		target->depend_on(state->ball->position);
-		target->depend_on(state->ball->speed);
-		target->depend_on(state->p1->position);
-		target->depend_on(state->p2->position);
-		// TODO add dependency to size of game area
+		evnt->depend_on(state->ball->position);
+		evnt->depend_on(state->ball->speed);
+		evnt->depend_on(state->p1->position);
+		evnt->depend_on(state->p2->position);
+		evnt->depend_on(state->area_size);
 	}
 
 	// FIXME we REALLY need dependencies to objects
