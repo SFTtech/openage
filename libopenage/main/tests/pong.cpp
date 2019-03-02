@@ -70,6 +70,9 @@ void main(const util::Path& path) {
 		curve::time_t now = 0;
 		Physics phys;
 
+		// the window size is fetched in here already,
+		// so the resize callback doesn't need to be called for
+		// a new state.
 		auto state = std::make_shared<PongState>(loop, gui);
 
 		gui->clear_resize_callbacks();
@@ -81,6 +84,9 @@ void main(const util::Path& path) {
 				state->area_size->set_last(now, {w, h});
 			}
 		);
+
+		// process one round of window events, mainly to get the initial screen size.
+		gui->update();
 
 		Physics::init(state, loop, now);
 

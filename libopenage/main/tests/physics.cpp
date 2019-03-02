@@ -278,8 +278,8 @@ public:
 		float dirx = (rng::random() % 2) ? 1 : -1;
 		float diry = (rng::random() % 2) ? 1 : -1;
 		auto init_speed = util::Vector2d(
-			dirx * (screen_size[0] / 2.0 + (rng::random() % (screen_size[0]/4))),
-			diry * (screen_size[1] / 3.0 + (rng::random() % (screen_size[1]/5)))
+			dirx * (screen_size[0] / 8.0 + (rng::random() % (screen_size[0]/10))),
+			diry * (screen_size[1] / 10.0 + (rng::random() % (screen_size[1]/10)))
 		);
 
 		state->ball->speed->set_last(now, init_speed);

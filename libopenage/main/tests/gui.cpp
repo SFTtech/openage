@@ -301,5 +301,8 @@ void Gui::clear_resize_callbacks() {
 	this->resize_callbacks.clear();
 }
 
+void Gui::update() {
+	this->window.update();
+}
 
 } // openage::main::tests::pong

@@ -33,6 +33,8 @@ public:
 	void add_resize_callback(const renderer::Window::resize_cb_t&);
 	void clear_resize_callbacks();
 
+	void update();
+
 	bool exit_requested = false;
 
 private:
