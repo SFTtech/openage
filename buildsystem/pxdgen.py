@@ -470,7 +470,7 @@ def main():
                 initfile = template.with_suffix("." + extension)
                 if not initfile.exists():
                     print("\x1b[36mpxdgen: create package index %s\x1b[0m" % (
-                        initfile.relative_to(CWD)))
+                        initfile.relative_to(args.output_dir)))
 
                     initfile.touch()
 
