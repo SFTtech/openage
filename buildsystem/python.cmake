@@ -87,14 +87,13 @@ function(add_cython_modules)
 			set_source_files_properties("${CPPNAME}" PROPERTIES GENERATED ON)
 
 			# construct some hopefully unique target name
-			file(RELATIVE_PATH TARGETNAME "${CMAKE_SOURCE_DIR}" "${source}")
-			string(REGEX REPLACE "\\.pyx?$" "" TARGETNAME "${TARGETNAME}")
-			string(REGEX REPLACE "/" "_" TARGETNAME "${TARGETNAME}")
+			set(TARGETNAME "${REL_CURRENT_SOURCE_DIR}/${OUTPUTNAME}")
+			string(REPLACE "/" "_" TARGETNAME "${TARGETNAME}")
 
 			# generate the pretty module name
-			file(RELATIVE_PATH PRETTY_MODULE_NAME "${CMAKE_SOURCE_DIR}" "${source}")
-			string(REGEX REPLACE "\\.pyx?$" "" PRETTY_MODULE_NAME "${PRETTY_MODULE_NAME}")
-			string(REGEX REPLACE "/" "." PRETTY_MODULE_NAME "${PRETTY_MODULE_NAME}")
+			set(PRETTY_MODULE_NAME "${REL_CURRENT_SOURCE_DIR}/${OUTPUTNAME}")
+			string(REPLACE "/" "." PRETTY_MODULE_NAME "${PRETTY_MODULE_NAME}")
+			string(REGEX REPLACE "^\\." "" PRETTY_MODULE_NAME "${PRETTY_MODULE_NAME}")
 			set(PRETTY_MODULE_PROPERTIES "")
 
 			if(EMBED_NEXT)

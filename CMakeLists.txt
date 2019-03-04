@@ -216,8 +216,9 @@ target_compile_options(pyext_libopenage INTERFACE
 target_link_libraries(pyext_libopenage INTERFACE libopenage)
 set(PYEXT_LINK_LIBRARY pyext_libopenage)
 
-add_cython_modules(EMBED NOINSTALL run.py)
-add_py_modules(BININSTALL run.py AS openage)
+configure_file(run.py.in run.py)
+add_cython_modules(EMBED NOINSTALL ${CMAKE_CURRENT_BINARY_DIR}/run.py)
+add_py_modules(BININSTALL ${CMAKE_CURRENT_BINARY_DIR}/run.py AS openage)
 add_subdirectory(openage/)
 
 python_finalize()

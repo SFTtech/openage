@@ -10,6 +10,9 @@ This file is Cythonized with an embedded interpreter, producing ./run,
 which satisifies that requirement.
 """
 
-if __name__ == '__main__':
+if __name__ == '__main__@SOME_UNDEFINED_VARIABLE_CMAKE_WILL_REMOVE@':
     from openage.__main__ import main
     main()
+else:
+    print("Running this in the source directory is not supported.",
+    "Please use `make run` or `bin/run.py` to start instead.")

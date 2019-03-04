@@ -427,7 +427,9 @@ def parse_args():
 def main():
     """ CLI entry point """
     args = parse_args()
-    cppdir = Path("libopenage").absolute()
+    cppname = "libopenage"
+    cppdir = Path(cppname).absolute()
+    out_cppdir = Path(args.output_dir) / cppname
 
     if args.verbose:
         hdr_count = len(args.all_files)
@@ -442,9 +444,9 @@ def main():
             print("pxdgen source file is not in " + cppdir + ": " + filename)
             sys.exit(1)
 
-        # join args.output_dir with relative path from CWD
-        pxdfile_relpath = filename.with_suffix('.pxd').relative_to(CWD)
-        pxdfile = args.output_dir / pxdfile_relpath
+        # join out_cppdir with relative path from cppdir
+        pxdfile_relpath = filename.with_suffix('.pxd').relative_to(cppdir)
+        pxdfile = out_cppdir / pxdfile_relpath
 
         if args.verbose:
             print("creating '{}' for '{}':".format(pxdfile, filename))
@@ -463,7 +465,7 @@ def main():
         # create empty __init__.py in all parent directories.
         # Cython requires this; else it won't find the .pxd files.
         for dirname in pxdfile_relpath.parents:
-            template = args.output_dir / dirname / "__init__"
+            template = out_cppdir / dirname / "__init__"
             for extension in ("py", "pxd"):
                 initfile = template.with_suffix("." + extension)
                 if not initfile.exists():
