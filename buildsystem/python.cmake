@@ -328,6 +328,10 @@ function(python_finalize)
 	write_on_change("${CMAKE_BINARY_DIR}/py/pxd_list" "${pxd_list};${generated_pxd_list}")
 	set(CYTHONIZE_TIMEFILE "${CMAKE_BINARY_DIR}/py/cythonize_timefile")
 	add_custom_command(OUTPUT "${CYTHONIZE_TIMEFILE}"
+		# remove unneeded files from the previous builds (if any)
+		COMMAND "${CMAKE_COMMAND}" -E remove -f
+			"${CMAKE_BINARY_DIR}/__init__.py"
+			"${CMAKE_BINARY_DIR}/__init__.pxd"
 		COMMAND "${PYTHON}" -m buildsystem.cythonize
 		"${CMAKE_BINARY_DIR}/py/cython_modules"
 		"${CMAKE_BINARY_DIR}/py/cython_modules_embed"
