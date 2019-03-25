@@ -16,7 +16,7 @@ What can I do?
 You're in luck. There's various sources for tasks:
 
  - Have a look at the [issue tracker](https://github.com/sfttech/openage/issues), especially issues with labels:
-   - [easy](https://github.com/SFTtech/openage/labels/easy)!
+   - [good first issue](https://github.com/SFTtech/openage/labels/good first issue)!
    - [just do it](https://github.com/SFTtech/openage/labels/just%20do%20it)!
  - Use [your favorite code searching tool](https://github.com/ggreer/the_silver_searcher) to find `TODO` messages!
  - The issue tracker [milestones](https://github.com/SFTtech/openage/milestones)!
