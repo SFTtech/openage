@@ -45,7 +45,7 @@ def find_issues(dirname):
 
             match = GUARD_RE.match(data)
             if not match:
-                raise HeaderIssue("No valid header guard found")
+                raise HeaderIssue("No valid header guard found (e.g. #pragma once)")
 
         except HeaderIssue as exc:
             yield ("header guard issue in {}".format(fname), exc.args[0], None)
