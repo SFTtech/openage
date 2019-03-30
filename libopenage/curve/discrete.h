@@ -6,7 +6,7 @@
 #include <utility>
 #include <sstream>
 
-#include "value_container.h"
+#include "base_curve.h"
 
 
 namespace openage::curve {
@@ -16,13 +16,13 @@ namespace openage::curve {
  * implement `operator=` and copy ctor.
  */
 template<typename T>
-class Discrete : public ValueContainer<T> {
+class Discrete : public BaseCurve<T> {
 	static_assert(std::is_copy_assignable<T>::value,
 	              "Template type is not copy assignable");
 	static_assert(std::is_copy_constructible<T>::value,
 	              "Template type is not copy constructible");
 public:
-	using ValueContainer<T>::ValueContainer;
+	using BaseCurve<T>::BaseCurve;
 
 	/**
 	 * Does not interpolate anything,
