@@ -5,63 +5,64 @@
 #include <type_traits>
 #include <sstream>
 
-#include "value_container.h"
+#include "interpolated.h"
 #include "../log/log.h"
 
 namespace openage::curve {
 
 
 /**
- * Continuous Datatype.
- * Stores a value container with continuous access.
+ * Continuous linear curve.
+ *
+ * At one point in time, there can be only one value,
+ * thus, there can't be jumps. All values are connected through linear
+ * interpolation.
+ *
  * The bound template type T has to implement `operator+(T)` and
  * `operator*(time_t)`.
  */
 template<typename T>
-class Continuous : public ValueContainer<T> {
+class Continuous : public Interpolated<T> {
 public:
-	using ValueContainer<T>::ValueContainer;
+	using Interpolated<T>::Interpolated;
+
 	/**
-	 * will interpolate between the keyframes linearly based on the time.
+	 * Insert/overwrite given value at given time and erase all elements
+	 * that follow at a later time.
+	 * If multiple elements exist at the given time,
+	 * overwrite all of them.
 	 */
-	T get(const time_t &) const override;
+	void set_last(const time_t &t, const T &value) override;
+
+	/** This just calls set_replace in order to guarantee the continuity. */
+	void set_insert(const time_t &t, const T &value) override;
 
 	/** human readable identifier */
 	std::string idstr() const override;
 };
 
 
+template <typename T>
+void Continuous<T>::set_last(const time_t &at, const T &value) {
+	auto hint = this->container.last(at, this->last_element);
+
+	// erase all same-time entries
+	while (hint->time == at) {
+		hint--;
+	}
+
+	hint = this->container.erase_after(hint);
+
+	this->container.insert_before(at, value, hint);
+	this->last_element = hint;
+
+	this->changes(at);
+}
+
 
 template <typename T>
-T Continuous<T>::get(const time_t &time) const {
-	const auto &e = this->container.last(time, this->last_element);
-	this->last_element = e;
-
-	auto nxt = e;
-	++nxt;
-
-	time_t diff_time = 0;
-
-	auto offset = time - e->time;
-
-	// If we do not have a next (buffer underrun!!) we assign values
-	if (nxt == this->container.end()) {
-		// log::log(WARN << "Continuous buffer underrun. This might be bad! Assuming constant.");
-	} else {
-		diff_time = nxt->time - e->time;
-	}
-
-	if (nxt == this->container.end() // use the last curve value
-	    || offset == 0               // values equal -> don't need to interpolate
-	    || diff_time == 0) {         // values at the same time -> division-by-zero-error
-
-		return e->value;
-	} else {
-		// Interpolation between time(now) and time(next) that has elapsed
-		double elapsed_frac = offset.to_double() / diff_time.to_double();
-
-		return e->value + (nxt->value - e->value) * elapsed_frac;
-	}
+void Continuous<T>::set_insert(const time_t &t, const T &value) {
+	this->set_replace(t, value);
 }
 
 
