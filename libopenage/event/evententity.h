@@ -32,7 +32,7 @@ protected:
 	/**
 	 * For children to be able to initialize us.
 	 *
-	 * The notifier is used by hierarchical structures to be able to traverse a
+	 * The notifier is used by hierarchical structures to be able to propagate a
 	 * change up in the tree, this is necessary to make containers with event
 	 * targets inside and listen to any changes on the full.
 	 */

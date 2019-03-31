@@ -18,8 +18,11 @@ void EventEntity::changes(const curve::time_t &time) {
 	// This target has some change, so we have to notify all dependents
 	// that subscribed on this entity.
 
-	log::log(DBG << "Target: processing change request at t=" << time
-	         << " for EventEntity " << this->idstr() << "...");
+	if (this->parent_notifier or this->dependents.size()) {
+		log::log(DBG << "Target: processing change request at t=" << time
+		         << " for EventEntity " << this->idstr() << "...");
+	}
+
 	if (this->parent_notifier != nullptr) {
 		this->parent_notifier(time);
 	}
@@ -55,6 +58,9 @@ void EventEntity::changes(const curve::time_t &time) {
 			case EventHandler::trigger_type::REPEAT:
 				// Ignore announced changes for triggered or repeated events
 				// for that there is the 'DEPENDENCY' events.
+
+				// TRIGGER events are only triggered when this entity's
+				// trigger() function is called
 				++it;
 				break;
 			}
@@ -93,17 +99,7 @@ void EventEntity::trigger(const curve::time_t &last_valid_time) {
 
 
 void EventEntity::add_dependent(const std::shared_ptr<Event> &event) {
-	switch (event->get_eventhandler()->type) {
-	case EventHandler::trigger_type::TRIGGER:
-	case EventHandler::trigger_type::REPEAT:
-		throw Error(ERR << "Can't add a REPEAT or TRIGGER event '"
-		            << event->get_eventhandler()->id()
-		            << "' as dependent for EventEntity " << this->idstr());
-		break;
-	default:
-		this->dependents.emplace_back(event);
-		break;
-	}
+	this->dependents.emplace_back(event);
 }
 
 void EventEntity::show_dependents() const {
