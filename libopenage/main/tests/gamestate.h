@@ -7,6 +7,7 @@
 #include "config.h"
 #include "../../curve/continuous.h"
 #include "../../curve/discrete.h"
+#include "../../curve/segmented.h"
 #include "../../event/evententity.h"
 #include "../../event/loop.h"
 #include "../../event/state.h"
@@ -60,7 +61,7 @@ public:
 	std::string idstr() const override;
 
 	std::shared_ptr<curve::Discrete<util::Vector2d>> speed;
-	std::shared_ptr<curve::Continuous<util::Vector2d>> position;
+	std::shared_ptr<curve::Segmented<util::Vector2d>> position;
 
 private:
 	void child_changes(const curve::time_t &time);

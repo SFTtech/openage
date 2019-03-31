@@ -67,7 +67,7 @@ PongBall::PongBall(const std::shared_ptr<event::Loop> &mgr, size_t id)
 		      (id << 2) + 1,
 		      util::sformat("PongBall(%zu).speed", id),
 		      std::bind(&PongBall::child_changes, this, _1))),
-	position(std::make_shared<curve::Continuous<util::Vector2d>>(
+	position(std::make_shared<curve::Segmented<util::Vector2d>>(
 		         mgr,
 		         (id << 2) + 2,
 		         util::sformat("PongBall(%zu).position", id),

@@ -24,11 +24,8 @@ public:
 
 		// FIXME dependency to a full ball object so that any curve
 		// triggers a change
-		evnt->depend_on(state->ball->position);
-		evnt->depend_on(state->ball->speed);
+		evnt->depend_on(state->ball);
 		evnt->depend_on(state->area_size);
-
-		// FIXME: warn if it's not a dependency eventhandler
 	}
 
 	// FIXME we REALLY need dependencies to objects i.e. Ball : public EventEntity()
@@ -38,7 +35,7 @@ public:
 	            const curve::time_t &now,
 	            const event::EventHandler::param_map &/*param*/) override {
 
-		auto positioncurve = std::dynamic_pointer_cast<curve::Continuous<util::Vector2d>>(target);
+		auto positioncurve = std::dynamic_pointer_cast<curve::Segmented<util::Vector2d>>(target);
 		auto state = std::dynamic_pointer_cast<PongState>(gstate);
 		auto speedcurve = state->ball->speed;
 
@@ -74,7 +71,7 @@ public:
 	                                  const std::shared_ptr<event::State> &gstate,
 	                                  const curve::time_t &now) override {
 
-		auto positioncurve = std::dynamic_pointer_cast<curve::Continuous<util::Vector2d>>(target);
+		auto positioncurve = std::dynamic_pointer_cast<curve::Segmented<util::Vector2d>>(target);
 		auto state = std::dynamic_pointer_cast<PongState>(gstate);
 
 		auto speed = state->ball->speed->get(now);
@@ -114,16 +111,12 @@ public:
 
 		auto state = std::dynamic_pointer_cast<PongState>(gstate);
 
-		// FIXME dependency to a full ball object
-		// then a change to any of the curves triggers the update.
-		evnt->depend_on(state->ball->position);
-		evnt->depend_on(state->ball->speed);
+		evnt->depend_on(state->ball);
 		evnt->depend_on(state->p1->position);
 		evnt->depend_on(state->p2->position);
 		evnt->depend_on(state->area_size);
 	}
 
-	// FIXME we REALLY need dependencies to objects
 	void invoke(event::Loop &mgr,
 	            const std::shared_ptr<event::EventEntity> &/*target*/,
 	            const std::shared_ptr<event::State> &gstate,
@@ -197,7 +190,7 @@ public:
 	                                  const std::shared_ptr<event::State> &gstate,
 	                                  const curve::time_t &now) override {
 
-		auto positioncurve = std::dynamic_pointer_cast<curve::Continuous<util::Vector2d>>(target);
+		auto positioncurve = std::dynamic_pointer_cast<curve::Segmented<util::Vector2d>>(target);
 		auto state = std::dynamic_pointer_cast<PongState>(gstate);
 
 		auto speed = state->ball->speed->get(now);
@@ -265,10 +258,10 @@ public:
 			}
 		}
 
-		// move ball to the center, quickly
-		state->ball->position->set_last(now - curve::time_t::from_double(0.01),
-		                                state->ball->position->get(now));
-		state->ball->position->set_last(now, screen_size.casted<double>() / 2);
+		// move ball to the center
+		state->ball->position->set_last_jump(now,
+		                                     state->ball->position->get(now),
+		                                     screen_size.casted<double>() / 2);
 
 		// move paddles to center
 		state->p1->position->set_last(now, screen_size[1] / 2);

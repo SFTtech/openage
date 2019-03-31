@@ -523,7 +523,6 @@ void eventtrigger() {
 				TESTEQUALS(param.contains("testInt"), true);
 				TESTEQUALS(param.check_type<int>("testInt"), true);
 				TESTEQUALS(param.get<int>("testInt"), 1);
-				// FIXME: This should hurt you!!!
 				TESTEQUALS(param.get<std::string>("testInt", "int"), "int");
 
 				log::log(DBG << "Testing char* parameter");

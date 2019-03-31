@@ -44,22 +44,22 @@ public:
 	 *
 	 * The `reference_time` is used to calculate the actual event time.
 	 */
-	std::weak_ptr<Event> create_event(const std::string &name,
-	                                  const std::shared_ptr<EventEntity> &target,
-	                                  const std::shared_ptr<State> &state,
-	                                  const curve::time_t &reference_time,
-	                                  const EventHandler::param_map &params=EventHandler::param_map({}));
+	std::shared_ptr<Event> create_event(const std::string &name,
+	                                    const std::shared_ptr<EventEntity> &target,
+	                                    const std::shared_ptr<State> &state,
+	                                    const curve::time_t &reference_time,
+	                                    const EventHandler::param_map &params=EventHandler::param_map({}));
 
 	/**
 	 * This will generate a new randomly named eventhandler for this specific element
 	 *
 	 * The `reference_time` is used to determine the actual event trigger time.
 	 */
-	std::weak_ptr<Event> create_event(const std::shared_ptr<EventHandler> &eventhandler,
-	                                  const std::shared_ptr<EventEntity> &target,
-	                                  const std::shared_ptr<State> &state,
-	                                  const curve::time_t &reference_time,
-	                                  const EventHandler::param_map &params=EventHandler::param_map({}));
+	std::shared_ptr<Event> create_event(const std::shared_ptr<EventHandler> &eventhandler,
+	                                    const std::shared_ptr<EventEntity> &target,
+	                                    const std::shared_ptr<State> &state,
+	                                    const curve::time_t &reference_time,
+	                                    const EventHandler::param_map &params=EventHandler::param_map({}));
 
 	/**
 	 * Execute all events that are registered until a certain point in time.

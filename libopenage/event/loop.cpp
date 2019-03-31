@@ -18,11 +18,11 @@ void Loop::add_event_class(const std::shared_ptr<EventHandler> &cls) {
 }
 
 
-std::weak_ptr<Event> Loop::create_event(const std::string &name,
-                                        const std::shared_ptr<EventEntity> &target,
-                                        const std::shared_ptr<State> &state,
-                                        const curve::time_t &reference_time,
-                                        const EventHandler::param_map &params) {
+std::shared_ptr<Event> Loop::create_event(const std::string &name,
+                                          const std::shared_ptr<EventEntity> &target,
+                                          const std::shared_ptr<State> &state,
+                                          const curve::time_t &reference_time,
+                                          const EventHandler::param_map &params) {
 	auto it = classstore.find(name);
 	if (it == classstore.end()) {
 		throw Error{MSG(err) << "Trying to subscribe to eventhandler "
@@ -33,11 +33,11 @@ std::weak_ptr<Event> Loop::create_event(const std::string &name,
 }
 
 
-std::weak_ptr<Event> Loop::create_event(const std::shared_ptr<EventHandler> &eventhandler,
-                                        const std::shared_ptr<EventEntity> &target,
-                                        const std::shared_ptr<State> &state,
-                                        const curve::time_t &reference_time,
-                                        const EventHandler::param_map &params) {
+std::shared_ptr<Event> Loop::create_event(const std::shared_ptr<EventHandler> &eventhandler,
+                                          const std::shared_ptr<EventEntity> &target,
+                                          const std::shared_ptr<State> &state,
+                                          const curve::time_t &reference_time,
+                                          const EventHandler::param_map &params) {
 
 	auto it = this->classstore.find(eventhandler->id());
 	if (it == this->classstore.end()) {
