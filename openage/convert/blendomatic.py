@@ -1,4 +1,4 @@
-# Copyright 2013-2018 the openage authors. See copying.md for legal info.
+# Copyright 2013-2019 the openage authors. See copying.md for legal info.
 
 """
 Conversion for the terrain blending masks.
@@ -167,7 +167,7 @@ class BlendingMode:
 
             if read_values > (tile_size - read_so_far):
                 raise Exception("reading more bytes than tile has left")
-            elif read_values < 0:
+            if read_values < 0:
                 raise Exception("reading negative count: %d" % read_values)
 
             # grab the pixels out of the big list
