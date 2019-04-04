@@ -1,4 +1,4 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 """ Entry point for all of the asset conversion. """
 
@@ -385,6 +385,7 @@ def source_dir_proposals(call_wine):
     yield "~/.wine/" + STANDARD_PATH_IN_32BIT_WINEPREFIX
     yield "~/.wine/" + STANDARD_PATH_IN_64BIT_WINEPREFIX
     yield "~/.wine/" + STANDARD_PATH_IN_WINEPREFIX_STEAM
+    yield "~/.steam/steam/steamapps/common/Age2HD"
 
     if not call_wine:
         # user wants wine not to be called
