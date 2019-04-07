@@ -37,20 +37,28 @@ function(codegen_run)
 	STRING(REGEX REPLACE "\n" ";" CODEGEN_TARGET_FILES ${CODEGEN_TARGET_FILES})
 	STRING(REGEX REPLACE "\n" ";" CODEGEN_DEPENDS ${CODEGEN_DEPENDS})
 
+	# as the codegen creates all files at once,
+	# let the buildsystem only depend on this single dummy file.
+	# otherwise the codegen invocation would be done for each generated source.
+	set(CODEGEN_TIMEFILE "${CMAKE_BINARY_DIR}/codegen_timefile")
+
 	add_custom_command(
-		OUTPUT ${CODEGEN_TARGET_FILES}
+		OUTPUT "${CODEGEN_TIMEFILE}"
+		BYPRODUCTS ${CODEGEN_TARGET_FILES}
 		COMMAND ${CODEGEN_INVOCATION} --mode=codegen "--touch-file-on-cache-change=${CMAKE_CURRENT_LIST_FILE}" --force-rerun-on-generated-list-change
+		COMMAND "${CMAKE_COMMAND}" -E touch "${CODEGEN_TIMEFILE}"
 		WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
 		DEPENDS ${CODEGEN_DEPENDS}
 		COMMENT "openage.codegen: generating c++ code"
 	)
 
 	add_custom_target(codegen
-		DEPENDS ${CODEGEN_TARGET_FILES}
+		DEPENDS "${CODEGEN_TIMEFILE}"
 	)
 
 	add_custom_target(cleancodegen
 		COMMAND ${CODEGEN_INVOCATION} --mode=clean
+		COMMAND "${CMAKE_COMMAND}" -E remove "${CODEGEN_TIMEFILE}"
 		WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
 	)
 
