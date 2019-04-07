@@ -162,7 +162,7 @@ class PXDGenerator:
         """
         if "{" in self.stack:
             raise self.parser_error("PXD annotation is brace-enclosed")
-        elif not self.stack:
+        if not self.stack:
             namespace = None
         else:
             namespace = "::".join(self.stack)

@@ -1,4 +1,4 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 """ Entry point for all of the asset conversion. """
 
@@ -333,20 +333,22 @@ def acquire_conversion_source_dir(prev_source_dir_path=None):
             # TODO: use some sort of GUI for this (GTK, QtQuick, zenity?)
             #       probably best if directly integrated into the main GUI.
 
-            if prev_source_dir_path is not None:
+            proposals = set()
+
+            if prev_source_dir_path and Path(prev_source_dir_path).is_dir():
                 prev_source_dir = CaseIgnoringDirectory(prev_source_dir_path).root
-                proposals = {
+                proposals.add(
                     prev_source_dir.resolve_native_path().decode('utf-8', errors='replace')
-                }
-            else:
-                call_wine = wanna_use_wine()
+                )
 
-                if call_wine:
-                    set_custom_wineprefix()
+            call_wine = wanna_use_wine()
 
-                proposals = set(proposal for proposal in
-                                source_dir_proposals(call_wine)
-                                if Path(expand_relative_path(proposal)).is_dir())
+            if call_wine:
+                set_custom_wineprefix()
+
+            for proposal in source_dir_proposals(call_wine):
+                if Path(expand_relative_path(proposal)).is_dir():
+                    proposals.add(proposal)
 
             sourcedir = query_source_dir(proposals)
 
@@ -383,6 +385,7 @@ def source_dir_proposals(call_wine):
     yield "~/.wine/" + STANDARD_PATH_IN_32BIT_WINEPREFIX
     yield "~/.wine/" + STANDARD_PATH_IN_64BIT_WINEPREFIX
     yield "~/.wine/" + STANDARD_PATH_IN_WINEPREFIX_STEAM
+    yield "~/.steam/steam/steamapps/common/Age2HD"
 
     if not call_wine:
         # user wants wine not to be called
