@@ -186,6 +186,7 @@ New Buildings
  - wooden bridge with less HP, stone bridge with more HP and faster walking speed?
 
 ### Streets
+
  - Ability to build streets on land
  - increases the speed of trade carts, vills, siege or in general land units
  - destructible just by mangonel-line (ground attack units) and maybe decay over time or usage, repairable
@@ -209,20 +210,19 @@ Resources
 ### Infinite regeneration
 
  - Forest regeneration or seeding
- - Mills can produce sheep, cows, turkeys, etc.
  - Animals reproduce as long as there are two of the same kind left on the whole map
 
 ### Stone balancing
 
-Stone cost for all buildings, rebalance stone amount per pile.
-Maybe new deep stone mines for later ages.
+ - Stone cost for all buildings, rebalance stone amount per pile.
+ - Maybe new deep stone mines for later ages.
 
 Production
 ---------
 
  - let the last produced unit in a buidling be produced for an infinite time (as long as ressources and pop space are available) --> AOM-style
  - same for farms (either reseed a certain number with a waiting line or an option "reseed forever" as long as ressources are available)
-
+ - Mills can produce sheep, cows, turkeys, etc.
 
 For the lulz
 ------------
