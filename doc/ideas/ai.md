@@ -16,8 +16,15 @@ Military
  - Avoid fighting in hazardous areas / prefer fighting in range of own castles
  - Coordinates reaction to attacks on units (during march, ...) (including attacks by towers/castles)
  - Disable scouting if the "all visible" option was selected.
+ - Lame you (Steal boar in the beginning on purpose)
+ - Understand, how do to economic damage
+  - e.g. losing of all AI-units inevitable, go to attack villagers to hurt economy
+ - don't wait for hours to mass up army and then try to overrun you at minute 40
+  - send smaller amount of troops earlier in the game to annoy you
+  - while building up a big army in the back
 
 Ship
 --------
 
   - Transport ship can deliver villagers to another islands
+
