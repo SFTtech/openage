@@ -181,15 +181,16 @@ New Buildings
  - Destructible, repairable, ...
  - construction per tile
   - build your own "tongue of land"
-  - could build docks & havens at it 
+  - could build docks & harbours at it 
  - Long build time
  - wooden bridge with less HP, stone bridge with more HP and faster walking speed?
 
 ### Streets
 
  - Ability to build streets on land
+  - textures already exists
  - increases the speed of trade carts, vills, siege or in general land units
- - destructible just by mangonel-line (ground attack units) and maybe decay over time or usage, repairable
+ - destructible just by mangonel-line or trebuchet (ground attack units) and maybe decay over time or usage, repairable (or not?)
  - uses stone, maybe 1/3 the cost of a stonewall
 
 New Units
