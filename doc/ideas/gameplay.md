@@ -179,7 +179,28 @@ New Buildings
  - Blocks ships, allows land units to walk
  - Forgotten Empires might already have wooden bridge textures
  - Destructible, repairable, ...
+ - construction per tile
+  - build your own "tongue of land"
+  - could build docks & havens at it 
  - Long build time
+ - wooden bridge with less HP, stone bridge with more HP and faster walking speed?
+
+### Streets
+ - Ability to build streets on land
+ - increases the speed of trade carts, vills, siege or in general land units
+ - destructible just by mangonel-line (ground attack units) and maybe decay over time or usage, repairable
+ - uses stone, maybe 1/3 the cost of a stonewall
+
+New Units
+-------------
+
+### Water
+
+ - monk-ship to convert ships on water
+
+### Land
+
+ - transport waggon to slowly transport ships over land from one pond to another
 
 
 Resources
@@ -189,11 +210,18 @@ Resources
 
  - Forest regeneration or seeding
  - Mills can produce sheep, cows, turkeys, etc.
+ - Animals reproduce as long as there are two of the same kind left on the whole map
 
 ### Stone balancing
 
 Stone cost for all buildings, rebalance stone amount per pile.
 Maybe new deep stone mines for later ages.
+
+Production
+---------
+
+ - let the last produced unit in a buidling be produced for an infinite time (as long as ressources and pop space are available) --> AOM-style
+ - same for farms (either reseed a certain number with a waiting line or an option "reseed forever" as long as ressources are available)
 
 
 For the lulz
@@ -201,3 +229,17 @@ For the lulz
 
  - Big fat damage numbers!!!1
  - Friendly-fire toggle!!111
+
+
+Implement features the AoE-devs didn't do
+------------
+See here:
+https://de.scribd.com/document/318886164/AGE-2-Design-Document#browse-all-btn
+https://www.reddit.com/r/aoe2/comments/bg4p3m/spirit_of_the_law_stealing_villagers_and_other/
+
+ - They considered having gaia mercenaries who could be hired to fight on the player's behalf (apparently using their own AI rather than direct control)
+ - Destroyed buildings were going to leave behind "salvage" that villagers or pillagers could harvest
+ - Faith allowed you to START converting enemy units, rather than providing resistance (gameplay change, first a monk is used to collect relics, after researching it can convert units)
+
+
+
