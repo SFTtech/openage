@@ -152,16 +152,73 @@ Multiplayer
  - Scale wonder cost to max pop and number of players (make wonders great again)
  - We can show the world that competitive games can be free open source!
 
+### Tournament mode
+
+ - tournament settings (SQ/MQ, etc.) are stored in a container (importable file/or directly in the server environment depending on the architecture of the multiplayer)
+
+  - the container stores direct link to download maps from an OpenAge community servers for this tournament (no p2p-sharing of maps with different versions anymore, still possible in private games)
+
+  - container will contain also the drafting, which will become static during ongoing tournament
+   - before the tournament the civ, team and map-drafting is handled directly by the community server and stores information inside the container
+   - admin changes still possible for special use cases
+  - when starting the tournament every player will download the important information from their pre-chosen and fixed parts and everything will be pre-configured and grey (if no spontaneous changes are allowed)
+
+  - this brings the possibility to bring all the systems taking part in the tournament to one comparable and static setup (no admin RE because of forgotten MQ anymore)
+
+  - everything regarding the tournament (replays, civdrafts, etc.) should be stored in this container after the event (so you could easily import it into your OpenAge and replay games -> also see 2. Spectating/Casting-Mode)
+
+  - as an organiser of a tournament you should have the possibility to manage the whole tournament inside the OpenAge platform (not: making promo there, drafting here, hosting matches there, and so on)
+
+  - also the possibility to directly invite a player from your OpenAge-account based on characteristics (like direct-invites for 1v1-Top15 Ladder-Tournament or Teamgames)
+   - teams can connect their accounts to real clans reaching together a team elo depending on the combination of actual players (TatoH + DauT + TheViper > TatoH + DauT + Slam) 
+
+  - make it easier to qualify for your tournament (e.g. as a potential player -> Open "Tournaments" in multiplayer menu -> open "Qualifiers" -> Play games with fixed tournament settings -> maybe qualify for Tournament)
+
+  - After clicking on the Tournament-Menu-Item you could have an overview of upcoming and open tournaments, with a calendar view of the next tournaments, a timeplan, the brackets and maybe even the possibility to one-click-spectate a Live-Tournament if you want (see 2. Spectating/Casting-Mode)
+
+  - depending on the architecture of the multiplayer it could be even possible to spare out all that client modeling and just integrate an basic in-game browser which connects just to an OpenAge-community-server and from there you could manage everything. To play a game the user could just click on a link from the game browser which gives data to an internal protocol like openage://<game-id>/<foo>/<bar>/<link-to-settings-file>/<...>
+
+   - this would make the client thinner
+   - but: taking too much multiplayer features out of the client leaves it helpless for private matches -> thin grade
+
+
+### Spectating/Casting
+
+ - the casting mode could be an advanced spectating mode, with more features than just replaying/live-spectating the game
+
+ - ZOOM! (also in-game not just for casters)
+ - maybe even turning the game in 90° angles
+  - the old models could stay 2D and just be fit into the turned environment(?)  
+
+ - the feature set of CaptureAge could be understood as a spectator mode
+  - if they add PIP and replay-functions goes more into direction what's understood in this context as casting mode
+
+ - casting mode should help you to either work on your own or collaboratively work together with one or more Co-Caster(s) on the presentation of the actions in a game
+  - casters should have the possibility to join a live-game together as a caster-team     - e.g. two separate OpenAge-accounts could be temporarily bound together (master-slave-principle)
+   - they both work together at the master-device (streaming device from main caster), each caster stil has it's own independant view of the game
+
+  - there should be an option to cut scenes together in a live game, so that if one caster sees an action somewhere on the map, he/she gives a command to the game that itself clips (saves camera position and game status) it and puts it into a queue on the master-device to replay it
+
+  - outside of the main spectating window could be a second window (used for two monitor solutions) with the waiting list for the replays and all the other options and features special to the casting mode
+
+  - in-game lag-free voice-communication between casters (and even players?)
+
+
+
 ### Team interaction
 
  - Better team interaction
  - Work/resource sharing
  - Unit sharing (transport boats)
+  - give temporary unit control of a selected group to an ally (e.g. in a fight) with an easy command
  - Give resources of resigning players to allies
+  - maybe even the research of team ressources in late-imp
+  - or could be even a 5th "basic globalisation/Hanse/free trade" age where allys share ressources
  - Color markings
  - Create signs
  - Paint on map
  - Create arrows
+ - in-game lag-free voice-communication between teamplayers?
 
 ### MMO games
 
