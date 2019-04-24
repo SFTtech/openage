@@ -170,7 +170,7 @@ Multiplayer
   - as an organiser of a tournament you should have the possibility to manage the whole tournament inside the OpenAge platform (not: making promo there, drafting here, hosting matches there, and so on)
 
   - also the possibility to directly invite a player from your OpenAge-account based on characteristics (like direct-invites for 1v1-Top15 Ladder-Tournament or Teamgames)
-   - teams can connect their accounts to real clans reaching together a team elo depending on the combination of actual players (TatoH + DauT + TheViper > TatoH + DauT + Slam) 
+   - teams can connect their accounts to real clans reaching together a team elo depending on the combination of actual players (TatoH + DauT + TheViper > TatoH + DauT + Slam)
 
   - make it easier to qualify for your tournament (e.g. as a potential player -> Open "Tournaments" in multiplayer menu -> open "Qualifiers" -> Play games with fixed tournament settings -> maybe qualify for Tournament)
 
@@ -187,8 +187,8 @@ Multiplayer
  - the casting mode could be an advanced spectating mode, with more features than just replaying/live-spectating the game
 
  - ZOOM! (also in-game not just for casters)
- - maybe even turning the game in 90° angles
-  - the old models could stay 2D and just be fit into the turned environment(?)  
+ - maybe even turning the game in 90Â° angles
+  - the old models could stay 2D and just be fit into the turned environment(?)
 
  - the feature set of CaptureAge could be understood as a spectator mode
   - if they add PIP and replay-functions goes more into direction what's understood in this context as casting mode
