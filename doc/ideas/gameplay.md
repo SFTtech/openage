@@ -241,6 +241,3 @@ https://www.reddit.com/r/aoe2/comments/bg4p3m/spirit_of_the_law_stealing_village
  - They considered having gaia mercenaries who could be hired to fight on the player's behalf (apparently using their own AI rather than direct control)
  - Destroyed buildings were going to leave behind "salvage" that villagers or pillagers could harvest
  - Faith allowed you to START converting enemy units, rather than providing resistance (gameplay change, first a monk is used to collect relics, after researching it can convert units)
-
-
-
