@@ -27,4 +27,3 @@ Ship
 --------
 
   - Transport ship can deliver villagers to another islands
-
