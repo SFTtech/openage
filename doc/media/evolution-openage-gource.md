@@ -8,7 +8,7 @@ Download, compile & install git, gource, ffmpeg + FLOSS video cutting tool.
 4. Navigate to the new folder
 5. Use the following command
 
-'gource --camera-mode overview --title https://openage.sft.mx --seconds-per-day 0.05 --auto-skip-seconds 0.1 --max-file-lag 0.1 --file-idle-time 0 --background 555544 --logo openage.png --font-size 15 --date-format "%B %Y" --hide filenames, mouse -1920x1080 -o <outputfile-name.ppm> <../path to git directory>'
+'gource --camera-mode overview --title https://openage.sft.mx --seconds-per-day 0.05 --auto-skip-seconds 0.1 --max-file-lag 0.1 --file-idle-time 0 --background 555544 --logo *.png --font-size 15 --date-format "%B %Y" --hide filenames, mouse -1920x1080 -o <outputfile-name.ppm> <../path to git directory>'
 
 6. Use ffmpeg to convert the ppm file into a video container with the following command
 
