@@ -181,7 +181,7 @@ New Buildings
  - Destructible, repairable, ...
  - construction per tile
   - build your own "tongue of land"
-  - could build docks & harbours at it 
+  - could build docks & harbours at it
  - Long build time
  - wooden bridge with less HP, stone bridge with more HP and faster walking speed?
 
