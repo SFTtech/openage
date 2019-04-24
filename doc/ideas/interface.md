@@ -9,4 +9,3 @@ As opposed to the gameplay improvements, these interface enhancements are pretty
  - Customizable hotkeys for *everything*
  - possibility to set gather points on moving units
  - show a symbol on a unit, which is the target of a conversion (e.g. empire earth)
- 
