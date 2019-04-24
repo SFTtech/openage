@@ -218,6 +218,17 @@ Resources
  - Stone cost for all buildings, rebalance stone amount per pile.
  - Maybe new deep stone mines for later ages.
 
+
+Relic
+---------
+
+ - Relic could have special abilities like in AOM
+  - e.g. they can have attack bonuses (patches) for special units or economic/military bonuses
+  - special abilities for every relic could either be generated when the map is generated or when the relic is discovered based on the actual needs of the player
+  - so the later you go out to get the relic the more it could get useful for you, because it could be better shaped on your personal military/economy but the risk is higher, that another player was going out before you
+  - if a player scouts the relic first and the ability gets generated in this moment, it will be for the player who scouted it first, so he knows, that this relic could help their own economy/military alot so the player will try to fight about this relic against the enemy heavily -> new gameplay aspect
+
+
 Production
 ---------
 
