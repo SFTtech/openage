@@ -156,30 +156,30 @@ Multiplayer
 
  - tournament settings (SQ/MQ, etc.) are stored in a container (importable file/or directly in the server environment depending on the architecture of the multiplayer)
 
-  - the container stores direct link to download maps from an OpenAge community servers for this tournament (no p2p-sharing of maps with different versions anymore, still possible in private games)
+   - the container stores direct link to download maps from an OpenAge community servers for this tournament (no p2p-sharing of maps with different versions anymore, still possible in private games)
 
-  - container will contain also the drafting, which will become static during ongoing tournament
-   - before the tournament the civ, team and map-drafting is handled directly by the community server and stores information inside the container
-   - admin changes still possible for special use cases
-  - when starting the tournament every player will download the important information from their pre-chosen and fixed parts and everything will be pre-configured and grey (if no spontaneous changes are allowed)
+   - container will contain also the drafting, which will become static during ongoing tournament
+     - before the tournament the civ, team and map-drafting is handled directly by the community server and stores information inside the container
+     - admin changes still possible for special use cases
+   - when starting the tournament every player will download the important information from their pre-chosen and fixed parts and everything will be pre-configured and grey (if no spontaneous changes are allowed)
 
-  - this brings the possibility to bring all the systems taking part in the tournament to one comparable and static setup (no admin RE because of forgotten MQ anymore)
+   - this brings the possibility to bring all the systems taking part in the tournament to one comparable and static setup (no admin RE because of forgotten MQ anymore)
 
-  - everything regarding the tournament (replays, civdrafts, etc.) should be stored in this container after the event (so you could easily import it into your OpenAge and replay games -> also see 2. Spectating/Casting-Mode)
+   - everything regarding the tournament (replays, civdrafts, etc.) should be stored in this container after the event (so you could easily import it into your OpenAge and replay games -> also see 2. Spectating/Casting-Mode)
 
-  - as an organiser of a tournament you should have the possibility to manage the whole tournament inside the OpenAge platform (not: making promo there, drafting here, hosting matches there, and so on)
+ - as an organiser of a tournament you should have the possibility to manage the whole tournament inside the OpenAge platform (not: making promo there, drafting here, hosting matches there, and so on)
 
-  - also the possibility to directly invite a player from your OpenAge-account based on characteristics (like direct-invites for 1v1-Top15 Ladder-Tournament or Teamgames)
-   - teams can connect their accounts to real clans reaching together a team elo depending on the combination of actual players (TatoH + DauT + TheViper > TatoH + DauT + Slam)
+   - also the possibility to directly invite a player from your OpenAge-account based on characteristics (like direct-invites for 1v1-Top15 Ladder-Tournament or Teamgames)
+     - teams can connect their accounts to real clans reaching together a team elo depending on the combination of actual players (TatoH + DauT + TheViper > TatoH + DauT + Slam)
 
-  - make it easier to qualify for your tournament (e.g. as a potential player -> Open "Tournaments" in multiplayer menu -> open "Qualifiers" -> Play games with fixed tournament settings -> maybe qualify for Tournament)
+ - make it easier to qualify for your tournament (e.g. as a potential player -> Open "Tournaments" in multiplayer menu -> open "Qualifiers" -> Play games with fixed tournament settings -> maybe qualify for Tournament)
+ 
+ - After clicking on the Tournament-Menu-Item you could have an overview of upcoming and open tournaments, with a calendar view of the next tournaments, a timeplan, the brackets and maybe even the possibility to one-click-spectate a Live-Tournament if you want (see 2. Spectating/Casting-Mode)
+ 
+ - depending on the architecture of the multiplayer it could be even possible to spare out all that client modeling and just integrate an basic in-game browser which connects just to an OpenAge-community-server and from there you could manage everything. To play a game the user could just click on a link from the game browser which gives data to an internal protocol like openage://<game-id>/<foo>/<bar>/<link-to-settings-file>/<...>
 
-  - After clicking on the Tournament-Menu-Item you could have an overview of upcoming and open tournaments, with a calendar view of the next tournaments, a timeplan, the brackets and maybe even the possibility to one-click-spectate a Live-Tournament if you want (see 2. Spectating/Casting-Mode)
-
-  - depending on the architecture of the multiplayer it could be even possible to spare out all that client modeling and just integrate an basic in-game browser which connects just to an OpenAge-community-server and from there you could manage everything. To play a game the user could just click on a link from the game browser which gives data to an internal protocol like openage://<game-id>/<foo>/<bar>/<link-to-settings-file>/<...>
-
-   - this would make the client thinner
-   - but: taking too much multiplayer features out of the client leaves it helpless for private matches -> thin grade
+     - this would result in a thinner client
+     - but: taking too much multiplayer features out of the client leaves it helpless for private matches -> thin grade
 
 
 ### Spectating/Casting
@@ -188,21 +188,21 @@ Multiplayer
 
  - ZOOM! (also in-game not just for casters)
  - maybe even turning the game in 90° angles
-  - the old models could stay 2D and just be fit into the turned environment(?)
+   - the old models could stay 2D and just be fit into the turned environment(?)
 
  - the feature set of CaptureAge could be understood as a spectator mode
-  - if they add PIP and replay-functions goes more into direction what's understood in this context as casting mode
+   - if they add Picture-in-Picture and replay-functions goes more into direction what's understood in this context as casting mode
 
  - casting mode should help you to either work on your own or collaboratively work together with one or more Co-Caster(s) on the presentation of the actions in a game
-  - casters should have the possibility to join a live-game together as a caster-team     - e.g. two separate OpenAge-accounts could be temporarily bound together (master-slave-principle)
-   - they both work together at the master-device (streaming device from main caster), each caster stil has it's own independant view of the game
+   - casters should have the possibility to join a live-game together as a caster-team     
+   - e.g. two separate OpenAge-accounts could be temporarily bound together (master-slave-principle)
+     - they both work together at the master-device (streaming device from main caster), each caster stil has it's own independant view of the game
 
-  - there should be an option to cut scenes together in a live game, so that if one caster sees an action somewhere on the map, he/she gives a command to the game that itself clips (saves camera position and game status) it and puts it into a queue on the master-device to replay it
+   - there should be an option to cut scenes together in a live game, so that if one caster sees an action somewhere on the map, he/she gives a command to the game that itself clips (saves camera position and game status) it and puts it into a queue on the master-device to replay it
 
-  - outside of the main spectating window could be a second window (used for two monitor solutions) with the waiting list for the replays and all the other options and features special to the casting mode
+   - outside of the main spectating window could be a second window (used for two monitor solutions) with the waiting list for the replays and all the other options and features special to the casting mode
 
-  - in-game lag-free voice-communication between casters (and even players?)
-
+ - in-game lag-free voice-communication between casters
 
 
 ### Team interaction
@@ -237,15 +237,15 @@ New Buildings
  - Forgotten Empires might already have wooden bridge textures
  - Destructible, repairable, ...
  - construction per tile
-  - build your own "tongue of land"
-  - could build docks & harbours at it
- - Long build time
+ - "terraforming"-style
+   - build a construction into the sea and build docks & harbours at it
+ - Long build time per tile
  - wooden bridge with less HP, stone bridge with more HP and faster walking speed?
 
 ### Streets
 
  - Ability to build streets on land
-  - textures already exists
+   - textures already exists
  - increases the speed of trade carts, vills, siege or in general land units
  - destructible just by mangonel-line or trebuchet (ground attack units) and maybe decay over time or usage, repairable (or not?)
  - uses stone, maybe 1/3 the cost of a stonewall
@@ -276,14 +276,19 @@ Resources
  - Maybe new deep stone mines for later ages.
 
 
-Relic
+Relics
 ---------
 
- - Relic could have special abilities like in AOM
-  - e.g. they can have attack bonuses (patches) for special units or economic/military bonuses
-  - special abilities for every relic could either be generated when the map is generated or when the relic is discovered based on the actual needs of the player
-  - so the later you go out to get the relic the more it could get useful for you, because it could be better shaped on your personal military/economy but the risk is higher, that another player was going out before you
-  - if a player scouts the relic first and the ability gets generated in this moment, it will be for the player who scouted it first, so he knows, that this relic could help their own economy/military alot so the player will try to fight about this relic against the enemy heavily -> new gameplay aspect
+ - Relics could have special abilities like in AOM
+   - e.g. they can have attack bonuses (patches) for special units or economic/military bonuses
+   - special abilities for every relic could either be generated when the map is generated or when the relic is discovered based on the actual needs of the player
+   - so the later you go out to get the relic the more it could get useful for you, because it could be better shaped on your personal military/economy but the risk is higher, that another player was going out before you
+   - if a player scouts the relic first and the ability gets generated in this moment, it will be for the player who scouted it first, so he knows, that this relic could help their own economy/military alot so the player will try to fight about this relic against the enemy heavily -> new gameplay aspect
+  
+  - Relics could have ranged attributes
+    - idea of the devs of AoE II
+    - bring the relic into the battle 
+      - attributes with up to 12 range could have an big impact of the fight
 
 
 Production
