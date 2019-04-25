@@ -32,18 +32,18 @@ Environment
 ### Forests
 
  - A single villager can hide (per some tile area) in the forest for sneak attacks. Maybe can only visible to a certain type of unit. But invisible to other villagers (until they pop out and start building stuff)
- - Gaia flock of birds rises up from a tree when startled, when tree is felled or when many people approach and fly off-map, sound indicator hearable a little bit more far (players know whensomeone goes near a woodline at your starting base -> maybe towering?) 
+ - Gaia flock of birds rises up from a tree when startled, when tree is felled or when many people approach and fly off-map, sound indicator hearable a little bit more far (players know whensomeone goes near a woodline at your starting base -> maybe towering?)
 
 ### Gaia Units
 
  - Bear
    - could have forage sights, farms, and shore fish as locations that it will try to “eat” from
-   
+
  - Mercenaries could be hired in the wilderness at a camp to act on behalf of a player
    - not just buying a unit for gold, resources have to be determined
    - not really another unit to control for a player
    - could be kind of an extra scout, if you lose yours
-   - or three units relatively weak but in replacement of the militia 
+   - or three units relatively weak but in replacement of the militia
      - you can send them to raid to your oppponent
 
   - Wolves
@@ -66,21 +66,21 @@ Resources
 
 ### Stone balancing
 
- - Stone cost for all buildings, rebalance stone amount per pile.
- - Maybe new deep stone mines for later ages.
- 
+ - Stone cost for all buildings, rebalance stone amount per pile
+ - Maybe new deep stone mines for later ages
+
 ### Salvage
 
   - salvage pile containing 30% of the resources originally used to construct a building appears any time
 a building is destroyed or deconstructed
   - resources in this salvage pile will gradually diminish at the rate of 1 unit of resource per 10 seconds of game time
   - resource piles can be harvested by villagers or pillage capable units
-  
+
 ### Deconstructing buildings
 
   - Buildings can be deconstructed to recover raw materials
   - and also deleted: doesn't recover material, but is faster
- 
+
 
 Map extensions
 --------------
@@ -229,9 +229,9 @@ Multiplayer
      - teams can connect their accounts to real clans reaching together a team elo depending on the combination of actual players (TatoH + DauT + TheViper > TatoH + DauT + Slam)
 
  - make it easier to qualify for your tournament (e.g. as a potential player -> Open "Tournaments" in multiplayer menu -> open "Qualifiers" -> Play games with fixed tournament settings -> maybe qualify for Tournament)
- 
+
  - After clicking on the Tournament-Menu-Item you could have an overview of upcoming and open tournaments, with a calendar view of the next tournaments, a timeplan, the brackets and maybe even the possibility to one-click-spectate a Live-Tournament if you want (see 2. Spectating/Casting-Mode)
- 
+
  - depending on the architecture of the multiplayer it could be even possible to spare out all that client modeling and just integrate an basic in-game browser which connects just to an OpenAge-community-server and from there you could manage everything. To play a game the user could just click on a link from the game browser which gives data to an internal protocol like openage://<game-id>/<foo>/<bar>/<link-to-settings-file>/<...>
 
      - this would result in a thinner client
@@ -250,7 +250,7 @@ Multiplayer
    - if they add Picture-in-Picture and replay-functions goes more into direction what's understood in this context as casting mode
 
  - casting mode should help you to either work on your own or collaboratively work together with one or more Co-Caster(s) on the presentation of the actions in a game
-   - casters should have the possibility to join a live-game together as a caster-team     
+   - casters should have the possibility to join a live-game together as a caster-team
    - e.g. two separate OpenAge-accounts could be temporarily bound together (master-slave-principle)
      - they both work together at the master-device (streaming device from main caster), each caster stil has it's own independant view of the game
 
@@ -335,10 +335,10 @@ Relics & Kings
    - special abilities for every relic could either be generated when the map is generated or when the relic is discovered based on the actual needs of the player
    - so the later you go out to get the relic the more it could get useful for you, because it could be better shaped on your personal military/economy but the risk is higher, that another player was going out before you
    - if a player scouts the relic first and the ability gets generated in this moment, it will be for the player who scouted it first, so he knows, that this relic could help their own economy/military alot so the player will try to fight about this relic against the enemy heavily -> new gameplay aspect
-  
+
   - Relics could have ranged attributes
     - idea of the devs of AoE II
-    - bring the relic into the battle 
+    - bring the relic into the battle
       - attributes with up to 12 range could have an big impact of the fight
 
   - Kings could be special units that abstractly represent the player in the game
