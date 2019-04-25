@@ -220,6 +220,8 @@ Multiplayer
    - when starting the tournament every player will download the important information from their pre-chosen and fixed parts and everything will be pre-configured and grey (if no spontaneous changes are allowed)
 
    - this brings the possibility to bring all the systems taking part in the tournament to one comparable and static setup (no admin RE because of forgotten MQ anymore)
+   
+     - Regarding tournament settings, I would personally prefer to let the tournament host setup the game and the settings while players would just be "pulled" into the game lobby without having the ability to change the game's settings. Counter-Strike has a similar method of organizing tournament games. (_ColonelPanic_ @reddit)
 
    - everything regarding the tournament (replays, civdrafts, etc.) should be stored in this container after the event (so you could easily import it into your OpenAge and replay games -> also see 2. Spectating/Casting-Mode)
 
@@ -241,6 +243,8 @@ Multiplayer
 ### Spectating/Casting
 
  - the casting mode could be an advanced spectating mode, with more features than just replaying/live-spectating the game
+   - Spectator layer: For the general public watching the game. This could be a mirror of the casting layer that the casters see. You can either choose to lock the viewpoint to one of the casters' cameras or move the camera freely around the map. Also you could have the ability to chat with other spectators and draw notes on the map, mark your own points of interest. Sync is not as important here. (_ColonelPanic_ @reddit)
+
 
  - ZOOM! (also in-game not just for casters)
  - maybe even turning the game in 90° angles
@@ -250,6 +254,8 @@ Multiplayer
    - if they add Picture-in-Picture and replay-functions goes more into direction what's understood in this context as casting mode
 
  - casting mode should help you to either work on your own or collaboratively work together with one or more Co-Caster(s) on the presentation of the actions in a game
+ 
+   - Casting layer: For casters and co casters. Could support features like pinging something on the map for the co caster, marking points of interest/units/buildings, show picture-in-picture views of the other casters and so on. An important requirement would be that the casters' views are synced. (_ColonelPanic_ @reddit)
    - casters should have the possibility to join a live-game together as a caster-team
    - e.g. two separate OpenAge-accounts could be temporarily bound together (master-slave-principle)
      - they both work together at the master-device (streaming device from main caster), each caster stil has it's own independant view of the game
