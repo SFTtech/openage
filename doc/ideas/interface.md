@@ -7,5 +7,5 @@ As opposed to the gameplay improvements, these interface enhancements are pretty
   - Intelligent assigning of new units to existing groups
   - Sub-group selections
  - Customizable hotkeys for *everything*
- - possibility to set gather points on moving units
+ - possibility to set rally points on moving units
  - show a symbol on a unit, which is the target of a conversion (e.g. empire earth)
