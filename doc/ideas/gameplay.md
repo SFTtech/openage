@@ -32,7 +32,55 @@ Environment
 ### Forests
 
  - A single villager can hide (per some tile area) in the forest for sneak attacks. Maybe can only visible to a certain type of unit. But invisible to other villagers (until they pop out and start building stuff)
+ - Gaia flock of birds rises up from a tree when startled, when tree is felled or when many people approach and fly off-map, sound indicator hearable a little bit more far (players know whensomeone goes near a woodline at your starting base -> maybe towering?) 
 
+### Gaia Units
+
+ - Bear
+   - could have forage sights, farms, and shore fish as locations that it will try to “eat” from
+   
+ - Mercenaries could be hired in the wilderness at a camp to act on behalf of a player
+   - not just buying a unit for gold, resources have to be determined
+   - not really another unit to control for a player
+   - could be kind of an extra scout, if you lose yours
+   - or three units relatively weak but in replacement of the militia 
+     - you can send them to raid to your oppponent
+
+  - Wolves
+    - will form a pack and will act together
+    - Wolves could wander the map, making efforts to avoid (circle around) “towns”
+    - they should get hungry and seek food (deer, villagers, wild boar, bear, etc.)
+    - while hungry, they should attack in a pack, kill something, and “eat”.
+    - when not hungry, there should be a chance of attack but it should be more likely that the wolves will avoid contact and
+move on
+    - Wolves will howl from time to time. Players will be able to judge the severity of their “wolf problem”
+based on the frequency of these howls
+
+Resources
+---------
+
+### Infinite regeneration
+
+ - Forest regeneration or seeding
+ - Animals reproduce as long as there are two of the same kind left on the whole map
+
+### Stone balancing
+
+ - Stone cost for all buildings, rebalance stone amount per pile.
+ - Maybe new deep stone mines for later ages.
+ 
+### Salvage
+
+  - salvage pile containing 30% of the resources originally used to construct a building appears any time
+a building is destroyed or deconstructed
+  - resources in this salvage pile will gradually diminish at the rate of 1 unit of resource per 10 seconds of game time
+  - resource piles can be harvested by villagers or pillage capable units
+  
+### Deconstructing buildings
+
+  - Buildings can be deconstructed to recover raw materials
+  - and also deleted: doesn't recover material, but is faster
+ 
 
 Map extensions
 --------------
@@ -57,6 +105,14 @@ Research
    (reminder: just an idea, there will be vanilla mode)
  - Research should be placed in creating order, like in WarCraft. It's too annoying
    to click on building again after each research
+
+
+Capture buildings
+--------
+  - when a building is damaged to 20% or less, buildings will eject any units garrisoned,
+cancel all research or training and cease any inherent behaviors (i.e. towers will no longer attack)
+  - a building which has been damaged to 20% HP or less will become the property of the next player who repairs it to a level
+above 20%
 
 
 Game modes
@@ -214,6 +270,7 @@ Multiplayer
  - Give resources of resigning players to allies
   - maybe even the research of team ressources in late-imp
   - or could be even a 5th "basic globalisation/Hanse/free trade" age where allys share ressources
+  - when you resign, give your buildings to your allies (original AoE devs idea)
  - Color markings
  - Create signs
  - Paint on map
@@ -250,6 +307,14 @@ New Buildings
  - destructible just by mangonel-line or trebuchet (ground attack units) and maybe decay over time or usage, repairable (or not?)
  - uses stone, maybe 1/3 the cost of a stonewall
 
+ - Ideas of the original developers:
+   - Roads improve trade by allowing trade units to move more quickly over the terrain
+   - Neutral to all players
+   - Build automatically
+   - Progressive
+   - Decay when not used
+   - Appearance and quality depends on traffic (matted grass, dirt path, etc.)
+
 New Units
 -------------
 
@@ -262,21 +327,7 @@ New Units
  - transport waggon to slowly transport ships over land from one pond to another
 
 
-Resources
----------
-
-### Infinite regeneration
-
- - Forest regeneration or seeding
- - Animals reproduce as long as there are two of the same kind left on the whole map
-
-### Stone balancing
-
- - Stone cost for all buildings, rebalance stone amount per pile.
- - Maybe new deep stone mines for later ages.
-
-
-Relics
+Relics & Kings
 ---------
 
  - Relics could have special abilities like in AOM
@@ -289,6 +340,12 @@ Relics
     - idea of the devs of AoE II
     - bring the relic into the battle 
       - attributes with up to 12 range could have an big impact of the fight
+
+  - Kings could be special units that abstractly represent the player in the game
+    - could be better than average infantry units, could provide a +1 bonus to attack and defense for all of their units (not allied units)
+within a 5 tile radius
+  - Queen units with an somehow identical functionality, may also be added to the game
+
 
 
 Production
@@ -308,8 +365,9 @@ For the lulz
 Implement features the AoE-devs didn't do
 ------------
 See here:
-https://de.scribd.com/document/318886164/AGE-2-Design-Document#browse-all-btn
 https://www.reddit.com/r/aoe2/comments/bg4p3m/spirit_of_the_law_stealing_villagers_and_other/
+
+
 
  - They considered having gaia mercenaries who could be hired to fight on the player's behalf (apparently using their own AI rather than direct control)
  - Destroyed buildings were going to leave behind "salvage" that villagers or pillagers could harvest
