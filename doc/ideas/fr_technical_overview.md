@@ -23,8 +23,8 @@ GAIA | G3 | Wild animals can steal food from your farms and deers
 GAIA | G4 | Wolves form pack and act together, wander the map, circle around towns, get hungry and seek food (deer, villagers, wild boar, bear, etc.).
 GAIA | G5 | Renewable resources such as trees and animals that repopulate. Forest regeneration or seeding.
 GAIA | G6 | Buildings in later ages cost stone with possibility of deep mining stone. villagers can dig/mine natural resources.
-GAIA AI | G7 | Fish migrate and replenish.
-Gameplay | G8 | Mercenaries could be hired on behalf of the player
+GAIA AI | GI1 | Fish migrate and replenish.
+GAIA AI | GI2 | Mercenaries could be hired on behalf of the player
 Gameplay | GM1 | Roads on commonly traveled areas allow faster traffic. Pathfinding would let the units stay on the road. Appearance and quality depends on traffic (matted grass, dirt path, etc.). Neutral to all players.
 Gameplay | GM2 | Bridges for connections between islands. blocks ships, allows land units to walk on. terraforming. wooden and stone bridges with different hp.
 Gameplay | GM3 | Mercenaries could be hired at camp in the wilderness to act on behalf of a player
