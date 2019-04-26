@@ -262,11 +262,11 @@ Multiplayer
    - outside of the main spectating window could be a second window (used for two monitor solutions) with the waiting list for the replays and all the other options and features special to the casting mode
 
  - in-game lag-free voice-communication between casters
- 
+
  - actions per minute (APM) should be derivable from game -> possible important influence on design decisions!
- 
+
  - show current camera locations of casters (maybe on minimap)
- 
+
  - small indicators for units that show if they are visible to another player, even if the FOW is turned off
    - to get rid of the switching between the FOW of players just to know, if they can see each other
 
