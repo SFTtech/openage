@@ -51,10 +51,8 @@ Environment
     - Wolves could wander the map, making efforts to avoid (circle around) “towns”
     - they should get hungry and seek food (deer, villagers, wild boar, bear, etc.)
     - while hungry, they should attack in a pack, kill something, and “eat”.
-    - when not hungry, there should be a chance of attack but it should be more likely that the wolves will avoid contact and
-move on
-    - Wolves will howl from time to time. Players will be able to judge the severity of their “wolf problem”
-based on the frequency of these howls
+    - when not hungry, there should be a chance of attack but it should be more likely that the wolves will avoid contact and move on
+    - Wolves will howl from time to time. Players will be able to judge the severity of their “wolf problem” based on the frequency of these howls
 
 Resources
 ---------
@@ -71,7 +69,7 @@ Resources
 
 ### Salvage
 
-  - salvage pile containing 30% of the resources originally used to construct a building appears any time
+  - salvage pile containing xx% (configurable percentage) of the resources originally used to construct a building appears any time
 a building is destroyed or deconstructed
   - resources in this salvage pile will gradually diminish at the rate of 1 unit of resource per 10 seconds of game time
   - resource piles can be harvested by villagers or pillage capable units
@@ -109,10 +107,8 @@ Research
 
 Capture buildings
 --------
-  - when a building is damaged to 20% or less, buildings will eject any units garrisoned,
-cancel all research or training and cease any inherent behaviors (i.e. towers will no longer attack)
-  - a building which has been damaged to 20% HP or less will become the property of the next player who repairs it to a level
-above 20%
+  - when a building is damaged to 20% or less, buildings will eject any units garrisoned, cancel all research or training and cease any inherent behaviors (i.e. towers will no longer attack)
+  - a building which has been damaged to 20% HP or less will become the property of the next player who repairs it to a level above 20%
 
 
 Game modes
@@ -225,19 +221,20 @@ Multiplayer
 
    - everything regarding the tournament (replays, civdrafts, etc.) should be stored in this container after the event (so you could easily import it into your OpenAge and replay games -> also see 2. Spectating/Casting-Mode)
 
- - as an organiser of a tournament you should have the possibility to manage the whole tournament inside the OpenAge platform (not: making promo there, drafting here, hosting matches there, and so on)
+ - as an organiser of a tournament you should have the possibility to manage the whole tournament inside the openage platform (not: making promo there, drafting here, hosting matches there, and so on)
 
-   - also the possibility to directly invite a player from your OpenAge-account based on characteristics (like direct-invites for 1v1-Top15 Ladder-Tournament or Teamgames)
+   - also the possibility to directly invite a player from your openage-account based on characteristics (like direct-invites for 1v1-Top15 Ladder-Tournament or Teamgames)
      - teams can connect their accounts to real clans reaching together a team elo depending on the combination of actual players (TatoH + DauT + TheViper > TatoH + DauT + Slam)
 
  - make it easier to qualify for your tournament (e.g. as a potential player -> Open "Tournaments" in multiplayer menu -> open "Qualifiers" -> Play games with fixed tournament settings -> maybe qualify for Tournament)
 
  - After clicking on the Tournament-Menu-Item you could have an overview of upcoming and open tournaments, with a calendar view of the next tournaments, a timeplan, the brackets and maybe even the possibility to one-click-spectate a Live-Tournament if you want (see 2. Spectating/Casting-Mode)
 
- - depending on the architecture of the multiplayer it could be even possible to spare out all that client modeling and just integrate an basic in-game browser which connects just to an OpenAge-community-server and from there you could manage everything. To play a game the user could just click on a link from the game browser which gives data to an internal protocol like openage://<game-id>/<foo>/<bar>/<link-to-settings-file>/<...>
+ - depending on the architecture of the multiplayer it could be even possible to spare out all that client modeling and just integrate an basic in-game browser which connects just to an openage community-server and from there you could manage everything. To play a game the user could just click on a link from the game browser which gives data to an internal protocol like openage://<game-id>/<foo>/<bar>/<link-to-settings-file>/<...>
 
      - this would result in a thinner client
      - but: taking too much multiplayer features out of the client leaves it helpless for private matches -> thin grade
+     - we could do both actually: connection through in-game server browser/direct IP and connection through a browser-based protocol
 
 
 ### Spectating/Casting
@@ -257,7 +254,7 @@ Multiplayer
 
    - Casting layer: For casters and co casters. Could support features like pinging something on the map for the co caster, marking points of interest/units/buildings, show picture-in-picture views of the other casters and so on. An important requirement would be that the casters' views are synced. (_ColonelPanic_ @reddit)
    - casters should have the possibility to join a live-game together as a caster-team
-   - e.g. two separate OpenAge-accounts could be temporarily bound together (master-slave-principle)
+   - e.g. two separate openage-accounts could be temporarily bound together (master-slave-principle)
      - they both work together at the master-device (streaming device from main caster), each caster stil has it's own independant view of the game
 
    - there should be an option to cut scenes together in a live game, so that if one caster sees an action somewhere on the map, he/she gives a command to the game that itself clips (saves camera position and game status) it and puts it into a queue on the master-device to replay it
@@ -265,6 +262,13 @@ Multiplayer
    - outside of the main spectating window could be a second window (used for two monitor solutions) with the waiting list for the replays and all the other options and features special to the casting mode
 
  - in-game lag-free voice-communication between casters
+ 
+ - actions per minute (APM) should be derivable from game -> possible important influence on design decisions!
+ 
+ - show current camera locations of casters (maybe on minimap)
+ 
+ - small indicators for units that show if they are visible to another player, even if the FOW is turned off
+   - to get rid of the switching between the FOW of players just to know, if they can see each other
 
 
 ### Team interaction
@@ -281,7 +285,8 @@ Multiplayer
  - Create signs
  - Paint on map
  - Create arrows
- - in-game lag-free voice-communication between teamplayers?
+ - in-game lag-free voice-communication between teamplayers
+
 
 ### MMO games
 
@@ -353,11 +358,10 @@ within a 5 tile radius
   - Queen units with an somehow identical functionality, may also be added to the game
 
 
-
 Production
 ---------
 
- - let the last produced unit in a buidling be produced for an infinite time (as long as ressources and pop space are available) --> AOM-style
+ - let the last produced unit in a building be produced for an infinite time (as long as resources and pop space are available) --> AOM-style
  - same for farms (either reseed a certain number with a waiting line or an option "reseed forever" as long as ressources are available)
  - Mills can produce sheep, cows, turkeys, etc.
 
