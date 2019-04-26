@@ -15,14 +15,14 @@ Technical overview for requested features
 
 
 
- Type	        |  Task           | Item  | Pri | Est | Mile  
- ------------- | ------------- | ------------- | ------------- | --------- | --------- 
+ Type	        |  Task           | Item  | Pri | Est | Mile
+ ------------- | ------------- | ------------- | ------------- | --------- | ---------
 GAIA | G1 | Dynamic change of weather, seasons, day and night. influence on terrain & LOS. could be influenced by players with monk/myth unit.
 GAIA | G2 | Wooden buildings and other flammable material can be lit, fire spreads around your city. fire departments (new building) to extinguish fires or villagers need to put a fire of with water from a well (new building)
 GAIA | G3 | Wild animals can steal food from your farms and deers
 GAIA | G4 | Wolves form pack and act together, wander the map, circle around towns, get hungry and seek food (deer, villagers, wild boar, bear, etc.).
 GAIA | G5 | Renewable resources such as trees and animals that repopulate. Forest regeneration or seeding.
-GAIA | G6 | Buildings in later ages cost stone with possibility of deep mining stone. villagers can dig/mine natural resources. 
+GAIA | G6 | Buildings in later ages cost stone with possibility of deep mining stone. villagers can dig/mine natural resources.
 GAIA AI | G7 | Fish migrate and replenish.
 Gameplay | G8 | Mercenaries could be hired on behalf of the player
 Gameplay | GM1 | Roads on commonly traveled areas allow faster traffic. Pathfinding would let the units stay on the road. Appearance and quality depends on traffic (matted grass, dirt path, etc.). Neutral to all players.
