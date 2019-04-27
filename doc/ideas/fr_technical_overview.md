@@ -41,6 +41,7 @@ Gameplay | GM17 | Attack/defense bonuses for some unit formations. Dependent on 
 Gameplay | GM18 | Researches only affect newly produced units. Old ones need to be manually upgraded/retrained at production building. Queue for researchings in buildings.
 Gameplay | GM19 | Scale wonder cost to max pop, number of players and available resources.
 Gameplay | GM20 | a new 5th "free trade" age where allies share resources and give each other massive battles.
+Gameplay | GM21 | New unit: Lance Cavalry, run over units in defending formations
 Unit AI | UAI1 | Improved grouping. manually coloring units for teammates. designated unit pings its position periodically. double click on a grouped unit in group formation selects same group not all units of same kind. allow more than 10 groups. more intelligent assigning of units to existing groups. sub-group selections.
 Unit AI | UAI2 | More intelligent units. Emergency evacuation points. Formations and movement when attacking. Dynamic hardlocking on target units when attacking. Aggressive stance for monks (auto-convert). Auto-flee stance. Non-coward stance for villagers. Allow selecting the default stance in production building. Set rally point on moving units.
 Pathing | PA1 | Groups can move as group or on command each with its own movement speed.
