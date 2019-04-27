@@ -1,6 +1,9 @@
 Technical overview for requested features
 --------
 
+This are some thoughts for a feature rich version, there will be a vanilla version without all that fancy stuff just feeling as good as this famous 20-years-old game.
+
+
 ### Explanations:
 
 1. ITEM: A description of the item
