@@ -61,11 +61,13 @@ UI  | UI1  | Organizers can manage the whole tournament in the openage interface
 UI  | UI2  | Multiplayer submenu should give you relevant information about most viewed live games and caster channels, upcoming tournaments, upcoming qualifieer rounds.
 UI  | UI3  | Spectator layer for public watching. Lock to casters viewpoints or freely move camera. Chat with spectators and mark points of interests (POI) on the map. No sync needed.
 UI  | UI4 | Casters interface: Picture-in-picture mode and replay function (command for making a clip and queue it). Pinging on minimap. Marking POI. Casters views need to be synced. Show casters current camera positions on minimap. See which units are visible to players without FOG. Second window for casting preferences and overviews.
-UI  | UI5  | APM should be derivable for interfaces.
+UI  | UI5  | APM should be derivable for interfaces and also be show in the GUI.
 UI  | UI6  | Customizable Hotkeys for everything.
 UI  | UI7  | Help spotting units which are taget  of a conversion. Highlight monk and unit.
 UI  | UI8  | Better after-game analysis. Normal mode with the basic information. Advanced mode with a massive amount of statistical infos and easy to read diagrams for smallest things.
-UI  | UI9  | Copy and paste for building structures. e.g. select mill and the farms around it, copy and paste the foundations of them somewhere else. Same for production lines. (Factorio-style) 
+UI  | UI9  | Copy and paste for building structures. e.g. select mill and the farms around it, copy and paste the foundations of them somewhere else. Same for production lines. (Factorio-style)
+UI  | UI10  | Show research status in the top right corner to easier follow your running researches.
+UI  | UI11  | Show how many villagers are working on each ressource (like in AOM, 100 Gold / 4 \[Villager-Symbol\] --> 100 Gold in the bank and 4 vills working to mine gold)
 AI | AI1 | Handles units more intelligent. Don't build in hazardous areas. Send military to clear out. Build more gates to prevent lock-ins. Better castle placement. Better Trade. Military units shouldn't fight in castle arrow fire. Units marching react and don't just go away. AI lames you (Barbarian). Understands how to do economic damage to your base. Adopts more to the current playing meta and also randomly choses to use older metas. AI can deliver villagers with transportships to other islands.
 Graphics | GR1 | Zooming in and out with different settings: middle of screen, where mouse points, to selected units.
 Graphics | GR2 | Units throw torches to put buildings on fire instead of fighting against them with their swords. Villagers have different attack animations depending on where they were working before attacking units/buildings, e.g. farms -> hay fork, lumberjacks -> axe, stone or gold -> pickaxe.
