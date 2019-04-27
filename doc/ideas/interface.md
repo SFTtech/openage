@@ -9,6 +9,8 @@ As opposed to the gameplay improvements, these interface enhancements are pretty
  - Customizable hotkeys for *everything*
  - possibility to set rally points on moving units
  - show a symbol on a unit, which is the target of a conversion (e.g. empire earth)
+ - Zoom
+  - possible options "Zoom in center of screen", "Zoom towards mouse cursor" or "zoom towards selected units" (to figure out what makes sense in which situations)
 
 
 after-game stats
