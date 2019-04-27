@@ -3,11 +3,11 @@ Technical overview for requested features
 
 ### Explanations:
 
-1. ITEM: A description of the item.
+1. ITEM: A description of the item
 1. COMPLEXITY: subjective evaluation for the complexity of the implementation
 1. AFFECTED ENGINE PARTS: core engine modules that needs to be worked on, e.g. renderer, API, converter
-1. IMPLEMENTATION STATUS: links to pull requests or dependencies 
-1. MILESTONE: What milestone this feature will appear as complete.
+1. IMPLEMENTATION STATUS: links to pull requests or dependencies
+1. MILESTONE: What milestone this feature will appear as complete
 
 
 |   Type           |  Task No.  |   Item        | Comp            | Aff. Engine   | Imp. Status   | Mile           |
