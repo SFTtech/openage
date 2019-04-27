@@ -65,8 +65,10 @@ UI  | UI5  | APM should be derivable for interfaces.
 UI  | UI6  | Customizable Hotkeys for everything.
 UI  | UI7  | Help spotting units which are taget  of a conversion. Highlight monk and unit.
 UI  | UI8  | Better after-game analysis. Normal mode with the basic information. Advanced mode with a massive amount of statistical infos and easy to read diagrams for smallest things.
+UI  | UI9  | Copy and paste for building structures. e.g. select mill and the farms around it, copy and paste the foundations of them somewhere else. Same for production lines. (Factorio-style) 
 AI | AI1 | Handles units more intelligent. Don't build in hazardous areas. Send military to clear out. Build more gates to prevent lock-ins. Better castle placement. Better Trade. Military units shouldn't fight in castle arrow fire. Units marching react and don't just go away. AI lames you (Barbarian). Understands how to do economic damage to your base. Adopts more to the current playing meta and also randomly choses to use older metas. AI can deliver villagers with transportships to other islands.
 Graphics | GR1 | Zooming in and out with different settings: middle of screen, where mouse points, to selected units.
+Graphics | GR2 | Units throw torches to put buildings on fire instead of fighting against them with their swords. Villagers have different attack animations depending on where they were working before attacking units/buildings, e.g. farms -> hay fork, lumberjacks -> axe, stone or gold -> pickaxe.
 Modding | MD1 | Asset modification updates in-game models instantly. Live testing for modders. More challenging: Same for unit (stat) patches.
+Sound | SO1 | Options to change the volume of special game sounds (e.g. attack bell, farm depleted, units produced). In late game this sounds can get really annoying.
 Localisation | LC1 |
-Sound | SO1 |
