@@ -3,20 +3,16 @@ Technical overview for requested features
 
 ### Explanations:
 
-1.  ITEM: A description of the item.
-1.  PRIORITY:
-    * A - Must Have
-    * B - Significantly improves product treat as a required item but the scope is negotiable.
-    * C - As time permits, nice but not crucial can be dropped if needed.
-    * D - Wish List.
-
-1. ESTIMATE: Estimate in time, resources, etc.
+1. ITEM: A description of the item.
+1. COMPLEXITY: subjective evaluation for the complexity of the implementation
+1. AFFECTED ENGINE PARTS: core engine modules that needs to be worked on, e.g. renderer, API, converter
+1. IMPLEMENTATION STATUS: links to pull requests or dependencies 
 1. MILESTONE: What milestone this feature will appear as complete.
 
 
 
- Type	        |  Task           | Item  | Pri | Est | Mile
- ------------- | ------------- | ------------- | ------------- | --------- | ---------
+ Type	        |  Task No.          | Item  | Comp | Aff. Engine | Imp. Status | Mile
+ ------------- | ------------- | ------------- | ------------- | --------- | --------- | ---------
 GAIA | G1 | Dynamic change of weather, seasons, day and night. influence on terrain & LOS. could be influenced by players with monk/myth unit.
 GAIA | G2 | Wooden buildings and other flammable material can be lit, fire spreads around your city. fire departments (new building) to extinguish fires or villagers need to put a fire of with water from a well (new building)
 GAIA | G3 | Wild animals can steal food from your farms and deers
@@ -36,7 +32,7 @@ Gameplay | GM8 | villagers need sleep at night, die at work (New Building: Caffe
 Gameplay | GM9 | GAIA and terrain interaction, e.g. flock of bird rises up from tree when tree is felled or many people approach, hearable sound indicator, players hear and see birds when someone comes to their woodline at home. triggered rocks falling of cliffs.
 Gameplay | GM10 | Relics have special abilities (AOM), bonuses for attack, range. generated randomly. maybe also rolling relics with ranged attributes to bring into battle.
 Gameplay | GM11 | Bring Kings/Queens into battle for special abilities within some tiles radius.
-Gameplay | GM12 | Building produces in loop (AOM) unit until resources and pop space are available. units and farms. indicator over buildings or in the GUI for loop production.
+Gameplay | GM12 | Building produces in loop (AOM) as long as resources and pop space are available. units and farms. indicator over buildings or in the GUI for loop production.
 Gameplay | GM13 | Mills can produce sheep, cows, turkeys
 Gameplay | GM14 | Researching faith in third age allows to convert units, before monk can heal and carry relics.
 Gameplay | GM15 | Buildings can be deconstructed to recover materials, slower than destroying. leave a salvage pile behind. salvage dimishes per time. resources can be harvested by villagers on a higher rate.
