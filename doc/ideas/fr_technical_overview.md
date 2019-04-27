@@ -56,6 +56,7 @@ Multiplayer        | MP7        | Tournament drafts, files, settings, replays ar
 Multiplayer        | MP8        | Simple and fast qualifying for tournaments.
 Multiplayer        | MP9        | Connection through in-game server browser/direct IP and connection through a browser-based protocol.
 Multiplayer        | MP10       | in-game, lag-free, high-quality voice-communication between teams, same for casters.
+Multiplayer        | MP11       | Figure out how to measure map-control of someone and give a value for it. Show it in casting and spectating multiplayer games.
 UI                 | UI1        | Organizers can manage the whole tournament in the openage interface within their accounts. Drafting, (Time-)Planning, Invitations, Promo, Hosting.
 UI                 | UI2        | Multiplayer submenu should give you relevant information about most viewed live games and caster channels, upcoming tournaments, upcoming qualifieer rounds.
 UI                 | UI3        | Spectator layer for public watching. Lock to casters viewpoints or freely move camera. Chat with spectators and mark points of interests (POI) on the map. No sync needed.
