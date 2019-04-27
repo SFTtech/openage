@@ -22,7 +22,6 @@ GAIA AI 						| GI1					| Fish migrate and replenish.
 GAIA AI 						| GI2 				| Mercenaries could be hired on behalf of the player
 Gameplay 					| GM1 				| Roads on commonly traveled areas allow faster traffic. Pathfinding would let the units stay on the road. Appearance and quality depends on traffic (matted grass, dirt path, etc.). Neutral to all players.
 Gameplay 					| GM2 				| Bridges for connections between islands. blocks ships, allows land units to walk on. terraforming. wooden and stone bridges with different hp.
-Gameplay 					| GM3 				| Mercenaries could be hired at camp in the wilderness to act on behalf of a player
 Gameplay 					| GM4 				| single units can hide/bunk in the forest for sneak attacks, only visable to a certain type of unit. garrison function with no symbol, you can loose your units if you don't remember them.
 Gameplay						| GM5 				| New Unit: spies (can burn down your city), lame your production
 Gameplay 					| GM6 				| New Unit: monk-ship on water to convert ships
