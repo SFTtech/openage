@@ -140,8 +140,12 @@ A mode similar to *Trouble in Terrorist Town* and *Secret Hitler*. The game star
 
 ### Pure Battle Mode
 
-No buildings, just units. The game generates a map and players can choose a starting position. Then they have a few minutes and a set amount of resources to select an army composition and some techs. After the first phase is over they place their units on the battlefield and have to use what they assembled to destroy their opponent. Utilizing height advantages, microing and tactical positioning contrast the strategic decisions of creating the army. The player who destroys his opponent, inflicts the most resource damage to others or holds strategic positions
-wins the battle.
+No buildings, just units. The game generates a map and players can choose a starting position. Then they have a few minutes and a set amount of resources to select an army composition and some techs. After the first phase is over they place their units on the battlefield and have to use what they assembled to destroy their opponent. Utilizing height advantages, microing and tactical positioning contrast the strategic decisions of creating the army. The player who destroys his opponent, inflicts the most resource damage to others or holds strategic positions wins the battle.
+
+### Micro-nerd Mode (or Mod)
+
+Mixture of RTS (Age of Empires) and Tactical Stealth (Shadow Tactics) will require the players to use features of both genres to win a game. Gameplay could look like the following: In the beginning you start as usual the game and build up an economy (macro). As soon as you need to scout the opponents base the parts of tactical stealth come into play. Units can be used with special, advanced micro commands (formations, special abilities for single unit types). You can switch into this mode explicitly, after switching everything which is not important to this mode turns grey/dark to filter out your attention. In the ultra micro mode you could see hidden paths in the woods on which you could sneak to the opponents base. There you could carry on sabotage the economy and military production of the enemy. For example you could distract villagers from wood cutting or gold mining (slow down the working speed or make them carry less resources) or spy on production processes of military units. With this you have another level for micro-nerds and another way to fight against people who just wall themselves in and boom behind.
+
 
 Unit handling
 -------------
@@ -186,6 +190,16 @@ Unit handling
  - Auto-flee stance (especially for monks): Auto-task "flee" action as soon as an enemy unit comes near
  - Non-coward stance for villagers
  - Allow selecting the default stance
+ 
+### Viewcone-feature for additional complexity
+
+ - a viewcone shows in which direction the unit is looking at and how much it can see from that
+   - more complex Line-of-sight that this 360°-LOS
+   - e.g. a unit cannot see behind buildings -> you can hide units behind buildings from auto-attack, as long as the player is not giving manually the attack command
+     - you could even render them invisible as long as the player didn't see them and they could vanish after a time when they hide behind a building
+   - scouting would be more focused -> only scouting in the direction your scout looks/moves, rest stays under FOG
+ - possibility to even have completely other game-styles/mods (like Stealth-RTS, see Micro-nerd Mode)
+ - Kosmonautblog wrote an article about the viewcone in Shadow Tactics and how the developers were implementing it, you can find it here: https://web.archive.org/web/20190428103242/https://kosmonautblog.wordpress.com/2017/01/09/shadow-tactics-rendering-breakdown/
 
 
 Multiplayer
@@ -269,6 +283,7 @@ Multiplayer
 
  - small indicators for units that show if they are visible to another player, even if the FOW is turned off
    - to get rid of the switching between the FOW of players just to know, if they can see each other
+   - see also: Viewcone-Feature (Unit handling)
 
 
 ### Team interaction
