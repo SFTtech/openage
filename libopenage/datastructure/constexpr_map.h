@@ -3,6 +3,7 @@
 #pragma once
 
 #include <array>
+#include <type_traits>
 #include <utility>
 
 #include "../error/error.h"
@@ -95,7 +96,7 @@ private:
 	/**
 	 * The entries associated with this map.
 	 */
-	const std::array<std::pair<K, V>, count> values;
+	std::array<std::pair<K, V>, count> values;
 };
 
 /**
@@ -130,5 +131,20 @@ template<typename K, typename V, typename... Entries>
 constexpr auto create_const_map(Entries&&... entry) {
 	return ConstMap<K, V, sizeof...(entry)>{entry...};
 }
+
+/**
+ * Template deduction guide to deduce the Key-Value types
+ * for the ConstMap from the paired entries passed.
+ *
+ * usage: constexpr ConstMap boss{std::pair{k0, v0}, std::pair{k1, v1}, ...};
+ *
+ * Note: Use when automatic type deduction is desirable.
+ *       For manually specifying types, use the other method.
+ */
+template<typename Entry, typename... Rest,
+         typename = std::enable_if_t<std::conjunction_v<std::is_same<Entry, Rest>...>>>
+ConstMap(Entry, Rest&&...) -> ConstMap<typename Entry::first_type,
+                                       typename Entry::second_type,
+                                       1 + sizeof...(Rest)>;
 
 } // openage::datastructure
