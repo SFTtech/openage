@@ -1,7 +1,7 @@
 Technical overview for requested features
 --------
 
-This are some thoughts for a feature rich version, there will be a vanilla version without all that fancy stuff just feeling as good as this famous 20-years-old game.
+This are some thoughts for a feature rich mode. Don't worry, there will be a vanilla mode without all that fancy stuff just feeling as good as this famous 20-years-old game.
 
 
 ### Explanations:
