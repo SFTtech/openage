@@ -190,7 +190,7 @@ Unit handling
  - Auto-flee stance (especially for monks): Auto-task "flee" action as soon as an enemy unit comes near
  - Non-coward stance for villagers
  - Allow selecting the default stance
- 
+
 ### Viewcone-feature for additional complexity
 
  - a viewcone shows in which direction the unit is looking at and how much it can see from that
