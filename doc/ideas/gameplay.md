@@ -107,7 +107,7 @@ Research
 
 Capture buildings
 --------
-  - when a building is damaged to 20% or less, buildings will eject any units garrisoned, cancel all research or training and cease any inherent behaviors (i.e. towers will no longer attack)
+  - when a building is damaged to 20% or less, buildings will eject any units garrisoned, cancels all research or training and cease any inherent behaviors (i.e. towers will no longer attack)
   - a building which has been damaged to 20% HP or less will become the property of the next player who repairs it to a level above 20%
 
 
@@ -132,19 +132,40 @@ A player loses if the castle falls.
 
 ### Barbarian Invasion
 
-An asymmetric game mode where 1 or 2 technologically advanced players compete against 3 - 6 "barbarians". The barbarians start in Dark Age with a few extra villagers, but have to build up their economy from the ground up. The "civilized" players start in Castle Age with a large amount of villagers, a decent economy and some defensive buildings. For barbarian players, the goal is to destroy a wonder in the civilized players' cities before a time limit is reached. The civilized players have to build defenses and try to protect against the hordes that are pressing at their gates.
+An asymmetric game mode where 1 or 2 technologically advanced players compete against 3 - 6 "barbarians".
+The barbarians start in Dark Age with a few extra villagers, but have to build up their economy from the ground up.
+The "civilized" players start in Castle Age with a large amount of villagers, a decent economy and some defensive buildings.
+For barbarian players, the goal is to destroy a wonder in the civilized players' cities before a time limit is reached.
+The civilized players have to build defenses and try to protect against the hordes that are pressing at their gates.
 
 ### Phantom Mode
 
-A mode similar to *Trouble in Terrorist Town* and *Secret Hitler*. The game starts with all 8 players being neutral or allied. Their goal is to find 2 "phantoms" and eliminate them. The 2 phantoms are allied from the start and know about each other, while every other player is clueless whether other players are friendly or phantoms. Phantom players have to manipulate the others into distrusting their friends. Gameplay could be spiced up with feature like purchasing units which don't have player colours from a town in the middle of the map, sabotage units and limiting the allied line of sight gained from researching cartography.
+A mode similar to *Trouble in Terrorist Town* and *Secret Hitler*.
+The game starts with all 8 players being neutral or allied.
+Their goal is to find 2 "phantoms" and eliminate them.
+The 2 phantoms are allied from the start and know about each other, while every other player is clueless whether other players are friendly or phantoms. Phantom players have to manipulate the others into distrusting their friends.
+Gameplay could be spiced up with feature like purchasing units which don't have player colours from a town in the middle of the map, sabotage units and limiting the allied line of sight gained from researching cartography.
 
 ### Pure Battle Mode
 
-No buildings, just units. The game generates a map and players can choose a starting position. Then they have a few minutes and a set amount of resources to select an army composition and some techs. After the first phase is over they place their units on the battlefield and have to use what they assembled to destroy their opponent. Utilizing height advantages, microing and tactical positioning contrast the strategic decisions of creating the army. The player who destroys his opponent, inflicts the most resource damage to others or holds strategic positions wins the battle.
+No buildings, just units.
+The game generates a map and players can choose a starting position.
+Then they have a few minutes and a set amount of resources to select an army composition and some techs.
+After the first phase is over they place their units on the battlefield and have to use what they assembled to destroy their opponent.
+Utilizing height advantages, microing and tactical positioning contrast the strategic decisions of creating the army.
+The player who destroys his opponent, inflicts the most resource damage to others or holds strategic positions wins the battle.
 
 ### Micro-nerd Mode (or Mod)
 
-Mixture of RTS (Age of Empires) and Tactical Stealth (Shadow Tactics) will require the players to use features of both genres to win a game. Gameplay could look like the following: In the beginning you start as usual the game and build up an economy (macro). As soon as you need to scout the opponents base the parts of tactical stealth come into play. Units can be used with special, advanced micro commands (formations, special abilities for single unit types). You can switch into this mode explicitly, after switching everything which is not important to this mode turns grey/dark to filter out your attention. In the ultra micro mode you could see hidden paths in the woods on which you could sneak to the opponents base. There you could carry on sabotage the economy and military production of the enemy. For example you could distract villagers from wood cutting or gold mining (slow down the working speed or make them carry less resources) or spy on production processes of military units. With this you have another level for micro-nerds and another way to fight against people who just wall themselves in and boom behind.
+Mixture of RTS (Age of Empires) and Tactical Stealth (Shadow Tactics) will require the players to use features of both genres to win a game.
+Gameplay could look like the following: In the beginning you start as usual the game and build up an economy (macro).
+As soon as you need to scout the opponents base the parts of tactical stealth come into play.
+Units can be used with special, advanced micro commands (formations, special abilities for single unit types).
+You can switch into this mode explicitly, after switching everything which is not important to this mode turns grey/dark to filter out your attention.
+In the ultra micro mode you could see hidden paths in the woods on which you could sneak to the opponents base.
+There you could carry on sabotage the economy and military production of the enemy.
+For example you could distract villagers from wood cutting or gold mining (slow down the working speed or make them carry less resources) or spy on production processes of military units.
+With this you have another level for micro-nerds and another way to fight against people who just wall themselves in and boom behind.
 
 
 Unit handling
