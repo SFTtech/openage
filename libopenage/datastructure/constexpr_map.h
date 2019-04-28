@@ -1,54 +1,20 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include <functional>
+#include <array>
 #include <utility>
 
 #include "../error/error.h"
 
 
-namespace openage {
-namespace datastructure {
-
-/**
- * One entry in the lookup map.
- */
-template<class K, class V>
-class ConstMapEntry {
-public:
-	constexpr ConstMapEntry(const K &key, const V &value)
-		:
-		key{key},
-		value{value} {}
-
-	constexpr ConstMapEntry(const std::pair<K, V> &pair)
-		:
-		key{pair.first},
-		value{pair.second} {}
-
-	constexpr ConstMapEntry(std::pair<K, V> &&pair)
-		:
-		key{std::move(pair.first)},
-		value{std::move(pair.second)} {}
-
-	/**
-	 * Map entry key.
-	 */
-	const K key;
-
-	/**
-	 * Map entry value.
-	 */
-	const V value;
-};
+namespace openage::datastructure {
 
 /**
  * Compiletime generic lookup map.
  *
- * This is a recursive template that decreases `pos` which each
- * iteration step. Each `pos` stores one map entry.
- * The lookup recursively descends those entries down to the zero-element.
+ * Stores the map entries in an array and uses constexpr methods
+ * to search and retrieve them at compile-time.
  *
  * If you experience compiler errors, make sure you request _existing_ keys.
  * We intentionally trigger compiler failures when a key doesn't exist.
@@ -56,165 +22,103 @@ public:
  * Messages include: "error: ‘*0u’ is not a constant expression"
  * -> nonexistant key
  */
-template<typename K, typename V, size_t pos>
+template<typename K, typename V, size_t count>
 class ConstMap {
 public:
-	template<class Head, class... Tail>
-	constexpr ConstMap(Head head, Tail... tail)
+	template<class... Entries>
+	constexpr ConstMap(Entries&&... entries)
 		:
-		value{head},
-		tail{tail...} {}
+		values{std::forward<Entries>(entries)...} {
+		this->verify_no_duplicates();
+	}
 
 	/**
 	 * Return the number of entries in this map.
 	 */
-	constexpr int inline size() const {
-		return this->verify_no_duplicates(), pos;
+	constexpr int size() const {
+		return count;
 	}
 
 	/**
 	 * Tests if the given key is in this map.
 	 */
-	constexpr bool inline contains(const K &key) const {
-		return this->verify_no_duplicates(), this->has_entry(key);
+	constexpr bool contains(const K &key) const {
+		return this->find(key) != values.end();
 	}
 
 	/**
 	 * Return the stored value for the given key.
 	 */
-	constexpr const inline V &get(const K &key) const {
-		return this->verify_no_duplicates(), this->fetch(key);
+	constexpr const V &get(const K &key) const {
+		auto iter = this->find(key);
+		if (iter == values.end()) {
+			throw Error(MSG(err) << "The key is not in the map.");
+		}
+
+		return iter->second;
 	}
 
 	/**
 	 * Access entries by map[key].
 	 */
-	constexpr const inline V &operator [](const K &key) const {
+	constexpr const V &operator [](const K &key) const {
 		return this->get(key);
 	}
 
 private:
 	/**
-	 * Test if if the given key is stored in this element or in following elements.
-	 */
-	constexpr bool inline has_entry(const K &key) const {
-		return (this->value.key == key) or this->tail.has_entry(key);
-	}
-
-	/**
-	 * Test if the key of this entry is not used in following entries.
-	 */
-	constexpr bool inline is_unique() const {
-		return not this->tail.has_entry(this->value.key);
-	}
-
-	/**
-	 * Verifies that this entry's key is not used in following entries,
-	 * then continues checking with the next entry checking for the same.
-	 */
-	constexpr bool inline all_are_unique() const {
-		return this->is_unique() and this->tail.all_are_unique();
-	}
-
-	/**
 	 * Abort when the map uses the same key more than once.
 	 */
-	constexpr bool inline verify_no_duplicates() const {
-		return
-		this->all_are_unique() ?
-			true
-		:
-			throw Error(MSG(err) << "There is a duplicate key in the map.");
+	constexpr void verify_no_duplicates() const {
+		for (auto iter1 = values.begin(); iter1 != values.end(); ++iter1) {
+			for (auto iter2 = iter1 + 1; iter2 != values.end(); ++iter2) {
+				if (iter1->first == iter2->first) {
+					throw Error(MSG(err) << "There is a duplicate key in the map.");
+				}
+			}
+		}
 	}
 
 	/**
-	 * Returns the value matching key from this or following elements.
+	 * Returns the iterator matching key from the array.
+	 *  - `values.end()` if the key is not found.
 	 */
-	constexpr const inline V &fetch(const K &key) const {
-		return
-		// if we found the key
-		(this->value.key == key) ?
-			// return the value
-			this->value.value
-		:
-			// else try the lookup on the remaining elements
-			this->tail.fetch(key);
+	constexpr auto find(const K &key) const {
+		for (auto iter = values.begin(); iter != values.end(); ++iter) {
+			if (iter->first == key) {
+				return iter;
+			}
+		}
+		return values.end();
 	}
 
 	/**
-	 * The entry associated with this map position.
+	 * The entries associated with this map.
 	 */
-	const ConstMapEntry<K, V> value;
-
-	/**
-	 * The remaining map entries.
-	 */
-	const ConstMap<K, V, pos - 1> tail;
-
-	/**
-	 * The previous entry is our friend.
-	 */
-	friend class ConstMap<K, V, pos + 1>;
+	const std::array<std::pair<K, V>, count> values;
 };
 
-
 /**
- * constexpr map end container.
- * When this element is reached, all contained entries have been processed.
- *
- * For example, when searching a key and calling to this class means
- * the key was not found.
+ * Specialization for size 0.
+ * Needed until https://bugs.llvm.org/show_bug.cgi?id=40124 is resolved.
  */
 template<typename K, typename V>
 class ConstMap<K, V, 0> {
 public:
-	constexpr ConstMap() {}
-
 	/**
-	 * The size of the end element.
+	 * Empty map has 0 size.
 	 */
-	constexpr int inline size() const {
+	constexpr int size() const {
 		return 0;
 	}
 
 	/**
-	 * The end element can't contain the key.
+	 * Empty map contains no key/value pairs.
 	 */
-	constexpr bool inline contains(const K &) const {
+	constexpr bool contains(const K &) const {
 		return false;
 	}
-
-private:
-	/**
-	 * Reaching the last entry of the uniqueness check means
-	 * we had no duplicates.
-	 */
-	constexpr bool inline all_are_unique() const {
-		return true;
-	}
-
-	/**
-	 * The end element doesn't have an entry.
-	 */
-	constexpr bool inline has_entry(const K &) const {
-		return false;
-	}
-
-	/**
-	 * The end element doesn't have an entry,
-	 * so nothing can be fetched,
-	 */
-	constexpr const inline V &fetch(const K &) const {
-		// if we reach here recursively, the key was not found along the way and so isn't present
-		throw Error(MSG(err) << "The key is not in the map.");
-	}
-
-	/**
-	 * The previous entry class is our friend.
-	 */
-	friend class ConstMap<K, V, 1>;
 };
-
 
 /**
  * Creates a compiletime lookup table from
@@ -223,8 +127,8 @@ private:
  * usage: constexpr auto bla = create_const_map<type0, type1>(entry0, entry1, ...);
  */
 template<typename K, typename V, typename... Entries>
-constexpr ConstMap<K, V, sizeof...(Entries)> create_const_map(Entries&&... entry) {
-	return ConstMap<K, V, sizeof...(entry)>(ConstMapEntry<K, V>{std::forward<Entries>(entry)}...);
+constexpr auto create_const_map(Entries&&... entry) {
+	return ConstMap<K, V, sizeof...(entry)>{entry...};
 }
 
-}} // openage::datastructure
+} // openage::datastructure
