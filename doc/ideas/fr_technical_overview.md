@@ -63,7 +63,7 @@ Gameplay           | GM36       | Controlled Forest-Burns: Allows the player (te
 Gameplay           | GM37       | Give seige Rams an upgrade that prevents unit production while it's attacking a building. (5-second debuff that refreshes each attack). Is current API ready to change that easily?
 Gameplay           | GM38       | Bigger maps, map sizes between giant and ludicrous
 Gameplay           | GM39       | Foundation: turns Regular Terrain into Solid Terrain, requires Stone, turns Irregular Terrain into Regular Terrain.
-Gameplay           | GM40       | Different terrain types: 
+Gameplay           | GM40       | Different terrain types, take a look into gameplay.md for more explanations
 Unit AI            | UAI1       | Improved grouping. manually coloring units for teammates. designated unit pings its position periodically. double click on a grouped unit in group formation selects same group not all units of same kind. allow more than 10 groups. more intelligent assigning of units to existing groups. sub-group selections. new unit to group takes same stance like the whole group. multi-group functionality. Better waypoints (AOM-style) - able to queue tasks for units, especially villagers. deselect certain units quickly from a selection by right clicking their portrait.
 Unit AI            | UAI2       | More intelligent units. Emergency evacuation points. Formations and movement when attacking. Dynamic hardlocking on target units when attacking. Aggressive stance for monks (auto-convert). Auto-flee stance. Non-coward stance for villagers. Allow selecting the default stance in production buildings. Set rally point on moving units. Better attack move.
 Pathing            | PA1        | Groups can move as group or on command each with its own movement speed.
@@ -84,7 +84,7 @@ Multiplayer        | MP11       | Figure out how to measure map-control of someo
 Multiplayer        | MP12       | 16 player-slots (possible player colours: Purple, White, Black, Light Green, Light Red, Brown,...)
 Multiplayer        | MP13       | More balance changes regularly. Mechanism to make changes globally easier. Update mechanisms. Balance crew. Meta adjustments.
 Multiplayer        | MP14       | Opt-in spectating: You can join a multiplayer even if it already started. Doesn't take a player slot.
-Multiplayer        | MP15       | Multiplayer mods looking for smurfs, trolls, racists to ban them. 
+Multiplayer        | MP15       | Multiplayer mods looking for smurfs, trolls, racists to ban them.
 UI                 | UI1        | Organizers can manage the whole tournament in the openage interface within their accounts. Drafting, (Time-)Planning, Invitations, Promo, Hosting.
 UI                 | UI2        | Multiplayer submenu should give you relevant information about most viewed live games and caster channels, upcoming tournaments, upcoming qualifieer rounds.
 UI                 | UI3        | Spectator layer for public watching. Lock to casters viewpoints or freely move camera. Chat with spectators and mark points of interests (POI) on the map. No sync needed. Spectator dashboard.
