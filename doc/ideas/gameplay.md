@@ -54,6 +54,19 @@ Environment
     - when not hungry, there should be a chance of attack but it should be more likely that the wolves will avoid contact and move on
     - Wolves will howl from time to time. Players will be able to judge the severity of their “wolf problem” based on the frequency of these howls
 
+### Terrain Types:
+
+Soft Terrains (= Marshland/Desert): Farms, Mills, L/M Camps, Palisades can be built without problems, Stone Walls and Medium-sized buildings (3x3) take +50% damage on this terrain, and Military units move 20% slower on this terrain.
+
+Regular Terrains (= Grass/Dirt): Farms, Mills, Camps, Palisades, Stone Walls, Medium (3x3) and Large (4x4) Buildings can be Built without Problems, Heavy Structures like Towers, Gates and Castles take +50% Damage on this terrain.
+
+Solid Terrains (= Rock/Foundation): Farms, Camps & Palisades cannot be built on this Terrain, all other buildings without problems.
+
+Irregular Terrains (= Beaches/Mountains/Swamps): Nothing can be built on these Terrains, Military Units move 20% Slower on these Terrains.
+
+Regular Terrain makes up most of the Player Starting Areas, with Soft and Rock Terrains becoming more common as you go further from the Player Starting Areas and Irregular Terrain Makes up Larger Spaces of the Map in-between the Player Starting Areas.
+
+
 Resources
 ---------
 
