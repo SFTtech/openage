@@ -60,7 +60,7 @@ Gameplay           | GM33       | Possibility to put archers/ranged units on a w
 Gameplay           | GM34       | Quickwalling: first XX% (variable percentage) of a foundation is walkable, setting for e.g. tournaments
 Gameplay           | GM35       | Mesoamerican civilizations (already the most novel civs in the game) may have a unique tech tree. Possibility for a unique tech tree in API.
 Gameplay           | GM36       | Controlled Forest-Burns: Allows the player (technology Researched at the University in the Castle age) to destroy Forests to create more space; this goes much faster/efficient than Chopping, but obviously at the expense of the Lumber and generates Regular Terrain.
-Gameplay           | GM37       | Give seige Rams an upgrade that prevents unit production while it's attacking a building. (5-second debuff that refreshes each attack). Is current API ready to change that easily?
+Gameplay           | GM37       | Give siege Rams an upgrade that prevents unit production while it's attacking a building. (5-second debuff that refreshes each attack). Note for me: Check if current API is ready to change that easily?
 Gameplay           | GM38       | Bigger maps, map sizes between giant and ludicrous
 Gameplay           | GM39       | Foundation: turns Regular Terrain into Solid Terrain, requires Stone, turns Irregular Terrain into Regular Terrain.
 Gameplay           | GM40       | Different terrain types, take a look into gameplay.md for more explanations
