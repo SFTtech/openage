@@ -64,6 +64,10 @@ Gameplay           | GM37       | Give siege Rams an upgrade that prevents unit 
 Gameplay           | GM38       | Bigger maps, map sizes between giant and ludicrous
 Gameplay           | GM39       | Foundation: turns Regular Terrain into Solid Terrain, requires Stone, turns Irregular Terrain into Regular Terrain.
 Gameplay           | GM40       | Different terrain types, take a look into gameplay.md for more explanations
+Gameplay           | GM41       | Be able to temporarily toggle the map to remove terrain and show building footprints for walling without gaps.
+Gameplay           | GM42       | Make Rams push units away
+Gameplay           | GM43       | Raise the amount of ressources that can be sold with hotkeys at the market (forest nothing)
+Gameplay           | GM44       | A special flag that raises on a building that is researching a technology, much like the garrison flag. (see GR10)
 Unit AI            | UAI1       | Improved grouping. double click on a grouped unit in group formation selects same group not all units of same kind. allow more than 10 groups. more intelligent assigning of units to existing groups. sub-group selections. new unit to group takes same stance like the whole group. multi-group functionality.
 Unit AI            | UAI2       | Designated unit pings its position periodically.
 Unit AI            | UAI3       | Deselect certain units quickly from a selection by right clicking their portrait.
@@ -74,6 +78,7 @@ Unit AI            | UAI7       | Dynamic hardlocking on target units when attac
 Unit AI            | UAI8       | Aggressive stance for monks (auto-convert). Auto-flee stance. Non-coward stance for villagers. Allow selecting the default stance in production buildings.
 Unit AI            | UAI9       | Set rally point on moving units.
 Unit AI            | UAI10      | Better attack move.
+Unit AI            | UAI11      | Option to allow a unit to auto-explore the map. Can be deactivated in the lobby options.
 Pathing            | PA1        | Groups can move as group or on command each with its own movement speed.
 Pathing            | PA2        | Auto-resolution of blocking situations
 Pathing            | PA3        | Individual path searching cost for tiles. Allow users to manually mark parts of the map as more expensive/No-go areas. e.g. firing range of castles.
@@ -84,7 +89,7 @@ Multiplayer        | MP2        | Boosts/handicaps such as resource multipliers 
 Multiplayer        | MP3        | Forced no-rush (timelimit or score limit until attacks are possible)
 Multiplayer        | MP4        | Official accounts on servers for everyone. PGP-Support for network of trust. Built-in multiplayer mode that is so good that it unifies the community.
 Multiplayer        | MP5        | Good matchmaking and skill-/experience points-algorithm. Ranked mode for multiplayer.
-Multiplayer        | MP6        | Better team interaction. Work/resource sharing. Temporary unit control of groups for allies. Resource sharing when defeated.
+Multiplayer        | MP6        | Better team interaction. Work/resource sharing. Temporary unit control of groups for allies. Resource and unit sharing when defeated or drop. Alternatively if a player drops all of their units move to an ally and that ally's population cap changes. Cannot work when diplomacy is enabled.
 Multiplayer        | MP7        | Tournament drafts, files, settings, replays are stored in a container. Host sets up the game, shares important (players) part of the container, game lobby allows no changes.
 Multiplayer        | MP8        | Simple and fast qualifying for tournaments.
 Multiplayer        | MP9        | Connection through in-game server browser/direct IP and connection through a browser-based protocol. Combination of dedicated servers, P2P and LAN multiplayer.
@@ -94,6 +99,7 @@ Multiplayer        | MP12       | More then eight player-slots for multiplayer g
 Multiplayer        | MP13       | More balance changes regularly. Mechanism to make changes globally easier. Update mechanisms. Balance crew. Meta adjustments.
 Multiplayer        | MP14       | Opt-in spectating: You can join a multiplayer even if it already started. Doesn't take a player slot.
 Multiplayer        | MP15       | Multiplayer mods looking for smurfs, trolls, racists to ban them.
+Multiplayer        | MP16       | Game modes, See gameplay.md 
 UI                 | UI1        | Organizers can manage the whole tournament in the openage interface within their accounts. Drafting, (Time-)Planning, Invitations, Promo, Hosting.
 UI                 | UI2        | Multiplayer submenu should give you relevant information about most viewed live games and caster channels, upcoming tournaments, upcoming qualifieer rounds.
 UI                 | UI3        | Spectator layer for public watching. Lock to casters viewpoints or freely move camera. Chat with spectators and mark points of interests (POI) on the map. No sync needed. Spectator dashboard.
@@ -103,7 +109,7 @@ UI                 | UI6        | Customizable Hotkeys for everything. But good 
 UI                 | UI7        | Help spotting units which are taget  of a conversion. Highlight monk and unit.
 UI                 | UI8        | Better after-game analysis. Normal mode with the basic information. Advanced mode with a massive amount of statistical infos and easy to read diagrams for smallest things. population graphs AOE3-style at the end of a match. Show number of villager-kills, maybe even in-game.
 UI                 | UI9        | Copy and paste for building structures. e.g. select mill and the farms around it, copy and paste the foundations of them somewhere else. Same for production lines. (Factorio-style)
-UI                 | UI10       | Show research status in the top right corner to easier follow your running researches.
+UI                 | UI10       | Show research and production status in the top right corner to easier follow your running researches.
 UI                 | UI11       | Show how many villagers are working on each ressource (like in AOM, 100 Gold / 4 \[Villager-Symbol\] --> 100 Gold in the bank and 4 vills working to mine gold).
 UI                 | UI12       | Add resource gain per minute data next to the original resources. It would be something like food: 537 (+68). make it switchable with amount of vills working at all the resource spots. (see UI11)
 UI                 | UI13       | Hotkeys for technology researches and upgrades for units
@@ -111,7 +117,9 @@ UI                 | UI14       | All these things in here should be switchable-
 UI                 | UI15       | MP-GUI: game-browser in list-style but with HDs lobby filtering, amount of players? search bar for game names. better filters for games.
 UI                 | UI16       | Save Camera positions: Ctrl+F1 to create a camera location hotkey similar to how you create control groups. Whenever you press the key it moves your screen to the exact location you created it. Also for spectating and casters.
 UI                 | UI17       | Looking for a SC2-Interface in AOE-style? UI-Modding should be made easy.
-UI                 | UI18       | Show the Boni as a tooltip.
+UI                 | UI18       | Tooltips should be improved to properly showcase all the hidden information and boni for players who don't want to deeply research every facet of the game by themselves.
+UI                 | UI19       | Host of lobby to ban civilizations, give handicaps
+UI                 | UI20       | Idle villager button change colour when a villager goes idle
 AI                 | AI1        | Handles units more intelligent. Don't build in hazardous areas. Send military to clear out. Build more gates to prevent lock-ins. Better castle placement. Better Trade. Military units shouldn't fight in castle arrow fire. Units marching react and don't just go away. AI lames you (Barbarian). Understands how to do economic damage to your base. Adopts more to the current playing meta and also randomly choses to use older metas. AI can deliver villagers with transportships to other islands.
 Graphics           | GR1        | Zooming in and out with different settings: middle of screen, where mouse points, to selected units.
 Graphics           | GR2        | Units throw torches to put buildings on fire instead of fighting against them with their swords. Villagers have different attack animations depending on where they were working before attacking units/buildings, e.g. farms -> hay fork, lumberjacks -> axe, stone or gold -> pickaxe.
@@ -121,6 +129,9 @@ Graphics           | GR5        | Beautiful weather effects (see G1)
 Graphics           | GR6        | Campaign cutscenes
 Graphics           | GR7        | Some graphical optimisations for competitive play by design, e.g. small trees, alignment grid, fish outlines, short walls, etc., other option: to redesign everything that the problems why those mods exists are fixed. e.g. make the look behind walls better by design -> no short walls needed.
 Graphics           | GR8        | Resource spots change size based on the amount of resource they have left.
+Graphics           | GR9        | Sync ram attack animation with the actual attack.
+Graphics           | GR10       | A special flag that raises on a building that is researching a technology, much like the garrison flag. (see GM44)
 Modding            | MD1        | Asset modification updates in-game models instantly. Live testing for modders. More challenging: Same for unit (stat) patches.
 Sound              | SO1        | Options to change the volume of special game sounds (e.g. attack bell, farm depleted, units produced). In late game this sounds can get really annoying.
+Campaign           | CP1        | Co-Op Campaigns
 Localisation       | LC1        | X

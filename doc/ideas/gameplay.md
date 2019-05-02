@@ -180,6 +180,11 @@ There you could carry on sabotage the economy and military production of the ene
 For example you could distract villagers from wood cutting or gold mining (slow down the working speed or make them carry less resources) or spy on production processes of military units.
 With this you have another level for micro-nerds and another way to fight against people who just wall themselves in and boom behind.
 
+### Random Ideas
+
+Extra options like regenerating gold, wood, and stone could be interesting for casual multiplayer games. Goofy game modes like randomized techs and bonuses would be fun. Or what about a mode where you gain random civ bonuses and techs each time you advance an age?
+
+
 
 Unit handling
 -------------
