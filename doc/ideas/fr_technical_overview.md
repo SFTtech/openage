@@ -51,7 +51,7 @@ Gameplay           | GM24       | Queue for technology researches.
 Gameplay           | GM25       | Farms cannot be placed on desert ground.
 Gameplay           | GM26       | Improved water battles.
 Gameplay           | GM27       | Percentage based armor system similar to AoEO and AoM. Will need to rebalance whole gameplay.
-Gameplay           | GM28       | Reduce the amount of hidden bonuses on units and show them on tooltips. We should easily be able to tell what the bonuses are.
+Gameplay           | GM28       | empty
 Gameplay           | GM29       | Entirely rebalance milita line. Main gold unit similar to knights/archers. Instead of a counter unit currently.
 Gameplay           | GM30       | Nerf the range on towers early and make them scale much better into the late game.
 Gameplay           | GM31       | Unit queuing doesn't reserve resources. Resources are taken in account, when the unit is actually starting to produce.
@@ -64,12 +64,21 @@ Gameplay           | GM37       | Give siege Rams an upgrade that prevents unit 
 Gameplay           | GM38       | Bigger maps, map sizes between giant and ludicrous
 Gameplay           | GM39       | Foundation: turns Regular Terrain into Solid Terrain, requires Stone, turns Irregular Terrain into Regular Terrain.
 Gameplay           | GM40       | Different terrain types, take a look into gameplay.md for more explanations
-Unit AI            | UAI1       | Improved grouping. manually coloring units for teammates. designated unit pings its position periodically. double click on a grouped unit in group formation selects same group not all units of same kind. allow more than 10 groups. more intelligent assigning of units to existing groups. sub-group selections. new unit to group takes same stance like the whole group. multi-group functionality. Better waypoints (AOM-style) - able to queue tasks for units, especially villagers. deselect certain units quickly from a selection by right clicking their portrait.
-Unit AI            | UAI2       | More intelligent units. Emergency evacuation points. Formations and movement when attacking. Dynamic hardlocking on target units when attacking. Aggressive stance for monks (auto-convert). Auto-flee stance. Non-coward stance for villagers. Allow selecting the default stance in production buildings. Set rally point on moving units. Better attack move.
+Unit AI            | UAI1       | Improved grouping. double click on a grouped unit in group formation selects same group not all units of same kind. allow more than 10 groups. more intelligent assigning of units to existing groups. sub-group selections. new unit to group takes same stance like the whole group. multi-group functionality.
+Unit AI            | UAI2       | Designated unit pings its position periodically.
+Unit AI            | UAI3       | Deselect certain units quickly from a selection by right clicking their portrait.
+Unit AI            | UAI4       | Better waypoints (AOM-style) - able to queue tasks for units, especially villagers.
+Unit AI            | UAI5       | More intelligent units.
+Unit AI            | UAI6       | Emergency evacuation points.
+Unit AI            | UAI7       | Dynamic hardlocking on target units when attacking.
+Unit AI            | UAI8       | Aggressive stance for monks (auto-convert). Auto-flee stance. Non-coward stance for villagers. Allow selecting the default stance in production buildings.
+Unit AI            | UAI9       | Set rally point on moving units.
+Unit AI            | UAI10      | Better attack move.
 Pathing            | PA1        | Groups can move as group or on command each with its own movement speed.
 Pathing            | PA2        | Auto-resolution of blocking situations
 Pathing            | PA3        | Individual path searching cost for tiles. Allow users to manually mark parts of the map as more expensive/No-go areas. e.g. firing range of castles.
 Pathing            | PA4        | Allow setting any number of waypoints (basically an extension of the 'patrol' mechanic)
+Pathing            | PA5        | Formations and movement when attacking.
 Multiplayer        | MP1        | Finegraded options in Lobby-Settings (e.g. formations, allow/disallow functions). Vanilla mode to have them good ol' feelings. Disallow also units and buildings, e.g. bombardtower, walls, etc.
 Multiplayer        | MP2        | Boosts/handicaps such as resource multipliers for players
 Multiplayer        | MP3        | Forced no-rush (timelimit or score limit until attacks are possible)
@@ -81,7 +90,7 @@ Multiplayer        | MP8        | Simple and fast qualifying for tournaments.
 Multiplayer        | MP9        | Connection through in-game server browser/direct IP and connection through a browser-based protocol. Combination of dedicated servers, P2P and LAN multiplayer.
 Multiplayer        | MP10       | in-game, lag-free, high-quality voice-communication between teams, same for casters.
 Multiplayer        | MP11       | Figure out how to measure map-control of someone and give a value for it. Show it in casting and spectating multiplayer games.
-Multiplayer        | MP12       | 16 player-slots (possible player colours: Purple, White, Black, Light Green, Light Red, Brown,...)
+Multiplayer        | MP12       | More then eight player-slots for multiplayer games (planned up to 40)
 Multiplayer        | MP13       | More balance changes regularly. Mechanism to make changes globally easier. Update mechanisms. Balance crew. Meta adjustments.
 Multiplayer        | MP14       | Opt-in spectating: You can join a multiplayer even if it already started. Doesn't take a player slot.
 Multiplayer        | MP15       | Multiplayer mods looking for smurfs, trolls, racists to ban them.
@@ -95,12 +104,14 @@ UI                 | UI7        | Help spotting units which are taget  of a conv
 UI                 | UI8        | Better after-game analysis. Normal mode with the basic information. Advanced mode with a massive amount of statistical infos and easy to read diagrams for smallest things. population graphs AOE3-style at the end of a match. Show number of villager-kills, maybe even in-game.
 UI                 | UI9        | Copy and paste for building structures. e.g. select mill and the farms around it, copy and paste the foundations of them somewhere else. Same for production lines. (Factorio-style)
 UI                 | UI10       | Show research status in the top right corner to easier follow your running researches.
-UI                 | UI11       | Show how many villagers are working on each ressource (like in AOM, 100 Gold / 4 \[Villager-Symbol\] --> 100 Gold in the bank and 4 vills working to mine gold). add resource gain per minute data next to the original resources. It would be something like food: 537 (+68). make it switchable with amount of vills working at all the resource spots.
-UI                 | UI12       | Hotkeys for technology researches and upgrades for units
-UI                 | UI13       | All these things in here should be switchable-on/off in the options.
-UI                 | UI14       | MP-GUI: game-browser in list-style but with HDs lobby filtering, amount of players? search bar for game names. better filters for games.
-UI                 | UI15       | Save Camera positions: Ctrl+F1 to create a camera location hotkey similar to how you create control groups. Whenever you press the key it moves your screen to the exact location you created it. Also for spectating and casters.
-UI                 | UI16       | Looking for a SC2-Interface in AOE-style? UI-Modding should be made easy.
+UI                 | UI11       | Show how many villagers are working on each ressource (like in AOM, 100 Gold / 4 \[Villager-Symbol\] --> 100 Gold in the bank and 4 vills working to mine gold).
+UI                 | UI12       | Add resource gain per minute data next to the original resources. It would be something like food: 537 (+68). make it switchable with amount of vills working at all the resource spots. (see UI11)
+UI                 | UI13       | Hotkeys for technology researches and upgrades for units
+UI                 | UI14       | All these things in here should be switchable-on/off in the options.
+UI                 | UI15       | MP-GUI: game-browser in list-style but with HDs lobby filtering, amount of players? search bar for game names. better filters for games.
+UI                 | UI16       | Save Camera positions: Ctrl+F1 to create a camera location hotkey similar to how you create control groups. Whenever you press the key it moves your screen to the exact location you created it. Also for spectating and casters.
+UI                 | UI17       | Looking for a SC2-Interface in AOE-style? UI-Modding should be made easy.
+UI                 | UI18       | Show the Boni as a tooltip.
 AI                 | AI1        | Handles units more intelligent. Don't build in hazardous areas. Send military to clear out. Build more gates to prevent lock-ins. Better castle placement. Better Trade. Military units shouldn't fight in castle arrow fire. Units marching react and don't just go away. AI lames you (Barbarian). Understands how to do economic damage to your base. Adopts more to the current playing meta and also randomly choses to use older metas. AI can deliver villagers with transportships to other islands.
 Graphics           | GR1        | Zooming in and out with different settings: middle of screen, where mouse points, to selected units.
 Graphics           | GR2        | Units throw torches to put buildings on fire instead of fighting against them with their swords. Villagers have different attack animations depending on where they were working before attacking units/buildings, e.g. farms -> hay fork, lumberjacks -> axe, stone or gold -> pickaxe.
@@ -109,7 +120,7 @@ Graphics           | GR4        | Unique military and economic unit skins for ea
 Graphics           | GR5        | Beautiful weather effects (see G1)
 Graphics           | GR6        | Campaign cutscenes
 Graphics           | GR7        | Some graphical optimisations for competitive play by design, e.g. small trees, alignment grid, fish outlines, short walls, etc., other option: to redesign everything that the problems why those mods exists are fixed. e.g. make the look behind walls better by design -> no short walls needed.
-Graphics           | GR8        | Resource patches change size based on the amount of resource they have left.
+Graphics           | GR8        | Resource spots change size based on the amount of resource they have left.
 Modding            | MD1        | Asset modification updates in-game models instantly. Live testing for modders. More challenging: Same for unit (stat) patches.
 Sound              | SO1        | Options to change the volume of special game sounds (e.g. attack bell, farm depleted, units produced). In late game this sounds can get really annoying.
 Localisation       | LC1        | X
