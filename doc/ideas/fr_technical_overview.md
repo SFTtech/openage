@@ -99,7 +99,7 @@ Multiplayer        | MP12       | More then eight player-slots for multiplayer g
 Multiplayer        | MP13       | More balance changes regularly. Mechanism to make changes globally easier. Update mechanisms. Balance crew. Meta adjustments.
 Multiplayer        | MP14       | Opt-in spectating: You can join a multiplayer even if it already started. Doesn't take a player slot.
 Multiplayer        | MP15       | Multiplayer mods looking for smurfs, trolls, racists to ban them.
-Multiplayer        | MP16       | Game modes, See gameplay.md 
+Multiplayer        | MP16       | Game modes, See gameplay.md
 UI                 | UI1        | Organizers can manage the whole tournament in the openage interface within their accounts. Drafting, (Time-)Planning, Invitations, Promo, Hosting.
 UI                 | UI2        | Multiplayer submenu should give you relevant information about most viewed live games and caster channels, upcoming tournaments, upcoming qualifieer rounds.
 UI                 | UI3        | Spectator layer for public watching. Lock to casters viewpoints or freely move camera. Chat with spectators and mark points of interests (POI) on the map. No sync needed. Spectator dashboard.
