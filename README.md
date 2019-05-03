@@ -66,7 +66,7 @@ Current State of the Project
    - See [doc/status.md](/doc/status.md).
 
  - What's the plan?
-   - See [doc/milestones.md](/doc/milestones.md). We also have a [list of crazy xor good ideas](/doc/ideas).
+   - See [doc/milestones.md](/doc/milestones.md). We also have [lists of crazy xor good ideas](/doc/ideas) and a [technical overview for requested features](/doc/ideas/fr_technical_overview.md). 
 
 
 Dependencies, Building and Running
