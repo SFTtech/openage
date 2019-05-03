@@ -32,12 +32,12 @@ Environment
 ### Forests
 
  - A single villager can hide (per some tile area) in the forest for sneak attacks. Maybe can only visible to a certain type of unit. But invisible to other villagers (until they pop out and start building stuff)
- - Gaia flock of birds rises up from a tree when startled, when tree is felled or when many people approach and fly off-map, sound indicator hearable a little bit more far (players know whensomeone goes near a woodline at your starting base -> maybe towering?)
+ - Gaia flock of birds rises up from a tree when startled, when tree is felled or when many people approach and fly off-map, sound indicator hearable a little bit more far (players know when someone goes near a woodline at your starting base -> maybe towering?)
 
 ### Gaia Units
 
  - Bear
-   - could have forage sights, farms, and shore fish as locations that it will try to “eat” from
+   - could have forage sights, farms, and shore fish as locations that it will try to "eat" from
 
  - Mercenaries could be hired in the wilderness at a camp to act on behalf of a player
    - not just buying a unit for gold, resources have to be determined
@@ -48,23 +48,23 @@ Environment
 
   - Wolves
     - will form a pack and will act together
-    - Wolves could wander the map, making efforts to avoid (circle around) “towns”
+    - Wolves could wander the map, making efforts to avoid (circle around) "towns"
     - they should get hungry and seek food (deer, villagers, wild boar, bear, etc.)
-    - while hungry, they should attack in a pack, kill something, and “eat”.
+    - while hungry, they should attack in a pack, kill something, and "eat".
     - when not hungry, there should be a chance of attack but it should be more likely that the wolves will avoid contact and move on
-    - Wolves will howl from time to time. Players will be able to judge the severity of their “wolf problem” based on the frequency of these howls
+    - Wolves will howl from time to time. Players will be able to judge the severity of their "wolf problem" based on the frequency of these howls
 
 ### Terrain Types:
 
-Soft Terrains (= Marshland/Desert): Farms, Mills, L/M Camps, Palisades can be built without problems, Stone Walls and Medium-sized buildings (3x3) take +50% damage on this terrain, and Military units move 20% slower on this terrain.
+Soft terrains (= marshland/desert): farms, mills, l/m camps, palisades can be built without problems, stone walls and medium-sized buildings (3x3) take +50% damage on this terrain, and military units move 20% slower on this terrain.
 
-Regular Terrains (= Grass/Dirt): Farms, Mills, Camps, Palisades, Stone Walls, Medium (3x3) and Large (4x4) Buildings can be Built without Problems, Heavy Structures like Towers, Gates and Castles take +50% Damage on this terrain.
+Regular terrains (= grass/dirt): farms, mills, camps, palisades, stone walls, medium (3x3) and large (4x4) buildings can be built without problems, heavy structures like towers, gates and castles take +50% damage on this terrain.
 
-Solid Terrains (= Rock/Foundation): Farms, Camps & Palisades cannot be built on this Terrain, all other buildings without problems.
+Solid terrains (= rock/foundation): farms, camps & palisades cannot be built on this terrain, all other buildings without problems.
 
-Irregular Terrains (= Beaches/Mountains/Swamps): Nothing can be built on these Terrains, Military Units move 20% Slower on these Terrains.
+Irregular terrains (= beaches/mountains/swamps): nothing can be built on these terrains, military units move 20% slower on these terrains.
 
-Regular Terrain makes up most of the Player Starting Areas, with Soft and Rock Terrains becoming more common as you go further from the Player Starting Areas and Irregular Terrain Makes up Larger Spaces of the Map in-between the Player Starting Areas.
+Regular terrain makes up most of the player starting areas, with soft and rock terrains becoming more common as you go further from the player starting areas and irregular terrain makes up larger spaces of the map in-between the player starting areas.
 
 
 Resources
@@ -82,8 +82,7 @@ Resources
 
 ### Salvage
 
-  - salvage pile containing xx% (configurable percentage) of the resources originally used to construct a building appears any time
-a building is destroyed or deconstructed
+  - salvage pile containing xx% (configurable percentage) of the resources originally used to construct a building appears any time a building is destroyed or deconstructed
   - resources in this salvage pile will gradually diminish at the rate of 1 unit of resource per 10 seconds of game time
   - resource piles can be harvested by villagers or pillage capable units
 
@@ -129,56 +128,27 @@ Game modes
 
 ### Zombie Survival Mode
 
-The map has a bunch of zombie spawners; after an initial build-up phase,
-they start producing waves zombie hordes, fast zombies, tanks, petard zombies;
-the zombie AI tries to get to your villagers (magic pathfinding);
-killed units turn into zombies as well. spawners can be destroyed,
-but the closer or the more powerful you get, the more zombies will spawn.
-To win, survive for a specified period of time, build a wonder,
-or destroy the spawners (or something...).
+The map has a bunch of zombie spawners; after an initial build-up phase, they start producing waves zombie hordes, fast zombies, tanks, petard zombies; the zombie AI tries to get to your villagers (magic pathfinding); killed units turn into zombies as well. spawners can be destroyed, but the closer or the more powerful you get, the more zombies will spawn. To win, survive for a specified period of time, build a wonder, or destroy the spawners (or something...).
 
 ### Conquer the castle
 
-Similar to "Regicide", but with a building.
-Players have some time to fortify their castle.
-A player loses if the castle falls.
+Similar to "Regicide", but with a building. Players have some time to fortify their castle. A player loses if the castle falls.
 
 ### Barbarian Invasion
 
-An asymmetric game mode where 1 or 2 technologically advanced players compete against 3 - 6 "barbarians".
-The barbarians start in Dark Age with a few extra villagers, but have to build up their economy from the ground up.
-The "civilized" players start in Castle Age with a large amount of villagers, a decent economy and some defensive buildings.
-For barbarian players, the goal is to destroy a wonder in the civilized players' cities before a time limit is reached.
-The civilized players have to build defenses and try to protect against the hordes that are pressing at their gates.
+An asymmetric game mode where 1 or 2 technologically advanced players compete against 3 - 6 "barbarians". The barbarians start in Dark Age with a few extra villagers, but have to build up their economy from the ground up. The "civilized" players start in Castle Age with a large amount of villagers, a decent economy and some defensive buildings. For barbarian players, the goal is to destroy a wonder in the civilized players' cities before a time limit is reached. The civilized players have to build defenses and try to protect against the hordes that are pressing at their gates.
 
 ### Phantom Mode
 
-A mode similar to *Trouble in Terrorist Town* and *Secret Hitler*.
-The game starts with all 8 players being neutral or allied.
-Their goal is to find 2 "phantoms" and eliminate them.
-The 2 phantoms are allied from the start and know about each other, while every other player is clueless whether other players are friendly or phantoms. Phantom players have to manipulate the others into distrusting their friends.
-Gameplay could be spiced up with feature like purchasing units which don't have player colours from a town in the middle of the map, sabotage units and limiting the allied line of sight gained from researching cartography.
+A mode similar to *Trouble in Terrorist Town* and *Secret Hitler*. The game starts with all 8 players being neutral or allied. Their goal is to find 2 "phantoms" and eliminate them. The 2 phantoms are allied from the start and know about each other, while every other player is clueless whether other players are friendly or phantoms. Phantom players have to manipulate the others into distrusting their friends. Gameplay could be spiced up with feature like purchasing units which don't have player colours from a town in the middle of the map, sabotage units and limiting the allied line of sight gained from researching cartography.
 
 ### Pure Battle Mode
 
-No buildings, just units.
-The game generates a map and players can choose a starting position.
-Then they have a few minutes and a set amount of resources to select an army composition and some techs.
-After the first phase is over they place their units on the battlefield and have to use what they assembled to destroy their opponent.
-Utilizing height advantages, microing and tactical positioning contrast the strategic decisions of creating the army.
-The player who destroys his opponent, inflicts the most resource damage to others or holds strategic positions wins the battle.
+No buildings, just units. The game generates a map and players can choose a starting position. Then they have a few minutes and a set amount of resources to select an army composition and some techs. After the first phase is over they place their units on the battlefield and have to use what they assembled to destroy their opponent. Utilizing height advantages, microing and tactical positioning contrast the strategic decisions of creating the army. The player who destroys his opponent, inflicts the most resource damage to others or holds strategic positions wins the battle.
 
 ### Micro-nerd Mode (or Mod)
 
-Mixture of RTS (Age of Empires) and Tactical Stealth (Shadow Tactics) will require the players to use features of both genres to win a game.
-Gameplay could look like the following: In the beginning you start as usual the game and build up an economy (macro).
-As soon as you need to scout the opponents base the parts of tactical stealth come into play.
-Units can be used with special, advanced micro commands (formations, special abilities for single unit types).
-You can switch into this mode explicitly, after switching everything which is not important to this mode turns grey/dark to filter out your attention.
-In the ultra micro mode you could see hidden paths in the woods on which you could sneak to the opponents base.
-There you could carry on sabotage the economy and military production of the enemy.
-For example you could distract villagers from wood cutting or gold mining (slow down the working speed or make them carry less resources) or spy on production processes of military units.
-With this you have another level for micro-nerds and another way to fight against people who just wall themselves in and boom behind.
+Mixture of RTS (Age of Empires) and Tactical Stealth (Shadow Tactics) will require the players to use features of both genres to win a game. Gameplay could look like the following: In the beginning you start as usual the game and build up an economy (macro). As soon as you need to scout the opponents base the parts of tactical stealth come into play. Units can be used with special, advanced micro commands (formations, special abilities for single unit types). You can switch into this mode explicitly, after switching everything which is not important to this mode turns grey/dark to filter out your attention. In the ultra micro mode you could see hidden paths in the woods on which you could sneak to the opponents base. There you could carry on sabotage the economy and military production of the enemy. For example you could distract villagers from wood cutting or gold mining (slow down the working speed or make them carry less resources) or spy on production processes of military units. With this you have another level for micro-nerds and another way to fight against people who just wall themselves in and boom behind.
 
 ### Random Ideas
 
@@ -233,11 +203,11 @@ Unit handling
 ### Viewcone-feature for additional complexity
 
  - a viewcone shows in which direction the unit is looking at and how much it can see from that
-   - more complex Line-of-sight that this 360°-LOS
-   - e.g. a unit cannot see behind buildings -> you can hide units behind buildings from auto-attack, as long as the player is not giving manually the attack command
+   - more complex line of sight (LOS) than 360°-LOS
+   - e.g. a unit cannot see behind buildings -> you can hide units behind buildings from auto-attack, as long as the player is not  manually giving the attack command
      - you could even render them invisible as long as the player didn't see them and they could vanish after a time when they hide behind a building
    - scouting would be more focused -> only scouting in the direction your scout looks/moves, rest stays under FOG
- - possibility to even have completely other game-styles/mods (like Stealth-RTS, see Micro-nerd Mode)
+ - possibility to even have completely other gameplay styles/mods (like Stealth-RTS, see Micro-nerd Mode)
  - Kosmonautblog wrote an article about the viewcone in Shadow Tactics and how the developers were implementing it, you can find it here: https://web.archive.org/web/20190428103242/https://kosmonautblog.wordpress.com/2017/01/09/shadow-tactics-rendering-breakdown/
 
 
@@ -261,10 +231,10 @@ Multiplayer
 
  - tournament settings (SQ/MQ, etc.) are stored in a container (importable file/or directly in the server environment depending on the architecture of the multiplayer)
 
-   - the container stores direct link to download maps from an OpenAge community servers for this tournament (no p2p-sharing of maps with different versions anymore, still possible in private games)
+   - the container stores direct link to download maps from an openage community servers for this tournament (no p2p-sharing of maps with different versions anymore, still possible in private games)
 
    - container will contain also the drafting, which will become static during ongoing tournament
-     - before the tournament the civ, team and map-drafting is handled directly by the community server and stores information inside the container
+     - before the tournament the civ, team and map drafting is handled directly by the community server and stores information inside the container
      - admin changes still possible for special use cases
    - when starting the tournament every player will download the important information from their pre-chosen and fixed parts and everything will be pre-configured and grey (if no spontaneous changes are allowed)
 
@@ -276,8 +246,8 @@ Multiplayer
 
  - as an organiser of a tournament you should have the possibility to manage the whole tournament inside the openage platform (not: making promo there, drafting here, hosting matches there, and so on)
 
-   - also the possibility to directly invite a player from your openage-account based on characteristics (like direct-invites for 1v1-Top15 Ladder-Tournament or Teamgames)
-     - teams can connect their accounts to real clans reaching together a team elo depending on the combination of actual players (TatoH + DauT + TheViper > TatoH + DauT + Slam)
+   - also the possibility to directly invite a player from your openage account based on characteristics (like direct invites for 1v1 Top15 ladder tournament or teamgames)
+     - teams can connect their accounts to real clans reaching together a team ELO depending on the combination of actual players (TatoH + DauT + TheViper > TatoH + DauT + Slam)
 
  - make it easier to qualify for your tournament (e.g. as a potential player -> Open "Tournaments" in multiplayer menu -> open "Qualifiers" -> Play games with fixed tournament settings -> maybe qualify for Tournament)
 
@@ -293,7 +263,7 @@ Multiplayer
 ### Spectating/Casting
 
  - the casting mode could be an advanced spectating mode, with more features than just replaying/live-spectating the game
-   - Spectator layer: For the general public watching the game. This could be a mirror of the casting layer that the casters see. You can either choose to lock the viewpoint to one of the casters' cameras or move the camera freely around the map. Also you could have the ability to chat with other spectators and draw notes on the map, mark your own points of interest. Sync is not as important here. (_ColonelPanic_ @reddit)
+   - Spectator layer: For the general public watching the game. This could be a mirror of the casting layer that the casters see. You can either choose to lock the viewpoint to one of the casters' cameras or move the camera freely around the map. Also you could have the ability to chat with other spectators and draw notes on the map, mark your own points of interest. Sync is not as important here.
 
 
  - ZOOM! (also in-game not just for casters)
@@ -305,24 +275,24 @@ Multiplayer
 
  - casting mode should help you to either work on your own or collaboratively work together with one or more Co-Caster(s) on the presentation of the actions in a game
 
-   - Casting layer: For casters and co casters. Could support features like pinging something on the map for the co caster, marking points of interest/units/buildings, show picture-in-picture views of the other casters and so on. An important requirement would be that the casters' views are synced. (_ColonelPanic_ @reddit)
+   - Casting layer: For casters and co casters. Could support features like pinging something on the map for the co caster, marking points of interest/units/buildings, show picture-in-picture views of the other casters and so on. An important requirement would be that the casters' views are synced.
    - casters should have the possibility to join a live-game together as a caster-team
-   - e.g. two separate openage-accounts could be temporarily bound together (master-slave-principle)
+   - e.g. two separate openage accounts could be temporarily bridged (master-slave-principle)
      - they both work together at the master-device (streaming device from main caster), each caster stil has it's own independant view of the game
 
-   - there should be an option to cut scenes together in a live game, so that if one caster sees an action somewhere on the map, he/she gives a command to the game that itself clips (saves camera position and game status) it and puts it into a queue on the master-device to replay it
+   - there should be an option to cut scenes together in a live game, so that if one caster sees an action somewhere on the map, they give a command to the game that itself clips (saves camera position and game status) it and puts it into a queue on the master-device to replay it
 
    - outside of the main spectating window could be a second window (used for two monitor solutions) with the waiting list for the replays and all the other options and features special to the casting mode
 
- - in-game lag-free voice-communication between casters
+ - in-game lag-free voice communication between casters
 
  - actions per minute (APM) should be derivable from game -> possible important influence on design decisions!
 
  - show current camera locations of casters (maybe on minimap)
 
- - small indicators for units that show if they are visible to another player, even if the FOW is turned off
+ - small indicators for units that show if they are visible to another player, even if the fog of war (FOW) is turned off
    - to get rid of the switching between the FOW of players just to know, if they can see each other
-   - see also: Viewcone-Feature (Unit handling)
+   - see also: viewcone feature (unit handling)
 
 
 ### Team interaction
@@ -330,16 +300,16 @@ Multiplayer
  - Better team interaction
  - Work/resource sharing
  - Unit sharing (transport boats)
-  - give temporary unit control of a selected group to an ally (e.g. in a fight) with an easy command
+   - give temporary unit control of a selected group to an ally (e.g. in a fight) with an easy command
  - Give resources of resigning players to allies
-  - maybe even the research of team ressources in late-imp
-  - or could be even a 5th "basic globalisation/Hanse/free trade" age where allys share ressources
-  - when you resign, give your buildings to your allies (original AoE devs idea)
+   - maybe even the research of team ressources in late-imp
+   - or could be even a 5th "basic globalisation/Hanse/free trade" age where allys share ressources
+   - when you resign, give your buildings to your allies (original AoE devs idea)
  - Color markings
  - Create signs
  - Paint on map
  - Create arrows
- - in-game lag-free voice-communication between teamplayers
+ - in-game lag-free voice communication between teamplayers
 
 
 ### MMO games
@@ -367,7 +337,7 @@ New Buildings
 ### Streets
 
  - Ability to build streets on land
-   - textures already exists
+   - textures already exist
  - increases the speed of trade carts, vills, siege or in general land units
  - destructible just by mangonel-line or trebuchet (ground attack units) and maybe decay over time or usage, repairable (or not?)
  - uses stone, maybe 1/3 the cost of a stonewall
@@ -385,18 +355,18 @@ New Units
 
 ### Water
 
- - monk-ship to convert ships on water
+ - monk ship to convert ships on water
 
 ### Land
 
- - transport waggon to slowly transport ships over land from one pond to another
+ - transport waggon to slowly transport ships over land from one sea to another
 
 
 Relics & Kings
 ---------
 
  - Relics could have special abilities like in AOM
-   - e.g. they can have attack bonuses (patches) for special units or economic/military bonuses
+   - e.g. they can have attack bonuses for special units or economic/military bonuses
    - special abilities for every relic could either be generated when the map is generated or when the relic is discovered based on the actual needs of the player
    - so the later you go out to get the relic the more it could get useful for you, because it could be better shaped on your personal military/economy but the risk is higher, that another player was going out before you
    - if a player scouts the relic first and the ability gets generated in this moment, it will be for the player who scouted it first, so he knows, that this relic could help their own economy/military alot so the player will try to fight about this relic against the enemy heavily -> new gameplay aspect
@@ -407,8 +377,7 @@ Relics & Kings
       - attributes with up to 12 range could have an big impact of the fight
 
   - Kings could be special units that abstractly represent the player in the game
-    - could be better than average infantry units, could provide a +1 bonus to attack and defense for all of their units (not allied units)
-within a 5 tile radius
+    - could be better than average infantry units, could provide a +1 bonus to attack and defense for all of their units (not allied units) within a 5 tile radius
   - Queen units with an somehow identical functionality, may also be added to the game
 
 
