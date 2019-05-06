@@ -389,7 +389,7 @@ def parse_args():
     cli.add_argument("--py-prefix", default=None,
                      help="python module installation directory prefix")
     cli.add_argument("--dry-run", action='store_true',
-                     help="just print the cmake invocation without callint it")
+                     help="just print the cmake invocation without calling it")
     cli.add_argument("--cmake-binary", default="cmake",
                      help="path to the cmake binary")
     cli.add_argument("--ninja", action="store_true",
