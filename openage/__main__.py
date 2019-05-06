@@ -1,4 +1,4 @@
-# Copyright 2015-2018 the openage authors. See copying.md for legal info.
+# Copyright 2015-2019 the openage authors. See copying.md for legal info.
 
 """
 Behold: The central entry point for all of openage.
@@ -114,9 +114,12 @@ def main(argv=None):
             config.DEVMODE = False
         if args.devmode:
             config.DEVMODE = True
+            from . import cython_check
+            cython_check.this_is_true()
     except ImportError:
-        if args.no_devmode or args.devmode:
-            print("code was not yet generated, ignoring devmode activation request")
+        cli.error("code was not yet generated. "
+                  "Did you run the command from the build directory (bin/)?\n"
+                  "See doc/building.md for more information.")
 
     if "asset_dir" in args and args.asset_dir:
         if not os.path.exists(args.asset_dir):
