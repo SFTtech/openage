@@ -120,7 +120,7 @@ _the openage authors_ are:
 | Nicholas Schmidt            | schmidtnicholas             | schmidtnicholas111 à gmail dawt com               |
 | Antti Aalto                 | Anakonda                    | antti dawt aalto dawt 10 à gmail dawt com         |
 | Simon San                   | simonsan                    | simon à systemli dawt org                         |
-| Lorenzo Gaifas              | brisvag                     | brisvag à gmail dawt org                          |
+| Lorenzo Gaifas              | brisvag                     | brisvag à gmail dawt com                          |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.

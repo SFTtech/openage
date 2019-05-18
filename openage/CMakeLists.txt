@@ -12,6 +12,10 @@ add_py_modules(
 	NOINSTALL devmode.py
 )
 
+add_cython_modules(
+	cython_check.pyx
+)
+
 add_subdirectory(cabextract)
 add_subdirectory(codegen)
 add_subdirectory(convert)
