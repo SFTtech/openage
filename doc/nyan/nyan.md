@@ -29,7 +29,7 @@ so all content data can be verified to be compatible at load time.
 
 It is easy to read, write and modify, and most importantly,
 it can actually store unit upgrades, unit abilities, research,
-civ bonuses and age updates.
+civ bonuses and age upgrades.
 
 
 Technical specification
